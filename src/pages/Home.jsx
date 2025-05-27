@@ -1,9 +1,8 @@
-import React from 'react';
+// 🌀 Section for home
 import Hero from '../sections/Home/Hero';
-import About from '../sections/Home/Aboutme';
+import Aboutme from '../sections/Home/Aboutme';
 import MyWork from '../sections/Home/MyWork';
 import Testimonials from '../sections/Home/Testimonials';
-import Aboutme from '../sections/Home/Aboutme';
 
 const Home = () => {
   return (
