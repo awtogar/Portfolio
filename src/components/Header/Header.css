@@ -1,0 +1,107 @@
+.header {
+  position: fixed;
+  top: 24px;
+  width: 100%;
+  z-index: 50;
+  display: flex;
+  justify-content: center;
+}
+
+.header__nav {
+  width: 90%;
+  max-width: 82svw;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 24px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(6px);
+  transition: width 0.8s ease;
+  will-change: transform;
+}
+
+.header__logo-img {
+  height: 32px;
+  object-fit: contain;
+}
+
+.header__menu {
+  display: flex;
+  gap: 32px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.header__menu-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 14px;
+  transition: color 0.3s ease;
+  position: relative;
+}
+
+.header__menu-item--active {
+  color: white;
+}
+
+.header__menu-item:hover .header__menu-link {
+  color: white;
+}
+
+.header__menu-indicator {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #a3e635; /* lime-400 */
+  align-self: center;
+  flex-shrink: 0;
+  margin-top: -3px; /* tweak ini kalo masih kurang tengah */
+}
+
+.header__menu-link {
+  text-decoration: none;
+  color: inherit;
+  text-transform: capitalize;
+}
+
+.header__theme-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: white;
+  font-size: 20px;
+}
+
+.header__theme-icon {
+  width: 24px;
+  height: 24px;
+  transition: transform 0.6s ease;
+}
+
+/* rollign */
+.rolling-text {
+  display: inline-block;
+  overflow: hidden;
+  position: relative;
+}
+
+.rolling-text__inner {
+  display: block;
+  transition: transform 0.4s ease;
+  will-change: transform;
+}
+
+.rolling-text__inner:nth-child(2) {
+  position: absolute;
+  top: 100%;
+  left: 0;
+}
+
+.header__menu-link:hover .rolling-text__inner {
+  transform: translateY(-100%);
+}
