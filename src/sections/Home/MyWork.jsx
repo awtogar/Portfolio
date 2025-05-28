@@ -1,6 +1,9 @@
 const MyWork = () => {
   return (
-    <div>MyWork</div>
+     <section className="mywork">
+      <div className="container mywork__container">
+      </div>
+    </section>
   )
 }
 

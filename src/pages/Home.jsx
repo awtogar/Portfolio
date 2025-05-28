@@ -9,9 +9,9 @@ const Home = () => {
     <section id="home" className="section section--home">
       {/* panggil section untuk didalam pages home */}
       <Hero />
-      <Aboutme />
+      {/* <Aboutme />
       <MyWork />
-      <Testimonials />
+      <Testimonials /> */}
     </section>
   )
 }

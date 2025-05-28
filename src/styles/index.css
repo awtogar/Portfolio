@@ -1,5 +1,4 @@
 @import "tailwindcss";
-
 /* for all pages in the pages */
 @import '../pages/pages.css';
 /* for all section in home pages */
@@ -7,8 +6,187 @@
 @import '../sections/About/about.sections.css';
 @import '../sections/Project/project.sections.css';
 @import '../sections/Contact/contact.sections.css';
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+
+/* FIXED: Menggunakan satu font-family name dengan berbagai weight */
+@font-face {
+  font-family: 'GeneralSans';
+  src: url('../assets/fonts/GeneralSans-Extralight.woff2') format('woff2'),
+       url('../assets/fonts/GeneralSans-Extralight.woff') format('woff'),
+       url('../assets/fonts/GeneralSans-Extralight.ttf') format('truetype');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'GeneralSans';
+  src: url('../assets/fonts/GeneralSans-ExtralightItalic.woff2') format('woff2'),
+       url('../assets/fonts/GeneralSans-ExtralightItalic.woff') format('woff');
+  font-weight: 200;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'GeneralSans';
+  src: url('../assets/fonts/GeneralSans-Light.woff2') format('woff2'),
+       url('../assets/fonts/GeneralSans-Light.woff') format('woff'),
+       url('../assets/fonts/GeneralSans-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'GeneralSans';
+  src: url('../assets/fonts/GeneralSans-LightItalic.woff2') format('woff2'),
+       url('../assets/fonts/GeneralSans-LightItalic.woff') format('woff'),
+       url('../assets/fonts/GeneralSans-LightItalic.ttf') format('truetype');
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'GeneralSans';
+  src: url('../assets/fonts/GeneralSans-Regular.woff2') format('woff2'),
+       url('../assets/fonts/GeneralSans-Regular.woff') format('woff'),
+       url('../assets/fonts/GeneralSans-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'GeneralSans';
+  src: url('../assets/fonts/GeneralSans-Italic.woff2') format('woff2'),
+       url('../assets/fonts/GeneralSans-Italic.woff') format('woff'),
+       url('../assets/fonts/GeneralSans-Italic.ttf') format('truetype');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* FIXED: Path konsisten - gunakan ../fonts/ atau ../assets/fonts/ */
+@font-face {
+  font-family: 'GeneralSans';
+  src: url('../assets/fonts/GeneralSans-Medium.woff2') format('woff2'),
+       url('../assets/fonts/GeneralSans-Medium.woff') format('woff'),
+       url('../assets/fonts/GeneralSans-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'GeneralSans';
+  src: url('../assets/fonts/GeneralSans-MediumItalic.woff2') format('woff2'),
+       url('../assets/fonts/GeneralSans-MediumItalic.woff') format('woff'),
+       url('../assets/fonts/GeneralSans-MediumItalic.ttf') format('truetype');
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'GeneralSans';
+  src: url('../assets/fonts/GeneralSans-Semibold.woff2') format('woff2'),
+       url('../assets/fonts/GeneralSans-Semibold.woff') format('woff'),
+       url('../assets/fonts/GeneralSans-Semibold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'GeneralSans';
+  src: url('../assets/fonts/GeneralSans-SemiboldItalic.woff2') format('woff2'),
+       url('../assets/fonts/GeneralSans-SemiboldItalic.woff') format('woff'),
+       url('../assets/fonts/GeneralSans-SemiboldItalic.ttf') format('truetype');
+  font-weight: 600;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'GeneralSans';
+  src: url('../assets/fonts/GeneralSans-Bold.woff2') format('woff2'),
+       url('../assets/fonts/GeneralSans-Bold.woff') format('woff'),
+       url('../assets/fonts/GeneralSans-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'GeneralSans';
+  src: url('../assets/fonts/GeneralSans-BoldItalic.woff2') format('woff2'),
+       url('../assets/fonts/GeneralSans-BoldItalic.woff') format('woff'),
+       url('../assets/fonts/GeneralSans-BoldItalic.ttf') format('truetype');
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* Global Theme Variables */
+:root {
+  /* Light Theme (Default) */
+  --bg-primary: #FAFAFA;
+  --bg-secondary: #E9E9E9;
+  --text-primary: #0B0B0A;
+  --text-secondary: #1C1C1B;
+
+  --header-bg: rgba(0, 0, 0, 0.01);
+  --header-border: rgba(0, 0, 0, 0.1);
+  
+  /* TODO: LANJUT CARI WARNA HEADER DIBAWAH*/
+  --border-color: #e5e7eb; /* accent border light theme */
+  --accent-color: #a3e635; /* accent color light theme */
+
+  --header-text: #1f2937;
+  --header-text-secondary: rgba(31, 41, 55, 0.7);
+  --header-text-active: #000000;
+  --header-text-hover: #000000;
+  --header-theme-hover: rgba(192, 192, 192, 0.2);
+  --logo-color: #1f2937;
+}
+
+[data-theme="dark"] {
+  /* Dark Theme */
+  --bg-primary: #0B0B0A;
+  --bg-secondary: #1C1C1B;
+  --text-primary: #FAFAFA;
+  --text-secondary: #E9E9E9;
+  
+  --header-bg: rgba(255, 255, 255, 0.01);
+  --header-border: rgba(255, 255, 255, 0.1);
+  
+  /* TODO: LANJUT CARI WARNA HEADER DIBAWAH*/
+  --border-color: #334155; /* accent border dark theme */
+  --accent-color: #93B1A6; /* accent color dark theme */
+
+  --header-text: #ffffff;
+  --header-text-secondary: rgba(255, 255, 255, 0.7);
+  --header-text-active: #ffffff;
+  --header-text-hover: #ffffff;
+  --header-theme-hover: rgba(99, 99, 99, 0.2);
+  --logo-color: #ffffff;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  font-family: 'GeneralSans', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* Smooth transitions untuk semua elemen */
+*, *::before, *::after {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
