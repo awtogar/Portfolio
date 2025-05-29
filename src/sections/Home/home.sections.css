@@ -1,1 +1,33 @@
-/* 🎨 styling for home sections */
+.hero-section {
+  display: flex;
+  gap: 2rem;
+  height: 100svh;
+  box-sizing: border-box;
+  padding: 12px 0px;
+}
+
+.hero-img {
+  width: auto;
+  height: 96svh;
+}
+
+.hero-img img {
+  height: 100%;
+  width: auto;
+  object-fit: cover;
+  aspect-ratio: 2 / 3;
+}
+
+.hero-text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: clamp(4rem, 6vw, 6rem);
+  line-height: 1;
+  font-weight: var(--font-bold);
+  text-transform: uppercase;
+  color: var(--text-primary);
+  font-family: var(--font-primary);
+  letter-spacing: -0.05em;
+}
