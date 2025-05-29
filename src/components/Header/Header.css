@@ -134,3 +134,11 @@ transition:
 .header__menu-link:hover .rolling-text__inner {
   transform: translateY(-100%);
 }
+
+.theme-transitioning .header__nav {
+  transition:    
+    background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important,
+    border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important,
+    outline-color 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important,
+    backdrop-filter 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}

@@ -11,10 +11,10 @@ const Header = () => {
   const location = useLocation();
   const [active, setActive] = useState("/");
   
-  // Initialize theme from localStorage or default to light
+  // inisialiasi state biar tema gelap jadi default
   const [isDark, setIsDark] = useState(() => {
     const savedTheme = localStorage.getItem('theme');
-    return savedTheme === 'dark';
+    return savedTheme === 'light';
   });
   
   const navRef = useRef(null);
@@ -23,7 +23,8 @@ const Header = () => {
     setActive(location.pathname);
   }, [location]);
 
-  // Apply theme ke document root dan save ke localStorage
+  // Masukin tema ke localStorage dan set atribut
+  // jadi kalo reload halaman, tema nya masih sama
   useEffect(() => {
     if (isDark) {
       document.documentElement.setAttribute('data-theme', 'dark');
@@ -51,7 +52,17 @@ const Header = () => {
     { name: "Contact", path: "/contact" },
   ];
 
-  const toggleTheme = () => setIsDark(!isDark);
+  // Updated toggleTheme untuk transisi yang lebih smooth
+  const toggleTheme = () => {
+    // Tambahin class baru setiap kali toggle theme di klik
+    document.documentElement.classList.add('theme-transitioning');    
+    setIsDark(!isDark);
+    
+    // Hapus class transisi pas udah selesai
+    setTimeout(() => {
+      document.documentElement.classList.remove('theme-transitioning');
+    }, 300);
+  };
 
   return (
     <header className="header">
