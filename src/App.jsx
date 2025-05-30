@@ -2,7 +2,7 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 // 🎨 Global Styles
 import './styles/index.css'
-// 🌀 Utilities / Wrapper Components
+// 🌀 Utilities 
 import SmoothScrollWrapper from './components/Scroller/SmoothScrollWrapper'
 // 🧱 Layout Components
 import Header from './components/Header/Header'

@@ -162,7 +162,7 @@
   --destructive-foreground: 0 0% 98%;
   --border: 240 5.9% 90%;
   --input: 240 5.9% 90%;
-  --radius: 0.5rem;
+  --radius: 3.25rem;
   --ring: 240 10% 3.9%;
 
   --font-primary: 'GeneralSans', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -207,8 +207,8 @@
   --destructive-foreground: 0 0% 98%;
   --border: 240 3.7% 15.9%;
   --input: 240 3.7% 15.9%;
-  --radius: 0.5rem;
-  --ring: 240 4.9% 83.9%;
+  --radius: 3.25rem;
+  --ring: 240 10% 3.9%;
 }
 
 
