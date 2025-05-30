@@ -8,7 +8,7 @@
   margin-left: auto;
   padding: 1rem 1rem;
   position: relative;
-  background-color: var(--bg-900);
+  /* background-color: var(--bg-900); */
 }
 
 .hero-greeting {
@@ -106,8 +106,7 @@ font-weight: 900;
 
 /* Footer Styles */
 .hero-footer {
-  opacity: 0;
-  animation: fadeInUp 0.8s ease-out 1.4s forwards;
+  opacity: 1;
 }
 
 .hero-footer-content {
@@ -143,6 +142,8 @@ font-weight: 900;
   align-items: center;
   gap: 0.5rem;
   transition: all 0.3s ease;
+  opacity: 0;
+  animation: slideInLeft 0.8s ease-out 2s forwards;
 }
 
 .social-link:hover {
