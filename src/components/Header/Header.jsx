@@ -44,7 +44,7 @@ const Header = () => {
 	return (
 		<header className="">
 			{/* Components Desktop Navigation HEADER */}
-			<nav ref={navRef} className="hidden md:flex space-x-8 transition-all duration-300 ease-in-out">
+			<nav ref={navRef} className="hidden md:flex space-x-8 items-center justify-between px-8h-16 sticky w-[calc(100%-2rem)] transition-all duration-300 ease-in-out">
 				<div className="flex items-center gap-4">
 					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 464.09 429.34" className="h-[3rem] w-[3rem]">
 						<g>
@@ -60,7 +60,6 @@ const Header = () => {
 				<ul className="flex items-center gap-6 text-sm font-medium">
 					{menus.map((menu) => (
 						<li key={menu.path} className="relative">
-							{/* Active dot indicator */}
 							{active === menu.path && (
 								<span className="absolute -left-4 top-1/2 -translate-y-1/2 h-2 w-2 rounded-full bg-highlight" />
 							)}
@@ -157,3 +156,5 @@ const Header = () => {
 }
 
 export default Header
+
+
