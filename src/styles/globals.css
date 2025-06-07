@@ -1,0 +1,77 @@
+@import "tailwindcss";
+@import "./utils.css";
+
+@theme {
+	--font-primary: "Satoshi", sans-serif;
+	--font-secondary: "Clash", sans-serif;
+
+	/* Color System - Light Theme */
+	--color-primary: #0a0a0a;
+	--color-secondary: #7e7e7e;
+	--color-inverse: #f7f8fa;
+	--color-highlight: #34d399;
+
+	--color-bg-600: #cbd5e1;
+	--color-bg-700: #e2e8f0;
+	--color-bg-800: #ffffff;
+	--color-bg-900: #f7f8fa;
+
+	--color-glass: rgba(255, 255, 255, 0.3);
+	--color-glass-border: rgba(  0, 0, 0, 0.1);
+	--border-glass: 1px solid var(--color-glass-border);
+
+
+
+	--blur-sm: 0.75rem;
+	--blur-md: 1.5rem;
+	--blur-lg: 2.5rem;
+	--blur-xl: 3.5rem;
+
+	--radius-xs: 0.75rem;
+	--radius-sm: 1rem;
+	--radius-md: 3rem;
+	--radius-lg: 5rem;
+	--radius-xl: 7rem;
+	
+	--breakpoint-xs: 480px;
+	--breakpoint-sm: 600px;
+	--breakpoint-md: 768px;
+	--breakpoint-lg: 1024px;
+	--breakpoint-xl: 1280px;
+	--breakpoint-2xl: 1440px;
+
+	--animate-fade-in-up: fadeInUp 0.3s ease-out;
+	--animate-slide-in-left: slideInLeft 0.3s ease-out;
+	--animate-slide-in-right: slideInRight 0.3s ease-out;
+	--animate-wave: wave 1.5s ease-in-out infinite;
+	--transition-fast: transform 0.4s ease;
+	--transition-medium: transform 0.8s ease;
+	--transition-slow: transform 1.2s ease;
+}
+
+.dark {
+	/* Color System - Dark Theme */
+	--color-primary: #f6f7ff;
+	--color-secondary: #a9a9bd;
+	--color-inverse: #0b0b0d;
+	--color-highlight: #34d399;
+
+	--color-bg-600: #2c2c35;
+	--color-bg-700: #191920;
+	--color-bg-800: #111116;
+	--color-bg-900: #0b0b0d;
+
+	--color-glass: rgba(0, 0, 0, 0.3);
+	--color-glass-border: rgba(255, 255, 255, 0.1);
+	--border-glass: 1px solid var(--color-glass-border);
+}
+
+@layer components {
+	.glass{
+		background: var(--color-backdrop);
+		backdrop-filter: var(--blur-md);
+		-webkit-backdrop-filter: var(--blur-md);
+		border-radius: var(--radius-xs);
+		border: 1px solid var(--border-color);
+	}
+}

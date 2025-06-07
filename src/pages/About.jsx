@@ -1,10 +1,6 @@
 // 🌀 Section for About
 const About = () => {
-  return (
-    <section id="About" className="section--about">
+	return <section id="About" className="section--about"></section>
+}
 
-    </section>
-  );
-};
-
-export default About;
+export default About

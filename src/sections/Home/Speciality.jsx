@@ -1,7 +1,5 @@
 const Speciality = () => {
-  return (
-    <div>Speciality</div>
-  )
+	return <div>Speciality</div>
 }
 
 export default Speciality
