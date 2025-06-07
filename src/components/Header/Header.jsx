@@ -42,10 +42,10 @@ const Header = () => {
 	}, [isDark])
 
 	return (
-		<header className="">
+		<header className="md:fixed md:w-full md:flex md:m-auto md:justify-center md:items-center md:px-62 md:py-2">
 			{/* Components Desktop Navigation HEADER */}
-			<nav ref={navRef} className="hidden md:flex space-x-8 items-center justify-between px-8h-16 sticky w-[calc(100%-2rem)] transition-all duration-300 ease-in-out">
-				<div className="flex items-center gap-4">
+			<nav ref={navRef} className="hidden md:flex justify-between md:items-center md:w-[100%] md:mx-auto px-12 border border-glass-border backdrop-blur-sm rounded-md transition-colors duration-300 ease-in-out">
+				<div className="flex items-center gap-4 text-primary">
 					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 464.09 429.34" className="h-[3rem] w-[3rem]">
 						<g>
 							<g>
@@ -66,7 +66,7 @@ const Header = () => {
 							<Link
 								to={menu.path}
 								className={`group flex items-center capitalize transition-colors duration-300 ${
-									active === menu.path ? "text-highlight font-semibold" : "text-primary hover:text-highlight"
+									active === menu.path ? "text-highlight font-semibold" : "text-secondary hover:text-highlight"
 								}`}>
 								<span className="inline-block relative overflow-hidden">
 									<span className="block transition-[transform] duration-[400ms] ease-out will-change-transform group-hover:-translate-y-full">
@@ -82,11 +82,11 @@ const Header = () => {
 				</ul>
 				<button
 					onClick={() => setIsDark(!isDark)}
-					className="h-10 w-10 bg-highlight/20 hover:bg-highlight/30 rounded-md flex items-center justify-center hover:scale-110 transition-all duration-300 border border-primary">
+					className="h-10 w-10 bg-bg-900 hover:bg-bg-700 rounded-md flex items-center justify-center hover:scale-110 transition-colors duration-300 border border-bg-700">
 					{isDark ? (
-						<RiSunLine size={20} className="text-primary transition-all duration-500 hover:rotate-12" />
+						<RiSunLine size={16} className="text-primary transition-transform duration-500 hover:rotate-[360deg]" />
 					) : (
-						<RiMoonLine size={20} className="text-primary transition-all duration-500 hover:rotate-12" />
+						<RiMoonLine size={16} className="text-primary transition-transform duration-500 hover:rotate-[360deg]" />
 					)}
 				</button>
 			</nav>
@@ -108,17 +108,17 @@ const Header = () => {
 				</div>
 				<button
 					onClick={() => setIsDark(!isDark)}
-					className="h-12 w-12 bg-bg-900 rounded-md border-1 border-primary flex justify-center items-center transition-all duration-300 ease-in-out"
+					className="h-12 w-12 bg-bg-900 rounded-md border-1 border-primary flex justify-center items-center transition-colors duration-300 ease-in-out"
 					aria-label="Toggle Dark Mode">
 					{isDark ? (
 						<RiSunLine
 							size={20}
-							className="transition-all  text-primary duration-500"
+							className="transition-colors  text-primary duration-500"
 						/>
 					) : (
 						<RiMoonLine
 							size={20}
-							className="transition-all  text-primary duration-500"
+							className="transition-colors  text-primary duration-500"
 						/>
 					)}
 				</button>
