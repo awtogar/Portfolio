@@ -12,14 +12,14 @@
     z-index: 1;
 } */
 
-.burger{
+/* .burger{
     position: relative;
     display: flex;
-    gap: 8px;
     flex-direction: column;
+    gap: 8px;
     padding: 30px;
     pointer-events: none;
-}
+} */
 .burger::before,
 .burger::after {
     display: block;
