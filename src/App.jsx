@@ -5,6 +5,7 @@ import "./styles/globals.css"
 import Header from "./components/Header/Header"
 // 🌀 Utilities
 import SmoothScrollWrapper from "./components/Scroller/SmoothScrollWrapper"
+import StickyCursor from "./components/StickyCursor"
 import About from "./pages/About"
 import Contact from "./pages/Contact"
 import Home from "./pages/Home"
@@ -16,7 +17,7 @@ const App = () => {
 			<SmoothScrollWrapper>
 				<main className="bg-white">
 					<Header />
-				    	{/* <StickyCursor/> */}
+					<StickyCursor />
 					<Routes>
 						{/* manggil tampilan berdasarkan id dari elemen pagesnya menggunakan router */}
 						<Route path="/" element={<Home />} />
