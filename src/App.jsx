@@ -14,8 +14,9 @@ const App = () => {
 	return (
 		<Router>
 			<SmoothScrollWrapper>
-				<Header />
-				<main>
+				<main className="bg-white">
+					<Header />
+				    	{/* <StickyCursor/> */}
 					<Routes>
 						{/* manggil tampilan berdasarkan id dari elemen pagesnya menggunakan router */}
 						<Route path="/" element={<Home />} />

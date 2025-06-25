@@ -1,16 +1,13 @@
 import Aboutme from "../sections/Home/Aboutme"
 import Hero from "../sections/Home/Hero"
-
+// import Header from "../components/Header/Header"
 
 const Home = () => {
   return (
-    <main className="min-h-screen bg-bg-900 text-primary font-primary">
+    <section className="bg-white">
       <Hero />
       <Aboutme />
-      {/* <MyWork /> */}
-      {/* <Testimonials /> */}
-      {/* <Contact /> */}
-    </main>
+    </section>
   )
 }
 
