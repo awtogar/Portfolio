@@ -12,13 +12,14 @@ import Project from "./pages/Project"
 const App = () => {
 	const burgerElement = useRef(null)
 	const themeToggleElement = useRef(null)
+	const logoElement = useRef(null)
 
 	return (
 		<Router>
 			<SmoothScrollWrapper>
 				<main className="bg-bg-900">
-					<Header burgerRef={burgerElement} themeToggleRef={themeToggleElement} />
-					<StickyCursor stickyElements={[burgerElement, themeToggleElement]} />
+					<Header burgerRef={burgerElement} themeToggleRef={themeToggleElement} logoElement={logoElement} />
+					<StickyCursor stickyElements={[burgerElement, themeToggleElement, logoElement]} />
 					<Routes>
 						{/* manggil tampilan berdasarkan id dari elemen pagesnya menggunakan router */}
 						<Route path="/" element={<Home />} />
