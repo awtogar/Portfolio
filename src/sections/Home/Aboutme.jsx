@@ -1,9 +1,7 @@
-import React from 'react'
-
 const Aboutme = () => {
     return (
 	<div className='flex justify-center my-40'>
-		<p className='text-[7.5vw] uppercase text-center max-w-[50vw] leading-none'>The quick brown fox jumps over the lazy dog</p>
+		<p className='text-[7.5vw] uppercase text-center max-w-[50vw] leading-none'>More love <br />more money</p>
 	</div>
     )
 }

@@ -1,10 +1,9 @@
 import Aboutme from "../sections/Home/Aboutme"
 import Hero from "../sections/Home/Hero"
-// import Header from "../components/Header/Header"
 
 const Home = () => {
   return (
-    <section className="bg-white">
+    <section className="bg-bg-900">
       <Hero />
       <Aboutme />
     </section>

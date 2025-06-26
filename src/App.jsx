@@ -10,14 +10,15 @@ import Home from "./pages/Home"
 import Project from "./pages/Project"
 
 const App = () => {
-	const stickyElement = useRef(null)
+	const burgerElement = useRef(null)
+	const themeToggleElement = useRef(null)
 
 	return (
 		<Router>
 			<SmoothScrollWrapper>
 				<main className="bg-bg-900">
-					<Header ref={stickyElement} />
-					<StickyCursor stickyElement={stickyElement} />
+					<Header burgerRef={burgerElement} themeToggleRef={themeToggleElement} />
+					<StickyCursor stickyElements={[burgerElement, themeToggleElement]} />
 					<Routes>
 						{/* manggil tampilan berdasarkan id dari elemen pagesnya menggunakan router */}
 						<Route path="/" element={<Home />} />

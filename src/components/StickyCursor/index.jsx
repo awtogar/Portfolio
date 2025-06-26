@@ -3,8 +3,9 @@ import { useEffect, useCallback, useMemo, useState } from 'react';
 import './stickyCursor.css';
 import { motion, useMotionValue, useSpring } from 'framer-motion';
 
-const StickyCursor = ({ stickyElement }) => {
+const StickyCursor = ({ stickyElements }) => {
   const [isHovered, setIsHovered] = useState(false);
+  const [currentStickyElement, setCurrentStickyElement] = useState(null);
   const cursorSize = isHovered ? 60 : 15;
   
   const mouseX = useMotionValue(0);
@@ -22,8 +23,8 @@ const StickyCursor = ({ stickyElement }) => {
   const manageMouseMove = useCallback((e) => {
     const { clientX, clientY } = e;
     
-    if (stickyElement && stickyElement.current) {
-      const { left, top, height, width } = stickyElement.current.getBoundingClientRect();
+    if (currentStickyElement && currentStickyElement.current) {
+      const { left, top, height, width } = currentStickyElement.current.getBoundingClientRect();
       
       // Center position of the stickyElement
       const center = { x: left + width / 2, y: top + height / 2 };
@@ -45,28 +46,47 @@ const StickyCursor = ({ stickyElement }) => {
       mouseX.set(clientX - cursorSize / 2);
       mouseY.set(clientY - cursorSize / 2);
     }
-  }, [mouseX, mouseY, stickyElement, isHovered, cursorSize]);
+  }, [mouseX, mouseY, currentStickyElement, isHovered, cursorSize]);
 
-  const manageMouseOver = useCallback(() => {
+  const manageMouseOver = useCallback((element) => {
     setIsHovered(true);
+    setCurrentStickyElement(element);
   }, []);
 
   const manageMouseLeave = useCallback(() => {
     setIsHovered(false);
+    setCurrentStickyElement(null);
   }, []);
 
   useEffect(() => {
-    if (stickyElement && stickyElement.current) {
-      const element = stickyElement.current;
-      element.addEventListener("mouseenter", manageMouseOver);
-      element.addEventListener("mouseleave", manageMouseLeave);
+    if (stickyElements && stickyElements.length > 0) {
+      const eventListeners = [];
+      
+      stickyElements.forEach((stickyElement) => {
+        if (stickyElement && stickyElement.current) {
+          const element = stickyElement.current;
+          const mouseOverHandler = () => manageMouseOver(stickyElement);
+          const mouseLeaveHandler = () => manageMouseLeave();
+          
+          element.addEventListener("mouseenter", mouseOverHandler);
+          element.addEventListener("mouseleave", mouseLeaveHandler);
+          
+          eventListeners.push({
+            element,
+            mouseOverHandler,
+            mouseLeaveHandler
+          });
+        }
+      });
       
       return () => {
-        element.removeEventListener("mouseenter", manageMouseOver);
-        element.removeEventListener("mouseleave", manageMouseLeave);
+        eventListeners.forEach(({ element, mouseOverHandler, mouseLeaveHandler }) => {
+          element.removeEventListener("mouseenter", mouseOverHandler);
+          element.removeEventListener("mouseleave", mouseLeaveHandler);
+        });
       };
     }
-  }, [stickyElement, manageMouseOver, manageMouseLeave]);
+  }, [stickyElements, manageMouseOver, manageMouseLeave]);
 
   useEffect(() => {
     window.addEventListener("mousemove", manageMouseMove);
