@@ -1,65 +1,49 @@
+
 @import "tailwindcss";
 @import "./utils.css";
 
-@theme {
-	--font-primary: "Satoshi", sans-serif;
-	--font-secondary: "Clash", sans-serif;
-
-	/* Color System - Light Theme */
-	--color-primary: #0a0a0a;
-	--color-secondary: #7e7e7e;
-	--color-inverse: #f7f8fa;
-	--color-highlight: #fa6e9e;
-
-	--color-bg-600: #cbd5e1;
-	--color-bg-700: #e2e8f0;
-	--color-bg-800: #ffffff;
-	--color-bg-900: #f7f8fa;
-
-	--color-glass: rgba(255, 255, 255, 0.3);
-	--color-glass-border: rgba(0, 0, 0, 0.1);
-	--border-glass: 1px solid var(--color-glass-border);
-
-	--blur-sm: 0.75rem;
-	--blur-md: 1.5rem;
-	--blur-lg: 2.5rem;
-	--blur-xl: 3.5rem;
-
-	--radius-xs: 0.75rem;
-	--radius-sm: 1rem;
-	--radius-md: 3rem;
-	--radius-lg: 5rem;
-	--radius-xl: 7rem;
-	
-	--breakpoint-xs: 480px;
-	--breakpoint-sm: 600px;
-	--breakpoint-md: 768px;
-	--breakpoint-lg: 1024px;
-	--breakpoint-xl: 1280px;
-	--breakpoint-2xl: 1440px;
-
-	--animate-fade-in-up: fadeInUp 0.3s ease-out;
-	--animate-slide-in-left: slideInLeft 0.3s ease-out;
-	--animate-slide-in-right: slideInRight 0.3s ease-out;
-	--animate-wave: wave 1.5s ease-in-out infinite;
-	--transition-fast: transform 0.4s ease;
-	--transition-medium: transform 0.8s ease;
-	--transition-slow: transform 1.2s ease;
+/* Font setup */
+body {
+  --font-secondary: "Clash", sans-serif;
+  --font-primary: "Satoshi", sans-serif;
 }
 
-.dark {
-	/* Color System - Dark Theme */
-	--color-primary: #f6f7ff;
-	--color-secondary: #a9a9bd;
-	--color-inverse: #0b0b0d;
-	--color-highlight: #34d399;
+/* Register CSS custom theme var ke Tailwind */
+@theme {
+  --color-element-100: var(--element-100);
+  --color-element-200: var(--element-200);
+  --color-element-300: var(--element-300);
+  --color-element-400: var(--element-400);
+  --color-element-500: var(--element-500);
+  --color-element-600: var(--element-600);
+  --color-element-700: var(--element-700);
+  --color-accent: var(--accent);
+}
 
-	--color-bg-600: #2c2c35;
-	--color-bg-700: #191920;
-	--color-bg-800: #111116;
-	--color-bg-900: #0b0b0d;
+/* Manual dark mode toggle support */
+@custom-variant dark (&:where(.dark, .dark *));
 
-	--color-glass: rgba(0, 0, 0, 0.3);
-	--color-glass-border: rgba(255, 255, 255, 0.1);
-	--border-glass: 1px solid var(--color-glass-border);
+/* Default + Dark mode colors */
+@layer base {
+  :root {
+    --element-100: #ffffff;
+    --element-200: #dadada;
+    --element-300: #b4b4b4;
+    --element-400: #8f8f8f;
+    --element-500: #696969;
+    --element-600: #434343;
+    --element-700: #1e1e1e;
+    --accent: #738678;
+  }
+
+  .dark {
+    --element-100: #1e1e1e;
+    --element-200: #434343;
+    --element-300: #696969;
+    --element-400: #8f8f8f;
+    --element-500: #b4b4b4;
+    --element-600: #dadada;
+    --element-700: #ffffff;
+    --accent: #738678;
+  }
 }
