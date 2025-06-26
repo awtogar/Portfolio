@@ -26,8 +26,12 @@
     content: "";
     width: 30px;
     height: 2px;
-    background-color: var(--color-bg-900);
+    background-color: var(--color-shade-100);
     mix-blend-mode: difference;
+}
+.dark .burger::before,
+.dark .burger::after {
+    background-color: var(--color-shade-800);
 }
 
 .bounds {

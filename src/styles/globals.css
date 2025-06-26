@@ -1,6 +1,7 @@
 
 @import "tailwindcss";
 @import "./utils.css";
+@custom-variant dark (&:where(.dark, .dark *));
 
 /* Font setup */
 body {
@@ -10,40 +11,38 @@ body {
 
 /* Register CSS custom theme var ke Tailwind */
 @theme {
-  --color-element-100: var(--element-100);
-  --color-element-200: var(--element-200);
-  --color-element-300: var(--element-300);
-  --color-element-400: var(--element-400);
-  --color-element-500: var(--element-500);
-  --color-element-600: var(--element-600);
-  --color-element-700: var(--element-700);
+  --color-shade-100: var(--shade-100);
+  --color-shade-200: var(--shade-200);
+  --color-shade-300: var(--shade-300);
+  --color-shade-400: var(--shade-400);
+  --color-shade-500: var(--shade-500);
+  --color-shade-600: var(--shade-600);
+  --color-shade-700: var(--shade-700);
+  --color-shade-800: var(--shade-800);
   --color-accent: var(--accent);
 }
 
-/* Manual dark mode toggle support */
-@custom-variant dark (&:where(.dark, .dark *));
 
-/* Default + Dark mode colors */
-@layer base {
   :root {
-    --element-100: #ffffff;
-    --element-200: #dadada;
-    --element-300: #b4b4b4;
-    --element-400: #8f8f8f;
-    --element-500: #696969;
-    --element-600: #434343;
-    --element-700: #1e1e1e;
-    --accent: #738678;
+	  --shade-100: #ffffff;
+	  --shade-200: #dadada;
+	  --shade-300: #b4b4b4;
+	  --shade-400: #8f8f8f;
+	  --shade-500: #696969;
+	  --shade-600: #434343;
+	  --shade-700: #1e1e1e;
+	  --shade-800: #0c0c0c;
+	  --accent: #738678;
   }
 
   .dark {
-    --element-100: #1e1e1e;
-    --element-200: #434343;
-    --element-300: #696969;
-    --element-400: #8f8f8f;
-    --element-500: #b4b4b4;
-    --element-600: #dadada;
-    --element-700: #ffffff;
+    --shade-100: #0c0c0c;
+	--shade-200: #1e1e1e;
+    --shade-300: #434343;
+    --shade-400: #696969;
+    --shade-500: #8f8f8f;
+    --shade-600: #b4b4b4;
+    --shade-700: #dadada;
+    --shade-800: #ffffff;
     --accent: #738678;
   }
-}

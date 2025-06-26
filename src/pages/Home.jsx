@@ -3,7 +3,7 @@ import Hero from "../sections/Home/Hero"
 
 const Home = () => {
   return (
-    <section className="bg-bg-900">
+    <section className="h-[300svh]">
       <Hero />
       <Aboutme />
     </section>

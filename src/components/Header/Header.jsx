@@ -19,35 +19,33 @@ const Header = ({ burgerRef, themeToggleRef , logoElement }) => {
 
 	<div className='header fixed flex w-full justify-between items-center p-3 box-border mix-blend-difference cursor-pointer z-[1]'>
 	{/* logo on left*/}
-		<div className="items-center justify-center text-2xl p-8 font-bold text-bg-900 antialiased" ref={logoElement}>
-			<span>Gar.</span>
+		<div className="items-center justify-center text-2xl p-8 font-bold antialiased" ref={logoElement}>
+			<span className='text-shade-100 dark:text-shade-800'>Vetemens.</span>
 		</div>
 		{/* burger and theme button*/}
 		<div className="flex items-center gap-3">
 		{/* Toggle dark and light */}
-			<div className="toggle text-bg-900 relative ">
+			<div className="toggle text-shade-100 dark:text-shade-800 relative ">
 				<button className=''onClick={handleToggleTheme} aria-label="Toggle dark mode" typeof='button' ref={themeToggleRef}>
 					<RiSunLine className="inline dark:hidden" size={24} />
 					<RiMoonLine className="hidden dark:inline" size={24} />
 				</button>
 			</div>
 			{/* Hamburger menu button */}
-			<div className="burger relative flex flex-col gap-2 p-8 pointer-events-none ">
+			<div className="burger relative flex flex-col gap-2 p-8 pointer-events-none">
 				<div ref={burgerRef} className="bounds"></div>
 			</div>
 		</div>
 	</div>
 
 	<div>
-		{/* nav desktop */}
-		<nav className="fixed flex gap-8 bg-primary">
+		<nav className="fixed  gap-8 bg-shade-800 hidden">
 			{menus.map((menu) => (
-				<a key={menu.name} href={menu.path} className="text-bg-900">
+				<a key={menu.name} href={menu.path} className="text-shade-100">
 					{menu.name}
 				</a>
 			))}
 		</nav>
-		{/* nav mobile */}
 	</div>
 
   </div>
