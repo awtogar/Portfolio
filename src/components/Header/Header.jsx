@@ -25,13 +25,13 @@ const Header = ({ burgerRef, themeToggleRef , logoElement }) => {
 			<span className='text-shade-100 dark:text-shade-800 cursor-pointer'>Gxr.</span>
 		</div>
 		<div className="flex items-center ">
-			<div className="toggle text-shade-100 dark:text-shade-800 relative p-4">
+			<div className="toggle text-shade-100 dark:text-shade-800 relative p-4 h-[60px]">
 				<button className='cursor-pointer' onClick={handleToggleTheme} aria-label="Toggle dark mode" type='button' ref={themeToggleRef}>
 					<RiSunLine className="theme-icon inline dark:hidden" size={24} />
 					<RiMoonLine className="theme-icon moon-icon hidden dark:inline" size={24} />
 				</button>
 			</div>
-			<div className={`burger relative flex flex-col gap-2 p-6 pointer-events-none cursor-pointer ${isActive ? 'active' : ''}`} onClick={() => {setIsActive(!isActive)}}>
+			<div className={`burger relative flex flex-col w-[72px] content-center gap-2 p-6 pointer-events-none cursor-pointer ${isActive ? 'active' : ''}`} onClick={() => {setIsActive(!isActive)}}>
 				<motion.div ref={burgerRef} className="bounds" />
 			</div>
 		</div>

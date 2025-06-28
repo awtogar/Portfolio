@@ -20,20 +20,25 @@
     padding: 30px;
     pointer-events: none;
 } */
+
+
 .burger::before,
 .burger::after {
     display: block;
     content: "";
+    scale: 1;
     width: 30px;
     height: 2px;
     background-color: var(--color-shade-100);
     mix-blend-mode: difference;
-    transition: width 0.3s ease-in-out;
+    transition: transform 0.3s ease-in-out;
+    transform-origin: center;
+    transform: scaleX(0.6); /* Default state: 18px (30px * 0.6) */
 }
 
 .burger.active::before,
 .burger.active::after {
-    width: 18px;
+    transform: scaleX(1); /* Active state: 30px (full width) */
 }
 
 .dark .burger::before,
