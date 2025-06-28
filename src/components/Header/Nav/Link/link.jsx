@@ -1,0 +1,28 @@
+import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
+import { slide, scale } from '../../anim.js';
+import './link.css';
+
+export default function LinkComponent({data, isActive, setSelectedIndicator, closeMenu}) {
+  
+    const { title, href, index} = data;
+  
+    return (
+      <motion.div 
+        className="link" 
+        onMouseEnter={() => {setSelectedIndicator(href)}} 
+        custom={index} 
+        variants={slide} 
+        initial="initial" 
+        animate="enter" 
+        exit="exit"
+      >
+        <motion.div 
+          variants={scale} 
+          animate={isActive ? "open" : "closed"} 
+          className="indicator">
+        </motion.div>
+        <Link to={href} onClick={closeMenu}>{title}</Link>
+      </motion.div>
+    )
+}

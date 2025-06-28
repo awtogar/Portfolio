@@ -1,19 +1,19 @@
 import './header.css'
 import { RiSunLine, RiMoonLine } from '@remixicon/react'
-import { motion } from 'framer-motion'
+import { AnimatePresence,motion } from 'framer-motion'
 import { useState } from 'react'
+import Nav from '../Header/Nav/nav'
 
 const Header = ({ burgerRef, themeToggleRef , logoElement }) => {
  const [isActive, setIsActive] = useState(false);
-	const menus = [
-		{ name: "home", path: "/" },
-		{ name: "about", path: "/about"},
-		{ name: "project", path: "/project"},
-		{ name: "contact", path: "/contact"},
-	]
+
 	
 	const handleToggleTheme = () => {
 		document.documentElement.classList.toggle('dark')
+	}
+
+	const closeMenu = () => {
+		setIsActive(false)
 	}
 
 
@@ -31,19 +31,18 @@ const Header = ({ burgerRef, themeToggleRef , logoElement }) => {
 					<RiMoonLine className="theme-icon moon-icon hidden dark:inline" size={24} />
 				</button>
 			</div>
-			<div className={`burger relative flex flex-col w-[72px] content-center gap-2 p-6 pointer-events-none cursor-pointer ${isActive ? 'active' : ''}`} onClick={() => {setIsActive(!isActive)}}>
+			<div 
+				className={`burger relative flex flex-col w-[72px] content-center gap-2 p-6 pointer-events-none cursor-pointer ${isActive ? 'active' : ''}`} 
+				onClick={() => {setIsActive(!isActive)}}
+			>
 				<motion.div ref={burgerRef} className="bounds" />
 			</div>
 		</div>
 	</div>
 	<div>
-		<nav className="fixed gap-8 bg-shade-800">
-			{menus.map((menu) => (
-				<a key={menu.name} href={menu.path} className="text-shade-100">
-					{menu.name}
-				</a>
-			))}
-		</nav>
+		<AnimatePresence mode="wait">
+			{isActive && <Nav closeMenu={closeMenu} />}
+       </AnimatePresence>
 	</div>
 </div>
 	)
