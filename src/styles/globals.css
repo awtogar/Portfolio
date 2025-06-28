@@ -3,13 +3,35 @@
 @import "./utils.css";
 @custom-variant dark (&:where(.dark, .dark *));
 
-/* Font setup */
+/* Hide scrollbar for all browsers */
+* {
+  /* Firefox */
+  scrollbar-width: none; 
+  /* Internet Explorer 10+ */
+  -ms-overflow-style: none; 
+}
+
+*::-webkit-scrollbar {
+   /* Safari and Chrome */
+  display: none;
+}
+
+/* Additional scrollbar hiding for html and body */
+html, body {
+  overflow-x: hidden;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none;
+}
+
 body {
   --font-secondary: "Clash", sans-serif;
   --font-primary: "Satoshi", sans-serif;
 }
 
-/* Register CSS custom theme var ke Tailwind */
 @theme {
   --color-shade-100: var(--shade-100);
   --color-shade-200: var(--shade-200);
