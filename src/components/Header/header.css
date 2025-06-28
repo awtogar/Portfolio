@@ -45,3 +45,16 @@
 .bounds:hover{
     transform: scale(3);
 }
+
+/* Theme toggle icon rotation on hover */
+.theme-icon {
+    transition: transform 0.3s ease-in-out;
+}
+
+.theme-icon:hover {
+    transform: rotate(-90deg);
+}
+
+.theme-icon.moon-icon:hover {
+    transform: rotate(45deg);
+}

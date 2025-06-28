@@ -9,7 +9,6 @@ const Header = ({ burgerRef, themeToggleRef , logoElement }) => {
 		{ name: "project", path: "/project"},
 		{ name: "contact", path: "/contact"},
 	]
-	// Toggle theme handler
 	const handleToggleTheme = () => {
 		document.documentElement.classList.toggle('dark')
 	}
@@ -22,9 +21,9 @@ const Header = ({ burgerRef, themeToggleRef , logoElement }) => {
 		</div>
 		<div className="flex items-center gap-3">
 			<div className="toggle text-shade-100 dark:text-shade-800 relative p-4">
-				<button className='cursor-pointer'onClick={handleToggleTheme} aria-label="Toggle dark mode" typeof='button' ref={themeToggleRef}>
-					<RiSunLine className="inline dark:hidden" size={24} />
-					<RiMoonLine className="hidden dark:inline" size={24} />
+				<button className='cursor-pointer' onClick={handleToggleTheme} aria-label="Toggle dark mode" type='button' ref={themeToggleRef}>
+					<RiSunLine className="theme-icon inline dark:hidden" size={24} />
+					<RiMoonLine className="theme-icon moon-icon hidden dark:inline" size={24} />
 				</button>
 			</div>
 			<div className="burger relative flex flex-col gap-2 p-6 pointer-events-none cursor-pointer">
@@ -34,7 +33,7 @@ const Header = ({ burgerRef, themeToggleRef , logoElement }) => {
 	</div>
 
 	<div>
-		<nav className="fixed gap-8 bg-shade-800 hidden">
+		<nav className="fixed gap-8 bg-shade-800">
 			{menus.map((menu) => (
 				<a key={menu.name} href={menu.path} className="text-shade-100">
 					{menu.name}
