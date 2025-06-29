@@ -1,5 +1,5 @@
-import Background from '../../../public/assets/images/img-2.jpg';
 import { useScroll, useTransform, motion } from 'framer-motion';
+import WorkImages from '../../assets/images/img-2.jpg';
 import { useRef } from 'react';
 
 const Text = () => {
@@ -19,15 +19,12 @@ export default function Mywork() {
     const y = useTransform(scrollYProgress, [0, 1], ["-10vh", "10vh"]);
 
     return (
-        <div
-            ref={container} 
-            className='relative flex items-center justify-center h-screen overflow-hidden'
-            style={{clipPath: "polygon(0% 0, 100% 0%, 100% 100%, 0 100%)"}}>
+        <div ref={container} className='relative flex items-center justify-center h-screen overflow-hidden'style={{clipPath: "polygon(0% 0, 100% 0%, 100% 100%, 0 100%)"}}>
             <Text />
             <div className='fixed top-[-10vh] left-0 h-[300vh] w-full z-0'>
                 <motion.div style={{y}} className='relative w-full h-full'>
                     <img 
-                        src={Background} 
+                        src={WorkImages} 
                         alt="background" 
                         className="w-full h-full object-cover"
                     />

@@ -1,7 +1,7 @@
 import Lenis from "lenis"
 import { useEffect, useRef } from "react"
 
-const SmoothScrollWrapper = ({ children }) => {
+const SmoothScrollLenis = ({ children }) => {
     const wrapperRef = useRef(null)
 
     useEffect(() => {
@@ -24,10 +24,10 @@ const SmoothScrollWrapper = ({ children }) => {
     }, [])
 
     return (
-        <div ref={wrapperRef} className="scroll-wrapper">
+        <div ref={wrapperRef} className="scroll-content">
             {children}
         </div>
     )
 }
 
-export default SmoothScrollWrapper
+export default SmoothScrollLenis

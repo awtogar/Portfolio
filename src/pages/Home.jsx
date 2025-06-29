@@ -1,13 +1,15 @@
 import Aboutme from "../sections/Home/Aboutme"
 import Hero from "../sections/Home/Hero"
 import Mywork from "../sections/Home/Mywork"
+import Speciality from "../sections/Home/Speciality"
 
 const Home = () => {
   return (
-    <section className="h-[300svh] bg-shade-100">
+    <section className="bg-shade-100">
       <Hero />
       <Aboutme />
       <Mywork />
+      <Speciality />
       <div className="h-screen"></div>
     </section>
   )

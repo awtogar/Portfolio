@@ -2,7 +2,7 @@ import { Route, BrowserRouter as Router, Routes } from "react-router-dom"
 import { useRef } from "react"
 import "./styles/globals.css"
 import Header from "./components/Header/Header"
-import SmoothScrollWrapper from "./components/Scroller/SmoothScrollWrapper"
+import SmoothScrollLenis from "./components/Scroller/SmoothScrollLenis"
 import StickyCursor from "./components/StickyCursor"
 import About from "./pages/About"
 import Contact from "./pages/Contact"
@@ -16,7 +16,7 @@ const App = () => {
 
 	return (
 		<Router>
-			<SmoothScrollWrapper>
+			<SmoothScrollLenis>
 				<main className="bg-shade-100">
 					<Header burgerRef={burgerElement} themeToggleRef={themeToggleElement} logoElement={logoElement} />
 					<StickyCursor stickyElements={[burgerElement, themeToggleElement, logoElement]} />
@@ -28,7 +28,7 @@ const App = () => {
 						<Route path="/contact" element={<Contact />} />
 					</Routes>
 				</main>
-			</SmoothScrollWrapper>
+			</SmoothScrollLenis>
 		</Router>
 	)
 }
