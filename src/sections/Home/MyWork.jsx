@@ -4,8 +4,8 @@ import { useRef } from 'react';
 
 const Text = () => {
     return (
-        <div className='flex justify-center my-40 text-shade-100 z-10'>
-            <p className='text-[7.5vw] uppercase text-center max-w-[50vw] leading-none'>The quick brown fox jumps over the lazy dog</p>
+        <div className='flex justify-center my-40  z-10'>
+            <p className='text-shade-100 dark:text-shade-800 text-[7.5vw] uppercase text-center max-w-[50vw] leading-none'>Too many chances <br /> that we've spent together </p>
         </div>
     )
 }
@@ -21,12 +21,12 @@ export default function Mywork() {
     return (
         <div ref={container} className='relative flex items-center justify-center h-screen overflow-hidden'style={{clipPath: "polygon(0% 0, 100% 0%, 100% 100%, 0 100%)"}}>
             <Text />
-            <div className='fixed top-[-10vh] left-0 h-[300vh] w-full z-0'>
+            <div className='fixed top-[-100vh] left-0 h-[300vh] w-full z-0'>
                 <motion.div style={{y}} className='relative w-full h-full'>
                     <img 
                         src={WorkImages} 
                         alt="background" 
-                        className="w-full h-full object-cover"
+                        className=" h-full object-cover"
                     />
                 </motion.div>
             </div>

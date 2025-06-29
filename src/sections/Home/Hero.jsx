@@ -29,10 +29,10 @@ const Hero = () => {
                 transition={{ duration: 0.8, delay: 0.2 }}
                 className="space-y-6"
               >
-                <h1 className="text-4xl md:text-6xl xl:text-7xl font-light text-shade-800 leading-[1.1] tracking-tight">
-                  Graphics designer
+                <h1 className="text-4xl md:text-8xl xl:text-xl font-light text-shade-800 leading-[1.1] tracking-tight whitespace-nowrap">
+                  <span className='text-accent-100'>Graphics </span>designer
                   <br />
-                  <span>and web developer</span>
+                  <span>and web <span className='text-accent-100'>developer</span></span>
                   <br />
                   <span>enthusiast</span>
                 </h1>
@@ -62,7 +62,7 @@ const Hero = () => {
                 
                 <a 
                   href="#works" 
-                  className="text-shade-600 hover:text-shade-800 transition-colors font-medium text-lg border-b border-transparent hover:border-shade-300 pb-1"
+                  className="text-shade-600 hover:text-shade-800 transition-colors text-lg border-b border-transparent hover:border-shade-300 pb-1"
                 >
                   works
                 </a>

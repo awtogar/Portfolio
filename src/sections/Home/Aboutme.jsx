@@ -13,12 +13,14 @@ const Aboutme = () => {
           viewport={{ once: true }}
           className="max-w-5xl mx-auto justify-center flex items-center h-full"
         >
-          <p className=' text-[7.5vw] uppercase text-center max-w-[50vw] leading-none'>
-            The quick brown fox
+          <p className=' text-[5.5vw] uppercase text-center max-w-[60vw] leading-none'>
+            it's just <span className='font-medium italic text-accent-100'>how</span>
             <br />
-            <span className="text-slate-400">jumps over</span>
+            <span className="text-shade-800"><span className='font-medium italic text-accent-100'>we</span> made it</span>
             <br />
-            the lazy dog
+            everything is
+            <br />
+            <span className="text-shade-800"><span className='italic text-accent-100'>come</span> and <span className='text-accent-100'>go</span></span>
           </p>
         </motion.div>
       </div>
