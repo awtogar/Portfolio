@@ -5,7 +5,7 @@ const Aboutme = () => {
    return (
     <section className='my-32 bg-shade-100 text-shade-800 overflow-hidden'>
       <div className="absolute inset-0"></div>
-      <div className='relative z-10 container mx-auto px-8 lg:px-16'>
+      <div className='relative z-[1] container mx-auto px-8 lg:px-16'>
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}

@@ -1,3 +1,5 @@
+import introVideo from '../../assets/videos/intro.webm'
+
 export default function Speciality() {
   return (
     <section className="h-screen w-full flex flex-col md:flex-row items-center justify-between px-6 md:px-20 py-24 gap-16 bg-white text-gray-900">
@@ -29,7 +31,7 @@ export default function Speciality() {
       {/* Kanan - Video */}
       <div className="w-full md:w-1/2 flex justify-center">
         <video
-          src="/video-dummy.mp4" // ganti ke video lo
+          src={introVideo}
           autoPlay
           loop
           muted

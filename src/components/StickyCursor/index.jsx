@@ -95,6 +95,7 @@ const StickyCursor = ({ stickyElements }) => {
     }
   }, [manageMouseMove]);
 
+
   return (
     <div className="cursor-container">
       <motion.div 
@@ -106,7 +107,7 @@ const StickyCursor = ({ stickyElements }) => {
           width: cursorSize,
           height: cursorSize
         }}
-        className="cursor">
+        className="hidden sm:block fixed w-[15px] h-[15px] bg-shade-800 rounded-full pointer-events-none">
       </motion.div>
     </div>
   )

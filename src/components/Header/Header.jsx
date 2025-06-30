@@ -20,9 +20,9 @@ const Header = ({ burgerRef, themeToggleRef , logoElement }) => {
 
   return (
   <div className="">
-	<div className='header fixed flex w-full justify-between items-center p-3 box-border mix-blend-difference  z-[100]'>
+	<div className='header fixed flex w-full justify-between items-center p-3 box-border mix-blend-difference  z-[1000]'>
 		<div className="items-center justify-center text-2xl p-6 font-bold antialiased" ref={logoElement}>
-			<span className='text-shade-100 dark:text-shade-800 cursor-pointer'>Gxr.</span>
+			<a href="/" className='text-shade-100 dark:text-shade-800 cursor-pointer'>Gxr.</a>
 		</div>
 		<div className="flex items-center ">
 			<div className="toggle text-shade-100 dark:text-shade-800 relative p-4 h-[60px]">
