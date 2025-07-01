@@ -1,5 +1,4 @@
-@theme {
-  /* --color-*: initial; */
+:root {
   	--shade-100: #ffffff;
 	  --shade-200: #dadada;
 	  --shade-300: #b4b4b4;
@@ -13,14 +12,6 @@
     --accent-300: #7A847D; 
     --accent-400: #A7AEA9;
     --accent-500: #D4D9D5; 
-    
-  /* mobile first : 0 */
-  --breakpoint-*: initial;
-  --breakpoint-sm: 40rem;    /* 640px - tablet */
-  --breakpoint-md: 48rem;    /* 768px - tablet large */
-  --breakpoint-lg: 64rem;    /* 1024px - laptop */
-  --breakpoint-xl: 80rem;    /* 1280px - desktop */
-  --breakpoint-2xl: 96rem;   /* 1536px - desktop large */
 }
 
 

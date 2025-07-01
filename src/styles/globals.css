@@ -10,6 +10,7 @@ body {
   --font-primary: "Satoshi", sans-serif;
 }
 @theme {
+  --color-*: initial;
   --color-shade-100: var(--shade-100);
   --color-shade-200: var(--shade-200);
   --color-shade-300: var(--shade-300);
@@ -23,4 +24,11 @@ body {
   --color-accent-300: var(--accent-300);
   --color-accent-400: var(--accent-400);
   --color-accent-500: var(--accent-500);
+
+  --breakpoint-*: initial;
+  --breakpoint-sm: 40rem;    /* 640px - tablet */
+  --breakpoint-md: 48rem;    /* 768px - tablet large */
+  --breakpoint-lg: 64rem;    /* 1024px - laptop */
+  --breakpoint-xl: 80rem;    /* 1280px - desktop */
+  --breakpoint-2xl: 96rem;   /* 1536px - desktop large */
 }
