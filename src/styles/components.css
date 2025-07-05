@@ -1,0 +1,12 @@
+@layer components {
+  .padding-section-x {
+    @apply px-4;
+  }
+
+  h1 {
+    font-size: inherit;
+    color: inherit;
+    line-height: var(--lh-tight);
+    letter-spacing: var(--spacing-tight);
+  }
+}

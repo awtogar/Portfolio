@@ -10,54 +10,53 @@ const Hero = () => {
   });
   
   const y = useTransform(scrollYProgress, [0, 1], ["0vh", "50vh"]);
-  const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0.3]);
+  const opacity = useTransform(scrollYProgress, [0, 1], [1, 0.3]);
 
   return (
-    <section className="overflow-hidden">
-      <div className="relative h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 xl:px-22" ref={container}>
-        <motion.div className="w-full max-w-6xl" style={{ y, opacity }}>
-          <div className="text-center sm:text-left">
+    <section className="overflow-hidden padding-section-x">
+      <div className="relative pt-46 pb-22" ref={container}>
+        <motion.div className="m-auto w-full xl:max-w-[1408px]" style={{ y, opacity }}>
+          <div className="flex flex-col gap-7 m-auto w-full max-w-2xl lg:max-w-4xl">
             <motion.div 
               initial={{ opacity: 0, y: 30 }} 
               animate={{ opacity: 1, y: 0 }} 
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="space-y-4 sm:space-y-6">
-                {/* TODO: LANJUTIN SPACING DAN LINE HEIGHT DAN JUGA FONT WEIGHT KAYAK SHAKURO */}
-              <h1 className="text-left text-4xl font-[450] sm:text-5xl md:text-6xl lg:text-7xl leading-[1.1] text-shade-800">
-                <span className='text-accent-400'>a graphics </span>designer<br/>
-                <span>and web <span className='text-accent-400'>development</span></span>
-                <br />
-                <span>enthusiast</span>
-              </h1>
-              
-              <div className="w-16 sm:w-24 h-px bg-shade-300 my-6 sm:my-8 mx-auto sm:mx-0"></div>
-              
-              <p className="text-sm sm:text-base lg:text-lg text-shade-600 leading-relaxed max-w-sm sm:max-w-lg lg:max-w-2xl font-light mx-auto sm:mx-0">
-                I design visuals that speak and build websites that work — clean, responsive, and purpose-driven.
-              </p>
-              
-              <p className="text-base sm:text-lg text-shade-500 max-w-xs sm:max-w-md lg:max-w-xl leading-relaxed mx-auto sm:mx-0">
-                Always learning, always creating with passion and curiosity.
-              </p>
+              transition={{ duration: 0.8, delay: 0.2 }} 
+              className="flex flex-col gap-3 space-y-6">
+                <div className="payload-richtext">
+                  <h1 className="text-[42px] font-primary text-shade-800 tracking-none font-[300]">
+                    Graphics designer
+                    <br/>
+                    and web developer enthusiast
+                  </h1>
+                </div>
+                <div className="payload-richtext">
+                  <p className='text-[18px] font-[300] text-gray-600 leading-8 max-w-xl sm:max-w-2xl'>
+                    I make visuals that hit and websites that just get it done — clean, fast, and built with meaning.
+                    Helping brands talk louder with fresh design and smooth user-friendly builds.
+                  </p>
+                </div>
             </motion.div>
             
             {/* CTA Section */}
-            <motion.div
+            <motion.div 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.8 }}
-              className="flex flex-col sm:flex-row sm:items-start items-center gap-4 sm:gap-6 pt-6 sm:pt-8"
+              className="flex w-full gap-4 pt-4 sm:w-auto sm:items-center sm:gap-6"
             >
-              <button className="group bg-shade-800 text-shade-100 px-8 sm:px-10 py-3 sm:py-4 rounded-full font-medium text-base sm:text-lg hover:bg-shade-700 transition-all duration-300 hover:scale-105 active:scale-95 w-full sm:w-auto">
-                Get in touch
-                <span className="inline-block ml-2 group-hover:translate-x-1 transition-transform">→</span>
-              </button>
-              
+              {/* Primary Button - Get in touch (2/3 width) */}
               <a 
-                href="#works" 
-                className="text-shade-600 hover:text-shade-800 transition-colors text-base sm:text-lg border-b border-transparent hover:border-shade-300 pb-1"
+                href="/get-in-touch" 
+                className="group relative px-6 py-4 bg-black text-white rounded-full font-medium text-sm hover:bg-gray-800 transition-all duration-300 hover:scale-105 active:scale-95 flex items-center justify-center flex-1"
               >
-                works
+                Get in touch
+              </a>
+
+              <a
+                href="/works"
+                className="group relative px-6 py-4 bg-transparent text-black border border-black rounded-full font-medium text-sm hover:bg-black hover:text-white transition-all duration-300 hover:scale-105 active:scale-95 flex items-center justify-center flex-shrink-0"
+              >
+                Works
               </a>
             </motion.div>
           </div>
