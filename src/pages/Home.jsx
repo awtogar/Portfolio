@@ -1,6 +1,6 @@
 import Aboutme from "../sections/Home/Aboutme"
 import Hero from "../sections/Home/Hero"
-import Mywork from "../sections/Home/Mywork"
+import Mywork from "../sections/Home/MyWork"
 import Speciality from "../sections/Home/Speciality"
 
 const Home = () => {

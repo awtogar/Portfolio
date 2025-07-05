@@ -11,7 +11,7 @@ const Text = () => {
     )
 }
 
-export default function Mywork() {
+export default function MyWork() {
     const container = useRef();
     const { scrollYProgress } = useScroll({
         target: container,
