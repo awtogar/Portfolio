@@ -8,7 +8,7 @@ const Home = () => {
     <section className="bg-shade-100">
       <Hero />
       <Aboutme />
-      <Mywork />
+      <MyWork />
       <Speciality />
       <div className="h-screen"></div>
     </section>
