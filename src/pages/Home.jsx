@@ -1,6 +1,6 @@
 import Aboutme from "../sections/Home/Aboutme"
 import Hero from "../sections/Home/Hero"
-import Mywork from "../sections/Home/MyWork"
+import Works from "../sections/Home/Works"
 import Speciality from "../sections/Home/Speciality"
 
 const Home = () => {
@@ -8,7 +8,7 @@ const Home = () => {
     <section className="bg-shade-100">
       <Hero />
       <Aboutme />
-      <MyWork />
+      <Works />
       <Speciality />
       <div className="h-screen"></div>
     </section>
