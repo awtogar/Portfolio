@@ -70,20 +70,10 @@ export default function Nav({ closeMenu }) {
         >
          <div className="body ">
               <div onMouseLeave={() => {setSelectedIndicator(pathname)}} className="nav">
-                      <div className="header">
-                          <p>Navigation</p>
-                      </div>
-                      {
-                        navItems.map( (data, index) => {
-                          return <Link 
-                          key={index} 
-                          data={{...data, index}} 
-                          isActive={selectedIndicator == data.href} 
-                          setSelectedIndicator={setSelectedIndicator}
-                          closeMenu={closeMenu}>
-                          </Link>
-                        })
-                      }
+                <div className="header">
+                  {/* add toogle theme here when active the bounds */}
+                  <p>Navigation</p>
+                  </div>{navItems.map( (data, index) => { return <Link key={index} data={{...data, index}} isActive={selectedIndicator == data.href} setSelectedIndicator={setSelectedIndicator} closeMenu={closeMenu}></Link>})}
               </div>
               <div className="footer">
                   <a>Awwwards</a>
