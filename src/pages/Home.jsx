@@ -7,8 +7,8 @@ const Home = () => {
   return (
     <section className="bg-shade-100">
       <Hero />
-      <Aboutme />
       <Works />
+      <Aboutme />
       <Speciality />
       <div className="h-screen"></div>
     </section>
