@@ -4,6 +4,7 @@ import { useLocation } from 'react-router-dom';
 import { menuSlide } from '../anim.js';
 import Link from './Link/link';
 import Curve from './Curve/curve';
+import { useLenis } from '../../Scroller/SmoothScrollLenis';
 import './nav.css';
 
 const navItems = [
@@ -26,10 +27,10 @@ const navItems = [
 ]
 
 export default function Nav({ closeMenu }) {
-
   const location = useLocation();
   const pathname = location.pathname;
   const [selectedIndicator, setSelectedIndicator] = useState(pathname);
+  const { stopScroll, startScroll } = useLenis();
 
   // Close menu with Escape key
   useEffect(() => {
@@ -40,19 +41,18 @@ export default function Nav({ closeMenu }) {
     };
 
     document.addEventListener('keydown', handleKeyDown);
+    // Stop Lenis scrolling when menu is open
+    stopScroll();
     
-    // Prevent background scrolling when menu is open
-    document.body.style.overflow = 'hidden';
-
     return () => {
       document.removeEventListener('keydown', handleKeyDown);
-      document.body.style.overflow = 'unset';
+      // Resume Lenis scrolling when menu closes
+      startScroll();
     };
-  }, [closeMenu]);
+  }, [closeMenu, stopScroll, startScroll]);
 
   return (
     <>
-      {/* Overlay to close menu when clicking outside */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
