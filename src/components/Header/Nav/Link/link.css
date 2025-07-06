@@ -4,11 +4,29 @@
     align-items: center;
     
     .indicator{
-        width: 12px;
-        height: 12px;
+        width: 8px; /* Smaller on mobile */
+        height: 8px;
         background-color: var(--color-shade-100);
         border-radius: 50%;
         position: absolute;
-        left: -36px;
+        left: -24px; /* Closer to text on mobile */
+    }
+}
+
+/* Tablet and up */
+@media screen and (min-width: 768px) {
+    .link .indicator{
+        width: 10px;
+        height: 10px;
+        left: -30px;
+    }
+}
+
+/* Desktop and up */
+@media screen and (min-width: 1024px) {
+    .link .indicator{
+        width: 12px; /* Original desktop size */
+        height: 12px;
+        left: -36px; /* Original desktop position */
     }
 }

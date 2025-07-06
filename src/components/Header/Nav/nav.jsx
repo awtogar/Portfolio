@@ -42,8 +42,8 @@ export default function Nav({ closeMenu }) {
     document.addEventListener('keydown', handleKeyDown);
     
     // Prevent background scrolling when menu is open
-    document.body.style.overflow = 'default';
-    
+    document.body.style.overflow = 'hidden';
+
     return () => {
       document.removeEventListener('keydown', handleKeyDown);
       document.body.style.overflow = 'unset';
@@ -58,7 +58,7 @@ export default function Nav({ closeMenu }) {
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         transition={{ duration: 0.3 }}
-        className="fixed inset-0 bg-shade-800/60 dark:bg-shade-100/60 z-10"
+        className="fixed inset-0 bg-shade-800/60 dark:bg-shade-100/60 z-10 md:bg-shade-800/60 md:dark:bg-shade-100/60"
         onClick={closeMenu}
       />
       <motion.div 
@@ -68,12 +68,14 @@ export default function Nav({ closeMenu }) {
         exit="exit" 
         className="menu"
         >
-         <div className="body ">
+         <div className="body">
               <div onMouseLeave={() => {setSelectedIndicator(pathname)}} className="nav">
                 <div className="header">
-                  {/* add toogle theme here when active the bounds */}
                   <p>Navigation</p>
-                  </div>{navItems.map( (data, index) => { return <Link key={index} data={{...data, index}} isActive={selectedIndicator == data.href} setSelectedIndicator={setSelectedIndicator} closeMenu={closeMenu}></Link>})}
+                </div>
+                {navItems.map( (data, index) => { 
+                  return <Link key={index} data={{...data, index}} isActive={selectedIndicator == data.href} setSelectedIndicator={setSelectedIndicator} closeMenu={closeMenu}></Link>
+                })}
               </div>
               <div className="footer">
                   <a>Awwwards</a>
