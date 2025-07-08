@@ -19,20 +19,20 @@ const Header = ({ burgerRef, themeToggleRef , logoElement }) => {
 
   return (
   <div className="">
-	<div className='header pt-6 pl-4 fixed flex w-full justify-between items-center md:p-3 mix-blend-difference z-[1000]'>
+	<div className='header pt-8 fixed flex w-full justify-between items-center md:p-3 mix-blend-difference z-[1000]'>
 		{/* logo */}
-		<div className="items-center text-xl font-bold font-secondary tracking-tighter justify-center md:text-2xl md:p-6 antialiased " ref={logoElement}>
+		<div className="items-center text-xl pl-4 font-bold font-secondary tracking-tighter justify-center md:text-2xl md:p-6 antialiased " ref={logoElement}>
 			<a href="/" className='text-shade-100 dark:text-shade-800 cursor-pointer'>Gxr.</a>
 		</div>
 		{/* button and hamburger */}
-		<div className="flex items-center">
+		<div className="flex items-center pr-4 md:pr-0">
 			<div className="toggle hidden md:block text-shade-100 dark:text-shade-800 relative p-4 h-[60px] ">
 				<button className='cursor-pointer ' onClick={handleToggleTheme} aria-label="Toggle dark mode" type='button' ref={themeToggleRef}>
 					<RiSunLine className="theme-icon inline dark:hidden" size={24} />
 					<RiMoonLine className="theme-icon moon-icon hidden dark:inline" size={24} />
 				</button>
 			</div>
-			<div className={`burger relative flex pr-4 flex-col w-full gap-[0.2rem] md:w-[4.5rem] content-center md:gap-2 md:p-6 md:pointer-events-none cursor-pointer  ${isActive ? 'active' : ''}`} onClick={() => {setIsActive(!isActive)}}>
+			<div className={`burger relative flex flex-col w-full gap-[0.2rem] md:w-[4.5rem] content-center md:gap-2 md:p-6 md:pointer-events-none cursor-pointer  ${isActive ? 'active' : ''}`} onClick={() => {setIsActive(!isActive)}}>
 				<motion.div ref={burgerRef} className="bounds" />
 			</div>
 		</div>
