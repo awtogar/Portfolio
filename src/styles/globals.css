@@ -7,7 +7,7 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 body {
-  --font-secondary: font-family: "Clash", sans-serif;
+  --font-secondary: font-family: "TT Norms Pro Variable", sans-serif;
   --font-primary: font-family: "Satoshi", sans-serif;
 }
 /* --color-*: initial; */
@@ -37,6 +37,8 @@ body {
   --text-sm: 1rem;       /* 16px */
   --text-md: 1.25rem;    /* 20px */
   --text-lg: 1.75rem;    /* 28px */
+
+
 }
 
 
