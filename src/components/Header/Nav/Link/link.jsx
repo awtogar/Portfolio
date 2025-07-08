@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { slide, scale } from '../../anim.js';
-import './link.css';
 
 export default function LinkComponent({data, isActive, setSelectedIndicator, closeMenu}) {
   

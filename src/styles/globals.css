@@ -27,16 +27,19 @@ body {
   --color-accent-500: var(--accent-500);
 
   --breakpoint-*: initial;
-  --breakpoint-sm: 40rem;    /* 640px - tablet */
-  --breakpoint-md: 48rem;    /* 768px - tablet large */
-  --breakpoint-lg: 64rem;    /* 1024px - laptop */
-  --breakpoint-xl: 80rem;    /* 1280px - desktop */
-  --breakpoint-2xl: 96rem;   /* 1536px - desktop large */
+  --breakpoint-sm: 40rem;
+  --breakpoint-md: 48rem;  
+  --breakpoint-lg: 64rem;  
+  --breakpoint-xl: 80rem;  
+  --breakpoint-2xl: 96rem;
 
   
-  --text-sm: 1rem;       /* 16px */
-  --text-md: 1.25rem;    /* 20px */
-  --text-lg: 1.75rem;    /* 28px */
+  
+    --text-h100: 2.6rem;
+    --text-h200: 2.6rem;
+    --text-h300: 1.8rem;
+    --text-h400: 1.4rem;
+    --text-h500: 1.25rem;
 
 
 }

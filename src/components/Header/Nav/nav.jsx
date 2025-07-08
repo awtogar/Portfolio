@@ -5,7 +5,6 @@ import { menuSlide } from '../anim.js';
 import Link from './Link/link';
 import Curve from './Curve/curve';
 import { useLenis } from '../../Scroller/SmoothScrollLenis';
-import './nav.css';
 
 const navItems = [
   {

@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import { useScroll, useTransform, motion } from 'framer-motion';
 
-// Hero Component with refined parallax
+
 const Hero = () => {
   const container = useRef();
   const { scrollYProgress } = useScroll({
@@ -14,7 +14,7 @@ const Hero = () => {
 
   return (
     <section className="overflow-hidden padding-section-x">
-      <div className="relative pt-28 pb-18" ref={container}>
+      <div className="relative pt-30 pb-20" ref={container}>
         <motion.div className="m-auto w-full xl:max-w-[1408px]" style={{ y, opacity }}>
           <div className="flex flex-col gap-6 m-auto w-full max-w-2xl lg:max-w-4xl">
             <motion.div 
@@ -22,9 +22,8 @@ const Hero = () => {
               animate={{ opacity: 1, y: 0 }} 
               transition={{ duration: 0.8, delay: 0.2 }} 
               className="flex flex-col gap-3 space-y-6">
-                <div className="text-h100 font-primary">
+                <div className="text-h100 tracking-[-0.02em] leading-[1.12]">
                   <div className="payload-richtext">
-                {/* ambil styling dari atasan */}
                     <h1>
                       Graphics designer
                       <br/>
@@ -34,7 +33,6 @@ const Hero = () => {
                 </div>
                 <div className="text-[16px] font-[300] text-gray-600 leading-8 max-w-xl sm:max-w-2xl">
                   <div className="payload-richtext">
-                {/* ambil styling dari atasan */}
                     <p>
                       I make visuals that hit and websites that just get it done — clean, fast, and built with meaning.
                       Helping brands talk louder with fresh design and smooth user-friendly builds.
@@ -52,15 +50,17 @@ const Hero = () => {
             >
               {/* Primary Button - Get in touch (2/3 width) */}
               <a 
-                href="/get-in-touch" 
-                className="group relative px-6 py-4 bg-black text-white rounded-full font-medium text-sm hover:bg-gray-800 transition-all duration-300 hover:scale-105 active:scale-95 flex items-center justify-center flex-1"
+                href="https://www.w3schools.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative px-6 py-4 bg-black text-white rounded-full font-medium text-sm hover:bg-teal-700 transition-all duration-300 active:scale-95 flex items-center justify-center flex-1"
               >
                 Get in touch
               </a>
 
               <a
-                href="/works"
-                className="group relative px-6 py-4 bg-transparent text-black border border-black rounded-full font-medium text-sm hover:bg-black hover:text-white transition-all duration-300 hover:scale-105 active:scale-95 flex items-center justify-center flex-shrink-0"
+                href="/work"
+                className="group relative px-6 py-4 bg-transparent text-black border border-black rounded-full font-medium text-sm hover:bg-black hover:text-white transition-all duration-300 active:scale-95 flex items-center justify-center flex-shrink-0"
               >
                 Works
               </a>
