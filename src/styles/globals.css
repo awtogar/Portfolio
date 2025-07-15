@@ -33,16 +33,49 @@ body {
   --breakpoint-xl: 80rem;  
   --breakpoint-2xl: 96rem;
 
-  
-  
     --text-h100: 2.6rem;
     --text-h200: 2.6rem;
     --text-h300: 1.8rem;
     --text-h400: 1.4rem;
     --text-h500: 1.25rem;
-
+    --tracking-h100: -0.02em;
+    --leading-h100: 1.12;
 
 }
+
+@media screen and (min-width: 640px) {
+  :root {
+    --text-h100: 4.6rem;
+    --tracking-h100: 0.025em;
+    --leading-h100: 1;
+
+  }
+}
+@media screen and (min-width: 768px) {
+  :root {
+    --text-h100: 5rem;
+    --tracking-h100: 0.03em;
+    --leading-h100: 1.18;
+  }
+}
+@media screen and (min-width: 1024px) {
+  :root {
+    --text-h100: 6rem;
+    --tracking-h100: 0.04em;
+    --leading-h100: 1.21;
+  }
+}
+@media screen and (min-width: 1280px) {
+  :root {
+    --text-h100: 7rem;
+    --tracking-h100: 0em;
+    --leading-h100: 1;
+  }
+}
+
+
+
+
 
 
 

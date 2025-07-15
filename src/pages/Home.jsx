@@ -1,16 +1,13 @@
-import Aboutme from "../sections/Home/Aboutme"
-import Hero from "../sections/Home/Hero"
-import Works from "../sections/Home/Works"
-import Speciality from "../sections/Home/Speciality"
+import HeroSection from "../sections/Home/HeroSection"
+import IntroSection from "../sections/Home/IntroSection"
+import WorksSection from "../sections/Home/WorksSection"
 
 const Home = () => {
   return (
     <section className="bg-shade-100">
-      <Hero />
-      <Works />
-      <Aboutme />
-      <Speciality />
-      <div className="h-screen"></div>
+      <HeroSection />
+      <IntroSection />
+      <WorksSection />
     </section>
   )
 }
