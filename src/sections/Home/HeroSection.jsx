@@ -14,15 +14,15 @@ const HeroSection = () => {
 
   return (
     <section className="overflow-hidden padding-section-x">
-      <div className="relative pt-30 pb-20" ref={container}>
-        <motion.div className="m-auto w-full xl:max-w-[1408px]" style={{ y,opacity }}>
-          <div className="flex flex-col gap-6 m-auto w-full max-w-2xl lg:max-w-4xl">
+      <div className="relative" ref={container}>
+        <motion.div className="w-full xl:max-w-[1408px]  pt-30 pb-20" style={{ y,opacity }}>
+          <div className="flex flex-col gap-6 w-full max-w-2xl lg:max-w-4xl">
             <motion.div 
               initial={{ opacity: 0, y: 30 }} 
               animate={{ opacity: 1, y: -20 }} 
               transition={{ duration: 0.8, delay: 0.2 }} 
-              className="flex flex-col gap-3 space-y-6">
-                <div className="text-h100 tracking-h100 leading-h100">
+              className="flex flex-col gap-3 space-y-6 lg:space-y-12">
+                <div className="text-h100 text-shade-800 tracking-h100 leading-h100">
                   <div className="payload-richtext">
                     <h1>
                       Graphics designer
@@ -31,7 +31,7 @@ const HeroSection = () => {
                     </h1>
                   </div>
                 </div>
-                <div className="font-[300] text-base sm:text-lg md:text-xl lg:text-2xl text-gray-600 leading-8 max-w-xl sm:max-w-2xl md:max-w-4xl lg:max-w-6xl">
+                <div className="font-[300] text-base sm:text-lg md:text-xl lg:text-2xl text-shade-500 leading-8 max-w-xl sm:max-w-2xl md:max-w-4xl lg:max-w-6xl">
                   <div className="payload-richtext">
                     <p>
                       I make visuals that hit and websites that just get it done — clean, fast, and built with meaning.
@@ -52,14 +52,14 @@ const HeroSection = () => {
                 href="https://www.w3schools.com/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group relative px-6 py-4 bg-black text-white rounded-full font-medium text-sm hover:bg-teal-700 transition-all duration-300 active:scale-95 flex items-center justify-center flex-1 sm:flex-none sm:px-16"
+                className="group relative px-6 py-4 bg-shade-800 text-shade-100 rounded-full font-medium text-sm hover:bg-accent-500 hover:text-shade-800 transition-all duration-300 active:scale-95 flex items-center justify-center flex-1 sm:flex-none sm:px-16"
               >
                 Get in touch
               </a>
 
               <a
                 href="/work"
-                className="group relative px-6 py-4 bg-transparent text-black border border-black rounded-full font-medium text-sm hover:bg-black hover:text-white transition-all duration-300 active:scale-95 flex items-center justify-center flex-shrink-0"
+                className="group relative px-6 py-4 bg-shade-100 text-shade-800 border border-shade-100 rounded-full font-medium text-sm hover:bg-shade-800 hover:text-shade-100 transition-all duration-300 active:scale-95 flex items-center justify-center flex-shrink-0"
               >
                 Works
               </a>

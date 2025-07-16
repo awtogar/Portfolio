@@ -1,13 +1,13 @@
 import HeroSection from "../sections/Home/HeroSection"
 import IntroSection from "../sections/Home/IntroSection"
-import WorksSection from "../sections/Home/WorksSection"
+import StackingCards from "../sections/Home/StackingCards"
 
 const Home = () => {
   return (
     <section className="bg-shade-100">
       <HeroSection />
       <IntroSection />
-      <WorksSection />
+        <StackingCards />
     </section>
   )
 }

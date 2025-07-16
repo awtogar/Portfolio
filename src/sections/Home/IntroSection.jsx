@@ -17,7 +17,7 @@ export default function IntroSection() {
   return (
     <section 
       ref={container} 
-      className="relative max-h-[483px] sm:max-h-none overflow-hidden bg-red-500 h-[483px] sm:h-[420px] md:h-[524px] md:min-h-[524px] md:pb-0 lg:h-[732px] xl:min-h-[800px]"
+      className="relative max-h-[483px] sm:max-h-none overflow-hidden h-[483px] sm:h-[420px] md:h-[524px] md:min-h-[524px] md:pb-0 lg:h-[732px] xl:min-h-[800px]"
     >
       {/* Video with smooth parallax */}
       <motion.div 

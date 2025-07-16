@@ -19,20 +19,32 @@ const Header = ({ burgerRef, themeToggleRef , logoElement }) => {
 
   return (
   <div className="">
-	<div className='header pt-8 fixed flex w-full justify-between items-center md:p-3 mix-blend-difference z-[1000]'>
-		{/* logo */}
-		<div className="items-center text-xl pl-4 font-bold font-secondary tracking-tighter justify-center md:text-2xl md:p-6 antialiased " ref={logoElement}>
+	<div className='header pt-8 fixed flex w-full justify-between items-center mix-blend-difference z-[1000]'>
+		<div className="items-center pl-4 md:pl-6 text-xl font-bold font-secondary tracking-tighter justify-center md:text-2xl antialiased " ref={logoElement}>
 			<a href="/" className='text-shade-100 dark:text-shade-800 cursor-pointer'>Gxr.</a>
 		</div>
 		{/* button and hamburger */}
-		<div className="flex items-center pr-4 md:pr-0">
-			<div className="toggle hidden md:block text-shade-100 dark:text-shade-800 relative p-4 h-[60px] ">
+		<div className="flex items-center">
+			<motion.div 
+				className="toggle hidden md:block text-shade-100 dark:text-shade-800 relative p-4 h-[60px]"
+				animate={{ 
+					opacity: isActive ? 0 : 1,
+					pointerEvents: isActive ? 'none' : 'auto'
+				}}
+				transition={{ 
+					opacity: { 
+						//hide (0.3s), slow show (1.5s)
+						duration: isActive ? 0.3 : 1.5, 
+						ease: "easeInOut" 
+					}
+				}}
+			>
 				<button className='cursor-pointer ' onClick={handleToggleTheme} aria-label="Toggle dark mode" type='button' ref={themeToggleRef}>
 					<RiSunLine className="theme-icon inline dark:hidden" size={24} />
 					<RiMoonLine className="theme-icon moon-icon hidden dark:inline" size={24} />
 				</button>
-			</div>
-			<div className={`burger relative flex flex-col w-full gap-[0.2rem] md:w-[4.5rem] content-center md:gap-2 md:p-6 md:pointer-events-none cursor-pointer  ${isActive ? 'active' : ''}`} onClick={() => {setIsActive(!isActive)}}>
+			</motion.div>
+			<div className={`burger pr-4 relative flex flex-col w-full gap-[0.2rem] md:w-[4.5rem] content-center md:gap-2 md:p-6 md:pointer-events-none cursor-pointer  ${isActive ? 'active' : ''}`} onClick={() => {setIsActive(!isActive)}}>
 				<motion.div ref={burgerRef} className="bounds" />
 			</div>
 		</div>

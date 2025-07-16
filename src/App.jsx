@@ -21,7 +21,6 @@ const App = () => {
 					<Header burgerRef={burgerElement} themeToggleRef={themeToggleElement} logoElement={logoElement} />
 					<StickyCursor stickyElements={[burgerElement, themeToggleElement, logoElement]} />
 					<Routes>
-						{/* manggil tampilan berdasarkan id dari elemen pagesnya menggunakan router */}
 						<Route path="/" element={<Home />} />
 						<Route path="/about" element={<About />} />
 						<Route path="/work" element={<Project />} />
