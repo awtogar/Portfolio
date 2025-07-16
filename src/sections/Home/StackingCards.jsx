@@ -1,126 +1,130 @@
-import { useRef } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import React, { useRef } from 'react';
+import { useScroll, useTransform, motion } from 'framer-motion';
+import { works } from '../../data/data';
 
-const cards = [
-  {
-    id: 1,
-    number: '01',
-    title: 'Graphic',
-    description: 'A website developed to captivate and convert can elevate your brand to new heights. My custom-coded sites are meticulously crafted to reflect your unique identity, delivering seamless experiences with a focus on animation—keeping your audience engaged and returning.',
-    services: [
-      { number: '01', name: 'CMS Integration' },
-      { number: '02', name: 'Motion & Animations' },
-      { number: '03', name: '3D Development' },
-      { number: '04', name: 'Web implementation' }
-    ]
-  },
-  {
-    id: 2,
-    number: '02',
-    title: 'Animation',
-    description: 'Amplify your online presence with a website that truly connects with your audience\'s feelings and desires. I design stunning, high-converting sites that align with your business goals, helping you stand out and scale effectively.',
-    services: [
-      { number: '01', name: 'Responsive Design' },
-      { number: '02', name: 'Wireframing' },
-      { number: '03', name: 'UX Writing' }
-    ]
-  },
-  {
-    id: 3,
-    number: '03',
-    title: 'Development',
-    description: 'Your website deserves to be seen. I optimize your online presence to elevate your visibility in search results, helping your business attract the right audience and stand out in the digital landscape.',
-    services: [
-      { number: '01', name: 'Technical SEO' },
-      { number: '02', name: 'On-Page Optimization' },
-      { number: '03', name: 'SEO Audits & Analysis' }
-    ]
-  }
-];
-
-export default function StackingCards() {
-  const containerRef = useRef(null);
+const StackingCards = () => {
+  const container = useRef();
   const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start center", "end center"]
+    target: container,
+    offset: ['start end', 'end start']
   });
 
-  // Card 1 stays in place (z-index 1)
-  const card1Y = useTransform(
-    scrollYProgress,
-    [0, 1],
-    [0, 200]
-  );
-  
-  // Card 2 comes from bottom and stacks on top (z-index 2)
-  const card2Y = useTransform(
-    scrollYProgress,
-    [0, 1],
-    [500, -50]
-  );
-  
-  // Card 3 comes from bottom and stacks on top (z-index 3)
-  const card3Y = useTransform(
-    scrollYProgress,
-    [0, 1],
-    [1000, -300]
-  );
-
-  const cardTransforms = [
-    { y: card1Y },
-    { y: card2Y },
-    { y: card3Y }
-  ];
-
   return (
-    <div className="py-4">
-      <div  className="relative">
-        <div className="sticky top-0 h-screen flex justify-center">
-          <div ref={containerRef} className="relative w-full">
-            {cards.map((card, index) => {
-              const { y } = cardTransforms[index];
-
-              return (
-                <motion.div
-                  key={card.id}
-                  style={{ 
-                    y,
-                    zIndex: index + 1 // Card 1 = z-index 1, Card 2 = z-index 2, Card 3 = z-index 3
-                  }}
-                  className={`absolute inset-0 px-8 text-white bg-accent-500 border-1 border-solid max-h-[500px]`}>
-                  <div className="flex flex-col h-full pt-12 pb-12">
-                    <div className="flex items-start gap-4 mb-8">
-                      <span className="text-4xl font-bold opacity-50">({card.number})</span>
-                      <h2 className="text-3xl font-bold leading-tight">
-                        {card.title}
-                      </h2>
-                    </div>
-                    
-                    <p className={`text-sm leading-relaxed mb-8 flex-1`}>
-                      {card.description}
-                    </p>
-                    
-                    {card.services.length > 0 && (
-                      <div className="space-y-4">
-                        {card.services.map((service, serviceIndex) => (
-                          <div key={serviceIndex} className="flex items-center gap-4">
-                            <span className={`text-xs opacity-50`}>
-                              {service.number}
-                            </span>
-                            <span className={`text-sm`}>
-                              {service.name}
-                            </span>
-                          </div>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-                </motion.div>
-              );
-            })}
-          </div>
+    <section ref={container} className="relative md:padding-section-x">
+      <div className="w-full xl:max-w-[1408px] mx-auto">
+        <div className="relative ">
+          {works.map((work, index) => {
+            const targetScale = 1 - ((works.length - index) * 0.05);
+            const isLast = index === works.length - 1;
+            
+            return (
+              <Card 
+                key={work.id}
+                work={work}
+                index={index}
+                progress={scrollYProgress}
+                targetScale={targetScale}
+                isLast={isLast}
+              />
+            );
+          })}
         </div>
       </div>
+    </section>
+  );
+};
+
+const Card = ({ work, index, progress, targetScale, isLast }) => {
+  const container = useRef();
+  const { scrollYProgress } = useScroll({
+    target: container,
+    offset: ['start end', 'start start']
+  });
+
+  const imageScale = useTransform(scrollYProgress, [0, 1], [2, 1]);
+  const scale = useTransform(progress, [index * 0.25, 1], [1, targetScale]);
+  const opacity = useTransform(progress, [index * 0.25, (index + 1) * 0.25], [1, 0.8]);
+
+  return (
+    <div ref={container} className={`h-screen flex items-center justify-center ${isLast ? '' : 'sticky top-0'}`}>
+      <motion.div
+        style={{
+          scale,
+          opacity: isLast ? 1 : opacity,
+          top: `calc(-5vh + ${index * 25}px)`
+        }}
+        className="relative w-full md:max-w-[1200px] md:h-[500px] lg:h-[700px] rounded-[25px] overflow-hidden origin-top"
+      >
+        {/* Background with gradient */}
+        <div 
+          className="absolute inset-0 bg-gradient-to-br from-pink-200 via-pink-300 to-pink-400"
+          style={{
+            background: index % 2 === 0 
+              ? 'linear-gradient(135deg, #f8d7da 0%, #f5c6cb 50%, #f1b0b7 100%)'
+              : 'linear-gradient(135deg, #d4f8d4 0%, #c8f0c8 50%, #b8e6b8 100%)'
+          }}
+        />
+        
+        {/* Animated background scale */}
+        <motion.div
+          style={{ scale: imageScale }}
+          className="absolute inset-0 bg-gradient-to-br from-black/5 to-black/10"
+        />
+
+        {/* Content */}
+        <div className="relative z-10 h-full flex flex-col justify-between p-8 md:p-12 lg:p-16">
+          {/* Header */}
+          <div className="flex items-start justify-between">
+            <div className="flex flex-col gap-6">
+              <div className="flex items-center gap-4">
+                <span className="text-lg md:text-xl text-black/60 font-medium">
+                  ({work.number})
+                </span>
+                <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-black">
+                  {work.title}
+                </h2>
+              </div>
+              
+              <p className="text-base md:text-lg text-black/80 max-w-2xl leading-relaxed">
+                {work.description}
+              </p>
+            </div>
+            
+            {/* Navigation dot */}
+            <div className="w-3 h-3 bg-black rounded-full flex-shrink-0 mt-2" />
+          </div>
+
+          {/* Services List */}
+          <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-6 md:p-8 shadow-xl">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {work.services.map((service, serviceIndex) => (
+                <motion.div
+                  key={service.number}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ 
+                    duration: 0.5, 
+                    delay: serviceIndex * 0.1 
+                  }}
+                  className="flex items-center gap-4 p-3 rounded-lg hover:bg-black/5 transition-colors group"
+                >
+                  <span className="text-sm text-black/50 font-medium min-w-[24px]">
+                    {service.number}
+                  </span>
+                  <span className="text-base md:text-lg text-black/80 group-hover:text-black transition-colors">
+                    {service.name}
+                  </span>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Subtle border */}
+        <div className="absolute inset-0 rounded-[25px] border border-black/10" />
+      </motion.div>
     </div>
   );
-}
+};
+
+export default StackingCards;

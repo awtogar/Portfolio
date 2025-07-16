@@ -7,7 +7,7 @@ const Home = () => {
     <section className="bg-shade-100">
       <HeroSection />
       <IntroSection />
-        <StackingCards />
+      <StackingCards />
     </section>
   )
 }
