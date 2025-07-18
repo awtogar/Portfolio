@@ -1,5 +1,5 @@
-const Project = () => {
+const ProjectPage = () => {
 	return <section id="Project" className="section section--project"></section>
 }
 
-export default Project
+export default ProjectPage;

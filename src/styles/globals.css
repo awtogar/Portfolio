@@ -43,7 +43,7 @@ body {
 
 }
 
-@media screen and (min-width: 640px) {
+/* @media screen and (min-width: 640px) {
   :root {
     --text-h100: 4.6rem;
     --tracking-h100: 0.025em;
@@ -71,7 +71,7 @@ body {
     --tracking-h100: 0em;
     --leading-h100: 1;
   }
-}
+} */
 
 
 

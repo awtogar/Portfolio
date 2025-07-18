@@ -2,6 +2,7 @@ import { RiSunLine, RiMoonLine } from '@remixicon/react'
 import { AnimatePresence,motion } from 'framer-motion'
 import { useState } from 'react'
 import Nav from '../Header/Nav/nav'
+import './header.css'
 
 const Header = ({ burgerRef, themeToggleRef , logoElement }) => {
  const [isActive, setIsActive] = useState(false);
@@ -49,7 +50,7 @@ const Header = ({ burgerRef, themeToggleRef , logoElement }) => {
 			</div>
 		</div>
 	</div>
-	<div>
+	<div className='nav-container'>
 		<AnimatePresence mode="wait">
 			{isActive && <Nav closeMenu={closeMenu} />}
        </AnimatePresence>

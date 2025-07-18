@@ -4,10 +4,10 @@ import "./styles/globals.css"
 import Header from "./components/Header/Header"
 import SmoothScrollLenis from "./components/Scroller/SmoothScrollLenis"
 import StickyCursor from "./components/StickyCursor"
-import About from "./pages/About"
-import Contact from "./pages/Contact"
-import Home from "./pages/Home"
-import Project from "./pages/Project"
+import HomePage from "./pages/HomePage"
+import AboutPage from "./pages/AboutPage"
+import ProjectPage from "./pages/ProjectPage"
+import ContactPage from "./pages/ContactPage"
 
 const App = () => {
 	const burgerElement = useRef(null)
@@ -21,10 +21,10 @@ const App = () => {
 					<Header burgerRef={burgerElement} themeToggleRef={themeToggleElement} logoElement={logoElement} />
 					<StickyCursor stickyElements={[burgerElement, themeToggleElement, logoElement]} />
 					<Routes>
-						<Route path="/" element={<Home />} />
-						<Route path="/about" element={<About />} />
-						<Route path="/work" element={<Project />} />
-						<Route path="/contact" element={<Contact />} />
+						<Route path="/" element={<HomePage />} />
+						<Route path="/about" element={<AboutPage />} />
+						<Route path="/work" element={<ProjectPage />} />
+						<Route path="/contact" element={<ContactPage />} />
 					</Routes>
 					{/* <Footer /> */}
 				</main>

@@ -67,7 +67,7 @@ export default function Nav({ closeMenu }) {
         exit="exit" 
         className="menu"
         >
-         <div className="body">
+         <div className="menubody">
               <div onMouseLeave={() => {setSelectedIndicator(pathname)}} className="nav">
                 <div className="header">
                   <p>Navigation</p>

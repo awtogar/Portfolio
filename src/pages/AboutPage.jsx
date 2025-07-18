@@ -1,7 +1,7 @@
 // 🌀 Section for About
 
 
-const About = () => {
+const AboutPage = () => {
 	return (
     <section className="bg-shade-100">
 		<div className="">
@@ -11,4 +11,4 @@ const About = () => {
 	)
 }
 
-export default About
+export default AboutPage;
