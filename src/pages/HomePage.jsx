@@ -4,10 +4,8 @@ import StackingCards from "../sections/Home/StackingCards"
 
 const HomePage = () => {
   return (
-    <section className="bg-shade-100">
+    <section className="home-page">
       <HeroSection />
-      {/* <IntroSection /> */}
-      {/* <StackingCards /> */}
     </section>
   )
 }

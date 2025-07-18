@@ -1,4 +1,4 @@
-* {
+/* * {
   scrollbar-width: none; 
   -ms-overflow-style: none; 
 }
@@ -18,4 +18,4 @@ html, body {
 html::-webkit-scrollbar,
 body::-webkit-scrollbar {
   display: none;
-}
+} */
