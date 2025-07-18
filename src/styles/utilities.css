@@ -6,6 +6,9 @@
 *::-webkit-scrollbar {
   display: none;
 }
+html{
+    position: relative;
+}
 
 html, body {
   overflow-x: hidden;
