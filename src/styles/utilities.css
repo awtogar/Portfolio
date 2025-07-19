@@ -1,21 +1,3 @@
-/* * {
-  scrollbar-width: none; 
-  -ms-overflow-style: none; 
-}
-
-*::-webkit-scrollbar {
-  display: none;
-}
 html{
     position: relative;
 }
-
-html, body {
-  overflow-x: hidden;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-}
-html::-webkit-scrollbar,
-body::-webkit-scrollbar {
-  display: none;
-} */

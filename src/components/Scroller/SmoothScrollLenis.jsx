@@ -51,7 +51,7 @@ const SmoothScrollLenis = ({ children }) => {
 
     return (
         <LenisContext.Provider value={{ stopScroll, startScroll, lenis: lenisRef.current }}>
-            <div ref={wrapperRef} className="scroll-content">
+            <div ref={wrapperRef} className="app-scroll">
                 {children}
             </div>
         </LenisContext.Provider>

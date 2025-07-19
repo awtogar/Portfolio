@@ -3,8 +3,12 @@ import HeroSection from "../sections/HomeSection/Hero/Container.jsx";
 
 const HomePage = () => {
   return (
-    <section className="content__main">
+    <section id="home" className="home-wrapper bg-shade-100">
       <HeroSection />
+      {/* bakalan lanjut section berikutnya */}
+      {/* bakalan lanjut section berikutnya */}
+      {/* bakalan lanjut section berikutnya */}
+      {/* bakalan lanjut section berikutnya */}
     </section>
   )
 }
