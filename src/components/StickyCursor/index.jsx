@@ -1,6 +1,5 @@
 /* eslint-disable no-unused-vars */
 import { useEffect, useCallback, useMemo, useState } from 'react';
-import './styles.css';
 import { motion, useMotionValue, useSpring } from 'framer-motion';
 
 const StickyCursor = ({ stickyElements }) => {
@@ -97,7 +96,7 @@ const StickyCursor = ({ stickyElements }) => {
 
 
   return (
-    <div className="cursor-container">
+    <div className="content_cursor">
       <motion.div 
         style={{
           left: smoothX, 

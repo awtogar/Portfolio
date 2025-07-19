@@ -17,7 +17,7 @@ const App = () => {
 	return (
 		<Router>
 			<SmoothScrollLenis>
-				<main className="bg-shade-100">
+				<main className="content bg-shade-100">
 					<Header burgerRef={burgerElement} themeToggleRef={themeToggleElement} logoElement={logoElement} />
 					<StickyCursor stickyElements={[burgerElement, themeToggleElement, logoElement]} />
 					<Routes>

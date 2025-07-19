@@ -1,10 +1,9 @@
-import HeroSection from "../sections/Home/HeroSection"
-import IntroSection from "../sections/Home/IntroSection"
-import StackingCards from "../sections/Home/StackingCards"
+import HeroSection from "../sections/HomeSection/Hero/Container.jsx";
+
 
 const HomePage = () => {
   return (
-    <section className="home-page">
+    <section className="content__main">
       <HeroSection />
     </section>
   )
