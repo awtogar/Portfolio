@@ -12,7 +12,7 @@ const HeroSection = () => {
     offset: ["start start", "end end"]
   })
   return (
-    <section className='padding-section-x'>
+    <section className=''>
       <section ref={container} className="relative h-[200vh] pt-12"> {/* Hero Section main */}
         <SectionFirst scrollYProgress={scrollYProgress}/>
         <SectionSecond scrollYProgress={scrollYProgress}/>
