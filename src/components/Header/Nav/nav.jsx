@@ -57,7 +57,7 @@ export default function Nav({ closeMenu }) {
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         transition={{ duration: 0.3 }}
-        className="fixed inset-0 bg-shade-800/60 dark:bg-shade-100/60 z-10 md:bg-shade-800/60 md:dark:bg-shade-100/60"
+        className="fixed inset-0 bg-main/10.0 dark:bg-canvas/60 z-10 md:bg-main/60 md:dark:bg-canvas/60"
         onClick={closeMenu}
       />
       <motion.div 

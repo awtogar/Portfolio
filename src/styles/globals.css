@@ -1,26 +1,59 @@
 @import "tailwindcss"; 
 @import "./fonts.css";
-@import './colors.css';
-@import './utilities.css';
 @import './components.css';
 @custom-variant dark (&:where(.dark, .dark *));
 
+@layer base {
+  html{ position: relative;}
+  :root {
+    --canvas: hsl(48, 3%, 90%);
+    --based: hsl(48, 3%, 95%);
+    --surface: hsl(48, 3%, 98%);
 
-/* --color-*: initial; */
+    --main: hsl(48, 2%, 4%);
+    --muted: hsl(48, 2%, 28%);
+
+    --border: hsl(48, 3%, 50%);
+    --border-muted: hsl(48, 2%, 62%);
+    --border-highlight: hsl(48, 3%, 90%);
+
+    --primary: #11120d;
+    --secondary: #fffBF4;
+    --accent-primary: #565449;
+    --accent-secondary: #d8cfbc;
+  }
+  .dark {
+    --canvas: hsl(48, 3%, 1%);
+    --based: hsl(48, 3%, 4%);
+    --surface: hsl(48, 3%, 9%);
+
+    --main: hsl(48, 2%, 95%);
+    --muted: hsl(48, 2%, 69%);
+
+    --border: hsl(48, 3%, 28%);
+    --border-muted: hsl(48, 2%, 18%);
+    --border-highlight: hsl(48, 3%, 39%);
+
+    --primary: #11120d;
+    --secondary: #fffBF4;
+    --accent-primary: #565449;
+    --accent-secondary: #d8cfbc;
+  }
+}
 @theme {
-  --color-shade-100: var(--shade-100);
-  --color-shade-200: var(--shade-200);
-  --color-shade-300: var(--shade-300);
-  --color-shade-400: var(--shade-400);
-  --color-shade-500: var(--shade-500);
-  --color-shade-600: var(--shade-600);
-  --color-shade-700: var(--shade-700);
-  --color-shade-800: var(--shade-800);
-  --color-accent-100: var(--accent-100);
-  --color-accent-200: var(--accent-200);
-  --color-accent-300: var(--accent-300);
-  --color-accent-400: var(--accent-400);
-  --color-accent-500: var(--accent-500);
+
+  --color-canvas: var(--canvas);
+  --color-based: var(--based);
+  --color-surface: var(--surface);
+  --color-main: var(--main);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --color-border-muted: var(--border-muted);
+  --color-border-highlight: var(--border-highlight);
+  --color-primary: var(--primary);
+  --color-secondary: var(--secondary);
+  --color-accent-primary: var(--accent-primary);
+  --color-accent-secondary: var(--accent-secondary);
 
   --breakpoint-*: initial;
   --breakpoint-sm: 40rem; /* 640px  → mobile */

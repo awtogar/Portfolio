@@ -22,12 +22,12 @@ const Header = ({ burgerRef, themeToggleRef , logoElement }) => {
   <div className='header-wrapper'>
 	<div className='header pt-8 fixed flex w-full justify-between items-center mix-blend-difference z-[100]'>
 		<div className="items-center pl-4 md:pl-6 text-xl font-bold font-secondary tracking-tighter justify-center md:text-2xl antialiased " ref={logoElement}>
-			<a href="/" className='text-shade-100 dark:text-shade-800 cursor-pointer'>Gxr.</a>
+			<a href="/" className='text-canvas dark:text-main cursor-pointer'>Gxr.</a>
 		</div>
 		{/* button and hamburger */}
 		<div className="flex items-center">
 			<motion.div 
-				className="toggle hidden md:block text-shade-100 dark:text-shade-800 relative p-4 h-[60px]"
+				className="toggle hidden md:block text-canvas dark:text-main relative p-4 h-[60px]"
 				animate={{ 
 					opacity: isActive ? 0 : 1,
 					pointerEvents: isActive ? 'none' : 'auto'
