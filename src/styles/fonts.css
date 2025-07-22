@@ -1,20 +1,71 @@
 @font-face {
-	font-family: "TT Norms Pro Mono Variable";
-	src: url("../assets/fonts/TTNormsProMonoVariable.ttf") format("truetype");
-	font-weight: 300 900;
-	font-display: swap;
-	font-style: normal;
+  font-family: 'Switzer';
+  src: url('/fonts/Switzer-Variable.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
 }
+
 @font-face {
-	font-family: "TT Norms Pro Variable";
-	src: url("../assets/fonts/TTNormsProVariable.ttf") format("truetype");
-	font-weight: 300 900;
-	font-display: swap;
-	font-style: normal;
+  font-family: 'Switzer';
+  src: url('/fonts/Switzer-VariableItalic.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
 }
-@utility
-	h1.h2,h3,h4,h5,h6 {
-		font-family: "TT Norms Pro Variable", sans-serif;
-		font-weight: 300;
-		font-size: inherit;
-	}
+
+
+@theme{
+  --text-*: initial;
+  --text-mh100: 44px;
+  --text-mh100--font-weight: 450;
+  --text-mh100--text-transform: none;
+  --text-mh100--letter-spacing: -2px;
+  --text-mh100--line-height: 1.12;
+
+  --text-mh200: 44px;
+  --text-mh200--font-weight: 450;
+  --text-mh200--text-transform: none;
+  --text-mh200--letter-spacing: -2px;
+  --text-mh200--line-height: 1.12;
+
+  --text-mh300: 44px;
+  --text-mh300--font-weight: 450;
+  --text-mh300--text-transform: none;
+  --text-mh300--letter-spacing: -2px;
+  --text-mh300--line-height: 1.12;
+
+  --text-mh400: 44px;
+  --text-mh400--font-weight: 450;
+  --text-mh400--text-transform: none;
+  --text-mh400--letter-spacing: -2px;
+  --text-mh400--line-height: 1.12;
+
+  --text-mh500: 44px;
+  --text-mh500--font-weight: 450;
+  --text-mh500--text-transform: none;
+  --text-mh500--letter-spacing: -2px;
+  --text-mh500--line-height: 1.12;
+
+  --text-mh600: 44px;
+  --text-mh600--font-weight: 450;
+  --text-mh600--text-transform: none;
+  --text-mh600--letter-spacing: -2px;
+  --text-mh600--line-height: 1.12;
+
+  --text-p100: 1rem;       /* 14px */
+  --text-p100--font-weight: 400;
+  --text-p100--text-transform: none;
+  --text-p100--letter-spacing: 0.06em;
+
+}
+
+@media (min-width: 48rem) { /* md = 768px */
+  html{
+    font-size: 16px;
+  }
+  :root {
+  --text-p100: 1rem;    
+  --text-mh100: 84px;   /* 16px */
+  }
+}

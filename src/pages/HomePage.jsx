@@ -1,4 +1,4 @@
-import HeroSection from "../sections/HomeSection/Hero/Container.jsx";
+import HeroSection from "../sections/HomeSection/Hero/HeroSection.jsx";
 
 
 const HomePage = () => {

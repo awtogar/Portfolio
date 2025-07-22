@@ -3,45 +3,56 @@
 @import './components.css';
 @custom-variant dark (&:where(.dark, .dark *));
 
+html {
+  font-family: ui-sans-serif, system-ui, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+  position: relative;
+  font-size: 14px;
+}
 @layer base {
-  html{ position: relative;}
+  body {
+    font-family: 'Switzer', Arial, sans-serif;
+  }
   :root {
-    --canvas: hsl(48, 3%, 90%);
-    --based: hsl(48, 3%, 95%);
-    --surface: hsl(48, 3%, 98%);
+    /* background colros */
+    --canvas: #eeeded;
+    --based: #f5f5f4;
+    --surface: #fafafa;
 
-    --main: hsl(48, 2%, 4%);
-    --muted: hsl(48, 2%, 28%);
+    /* Text */
+    --main: #0b0a0a;
+    --muted: #494846;
 
-    --border: hsl(48, 3%, 50%);
-    --border-muted: hsl(48, 2%, 62%);
-    --border-highlight: hsl(48, 3%, 90%);
+    /* Borders */
+    --border: #83827c;
+    --border-muted: #a09f9c;
+    --border-highlight: #e6e6e5;
 
-    --primary: #11120d;
-    --secondary: #fffBF4;
-    --accent-primary: #565449;
-    --accent-secondary: #d8cfbc;
+    /* Brand */
+    --primary: #100f0f;
+
+    --accent-primary: #423d29;
+    --accent-secondary: #d7cfbc;
   }
   .dark {
-    --canvas: hsl(48, 3%, 1%);
-    --based: hsl(48, 3%, 4%);
-    --surface: hsl(48, 3%, 9%);
+    --canvas: #030302;
+    --based: #10100f;
+    --surface: #181716;
 
-    --main: hsl(48, 2%, 95%);
-    --muted: hsl(48, 2%, 69%);
+    --main: #f3f2f2;
+    --muted: #b2b1ae;
 
-    --border: hsl(48, 3%, 28%);
-    --border-muted: hsl(48, 2%, 18%);
-    --border-highlight: hsl(48, 3%, 39%);
+    --border: #4a4945;
+    --border-muted: #2f2e2d;
+    --border-highlight: #666560;
 
-    --primary: #11120d;
-    --secondary: #fffBF4;
-    --accent-primary: #565449;
-    --accent-secondary: #d8cfbc;
+    --primary: #fffbf5;
+    
+    --accent-primary: #555349;
+    --accent-secondary: #d7cfbc;
   }
 }
 @theme {
-
+  --color-*: initial;
   --color-canvas: var(--canvas);
   --color-based: var(--based);
   --color-surface: var(--surface);

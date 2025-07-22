@@ -106,7 +106,7 @@ const StickyCursor = ({ stickyElements }) => {
           height: cursorSize
         }}
         // ini harus dibawah z index header supaya tidak tertutup icon headernya
-        className="hidden sm:block fixed w-[15px] h-[15px] bg-shade-800 rounded-full pointer-events-none z-[99]">
+        className="hidden sm:block fixed w-[15px] h-[15px] bg-primary rounded-full pointer-events-none z-[99]">
       </motion.div>
   )
 }

@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 import { useScroll } from 'framer-motion';
-import {SectionFirst, SectionSecond} from './Sections';
+import {ContentFirst, ContentSecond} from './HeroContent';
 import { section } from 'framer-motion/client';
 
 
@@ -13,9 +13,9 @@ const HeroSection = () => {
   })
   return (
     <section className=''>
-      <section ref={container} className="relative h-[200vh] pt-12"> {/* Hero Section main */}
-        <SectionFirst scrollYProgress={scrollYProgress}/>
-        <SectionSecond scrollYProgress={scrollYProgress}/>
+      <section ref={container} className="relative h-[200vh]"> {/* Hero Section main */}
+        <ContentFirst scrollYProgress={scrollYProgress}/>
+        <ContentSecond scrollYProgress={scrollYProgress}/>
       </section>
     </section>
   )
