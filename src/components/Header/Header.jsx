@@ -21,7 +21,7 @@ const Header = ({ burgerRef, themeToggleRef , logoElement }) => {
   return (
   <div className='header-wrapper'>
 	<div className='header pt-8 fixed flex w-full justify-between items-center mix-blend-difference z-[100]'>
-		<div className="items-center pl-4 md:pl-6 text-xl font-bold font-secondary tracking-tighter justify-center md:text-2xl antialiased " ref={logoElement}>
+		<div className="items-center pl-4 md:pl-6 text-gxr font-bold font-secondary tracking-tighter justify-center md:text-2xl antialiased " ref={logoElement}>
 			<a href="/" className='text-canvas dark:text-main cursor-pointer'>Gxr.</a>
 		</div>
 		{/* button and hamburger */}

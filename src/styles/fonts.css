@@ -17,55 +17,58 @@
 
 @theme{
   --text-*: initial;
-  --text-mh100: 44px;
-  --text-mh100--font-weight: 450;
+  --text-mh100: 2.75rem;
+  --text-mh100--font-weight: 400;
   --text-mh100--text-transform: none;
-  --text-mh100--letter-spacing: -2px;
-  --text-mh100--line-height: 1.12;
-
-  --text-mh200: 44px;
+  --text-mh100--letter-spacing: -0.046em;
+  --text-mh100--line-height: 1.25;
+  
+  --text-mh200: 36px;
   --text-mh200--font-weight: 450;
   --text-mh200--text-transform: none;
-  --text-mh200--letter-spacing: -2px;
-  --text-mh200--line-height: 1.12;
+  --text-mh200--letter-spacing: none; /*nanti diganti*/
+  --text-mh200--line-height: 1.25;
 
-  --text-mh300: 44px;
+  --text-mh300: 32px;
   --text-mh300--font-weight: 450;
   --text-mh300--text-transform: none;
-  --text-mh300--letter-spacing: -2px;
-  --text-mh300--line-height: 1.12;
+  --text-mh300--letter-spacing: none; /*nanti diganti*/
+  --text-mh300--line-height: 1.25;
 
-  --text-mh400: 44px;
+  --text-mh400: 26px;
   --text-mh400--font-weight: 450;
   --text-mh400--text-transform: none;
-  --text-mh400--letter-spacing: -2px;
+  --text-mh400--letter-spacing: none; /*nanti diganti*/
   --text-mh400--line-height: 1.12;
 
-  --text-mh500: 44px;
+  --text-mh500: 18px;
   --text-mh500--font-weight: 450;
   --text-mh500--text-transform: none;
-  --text-mh500--letter-spacing: -2px;
-  --text-mh500--line-height: 1.12;
+  --text-mh500--letter-spacing: none; /*nanti diganti*/
+  --text-mh500--line-height: 1.25;
 
-  --text-mh600: 44px;
+  --text-mh600: 16px;
   --text-mh600--font-weight: 450;
   --text-mh600--text-transform: none;
-  --text-mh600--letter-spacing: -2px;
-  --text-mh600--line-height: 1.12;
+  --text-mh600--letter-spacing: none; /*nanti diganti*/
+  --text-mh600--line-height: 1.25;
 
-  --text-p100: 1rem;       /* 14px */
+  --text-p100: 1.2rem;
   --text-p100--font-weight: 400;
   --text-p100--text-transform: none;
-  --text-p100--letter-spacing: 0.06em;
+  --text-p100--letter-spacing: 0.02em;
+
+  /* logo size */
+  --text-gxr: 1.6rem;
 
 }
 
-@media (min-width: 48rem) { /* md = 768px */
+@media (min-width: 48rem) {
   html{
     font-size: 16px;
   }
   :root {
-  --text-p100: 1rem;    
-  --text-mh100: 84px;   /* 16px */
+  --text-p100: 1rem;
+  --text-mh100: 84px;
   }
 }
