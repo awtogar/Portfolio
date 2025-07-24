@@ -26,7 +26,6 @@ const App = () => {
 						<Route path="/work" element={<ProjectPage />} />
 						<Route path="/contact" element={<ContactPage />} />
 					</Routes>
-					{/* <Footer /> */}
 				</main>
 			</SmoothScrollLenis>
 		</Router>

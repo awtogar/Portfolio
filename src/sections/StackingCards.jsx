@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { useScroll, useTransform, motion } from 'framer-motion';
-import { works } from '../../data/data';
+import { works } from '../data/data';
 
 const StackingCards = () => {
   const container = useRef();
