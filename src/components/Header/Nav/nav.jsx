@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react'
-import { motion } from 'framer-motion';
-import { useLocation } from 'react-router-dom';
-import { menuSlide } from '../anim.js';
-import Link from './Link/link';
-import Curve from './Curve/curve';
-import { useLenis } from '../../Scroller/SmoothScrollLenis';
+import React, { useState, useEffect } from "react";
+import { motion } from "framer-motion";
+import { useLocation } from "react-router-dom";
+import { menuSlide } from "../../anim";
+import Link from "./Link/link";
+import Curve from "./Curve/curve";
+import { useLenis } from "../../Scroller/SmoothScrollLenis";
 
 const navItems = [
   {
@@ -23,7 +23,7 @@ const navItems = [
     title: "Contact",
     href: "/contact",
   },
-]
+];
 
 export default function Nav({ closeMenu }) {
   const location = useLocation();
@@ -34,17 +34,17 @@ export default function Nav({ closeMenu }) {
   // Close menu with Escape key
   useEffect(() => {
     const handleKeyDown = (event) => {
-      if (event.key === 'Escape') {
+      if (event.key === "Escape") {
         closeMenu();
       }
     };
 
-    document.addEventListener('keydown', handleKeyDown);
+    document.addEventListener("keydown", handleKeyDown);
     // Stop Lenis scrolling when menu is open
     stopScroll();
-    
+
     return () => {
-      document.removeEventListener('keydown', handleKeyDown);
+      document.removeEventListener("keydown", handleKeyDown);
       // Resume Lenis scrolling when menu closes
       startScroll();
     };
@@ -60,31 +60,44 @@ export default function Nav({ closeMenu }) {
         className="fixed inset-0 bg-main/10.0 dark:bg-canvas/60 z-10 md:bg-main/60 md:dark:bg-canvas/60"
         onClick={closeMenu}
       />
-      <motion.div 
-        variants={menuSlide} 
-        initial="initial" 
-        animate="enter" 
-        exit="exit" 
+      <motion.div
+        variants={menuSlide}
+        initial="initial"
+        animate="enter"
+        exit="exit"
         className="menu"
-        >
-         <div className="menubody">
-              <div onMouseLeave={() => {setSelectedIndicator(pathname)}} className="nav">
-                <div className="header">
-                  <p>Navigation</p>
-                </div>
-                {navItems.map( (data, index) => { 
-                  return <Link key={index} data={{...data, index}} isActive={selectedIndicator == data.href} setSelectedIndicator={setSelectedIndicator} closeMenu={closeMenu}></Link>
-                })}
-              </div>
-              <div className="footer">
-                  <a>Awwwards</a>
-                  <a>Instagram</a>
-                  <a>Dribble</a>
-                  <a>LinkedIn</a>
-              </div>
+      >
+        <div className="menubody">
+          <div
+            onMouseLeave={() => {
+              setSelectedIndicator(pathname);
+            }}
+            className="nav"
+          >
+            <div className="header">
+              <p>Navigation</p>
+            </div>
+            {navItems.map((data, index) => {
+              return (
+                <Link
+                  key={index}
+                  data={{ ...data, index }}
+                  isActive={selectedIndicator == data.href}
+                  setSelectedIndicator={setSelectedIndicator}
+                  closeMenu={closeMenu}
+                ></Link>
+              );
+            })}
           </div>
-          <Curve />
+          <div className="footer">
+            <a>Awwwards</a>
+            <a>Instagram</a>
+            <a>Dribble</a>
+            <a>LinkedIn</a>
+          </div>
+        </div>
+        <Curve />
       </motion.div>
     </>
-  )
+  );
 }

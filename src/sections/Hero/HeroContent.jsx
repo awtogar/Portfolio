@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React, { useRef } from "react";
 import { useTransform, motion, useScroll } from "framer-motion";
+import RoundedButton from "../../components/Button/RoundedButton/RoundedButton";
 
 const ContentFirst = ({ scrollYProgress }) => {
   return (
@@ -80,8 +81,7 @@ const ContentSecond = ({ scrollYProgress }) => {
             borderTopLeftRadius: borderRadius,
             borderTopRightRadius: borderRadius,
             transition: "border-radius 0.3s ease-in-out",
-          }}
-        >
+          }}>
           <div className="flex flex-col">
             <div className="text-p100">
               <div className="payload-richtext">
@@ -100,6 +100,9 @@ const ContentSecond = ({ scrollYProgress }) => {
                   <h2>Developing</h2>
                 </div>
               </div>
+        <RoundedButton backgroundColor="#ff6b6b">
+          Another Button
+        </RoundedButton>
             </div>
           </div>
         </motion.div>
