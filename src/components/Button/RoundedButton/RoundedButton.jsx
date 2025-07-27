@@ -4,71 +4,57 @@ import gsap from "gsap";
 export default function RoundedButton({
   children,
   backgroundColor = "#455CE9",
+  textColor = "#FFFFFF",
   className = "",
   ...attributes
 }) {
-  const circle = useRef(null);
-  const timeline = useRef(null);
-  const timeoutId = useRef(null);
+  const bgRef = useRef(null);
+  const hoverTl = useRef(null);
 
   useEffect(() => {
-    timeline.current = gsap.timeline({ paused: true });
-    timeline.current
-      .to(
-        circle.current,
-        { 
-          top: "-150%", 
-          width: "125%", 
-          duration: 0.25 
-        },
-        "exit"
-      )
-      .to(
-        circle.current,
-        { 
-          top: "-25%", 
-          width: "150%", 
-          duration: 0.4, 
-          ease: "power3.in" 
-        },
-        "enter"
-      );
-
+    hoverTl.current = gsap.timeline({ paused: true });
+    hoverTl.current.to(bgRef.current, {
+      y: "0%",
+      borderRadius: "0%",
+      duration: 0.5,
+      ease: "expo.out",
+    }
+  );
+  
     return () => {
-      if (timeoutId.current) clearTimeout(timeoutId.current);
+      hoverTl.current.kill();
     };
   }, []);
 
-  const manageMouseEnter = () => {
-    if (timeoutId.current) clearTimeout(timeoutId.current);
-    // Use tweenFromTo like the reference
-    timeline.current.tweenFromTo('enter', 'exit');
+  const handleMouseEnter = () => {
+    hoverTl.current.play();
   };
 
-  const manageMouseLeave = () => {
-    if (timeoutId.current) clearTimeout(timeoutId.current);
-    timeoutId.current = setTimeout(() => {
-      // Play the full timeline (which will go to exit)
-      timeline.current.play();
-    }, 300); // Match the reference timeout
+  const handleMouseLeave = () => {
+    hoverTl.current.reverse();
   };
-
 
   return (
     <div
-      className={`flex relative rounded-[3em] border border-gray-400 cursor-pointer items-center justify-center px-[60px] py-[15px] overflow-hidden group ${className}`}
-      onMouseEnter={manageMouseEnter}
-      onMouseLeave={manageMouseLeave}
+      className={`relative bg-accent-primary inline-flex items-center justify-center px-10 py-4 rounded-full overflow-hidden cursor-pointer group ${className}`}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
       {...attributes}
     >
-      <span className="relative z-[1] transition-colors duration-400 group-hover:text-white">
+      {/* Background hover */}
+      <span
+        ref={bgRef}
+        style={{
+          backgroundColor,
+          transform: "translateY(100%)", // default posisi di luar button (bawah)
+        }}
+        className="absolute inset-0 transition-transform duration-500 ease-expo rounded-full"
+      />
+
+      {/* Text */}
+      <span className="relative z-10" style={{ color: textColor }}>
         {children}
       </span>
-      <div
-        ref={circle}
-        style={{ backgroundColor }}
-        className="w-full h-[150%] absolute rounded-full top-full left-0"
-      />
     </div>
   );
 }

@@ -100,7 +100,7 @@ const ContentSecond = ({ scrollYProgress }) => {
                   <h2>Developing</h2>
                 </div>
               </div>
-        <RoundedButton backgroundColor="#ff6b6b">
+        <RoundedButton backgroundColor="#ff6b6b" textColor="#fff"> 
           Another Button
         </RoundedButton>
             </div>
