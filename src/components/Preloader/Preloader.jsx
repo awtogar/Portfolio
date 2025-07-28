@@ -54,7 +54,7 @@ export default function Preloader() {
       variants={PreloaderSlideUp}
       initial="initial"
       exit="exit"
-      className="fixed inset-0 z-[101] flex items-center justify-center bg-based"
+      className="fixed inset-0 z-[101] flex items-center justify-center bg-main"
       style={{ height: "100vh", width: "100vw" }}
     >
       {dimension.width > 0 && (
@@ -65,7 +65,7 @@ export default function Preloader() {
             animate="enter"
             className="flex items-center text-surface absolute z-10"
           >
-            <span className="block w-2.5 h-2.5 bg-main rounded-full mr-2"></span>
+            {/* <span className="block w-2.5 h-2.5 rounded-full mr-2 bg-based"></span> */}
             {TheWords[index]}
           </motion.p>
           <svg

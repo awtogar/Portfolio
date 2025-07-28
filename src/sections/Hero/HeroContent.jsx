@@ -16,7 +16,7 @@ const ContentFirst = ({ scrollYProgress }) => {
   return (
     // hero section
     <motion.section
-      className="sticky top-0 bg-canvas overflow-hidden"
+      className="sticky top-0 overflow-hidden"
       style={{ ContainerFirst, opacity }}
     >
       <div className="flex flex-col w-full pt-28 padding-section-x gap-8">
@@ -43,9 +43,8 @@ const ContentFirst = ({ scrollYProgress }) => {
           <RoundedButton
             as="a"
             href="/get-in-touch"
-            backgroundColor="#455CE9"
-            textColor="#fff"
-            className="w-[70%] flex-2/3 bg-primary sm:w-auto px-8 py-2 group relative rounded-full flex items-center justify-center text-base font-medium"
+            textColor="var(--color-based)"
+            className="w-[70%] flex-2/3 bg-primary sm:w-auto px-8 py-2 group relative rounded-full flex items-center justify-center font-medium"
             style={{ minWidth: 0 }}
           >
             Get in touch
@@ -53,9 +52,9 @@ const ContentFirst = ({ scrollYProgress }) => {
           <RoundedButton
             as="a"
             href="/works"
-            backgroundColor="#fff"
-            textColor="#0a0a0a"
-            className="w-[30%] flex-1/3 bg-canvas border border-muted px-5 py-2 group relative rounded-full flex items-center justify-center text-base font-medium"
+            backgroundColor="var(--color-accent-secondary)"
+            textColor="var(--color-main)"
+            className="w-[30%] flex-1/3 bg-canvas border border-muted px-5 py-2 group relative rounded-full flex items-center justify-center font-medium"
           >
             Works
           </RoundedButton>
@@ -77,9 +76,9 @@ const ContentSecond = ({ scrollYProgress }) => {
   const StickyCard = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
 
   return (
-    <section className="relative h-full bg-primary">
+    <section className="relative h-full">
       {/* video */}
-      <div className="w-full h-full flex flex-col items-center justify-center bg-canvas">
+      <div className="w-full h-full flex flex-col items-center justify-center">
         <motion.div
           className="h-screen w-full flex items-center justify-center overflow-hidden md:h-[868px] max-h-max sticky top-12"
           style={{ y: videoOutter }}
@@ -94,7 +93,7 @@ const ContentSecond = ({ scrollYProgress }) => {
           />
         </motion.div>
         {/*  card */}
-        <motion.div ref={cardRef} className="sticky top-0 h-screen bg-accent-primary rounded-t-[2.5rem] md:rounded-t-[3.5rem] w-full z-[1]" style={{
+        <motion.div ref={cardRef} className="sticky top-0 h-screen bg-primary rounded-t-[2.5rem] md:rounded-t-[3.5rem] w-full z-[1]" style={{
             borderTopLeftRadius: borderRadius,
             borderTopRightRadius: borderRadius,
             displaySticky: StickyCard,

@@ -3,8 +3,8 @@ import gsap from "gsap";
 
 export default function RoundedButton({
   children,
-  backgroundColor = "#455CE9",
-  textColor = "#FFFFFF",
+  backgroundColor = "var(--color-accent-primary)",
+  textColor = "#var(--color-main)",
   className = "",
   ...attributes
 }) {
@@ -46,7 +46,7 @@ export default function RoundedButton({
         ref={bgRef}
         style={{
           backgroundColor,
-          transform: "translateY(100%)", // default posisi di luar button (bawah)
+          transform: "translateY(100%)",
         }}
         className="absolute inset-0 transition-transform duration-500 ease-expo rounded-full"
       />
