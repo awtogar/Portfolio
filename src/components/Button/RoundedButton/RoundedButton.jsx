@@ -36,7 +36,7 @@ export default function RoundedButton({
 
   return (
     <div
-      className={`relative bg-accent-primary inline-flex items-center justify-center px-10 py-4 rounded-full overflow-hidden cursor-pointer group ${className}`}
+      className={`relative inline-flex items-center justify-center rounded-full overflow-hidden cursor-pointer group ${className}`}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       {...attributes}

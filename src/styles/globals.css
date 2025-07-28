@@ -3,9 +3,9 @@
 @import './components.css';
 @custom-variant dark (&:where(.dark, .dark *));
 
-*{
+/* *{
   border: 1px solid red;
-}
+} */
 html {
   font-family: ui-sans-serif, system-ui, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
   position: relative;
