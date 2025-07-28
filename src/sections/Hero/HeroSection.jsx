@@ -13,7 +13,7 @@ const HeroSection = () => {
   })
   return (
     <section className=''>
-      <section ref={container} className="relative h-[200vh]">
+      <section ref={container} className="relative h-[200svh]">
         <ContentFirst scrollYProgress={scrollYProgress}/>
         <ContentSecond scrollYProgress={scrollYProgress}/>
       </section>

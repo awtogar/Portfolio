@@ -6,7 +6,7 @@ import RoundedButton from "../../components/Button/RoundedButton/RoundedButton";
 const ContentFirst = ({ scrollYProgress }) => {
   // Transform values for parallax effects
   const ContainerFirst = useTransform(scrollYProgress, [0, 1], [0.6, -50]);
-  const opacity = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
+  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
   const scale = useTransform(scrollYProgress, [0, 1], [1, 0.8]);
 
   // Staggered animations for text elements
@@ -17,9 +17,9 @@ const ContentFirst = ({ scrollYProgress }) => {
     // hero section
     <motion.section
       className="sticky top-0 bg-canvas overflow-hidden"
-      style={{ ContainerFirst, opacity, scale }}
+      style={{ ContainerFirst, opacity }}
     >
-      <div className="flex flex-col w-full pt-28 padding-section-x gap-8 pb-10">
+      <div className="flex flex-col w-full pt-28 padding-section-x gap-8">
         <div className="m-auto w-full md:max-w-[480px] lg:max-w-[964px] xl:max-w-[1208px] flex flex-col gap-4">
           <div className="text-main text-mh100">
             <div className="payload-richtext">
@@ -39,13 +39,13 @@ const ContentFirst = ({ scrollYProgress }) => {
             </div>
           </div>
         </div>
-        <div className="flex w-full gap-8">
+        <div className="flex w-full gap-8 pb-12">
           <RoundedButton
             as="a"
             href="/get-in-touch"
             backgroundColor="#455CE9"
             textColor="#fff"
-            className="w-[60%] sm:w-auto px-8 py-2 group relative rounded-full flex items-center justify-center bg-main text-base font-medium"
+            className="w-[70%] flex-2/3 bg-primary sm:w-auto px-8 py-2 group relative rounded-full flex items-center justify-center text-base font-medium"
             style={{ minWidth: 0 }}
           >
             Get in touch
@@ -53,8 +53,9 @@ const ContentFirst = ({ scrollYProgress }) => {
           <RoundedButton
             as="a"
             href="/works"
+            backgroundColor="#fff"
             textColor="#0a0a0a"
-            className="w-[30%] flex-1 px-5 py-2 group relative rounded-full flex items-center justify-center text-base font-medium"
+            className="w-[30%] flex-1/3 bg-canvas border border-muted px-5 py-2 group relative rounded-full flex items-center justify-center text-base font-medium"
           >
             Works
           </RoundedButton>
@@ -71,16 +72,16 @@ const ContentSecond = ({ scrollYProgress }) => {
     offset: ["start end", "start start"],
   });
   const borderRadius = useTransform(cardScroll, [0, 1], ["3.5rem", "0rem"]);
-  const videoOutter = useTransform(scrollYProgress, [0, 1], [4, 82]);
+  const videoOutter = useTransform(scrollYProgress, [0, 1], [1, 48]);
 
-  const StickyCard = useTransform(scrollYProgress, [0, 0.5], ["0%", "100%"]);
+  const StickyCard = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
 
   return (
-    <section className="relative h-[calc(200svh-75svh)] bg-primary">
+    <section className="relative h-full bg-primary">
       {/* video */}
-      <div className="w-full flex flex-col items-center justify-center bg-canvas">
+      <div className="w-full h-full flex flex-col items-center justify-center bg-canvas">
         <motion.div
-          className="h-screen w-full flex items-center justify-center overflow-hidden md:h-[768px] max-h-max sticky top-4"
+          className="h-screen w-full flex items-center justify-center overflow-hidden md:h-[868px] max-h-max sticky top-12"
           style={{ y: videoOutter }}
         >
           <video
@@ -93,20 +94,11 @@ const ContentSecond = ({ scrollYProgress }) => {
           />
         </motion.div>
         {/*  card */}
-        <motion.div ref={cardRef} className="sticky top-0 min-h-screen bg-canvas rounded-t-[2.5rem] md:rounded-t-[3.5rem] w-full z-[1]" style={{
+        <motion.div ref={cardRef} className="sticky top-0 h-screen bg-accent-primary rounded-t-[2.5rem] md:rounded-t-[3.5rem] w-full z-[1]" style={{
             borderTopLeftRadius: borderRadius,
             borderTopRightRadius: borderRadius,
-            StickyCard,
+            displaySticky: StickyCard,
             transition: "border-radius 0.3s ease-in-out"}}>
-
-              <div className="flex flex-col padding-section-x">
-                <div className="sticky top pt-12">
-                  
-                <div className="text-mh100">
-                  <div className="payload-richtext"> What I do?//</div>
-                </div>
-                </div>
-              </div>
         </motion.div>
       </div>
     </section>
