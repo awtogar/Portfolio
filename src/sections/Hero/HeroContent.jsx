@@ -84,7 +84,7 @@ const ContentSecond = ({ scrollYProgress }) => {
           style={{ y: videoOutter }}
         >
           <video
-            src="/src/assets/videos/intro.webm"
+            src="/assets/videos/intro.webm"
             autoPlay
             loop
             muted
