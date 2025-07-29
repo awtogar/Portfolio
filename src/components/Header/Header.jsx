@@ -3,6 +3,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
 import Nav from "../Header/Nav/nav";
 import "./header.css";
+import Bounds from "../ui/Bounds/Bounds";
 
 const Header = ({ burgerRef, themeToggleRef, logoElement }) => {
   const [isActive, setIsActive] = useState(false);
@@ -17,7 +18,8 @@ const Header = ({ burgerRef, themeToggleRef, logoElement }) => {
 
   return (
     <div className="header-wrapper">
-      <div className="header pt-8 fixed flex w-full justify-between items-center mix-blend-difference z-[100]">
+      {/* 2. diatas cursor agar element gak ketutupan cursor */}
+      <div className="pt-8 fixed flex w-full justify-between items-center mix-blend-difference z-50">
         <div
           className="flex items-center text-gxr font-bold font-secondary tracking-tighter justify-center md:text-2xl antialiased px-4 h-[60px]"
           ref={logoElement}
@@ -57,18 +59,30 @@ const Header = ({ burgerRef, themeToggleRef, logoElement }) => {
                   size={24}
                 />
               </div>
-              <div className="bounds" ref={themeToggleRef}></div>
+              <Bounds ref={themeToggleRef} />
             </button>
           </motion.div>
           <div
-            className={`burger relative flex flex-col justify-center items-center h-[60px] w-[60px] gap-[0.2rem] md:w-[4.5rem] md:gap-2 md:pointer-events-none cursor-pointer  ${
+            className={`relative flex flex-col justify-center items-center h-[60px] w-[60px] gap-[0.2rem] md:w-[4.5rem] md:gap-2 md:pointer-events-none cursor-pointer  ${
               isActive ? "active" : ""
             }`}
             onClick={() => {
               setIsActive(!isActive);
             }}
           >
-            <motion.div ref={burgerRef} className="bounds" />
+            {/* Top line (::before replacement) */}
+            <div
+              className={`block w-11 h-[3px] bg-based mix-blend-difference transition-transform duration-300 ease-in-out origin-center
+            ${isActive ? "scale-x-50" : "scale-x-60"} md:w-[30px] md:h-[2px]
+            ${isActive ? "md:scale-x-100" : "md:scale-x-60"} dark:md:bg-main`}
+            />
+            {/* Bottom line (::after replacement) */}
+            <div
+              className={`block w-11 h-[3px] bg-based mix-blend-difference transition-transform duration-300 ease-in-out origin-center
+              ${isActive ? "scale-x-50" : "scale-x-60"} md:w-[30px] md:h-[2px]
+              ${isActive ? "md:scale-x-100" : "md:scale-x-60"} dark:md:bg-main`}
+            />
+            <Bounds ref={burgerRef} />
           </div>
         </div>
       </div>

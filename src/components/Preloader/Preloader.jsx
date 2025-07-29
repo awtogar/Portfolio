@@ -54,7 +54,8 @@ export default function Preloader() {
       variants={PreloaderSlideUp}
       initial="initial"
       exit="exit"
-      className="fixed inset-0 z-[101] flex items-center justify-center bg-main"
+      // 3. diatas header. agar bisa menutupi header ketika preloader aktif
+      className="fixed inset-0 z-[999] flex items-center justify-center bg-main"
       style={{ height: "100vh", width: "100vw" }}
     >
       {dimension.width > 0 && (

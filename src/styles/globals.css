@@ -65,9 +65,8 @@ html {
   --color-accent-secondary: var(--accent-secondary);
 
   --breakpoint-*: initial;
-  --breakpoint-sm: 40rem; /* 640px  → mobile */
-  --breakpoint-md: 48rem;   /* 768px  → tablet ke small laptop */
-  --breakpoint-lg: 64rem;   /* 1024px → laptop / desktop */
+  --breakpoint-md: 46rem;   /* 736px  → tablet ke small laptop */
+  --breakpoint-lg: 60rem;   /* 960px → laptop / desktop */
   --breakpoint-xl: 80rem;   /* 1280px → large screen / wide desktop */
-  --breakpoint-2xl: 96rem;  /* 1536px → ultra-wide / monitor gede */
+  --breakpoint-2xl: 90rem;  /* 1440px → ultra-wide / monitor gede */
 }

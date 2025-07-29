@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React, { useRef } from "react";
 import { useTransform, motion, useScroll } from "framer-motion";
-import RoundedButton from "../../components/Button/RoundedButton/RoundedButton";
+import RoundedButton from "../../components/ui/Button/RoundedButton/RoundedButton";
 
 const ContentFirst = ({ scrollYProgress }) => {
   // Transform values for parallax effects
