@@ -12,7 +12,7 @@ export default function LinkComponent({
 
   return (
     <motion.div
-      className="link"
+      className="relative flex items-center"
       onMouseEnter={() => {
         setSelectedIndicator(href);
       }}
@@ -25,7 +25,7 @@ export default function LinkComponent({
       <motion.div
         variants={scale}
         animate={isActive ? "open" : "closed"}
-        className="indicator"
+        className="absolute -left-6 w-2 h-2 top-1/2 -translate-y-1/2 bg-accent-secondary rounded-full transition-all duration-300 ease-in-out"
       ></motion.div>
       <Link to={href} onClick={closeMenu}>
         {title}

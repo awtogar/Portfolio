@@ -19,9 +19,11 @@
 
 /* Letter Spacing for Body -1% ~ 0% */
 /* Letter Spacing for Headings -3% ~ -5% its should depens on fonts*/
+span{
+font-size: inherit;
+}
 
 @theme{
-
   /* text-mh-* itu untuk heading */
   --text-*: initial;
   --text-mh100: 2.4rem;
