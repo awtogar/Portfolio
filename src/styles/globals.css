@@ -20,7 +20,7 @@ html {
     --surface: #fafafa;
 
     --main: #0b0a0a;
-    --muted: #494846;
+    --muted: hsl(60, 5%, 94%);
 
     --border: #83827c;
     --border-muted: #a09f9c;
@@ -37,7 +37,7 @@ html {
     --surface: #181716;
 
     --main: #f3f2f2;
-    --muted: #b2b1ae;
+    --muted: hsl(60, 3%, 8%);
 
     --border: #4a4945;
     --border-muted: #2f2e2d;
@@ -51,6 +51,7 @@ html {
 }
 @theme {
   --color-*: initial;
+  
   --color-canvas: var(--canvas);
   --color-based: var(--based);
   --color-surface: var(--surface);

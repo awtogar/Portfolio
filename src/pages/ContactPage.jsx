@@ -1,9 +1,13 @@
 // 🌀 Section for Contact
-import AnimatedButton from "../components/ui/CreativeButton/OverlayButton";
+import MotionButton from '../components/ui/CreativeButton/CreativeButtonPrimary';
+import SecondaryMotionButton from '../components/ui/CreativeButton/CreativeButtonSecondary';
 const ContactPage = () => {
-	return <section id="Contact" className="h-[200svh] justify-center items-center flex">
-		<AnimatedButton label="Contact" href="/contact" />
-	</section>
-}
+  return (
+    <section id="Contact" className="h-[200svh] justify-center items-center flex gap-[3rem]">
+      <MotionButton>Contact</MotionButton>
+      <SecondaryMotionButton>Secondary Action</SecondaryMotionButton>
+    </section>
+  );
+};
 
 export default ContactPage;
