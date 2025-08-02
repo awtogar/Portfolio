@@ -1,0 +1,50 @@
+.spacer {
+    height: 40px;
+}
+
+.marquee {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: #0f0f0f;
+    color: #fff;
+    padding: 30px 0;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.marquee_inner {
+    display: flex;
+    width: fit-content;
+    animation: scroll 20s linear infinite;
+}
+
+.marquee_part {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    padding: 0 20px;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.arrow {
+    margin-left: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.arrow img {
+    width: 24px;
+    height: 24px;
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
