@@ -1,9 +1,11 @@
 /* eslint-disable no-unused-vars */
 import React, { useRef } from 'react';
 import { useTransform, motion, useScroll } from 'framer-motion';
-import RoundedButton from '../../components/ui/CreativeButton/RoundedButton/RoundedButton';
+import RoundedButton from '../../components/ui/CreativeButton/RoundedButton';
+import PrimaryButton from '../../components/ui/CreativeButton/PrimaryButton'
+import SecondaryButton from '../../components/ui/CreativeButton/SecondaryButton'
 
-const ContentFirst = ({ scrollYProgress }) => {
+const FirstContainer = ({ scrollYProgress }) => {
   // Transform values for parallax effects
   const ContainerFirst = useTransform(scrollYProgress, [0, 1], [0.6, -50]);
   const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
@@ -34,31 +36,15 @@ const ContentFirst = ({ scrollYProgress }) => {
           </div>
         </div>
         <div className="flex w-full gap-8 pb-12">
-          <RoundedButton
-            as="a"
-            href="/get-in-touch"
-            textColor="var(--color-based)"
-            className="w-[70%] flex-2/3 bg-primary sm:w-auto px-8 py-2 group relative rounded-full flex items-center justify-center font-medium"
-            style={{ minWidth: 0 }}
-          >
-            Get in touch
-          </RoundedButton>
-          <RoundedButton
-            as="a"
-            href="/works"
-            backgroundColor="var(--color-accent-secondary)"
-            textColor="var(--color-main)"
-            className="w-[30%] flex-1/3 bg-canvas border border-muted px-5 py-2 group relative rounded-full flex items-center justify-center font-medium"
-          >
-            Works
-          </RoundedButton>
+          <PrimaryButton className='w-[70%]' href="/contact">Get in touch</PrimaryButton>
+          <SecondaryButton className='w-[30%]'>Works</SecondaryButton>
         </div>
       </div>
     </motion.section>
   );
 };
 
-const ContentSecond = ({ scrollYProgress }) => {
+const SecondContainer = ({ scrollYProgress }) => {
   const cardRef = useRef(null);
   const { scrollYProgress: cardScroll } = useScroll({
     target: cardRef,
@@ -92,4 +78,4 @@ const ContentSecond = ({ scrollYProgress }) => {
   );
 };
 
-export { ContentFirst, ContentSecond };
+export { FirstContainer, SecondContainer };

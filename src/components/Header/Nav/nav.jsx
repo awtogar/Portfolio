@@ -61,7 +61,7 @@ export default function Nav({ closeMenu }) {
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         transition={{ duration: 0.3 }}
-        className="fixed inset-0 bg-main/30 dark:bg-canvas/30 md:bg-main/30 md:dark:bg-canvas/30 z-10"
+        className="fixed inset-0 bg-main/30 dark:bg-canvas/30 md:bg-main/30 md:dark:bg-canvas/30 z-[48]"
         onClick={closeMenu}
       />
       <motion.div
@@ -70,7 +70,7 @@ export default function Nav({ closeMenu }) {
         animate="enter"
         exit="exit"
         className="
-          !h-[100svh] w-[100svw] bg-main fixed right-0 top-0 text-canvas z-10 md:w-[45svw]"
+          !h-[100svh] w-[100svw] bg-main fixed right-0 top-0 text-canvas z-[49] md:w-[45svw]"
       >
         <div
           className="
@@ -98,7 +98,7 @@ export default function Nav({ closeMenu }) {
 
               {/* Theme toggle button */}
               <div
-                className="flex items-center justify-center text-[1rem] group cursor-pointer dark:text-main"
+                className="md:hidden flex items-center justify-center text-[1rem] group cursor-pointer dark:text-main"
                 onClick={handleToggleTheme}
                 aria-label="Toggle dark mode"
               >

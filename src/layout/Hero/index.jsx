@@ -1,11 +1,11 @@
 import { useRef } from 'react';
 import { useScroll } from 'framer-motion';
-import {ContentFirst, ContentSecond} from './HeroContent';
+import {FirstContainer, SecondContainer} from './Content';
 // import { section } from 'framer-motion/client';
 
 
 
-const HeroSection = () => {
+const Hero = () => {
   const container = useRef();
   const { scrollYProgress } = useScroll({
     target: container,
@@ -14,11 +14,11 @@ const HeroSection = () => {
   return (
     <section className='Section_Hero'>
       <section ref={container} className="relative h-[200svh]">
-        <ContentFirst scrollYProgress={scrollYProgress}/>
-        <ContentSecond scrollYProgress={scrollYProgress}/>
+        <FirstContainer scrollYProgress={scrollYProgress}/>
+        <SecondContainer scrollYProgress={scrollYProgress}/>
       </section>
     </section>
   )
 }
 
-export default HeroSection
+export default Hero

@@ -20,7 +20,7 @@ const Header = ({ burgerRef, themeToggleRef, logoElement }) => {
   return (
     <div className="header-wrapper">
       {/* 2. diatas cursor agar element gak ketutupan cursor */}
-      <div className="pt-8 fixed flex w-full justify-between items-center mix-blend-difference z-50">
+      <div className="pt-8 fixed flex w-full justify-between items-center mix-blend-difference z-[50]">
 
 
         <Magnetic>
