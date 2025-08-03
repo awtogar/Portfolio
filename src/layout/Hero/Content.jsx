@@ -1,7 +1,11 @@
 /* eslint-disable no-unused-vars */
 import React, { useRef } from 'react';
 import { useTransform, motion, useScroll } from 'framer-motion';
-import RoundedButton from '../../components/ui/CreativeButton/RoundedButton';
+import Picture1 from '../../assets/images/img-1.jpg'
+import Picture2 from '../../assets/images/img-2.jpg'
+import Picture3 from '../../assets/images/img-3.jpg'
+import Slide from '../Hero/Slides/page'
+
 import PrimaryButton from '../../components/ui/CreativeButton/PrimaryButton'
 import SecondaryButton from '../../components/ui/CreativeButton/SecondaryButton'
 
@@ -68,9 +72,15 @@ const SecondContainer = ({ scrollYProgress }) => {
           className="sticky top-0 h-screen bg-primary rounded-t-[2.5rem] md:rounded-t-[3.5rem] w-full z-[1]"
           style={{ borderTopLeftRadius: borderRadius, borderTopRightRadius: borderRadius, displaySticky: StickyCard, transition: 'border-radius 0.3s ease-in-out' }}
         >
-          {/* content harus as chield card! */}
-          <div className="h-full text-based">
-            <h2>test ajah sih</h2>
+          {/* content harus as chield cardREF! */}
+          <div className="overflow-hidden">
+          {/* TODO: ADD PARALLAX EFFECT */}
+            <div className="h-[100svh]">
+                <Slide src={Picture1} left={"-40%"}/>
+                <Slide src={Picture2} left={"-25%"}/>
+                <Slide src={Picture3} left={"-75%"}/>
+
+            </div>
           </div>
         </motion.div>
       </div>

@@ -5,7 +5,6 @@ const HomePage = () => {
   return (
     <section id="home" className="home-wrapper bg-canvas">
       <Hero />
-      {/* LANJUTAN NANTI */}
     </section>
   )
 }

@@ -1,9 +1,7 @@
 import Lenis from "lenis"
 import { useEffect, useRef, createContext, useContext } from "react"
 
-// share Lenis instance
 const LenisContext = createContext()
-
 export const useLenis = () => {
     const context = useContext(LenisContext)
     if (!context) {
