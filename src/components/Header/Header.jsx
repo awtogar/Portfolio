@@ -32,7 +32,7 @@ const Header = ({ burgerRef, themeToggleRef, logoElement }) => {
 
 
         {/* button and hamburger */}
-        <div className="flex items-center px-4 h-[60px]">
+        <div className="flex items-center h-[60px]">
           <motion.div
             className="toggle hidden md:flex text-canvas dark:text-main relative h-[60px] items-center justify-center"
             animate={{
@@ -64,7 +64,7 @@ const Header = ({ burgerRef, themeToggleRef, logoElement }) => {
 
           </motion.div>
           <Magnetic>
-            <div className={`relative flex flex-col justify-center items-center h-[60px] w-[60px] gap-[0.2rem] md:w-[4.5rem] md:gap-2 md:pointer-events-none cursor-pointer  ${isActive ? 'active' : ''}`} onClick={() => { setIsActive(!isActive) }}>
+            <div className={`px-4 relative flex flex-col justify-center items-center h-[60px] w-[60px] gap-[0.2rem] md:w-[4.5rem] md:gap-2 md:pointer-events-none cursor-pointer  ${isActive ? 'active' : ''}`} onClick={() => { setIsActive(!isActive) }}>
             {/* Top line (::before replacement) */}
               <div
               className={`block w-11 h-[3px] bg-based mix-blend-difference transition-transform duration-300 ease-in-out origin-center
