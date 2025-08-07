@@ -6,7 +6,8 @@
 	"scripts": {
 		"dev": "vite",
 		"build": "vite build",
-		"preview": "vite preview"
+		"preview": "vite preview",
+		"clean": "rm -rf node_modules .vite package-lock.json && npm cache clean --force"
 	},
 	"dependencies": {
 		"@remixicon/react": "^4.6.0",
