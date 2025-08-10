@@ -61,7 +61,7 @@ export default function Nav({ closeMenu }) {
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         transition={{ duration: 0.3 }}
-        className="fixed inset-0 bg-main/30 dark:bg-canvas/30 md:bg-main/30 md:dark:bg-canvas/30 z-[48]"
+        className="fixed inset-0 bg-primary/35 dark:bg-neutral-100/35 z-[48]"
         onClick={closeMenu}
       />
       <motion.div
@@ -70,12 +70,11 @@ export default function Nav({ closeMenu }) {
         animate="enter"
         exit="exit"
         className="
-          !h-[100svh] w-[100svw] bg-main fixed right-0 top-0 text-canvas z-[49] md:w-[45svw]"
+          !h-[100svh] w-[100svw] bg-primary fixed right-0 top-0 text-neutral-500 z-[49] md:w-[45svw]"
       >
         <div
           className="
           box-border !h-full pl-16 pr-6 pt-16 pb-12 flex flex-col justify-between
-          lg:p-[100px] lg:pl-[140px]
         "
         >
           <div
@@ -87,26 +86,26 @@ export default function Nav({ closeMenu }) {
               lg:text-[56px] lg:gap-3 lg:mt-20
             "
           >
-            <div className="flex items-center w-full">
+            <div className="flex items-center w-full md:block">
               {/* Theme label */}
-              <div className="text-based uppercase text-[0.6rem] border-b border-based">
+              <div className="text-neutral-100 uppercase text-[0.6rem] border-b border-neutral-100">
                 <p>Theme</p>
               </div>
 
               {/* Connecting line that fills available space */}
-              <div className="flex-1 border-b border-based mx-4"></div>
+              <div className="flex-1 border-b border-neutral-100 mx-4 md:hidden"></div>
 
               {/* Theme toggle button */}
               <div
-                className="md:hidden flex items-center justify-center text-[1rem] group cursor-pointer dark:text-main"
+                className="md:hidden flex items-center justify-center text-[1rem] group cursor-pointer dark:text-neutral-500"
                 onClick={handleToggleTheme}
                 aria-label="Toggle dark mode"
               >
-                <div className="relative border-b border-based">
-                  <div className="inline dark:hidden transition-transform duration-300 ease-in-out text-based uppercase text-[0.6rem]">
+                <div className="relative border-b border-neutral-100">
+                  <div className="inline dark:hidden transition-transform duration-300 ease-in-out text-neutral-500 uppercase text-[0.6rem]">
                     <span>[ dark ]</span>
                   </div>
-                  <div className="hidden dark:inline transition-transform duration-300 ease-in-out text-based uppercase text-[0.6rem]">
+                  <div className="hidden dark:inline transition-transform duration-300 ease-in-out text-neutral-500 uppercase text-[0.6rem]">
                     <span>[ light ]</span>
                   </div>
                 </div>
@@ -127,13 +126,13 @@ export default function Nav({ closeMenu }) {
           <div
             className="
             flex w-full justify-between text-[0.6rem] gap-[0.6rem] flex-wrap
-            lg:text-xs lg:gap-10
+            lg:text-xs lg:gap-10 md:justify-between md:flex-nowrap
           "
           >
-            <a>Awwwards</a>
             <a>Instagram</a>
             <a>Dribble</a>
             <a>LinkedIn</a>
+            <a>Github</a>
           </div>
         </div>
         <Curve />

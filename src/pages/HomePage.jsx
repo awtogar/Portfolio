@@ -1,12 +1,11 @@
-import Hero from "../layout/Hero";
-
 
 const HomePage = () => {
   return (
-    <section id="home" className="home-wrapper bg-canvas">
-      <Hero />
-      {/* next i  will added new section */}
+    <>
+    <section className="bg-neutral-100 h-screen">
+      <h1>test dulu coba</h1>
     </section>
+    </>
   )
 }
 

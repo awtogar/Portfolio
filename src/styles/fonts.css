@@ -66,10 +66,6 @@ font-size: inherit;
   --text-p100--font-weight: 300;
   --text-p100--text-transform: none;
   --text-p100--letter-spacing: 0.02em;
-
-  /* logo size */
-  --text-gxr: 1.6rem;
-
 }
 
 @media (min-width: 48rem) {

@@ -93,7 +93,7 @@
     pointer-events: all;
 } */
 
-.theme-icon {
+/* .theme-icon {
     transition: transform 0.3s ease-in-out;
 }
 
@@ -121,7 +121,7 @@
 .dark .burger::before,
 .dark .burger::after {
     background-color: var(--color-main);
-}
+} */
 
 /* .bounds:hover{
     transform: scale(3);
@@ -157,7 +157,7 @@
         height: 10px;
         left: -30px;
     } */
-}
+/* } */
 /* 
 @media screen and (min-width: 1024px) {
     .menu {

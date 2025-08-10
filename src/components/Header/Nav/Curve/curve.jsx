@@ -38,7 +38,7 @@ export default function Curve() {
 
 
   return (
-    <svg className="svgCurve absolute top-0 left-[-99px] w-[100px] h-full fill-main stroke-none">
+    <svg className="svgCurve absolute top-0 left-[-99px] w-[100px] h-full fill-primary stroke-none">
         <motion.path variants={curve} initial="initial" animate="enter" exit="exit"></motion.path>
     </svg>
   )

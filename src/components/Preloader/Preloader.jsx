@@ -4,10 +4,10 @@ import {PreloaderFade, PreloaderSlideUp} from "../anim";
 
 const TheWords = [
   "Tell None",
-  "Your Skills",
   "But",
+  // "Your Skills",
   "Show Them",
-  "Your Quality.",
+  "Your Quality",
 ];
 
 export default function Preloader() {
@@ -55,7 +55,7 @@ export default function Preloader() {
       initial="initial"
       exit="exit"
       // 3. diatas header. agar bisa menutupi header ketika preloader aktif
-      className="fixed inset-0 z-[999] flex items-center justify-center bg-main"
+      className="fixed inset-0 z-[999] flex items-center justify-center bg-primary"
       style={{ height: "100vh", width: "100vw" }}
     >
       {dimension.width > 0 && (
@@ -64,7 +64,7 @@ export default function Preloader() {
             variants={PreloaderFade}
             initial="initial"
             animate="enter"
-            className="flex items-center text-surface absolute z-10"
+            className="flex items-center text-brand-primary absolute z-10"
           >
             {/* <span className="block w-2.5 h-2.5 rounded-full mr-2 bg-based"></span> */}
             {TheWords[index]}
@@ -77,7 +77,7 @@ export default function Preloader() {
               variants={curve}
               initial="initial"
               exit="exit"
-              className={"fill-main"}
+              className={"fill-primary"}
             />
           </svg>
         </>

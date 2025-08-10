@@ -24,8 +24,8 @@ const Header = ({ burgerRef, themeToggleRef, logoElement }) => {
 
 
         <Magnetic>
-          <div className="flex items-center text-gxr font-bold font-secondary tracking-tighter justify-center md:text-2xl antialiased px-4 h-[60px]">
-          <a href="/" className="relative text-canvas dark:text-main cursor-pointer">Gxr.</a>
+          <div className="flex items-center font-bold font-secondary tracking-tighter justify-center md:text-2xl antialiased px-4 h-[60px]">
+          <a href="/" className="relative text-neutral-100 dark:text-primary cursor-pointer">Gxr.</a>
           <Bounds ref={logoElement} />
           </div>
         </Magnetic>
@@ -34,7 +34,7 @@ const Header = ({ burgerRef, themeToggleRef, logoElement }) => {
         {/* button and hamburger */}
         <div className="flex items-center h-[60px]">
           <motion.div
-            className="toggle hidden md:flex text-canvas dark:text-main relative h-[60px] items-center justify-center"
+            className="toggle hidden md:flex text-neutral-100 dark:text-primary relative h-[60px] items-center justify-center"
             animate={{
               opacity: isActive ? 0 : 1,
               pointerEvents: isActive ? 'none' : 'auto',
@@ -67,15 +67,15 @@ const Header = ({ burgerRef, themeToggleRef, logoElement }) => {
             <div className={`px-4 relative flex flex-col justify-center items-center h-[60px] w-[60px] gap-[0.2rem] md:w-[4.5rem] md:gap-2 md:pointer-events-none cursor-pointer  ${isActive ? 'active' : ''}`} onClick={() => { setIsActive(!isActive) }}>
             {/* Top line (::before replacement) */}
               <div
-              className={`block w-11 h-[3px] bg-based mix-blend-difference transition-transform duration-300 ease-in-out origin-center
+              className={`block w-11 h-[3px] bg-neutral-100 mix-blend-difference transition-transform duration-300 ease-in-out origin-center
             ${isActive ? 'scale-x-50' : 'scale-x-60'} md:w-[30px] md:h-[2px]
-            ${isActive ? 'md:scale-x-100' : 'md:scale-x-60'} dark:bg-main`}
+            ${isActive ? 'md:scale-x-100' : 'md:scale-x-60'} dark:bg-primary`}
             />
             {/* Bottom line (::after replacement) */}
             <div
-              className={`block w-11 h-[3px] bg-based mix-blend-difference transition-transform duration-300 ease-in-out origin-center
+              className={`block w-11 h-[3px] bg-neutral-100 mix-blend-difference transition-transform duration-300 ease-in-out origin-center
               ${isActive ? 'scale-x-50' : 'scale-x-60'} md:w-[30px] md:h-[2px]
-              ${isActive ? 'md:scale-x-100' : 'md:scale-x-60'} dark:bg-main`}
+              ${isActive ? 'md:scale-x-100' : 'md:scale-x-60'} dark:bg-primary`}
             />
             <Bounds ref={burgerRef} />
           </div>
