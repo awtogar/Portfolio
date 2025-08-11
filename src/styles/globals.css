@@ -13,21 +13,22 @@ html {
 }
 @layer base {
   body {
-    font-family: 'Switzer', Arial, sans-serif;
+    font-family: Arial, sans-serif;
+    background-color: var(--color-neutral-100);
+    color: var(--color-primary);
 }
 
   :root {
+    --sans: 'Switzer', Arial, sans-serif;
     --neutral-100: #F5F5F5;
     --neutral-200: #F8F8F8;
     --neutral-300: #FAFAFA;
     --neutral-400: #FDFDFD;
     --neutral-500: #FFFFFF;
-
     --primary: #0C0C09;
     --primary-muted: #21211C;
     --secondary: #FAFAFA;
     --secondary-muted: #F0F0F0;
-
     --brand-primary: #F2F2D9;
     --brand-secondary: #4274C8;
     --brand-tertiary: #FFD147;
@@ -38,12 +39,10 @@ html {
     --neutral-300: #282828;
     --neutral-400: #323232;
     --neutral-500: #3D3D3D;
-
     --primary: #FAFAFA;
     --primary-muted: #F0F0F0;
     --secondary: #26240D;
     --secondary-muted: #1D1C16;
-
     --brand-primary: #F2F2D9;
     --brand-secondary: #5EA3ED;
     --brand-tertiary: #FFDE7A;
@@ -51,6 +50,7 @@ html {
 }
 @theme {
   --color-*: initial;
+  --font-sans: var(--sans);
   --color-neutral-100: var(--neutral-100);
   --color-neutral-200: var(--neutral-200);
   --color-neutral-300: var(--neutral-300);

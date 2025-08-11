@@ -13,67 +13,9 @@
   font-style: italic;
   font-display: swap;
 }
-pb
+
 /* Line height for Headings 85% ~ 100% */
 /* Line height for Body 120% ~ 150% */
 
 /* Letter Spacing for Body -1% ~ 0% */
 /* Letter Spacing for Headings -3% ~ -5% its should depens on fonts*/
-span{
-font-size: inherit;
-}
-
-@theme{
-  /* text-mh-* itu untuk heading */
-  --text-*: initial;
-  --text-mh100: 2.4rem;
-  --text-mh100--font-weight: 300;
-  --text-mh100--text-transform: none;
-  --text-mh100--letter-spacing: -3.75%;
-  --text-mh100--line-height: 100%;
-  
-  --text-mh200: 2.25rem;
-  --text-mh200--font-weight: 300;
-  --text-mh200--text-transform: none;
-  --text-mh200--letter-spacing:-3.75%; /*nanti diganti*/
-  --text-mh200--line-height: 1.25;
-
-  --text-mh300: 2rem;
-  --text-mh300--font-weight: 300;
-  --text-mh300--text-transform: none;
-  --text-mh300--letter-spacing: -3.75%; /*nanti diganti*/
-  --text-mh300--line-height: 1.25;
-
-  --text-mh400: 1.625rem;
-  --text-mh400--font-weight: 300;
-  --text-mh400--text-transform: none;
-  --text-mh400--letter-spacing: -3.75%; /*nanti diganti*/
-  --text-mh400--line-height: 1.12;
-
-  --text-mh500: 1.125rem;
-  --text-mh500--font-weight: 300;
-  --text-mh500--text-transform: none;
-  --text-mh500--letter-spacing: -3.75%; /*nanti diganti*/
-  --text-mh500--line-height: 1.25;
-
-  --text-mh600: 1rem;
-  --text-mh600--font-weight: 300;
-  --text-mh600--text-transform: none;
-  --text-mh600--letter-spacing: -3.75%; /*nanti diganti*/
-  --text-mh600--line-height: 1.25;
-
-  --text-p100: 1.2rem;
-  --text-p100--font-weight: 300;
-  --text-p100--text-transform: none;
-  --text-p100--letter-spacing: 0.02em;
-}
-
-@media (min-width: 48rem) {
-  html{
-    font-size: 16px;
-  }
-  :root {
-  --text-p100: 1rem;
-  --text-mh100: 5.25rem;
-  }
-}
