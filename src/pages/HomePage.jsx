@@ -2,6 +2,7 @@ const HomePage = () => {
   return (
     <>
       <section className="z-10 bg-neutral-100 padding-section-x gap-8 pb-8 pt-[164px]">
+        <div className="m-auto w-full">
         <div className="flex flex-col ">
           <div className="flex flex-col gap-2">
             <div className="text-[36px] leading-[116%] tracking-[2%] text-primary font-sans font-[400]">
@@ -11,7 +12,7 @@ const HomePage = () => {
               <p>I’m a multidisciplinary of the design and development — learning through by doing.</p>
             </div>
           </div>
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-4 mt-4">
             <div className="flex-1">
               <a href="/contact" className="block w-full px-6 py-3 bg-primary text-neutral-100 rounded-full text-center">
                 Get in touch
@@ -24,8 +25,9 @@ const HomePage = () => {
             </div>
           </div>
         </div>
+        </div>
       </section>
-      <section className="z-10 bg-neutral-100 padding-section-y">
+      <section className="z-10 bg-neutral-100">
         <div className="h-[468px]  overflow-hidden">
           <video autoPlay muted loop playsInline preload="auto" className="w-full h-full object-cover" src="../assets/videos/intro.webm" />
         </div>
