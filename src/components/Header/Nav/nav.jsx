@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react'
-import { motion } from 'framer-motion'
-import { useLocation } from 'react-router-dom'
-import { menuSlide } from '../../anim'
-import Link from './Link/link'
-import Curve from './Curve/curve'
-import { useLenis } from '../../Scroller/SmoothScrollLenis'
-import { RiSunLine, RiMoonLine } from '@remixicon/react'
+import React, { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
+import { useLocation } from 'react-router-dom';
+import { menuSlide } from '../../anim';
+import Link from './Link/link';
+import Curve from './Curve/curve';
+import { useLenis } from '../../Scroller/SmoothScrollLenis';
+import { RiSunLine, RiMoonLine } from '@remixicon/react';
 
 const navItems = [
   {
@@ -24,35 +24,38 @@ const navItems = [
     title: 'Contact',
     href: '/contact',
   },
-]
+];
 
 export default function Nav({ closeMenu }) {
-  const location = useLocation()
-  const pathname = location.pathname
-  const [selectedIndicator, setSelectedIndicator] = useState(pathname)
-  const { stopScroll, startScroll } = useLenis()
+  const location = useLocation();
+  const pathname = location.pathname;
+  const [selectedIndicator, setSelectedIndicator] = useState(pathname);
+  const { stopScroll, startScroll } = useLenis();
+  
   const handleToggleTheme = () => {
-    document.documentElement.classList.toggle('dark')
-  }
+    const isDark = document.documentElement.classList.toggle('dark');
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+  };
 
-  // Close menu with Escape key
   useEffect(() => {
     const handleKeyDown = event => {
       if (event.key === 'Escape') {
-        closeMenu()
+        closeMenu();
       }
-    }
-    document.addEventListener('keydown', handleKeyDown)
-
+    };
+    document.addEventListener('keydown', handleKeyDown);
+    
     // Stop Lenis scrolling when menu is open
-    stopScroll()
+    stopScroll();
 
     return () => {
-      document.removeEventListener('keydown', handleKeyDown)
+      document.removeEventListener('keydown', handleKeyDown);
       // Resume Lenis scrolling when menu closes
-      startScroll()
-    }
-  }, [closeMenu, stopScroll, startScroll])
+      startScroll();
+    };
+  }, [closeMenu, stopScroll, startScroll]
+  
+);
 
   return (
     <>
@@ -79,7 +82,7 @@ export default function Nav({ closeMenu }) {
         >
           <div
             onMouseLeave={() => {
-              setSelectedIndicator(pathname)
+              setSelectedIndicator(pathname);
             }}
             className="
               flex flex-col text-[4rem] gap-2 mt-18
@@ -87,15 +90,12 @@ export default function Nav({ closeMenu }) {
             "
           >
             <div className="flex items-center w-full md:block">
-              {/* Theme label */}
               <div className="text-neutral-100 uppercase text-[0.6rem] border-b border-neutral-100">
                 <p>Theme</p>
               </div>
 
-              {/* Connecting line that fills available space */}
               <div className="flex-1 border-b border-neutral-100 mx-4 md:hidden"></div>
 
-              {/* Theme toggle button */}
               <div
                 className="md:hidden flex items-center justify-center text-[1rem] group cursor-pointer dark:text-neutral-500"
                 onClick={handleToggleTheme}
@@ -112,15 +112,7 @@ export default function Nav({ closeMenu }) {
               </div>
             </div>
             {navItems.map((data, index) => {
-              return (
-                <Link
-                  key={index}
-                  data={{ ...data, index }}
-                  isActive={selectedIndicator == data.href}
-                  setSelectedIndicator={setSelectedIndicator}
-                  closeMenu={closeMenu}
-                />
-              )
+              return <Link key={index} data={{ ...data, index }} isActive={selectedIndicator == data.href} setSelectedIndicator={setSelectedIndicator} closeMenu={closeMenu} />;
             })}
           </div>
           <div
@@ -138,5 +130,5 @@ export default function Nav({ closeMenu }) {
         <Curve />
       </motion.div>
     </>
-  )
+  );
 }
