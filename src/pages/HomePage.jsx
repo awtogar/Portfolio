@@ -43,7 +43,7 @@ const HomePage = () => {
             muted 
             playsInline 
             className="w-full h-full object-cover" 
-            preload="auto"
+            preload="none"
           >
             <source src={video1} type="video/mp4" />
             Your browser does not support the video tag.
@@ -59,7 +59,7 @@ const HomePage = () => {
               muted 
               playsInline 
               className="w-full h-full object-cover" 
-              preload="auto"
+              preload="none"
             >
               <source src={video2} type="video/mp4" />
               Your browser does not support the video tag.
