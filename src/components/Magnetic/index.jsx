@@ -10,7 +10,7 @@ export default function Magnetic({ children }) {
     // pake md:breakpoint value
     const checkMobile = () => {
       setIsMobile(window.innerWidth < 736);
-      console.log('magnetic is', window.innerWidth < 736 ? 'disabled' : 'enabled');
+      // console.log('magnetic is', window.innerWidth < 736 ? 'disabled' : 'enabled');
     };
     checkMobile();
     window.addEventListener('resize', checkMobile);
@@ -54,8 +54,7 @@ export default function Magnetic({ children }) {
   }, [isMobile]);
 
   if (React.Children.count(children) !== 1) {
-    // mastiin cuman satu element sebagai child. ntr di hapus kalo udh production
-    console.warn('Magnetic expects a single React element as its child.');
+    // console.warn('Magnetic expects a single React element as its child.');
     return null;
   }
 
