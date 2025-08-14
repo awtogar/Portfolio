@@ -73,7 +73,7 @@ export default function Nav({ closeMenu }) {
         animate="enter"
         exit="exit"
         className="
-          !h-[100svh] w-[100svw] bg-primary fixed right-0 top-0 text-neutral-500 z-[49] md:w-[45svw]"
+          !h-[100dvh] w-[100svw] bg-primary fixed right-0 top-0 text-neutral-500 z-[49] md:w-[45svw]"
       >
         <div
           className="
