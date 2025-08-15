@@ -13,7 +13,7 @@ html {
 }
 @layer base {
   body {
-    font-family: Arial, sans-serif;
+    font-family: var(--font-sans);
     background-color: var(--color-neutral-100);
     color: var(--color-primary);
 }
@@ -69,3 +69,4 @@ html {
   --breakpoint-xl: 80rem;   /* 1280px → large screen / wide desktop */
   --breakpoint-2xl: 90rem;  /* 1440px → ultra-wide / monitor gede */
 }
+
