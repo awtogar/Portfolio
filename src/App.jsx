@@ -20,6 +20,7 @@ const App = () => {
       document.body.style.cursor = 'default';
       window.scrollTo(0, 0);
     }, 2000); 
+    // },); 
     return () => clearTimeout(timer);
   }, []);
 

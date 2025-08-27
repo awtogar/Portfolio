@@ -1,36 +1,53 @@
-export const works = [
+import { Features } from "tailwindcss";
+
+export const services = [
   {
- id: 1,
+    id: 1,
     number: '01',
-    title: 'Graphic',
-    description: 'A website developed to captivate and convert can elevate your brand to new heights. My custom-coded sites are meticulously crafted to reflect your unique identity, delivering seamless experiences with a focus on animation—keeping your audience engaged and returning.',
-    services: [
-      { number: '01', name: 'CMS Integration' },
-      { number: '02', name: 'Motion & Animations' },
-      { number: '03', name: '3D Development' },
-      { number: '04', name: 'Web implementation' }
-    ]
+    title: 'Graphic Design',
+    description:
+      'Focused on graphics that work in streetwear and product-focused brands.',
+    features: [
+      { number: '01', name: 'T-Shirt Design' },
+      { number: '02', name: 'Merch & Apparel Design' },
+      { number: '03', name: 'Product Mockups' },
+      { number: '04', name: 'Brand Visual Assets' }
+    ],
+    tags: ['Graphics', 'Branding']
   },
   {
     id: 2,
     number: '02',
-    title: 'Animation',
-    description: 'Amplify your online presence with a website that truly connects with your audience\'s feelings and desires. I design stunning, high-converting sites that align with your business goals, helping you stand out and scale effectively.',
-    services: [
-      { number: '01', name: 'Responsive Design' },
-      { number: '02', name: 'Wireframing' },
-      { number: '03', name: 'UX Writing' }
-    ]
+    title: 'Web Development',
+    description:
+      'Crafting responsive and user-friendly websites that align with your brand identity. I focus on clean code, smooth interaction, and visually striking interfaces to help your business stand out online.',
+    features: [
+      { number: '01', name: 'Responsive Website Development' },
+      { number: '02', name: 'UI/UX Implementation' },
+      { number: '03', name: 'Portfolio & Business Sites' },
+      { number: '04', name: 'Basic CMS Integration' }
+    ],
+    tags: ['UI/UX', 'Web Development']
   },
   {
     id: 3,
     number: '03',
-    title: 'Development',
-    description: 'Your website deserves to be seen. I optimize your online presence to elevate your visibility in search results, helping your business attract the right audience and stand out in the digital landscape.',
-    services: [
-      { number: '01', name: 'Technical SEO' },
-      { number: '02', name: 'On-Page Optimization' },
-      { number: '03', name: 'SEO Audits & Analysis' }
-    ]
+    title: 'Motion & Animation',
+    description:
+      'Adding life to visuals with motion. I create simple yet engaging animations that enhance your designs or websites, making your content more dynamic and memorable.',
+    features: [
+      { number: '01', name: 'Logo Animation' },
+      { number: '02', name: 'UI Micro-Interactions' },
+      { number: '03', name: 'Animated Visuals for Social Media' }
+    ],
+    tags: ['Graphics', 'Motion']
   }
+];
+
+export const allTags = [
+  { id: 1, name: 'Graphics' },
+  { id: 2, name: 'Branding' },
+  { id: 3, name: 'Motion' },
+  { id: 4, name: 'UI/UX' },
+  { id: 5, name: 'Web Development' }
 ];
