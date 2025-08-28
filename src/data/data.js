@@ -6,7 +6,7 @@ export const services = [
     number: '01',
     title: 'Graphic Design',
     description:
-      'Focused on graphics that work in streetwear and product-focused brands.',
+      'Focused on graphics that work in streetwear and product merchandise for brands.',
     features: [
       { number: '01', name: 'T-Shirt Design' },
       { number: '02', name: 'Merch & Apparel Design' },
@@ -20,7 +20,7 @@ export const services = [
     number: '02',
     title: 'Web Development',
     description:
-      'Crafting responsive and user-friendly websites that align with your brand identity. I focus on clean code, smooth interaction, and visually striking interfaces to help your business stand out online.',
+      'Crafting websites that align with your brand identity to help your business stand out online.',
     features: [
       { number: '01', name: 'Responsive Website Development' },
       { number: '02', name: 'UI/UX Implementation' },
@@ -34,11 +34,24 @@ export const services = [
     number: '03',
     title: 'Motion & Animation',
     description:
-      'Adding life to visuals with motion. I create simple yet engaging animations that enhance your designs or websites, making your content more dynamic and memorable.',
+      'Adding animations to bring your visuals more life that enhance your designs or websites.',
     features: [
       { number: '01', name: 'Logo Animation' },
       { number: '02', name: 'UI Micro-Interactions' },
       { number: '03', name: 'Animated Visuals for Social Media' }
+    ],
+    tags: ['Graphics', 'Motion']
+  },
+  {
+    id: 4,
+    number: '04',
+    title: 'EXAMPLE NEXT SERVICE',
+    description:
+      'lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et.',
+    features: [
+      { number: '01', name: 'first' },
+      { number: '02', name: 'second' },
+      { number: '03', name: 'third' }
     ],
     tags: ['Graphics', 'Motion']
   }

@@ -1,5 +1,5 @@
 import { useRef } from 'react';
-import { allTags,services } from '../data/data';
+import { allTags, services } from '../data/data';
 import useVideoInView from '../hooks/useVideoInView';
 import video1 from '/src/assets/videos/video-1.mp4';
 import video2 from '/src/assets/videos/video-2.mp4';
@@ -65,7 +65,9 @@ const HomePage = () => {
               </div>
               <div className="flex flex-wrap gap-2">
                 {allTags.map((allTags, index) => (
-                  <div key={index} className="border-brand-secondary border text-primary px-3 py-1 rounded-full text-sm">{allTags.name}</div>
+                  <div key={index} className="border-brand-secondary border text-primary px-3 py-1 rounded-full text-sm">
+                    {allTags.name}
+                  </div>
                 ))}
               </div>
             </div>
@@ -76,7 +78,10 @@ const HomePage = () => {
         <div className="m-auto w-full">
           {/* header */}
           <div className="flex w-full flex-col">
-              <h2 className='text-brand-primary text-3xl'>HOW I CAN <br />HELP YOU/</h2>
+            <h2 className="text-brand-primary text-3xl">
+              HOW I CAN <br />
+              HELP YOU/
+            </h2>
             <div className="text-base text-brand-primary/80">
               <div className="flex flex-col">
                 <span>(SERVICES)</span>
@@ -86,31 +91,35 @@ const HomePage = () => {
           </div>
           <div className="w-full pt-space-lg">
             <div className="mt-12 gap-y-16 flex flex-col justify-between text-brand-primary">
-            {services.map((service, index) => {
-              const topValue = `calc(20vh + ${index * 5.75}em)`;
-              const marginBottomValue = `${17.25 - index * 5.75}em`;
-              
-              return (
-                <div key={index} className='sticky top-0 border-t border-t-brand-primary/40 bg-primary' style={{top: topValue, marginBottom: marginBottomValue }}>
-                  {/* card header */}
-                  <div className='flex items-center justify-start text-left font-semibold text-brand-primary gap-2 '>
-                    <span>({service.number})</span>
-                    <h3 className='text-2xl'>{service.title}</h3>
-                  </div>
-                  <div className="">
-                    <p>{service.description}</p>
-                    <div className="">
-                      {service.features.map((feature, featureIndex) => (
-                        <div key={featureIndex} className='flex items-center gap-2 mt-4'>
-                          <span className='font-mono text-sm text-brand-secondary'>({feature.number})</span>
-                          <span className='text-sm'>{feature.name}</span>
-                        </div>
-                      ))}
+              {services.map((service, index) => {
+                const topValue = `calc(10vh + ${index * 5.75}em)`;
+                const marginBottomValue = `${17.25 - index * 5.75}em`;
+
+                return (
+                  <div key={index} className="sticky top-0 border-t border-t-brand-primary/40 bg-primary" style={{ top: topValue, marginBottom: marginBottomValue }}>
+                    {/* card header */}
+                    <div className="flex items-center justify-start text-left font-semibold text-brand-primary gap-2 ">
+                      <span>({service.number})</span>
+                      <h3 className="text-2xl">{service.title}</h3>
+                    </div>
+                    <div className="text-brand-primary/80">
+                      <p>{service.description}</p>
+                      <div className="">
+                        {service.features.map((feature, featureIndex) => (
+                          <div key={featureIndex} className="flex items-center gap-2 mt-4">
+                            <span className="font-mono text-sm">({feature.number})</span>
+                            <span className="text-sm">{feature.name}</span>
+                          </div>
+                        ))}
+                      </div>
                     </div>
                   </div>
-                </div>
-              );
-            })}
+                );
+              })}
+            </div>
+            {/* TODO: NEXT STEPS */}
+            <div className="mt-16 text-center">
+              <h3 className='text-brand-primary'>Comming Soon!</h3>
             </div>
           </div>
         </div>
