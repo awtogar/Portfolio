@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { motion, AnimatePresence, stagger, easeOut } from 'framer-motion';
 import { opacity, PreloaderFade, PreloaderSlideUp } from '../anim';
 
-const TheWords = ['TELL', 'NONE', 'SHOW', 'QUALITY'];
+const TheWords = ['Tell None', 'Show them', 'Your Quality'];
 
 export default function Preloader() {
   const [index, setIndex] = useState(0);

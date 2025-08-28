@@ -1,5 +1,5 @@
 import { useRef } from 'react';
-import { allTags, services } from '../data/data';
+import { services } from '../data/data';
 import useVideoInView from '../hooks/useVideoInView';
 import video1 from '/src/assets/videos/video-1.mp4';
 import video2 from '/src/assets/videos/video-2.mp4';
@@ -10,9 +10,9 @@ const HomePage = () => {
 
   return (
     <>
-      <section className="z-10 bg-neutral-100 padding-section-x gap-8 pb-8 pt-[164px]">
+      <section className="z-10 bg-neutral-100 padding-section-x">
         <div className="m-auto w-full">
-          <div className="flex flex-col ">
+          <div className="flex flex-col gap-8 pb-8 pt-[164px]">
             <div className="flex flex-col gap-2">
               <div className="text-[36px] leading-[116%] tracking-[2%] text-primary font-sans font-[400]">
                 <h1>Graphic designer and web developer enthusiast</h1>
@@ -61,12 +61,12 @@ const HomePage = () => {
             </div>
             <div className="flex flex-col gap-2">
               <div className="text-base text-primary-muted">
-                <p>Turning the visions into reality based on the use case concepts and resulting meaningful brand stories behind.</p>
+                <p>Turning the visions into reality based on the use case and concepts resulting brand stories.</p>
               </div>
               <div className="flex flex-wrap gap-2">
-                {allTags.map((allTags, index) => (
+                {Array.from(new Set(services.flatMap(service => service.tags))).map((tag, index) => (
                   <div key={index} className="border-brand-secondary border text-primary px-3 py-1 rounded-full text-sm">
-                    {allTags.name}
+                    {tag}
                   </div>
                 ))}
               </div>
@@ -94,7 +94,6 @@ const HomePage = () => {
               {services.map((service, index) => {
                 const topValue = `calc(10vh + ${index * 5.75}em)`;
                 const marginBottomValue = `${17.25 - index * 5.75}em`;
-
                 return (
                   <div key={index} className="sticky top-0 border-t border-t-brand-primary/40 bg-primary" style={{ top: topValue, marginBottom: marginBottomValue }}>
                     {/* card header */}
@@ -119,7 +118,7 @@ const HomePage = () => {
             </div>
             {/* TODO: NEXT STEPS */}
             <div className="mt-16 text-center">
-              <h3 className='text-brand-primary'>Comming Soon!</h3>
+              <h3 className="text-brand-primary">Comming Soon!</h3>
             </div>
           </div>
         </div>
