@@ -97,15 +97,15 @@ const HomePage = () => {
                 return (
                   <div key={index} className="sticky top-0 border-t border-t-brand-primary/40 bg-primary" style={{ top: topValue, marginBottom: marginBottomValue }}>
                     {/* card header */}
-                    <div className="flex items-center justify-start text-left font-semibold text-brand-primary gap-2 ">
+                    <div className="flex items-center justify-start text-left font-semibold text-brand-primary">
                       <span>({service.number})</span>
                       <h3 className="text-2xl">{service.title}</h3>
                     </div>
                     <div className="text-brand-primary/80">
                       <p>{service.description}</p>
-                      <div className="">
+                      <div className="flex flex-col">
                         {service.features.map((feature, featureIndex) => (
-                          <div key={featureIndex} className="flex items-center gap-2 mt-4">
+                          <div key={featureIndex} className="flex items-center mt-4">
                             <span className="font-mono text-sm">({feature.number})</span>
                             <span className="text-sm">{feature.name}</span>
                           </div>
@@ -116,12 +116,14 @@ const HomePage = () => {
                 );
               })}
             </div>
-            {/* TODO: NEXT STEPS */}
-            <div className="mt-16 text-center">
-              <h3 className="text-brand-primary">Comming Soon!</h3>
-            </div>
           </div>
         </div>
+      </section>
+      <section>
+         {/* TODO: NEXT STEPS */}
+            <div className="text-center h-screen bg-primary-muted rounded-lg">
+              <h3 className="text-brand-primary">Comming Soon!</h3>
+            </div>
       </section>
     </>
   );
