@@ -26,24 +26,31 @@ html {
     --neutral-300: #FAFAFA;
     --neutral-400: #FDFDFD;
     --neutral-500: #FFFFFF;
+
     --primary: #0C0C09;
     --primary-muted: #21211C;
+
     --secondary: #FAFAFA;
     --secondary-muted: #F0F0F0;
+
     --brand-primary: #F2F2D9;
     --brand-secondary: #4274C8;
     --brand-tertiary: #FFD147;
   }
+
   .dark {
     --neutral-100: #121212;
     --neutral-200: #1D1D1D;
     --neutral-300: #282828;
     --neutral-400: #323232;
     --neutral-500: #3D3D3D;
+
     --primary: #FAFAFA;
     --primary-muted: #F0F0F0;
+
     --secondary: #26240D;
     --secondary-muted: #1D1C16;
+
     --brand-primary: #F2F2D9;
     --brand-secondary: #5EA3ED;
     --brand-tertiary: #FFDE7A;
@@ -69,5 +76,36 @@ html {
   --breakpoint-lg: 60rem;   /* 960px → laptop / desktop */
   --breakpoint-xl: 80rem;   /* 1280px → large screen / wide desktop */
   --breakpoint-2xl: 90rem;  /* 1440px → ultra-wide / monitor gede */
+
+  --spacing-3xs: var(--space-3xs);
+  --spacing-2xs: var(--space-2xs);
+  --spacing-xs: var(--space-xs);
+  --spacing-sm: var(--space-sm);
+  --spacing-md: var(--space-md);
+  --spacing-lg: var(--space-lg);
+  --spacing-xl: var(--space-xl);
+  --spacing-2xl: var(--space-2xl);
+  --spacing-3xl: var(--space-3xl);
+
+  --text-mono: var(--mono);
+  --text-base-small: var(--base-small);
+  --text-base: var(--base);
+  --text-base-large: var(--base-large);
+  --text-h600: var(--h600);
+  --text-h500: var(--h500);
+  --text-h400: var(--h400);
+  --text-h300: var(--h300);
+  --text-h200: var(--h200);
+  --text-h100: var(--h100);
+  --text-h100-alt: var(--h100-alt);
+  --text-h000-display: var(--h000-display);
+  --text-h000-body: var(--h000-body);
+
+
+
+
+
+
+
 }
 
