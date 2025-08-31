@@ -1,0 +1,55 @@
+
+:root{
+    --sans: 'Switzer', Arial, sans-serif;
+    --neutral-100: #F5F5F5;
+    --neutral-200: #F8F8F8;
+    --neutral-300: #FAFAFA;
+    --neutral-400: #FDFDFD;
+    --neutral-500: #FFFFFF;
+    --primary: #0C0C09;
+    --primary-muted: #6e6e6e;
+    --secondary: #FAFAFA;
+    --secondary-muted: #F0F0F0;
+    --brand-primary: #F2F2D9;
+    --brand-secondary: #4274C8;
+    --brand-tertiary: #FFD147;
+
+    /* font sizing */
+    --h100-alt: clamp(3.2rem, 1.6rem + 7.1111vw, 8.4rem); /* Golden ratio increase - unchanged */
+    --h100: clamp(2.8rem, 1.55rem + 5.5556vw, 6.6rem); /* Golden ratio increase - unchanged */
+    --h200: clamp(2.1rem, 1.35rem + 3.3333vw, 4.2rem); /* Golden ratio increase - reduced */
+    --h300: clamp(1.8rem, 1.25rem + 2.4444vw, 3.4rem); /* Golden ratio increase - reduced */
+    --h400: clamp(1.6rem, 1.15rem + 2.0000vw, 2.8rem); /* Golden ratio increase - reduced */
+    --h500: clamp(1.618rem, 1.2rem + 1.8556vw, 2.618rem); /* Golden ratio increase - base × 1.618 */
+    --base-lg: clamp(1.272rem, 0.95rem + 1.4311vw, 2.058rem); /* Golden ratio increase - base × 1.272 */
+    --base: clamp(1rem, 0.75rem + 1.1111vw, 1.618rem); /* Golden ratio increase - 16px base */
+    --base-sm: clamp(0.786rem, 0.59rem + 0.8711vw, 1.272rem); /* Golden ratio increase - base ÷ 1.272 */
+
+
+    /* space sizing */
+    --s100: clamp(0.3125rem, 0.3125rem + 0vi, 0.3125rem);
+    --s200: clamp(0.5625rem, 0.5446rem + 0.0893vi, 0.625rem);
+    --s300: clamp(0.75rem, 0.7321rem + 0.0893vi, 0.8125rem);
+    --s400: clamp(0.9375rem, 0.9107rem + 0.1339vi, 1.0rem);
+    --s500: clamp(1.25rem, 1.2143rem + 0.1786vi, 1.375rem);
+    --s600: clamp(1.6875rem, 1.6339rem + 0.2679vi, 1.875rem);
+    --s700: clamp(2.25rem, 2.1786rem + 0.3571vi, 2.5rem);
+    --s800: clamp(2.8125rem, 2.7232rem + 0.4464vi, 3.125rem);
+    --s900: clamp(3.375rem, 3.2679rem + 0.5357vi, 3.75rem);
+    --sfluid: clamp(1rem, 0.8571rem + 1.0143vi, 3.5rem);
+}
+
+.dark {
+    --neutral-100: #121212;
+    --neutral-200: #1D1D1D;
+    --neutral-300: #282828;
+    --neutral-400: #323232;
+    --neutral-500: #3D3D3D;
+    --primary: #FAFAFA;
+    --primary-muted: #F0F0F0;
+    --secondary: #26240D;
+    --secondary-muted: #1D1C16;
+    --brand-primary: #F2F2D9;
+    --brand-secondary: #5EA3ED;
+    --brand-tertiary: #FFDE7A;
+}
