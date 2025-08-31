@@ -6,10 +6,9 @@ export const services = [
     description:
       'Building strong brand visuals through creative concepts and graphics.',
     features: [
-      { number: '01', name: 'Product & Merchandise Design' },
+      { number: '01', name: 'Product & Merchandise' },
       { number: '02', name: 'Branding Concepts' },
-      { number: '03', name: 'Campaigns & Promotions' },
-      { number: '04', name: 'Visual Identity Systems' },
+      { number: '03', name: 'Visual Identity Systems' },
     ],
     tags: ['Graphics', 'Branding', 'Creative Direction']
   },
