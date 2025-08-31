@@ -4,71 +4,37 @@ h1, h2, h3, h4, h5, h6{
   letter-spacing: -.025em;
 }
 
-:root{
-  --mono: clamp(0.6rem,0.5143rem + 0.3571vi,0.9rem);
-  --base-small: clamp(0.875rem,0.5393rem + 0.5786vi,1rem);
-  --base: clamp(1rem,0.9286rem + 0.3571vi,1.25rem);
-  --base-large: clamp(1rem,0.8571rem + 0.7143vi,1.5rem);
-  --h600: clamp(1rem,0.928rem + 0.36vw,1.25rem);
-  --h500: clamp(1.13rem,1.004rem + 0.63vw,1.57rem);
-  --h400: clamp(1.25rem,1.0359rem + 1.0707vi,1.9995rem);
-  --h300: clamp(1.5625rem,1.2474rem + 1.5755vi,2.6653rem);
-  --h200: clamp(1.9531rem,1.496rem + 2.2854vi,3.5529rem);
-  --h100: clamp(3.5rem,2.3571rem + 5.5143vi,10.5rem);
-
-  --h100-alt: clamp(3rem,2.25rem + 3.75vi,5.625rem);
-  --h000-display: clamp(4rem,1.203rem + 10.0714vw,10.25rem);
-  --h000-body: clamp(1rem,0.6071rem + 1.0143vi,2.25rem);
-  --text-menu: clamp(2.5rem,1.107rem + 3.5714vi,4.5rem);
-  --padding-horizontal--main: clamp(1rem,0.428rem + 2.86vw,3rem);
-  --padding-v: clamp(0.89rem,0.862rem + 0.14vw,0.99rem);
-  --padding-button: clamp(0.89rem,0.7rem + 0.14vw,0.88rem);
-  --padding-top--main: clamp(1rem,1.8571rem + 1.5143vi,3.5rem);
-
-
-  /* --spacing */
-  --space-3xs: clamp(0.3125rem,0.3125rem + 0vi,0.3125rem);
-  --space-2xs: clamp(0.5625rem,0.5446rem + 0.0893vi,0.625rem);
-  --space-xs: clamp(0.875rem,0.8571rem + 0.0893vi,0.9375rem);
-  --space-sm: clamp(1.125rem,1.0893rem + 0.1786vi,1.25rem);
-  --space-md: clamp(1.6875rem,1.6339rem + 0.2679vi,1.875rem);
-  --space-lg: clamp(2.25rem,2.1786rem + 0.3571vi,2.5rem);
-  --space-xl: clamp(3.375rem,3.2679rem + 0.5357vi,3.75rem);
-  --space-2xl: clamp(4.5rem,4.3571rem + 0.7143vi,5rem);
-  --space-3xl: clamp(5.25rem,5.8571rem + 0.9023vi,6.25rem);
-  --gap-fluid: clamp(1rem,0.8571rem + 1.0143vi,3.5rem);
-}
 /* Section components  */
 .section-padding {
   @apply px-4;
 }
 .section-padding-xy {
-  @apply py-2xl px-4;
+  @apply px-4 py-s900;
 }
 
-/* Typography components */
-.heading-display {
-  @apply text-h100-alt font-semibold;
+
+/* heading */
+.sh100-alt {
+  @apply text-h100-alt leading-[116%] tracking-[2%];
 }
-.heading-primary {
-  @apply text-h100 font-semibold;
+.sh100 {
+  @apply text-h100 leading-[116%] tracking-[2%] font-medium;
 }
-.heading-secondary {
-  @apply text-h200 font-semibold;
-}
-.heading-tertiary {
-  @apply text-h300 font-semibold;
-}
-.text-body {
-  @apply text-base;
-}
-.text-body-large {
-  @apply text-base-large;
-}
-.text-body-small {
-  @apply text-base-small;
-}
-.text-caption {
-  @apply text-mono;
+.sh200 {
+  @apply text-h200 leading-[116%] tracking-[2%] font-semibold;
 }
 
+/* heading spacing */
+.hspacing-100 {
+  @apply py-s900;
+}
+.hspacing-200 {
+  @apply py-s800;
+}
+
+
+/* ui components */
+
+.tags{
+  @apply border-primary-muted border text-primary-muted px-2 py-1 rounded-full text-base-sm;
+}
