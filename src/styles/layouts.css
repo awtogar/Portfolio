@@ -23,13 +23,20 @@ h1, h2, h3, h4, h5, h6{
 .sh200 {
   @apply text-h200 leading-[116%] tracking-[2%] font-semibold;
 }
+.sh300 {
+  @apply text-h300 leading-[116%] tracking-[2%] font-semibold;
+}
 
 /* heading spacing */
-.hspacing-100 {
+.space-100 {
   @apply py-s900;
 }
-.hspacing-200 {
-  @apply py-s800;
+
+.space-200 {
+  @apply py-s500;
+}
+.space-300 {
+  @apply py-s600;
 }
 
 
@@ -37,4 +44,7 @@ h1, h2, h3, h4, h5, h6{
 
 .tags{
   @apply border-primary-muted border text-primary-muted px-2 py-1 rounded-full text-base-sm;
+}
+.tags-secondary{
+  @apply border-brand-secondary/80 border text-brand-secondary/80 px-2 py-1 rounded-full text-base-sm;
 }
