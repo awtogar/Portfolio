@@ -40,12 +40,33 @@ export const services = [
   }
 ];
 
+import img1 from '../assets/images/img-1.jpg';
+import img2 from '../assets/images/img-2.jpg';
+import img3 from '../assets/images/img-3.jpg';
+// import img4 from '../assets/images/img-4.png';
 
 
-export const work={
-  title: 'Yi WO Company',
-  description: 'A selection of my recent projects showcasing my skills in graphic design and web development.',
-  tags:['Graphics','Branding'],
-  date: { month:'June', year:'2024' },
-  image: '/path/to/work-image.jpg'
-}
+export const works = [
+  {
+    title: 'Azz',
+    description: 'A selection of my recent projects showcasing my skills in graphic design and web development.',
+    tags: ['Graphics', 'Branding'],
+    date: { month: 'Jun', year: '2024' },
+    image: img1
+  },
+  {
+    title: 'Portfolio Website',
+    description: 'A modern portfolio website with smooth animations and responsive design.',
+    tags: ['Web Development', 'UI/UX'],
+    date: { month: 'Aug', year: '2024' },
+    image: img2
+  },
+  {
+    title: 'Social Media Campaign',
+    description: 'Creative graphics and motion for a digital campaign on Instagram and TikTok.',
+    tags: ['Graphics', 'Motion', 'Animation'],
+    date: { month: 'May', year: '2024' },
+    image: img3
+  }
+];
+
