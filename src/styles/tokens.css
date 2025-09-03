@@ -1,6 +1,9 @@
 
 :root{
-    --sans: 'Switzer', Arial, sans-serif;
+    --sans: 'General Sans', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --serif: 'Gambetta', 'Georgia', 'Times New Roman', serif;
+    --mono: 'SF Mono', 'Monaco', 'Cascadia Code', 'Roboto Mono', monospace;
+  
     --neutral-100: #F5F5F5;
     --neutral-200: #F8F8F8;
     --neutral-300: #FAFAFA;
@@ -10,14 +13,14 @@
     --primary-muted: #6e6e6e;
     --secondary: #FAFAFA;
     --secondary-muted: #F0F0F0;
-    --brand-primary: #F2F2D9;
-    --brand-secondary: #4274C8;
-    --brand-tertiary: #FFD147;
+    --brand-primary: #2f6bbb;
+    --brand-secondary: #f5ebc7;
+    --brand-tertiary: #0d880f;
 
     /* font sizing */
     --h100-alt: clamp(3.2rem, 1.6rem + 7.1111vw, 8.4rem); /* Golden ratio increase - unchanged */
-    --h100: clamp(2.8rem, 1.55rem + 5.5556vw, 6.6rem); /* Golden ratio increase - unchanged */
-    --h200: clamp(2.1rem, 1.35rem + 3.3333vw, 4.2rem); /* Golden ratio increase - reduced */
+    --h100: clamp(2.5rem, 1.55rem + 5.5556vw, 6.6rem); /* Golden ratio increase - unchanged */
+    --h200: clamp(2.1rem, 1.35rem + 3.3333vw, 9.2rem); /* Golden ratio increase - reduced */
     --h300: clamp(1.8rem, 1.25rem + 2.4444vw, 3.4rem); /* Golden ratio increase - reduced */
     --h400: clamp(1.6rem, 1.15rem + 2.0000vw, 2.8rem); /* Golden ratio increase - reduced */
     --h500: clamp(1.618rem, 1.2rem + 1.8556vw, 2.618rem); /* Golden ratio increase - base × 1.618 */

@@ -1,10 +1,34 @@
 h1, h2, h3, h4, h5, h6{
-  text-wrap: balance;
-  line-height: 1;
-  letter-spacing: -.025em;
+  @apply leading-[116%] tracking-[2%] font-[500] font-sans;
+}
+h1{
+  @apply text-h100;
+}
+h2{
+  @apply text-h200;
+}
+h3{
+  @apply text-h300;
+}
+h4{
+  @apply text-h400;
+}
+h5{
+  @apply text-h500;
+}
+h6{
+  @apply text-base-lg;
 }
 
+
+p{
+  @apply  font-serif font-normal;
+}
 /* Section components  */
+.section-padding-hero{
+  @apply px-4 gap-s300 pb-s800 pt-[164px]
+}
+
 .section-padding {
   @apply px-4;
 }
@@ -12,36 +36,11 @@ h1, h2, h3, h4, h5, h6{
   @apply px-4 py-s900;
 }
 
-
-/* heading */
-.sh100-alt {
-  @apply text-h100-alt leading-[116%] tracking-[2%];
-}
-.sh100 {
-  @apply text-h100 leading-[116%] tracking-[2%] font-medium;
-}
-.sh200 {
-  @apply text-h200 leading-[116%] tracking-[2%] font-semibold;
-}
-.sh300 {
-  @apply text-h300 leading-[116%] tracking-[2%] font-semibold;
-}
-
 /* heading spacing */
-.space-100 {
-  @apply py-s900;
-}
 
-.space-200 {
-  @apply py-s500;
-}
-.space-300 {
-  @apply py-s600;
-}
 
 
 /* ui components */
-
 .tags{
   @apply border-primary-muted border text-primary-muted px-2 py-1 rounded-full text-base-sm;
 }
