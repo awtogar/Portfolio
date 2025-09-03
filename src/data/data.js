@@ -2,7 +2,7 @@ export const services = [
   {
     id: 1,
     number: '01',
-    title: 'Design',
+    title: 'Graphic Design',
     description:
       'Building strong brand visuals through creative concepts and graphics.',
     features: [
@@ -48,21 +48,21 @@ import img3 from '../assets/images/img-3.jpg';
 
 export const works = [
   {
-    title: 'Azz',
+    title: 'Dieter Rams Tribute',
     description: 'A selection of my recent projects showcasing my skills in graphic design and web development.',
     tags: ['Graphics', 'Branding'],
     date: { month: 'Jun', year: '2024' },
     image: img1
   },
   {
-    title: 'Portfolio Website',
+    title: 'Azzalrow Inc.',
     description: 'A modern portfolio website with smooth animations and responsive design.',
     tags: ['Web Development', 'UI/UX'],
     date: { month: 'Aug', year: '2024' },
     image: img2
   },
   {
-    title: 'Social Media Campaign',
+    title: 'Vitemens Studio',
     description: 'Creative graphics and motion for a digital campaign on Instagram and TikTok.',
     tags: ['Graphics', 'Motion', 'Animation'],
     date: { month: 'May', year: '2024' },
