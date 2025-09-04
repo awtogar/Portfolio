@@ -15,7 +15,7 @@ export default function PrimaryButton({ children: Children, className = '', styl
 
   return (
     <Component
-      className={`all-unset flex content-center justify-center cursor-pointer bg-main text-based outline-none px-6 py-4 rounded-full relative overflow-clip ${className}`}
+      className={`all-unset flex content-center justify-center cursor-pointer bg-primary text-secondary outline-none px-6 py-4 rounded-full relative overflow-clip ${className}`}
       style={buttonStyle}
       initial={false}
       onHoverStart={() => setIsHovering(true)}
@@ -26,15 +26,15 @@ export default function PrimaryButton({ children: Children, className = '', styl
         {Children}
       </motion.p>
       <motion.p
-        className="m-0 h-full top-0 translate-y-1/2 text-main absolute flex items-center z-20 "
+        className="m-0 h-full top-0 translate-y-1/2 text-main absolute flex items-center z-20 text-primary"
         initial={false}
         transition={{ type: 'linear', duration: 0.3 }}
-        animate={{ y: isHovering ? -28 : 16 }}
+        animate={{ y: isHovering ? -22 : 16 }}
       >
         {Children}
       </motion.p>
       <motion.div
-        className="absolute z-10 bottom-0 left-0 h-full w-full rounded-full bg-accent-secondary outline-none"
+        className="absolute z-10 bottom-0 left-0 h-full w-full rounded-full outline-none bg-brand-secondary"
         initial={false}
         transition={{ type: 'linear', duration: 0.3 }}
         animate={{
