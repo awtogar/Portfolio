@@ -18,15 +18,15 @@
     --brand-tertiary: #0d880f;
 
     /* font sizing */
-    --h100-alt: clamp(3.2rem, 1.6rem + 7.1111vw, 8.4rem); /* Golden ratio increase - unchanged */
-    --h100: clamp(2.5rem, 1.55rem + 5.5556vw, 6.6rem); /* Golden ratio increase - unchanged */
-    --h200: clamp(2.1rem, 1.35rem + 3.3333vw, 9.2rem); /* Golden ratio increase - reduced */
-    --h300: clamp(1.8rem, 1.25rem + 2.4444vw, 3.4rem); /* Golden ratio increase - reduced */
-    --h400: clamp(1.6rem, 1.15rem + 2.0000vw, 2.8rem); /* Golden ratio increase - reduced */
-    --h500: clamp(1.618rem, 1.2rem + 1.8556vw, 2.618rem); /* Golden ratio increase - base × 1.618 */
-    --base-lg: clamp(1.272rem, 0.95rem + 1.4311vw, 2.058rem); /* Golden ratio increase - base × 1.272 */
-    --base: clamp(1rem, 0.75rem + 1.1111vw, 1.618rem); /* Golden ratio increase - 16px base */
-    --base-sm: clamp(0.786rem, 0.59rem + 0.8711vw, 1.272rem); /* Golden ratio increase - base ÷ 1.272 */
+        --h100-alt: clamp(3.2rem, 1.6rem + 7.1111vw, 8.4rem);
+        --h100: clamp(1.802rem, 1.0145rem + 3.5003vw, 3.8147rem);
+        --h200: clamp(1.6018rem, 1.0344rem + 2.5217vw, 3.0518rem);
+        --h300: clamp(1.4238rem, 1.0256rem + 1.7697vw, 2.4414rem);
+        --h400: clamp(1.2656rem, 0.9966rem + 1.1957vw, 1.9531rem);
+        --h500: clamp(1.125rem, 0.9538rem + 0.7609vw, 1.5625rem);
+        --base-lg: clamp(1rem, 0.9022rem + 0.4348vw, 1.25rem);
+        --base: clamp(0.8889rem, 0.8454rem + 0.1932vw, 1rem);
+        --base-sm: clamp(0.7901rem, 0.7863rem + 0.0172vw, 0.8rem);
 
 
     /* space sizing */

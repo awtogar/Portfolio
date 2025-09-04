@@ -1,49 +1,29 @@
 h1, h2, h3, h4, h5, h6{
-  @apply leading-[116%] tracking-[2%] font-[500] font-sans;
+  @apply font-[500] font-sans tracking-[-3%] leading-[98%];
 }
-h1{
-  @apply text-h100;
-}
-h2{
-  @apply text-h200;
-}
-h3{
-  @apply text-h300;
-}
-h4{
-  @apply text-h400;
-}
-h5{
-  @apply text-h500;
-}
-h6{
-  @apply text-base-lg;
-}
-
 
 p{
-  @apply  font-serif font-normal;
+  @apply  font-serif font-normal tracking-[0%] leading-[136%];
 }
 /* Section components  */
 .section-padding-hero{
   @apply px-4 gap-s300 pb-s800 pt-[164px]
 }
 
-.section-padding {
-  @apply px-4;
+@layer utilities {
+  /* heading spacing */
+  .section-padding {
+    @apply px-4;
+  }
+  .section-padding-xy {
+    @apply px-4 py-s900;
+  }
 }
-.section-padding-xy {
-  @apply px-4 py-s900;
-}
-
-/* heading spacing */
-
-
 
 /* ui components */
 .tags{
-  @apply border-primary-muted border text-primary-muted px-2 py-1 rounded-full text-base-sm;
+  @apply border-primary-muted border text-primary-muted font-light px-2 py-1 rounded-full text-base-sm;
 }
 .tags-secondary{
-  @apply border-brand-secondary/80 border text-brand-secondary/80 px-2 py-1 rounded-full text-base-sm;
+  @apply border-brand-secondary/80 border text-brand-secondary/80 font-light px-2 py-1 rounded-full text-base-sm;
 }
