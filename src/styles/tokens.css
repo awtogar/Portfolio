@@ -13,20 +13,20 @@
     --primary-muted: #6e6e6e;
     --secondary: #FAFAFA;
     --secondary-muted: #F0F0F0;
-    --brand-primary: #2f6bbb;
+    --brand-primary: #fff6d4;
     --brand-secondary: #f5ebc7;
-    --brand-tertiary: #0d880f;
+    --brand-tertiary: #504B38;
 
     /* font sizing */
-        --h100-alt: clamp(3.2rem, 1.6rem + 7.1111vw, 8.4rem);
-        --h100: clamp(1.802rem, 1.0145rem + 3.5003vw, 3.8147rem);
-        --h200: clamp(1.6018rem, 1.0344rem + 2.5217vw, 3.0518rem);
-        --h300: clamp(1.4238rem, 1.0256rem + 1.7697vw, 2.4414rem);
-        --h400: clamp(1.2656rem, 0.9966rem + 1.1957vw, 1.9531rem);
-        --h500: clamp(1.125rem, 0.9538rem + 0.7609vw, 1.5625rem);
-        --base-lg: clamp(1rem, 0.9022rem + 0.4348vw, 1.25rem);
-        --base: clamp(0.8889rem, 0.8454rem + 0.1932vw, 1rem);
-        --base-sm: clamp(0.7901rem, 0.7863rem + 0.0172vw, 0.8rem);
+    --h100-alt: clamp(3.8rem, 1.6rem + 7.1111vw, 8.4rem);
+    --h100: clamp(1.802rem, 1.0145rem + 3.5003vw, 3.8147rem);
+    --h200: clamp(1.6018rem, 1.0344rem + 2.5217vw, 3.0518rem);
+    --h300: clamp(1.4238rem, 1.0256rem + 1.7697vw, 2.4414rem);
+    --h400: clamp(1.2656rem, 0.9966rem + 1.1957vw, 1.9531rem);
+    --h500: clamp(1.125rem, 0.9538rem + 0.7609vw, 1.5625rem);
+    --base-lg: clamp(1rem, 0.9022rem + 0.4348vw, 1.25rem);
+    --base: clamp(0.8889rem, 0.8454rem + 0.1932vw, 1rem);
+    --base-sm: clamp(0.7901rem, 0.7863rem + 0.0172vw, 0.8rem);
 
 
     /* space sizing */
@@ -52,7 +52,7 @@
     --primary-muted: #F0F0F0;
     --secondary: #26240D;
     --secondary-muted: #1D1C16;
-    --brand-primary: #F2F2D9;
-    --brand-secondary: #5EA3ED;
-    --brand-tertiary: #FFDE7A;
+    --brand-primary: #2C3639;
+    --brand-secondary: #5C8374;
+    --brand-tertiary: #93B1A6;
 }
