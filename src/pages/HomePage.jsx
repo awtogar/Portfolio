@@ -19,23 +19,31 @@ const HomePage = () => {
               <h1 className="text-display">Graphics and web designer enthusiast</h1>
               <p>I'm a person with a multidisciplinary background in design and development — learning through doing.</p>
             </div>
-            <div className="flex items-center gap-s600 pt-s600">
+            <div className="flex items-center gap-s400 pt-s600">
               <div className="flex-1">
-                <PrimaryButton href="/contact" className="w-full px-s600 py-s300 font-light text-center">
+                <PrimaryButton
+                  href="/contact"
+                  background1="bg-primary"
+                  background2="bg-brand-secondary"
+                  outline2="outline-none"
+                  outline1="outline-none"
+                  textcolor1="text-secondary"
+                  textcolor2="text-primary"
+                >
                   Get in touch
                 </PrimaryButton>
               </div>
               <div className="flex-shrink-0">
                 <PrimaryButton
-                  href="/work"
-                  className="px-s600 py-s300 font-light whitespace-nowrap"
-                  style={{
-                    backgroundColor: 'transparent',
-                    color: 'text-primary',
-                    border: '1px solid var(--color-primary)',
-                  }}
+                  href="/contact"
+                  background1="transparent"
+                  background2="bg-primary"
+                  outline2="outline-none"
+                  outline1="outline outline-1 outline-primary"
+                  textcolor1="text-primary"
+                  textcolor2="text-secondary"
                 >
-                  Works
+                  My resume
                 </PrimaryButton>
               </div>
             </div>
@@ -60,8 +68,8 @@ const HomePage = () => {
         <div className="m-auto w-full">
           <div className="flex flex-col gap-s800">
             <div className="flex flex-col gap-s300">
-              <h2 className="text-h100">
-                BE <span className="text-brand-primary">IMPACTFUL</span>
+              <h2 className="text-h100 uppercase">
+                be <span className="text-brand-tertiary">impactful</span>
               </h2>
               <div className="h-[286px] overflow-hidden rounded-lg">
                 <video ref={video2Loader} loop muted playsInline className="w-full h-full object-cover" preload="none">
@@ -105,7 +113,6 @@ const HomePage = () => {
                 </div>
               </div>
             </div>
-
             {/* Services List */}
             <div className="w-full m-auto">
               <div className="mt-s900 gap-y-s800 flex flex-col justify-between">
@@ -184,16 +191,27 @@ const HomePage = () => {
       </section>
       <section className="z-10 section-padding-xy">
         <div className="m-auto w-full">
-          <div className="flex flex-col">
-            <div className="flex flex-col gap-s300">
-              <h2 className="text-h100 text-center italic">
-                Have an idea <br /> in mind?
+          <div className="flex flex-col gap-s100">
+            <div className="flex flex-col">
+              <h2 className="text-3xl text-center italic">
+                <span className="text-5xl">Have</span> an idea
+                <br />
+                in <span className="text-5xl leading-snug">Mind.</span>
               </h2>
               <p className="text-center">Let's work together.</p>
             </div>
             <div className="flex justify-center text-center pt-s600">
-              <PrimaryButton href="/contact" className="px-s600 py-s300 font-light">
-                Get in touch
+              <PrimaryButton
+                href="/contact"
+                background1="transparent"
+                background2="bg-primary"
+                outline2="outline-none"
+                outline1="outline outline-1 outline-primary"
+                textcolor1="text-primary"
+                textcolor2="text-secondary"
+                className="px-s600 py-s300"
+              >
+                Get in Touch
               </PrimaryButton>
             </div>
           </div>
