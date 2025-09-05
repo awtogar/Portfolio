@@ -21,12 +21,17 @@ export default function PrimaryButton({
 
   return (
     <Component
-      className={` ring-0 all-unset flex content-center justify-center cursor-pointer ${background1} ${outline1} rounded-full relative overflow-clip ${className} antialiased translate-z-0 will-change-transform`}
-      initial={false}
-      onHoverStart={() => setIsHovering(true)}
-      onHoverEnd={() => setIsHovering(false)}
-      {...componentProps}
-    >
+  className={`ring-0 all-unset flex content-center justify-center cursor-pointer ${background1} ${outline1} rounded-full relative overflow-clip ${className} antialiased translate-z-0 will-change-transform`}
+  initial={false}
+  // Hover (desktop)
+  onHoverStart={() => setIsHovering(true)}
+  onHoverEnd={() => setIsHovering(false)}
+  // Tap (mobile)
+  onTapStart={() => setIsHovering(true)}
+  onTapCancel={() => setIsHovering(false)}
+  onTap={() => setIsHovering(false)}
+  {...componentProps}
+>
       <motion.p className={`m-0 z-20 will-change-transform ${textcolor1}`} initial={false} transition={{ type: 'linear', duration: 0.3 }} animate={{ y: isHovering ? -36 : 0 }}>
         {Children}
       </motion.p>
