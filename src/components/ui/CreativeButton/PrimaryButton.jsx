@@ -1,5 +1,6 @@
 import { Children, useState } from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 
 export default function PrimaryButton({
   children: Children,
@@ -16,22 +17,28 @@ export default function PrimaryButton({
 }) {
   const [isHovering, setIsHovering] = useState(false);
 
-  const Component = href ? motion.a : motion.button;
-  const componentProps = href ? { href, ...props } : { onClick, ...props };
+  // Gunakan Link untuk internal routes, motion.a untuk external links
+  const isInternalLink = href && href.startsWith('/');
+  const Component = href ? (isInternalLink ? motion(Link) : motion.a) : motion.button;
+  
+  // Props berbeda untuk Link vs anchor
+  const componentProps = href 
+    ? (isInternalLink ? { to: href, ...props } : { href, ...props }) 
+    : { onClick, ...props };
 
   return (
     <Component
-  className={`ring-0 all-unset flex content-center justify-center cursor-pointer ${background1} ${outline1} rounded-full relative overflow-clip ${className} antialiased translate-z-0 will-change-transform`}
-  initial={false}
-  // Hover (desktop)
-  onHoverStart={() => setIsHovering(true)}
-  onHoverEnd={() => setIsHovering(false)}
-  // Tap (mobile)
-  onTapStart={() => setIsHovering(true)}
-  onTapCancel={() => setIsHovering(false)}
-  onTap={() => setIsHovering(false)}
-  {...componentProps}
->
+      className={`ring-0 all-unset flex content-center justify-center cursor-pointer ${background1} ${outline1} rounded-full relative overflow-clip ${className} antialiased translate-z-0 will-change-transform`}
+      initial={false}
+      // Hover (desktop)
+      onHoverStart={() => setIsHovering(true)}
+      onHoverEnd={() => setIsHovering(false)}
+      // Tap (mobile)
+      onTapStart={() => setIsHovering(true)}
+      onTapCancel={() => setIsHovering(false)}
+      onTap={() => setIsHovering(false)}
+      {...componentProps}
+    >
       <motion.p className={`m-0 z-20 will-change-transform ${textcolor1}`} initial={false} transition={{ type: 'linear', duration: 0.3 }} animate={{ y: isHovering ? -36 : 0 }}>
         {Children}
       </motion.p>
