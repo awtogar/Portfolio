@@ -1,10 +1,12 @@
 import { Children, useState } from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 
 export default function PrimaryButton({
   children: Children,
-  className = 'w-full px-s600 py-s300 font-light text-center',
+  className = 'w-full px-6 py-4 font-light text-center',
   href,
+  to,
   onClick,
   background1 = 'bg-primary',
   background2 = 'bg-brand-secondary',
@@ -16,8 +18,25 @@ export default function PrimaryButton({
 }) {
   const [isHovering, setIsHovering] = useState(false);
 
-  const Component = href ? motion.a : motion.button;
-  const componentProps = href ? { href, ...props } : { onClick, ...props };
+  // Determine which component to use
+  let Component;
+  let componentProps = {};
+
+  // kalo ada internal link bakalan jadi <Link>
+  if (to) {
+    Component = motion(Link);
+    componentProps = { to, ...props };
+
+    // kalo ada external link bakalan jadi <a>
+  } else if (href) {
+    Component = motion.a;
+    componentProps = { href, ...props };
+
+  // kalo gak ada props href atau to, jadi button
+  } else {
+    Component = motion.button;
+    componentProps = { onClick, ...props };
+  }
 
   return (
     <Component
