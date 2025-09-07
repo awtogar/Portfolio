@@ -40,10 +40,9 @@ export const services = [
   }
 ];
 
+const img="https://placehold.co/600x400/504B38/FFFFFF.png";
+
 import img1 from '../assets/images/img-1.jpg';
-import img2 from '../assets/images/img-2.jpg';
-import img3 from '../assets/images/img-3.jpg';
-// import img4 from '../assets/images/img-4.png';
 
 
 export const works = [
@@ -55,18 +54,39 @@ export const works = [
     image: img1
   },
   {
-    title: 'Azzalrow Inc.',
-    description: 'A modern portfolio website with smooth animations and responsive design.',
-    tags: ['Web Development', 'UI/UX'],
-    date: { month: 'Aug', year: '2024' },
-    image: img2
+ title: 'Foodify App',
+    description: 'Mobile-first design for a food delivery service with interactive prototype.',
+    tags: ['UI/UX', 'Prototype', 'Figma'],
+    date: { month: 'Feb', year: '2025' },
+    image: img
   },
   {
-    title: 'Vitemens Studio',
-    description: 'Creative graphics and motion for a digital campaign on Instagram and TikTok.',
-    tags: ['Graphics', 'Motion', 'Animation'],
+    title: 'Luminova Studio',
+    description: 'Portfolio website with smooth animations and mobile-first design for a creative agency.',
+    tags: ['Web Development', 'UI/UX'],
+    date: { month: 'Aug', year: '2024' },
+    image: img,
+  },
+  {
+    title: 'Boldwear Merch',
+    description: 'Custom streetwear design series with exclusive packaging and product mockups.',
+    tags: ['Merch & Products', 'Branding', 'Graphics'],
+    date: { month: 'Oct', year: '2024' },
+    image: img,
+  },
+  {
+    title: 'Echo Motion Pack',
+    description: 'Short-form motion design and animation assets for social media campaigns.',
+    tags: ['Motion', 'Graphics'],
+    date: { month: 'Jan', year: '2025' },
+    image: img,
+  },
+  {
+    title: 'Organic SEO Boost',
+    description: 'Search engine optimization strategy and UI redesign for an e-commerce skincare brand.',
+    tags: ['SEO', 'UI/UX', 'Web Development'],
     date: { month: 'May', year: '2024' },
-    image: img3
-  }
+    image: img,
+  },
 ];
 
