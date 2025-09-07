@@ -1,10 +1,11 @@
 import { useRef } from 'react';
-import { services, works } from '../data/data';
+import { Link } from 'react-router-dom';
+import { RiAddLine, RiSubtractLine } from '@remixicon/react';
 import useVideoInView from '../hooks/useVideoInView';
+import { services, works } from '../data/data';
 import video1 from '/src/assets/videos/video-1.mp4';
 import video2 from '/src/assets/videos/video-2.mp4';
 import PrimaryButton from '../components/ui/CreativeButton/PrimaryButton';
-import { Link } from 'react-router-dom';
 
 const HomePage = () => {
   const video1Loader = useVideoInView();
@@ -65,7 +66,6 @@ const HomePage = () => {
           </div>
         </div>
       </section>
-
       {/* Impact Section */}
       <section className="z-10 section-padding-xy">
         <div className="m-auto w-full">
@@ -125,11 +125,16 @@ const HomePage = () => {
                   return (
                     <div key={index} className="sticky top-0 border-t border-t-neutral-100/40 bg-primary pt-s300" style={{ top: topValue, marginBottom: marginBottomValue }}>
                       {/* Service Header */}
-                      <div className="flex items-center text-left font-semibold gap-s200 text-h200">
-                        <span className="py-s100 font-mono">({service.number})</span>
-                        <h3 className="capitalize">{service.title}</h3>
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center text-left font-semibold gap-s200 text-h200">
+                          <span className="py-s100 font-mono">({service.number})</span>
+                          <h3 className="capitalize">{service.title}</h3>
+                        </div>
+                        <div className="">
+                          <RiAddLine />
+                          <RiSubtractLine className="hidden" />
+                        </div>
                       </div>
-
                       {/* Service Content */}
                       <div className="text-brand-secondary/80 pt-s400">
                         <p>{service.description}</p>
@@ -194,12 +199,12 @@ const HomePage = () => {
       </section>
       <section className="z-10 section-padding-xy">
         <div className="m-auto w-full">
-          <div className="flex flex-col gap-s100">
+          <div className="flex flex-col gap-s100 h-[50dvh] justify-center items-center">
             <div className="flex flex-col">
               <h2 className="text-3xl text-center italic">
                 <span className="text-5xl">Have</span> an idea
                 <br />
-                in <span className="text-5xl leading-snug">Mind.</span>
+                in <span className="text-5xl leading-snug">Mind?.</span>
               </h2>
               <p className="text-center">Let's work together.</p>
             </div>
@@ -214,11 +219,71 @@ const HomePage = () => {
                 textcolor2="text-secondary"
                 className="px-s600 py-s300"
               >
-                Get in Touch
+                TELL US
               </PrimaryButton>
             </div>
           </div>
-          <div className="flex flex-col"></div>
+          <div className="flex flex-col h-[50dvh]">
+            <div className="flex flex-col gap-6">
+              {/* Contact Info Row */}
+              <div className="flex flex-wrap gap-s600 justify-between">
+                <a
+                  href="mailto:info@cuberto.com"
+                  className="px-s300 py-s200 border border-neutral-700 rounded-full text-sm hover:bg-primary hover:text-secondary transition-colors"
+                >
+                  info@awtogar.com
+                </a>
+                <a href="tel:+13015499309" className="px-s300 py-s200 border border-neutral-700 rounded-full text-sm hover:bg-primary hover:text-secondary transition-colors">
+                  +62 1234567890
+                </a>
+              </div>
+
+              {/* Office Locations */}
+              <div className="flex flex-wrap gap-s600 justify-between">
+                <div className="flex flex-col gap-s100">
+                  <span className="text-xs text-primary-muted">MAIN OFFICE</span>
+                  <address className="not-italic">
+                    901 N Pit Street
+                    <br />
+                    Alexandria VA, 22314
+                  </address>
+                </div>
+
+                <div className="flex flex-col gap-s100">
+                  <span className="text-xs text-primary-muted">SECOND OFFICE</span>
+                  <address className="not-italic">
+                    Na Perštýně 342/1,
+                    <br />
+                    10000 Prague
+                  </address>
+                </div>
+              </div>
+
+              {/* Links Section */}
+              <div className="flex flex-col">
+                <Link href="/home" className="hover:text-brand-tertiary transition-colors">
+                  Home
+                </Link>
+                <Link href="/services" className="hover:text-brand-tertiary transition-colors">
+                  Services
+                </Link>
+                <Link href="/work" className="hover:text-brand-tertiary transition-colors">
+                  Recent Work
+                </Link>
+                <Link href="/contact" className="hover:text-brand-tertiary transition-colors">
+                  Contact
+                </Link>
+              </div>
+
+              {/* Bottom Row with Privacy and Copyright */}
+              <div className="flex justify-between items-center text-primary pt-s300 border-t border-neutral-800">
+                <a href="/privacy-policy" className="text-sm transition-colors">
+                  Privacy Policy
+                </a>
+                <div>© 2025, Awtogar</div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
     </>
