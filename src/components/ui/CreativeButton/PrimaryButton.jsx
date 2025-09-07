@@ -3,10 +3,10 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 
 // motion components
-
 const MotionLink = motion(Link);
 const MotionA = motion.a;
 const MotionButton = motion.button;
+
 export default function PrimaryButton({
   children: Children,
   className = 'w-full px-6 py-4 font-light text-center',
