@@ -4,6 +4,7 @@ import useVideoInView from '../hooks/useVideoInView';
 import video1 from '/src/assets/videos/video-1.mp4';
 import video2 from '/src/assets/videos/video-2.mp4';
 import PrimaryButton from '../components/ui/CreativeButton/PrimaryButton';
+import { Link } from 'react-router-dom';
 
 const HomePage = () => {
   const video1Loader = useVideoInView();
@@ -22,7 +23,7 @@ const HomePage = () => {
             <div className="flex items-center gap-s400 pt-s600">
               <div className="flex-1">
                 <PrimaryButton
-                  href="/contact"
+                  to="/contact"
                   background1="bg-primary"
                   background2="bg-brand-secondary"
                   outline2="outline-none"
@@ -35,13 +36,15 @@ const HomePage = () => {
               </div>
               <div className="flex-shrink-0">
                 <PrimaryButton
-                  href="/contact"
+                  href="https://www.linkedin.com/in/awaluddintogar/"
                   background1="transparent"
                   background2="bg-primary"
                   outline2="outline-none"
                   outline1="outline outline-1 outline-primary"
                   textcolor1="text-primary"
                   textcolor2="text-secondary"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   My resume
                 </PrimaryButton>
@@ -202,7 +205,7 @@ const HomePage = () => {
             </div>
             <div className="flex justify-center text-center pt-s600">
               <PrimaryButton
-                href="/contact"
+                to="/contact"
                 background1="transparent"
                 background2="bg-primary"
                 outline2="outline-none"
