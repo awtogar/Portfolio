@@ -2,10 +2,9 @@ import { Children, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 
-// motion components
-const MotionLink = motion(Link);
-const MotionA = motion.a;
-const MotionButton = motion.button;
+const MotionLink = motion.create(Link);
+const MotionA = motion.create('a');
+const MotionButton = motion.create('button');
 
 export default function PrimaryButton({
   children: Children,
