@@ -18,6 +18,9 @@ p{
   .section-padding-xy {
     @apply px-4 py-s900;
   }
+  .section-padding-end {
+    @apply px-4 pt-s900 pb-4;
+  }
 }
 
 /* ui components */
