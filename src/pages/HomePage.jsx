@@ -8,6 +8,7 @@ import video2 from '/src/assets/videos/video-2.mp4';
 import PrimaryButton from '../components/ui/CreativeButton/PrimaryButton';
 import { useLenis } from '../components/Scroller/SmoothScrollLenis';
 import { useScrollToSection } from '../utils/scrollToSection';
+import SplitMenuText from '../components/RotateText';
 
 const HomePage = () => {
   const video1Loader = useVideoInView();
@@ -230,76 +231,67 @@ const HomePage = () => {
           <div className="flex flex-col">
             <div className="flex flex-col gap-6 justify-center flex-1">
               <div className="flex flex-wrap gap-s600 justify-between">
-                <a
+                <PrimaryButton
                   href="mailto:info@awtogar.com"
-                  className="px-s300 py-s200 border border-neutral-700 rounded-full text-sm hover:bg-primary hover:text-secondary transition-colors"
+                  background1="transparent"
+                  background2="bg-brand-tertiary"
+                  outline2="outline-none"
+                  outline1="outline outline-1 outline-primary"
+                  textcolor1="text-primary"
+                  textcolor2="text-secondary"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-s100 py-s300"
                 >
                   info@awtogar.com
-                </a>
-                <a href="tel:+13015499309" className="px-s300 py-s200 border border-neutral-700 rounded-full text-sm hover:bg-primary hover:text-secondary transition-colors">
+                </PrimaryButton>
+                <PrimaryButton
+                  href="tel:+13015499309"
+                  background1="transparent"
+                  background2="bg-brand-tertiary"
+                  outline2="outline-none"
+                  outline1="outline outline-1 outline-primary"
+                  textcolor1="text-primary"
+                  textcolor2="text-secondary"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-s100 py-s300"
+                >
                   +62 1234567890
-                </a>
+                </PrimaryButton>
               </div>
               {/* Content of pages navigation */}
               <div className="flex flex-wrap gap-s600 justify-between">
                 <div className="flex flex-col gap-s100 text-xs">
-                  <span className="text-xs text-primary-muted">Main Menu</span>
-                  <a
-                    href="#home"
-                    onClick={e => {
-                      e.preventDefault();
-                      scrollToSection('home');
-                    }}
-                    className="hover:text-brand-tertiary transition-colors"
-                  >
+                  <span className="text-xs text-primary-muted">Pages Menu</span>
+                  <SplitMenuText href="#home" scrollToSection={scrollToSection} textcolor1="text-gray-900" textcolor2="text-brand-tertiary">
                     Home
-                  </a>
-                  <a
-                    href="#services-works"
-                    onClick={e => {
-                      e.preventDefault();
-                      scrollToSection('services-works');
-                    }}
-                    className="hover:text-brand-tertiary transition-colors"
-                  >
+                  </SplitMenuText>
+                  <SplitMenuText href="#services-works" scrollToSection={scrollToSection} textcolor1="text-gray-900" textcolor2="text-brand-tertiary">
                     Services
-                  </a>
-                  <a
-                    href="#selected-works"
-                    onClick={e => {
-                      e.preventDefault();
-                      scrollToSection('selected-works');
-                    }}
-                    className="hover:text-brand-tertiary transition-colors"
-                  >
-                    Recent Works
-                  </a>
-                  <a
-                    href="#contact"
-                    onClick={e => {
-                      e.preventDefault();
-                      scrollToSection('contact');
-                    }}
-                    className="hover:text-brand-tertiary transition-colors"
-                  >
+                  </SplitMenuText>
+                  <SplitMenuText href="#selected-works" scrollToSection={scrollToSection} textcolor1="text-gray-900" textcolor2="text-brand-tertiary">
+                    Selected Works
+                  </SplitMenuText>
+                  <SplitMenuText href="#contact" scrollToSection={scrollToSection} textcolor1="text-gray-900" textcolor2="text-brand-tertiary">
                     Contact
-                  </a>
+                  </SplitMenuText>
                 </div>
                 {/* Social Links */}
                 <div className="flex flex-col gap-s100 text-xs">
                   <span className="text-primary-muted">Socials</span>
-                  <a href="" className="hover:text-brand-tertiary transition-colors">
+                  <SplitMenuText href="https://github.com/yourusername" scrollToSection={scrollToSection} textcolor1="text-gray-900" textcolor2="text-brand-tertiary">
                     Github
-                  </a>
-                  <a href="" className="hover:text-brand-tertiary transition-colors">
+                  </SplitMenuText>
+                  <SplitMenuText href="https://www.linkedin.com/in/yourusername" scrollToSection={scrollToSection} textcolor1="text-gray-900" textcolor2="text-brand-tertiary">
                     LinkedIn
-                  </a>
-                  <a href="" className="hover:text-brand-tertiary transition-colors">
+                  </SplitMenuText>
+                  <SplitMenuText href="https://www.behance.net/yourusername" scrollToSection={scrollToSection} textcolor1="text-gray-900" textcolor2="text-brand-tertiary">
                     Behance
-                  </a>
-                  <a href="" className="hover:text-brand-tertiary transition-colors">
+                  </SplitMenuText>
+                  <SplitMenuText href="https://www.instagram.com/yourusername" scrollToSection={scrollToSection} textcolor1="text-gray-900" textcolor2="text-brand-tertiary">
                     Instagram
-                  </a>
+                  </SplitMenuText>
                 </div>
               </div>
               {/* Bottom Row with Privacy and Copyright */}
