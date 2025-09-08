@@ -6,15 +6,19 @@ import { services, works } from '../data/data';
 import video1 from '/src/assets/videos/video-1.mp4';
 import video2 from '/src/assets/videos/video-2.mp4';
 import PrimaryButton from '../components/ui/CreativeButton/PrimaryButton';
+import { useLenis } from '../components/Scroller/SmoothScrollLenis';
+import { useScrollToSection } from '../utils/scrollToSection';
 
 const HomePage = () => {
   const video1Loader = useVideoInView();
   const video2Loader = useVideoInView();
+  const { lenis } = useLenis();
+  const scrollToSection = useScrollToSection();
 
   return (
     <>
       {/* Hero Section */}
-      <section className="z-10 section-padding-hero">
+      <section id="home" className="z-10 section-padding-hero">
         <div className="m-auto w-full lg:max-w-[1408px]">
           <div className="flex flex-col">
             <div className="flex flex-col gap-s600">
@@ -101,7 +105,7 @@ const HomePage = () => {
       <section className="z-10 section-padding-xy bg-primary text-brand-secondary rounded-3xl">
         <div className="m-auto w-full">
           {/* Services Header */}
-          <div className="flex flex-col rounded-t-lg">
+          <div id="services-works" className="flex flex-col rounded-t-lg">
             <div className="flex w-full flex-col gap-s400">
               <h2 className="text-h100">
                 HOW CAN I <br />
@@ -155,7 +159,7 @@ const HomePage = () => {
           </div>
 
           {/* Works Section */}
-          <div className="flex flex-col space-300">
+          <div id="selected-works" className="flex flex-col space-300">
             <div className="flex w-full flex-col gap-s400">
               <h2 className="text-h100">
                 SELECTED <br />
@@ -197,9 +201,9 @@ const HomePage = () => {
           </div>
         </div>
       </section>
-      <section className="z-10 section-padding-xy">
-        <div className="m-auto w-full">
-          <div className="flex flex-col gap-s100 h-[50dvh] justify-center items-center">
+      <section id="contact" className="z-10 section-padding-xy">
+        <div className="m-auto w-full flex flex-col h-screen">
+          <div className="flex flex-col gap-s100 justify-center items-center text-center flex-1">
             <div className="flex flex-col">
               <h2 className="text-3xl text-center italic">
                 <span className="text-5xl">Have</span> an idea
@@ -223,12 +227,11 @@ const HomePage = () => {
               </PrimaryButton>
             </div>
           </div>
-          <div className="flex flex-col h-[50dvh]">
-            <div className="flex flex-col gap-6">
-              {/* Contact Info Row */}
+          <div className="flex flex-col">
+            <div className="flex flex-col gap-6 justify-center flex-1">
               <div className="flex flex-wrap gap-s600 justify-between">
                 <a
-                  href="mailto:info@cuberto.com"
+                  href="mailto:info@awtogar.com"
                   className="px-s300 py-s200 border border-neutral-700 rounded-full text-sm hover:bg-primary hover:text-secondary transition-colors"
                 >
                   info@awtogar.com
@@ -237,50 +240,78 @@ const HomePage = () => {
                   +62 1234567890
                 </a>
               </div>
-
-              {/* Office Locations */}
+              {/* Content of pages navigation */}
               <div className="flex flex-wrap gap-s600 justify-between">
-                <div className="flex flex-col gap-s100">
-                  <span className="text-xs text-primary-muted">MAIN OFFICE</span>
-                  <address className="not-italic">
-                    901 N Pit Street
-                    <br />
-                    Alexandria VA, 22314
-                  </address>
+                <div className="flex flex-col gap-s100 text-xs">
+                  <span className="text-xs text-primary-muted">Main Menu</span>
+                  <a
+                    href="#home"
+                    onClick={e => {
+                      e.preventDefault();
+                      scrollToSection('home');
+                    }}
+                    className="hover:text-brand-tertiary transition-colors"
+                  >
+                    Home
+                  </a>
+                  <a
+                    href="#services-works"
+                    onClick={e => {
+                      e.preventDefault();
+                      scrollToSection('services-works');
+                    }}
+                    className="hover:text-brand-tertiary transition-colors"
+                  >
+                    Services
+                  </a>
+                  <a
+                    href="#selected-works"
+                    onClick={e => {
+                      e.preventDefault();
+                      scrollToSection('selected-works');
+                    }}
+                    className="hover:text-brand-tertiary transition-colors"
+                  >
+                    Recent Works
+                  </a>
+                  <a
+                    href="#contact"
+                    onClick={e => {
+                      e.preventDefault();
+                      scrollToSection('contact');
+                    }}
+                    className="hover:text-brand-tertiary transition-colors"
+                  >
+                    Contact
+                  </a>
                 </div>
-
-                <div className="flex flex-col gap-s100">
-                  <span className="text-xs text-primary-muted">SECOND OFFICE</span>
-                  <address className="not-italic">
-                    Na Perštýně 342/1,
-                    <br />
-                    10000 Prague
-                  </address>
+                {/* Social Links */}
+                <div className="flex flex-col gap-s100 text-xs">
+                  <span className="text-primary-muted">Socials</span>
+                  <a href="" className="hover:text-brand-tertiary transition-colors">
+                    Github
+                  </a>
+                  <a href="" className="hover:text-brand-tertiary transition-colors">
+                    LinkedIn
+                  </a>
+                  <a href="" className="hover:text-brand-tertiary transition-colors">
+                    Behance
+                  </a>
+                  <a href="" className="hover:text-brand-tertiary transition-colors">
+                    Instagram
+                  </a>
                 </div>
               </div>
-
-              {/* Links Section */}
-              <div className="flex flex-col">
-                <Link href="/home" className="hover:text-brand-tertiary transition-colors">
-                  Home
-                </Link>
-                <Link href="/services" className="hover:text-brand-tertiary transition-colors">
-                  Services
-                </Link>
-                <Link href="/work" className="hover:text-brand-tertiary transition-colors">
-                  Recent Work
-                </Link>
-                <Link href="/contact" className="hover:text-brand-tertiary transition-colors">
-                  Contact
-                </Link>
-              </div>
-
               {/* Bottom Row with Privacy and Copyright */}
-              <div className="flex justify-between items-center text-primary pt-s300 border-t border-neutral-800">
-                <a href="/privacy-policy" className="text-sm transition-colors">
-                  Privacy Policy
-                </a>
-                <div>© 2025, Awtogar</div>
+              <div className="text-sm flex justify-between items-center text-primary pt-s300 border-t border-neutral-800">
+                <p className="transition-colors">
+                  © 2025 Awtogar <br />
+                  All rights reserved.
+                </p>
+                <p className="transition-colors">
+                  Privacy Policy <br />
+                  Terms of Service
+                </p>
               </div>
             </div>
           </div>
