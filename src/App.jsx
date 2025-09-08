@@ -6,6 +6,7 @@ import Header from './components/Header/Header';
 import SmoothScrollLenis from './components/Scroller/SmoothScrollLenis';
 import StickyCursor from './components/StickyCursor';
 import HomePage from './pages/HomePage';
+import AboutPage from './pages/AboutPage';
 import Preloader from './components/Preloader/Preloader';
 
 const App = () => {
@@ -19,8 +20,8 @@ const App = () => {
       setIsLoading(false);
       document.body.style.cursor = 'default';
       window.scrollTo(0, 0);
-    }, 2000); 
-    // },); 
+      }, 2000);
+    // });
     return () => clearTimeout(timer);
   }, []);
 
@@ -28,18 +29,18 @@ const App = () => {
     <Router>
       <AnimatePresence mode="wait">{isLoading && <Preloader key="preloader" />}</AnimatePresence>
       {!isLoading && (
-        <SmoothScrollLenis>
-          <main id="main" className="main-wrapper bg-neutral-100">
-            <Header burgerRef={burgerElement} themeToggleRef={themeToggleElement} logoElement={logoElement} />
-            <StickyCursor stickyElements={[burgerElement, themeToggleElement, logoElement]} />
-            <Routes>
-              <Route path="/" element={<HomePage />} />
-              {/* <Route path="/about" element={<AboutPage />} /> */}
-              {/* <Route path="/work" element={<ProjectPage />} /> */}
-              {/* <Route path="/contact" element={<ContactPage />} /> */}
-            </Routes>
-          </main>
-        </SmoothScrollLenis>
+      <SmoothScrollLenis>
+        <main id="main" className="main-wrapper bg-neutral-100">
+          <Header burgerRef={burgerElement} themeToggleRef={themeToggleElement} logoElement={logoElement} />
+          <StickyCursor stickyElements={[burgerElement, themeToggleElement, logoElement]} />
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/about" element={<AboutPage />} />
+            {/* <Route path="/work" element={<ProjectPage />} /> */}
+            {/* <Route path="/contact" element={<ContactPage />} /> */}
+          </Routes>
+        </main>
+      </SmoothScrollLenis>
       )}
     </Router>
   );
