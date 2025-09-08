@@ -202,7 +202,7 @@ const HomePage = () => {
           </div>
         </div>
       </section>
-      <section id="contact" className="z-10 section-padding-xy">
+      <section id="contact" className="z-10 section-padding-end">
         <div className="m-auto w-full flex flex-col h-screen">
           <div className="flex flex-col gap-s100 justify-center items-center text-center flex-1">
             <div className="flex flex-col">
@@ -234,7 +234,7 @@ const HomePage = () => {
                 <PrimaryButton
                   href="mailto:info@awtogar.com"
                   background1="transparent"
-                  background2="bg-brand-tertiary"
+                  background2="bg-primary"
                   outline2="outline-none"
                   outline1="outline outline-1 outline-primary"
                   textcolor1="text-primary"
@@ -248,7 +248,7 @@ const HomePage = () => {
                 <PrimaryButton
                   href="tel:+13015499309"
                   background1="transparent"
-                  background2="bg-brand-tertiary"
+                  background2="bg-primary"
                   outline2="outline-none"
                   outline1="outline outline-1 outline-primary"
                   textcolor1="text-primary"
@@ -264,46 +264,54 @@ const HomePage = () => {
               <div className="flex flex-wrap gap-s600 justify-between">
                 <div className="flex flex-col gap-s100 text-xs">
                   <span className="text-xs text-primary-muted">Pages Menu</span>
-                  <SplitMenuText href="#home" scrollToSection={scrollToSection} textcolor1="text-gray-900" textcolor2="text-brand-tertiary">
+                  <SplitMenuText href="#home" scrollToSection={scrollToSection} textcolor1='text-primary'>
                     Home
                   </SplitMenuText>
-                  <SplitMenuText href="#services-works" scrollToSection={scrollToSection} textcolor1="text-gray-900" textcolor2="text-brand-tertiary">
+                  <SplitMenuText href="#services-works" scrollToSection={scrollToSection} textcolor1='text-primary'>
                     Services
                   </SplitMenuText>
-                  <SplitMenuText href="#selected-works" scrollToSection={scrollToSection} textcolor1="text-gray-900" textcolor2="text-brand-tertiary">
+                  <SplitMenuText href="#selected-works" scrollToSection={scrollToSection} textcolor1='text-primary'>
                     Selected Works
                   </SplitMenuText>
-                  <SplitMenuText href="#contact" scrollToSection={scrollToSection} textcolor1="text-gray-900" textcolor2="text-brand-tertiary">
+                  <SplitMenuText href="#contact" scrollToSection={scrollToSection} textcolor1='text-primary'>
                     Contact
                   </SplitMenuText>
                 </div>
                 {/* Social Links */}
                 <div className="flex flex-col gap-s100 text-xs">
                   <span className="text-primary-muted">Socials</span>
-                  <SplitMenuText href="https://github.com/yourusername" scrollToSection={scrollToSection} textcolor1="text-gray-900" textcolor2="text-brand-tertiary">
+                  <SplitMenuText href="https://github.com/yourusername" textcolor1='text-primary'>
                     Github
                   </SplitMenuText>
-                  <SplitMenuText href="https://www.linkedin.com/in/yourusername" scrollToSection={scrollToSection} textcolor1="text-gray-900" textcolor2="text-brand-tertiary">
+                  <SplitMenuText href="https://www.linkedin.com/in/yourusername" textcolor1='text-primary'>
                     LinkedIn
                   </SplitMenuText>
-                  <SplitMenuText href="https://www.behance.net/yourusername" scrollToSection={scrollToSection} textcolor1="text-gray-900" textcolor2="text-brand-tertiary">
+                  <SplitMenuText href="https://www.behance.net/yourusername" textcolor1='text-primary'>
                     Behance
                   </SplitMenuText>
-                  <SplitMenuText href="https://www.instagram.com/yourusername" scrollToSection={scrollToSection} textcolor1="text-gray-900" textcolor2="text-brand-tertiary">
+                  <SplitMenuText href="https://www.instagram.com/yourusername" textcolor1='text-primary'>
                     Instagram
                   </SplitMenuText>
                 </div>
               </div>
-              {/* Bottom Row with Privacy and Copyright */}
-              <div className="text-sm flex justify-between items-center text-primary pt-s300 border-t border-neutral-800">
-                <p className="transition-colors">
-                  © 2025 Awtogar <br />
-                  All rights reserved.
-                </p>
-                <p className="transition-colors">
-                  Privacy Policy <br />
-                  Terms of Service
-                </p>
+              <div className="text-sm flex flex-col md:flex-row justify-between items-center text-primary-muted pt-8 border-t border-neutral-800/50 gap-2 md:gap-0">
+                {/* Copyright */}
+                <div className="flex items-center gap-2">
+                  <span className="transition-colors hover:text-primary">© {new Date().getFullYear()} Awtogar. All rights reserved.</span>
+                </div>
+
+                {/* Legal Links */}
+                <div className="flex items-center gap-6 text-xs md:text-sm">
+                  <a href="/privacy-policy" className="transition-colors hover:text-primary">
+                    Privacy Policy
+                  </a>
+                  <a href="/terms-of-service" className="transition-colors hover:text-primary">
+                    Terms of Service
+                  </a>
+                  <a href="/cookie-policy" className="transition-colors hover:text-primary">
+                    Cookie Policy
+                  </a>
+                </div>
               </div>
             </div>
           </div>
