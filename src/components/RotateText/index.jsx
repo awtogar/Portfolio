@@ -5,15 +5,20 @@ import { motion } from 'framer-motion';
 const MotionA = motion.a;
 
 export default function SplitMenuText({
-  children,
+  children: Children,
   className = '',
   href,
+  to,
+  onClick,
   scrollToSection,
   textcolor1 = 'text-secondary',
   textcolor2 = 'text-primary',
   ...props
 }) {
   const [isHovering, setIsHovering] = useState(false);
+
+  const Component = href ? motion.a : motion.button;
+  const componentProps = href ? { href, ...props } : { onClick, ...props };
 
   const handleClick = (e) => {
     e.preventDefault();
@@ -25,34 +30,38 @@ export default function SplitMenuText({
   };
 
   return (
-    <MotionA
-      href={href}
-      onClick={handleClick}
-      className={`relative inline-block cursor-pointer overflow-hidden ${className}`}
+    <Component
+      className={`ring-0 all-unset flex cursor-pointer relative overflow-clip ${className} antialiased translate-z-0 will-change-transform`}
       initial={false}
       onMouseEnter={() => setIsHovering(true)}
       onMouseLeave={() => setIsHovering(false)}
-      {...props}
+      {...componentProps}
     >
-      {/* Original text that moves up on hover */}
-      <motion.span 
-        className={`block z-20 will-change-transform ${textcolor1}`} 
-        initial={false} 
-        transition={{ type: 'linear', duration: 0.3 }} 
-        animate={{ y: isHovering ? -20 : 0 }}
-      >
-        {children}
-      </motion.span>
-      
-      {/* Duplicate text that slides in from bottom */}
-      <motion.span
-        className={`absolute top-0 left-0 block z-20 will-change-transform ${textcolor2}`}
+      <motion.p className={`m-0 z-20 will-change-transform ${textcolor1}`}
         initial={false}
         transition={{ type: 'linear', duration: 0.3 }}
-        animate={{ y: isHovering ? 0 : 20 }}
+        animate={{ y: isHovering ? -36 : 0 }}>
+        {Children}
+      </motion.p>
+
+      <motion.p
+        className={`m-0 h-full top-0 translate-y-1/2 absolute flex items-center z-20 will-change-transform ${textcolor2}`}
+        initial={false}
+        transition={{ type: 'linear', duration: 0.4 }}
+        animate={{ y: isHovering ? -8 : 16 }}
       >
-        {children}
-      </motion.span>
-    </MotionA>
+        {Children}
+      </motion.p>
+
+      <motion.div
+        className={`ring-0 absolute z-10 bottom-0 left-0 h-full w-full rounded-full will-change-transform`}
+        initial={false}
+        transition={{ type: 'linear', duration: 0.4 }}
+        animate={{
+          y: isHovering ? '0%' : '125%',
+          scaleX: isHovering ? 1 : 2,
+        }}
+      />
+    </Component>
   );
 }
