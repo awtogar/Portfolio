@@ -5,10 +5,15 @@ import Nav from '../Header/Nav/nav';
 import './header.css';
 import Magnetic from '../Magnetic';
 import Bounds from '../ui/Bounds/Bounds';
+import { useLenis } from '../Scroller/SmoothScrollLenis';
 
 const Header = ({ burgerRef, themeToggleRef, logoElement }) => {
   // control menu state buat hamburger
   const [isActive, setIsActive] = useState(false);
+  // track scroll direction and position
+  const [scrollDirection, setScrollDirection] = useState('up');
+  const [scrollPosition, setScrollPosition] = useState(0);
+  const { lenis } = useLenis();
 
   const handleToggleTheme = () => {
     // tambahin class dark ke root html
@@ -30,14 +35,44 @@ const Header = ({ burgerRef, themeToggleRef, logoElement }) => {
     }
   }, []);
 
+  useEffect(() => {
+    if (!lenis) return;
+
+    const handleLenisScroll = ({ scroll }) => {
+      // Determine scroll direction
+      if (scroll > scrollPosition && scroll > 80) {
+        setScrollDirection('down');
+      } else {
+        setScrollDirection('up');
+      }
+
+      setScrollPosition(scroll);
+    };
+
+    // Add Lenis scroll event listener
+    lenis.on('scroll', handleLenisScroll);
+
+    return () => {
+      // Clean up by removing the event listener
+      lenis.off('scroll', handleLenisScroll);
+    };
+  }, [lenis, scrollPosition]);
+
   const closeMenu = () => {
     setIsActive(false);
   };
 
   return (
-    <div className="header-wrapper">
+    <>
       {/* 2. diatas cursor agar element gak ketutupan cursor */}
-      <div className="pt-8 fixed flex w-full justify-between items-center mix-blend-difference z-[50]">
+      <motion.div
+        className="pt-8 fixed flex w-full justify-between items-center mix-blend-difference z-[50]"
+        initial={{ translateY: 0 }}
+        animate={{
+          translateY: scrollDirection === 'down' && !isActive ? -100 : 0,
+        }}
+        transition={{ duration: 0.3, ease: 'easeInOut' }}
+      >
         <Magnetic>
           <div className="flex items-center font-bold font-secondary tracking-tighter justify-center md:text-2xl antialiased px-4 h-[60px]">
             <a href="/" className="relative cursor-pointer text-neutral-100 dark:text-primary" aria-label="Home">
@@ -99,11 +134,11 @@ const Header = ({ burgerRef, themeToggleRef, logoElement }) => {
             </div>
           </Magnetic>
         </div>
-      </div>
+      </motion.div>
       <div className="nav-wrapper">
         <AnimatePresence mode="wait">{isActive && <Nav closeMenu={closeMenu} />}</AnimatePresence>
       </div>
-    </div>
+    </>
   );
 };
 
