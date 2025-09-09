@@ -6,20 +6,18 @@ import { services, works } from '../data/data';
 import video1 from '/src/assets/videos/video-1.mp4';
 import video2 from '/src/assets/videos/video-2.mp4';
 import PrimaryButton from '../components/ui/CreativeButton/PrimaryButton';
-import { useLenis } from '../components/Scroller/SmoothScrollLenis';
 import { useScrollToSection } from '../utils/scrollToSection';
-import SplitMenuText from '../components/RotateText';
+import LinkItems from '../components/HoverLink';
 
 const HomePage = () => {
   const video1Loader = useVideoInView();
   const video2Loader = useVideoInView();
-  const { lenis } = useLenis();
   const scrollToSection = useScrollToSection();
 
   return (
     <>
       {/* Hero Section */}
-      <section id="home" className="z-10 section-padding-hero">
+      <section id="home-hero" className="z-10 section-padding-hero">
         <div className="m-auto w-full lg:max-w-[1408px]">
           <div className="flex flex-col">
             <div className="flex flex-col gap-s600">
@@ -103,10 +101,10 @@ const HomePage = () => {
       </section>
 
       {/* Services & Works Section */}
-      <section className="z-10 section-padding-xy bg-primary text-brand-secondary rounded-3xl">
+      <section id="home-services-works" className="z-10 section-padding-xy bg-primary text-brand-secondary rounded-3xl">
         <div className="m-auto w-full">
           {/* Services Header */}
-          <div id="services-works" className="flex flex-col rounded-t-lg">
+          <div className="flex flex-col rounded-t-lg">
             <div className="flex w-full flex-col gap-s400">
               <h2 className="text-h100">
                 HOW CAN I <br />
@@ -129,7 +127,6 @@ const HomePage = () => {
                   const marginBottomValue = `${16 - index * 5}em`;
                   return (
                     <div key={index} className="sticky top-0 border-t border-t-neutral-100/40 bg-primary pt-s300" style={{ top: topValue, marginBottom: marginBottomValue }}>
-                      {/* Service Header */}
                       <div className="flex items-center justify-between">
                         <div className="flex items-center text-left font-semibold gap-s200 text-h200">
                           <span className="py-s100 font-mono">({service.number})</span>
@@ -160,7 +157,7 @@ const HomePage = () => {
           </div>
 
           {/* Works Section */}
-          <div id="selected-works" className="flex flex-col space-300">
+          <div id="home-selected-works" className="flex flex-col space-300">
             <div className="flex w-full flex-col gap-s400">
               <h2 className="text-h100">
                 SELECTED <br />
@@ -202,7 +199,7 @@ const HomePage = () => {
           </div>
         </div>
       </section>
-      <section id="contact" className="z-10 section-padding-end">
+      <section id="home-contact" className="z-10 section-padding-end">
         <div className="m-auto w-full flex flex-col h-screen">
           <div className="flex flex-col gap-s100 justify-center items-center text-center flex-1">
             <div className="flex flex-col">
@@ -241,7 +238,7 @@ const HomePage = () => {
                   textcolor2="text-secondary"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-s100 py-s300"
+                  className="px-s500 py-4 text-xs"
                 >
                   info@awtogar.com
                 </PrimaryButton>
@@ -255,63 +252,46 @@ const HomePage = () => {
                   textcolor2="text-secondary"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-s100 py-s300"
+                  className="px-s500 py-4 text-xs"
                 >
-                  +62 1234567890
+                  +62 85156015818
                 </PrimaryButton>
               </div>
-              {/* Content of pages navigation */}
               <div className="flex flex-wrap gap-s600 justify-between">
                 <div className="flex flex-col gap-s100 text-xs">
-                  <span className="text-xs text-primary-muted">Pages Menu</span>
-                  <SplitMenuText href="#home" scrollToSection={scrollToSection} textcolor1='text-primary'>
+                  <span className="text-primary-muted">Pages Menu</span>
+                  <LinkItems href="#home-hero" scrollToSection={scrollToSection}>
                     Home
-                  </SplitMenuText>
-                  <SplitMenuText href="#services-works" scrollToSection={scrollToSection} textcolor1='text-primary'>
+                  </LinkItems>
+                  <LinkItems href="#home-services-works" scrollToSection={scrollToSection}>
                     Services
-                  </SplitMenuText>
-                  <SplitMenuText href="#selected-works" scrollToSection={scrollToSection} textcolor1='text-primary'>
+                  </LinkItems>
+                  <LinkItems href="#home-selected-works" scrollToSection={scrollToSection}>
                     Selected Works
-                  </SplitMenuText>
-                  <SplitMenuText href="#contact" scrollToSection={scrollToSection} textcolor1='text-primary'>
+                  </LinkItems>
+                  <LinkItems href="#home-contact" scrollToSection={scrollToSection}>
                     Contact
-                  </SplitMenuText>
+                  </LinkItems>
                 </div>
                 {/* Social Links */}
                 <div className="flex flex-col gap-s100 text-xs">
                   <span className="text-primary-muted">Socials</span>
-                  <SplitMenuText href="https://github.com/yourusername" textcolor1='text-primary'>
+                  <LinkItems href="https://github.com/awtogar" rel="noopener noreferrer" target="_blank">
                     Github
-                  </SplitMenuText>
-                  <SplitMenuText href="https://www.linkedin.com/in/yourusername" textcolor1='text-primary'>
+                  </LinkItems>
+                  <LinkItems href="https://www.linkedin.com/in/awaluddintogar" rel="noopener noreferrer" target="_blank">
                     LinkedIn
-                  </SplitMenuText>
-                  <SplitMenuText href="https://www.behance.net/yourusername" textcolor1='text-primary'>
+                  </LinkItems>
+                  <LinkItems href="https://www.behance.net/awaluddintogar" rel="noopener noreferrer" target="_blank">
                     Behance
-                  </SplitMenuText>
-                  <SplitMenuText href="https://www.instagram.com/yourusername" textcolor1='text-primary'>
+                  </LinkItems>
+                  <LinkItems href="https://www.instagram.com/awtogarr" rel="noopener noreferrer" target="_blank">
                     Instagram
-                  </SplitMenuText>
+                  </LinkItems>
                 </div>
               </div>
-              <div className="text-sm flex flex-col md:flex-row justify-between items-center text-primary-muted pt-8 border-t border-neutral-800/50 gap-2 md:gap-0">
-                {/* Copyright */}
-                <div className="flex items-center gap-2">
-                  <span className="transition-colors hover:text-primary">© {new Date().getFullYear()} Awtogar. All rights reserved.</span>
-                </div>
-
-                {/* Legal Links */}
-                <div className="flex items-center gap-6 text-xs md:text-sm">
-                  <a href="/privacy-policy" className="transition-colors hover:text-primary">
-                    Privacy Policy
-                  </a>
-                  <a href="/terms-of-service" className="transition-colors hover:text-primary">
-                    Terms of Service
-                  </a>
-                  <a href="/cookie-policy" className="transition-colors hover:text-primary">
-                    Cookie Policy
-                  </a>
-                </div>
+              <div className="flex text-xs justify-center items-center text-primary/85 pt-4 border-t border-primary-muted">
+                <span className="transition-colors hover:text-primary">© {new Date().getFullYear()} Awtogar. All rights reserved.</span>
               </div>
             </div>
           </div>
