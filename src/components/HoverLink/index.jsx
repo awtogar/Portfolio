@@ -4,14 +4,14 @@ import { motion } from 'framer-motion';
 // motion components
 const MotionA = motion.a;
 
-export default function SplitMenuText({
+export default function LinkItems({
   children: Children,
   className = '',
   href,
   to,
   onClick,
   scrollToSection,
-  textcolor1 = 'text-secondary',
+  textcolor1 = 'text-primary/85',
   textcolor2 = 'text-primary',
   ...props
 }) {
@@ -20,12 +20,15 @@ export default function SplitMenuText({
   const Component = href ? motion.a : motion.button;
   const componentProps = href ? { href, ...props } : { onClick, ...props };
 
-  const handleClick = (e) => {
-    e.preventDefault();
-    if (scrollToSection && href) {
+  // Define the handleClick function
+  const handleClick = e => {
+    if (scrollToSection && href && href.startsWith('#')) {
+      e.preventDefault();
       // Extract the ID from href (remove the #)
       const id = href.replace('#', '');
       scrollToSection(id);
+    } else if (onClick) {
+      onClick(e);
     }
   };
 
@@ -35,12 +38,10 @@ export default function SplitMenuText({
       initial={false}
       onMouseEnter={() => setIsHovering(true)}
       onMouseLeave={() => setIsHovering(false)}
+      onClick={handleClick} // Add the onClick handler here
       {...componentProps}
     >
-      <motion.p className={`m-0 z-20 will-change-transform ${textcolor1}`}
-        initial={false}
-        transition={{ type: 'linear', duration: 0.3 }}
-        animate={{ y: isHovering ? -36 : 0 }}>
+      <motion.p className={`m-0 z-20 will-change-transform ${textcolor1}`} initial={false} transition={{ type: 'linear', duration: 0.3 }} animate={{ y: isHovering ? -36 : 0 }}>
         {Children}
       </motion.p>
 
