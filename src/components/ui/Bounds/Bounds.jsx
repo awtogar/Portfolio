@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 const Bounds = forwardRef(({ className = "", ...props }, ref) => (
   <motion.div
     ref={ref}
-    className={`absolute top-0 left-0 w-[100%] h-[100%] pointer-events-auto hover:scale-[3] ${className}`}
+    className={`hidden md:block absolute top-0 left-0 w-[100%] h-[100%] pointer-events-auto hover:scale-[3] ${className}`}
     {...props}
   />
 ));
