@@ -4,14 +4,12 @@ import { RiAddLine, RiSubtractLine } from '@remixicon/react';
 import useVideoInView from '../hooks/useVideoInView';
 import { services, works } from '../data/data';
 import video1 from '/src/assets/videos/video-1.mp4';
-import video2 from '/src/assets/videos/video-2.mp4';
 import PrimaryButton from '../components/ui/CreativeButton/PrimaryButton';
 import { useScrollToSection } from '../utils/scrollToSection';
 import LinkItems from '../components/HoverLink';
 
 const HomePage = () => {
   const video1Loader = useVideoInView();
-  const video2Loader = useVideoInView();
   const scrollToSection = useScrollToSection();
 
   return (
@@ -69,31 +67,52 @@ const HomePage = () => {
           </div>
         </div>
       </section>
-      {/* Impact Section */}
+      {/* TODO: Masukin basic lo apa dan kasih cta ke ig nostratic. */}
       <section className="z-10 section-padding-xy">
-        <div className="m-auto w-full">
-          <div className="flex flex-col gap-s800">
-            <div className="flex flex-col gap-s300">
-              <h2 className="text-h100 uppercase">
-                be <span className="text-brand-tertiary">impactful</span>
-              </h2>
-              <div className="h-[286px] overflow-hidden rounded-lg">
-                <video ref={video2Loader} loop muted playsInline className="w-full h-full object-cover" preload="none">
-                  <source src={video2} type="video/mp4" />
-                  Your browser does not support the video tag.
-                </video>
-              </div>
-            </div>
-            <div className="flex flex-col gap-s300">
-              <p>
-                Turning the visions into reality based on <span className="text-brand-tertiary">the use case</span> and concepts resulting brand stories.
+        <div className="m-auto w-full lg:max-w-[1408px]">
+          <div className="flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
+            {/* Story + CTA */}
+            <div className="flex flex-col gap-6 max-w-[640px]">
+              <p className="text-h500 leading-relaxed text-primary">
+                With over 2 years of experience and 100+ global clients, I specialize in creating impactful visual identities and digital experiences. Now, I extend my expertise to
+                web design & development, crafting solutions that blend creativity and functionality.
               </p>
-              <div className="flex flex-wrap gap-s200">
+
+              <PrimaryButton
+                href="https://www.instagram.com/nostratic.archv"
+                background1="transparent"
+                background2="bg-primary"
+                outline2="outline-none"
+                outline1="outline outline-1 outline-primary"
+                textcolor1="text-primary"
+                textcolor2="text-secondary"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                My design works
+              </PrimaryButton>
+
+              {/* Tags */}
+              <div className="flex flex-wrap gap-s200 pt-s400">
                 {Array.from(new Set(services.flatMap(service => service.tags))).map((tag, index) => (
                   <div key={index} className="tags">
                     {tag}
                   </div>
                 ))}
+              </div>
+            </div>
+
+            {/* Stats */}
+            <div className="flex flex-col gap-s600 bg-neutral-300 rounded-xl p-s600 shadow-sm">
+              <div className="grid grid-cols-2 gap-s600">
+                <div className="flex flex-col justify-center items-center">
+                  <span className="text-3xl font-semibold text-primary">100+</span>
+                  <span className="text-sm text-primary/60">Clients Worlwide</span>
+                </div>
+                <div className="flex flex-col justify-center items-center">
+                  <span className="text-3xl font-semibold text-primary">2+</span>
+                  <span className="text-sm text-primary/60">years experience</span>
+                </div>
               </div>
             </div>
           </div>
@@ -115,7 +134,7 @@ const HomePage = () => {
                   <div>
                     <span>(SERVICES)</span>
                   </div>
-                  <p>As a graphic designer and web developer, I can help you create stunning visuals and seamless user experiences.</p>
+                  <p>I can help you create stunning visuals, seamless user experiences and be impactful based on your needs.</p>
                 </div>
               </div>
             </div>
