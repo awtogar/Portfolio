@@ -20,17 +20,22 @@ const App = () => {
       setIsLoading(false);
       document.body.style.cursor = 'default';
       window.scrollTo(0, 0);
-      }, 2000);
-    // });
+    }, 2000);
     return () => clearTimeout(timer);
   }, []);
 
   return (
     <Router>
-      <AnimatePresence mode="wait">{isLoading && <Preloader key="preloader" />}</AnimatePresence>
-      {!isLoading && (
       <SmoothScrollLenis>
-        <main id="main" className="main-wrapper bg-neutral-100">
+        <AnimatePresence mode="wait">
+          {isLoading && <Preloader key="preloader" />}
+        </AnimatePresence>
+        
+        <main 
+          id="main" 
+          className="main-wrapper bg-neutral-100"
+          style={{ visibility: isLoading ? 'hidden' : 'visible' }}
+        >
           <Header burgerRef={burgerElement} themeToggleRef={themeToggleElement} logoElement={logoElement} />
           <StickyCursor stickyElements={[burgerElement, themeToggleElement, logoElement]} />
           <Routes>
@@ -41,7 +46,6 @@ const App = () => {
           </Routes>
         </main>
       </SmoothScrollLenis>
-      )}
     </Router>
   );
 };
