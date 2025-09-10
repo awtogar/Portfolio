@@ -16,17 +16,18 @@
     --brand-primary: #fff6d4;
     --brand-secondary: #f5ebc7;
     --brand-tertiary: #504B38;
-
+    
     /* font sizing */
-    --h100-alt: clamp(3.8rem, 1.6rem + 7.1111vw, 8.4rem);
-    --h100: clamp(1.802rem, 1.0145rem + 3.5003vw, 3.8147rem);
-    --h200: clamp(1.6018rem, 1.0344rem + 2.5217vw, 3.0518rem);
-    --h300: clamp(1.4238rem, 1.0256rem + 1.7697vw, 2.4414rem);
-    --h400: clamp(1.2656rem, 0.9966rem + 1.1957vw, 1.9531rem);
-    --h500: clamp(1.125rem, 0.9538rem + 0.7609vw, 1.5625rem);
-    --base-lg: clamp(1rem, 0.9022rem + 0.4348vw, 1.25rem);
-    --base: clamp(0.8889rem, 0.8454rem + 0.1932vw, 1rem);
-    --base-sm: clamp(0.7901rem, 0.7863rem + 0.0172vw, 0.8rem);
+    --display: clamp(3.8rem, 1.6rem + 7.1111vw, 8.4rem);
+    --h100: clamp(3rem,2.25rem + 3.75vw,5.625rem);
+    --h200: clamp(1.9531rem,1.496rem + 2.2854vw,3.5529rem);
+    --h300: clamp(1.5625rem,1.2474rem + 1.5755vw,2.6653rem);
+    --h400: clamp(1.25rem,1.0359rem + 1.0707vw,1.9995rem);
+    --h500: clamp(1.13rem,1.004rem + .63vw,1.57rem);
+    --h600: clamp(1rem,.928rem + .36vw,1.25rem);
+    --base-lg: clamp(1.25rem,1.0359rem + 1.0707vw,1.9995rem);
+    --base: clamp(1rem,.928rem + .36vw,1.25rem);
+    --base-sm: clamp(1rem,.928rem + .36vw,1.25rem);
 
 
     /* space sizing */
