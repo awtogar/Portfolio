@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 // motion components
 const MotionA = motion.a;
 
-export default function LinkItems({
+export default function LinkOnHover({
   children: Children,
   className = '',
   href,
