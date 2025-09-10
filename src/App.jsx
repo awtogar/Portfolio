@@ -4,10 +4,14 @@ import { AnimatePresence } from 'framer-motion';
 import './styles/globals.css';
 import Header from './components/Header/Header';
 import SmoothScrollLenis from './components/Scroller/SmoothScrollLenis';
-import StickyCursor from './components/StickyCursor';
+import StickyCursor from './components/ui/StickyCursor';
 import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
-import Preloader from './components/Preloader/Preloader';
+import ProjectPage from './pages/ProjectPage';
+import ContactPage from './pages/ContactPage';
+import Preloader from './components/ui/Preloader';
+import Grain from './components/ui/Grain';
+import { navigationLinks } from './data/data';
 
 const App = () => {
   const burgerElement = useRef(null);
@@ -27,22 +31,18 @@ const App = () => {
   return (
     <Router>
       <SmoothScrollLenis>
-        <AnimatePresence mode="wait">
-          {isLoading && <Preloader key="preloader" />}
-        </AnimatePresence>
-        
-        <main 
-          id="main" 
-          className="main-wrapper bg-neutral-100"
-          style={{ visibility: isLoading ? 'hidden' : 'visible' }}
-        >
+        <AnimatePresence mode="wait">{isLoading && <Preloader key="preloader" />}</AnimatePresence>
+
+        {/* <Grain /> */}
+
+        <main id="main" className="main-wrapper bg-neutral-100" style={{ visibility: isLoading ? 'hidden' : 'visible' }}>
           <Header burgerRef={burgerElement} themeToggleRef={themeToggleElement} logoElement={logoElement} />
           <StickyCursor stickyElements={[burgerElement, themeToggleElement, logoElement]} />
           <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/about" element={<AboutPage />} />
-            {/* <Route path="/work" element={<ProjectPage />} /> */}
-            {/* <Route path="/contact" element={<ContactPage />} /> */}
+            <Route path={navigationLinks[0].href} element={<HomePage />} />
+            <Route path={navigationLinks[1].href} element={<AboutPage />} />
+            <Route path={navigationLinks[2].href} element={<ProjectPage />} />
+            <Route path={navigationLinks[3].href} element={<ContactPage />} />
           </Routes>
         </main>
       </SmoothScrollLenis>

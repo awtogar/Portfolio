@@ -12,14 +12,14 @@ const navigationLinks = [
     label: 'home'
   },
   {
-    title: 'Work',
-    href: '/work',
-    label: 'work'
-  },
-  {
     title: 'About',
     href: '/about',
     label: 'about'
+  },
+  {
+    title: 'Projects',
+    href: '/projects',
+    label: 'projects'
   },
   {
     title: 'Contact',
