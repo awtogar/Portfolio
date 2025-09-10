@@ -4,9 +4,9 @@ import { RiAddLine, RiSubtractLine } from '@remixicon/react';
 import useVideoInView from '../hooks/useVideoInView';
 import { services, works, footerMenu, socialLinks, contactInfo, pageNavigation } from '../data/data';
 import video1 from '/src/assets/videos/video-1.mp4';
-import PrimaryButton from '../components/ui/CreativeButton/PrimaryButton';
+import PrimaryButton from '../components/ui/CreativeButton';
 import { useScrollToSection } from '../utils/scrollToSection';
-import LinkOnHover from '../components/HoverLink';
+import LinkOnHover from '../components/ui/HoverLink';
 
 const HomePage = () => {
   const video1Loader = useVideoInView();
@@ -106,11 +106,11 @@ const HomePage = () => {
               <div className="grid grid-cols-2 gap-s600">
                 <div className="flex flex-col justify-center items-center">
                   <span className="text-3xl font-semibold text-primary">100+</span>
-                  <span className="text-sm text-primary/60">Clients Worlwide</span>
+                  <span className="text-primary/60">Clients Worlwide</span>
                 </div>
                 <div className="flex flex-col justify-center items-center">
                   <span className="text-3xl font-semibold text-primary">2+</span>
-                  <span className="text-sm text-primary/60">years experience</span>
+                  <span className="text-primary/60">years experience</span>
                 </div>
               </div>
             </div>
@@ -118,14 +118,13 @@ const HomePage = () => {
         </div>
       </section>
 
-      <section id={sections[1].id} className="z-10 section-padding-xy bg-primary text-brand-secondary rounded-3xl">
+      <section id={sections[1].id} className="z-10 section-padding-xy bg-primary text-brand-secondary">
         <div className="m-auto w-full">
           {/* Services Header */}
           <div className="flex flex-col rounded-t-lg">
             <div className="flex w-full flex-col gap-s400">
               <h2 className="text-h100">
-                WHAT <br />
-                I DO ?
+                WHAT <br />I DO ?
               </h2>
               <div className="text-brand-secondary/80">
                 <div className="flex flex-col gap-s200">
@@ -150,8 +149,9 @@ const HomePage = () => {
                           <h3 className="capitalize">{service.title}</h3>
                         </div>
                         <div className="">
+                          {/*TODO: When is sticked to the top it will show RiaddLine if not sticked show RiSubtractLine */}
                           <RiAddLine />
-                          <RiSubtractLine className="hidden" />
+                          {/* <RiSubtractLine/> */}
                         </div>
                       </div>
                       {/* Service Content */}
@@ -160,8 +160,8 @@ const HomePage = () => {
                         <div className="flex flex-col pt-s200">
                           {service.features.map((feature, featureIndex) => (
                             <div key={featureIndex} className="flex items-center mt-s200 gap-s200">
-                              <span className="font-mono text-base-sm">({feature.number})</span>
-                              <span className="text-base-sm">{feature.name}</span>
+                              <span className="">({feature.number})</span>
+                              <span className="">{feature.name}</span>
                             </div>
                           ))}
                         </div>
@@ -242,58 +242,58 @@ const HomePage = () => {
               </PrimaryButton>
             </div>
           </div>
-          <div className="flex flex-col">
-            <div className="flex flex-col gap-6 justify-center flex-1">
-              <div className="flex flex-wrap gap-s600 justify-between">
-                <PrimaryButton
-                  href="mailto:info@awtogar.com"
-                  background1="transparent"
-                  background2="bg-primary"
-                  outline2="outline-none"
-                  outline1="outline outline-1 outline-primary"
-                  textcolor1="text-primary"
-                  textcolor2="text-secondary"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-s500 py-4 text-xs"
-                >
-                  {contactInfo.email}
-                </PrimaryButton>
-                <PrimaryButton
-                  href="tel:+13015499309"
-                  background1="transparent"
-                  background2="bg-primary"
-                  outline2="outline-none"
-                  outline1="outline outline-1 outline-primary"
-                  textcolor1="text-primary"
-                  textcolor2="text-secondary"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-s500 py-4 text-xs"
-                >
-                  {contactInfo.phone}
-                </PrimaryButton>
-                <div className="flex flex-col gap-s100 text-xs">
-                  <span className="text-primary-muted">Pages Menu</span>
-                  {footerMenu.HomePage.map((item, index) => (
-                    <LinkOnHover key={index} href={item.href} scrollToSection={scrollToSection}>
-                      {item.title}
-                    </LinkOnHover>
-                  ))}
-                </div>
-                {/* Social Links */}
-                <div className="flex flex-col gap-s100 text-xs">
-                  <span className="text-primary-muted">Socials</span>
-                  {socialLinks.map((link, index) => (
-                    <LinkOnHover key={index} href={link.href} rel="noopener noreferrer" target="_blank">
-                      {link.title}
-                    </LinkOnHover>
-                  ))}
-                </div>
+          <div className="flex flex-col gap-s600 justify-between">
+            <div className="flex gap-4">
+              <PrimaryButton
+                href="mailto:info@awtogar.com"
+                background1="transparent"
+                background2="bg-primary"
+                outline2="outline-none"
+                outline1="outline outline-1 outline-primary"
+                textcolor1="text-primary"
+                textcolor2="text-secondary"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-s500 py-4 w-full flex-1"
+              >
+                {contactInfo.email}
+              </PrimaryButton>
+              <PrimaryButton
+                href="tel:+13015499309"
+                background1="transparent"
+                background2="bg-primary"
+                outline2="outline-none"
+                outline1="outline outline-1 outline-primary"
+                textcolor1="text-primary"
+                textcolor2="text-secondary"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-2 py-4 flex-1"
+              >
+                {contactInfo.phone}
+              </PrimaryButton>
+            </div>
+            <div className="flex justify-between">
+              <div className="flex flex-col gap-s100">
+                <span className="text-primary-muted inline-block border-b border-primary-muted pb-1 w-fit">Pages Menu</span>
+                {footerMenu.HomePage.map((item, index) => (
+                  <LinkOnHover key={index} href={item.href} scrollToSection={scrollToSection}>
+                    {item.title}
+                  </LinkOnHover>
+                ))}
               </div>
-              <div className="flex text-xs justify-center items-center text-primary/85 pt-4 border-t border-primary-muted">
-                <span className="transition-colors hover:text-primary">{contactInfo.copyright}</span>
+              {/* Social Links */}
+              <div className="flex flex-col gap-s100">
+                <span className="text-primary-muted inline-block border-b border-primary-muted pb-1 w-fit">Socials</span>
+                {socialLinks.map((link, index) => (
+                  <LinkOnHover key={index} href={link.href} rel="noopener noreferrer" target="_blank">
+                    {link.title}
+                  </LinkOnHover>
+                ))}
               </div>
+            </div>
+            <div className="flex justify-center items-center text-primary/85 pt-4 border-t border-primary-muted">
+              <span className="transition-colors hover:text-primary">{contactInfo.copyright}</span>
             </div>
           </div>
         </div>
