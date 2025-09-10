@@ -43,7 +43,7 @@ html {
   --breakpoint-xl: 80rem;
   --breakpoint-2xl: 90rem;
 
-  --text-display: var(--h100-alt);
+  --text-display: var(--display);
   --text-h100: var(--h100);
   --text-h200: var(--h200);
   --text-h300: var(--h300);
