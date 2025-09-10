@@ -3,9 +3,10 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 import Nav from '../Header/Nav/nav';
 import './header.css';
-import Magnetic from '../Magnetic';
-import Bounds from '../ui/Bounds/Bounds';
+import Magnetic from '../ui/Magnetic';
+import Bounds from '../ui/Bounds';
 import { useLenis } from '../Scroller/SmoothScrollLenis';
+import { useTheme } from '../../hooks/useTheme';
 
 const Header = ({ burgerRef, themeToggleRef, logoElement }) => {
   // control menu state buat hamburger
@@ -14,26 +15,7 @@ const Header = ({ burgerRef, themeToggleRef, logoElement }) => {
   const [scrollDirection, setScrollDirection] = useState('up');
   const [scrollPosition, setScrollPosition] = useState(0);
   const { lenis } = useLenis();
-
-  const handleToggleTheme = () => {
-    // tambahin class dark ke root html
-    // simpaen tema terakhir di localStorage
-    const isDark = document.documentElement.classList.toggle('dark');
-    localStorage.setItem('theme', isDark ? 'dark' : 'light');
-  };
-
-  useEffect(() => {
-    // check tema terakhir yang ada terus apply kalo ada
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'dark') {
-      document.documentElement.classList.add('dark');
-    } else if (savedTheme === 'light') {
-      document.documentElement.classList.remove('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-      localStorage.setItem('theme', 'light');
-    }
-  }, []);
+  const { toggleTheme, isDark } = useTheme();
 
   useEffect(() => {
     if (!lenis) return;
@@ -102,7 +84,12 @@ const Header = ({ burgerRef, themeToggleRef, logoElement }) => {
             }}
           >
             <Magnetic>
-              <button className="cursor-pointer flex items-center justify-center h-[60px] group" onClick={handleToggleTheme} aria-label="Toggle dark mode" type="button">
+              <button 
+                className="cursor-pointer flex items-center justify-center h-[60px] group" 
+                onClick={toggleTheme} 
+                aria-label="Toggle dark mode" 
+                type="button"
+              >
                 <div className="relative">
                   <RiSunLine className="inline dark:hidden transition-transform duration-300 ease-in-out group-hover:-rotate-90" size={24} />
                   <RiMoonLine className="hidden dark:inline transition-transform duration-300 ease-in-out group-hover:rotate-45" size={24} />

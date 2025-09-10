@@ -7,17 +7,15 @@ import Curve from './Curve/curve';
 import { useLenis } from '../../Scroller/SmoothScrollLenis';
 import { RiSunLine, RiMoonLine } from '@remixicon/react';
 import { navigationLinks } from '../../../data/data';
+import { useTheme } from '../../../hooks/useTheme';
 
 export default function Nav({ closeMenu }) {
   const location = useLocation();
   const pathname = location.pathname;
   const [selectedIndicator, setSelectedIndicator] = useState(pathname);
   const { stopScroll, startScroll } = useLenis();
-  
-  const handleToggleTheme = () => {
-    const isDark = document.documentElement.classList.toggle('dark');
-    localStorage.setItem('theme', isDark ? 'dark' : 'light');
-  };
+
+  const { toggleTheme, isDark } = useTheme();
 
   useEffect(() => {
     const handleKeyDown = event => {
@@ -26,7 +24,7 @@ export default function Nav({ closeMenu }) {
       }
     };
     document.addEventListener('keydown', handleKeyDown);
-    
+
     // Stop Lenis scrolling when menu is open
     stopScroll();
 
@@ -35,9 +33,7 @@ export default function Nav({ closeMenu }) {
       // Resume Lenis scrolling when menu closes
       startScroll();
     };
-  }, [closeMenu, stopScroll, startScroll]
-  
-);
+  }, [closeMenu, stopScroll, startScroll]);
 
   return (
     <>
@@ -80,7 +76,7 @@ export default function Nav({ closeMenu }) {
 
               <div
                 className="md:hidden flex items-center justify-center text-[1rem] group cursor-pointer dark:text-neutral-500"
-                onClick={handleToggleTheme}
+                onClick={toggleTheme}
                 aria-label="Toggle dark mode"
               >
                 <div className="relative border-b border-neutral-100">
