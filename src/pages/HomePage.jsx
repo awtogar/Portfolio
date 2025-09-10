@@ -2,20 +2,21 @@ import { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { RiAddLine, RiSubtractLine } from '@remixicon/react';
 import useVideoInView from '../hooks/useVideoInView';
-import { services, works } from '../data/data';
+import { services, works, footerMenu, socialLinks, contactInfo, pageNavigation } from '../data/data';
 import video1 from '/src/assets/videos/video-1.mp4';
 import PrimaryButton from '../components/ui/CreativeButton/PrimaryButton';
 import { useScrollToSection } from '../utils/scrollToSection';
-import LinkItems from '../components/HoverLink';
+import LinkOnHover from '../components/HoverLink';
 
 const HomePage = () => {
   const video1Loader = useVideoInView();
   const scrollToSection = useScrollToSection();
 
+  const sections = pageNavigation.HomePage;
+
   return (
     <>
-      {/* Hero Section */}
-      <section id="home-hero" className="z-10 section-padding-hero">
+      <section id={sections[0].id} className="z-10 section-padding-hero">
         <div className="m-auto w-full lg:max-w-[1408px]">
           <div className="flex flex-col">
             <div className="flex flex-col gap-s600">
@@ -55,8 +56,6 @@ const HomePage = () => {
           </div>
         </div>
       </section>
-
-      {/* Video Section 1 */}
       <section className="z-10">
         <div className="m-auto w-full">
           <div className="h-[468px] overflow-hidden">
@@ -119,15 +118,14 @@ const HomePage = () => {
         </div>
       </section>
 
-      {/* Services & Works Section */}
-      <section id="home-services-works" className="z-10 section-padding-xy bg-primary text-brand-secondary rounded-3xl">
+      <section id={sections[1].id} className="z-10 section-padding-xy bg-primary text-brand-secondary rounded-3xl">
         <div className="m-auto w-full">
           {/* Services Header */}
           <div className="flex flex-col rounded-t-lg">
             <div className="flex w-full flex-col gap-s400">
               <h2 className="text-h100">
-                HOW CAN I <br />
-                HELP YOU?
+                WHAT <br />
+                I DO ?
               </h2>
               <div className="text-brand-secondary/80">
                 <div className="flex flex-col gap-s200">
@@ -142,13 +140,13 @@ const HomePage = () => {
             <div className="w-full m-auto">
               <div className="mt-s900 gap-y-s800 flex flex-col justify-between">
                 {services.map((service, index) => {
-                  const topValue = `calc(10vh + ${index * 4.75}em)`;
-                  const marginBottomValue = `${16 - index * 5}em`;
+                  const topValue = `calc(10vh + ${index * 5.75}em)`;
+                  const marginBottomValue = `${17.25 - index * 5.75}em`;
                   return (
                     <div key={index} className="sticky top-0 border-t border-t-neutral-100/40 bg-primary pt-s300" style={{ top: topValue, marginBottom: marginBottomValue }}>
                       <div className="flex items-center justify-between">
-                        <div className="flex items-center text-left font-semibold gap-s200 text-h200">
-                          <span className="py-s100 font-mono">({service.number})</span>
+                        <div className="text-h300 flex grid-cols-12 items-center justify-start gap-4 py-6 text-left font-semibold spy-5 ">
+                          <span className="col-span-2 self-center text-nowrap">( {service.number} )</span>
                           <h3 className="capitalize">{service.title}</h3>
                         </div>
                         <div className="">
@@ -176,7 +174,7 @@ const HomePage = () => {
           </div>
 
           {/* Works Section */}
-          <div id="home-selected-works" className="flex flex-col space-300">
+          <div id={sections[2].id} className="flex flex-col space-300">
             <div className="flex w-full flex-col gap-s400">
               <h2 className="text-h100">
                 SELECTED <br />
@@ -218,7 +216,7 @@ const HomePage = () => {
           </div>
         </div>
       </section>
-      <section id="home-contact" className="z-10 section-padding-end">
+      <section id={sections[3].id} className="z-10 section-padding-end">
         <div className="m-auto w-full flex flex-col h-screen">
           <div className="flex flex-col gap-s100 justify-center items-center text-center flex-1">
             <div className="flex flex-col">
@@ -259,7 +257,7 @@ const HomePage = () => {
                   rel="noopener noreferrer"
                   className="px-s500 py-4 text-xs"
                 >
-                  info@awtogar.com
+                  {contactInfo.email}
                 </PrimaryButton>
                 <PrimaryButton
                   href="tel:+13015499309"
@@ -273,44 +271,28 @@ const HomePage = () => {
                   rel="noopener noreferrer"
                   className="px-s500 py-4 text-xs"
                 >
-                  +62 85156015818
+                  {contactInfo.phone}
                 </PrimaryButton>
-              </div>
-              <div className="flex flex-wrap gap-s600 justify-between">
                 <div className="flex flex-col gap-s100 text-xs">
                   <span className="text-primary-muted">Pages Menu</span>
-                  <LinkItems href="#home-hero" scrollToSection={scrollToSection}>
-                    Home
-                  </LinkItems>
-                  <LinkItems href="#home-services-works" scrollToSection={scrollToSection}>
-                    Services
-                  </LinkItems>
-                  <LinkItems href="#home-selected-works" scrollToSection={scrollToSection}>
-                    Selected Works
-                  </LinkItems>
-                  <LinkItems href="#home-contact" scrollToSection={scrollToSection}>
-                    Contact
-                  </LinkItems>
+                  {footerMenu.HomePage.map((item, index) => (
+                    <LinkOnHover key={index} href={item.href} scrollToSection={scrollToSection}>
+                      {item.title}
+                    </LinkOnHover>
+                  ))}
                 </div>
                 {/* Social Links */}
                 <div className="flex flex-col gap-s100 text-xs">
                   <span className="text-primary-muted">Socials</span>
-                  <LinkItems href="https://github.com/awtogar" rel="noopener noreferrer" target="_blank">
-                    Github
-                  </LinkItems>
-                  <LinkItems href="https://www.linkedin.com/in/awaluddintogar" rel="noopener noreferrer" target="_blank">
-                    LinkedIn
-                  </LinkItems>
-                  <LinkItems href="https://www.behance.net/awaluddintogar" rel="noopener noreferrer" target="_blank">
-                    Behance
-                  </LinkItems>
-                  <LinkItems href="https://www.instagram.com/awtogarr" rel="noopener noreferrer" target="_blank">
-                    Instagram
-                  </LinkItems>
+                  {socialLinks.map((link, index) => (
+                    <LinkOnHover key={index} href={link.href} rel="noopener noreferrer" target="_blank">
+                      {link.title}
+                    </LinkOnHover>
+                  ))}
                 </div>
               </div>
               <div className="flex text-xs justify-center items-center text-primary/85 pt-4 border-t border-primary-muted">
-                <span className="transition-colors hover:text-primary">© {new Date().getFullYear()} Awtogar. All rights reserved.</span>
+                <span className="transition-colors hover:text-primary">{contactInfo.copyright}</span>
               </div>
             </div>
           </div>
