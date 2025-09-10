@@ -6,25 +6,7 @@ import Link from './Link/link';
 import Curve from './Curve/curve';
 import { useLenis } from '../../Scroller/SmoothScrollLenis';
 import { RiSunLine, RiMoonLine } from '@remixicon/react';
-
-const navItems = [
-  {
-    title: 'Home',
-    href: '/',
-  },
-  {
-    title: 'Work',
-    href: '/work',
-  },
-  {
-    title: 'About',
-    href: '/about',
-  },
-  {
-    title: 'Contact',
-    href: '/contact',
-  },
-];
+import { navigationLinks } from '../../../data/data';
 
 export default function Nav({ closeMenu }) {
   const location = useLocation();
@@ -111,7 +93,7 @@ export default function Nav({ closeMenu }) {
                 </div>
               </div>
             </div>
-            {navItems.map((data, index) => {
+            {navigationLinks.map((data, index) => {
               return <Link key={index} data={{ ...data, index }} isActive={selectedIndicator == data.href} setSelectedIndicator={setSelectedIndicator} closeMenu={closeMenu} />;
             })}
           </div>
