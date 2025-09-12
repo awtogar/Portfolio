@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { motion, AnimatePresence, stagger, easeOut } from 'framer-motion';
-import { opacity, PreloaderFade, PreloaderSlideUp } from '../../anim';
+import { opacity, PreloaderFade, PreloaderSlideUp } from '../../../data/anim';
 
 const TheWords = ['Tell None', 'Show them', 'Your Quality'];
 
