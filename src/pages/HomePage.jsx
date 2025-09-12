@@ -4,7 +4,7 @@ import { RiAddLine, RiSubtractLine } from '@remixicon/react';
 import useVideoInView from '../hooks/useVideoInView';
 import { services, works, footerMenu, socialLinks, contactInfo, pageNavigation } from '../data/data';
 import video1 from '/src/assets/videos/video-1.mp4';
-import PrimaryButton from '../components/ui/CreativeButton';
+import CreativeButton from '../components/ui/CreativeButton';
 import { useScrollToSection } from '../utils/scrollToSection';
 import LinkOnHover from '../components/ui/HoverLink';
 
@@ -25,32 +25,14 @@ const HomePage = () => {
             </div>
             <div className="flex items-center gap-s400 pt-s600">
               <div className="flex-1">
-                <PrimaryButton
-                  to="/contact"
-                  background1="bg-primary"
-                  background2="bg-brand-secondary"
-                  outline2="outline-none"
-                  outline1="outline-none"
-                  textcolor1="text-secondary"
-                  textcolor2="text-primary"
-                >
+                <CreativeButton to="/contact" variant={'fill'}>
                   Get in touch
-                </PrimaryButton>
+                </CreativeButton>
               </div>
               <div className="flex-shrink-0">
-                <PrimaryButton
-                  href="https://www.linkedin.com/in/awaluddintogar/"
-                  background1="transparent"
-                  background2="bg-primary"
-                  outline2="outline-none"
-                  outline1="outline outline-1 outline-primary"
-                  textcolor1="text-primary"
-                  textcolor2="text-secondary"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+                <CreativeButton href="https://www.linkedin.com/in/awaluddintogar/" variant="outline" target="_blank" rel="noopener noreferrer">
                   My resume
-                </PrimaryButton>
+                </CreativeButton>
               </div>
             </div>
           </div>
@@ -77,19 +59,14 @@ const HomePage = () => {
                 web design & development, crafting solutions that blend creativity and functionality.
               </p>
 
-              <PrimaryButton
+              <CreativeButton
                 href="https://www.instagram.com/nostratic.archv"
-                background1="transparent"
-                background2="bg-primary"
-                outline2="outline-none"
-                outline1="outline outline-1 outline-primary"
-                textcolor1="text-primary"
-                textcolor2="text-secondary"
+                variant={'outline'}
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 My design works
-              </PrimaryButton>
+              </CreativeButton>
 
               {/* Tags */}
               <div className="flex flex-wrap gap-s200 pt-s400">
@@ -228,50 +205,19 @@ const HomePage = () => {
               <p className="text-center">Let's work together.</p>
             </div>
             <div className="flex justify-center text-center pt-s600">
-              <PrimaryButton
-                to="/contact"
-                background1="transparent"
-                background2="bg-primary"
-                outline2="outline-none"
-                outline1="outline outline-1 outline-primary"
-                textcolor1="text-primary"
-                textcolor2="text-secondary"
-                className="px-s600 py-s300"
-              >
+              <CreativeButton to="/contact" variant="outline">
                 TELL US
-              </PrimaryButton>
+              </CreativeButton>
             </div>
           </div>
           <div className="flex flex-col gap-s600 justify-between">
             <div className="flex gap-4">
-              <PrimaryButton
-                href="mailto:info@awtogar.com"
-                background1="transparent"
-                background2="bg-primary"
-                outline2="outline-none"
-                outline1="outline outline-1 outline-primary"
-                textcolor1="text-primary"
-                textcolor2="text-secondary"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-s500 py-4 w-full flex-1"
-              >
+              <CreativeButton href="mailto:info@awtogar.com" variant="outline" target="_blank" rel="noopener noreferrer">
                 {contactInfo.email}
-              </PrimaryButton>
-              <PrimaryButton
-                href="tel:+13015499309"
-                background1="transparent"
-                background2="bg-primary"
-                outline2="outline-none"
-                outline1="outline outline-1 outline-primary"
-                textcolor1="text-primary"
-                textcolor2="text-secondary"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-2 py-4 flex-1"
-              >
+              </CreativeButton>
+              <CreativeButton href="tel:+13015499309" variant="outline" target="_blank" rel="noopener noreferrer">
                 {contactInfo.phone}
-              </PrimaryButton>
+              </CreativeButton>
             </div>
             <div className="flex justify-between">
               <div className="flex flex-col gap-s100">
