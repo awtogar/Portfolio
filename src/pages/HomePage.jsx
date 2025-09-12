@@ -1,12 +1,11 @@
 import { useRef } from 'react';
-import { Link } from 'react-router-dom';
 import { RiAddLine, RiSubtractLine } from '@remixicon/react';
 import useVideoInView from '../hooks/useVideoInView';
 import { services, works, footerMenu, socialLinks, contactInfo, pageNavigation } from '../data/data';
 import video1 from '/src/assets/videos/video-1.mp4';
 import CreativeButton from '../components/ui/CreativeButton';
 import { useScrollToSection } from '../utils/scrollToSection';
-import LinkOnHover from '../components/ui/HoverLink';
+import SectionNavLink from '../components/ui/SectionLinks';
 
 const HomePage = () => {
   const video1Loader = useVideoInView();
@@ -220,23 +219,23 @@ const HomePage = () => {
               </CreativeButton>
             </div>
             <div className="flex justify-between">
-              <div className="flex flex-col gap-s100">
-                <span className="text-primary-muted inline-block border-b border-primary-muted pb-1 w-fit">Pages Menu</span>
-                {footerMenu.HomePage.map((item, index) => (
-                  <LinkOnHover key={index} href={item.href} scrollToSection={scrollToSection}>
-                    {item.title}
-                  </LinkOnHover>
-                ))}
-              </div>
-              {/* Social Links */}
-              <div className="flex flex-col gap-s100">
-                <span className="text-primary-muted inline-block border-b border-primary-muted pb-1 w-fit">Socials</span>
-                {socialLinks.map((link, index) => (
-                  <LinkOnHover key={index} href={link.href} rel="noopener noreferrer" target="_blank">
-                    {link.title}
-                  </LinkOnHover>
-                ))}
-              </div>
+              <SectionNavLink 
+                title="Pages Menu" 
+                links={footerMenu.HomePage.map(item => ({
+                  ...item,
+                  scrollable: true
+                }))} 
+                scrollToSection={scrollToSection}
+              />
+              
+              <SectionNavLink 
+                title="Socials" 
+                links={socialLinks.map(link => ({
+                  ...link,
+                  target: "_blank",
+                  rel: "noopener noreferrer"
+                }))}
+              />
             </div>
             <div className="flex justify-center items-center text-primary/85 pt-4 border-t border-primary-muted">
               <span className="transition-colors hover:text-primary">{contactInfo.copyright}</span>
