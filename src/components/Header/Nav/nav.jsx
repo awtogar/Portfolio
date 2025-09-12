@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useLocation } from 'react-router-dom';
-import { menuSlide } from '../../anim';
+import { menuSlide } from '../../../data/anim';
 import Link from './Link/link';
 import Curve from './Curve/curve';
-import { useLenis } from '../../Scroller/SmoothScrollLenis';
+import { useLenis } from '../../../hooks/useLenis';
 import { RiSunLine, RiMoonLine } from '@remixicon/react';
 import { navigationLinks } from '../../../data/data';
 import { useTheme } from '../../../hooks/useTheme';
