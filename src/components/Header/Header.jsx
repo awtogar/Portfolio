@@ -5,7 +5,7 @@ import Nav from '../Header/Nav/nav';
 import './header.css';
 import Magnetic from '../ui/Magnetic';
 import Bounds from '../ui/Bounds';
-import { useLenis } from '../Scroller/SmoothScrollLenis';
+import { useLenis } from '../../hooks/useLenis';
 import { useTheme } from '../../hooks/useTheme';
 
 const Header = ({ burgerRef, themeToggleRef, logoElement }) => {
@@ -84,12 +84,7 @@ const Header = ({ burgerRef, themeToggleRef, logoElement }) => {
             }}
           >
             <Magnetic>
-              <button 
-                className="cursor-pointer flex items-center justify-center h-[60px] group" 
-                onClick={toggleTheme} 
-                aria-label="Toggle dark mode" 
-                type="button"
-              >
+              <button className="cursor-pointer flex items-center justify-center h-[60px] group" onClick={toggleTheme} aria-label="Toggle dark mode" type="button">
                 <div className="relative">
                   <RiSunLine className="inline dark:hidden transition-transform duration-300 ease-in-out group-hover:-rotate-90" size={24} />
                   <RiMoonLine className="hidden dark:inline transition-transform duration-300 ease-in-out group-hover:rotate-45" size={24} />
