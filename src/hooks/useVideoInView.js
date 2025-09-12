@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import { useLenis } from '../components/Scroller/SmoothScrollLenis';
+import { useLenis } from './useLenis';
 
 const useVideoInView = (options = {}) => {
   

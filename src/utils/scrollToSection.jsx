@@ -1,4 +1,4 @@
-import { useLenis } from '../components/Scroller/SmoothScrollLenis';
+import { useLenis } from '../hooks/useLenis'; // Use this import path
 
 // For use inside components
 export const useScrollToSection = () => {
