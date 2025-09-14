@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import React from 'react';
 
-export default function LinkOnHover({ children, className = '', href, to, onClick, scrollToSection, textcolor1 = 'text-primary/85', textcolor2 = 'text-primary', ...props }) {
+export default function LinkOnHover({ children, className = '', href, to, onClick, scrollToSection, textcolor1 = 'inherit', textcolor2 = 'inherit', ...props }) {
   const [isHovering, setIsHovering] = useState(false);
 
   const Component = href ? motion.a : motion.button;
