@@ -3,14 +3,13 @@ import { RiAddLine, RiSubtractLine, RiCornerDownRightLine } from '@remixicon/rea
 import { services, works, footerMenu, socialLinks, contactInfo, pageNavigation } from '../data/data';
 import video1 from '/src/assets/videos/video-1.mp4';
 import CreativeButton from '../components/ui/CreativeButton';
-import { useScrollToSection } from '../utils/scrollToSection';
-import SectionNavLink from '../components/ui/SectionLinks';
+import { useSectionScroll } from '../hooks/useSection';
+import FooterLink from '../function/FooterLink';
 import VideoLoader from '../function/VideoLoader';
-import LinkOnHover from '../components/ui/HoverLink';
+import HoverRotate from '../components/ui/HoverRotate';
 
 const HomePage = () => {
-  const scrollToSection = useScrollToSection();
-
+  const scrollToSection = useSectionScroll();
   const sections = pageNavigation.HomePage;
 
   return (
@@ -116,7 +115,7 @@ const HomePage = () => {
                           <h3 className="capitalize">{service.title}</h3>
                         </div>
                         <div className="">
-                          {/*TODO: When is sticked to the top it will show RiaddLine if not sticked show RiSubtractLine */}
+                          {/*TODO: When is stacked up to the top it will show RiAddLine if not sticked show RiSubtractLine */}
                           <RiAddLine />
                           {/* <RiSubtractLine/> */}
                         </div>
@@ -180,9 +179,7 @@ const HomePage = () => {
       </section>
       <section id={sections[3].id} className="z-10 section-padding-end">
         <div className="m-auto w-full flex flex-col h-screen">
-          {/* parent */}
           <div className="flex flex-col gap-s100 justify-between items-center text-center flex-1">
-            {/* first children - centered in the middle */}
             <div className="flex-1 flex items-center">
               <div className="flex flex-col">
                 <div className="flex flex-col pb-s600">
@@ -198,20 +195,19 @@ const HomePage = () => {
                 </CreativeButton>
               </div>
             </div>
-            {/* second children - at the bottom where green mark is */}
-            <div className="flex items-center pb-s600">
-              <LinkOnHover href="mailto:info@awtogar.com" variant="outline" target="_blank" rel="noopener noreferrer">
-                <span>have any question?</span>
-                <span className="flex items-center gap-1">
+            <div className="flex flex-col pb-s600 w-full">
+              <HoverRotate href="mailto:info@awtogar.com" variant="outline" target="_blank" rel="noopener noreferrer" className="justify-center">
+                <span>do you have any question?</span>
+                <span className="flex items-center">
                   <RiCornerDownRightLine size={16} />
                   <span>{contactInfo.email}</span>
                 </span>
-              </LinkOnHover>
+              </HoverRotate>
             </div>
           </div>
           <div className="flex flex-col gap-s600 justify-between">
             <div className="flex justify-between">
-              <SectionNavLink
+              <FooterLink
                 title="Pages Menu"
                 links={footerMenu.HomePage.map(item => ({
                   ...item,
@@ -220,7 +216,7 @@ const HomePage = () => {
                 scrollToSection={scrollToSection}
               />
 
-              <SectionNavLink
+              <FooterLink
                 title="Socials"
                 links={socialLinks.map(link => ({
                   ...link,
