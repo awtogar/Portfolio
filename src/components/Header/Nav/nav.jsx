@@ -6,8 +6,9 @@ import Link from './Link/link';
 import Curve from './Curve/curve';
 import { useLenis } from '../../../hooks/useLenis';
 import { RiSunLine, RiMoonLine } from '@remixicon/react';
-import { navigationLinks } from '../../../data/data';
+import { navigationLinks, socialLinks } from '../../../data/data';
 import { useTheme } from '../../../hooks/useTheme';
+import LinkOnHover from '../../ui/HoverLink';
 
 export default function Nav({ closeMenu }) {
   const location = useLocation();
@@ -95,14 +96,16 @@ export default function Nav({ closeMenu }) {
           </div>
           <div
             className="
-            flex w-full justify-between text-[0.6rem] gap-[0.6rem] flex-wrap
-            lg:text-xs lg:gap-10 md:justify-between md:flex-nowrap
+            flex w-full justify-between gap-[0.6rem] flex-wrap
           "
           >
-            <a>Instagram</a>
-            <a>Dribble</a>
-            <a>LinkedIn</a>
-            <a>Github</a>
+            {socialLinks.map((data, i) => {
+              return (
+                <LinkOnHover key={i} href={data.href} target="_blank" rel="noopener noreferrer" textcolor1="text-secondary" textcolor2="text-secondary">
+                  <span>{data.title}</span>
+                </LinkOnHover>
+              );
+            })}
           </div>
         </div>
         <Curve />
