@@ -97,7 +97,7 @@ export default function Preloader() {
             </AnimatePresence>
           </div>
           <svg className="absolute top-0 left-0 w-full" height={dimension.height + 300}>
-            <motion.path variants={curve} initial="initial" exit="exit" fill="primary" className="transition-colors duration-300" />
+            <motion.path variants={curve} initial="initial" exit="exit" fill="currentColor" className="transition-colors duration-300" />
           </svg>
         </>
       )}
