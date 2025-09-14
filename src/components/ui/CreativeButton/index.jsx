@@ -24,7 +24,6 @@ const BUTTON_VARIANTS = {
     textcolor1: 'text-primary',
     textcolor2: 'text-secondary',
   },
-  // You can add more variants as needed
 };
 
 export default function CreativeButton({
@@ -34,7 +33,6 @@ export default function CreativeButton({
   to,
   onClick,
   variant,
-  // Keep individual props for custom styling when needed
   background1,
   background2,
   textcolor1,
@@ -93,7 +91,7 @@ export default function CreativeButton({
         className={`m-0 h-full top-0 translate-y-1/2 absolute flex items-center z-20 will-change-transform ${styles.textcolor2}`}
         initial={false}
         transition={{ type: 'linear', duration: 0.3 }}
-        animate={{ y: isHovering ? -24 : 16 }}
+        animate={{ y: isHovering ? -28 : 0 }}
       >
         {children}
       </motion.span>
