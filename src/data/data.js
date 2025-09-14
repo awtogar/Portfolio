@@ -1,10 +1,5 @@
 import { label } from 'framer-motion/client';
-import img1 from '../assets/images/img-1.jpg';
 
-// Common placeholder image
-const placeholderImage = "https://placehold.co/600x400/504B38/FFFFFF.png";
-
-// Navigation items
 const navigationLinks = [
   {
     title: 'Home',
@@ -60,24 +55,24 @@ const socialLinks = [
 const pageNavigation = {
   HomePage: [
     {
-      id: 'home-hero',
+      id: 'Hero',
       title: 'Home',
-      component: 'HeroSection'
+      component: 'HomeHero'
     },
     {
-      id: 'home-services-works',
-      title: 'Services',
-      component: 'ServicesSection'
+      id: 'Ido',
+      title: 'What I Do',
+      component: 'HomeWhatIdo'
     },
     {
-      id: 'home-selected-works',
+      id: 'Selected-Works',
       title: 'Selected Works',
-      component: 'WorksSection'
+      component: 'HomeSelectedWorks'
     },
     {
-      id: 'home-contact',
+      id: 'Contact',
       title: 'Contact',
-      component: 'ContactSection'
+      component: 'HomeContact'
     }
   ],
   AboutPage: [
@@ -169,21 +164,21 @@ const works = [
     description: 'A selection of my recent projects showcasing my skills in graphic design and web development.',
     tags: ['Graphics', 'Branding'],
     date: { month: 'Jun', year: '2024' },
-    image: img1
+    image: 'https://placehold.co/600x400/504B38/FFFFFF.png'
   },
   {
     title: 'Foodify App',
     description: 'Mobile-first design for a food delivery service with interactive prototype.',
     tags: ['UI/UX', 'Prototype', 'Figma'],
     date: { month: 'Feb', year: '2025' },
-    image: placeholderImage
+    image: 'https://placehold.co/600x400/504B38/FFFFFF.png'
   },
   {
     title: 'Luminova Studio',
     description: 'Portfolio website with smooth animations and mobile-first design for a creative agency.',
     tags: ['Web Development', 'UI/UX'],
     date: { month: 'Aug', year: '2024' },
-    image: placeholderImage,
+    image: 'https://placehold.co/600x400/504B38/FFFFFF.png',
   }
 ];
 
@@ -201,7 +196,6 @@ export {
   pageNavigation,
   services,
   works,
-  contactInfo,
-  placeholderImage
+  contactInfo
 };
 
