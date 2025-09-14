@@ -1,7 +1,6 @@
-import { useLenis } from '../hooks/useLenis'; // Use this import path
+import { useLenis } from './useLenis'; // Use this import path
 
-// For use inside components
-export const useScrollToSection = () => {
+export const useSectionScroll = () => {
   const { lenis } = useLenis();
 
   return id => {

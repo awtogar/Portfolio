@@ -1,6 +1,6 @@
 import HoverRotate from '../components/ui/HoverRotate';
 
-export default function SectionNavLink({ title, links, scrollToSection }) {
+export default function FooterNavigation({ title, links, scrollToSection }) {
   return (
     <div className="flex flex-col gap-s100">
       <span className="text-primary-muted inline-block border-b border-primary-muted pb-1 w-fit">{title}</span>
@@ -13,3 +13,4 @@ export default function SectionNavLink({ title, links, scrollToSection }) {
     </div>
   );
 }
+
