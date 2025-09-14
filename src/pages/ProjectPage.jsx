@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { RiArrowRightUpLine } from '@remixicon/react';
-import PrimaryButton from '../components/ui/CreativeButton/index';
+import CreativeButton from '../components/ui/CreativeButton';
 
 const ProjectPage = () => {
   const [dots, setDots] = useState('.');
@@ -27,19 +27,11 @@ const ProjectPage = () => {
             <p className="text-lg md:text-xl text-gray-600 mb-12 max-w-lg mx-auto leading-relaxed">Working in progress please be patient. thank you for visiting {dots}</p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
-              <PrimaryButton
-                to="/"
-                background1="transparent"
-                background2="bg-primary"
-                outline2="outline-none"
-                outline1="outline outline-1 outline-primary"
-                textcolor1="text-primary"
-                textcolor2="text-secondary"
-              >
+              <CreativeButton to="/" variant="outline">
                 <span className="flex items-center">
                   Back to Home <RiArrowRightUpLine />
                 </span>
-              </PrimaryButton>
+              </CreativeButton>
             </div>
 
             {/* Minimalist progress indicator */}
