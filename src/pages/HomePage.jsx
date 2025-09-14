@@ -1,14 +1,14 @@
 import { useRef } from 'react';
-import { RiAddLine, RiSubtractLine } from '@remixicon/react';
-import useVideoInView from '../hooks/useVideoInView';
+import { RiAddLine, RiSubtractLine, RiCornerDownRightLine } from '@remixicon/react';
 import { services, works, footerMenu, socialLinks, contactInfo, pageNavigation } from '../data/data';
 import video1 from '/src/assets/videos/video-1.mp4';
 import CreativeButton from '../components/ui/CreativeButton';
 import { useScrollToSection } from '../utils/scrollToSection';
 import SectionNavLink from '../components/ui/SectionLinks';
+import VideoLoader from '../function/VideoLoader';
+import LinkOnHover from '../components/ui/HoverLink';
 
 const HomePage = () => {
-  const video1Loader = useVideoInView();
   const scrollToSection = useScrollToSection();
 
   const sections = pageNavigation.HomePage;
@@ -40,14 +40,10 @@ const HomePage = () => {
       <section className="z-10">
         <div className="m-auto w-full">
           <div className="h-[468px] overflow-hidden">
-            <video ref={video1Loader} loop muted playsInline className="w-full h-full object-cover" preload="none">
-              <source src={video1} type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
+            <VideoLoader src={video1} className="w-full h-full object-cover" />
           </div>
         </div>
       </section>
-      {/* TODO: Masukin basic lo apa dan kasih cta ke ig nostratic. */}
       <section className="z-10 section-padding-xy">
         <div className="m-auto w-full lg:max-w-[1408px]">
           <div className="flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
@@ -58,12 +54,7 @@ const HomePage = () => {
                 web design & development, crafting solutions that blend creativity and functionality.
               </p>
 
-              <CreativeButton
-                href="https://www.instagram.com/nostratic.archv"
-                variant={'outline'}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <CreativeButton href="https://www.instagram.com/nostratic.archv" variant={'outline'} target="_blank" rel="noopener noreferrer">
                 My design works
               </CreativeButton>
 
@@ -130,7 +121,6 @@ const HomePage = () => {
                           {/* <RiSubtractLine/> */}
                         </div>
                       </div>
-                      {/* Service Content */}
                       <div className="text-brand-secondary/80 pt-s400">
                         <p>{service.description}</p>
                         <div className="flex flex-col pt-s200">
@@ -148,8 +138,6 @@ const HomePage = () => {
               </div>
             </div>
           </div>
-
-          {/* Works Section */}
           <div id={sections[2].id} className="flex flex-col space-300">
             <div className="flex w-full flex-col gap-s400">
               <h2 className="text-h100">
@@ -158,8 +146,6 @@ const HomePage = () => {
               </h2>
               <p className="text-brand-secondary/80 text-base-sm pt-s200">A showcase of my recent projects and collaborations.</p>
             </div>
-
-            {/* Works List */}
             <div className="flex flex-col gap-s800">
               {works.map((work, index) => (
                 <div key={index} className="space-300 pt-s600 pb-s200">
@@ -194,46 +180,52 @@ const HomePage = () => {
       </section>
       <section id={sections[3].id} className="z-10 section-padding-end">
         <div className="m-auto w-full flex flex-col h-screen">
-          <div className="flex flex-col gap-s100 justify-center items-center text-center flex-1">
-            <div className="flex flex-col">
-              <h2 className="text-3xl text-center italic">
-                <span className="text-5xl">Have</span> an idea
-                <br />
-                in <span className="text-5xl leading-snug">Mind?.</span>
-              </h2>
-              <p className="text-center">Let's work together.</p>
+          {/* parent */}
+          <div className="flex flex-col gap-s100 justify-between items-center text-center flex-1">
+            {/* first children - centered in the middle */}
+            <div className="flex-1 flex items-center">
+              <div className="flex flex-col">
+                <div className="flex flex-col pb-s600">
+                  <h2 className="text-3xl text-center italic">
+                    <span className="text-5xl">Have</span> an idea
+                    <br />
+                    in <span className="text-5xl leading-snug">Mind?.</span>
+                  </h2>
+                  <p className="text-center">Let's work together.</p>
+                </div>
+                <CreativeButton to="/contact" variant="outline">
+                  TELL US
+                </CreativeButton>
+              </div>
             </div>
-            <div className="flex justify-center text-center pt-s600">
-              <CreativeButton to="/contact" variant="outline">
-                TELL US
-              </CreativeButton>
+            {/* second children - at the bottom where green mark is */}
+            <div className="flex items-center pb-s600">
+              <LinkOnHover href="mailto:info@awtogar.com" variant="outline" target="_blank" rel="noopener noreferrer">
+                <span>have any question?</span>
+                <span className="flex items-center gap-1">
+                  <RiCornerDownRightLine size={16} />
+                  <span>{contactInfo.email}</span>
+                </span>
+              </LinkOnHover>
             </div>
           </div>
           <div className="flex flex-col gap-s600 justify-between">
-            <div className="flex gap-4">
-              <CreativeButton href="mailto:info@awtogar.com" variant="outline" target="_blank" rel="noopener noreferrer">
-                {contactInfo.email}
-              </CreativeButton>
-              <CreativeButton href="tel:+13015499309" variant="outline" target="_blank" rel="noopener noreferrer">
-                {contactInfo.phone}
-              </CreativeButton>
-            </div>
             <div className="flex justify-between">
-              <SectionNavLink 
-                title="Pages Menu" 
+              <SectionNavLink
+                title="Pages Menu"
                 links={footerMenu.HomePage.map(item => ({
                   ...item,
-                  scrollable: true
-                }))} 
+                  scrollable: true,
+                }))}
                 scrollToSection={scrollToSection}
               />
-              
-              <SectionNavLink 
-                title="Socials" 
+
+              <SectionNavLink
+                title="Socials"
                 links={socialLinks.map(link => ({
                   ...link,
-                  target: "_blank",
-                  rel: "noopener noreferrer"
+                  target: '_blank',
+                  rel: 'noopener noreferrer',
                 }))}
               />
             </div>
