@@ -1,30 +1,21 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
+import React from 'react';
 
-// motion components
-const MotionA = motion.a;
-
-export default function LinkOnHover({
-  children: Children,
-  className = '',
-  href,
-  to,
-  onClick,
-  scrollToSection,
-  textcolor1 = 'text-primary/85',
-  textcolor2 = 'text-primary',
-  ...props
-}) {
+export default function LinkOnHover({ children, className = '', href, to, onClick, scrollToSection, textcolor1 = 'text-primary/85', textcolor2 = 'text-primary', ...props }) {
   const [isHovering, setIsHovering] = useState(false);
 
   const Component = href ? motion.a : motion.button;
   const componentProps = href ? { href, ...props } : { onClick, ...props };
 
-  // Define the handleClick function
+  // Get the first and second child elements
+  const childrenArray = React.Children.toArray(children);
+  const firstText = childrenArray[0] || null;
+  const secondText = childrenArray[1] || firstText; // Fallback to first text if second not provided
+
   const handleClick = e => {
     if (scrollToSection && href && href.startsWith('#')) {
       e.preventDefault();
-      // Extract the ID from href (remove the #)
       const id = href.replace('#', '');
       scrollToSection(id);
     } else if (onClick) {
@@ -38,20 +29,20 @@ export default function LinkOnHover({
       initial={false}
       onMouseEnter={() => setIsHovering(true)}
       onMouseLeave={() => setIsHovering(false)}
-      onClick={handleClick} // Add the onClick handler here
+      onClick={handleClick}
       {...componentProps}
     >
       <motion.span className={`m-0 z-20 will-change-transform ${textcolor1}`} initial={false} transition={{ type: 'linear', duration: 0.3 }} animate={{ y: isHovering ? -36 : 0 }}>
-        {Children}
+        {firstText}
       </motion.span>
 
       <motion.span
         className={`m-0 h-full top-0 translate-y-1/2 absolute flex items-center z-20 will-change-transform ${textcolor2}`}
         initial={false}
         transition={{ type: 'linear', duration: 0.4 }}
-        animate={{ y: isHovering ? -8 : 16 }}
+        animate={{ y: isHovering ? -12 : 12 }}
       >
-        {Children}
+        {secondText}
       </motion.span>
 
       <motion.div
