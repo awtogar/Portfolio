@@ -2,13 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useLocation } from 'react-router-dom';
 import { menuSlide } from '../../../data/anim';
-import Link from './Link/link';
+import LinkComponent from './Link/link';
 import Curve from './Curve/curve';
 import { useLenis } from '../../../hooks/useLenis';
 import { RiSunLine, RiMoonLine } from '@remixicon/react';
 import { navigationLinks, socialLinks } from '../../../data/data';
 import { useTheme } from '../../../hooks/useTheme';
-import LinkOnHover from '../../ui/HoverLink';
+import LinkOnHover from '../../ui/HoverRotate';
 
 export default function Nav({ closeMenu }) {
   const location = useLocation();
@@ -91,14 +91,12 @@ export default function Nav({ closeMenu }) {
               </div>
             </div>
             {navigationLinks.map((data, index) => {
-              return <Link key={index} data={{ ...data, index }} isActive={selectedIndicator == data.href} setSelectedIndicator={setSelectedIndicator} closeMenu={closeMenu} />;
+              return (
+                <LinkComponent key={index} data={{ ...data, index }} isActive={selectedIndicator == data.href} setSelectedIndicator={setSelectedIndicator} closeMenu={closeMenu} />
+              );
             })}
           </div>
-          <div
-            className="
-            flex w-full justify-between gap-[0.6rem] flex-wrap
-          "
-          >
+          <div className="flex w-full justify-between">
             {socialLinks.map((data, i) => {
               return (
                 <LinkOnHover key={i} href={data.href} target="_blank" rel="noopener noreferrer" textcolor1="text-secondary" textcolor2="text-secondary">

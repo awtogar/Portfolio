@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import React from 'react';
 
-export default function LinkOnHover({ children, className = '', href, to, onClick, scrollToSection, textcolor1 = 'inherit', textcolor2 = 'inherit', ...props }) {
+export default function HoverRotate({ children, className = '', href, to, onClick, scrollToSection, textcolor1 = 'inherit', textcolor2 = 'inherit', ...props }) {
   const [isHovering, setIsHovering] = useState(false);
 
   const Component = href ? motion.a : motion.button;
@@ -25,7 +25,7 @@ export default function LinkOnHover({ children, className = '', href, to, onClic
 
   return (
     <Component
-      className={`ring-0 all-unset flex cursor-pointer relative overflow-clip ${className} antialiased translate-z-0 will-change-transform`}
+      className={`ring-0 w-full all-unset flex cursor-pointer relative overflow-clip ${className} antialiased translate-z-0 will-change-transform`}
       initial={false}
       onMouseEnter={() => setIsHovering(true)}
       onMouseLeave={() => setIsHovering(false)}

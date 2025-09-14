@@ -24,11 +24,20 @@ const BUTTON_VARIANTS = {
     textcolor1: 'text-primary',
     textcolor2: 'text-secondary',
   },
+  transparent: {
+    background1: 'transparent',
+    background2: 'transparent',
+    outline1: 'outline-none',
+    outline2: 'outline-none',
+    textcolor1: 'text-primary',
+    textcolor2: 'text-primary',
+  },
+  
 };
 
 export default function CreativeButton({
   children,
-  className = 'w-full px-6 py-4 font-light text-center',
+  className,
   href,
   to,
   onClick,
@@ -72,7 +81,7 @@ export default function CreativeButton({
 
   return (
     <Component
-      className={`ring-0 all-unset flex content-center justify-center cursor-pointer ${styles.background1} ${styles.outline1} rounded-full relative overflow-clip ${className} antialiased translate-z-0 will-change-transform`}
+      className={`px-6 py-3 font-light text-center ring-0 all-unset flex content-center justify-center cursor-pointer ${styles.background1} ${styles.outline1} rounded-full relative overflow-clip ${className} antialiased translate-z-0 will-change-transform`}
       initial={false}
       onMouseEnter={() => setIsHovering(true)}
       onMouseLeave={() => setIsHovering(false)}
@@ -91,7 +100,7 @@ export default function CreativeButton({
         className={`m-0 h-full top-0 translate-y-1/2 absolute flex items-center z-20 will-change-transform ${styles.textcolor2}`}
         initial={false}
         transition={{ type: 'linear', duration: 0.3 }}
-        animate={{ y: isHovering ? -28 : 0 }}
+        animate={{ y: isHovering ? -24 : 0 }}
       >
         {children}
       </motion.span>

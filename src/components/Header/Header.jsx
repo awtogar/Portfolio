@@ -46,7 +46,6 @@ const Header = ({ burgerRef, themeToggleRef, logoElement }) => {
 
   return (
     <>
-      {/* 2. diatas cursor agar element gak ketutupan cursor */}
       <motion.div
         className="pt-8 fixed flex w-full justify-between items-center mix-blend-difference z-[50]"
         initial={{ translateY: 0 }}
@@ -117,9 +116,9 @@ const Header = ({ burgerRef, themeToggleRef, logoElement }) => {
           </Magnetic>
         </div>
       </motion.div>
-      <div className="nav-wrapper">
-        <AnimatePresence mode="wait">{isActive && <Nav closeMenu={closeMenu} />}</AnimatePresence>
-      </div>
+      {/* <div className="nav-wrapper-test"> */}
+      <AnimatePresence mode="wait">{isActive && <Nav closeMenu={closeMenu} />}</AnimatePresence>
+      {/* </div> */}
     </>
   );
 };
