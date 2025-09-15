@@ -1,27 +1,54 @@
 import { label } from 'framer-motion/client';
+import { href } from 'react-router-dom';
 
-const navigationLinks = [
-  {
+
+const pageData = {
+   home: {
     title: 'Home',
     href: '/',
-    label: 'home'
+    label: 'home',
+    sections: [
+      { id: 'hero', title: 'Hero' },
+      { id: 'features', title: 'Features' },
+      { id: 'testimonials', title: 'Testimonials' },
+      { id: 'cta', title: 'Call to Action' }
+    ]
   },
-  {
+  about: {
     title: 'About',
     href: '/about',
-    label: 'about'
+    label: 'about',
+    sections: [
+      { id: 'story', title: 'Our Story' },
+      { id: 'mission', title: 'Mission' },
+      { id: 'team', title: 'Team' },
+      { id: 'values', title: 'Values' }
+    ]
   },
-  {
+  project: {
     title: 'Projects',
     href: '/projects',
-    label: 'projects'
+    label: 'projects',
+    sections: [
+      { id: 'consulting', title: 'Consulting' },
+      { id: 'development', title: 'Development' },
+      { id: 'design', title: 'Design' },
+      { id: 'support', title: 'Support' }
+    ]
   },
-  {
+  contact: {
     title: 'Contact',
     href: '/contact',
-    label: 'contact'
-  },
-];
+    label: 'contact',
+    sections: [
+      { id: 'info', title: 'Contact Info' },
+      { id: 'form', title: 'Contact Form' },
+      { id: 'location', title: 'Location' },
+      { id: 'hours', title: 'Business Hours' }
+    ]
+  }
+};
+
 
 // Social media links
 const socialLinks = [
@@ -190,12 +217,12 @@ const contactInfo = {
 };
 
 export {
-  navigationLinks,
   socialLinks,
   footerMenu,
   pageNavigation,
   services,
   works,
-  contactInfo
+  contactInfo,
+  pageData
 };
 
