@@ -5,10 +5,7 @@ import './styles/globals.css';
 // Animation imports
 import { AnimatePresence } from 'framer-motion';
 
-import Header from './components/Header/Header';
-import StickyCursor from './components/ui/StickyCursor';
-import Preloader from './components/ui/Preloader';
-import Grain from './components/ui/Grain';
+import {Preloader, Header, StickyCursor, Grain} from './components';
 import LenisScroll from './function/LenisScroll';
 import { useLenis } from './hooks/useLenis';
 
@@ -19,7 +16,7 @@ import ProjectPage from './pages/ProjectPage';
 import ContactPage from './pages/ContactPage';
 
 // Data
-import { navigationLinks } from './data/data';
+import { pageData } from './data/data';
 import { PRELOADER_DURATION } from './data/const';
 
 const AppContent = () => {
@@ -52,12 +49,11 @@ const AppContent = () => {
         <Header burgerRef={burgerElement} themeToggleRef={themeToggleElement} logoElement={logoElement} />
         <StickyCursor stickyElements={[burgerElement, themeToggleElement, logoElement]} />
         <Routes>
-          <Route path={navigationLinks[0].href} element={<HomePage />} />
-          <Route path={navigationLinks[1].href} element={<AboutPage />} />
-          <Route path={navigationLinks[2].href} element={<ProjectPage />} />
-          <Route path={navigationLinks[3].href} element={<ContactPage />} />
+          <Route path={pageData.home.href} element={<HomePage />} />
+          <Route path={pageData.about.href} element={<AboutPage />} />
+          <Route path={pageData.project.href} element={<ProjectPage />} />
+          <Route path={pageData.contact.href} element={<ContactPage />} />
         </Routes>
-        
       </main>
     </>
   );
