@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useLocation } from 'react-router-dom';
-import { menuSlide } from '../../../data/anim';
-import LinkComponent from './Link/link';
-import Curve from './Curve/curve';
-import { useLenis } from '../../../hooks/useLenis';
 import { RiSunLine, RiMoonLine } from '@remixicon/react';
-import { navigationLinks, socialLinks } from '../../../data/data';
-import { useTheme } from '../../../hooks/useTheme';
-import LinkOnHover from '../../ui/HoverRotate';
+import { menuSlide } from '../../data/anim';
+import { pageData, socialLinks } from '../../data/data';
+import { useLenis } from '../../hooks/useLenis';
+import { useTheme } from '../../hooks/useTheme';
+import Curve from '../ui/Curve';
+import LinkComponent from './Link';
+import LinkOnHover from '../ui/HoverRotate';
 
 export default function Nav({ closeMenu }) {
   const location = useLocation();
@@ -90,9 +90,9 @@ export default function Nav({ closeMenu }) {
                 </div>
               </div>
             </div>
-            {navigationLinks.map((data, index) => {
+            {Object.values(pageData).map((data, index) => {
               return (
-                <LinkComponent key={index} data={{ ...data, index }} isActive={selectedIndicator == data.href} setSelectedIndicator={setSelectedIndicator} closeMenu={closeMenu} />
+                <LinkComponent key={index} data={{ ...data, index }} isActive={selectedIndicator === data.href} setSelectedIndicator={setSelectedIndicator} closeMenu={closeMenu} />
               );
             })}
           </div>

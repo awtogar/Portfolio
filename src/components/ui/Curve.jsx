@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import { motion } from 'framer-motion';
-import './curve.css';
 
 export default function Curve() {
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 });

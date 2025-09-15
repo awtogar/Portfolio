@@ -1,10 +1,8 @@
+import { useEffect, useState } from 'react';
 import { RiSunLine, RiMoonLine } from '@remixicon/react';
 import { AnimatePresence, motion } from 'framer-motion';
-import { useEffect, useState } from 'react';
-import Nav from '../Header/Nav/nav';
-import './header.css';
-import Magnetic from '../ui/Magnetic';
-import Bounds from '../ui/Bounds';
+import { Nav, Magnetic, Bounds } from '../../components';
+
 import { useLenis } from '../../hooks/useLenis';
 import { useTheme } from '../../hooks/useTheme';
 
