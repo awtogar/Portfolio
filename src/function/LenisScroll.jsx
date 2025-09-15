@@ -1,5 +1,5 @@
 import Lenis from 'lenis';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, useMemo, useCallback } from 'react';
 import LenisContext from '../hooks/useLenis';
 
 const LenisScroll = ({ children }) => {
@@ -15,7 +15,7 @@ const LenisScroll = ({ children }) => {
 
     // Set state to make lenis available to context consumers
     setLenis(lenisInstance);
-
+    
     // Keep window.lenis for backward compatibility
     window.lenis = lenisInstance;
 
@@ -23,7 +23,6 @@ const LenisScroll = ({ children }) => {
       lenisInstance.raf(time);
       requestAnimationFrame(raf);
     };
-
     requestAnimationFrame(raf);
 
     return () => {
@@ -33,27 +32,36 @@ const LenisScroll = ({ children }) => {
     };
   }, []);
 
-  const stopScroll = () => {
+  // Memoize callback to prevent unnecessary re-renders
+  const stopScroll = useCallback(() => {
     if (lenis) {
       lenis.stop();
     }
-  };
+  }, [lenis]);
 
-  const startScroll = () => {
+  const startScroll = useCallback(() => {
     if (lenis) {
       lenis.start();
     }
-  };
+  }, [lenis]);
 
-  const scrollTo = (target, options) => {
+  const scrollTo = useCallback((target, options) => {
     if (lenis) {
       lenis.scrollTo(target, options);
     }
-  };
+  }, [lenis]);
+
+  // Memoize to prevent unnecessary re-renders
+  const contextValue = useMemo(() => ({
+    lenis,
+    stopScroll,
+    startScroll,
+    scrollTo
+  }), [lenis, stopScroll, startScroll, scrollTo]);
 
   return (
-    <LenisContext.Provider value={{ lenis, stopScroll, startScroll, scrollTo }}>
-      <div ref={wrapperRef} className="app-scroll">
+    <LenisContext.Provider value={contextValue}>
+      <div ref={wrapperRef} className="App">
         {children}
       </div>
     </LenisContext.Provider>
