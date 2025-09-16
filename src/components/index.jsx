@@ -4,7 +4,7 @@
 export { default as Header } from './commons/Header.jsx';
 export { default as Link } from './commons/Link.jsx';
 export { default as Nav } from './commons/Nav.jsx';
-export { default as FooterLink } from './commons/FooterLink.jsx';
+export { default as Footer } from './commons/Footer.jsx';
 
 // UI components (fix paths)
 export { default as Bounds } from './ui/Bounds.jsx';
