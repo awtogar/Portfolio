@@ -7,7 +7,7 @@ p{
 }
 /* Section components  */
 .section-padding-hero{
-  @apply px-4 gap-s300 pb-s800 pt-[164px]
+  @apply px-4 pb-s900 pt-[164px]
 }
 
 @layer utilities {

@@ -10,6 +10,8 @@
 } */
 html {
   position: relative;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 @layer base {
@@ -60,7 +62,7 @@ html {
   --spacing-s500: var(--s500);
   --spacing-s600: var(--s600);
   --spacing-s700: var(--s700);
-  --spacing-s800: var(--s800);
+  --spacing-s800: var (--s800);
   --spacing-s900: var(--s900);
   --spacing-sfluid: var(--sfluid);
 }
