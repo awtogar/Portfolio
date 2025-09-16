@@ -80,7 +80,7 @@ const HomePage = () => {
         </div>
       </section>
 
-      <section className="z-10 section-padding-xy bg-primary text-brand-secondary">
+      <section id='what-i-do' className="z-10 section-padding-xy bg-primary text-brand-secondary">
         <div className="m-auto w-full">
           {/* Services Header */}
           <div className="flex flex-col rounded-t-lg">
@@ -132,7 +132,7 @@ const HomePage = () => {
               </div>
             </div>
           </div>
-          <div className="flex flex-col space-300 pt-s900 pb-s900">
+          <div id='selected-works' className="flex flex-col space-300 pt-s900 pb-s900">
             <div className="flex w-full flex-col gap-s400">
               <h2 className="text-h100">
                 SELECTED <br />
@@ -172,7 +172,7 @@ const HomePage = () => {
           </div>
         </div>
       </section>
-      <section className="z-10 section-padding-end">
+      <section id='contact' className="z-10 section-padding-end">
         <div className="m-auto w-full flex flex-col h-screen">
           <div className="flex flex-col gap-s100 justify-between items-center text-center flex-1">
             <div className="flex-1 flex items-center">
@@ -192,7 +192,7 @@ const HomePage = () => {
             </div>
             <div className="flex flex-col pb-s600 w-full">
               <HoverRotate href="mailto:info@awtogar.com" variant="outline" target="_blank" rel="noopener noreferrer" className="justify-center">
-                <span>do you have any question?</span>
+                <span>Have an any question?</span>
                 <span className="flex items-center">
                   <RiCornerDownRightLine size={16} />
                   <span>{contact_info.email}</span>
