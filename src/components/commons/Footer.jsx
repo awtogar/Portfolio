@@ -16,8 +16,6 @@ const Footer = () => {
   };
 
   const currentPage = getCurrentPage();
-
-  // Handle section click
   const handleSectionClick = (e, id) => {
     e.preventDefault();
     scrollTo(id);
@@ -30,28 +28,25 @@ const Footer = () => {
           <div className="flex justify-between flex-wrap gap-8">
             {/* Section Navigation */}
             <div className="flex flex-col gap-s100">
-              <span className="text-primary-muted inline-block border-b border-primary-muted pb-1 w-fit">{currentPage.title} Sections</span>
+              <span className="text-primary-muted/72 inline-block border-b border-primary-muted/35 pb-1 w-fit">Content Menu</span>
               {currentPage.sections.map(section => (
-                <HoverRotate key={section.id} href={`#${section.id}`} onClick={e => handleSectionClick(e, section.id)}>
+                <HoverRotate className='text-primary-muted' key={section.id} href={`#${section.id}`} onClick={e => handleSectionClick(e, section.id)}>
                   {section.title}
                 </HoverRotate>
               ))}
             </div>
-
-            {/* Social Links */}
             <div className="flex flex-col gap-s100">
-              <span className="text-primary-muted inline-block border-b border-primary-muted pb-1 w-fit">Socials</span>
+              <span className="text-primary-muted/72 inline-block border-b border-primary-muted/35 pb-1 w-fit">Socials</span>
               {social_links.map(social => (
-                <HoverRotate key={social.label} as="a" href={social.href} target="_blank" rel="noopener noreferrer">
+                <HoverRotate key={social.label} as="a" href={social.href} target="_blank" rel="noopener noreferrer" className="text-primary-muted">
                   {social.title}
                 </HoverRotate>
               ))}
             </div>
           </div>
-
-          {/* Copyright */}
-          <div className="flex justify-center items-center text-primary/85 pt-4 border-t border-primary-muted">
-            <span className="transition-colors hover:text-primary">{contact_info.copyright}</span>
+          <div className="text-primary-muted/72  flex justify-between items-center pt-4 border-t border-primary-muted/35">
+            <span className='text-xs'>{contact_info.credits}</span>
+            <span className='text-xs'>{contact_info.copyright}</span>
           </div>
         </div>
       </div>

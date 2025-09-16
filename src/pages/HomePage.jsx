@@ -192,9 +192,9 @@ const HomePage = () => {
             </div>
             <div className="flex flex-col pb-s600 w-full">
               <HoverRotate href="mailto:info@awtogar.com" variant="outline" target="_blank" rel="noopener noreferrer" className="justify-center">
-                <span>Have an any question?</span>
-                <span className="flex items-center">
-                  <RiCornerDownRightLine size={16} />
+                <span className='text-primary-muted'>Have any questions?</span>
+                <span className="flex items-center text-primary font-semibold">
+                  <RiCornerDownRightLine size={24} />
                   <span>{contact_info.email}</span>
                 </span>
               </HoverRotate>
