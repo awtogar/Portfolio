@@ -9,11 +9,11 @@ const pages_data = {
         title: 'Hero'
       },
       {
-        id: 'abilities',
-        title: 'Abilities'
+        id: 'what-i-do',
+        title: 'What I Do'
       },
       {
-        id: 'works',
+        id: 'selected-works',
         title: 'Selected Works'
       },
       {
