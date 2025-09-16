@@ -83,8 +83,8 @@ const Header = ({ burgerRef, themeToggleRef, logoElement }) => {
             <Magnetic>
               <button className="cursor-pointer flex items-center justify-center h-[60px] group" onClick={toggleTheme} aria-label="Toggle dark mode" type="button">
                 <div className="relative">
-                  <RiSunLine className="inline dark:hidden transition-transform duration-300 ease-in-out group-hover:-rotate-90" size={24} />
-                  <RiMoonLine className="hidden dark:inline transition-transform duration-300 ease-in-out group-hover:rotate-45" size={24} />
+                  <RiSunLine className="hidden dark:inline transition-transform duration-300 ease-in-out group-hover:-rotate-90" size={24} />
+                  <RiMoonLine className="inline dark:hidden transition-transform duration-300 ease-in-out group-hover:rotate-45" size={24} />
                 </div>
                 <Bounds ref={themeToggleRef} />
               </button>
@@ -97,13 +97,11 @@ const Header = ({ burgerRef, themeToggleRef, logoElement }) => {
                 setIsActive(!isActive);
               }}
             >
-              {/* Top line (::before replacement) */}
               <div
                 className={`block w-11 h-[3px] bg-neutral-100 mix-blend-difference transition-transform duration-300 ease-in-out origin-center
                 ${isActive ? 'scale-x-50' : 'scale-x-60'} md:w-[30px] md:h-[2px]
                 ${isActive ? 'md:scale-x-100' : 'md:scale-x-60'} dark:bg-primary`}
               />
-              {/* Bottom line (::after replacement) */}
               <div
                 className={`block w-11 h-[3px] bg-neutral-100 mix-blend-difference transition-transform duration-300 ease-in-out origin-center
                 ${isActive ? 'scale-x-50' : 'scale-x-60'} md:w-[30px] md:h-[2px]

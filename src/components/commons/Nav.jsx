@@ -70,7 +70,7 @@ export default function Nav({ closeMenu }) {
           >
             <div className="flex items-center w-full md:block">
               <div className="text-neutral-100 uppercase text-[0.6rem] border-b border-neutral-100">
-                <p>Theme</p>
+                <p>Theme is</p>
               </div>
 
               <div className="flex-1 border-b border-neutral-100 mx-4 md:hidden"></div>
@@ -81,10 +81,10 @@ export default function Nav({ closeMenu }) {
                 aria-label="Toggle dark mode"
               >
                 <div className="relative border-b border-neutral-100">
-                  <div className="inline dark:hidden transition-transform duration-300 ease-in-out text-neutral-500 uppercase text-[0.6rem]">
+                  <div className="hidden dark:inline transition-transform duration-300 ease-in-out text-neutral-500 uppercase text-[0.6rem]">
                     <span>[ dark ]</span>
                   </div>
-                  <div className="hidden dark:inline transition-transform duration-300 ease-in-out text-neutral-500 uppercase text-[0.6rem]">
+                  <div className="inline dark:hidden transition-transform duration-300 ease-in-out text-neutral-500 uppercase text-[0.6rem]">
                     <span>[ light ]</span>
                   </div>
                 </div>
