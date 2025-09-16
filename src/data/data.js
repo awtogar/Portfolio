@@ -187,7 +187,6 @@ const works = [{
 ];
 
 // Social media links
-// Social media links
 const social_links = [{
     title: 'Github',
     href: 'https://github.com/awtogar',
@@ -219,7 +218,8 @@ const social_links = [{
 const contact_info = {
   email: 'info@awtogar.com',
   phone: '+62 85156015818',
-  copyright: `© ${new Date().getFullYear()} Awtogar. All rights reserved.`
+  credits: `© ${new Date().getFullYear()} Awtogar.`,
+  copyright: `All rights reserved.`
 };
 
 export {
