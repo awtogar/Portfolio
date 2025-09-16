@@ -25,8 +25,8 @@ p{
 
 /* ui components */
 .tags{
-  @apply border-primary-muted border text-primary-muted font-light px-2 py-1 rounded-full text-base-sm;
+  @apply ring-0 border-primary-muted/75 border text-primary/75 font-light px-2 py-1 rounded-full text-xs;
 }
 .tags-secondary{
-  @apply border-brand-secondary/80 border text-brand-secondary/80 font-light px-2 py-1 rounded-full text-base-sm;
+  @apply ring-0 border-brand-secondary/75 border text-brand-secondary/75 font-light px-2 py-1 rounded-full text-xs;
 }

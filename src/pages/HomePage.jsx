@@ -1,7 +1,7 @@
 import { useRef } from 'react';
 import { RiAddLine, RiSubtractLine, RiCornerDownRightLine } from '@remixicon/react';
 import { ido, works, social_links, contact_info, pages_data } from '../data/data';
-import video1 from '/src/assets/videos/video-1.mp4';
+import video1 from '../assets/videos/video-1.mp4';
 import { CreativeButton, HoverRotate, Footer } from '../components';
 import { useScrollTo } from '../hooks/useScrollTo';
 import VideoLoader from '../function/VideoLoader';
