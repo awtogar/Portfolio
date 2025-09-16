@@ -1,11 +1,12 @@
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import { useRef, useEffect, useState } from 'react';
 import './styles/globals.css';
+import { SpeedInsights } from '@vercel/speed-insights/react';
 
 // Animation
 import { AnimatePresence } from 'framer-motion';
 
-import {Preloader, Header, StickyCursor, Grain} from './components';
+import { Preloader, Header, StickyCursor, Grain } from './components';
 import LenisScroll from './function/LenisScroll';
 import { useLenis } from './hooks/useLenis';
 
@@ -61,11 +62,14 @@ const AppContent = () => {
 
 const App = () => {
   return (
-    <Router>
-      <LenisScroll>
-        <AppContent />
-      </LenisScroll>
-    </Router>
+    <>
+      <SpeedInsights />
+      <Router>
+        <LenisScroll>
+          <AppContent />
+        </LenisScroll>
+      </Router>
+    </>
   );
 };
 
