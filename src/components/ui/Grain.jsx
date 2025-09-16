@@ -5,21 +5,16 @@ const Grain = () => {
   const { isDark } = useTheme();
   
   const grainSettings = {
-    // Fine grain layer (film texture)
     fineGrain: {
       opacity: isDark ? 0.08 : 0.06,
       baseFrequency: '0.46',
       blend: 'overlay'
     },
-    // Medium grain layer (adds depth)
-
     mediumGrain: {
       opacity: isDark ? 0.05 : 0.07,
       baseFrequency: '0.24',
       blend: isDark ? 'soft-light' : 'overlay'
     },
-    // Coarse grain layer (cinematic texture)
-
     coarseGrain: {
       opacity: isDark ? 0.04 : 0.05,
       baseFrequency: '0.3',
@@ -34,7 +29,6 @@ const Grain = () => {
         xmlns="http://www.w3.org/2000/svg"
       >
         <defs>
-          {/* Layer-1 */}
           <filter id="fineGrain" x="0%" y="0%" width="100%" height="100%">
             <feTurbulence 
               type="fractalNoise" 
@@ -59,7 +53,6 @@ const Grain = () => {
             />
           </filter>
 
-          {/* Layer-2 */}
           <filter id="mediumGrain" x="0%" y="0%" width="100%" height="100%">
             <feTurbulence 
               type="turbulence" 
@@ -89,7 +82,6 @@ const Grain = () => {
             />
           </filter>
 
-          {/* Layer-3 */}
           <filter id="coarseGrain" x="0%" y="0%" width="100%" height="100%">
             <feTurbulence 
               type="fractalNoise" 
@@ -122,7 +114,6 @@ const Grain = () => {
             />
           </filter>
 
-          {/* Color grading filter for cinematic look */}
           <filter id="colorGrade" x="0%" y="0%" width="100%" height="100%">
             <feColorMatrix 
               type="matrix" 
@@ -134,8 +125,6 @@ const Grain = () => {
             />
           </filter>
         </defs>
-
-        {/* Layer 1 */}
         <rect 
           width="100%" 
           height="100%" 
@@ -143,8 +132,6 @@ const Grain = () => {
           opacity={grainSettings.fineGrain.opacity}
           fill={isDark ? "#ffffff" : "#000000"}
         />
-
-        {/* Layer 2 */}
         <rect 
           width="100%" 
           height="100%" 
@@ -152,8 +139,6 @@ const Grain = () => {
           opacity={grainSettings.mediumGrain.opacity}
           fill={isDark ? "#cccccc" : "#333333"}
         />
-
-        {/* Layer 3 */}
         <rect 
           width="100%" 
           height="100%" 
@@ -161,8 +146,6 @@ const Grain = () => {
           opacity={grainSettings.coarseGrain.opacity}
           fill={isDark ? "#aaaaaa" : "#555555"}
         />
-
-        {/* Layer 4: Subtle color grading overlay */}
         <rect 
           width="100%" 
           height="100%" 

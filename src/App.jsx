@@ -2,7 +2,7 @@ import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import { useRef, useEffect, useState } from 'react';
 import './styles/globals.css';
 
-// Animation imports
+// Animation
 import { AnimatePresence } from 'framer-motion';
 
 import {Preloader, Header, StickyCursor, Grain} from './components';
