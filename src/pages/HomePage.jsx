@@ -1,20 +1,17 @@
 import { useRef } from 'react';
 import { RiAddLine, RiSubtractLine, RiCornerDownRightLine } from '@remixicon/react';
-import { services, works, footerMenu, socialLinks, contactInfo, pageNavigation } from '../data/data';
+import { ido, works, social_links, contact_info, pages_data } from '../data/data';
 import video1 from '/src/assets/videos/video-1.mp4';
-import CreativeButton from '../components/ui/CreativeButton';
-import { useSectionScroll } from '../hooks/useSection';
-import FooterLink from '../function/FooterLink';
+import { CreativeButton, HoverRotate, Footer } from '../components';
+import { useScrollTo } from '../hooks/useScrollTo';
 import VideoLoader from '../function/VideoLoader';
-import HoverRotate from '../components/ui/HoverRotate';
 
 const HomePage = () => {
-  const scrollToSection = useSectionScroll();
-  const sections = pageNavigation.HomePage;
+  const scrollTo = useScrollTo();
 
   return (
     <>
-      <section id={sections[0].id} className="z-10 section-padding-hero">
+      <section id="hero" className="z-10 section-padding-hero">
         <div className="m-auto w-full lg:max-w-[1408px]">
           <div className="flex flex-col">
             <div className="flex flex-col gap-s600">
@@ -46,7 +43,6 @@ const HomePage = () => {
       <section className="z-10 section-padding-xy">
         <div className="m-auto w-full lg:max-w-[1408px]">
           <div className="flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
-            {/* Story + CTA */}
             <div className="flex flex-col gap-6 max-w-[640px]">
               <p className="text-h500 leading-relaxed text-primary">
                 With over 2 years of experience and 100+ global clients, I specialize in creating impactful visual identities and digital experiences. Now, I extend my expertise to
@@ -59,7 +55,7 @@ const HomePage = () => {
 
               {/* Tags */}
               <div className="flex flex-wrap gap-s200 pt-s400">
-                {Array.from(new Set(services.flatMap(service => service.tags))).map((tag, index) => (
+                {Array.from(new Set(ido.flatMap(service => service.tags))).map((tag, index) => (
                   <div key={index} className="tags">
                     {tag}
                   </div>
@@ -84,7 +80,7 @@ const HomePage = () => {
         </div>
       </section>
 
-      <section id={sections[1].id} className="z-10 section-padding-xy bg-primary text-brand-secondary">
+      <section className="z-10 section-padding-xy bg-primary text-brand-secondary">
         <div className="m-auto w-full">
           {/* Services Header */}
           <div className="flex flex-col rounded-t-lg">
@@ -104,18 +100,17 @@ const HomePage = () => {
             {/* Services List */}
             <div className="w-full m-auto">
               <div className="mt-s900 gap-y-s800 flex flex-col justify-between">
-                {services.map((service, index) => {
-                  const topValue = `calc(10vh + ${index * 5.75}em)`;
-                  const marginBottomValue = `${17.25 - index * 5.75}em`;
+                {ido.map((service, i) => {
+                  const topValue = `calc(10vh + ${i * 5.75}em)`;
+                  const marginBottomValue = `${17.25 - i * 5.75}em`;
                   return (
-                    <div key={index} className="sticky top-0 border-t border-t-neutral-100/40 bg-primary pt-s300" style={{ top: topValue, marginBottom: marginBottomValue }}>
+                    <div key={i} className="sticky top-0 border-t border-t-neutral-100/40 bg-primary pt-s300" style={{ top: topValue, marginBottom: marginBottomValue }}>
                       <div className="flex items-center justify-between">
                         <div className="text-h300 flex grid-cols-12 items-center justify-start gap-4 py-6 text-left font-semibold spy-5 ">
                           <span className="col-span-2 self-center text-nowrap">( {service.number} )</span>
                           <h3 className="capitalize">{service.title}</h3>
                         </div>
                         <div className="">
-                          {/*TODO: When is stacked up to the top it will show RiAddLine if not sticked show RiSubtractLine */}
                           <RiAddLine />
                           {/* <RiSubtractLine/> */}
                         </div>
@@ -137,7 +132,7 @@ const HomePage = () => {
               </div>
             </div>
           </div>
-          <div id={sections[2].id} className="flex flex-col space-300">
+          <div className="flex flex-col space-300 pt-s900 pb-s900">
             <div className="flex w-full flex-col gap-s400">
               <h2 className="text-h100">
                 SELECTED <br />
@@ -177,7 +172,7 @@ const HomePage = () => {
           </div>
         </div>
       </section>
-      <section id={sections[3].id} className="z-10 section-padding-end">
+      <section className="z-10 section-padding-end">
         <div className="m-auto w-full flex flex-col h-screen">
           <div className="flex flex-col gap-s100 justify-between items-center text-center flex-1">
             <div className="flex-1 flex items-center">
@@ -200,37 +195,14 @@ const HomePage = () => {
                 <span>do you have any question?</span>
                 <span className="flex items-center">
                   <RiCornerDownRightLine size={16} />
-                  <span>{contactInfo.email}</span>
+                  <span>{contact_info.email}</span>
                 </span>
               </HoverRotate>
             </div>
           </div>
-          <div className="flex flex-col gap-s600 justify-between">
-            <div className="flex justify-between">
-              <FooterLink
-                title="Pages Menu"
-                links={footerMenu.HomePage.map(item => ({
-                  ...item,
-                  scrollable: true,
-                }))}
-                scrollToSection={scrollToSection}
-              />
-
-              <FooterLink
-                title="Socials"
-                links={socialLinks.map(link => ({
-                  ...link,
-                  target: '_blank',
-                  rel: 'noopener noreferrer',
-                }))}
-              />
-            </div>
-            <div className="flex justify-center items-center text-primary/85 pt-4 border-t border-primary-muted">
-              <span className="transition-colors hover:text-primary">{contactInfo.copyright}</span>
-            </div>
-          </div>
         </div>
       </section>
+      <Footer />
     </>
   );
 };

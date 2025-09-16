@@ -16,7 +16,7 @@ import ProjectPage from './pages/ProjectPage';
 import ContactPage from './pages/ContactPage';
 
 // Data
-import { pageData } from './data/data';
+import { pages_data } from './data/data';
 import { PRELOADER_DURATION } from './data/const';
 
 const AppContent = () => {
@@ -49,10 +49,10 @@ const AppContent = () => {
         <Header burgerRef={burgerElement} themeToggleRef={themeToggleElement} logoElement={logoElement} />
         <StickyCursor stickyElements={[burgerElement, themeToggleElement, logoElement]} />
         <Routes>
-          <Route path={pageData.home.href} element={<HomePage />} />
-          <Route path={pageData.about.href} element={<AboutPage />} />
-          <Route path={pageData.project.href} element={<ProjectPage />} />
-          <Route path={pageData.contact.href} element={<ContactPage />} />
+          <Route path={pages_data.home.href} element={<HomePage />} />
+          <Route path={pages_data.about.href} element={<AboutPage />} />
+          <Route path={pages_data.project.href} element={<ProjectPage />} />
+          <Route path={pages_data.contact.href} element={<ContactPage />} />
         </Routes>
       </main>
     </>

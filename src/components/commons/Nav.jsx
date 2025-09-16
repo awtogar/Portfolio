@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { useLocation } from 'react-router-dom';
 import { RiSunLine, RiMoonLine } from '@remixicon/react';
 import { menuSlide } from '../../data/anim';
-import { pageData, socialLinks } from '../../data/data';
+import { pages_data, social_links } from '../../data/data';
 import { useLenis } from '../../hooks/useLenis';
 import { useTheme } from '../../hooks/useTheme';
 import Curve from '../ui/Curve';
@@ -90,14 +90,14 @@ export default function Nav({ closeMenu }) {
                 </div>
               </div>
             </div>
-            {Object.values(pageData).map((data, index) => {
+            {Object.values(pages_data).map((data, index) => {
               return (
                 <LinkComponent key={index} data={{ ...data, index }} isActive={selectedIndicator === data.href} setSelectedIndicator={setSelectedIndicator} closeMenu={closeMenu} />
               );
             })}
           </div>
           <div className="flex w-full justify-between">
-            {socialLinks.map((data, i) => {
+            {social_links.map((data, i) => {
               return (
                 <LinkOnHover key={i} href={data.href} target="_blank" rel="noopener noreferrer" textcolor1="text-secondary" textcolor2="text-secondary">
                   <span>{data.title}</span>
