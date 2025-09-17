@@ -15,3 +15,4 @@ export { default as Magnetic } from './ui/Magnetic.jsx';
 export { default as Preloader } from './ui/Preloader.jsx';
 export { default as StickyCursor } from './ui/StickyCursor.jsx';
 export { default as Curve } from './ui/Curve.jsx';
+export { default as CircularText } from './ui/CircularText.jsx';
