@@ -154,6 +154,9 @@ const ido = [{
 ];
 
 // selected works section data
+import image1 from '../assets/images/img-1.jpg';
+import image2 from '../assets/images/img-2.jpg';
+import image3 from '../assets/images/img-3.jpg';
 const works = [{
     title: 'Dieter Rams Tribute',
     description: 'A selection of my recent projects showcasing my skills in graphic design and web development.',
@@ -162,7 +165,7 @@ const works = [{
       month: 'Jun',
       year: '2024'
     },
-    image: 'https://placehold.co/600x400/504B38/FFFFFF.png'
+    image: image1
   },
   {
     title: 'Foodify App',
@@ -172,7 +175,7 @@ const works = [{
       month: 'Feb',
       year: '2025'
     },
-    image: 'https://placehold.co/600x400/504B38/FFFFFF.png'
+    image: image2
   },
   {
     title: 'Luminova Studio',
@@ -182,7 +185,7 @@ const works = [{
       month: 'Aug',
       year: '2024'
     },
-    image: 'https://placehold.co/600x400/504B38/FFFFFF.png',
+    image: image3
   }
 ];
 
