@@ -1,53 +1,27 @@
-import React, { useState, useEffect } from 'react';
-import { RiArrowRightUpLine } from '@remixicon/react';
-import CreativeButton from '../components/ui/CreativeButton';
+import React from 'react';
+import profilPhoto from '../assets/images/img-2.jpg';
+import { CircularText, HoverRotate } from '../components';
 
-const ContactPage = () => {
-  const [dots, setDots] = useState('.');
-
-  useEffect(() => {
-    const dotsInterval = setInterval(() => {
-      setDots(prev => (prev.length >= 3 ? '.' : prev + '.'));
-    }, 800);
-
-    return () => clearInterval(dotsInterval);
-  }, []);
-
+const AboutPage = () => {
   return (
-    <section className="z-10 section-padding-xy h-screen flex items-center justify-center">
-      <div className="w-full m-auto">
-        <div className="flex flex-col max-w-2xl justify-center items-center text-center mx-auto">
-          <div>
-            <h1 className="text-5xl md:text-7xl font-light text-black mb-6 leading-tight">
-              Under
-              <br />
-              <span className="font-normal">Development</span>
-            </h1>
-
-            <p className="text-lg md:text-xl text-gray-600 mb-12 max-w-lg mx-auto leading-relaxed">Working in progress please be patient. thank you for visiting {dots}</p>
-
-            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
-              <CreativeButton
-                to="/"
-                variant="outline"
-              >
-                <span className="flex items-center">
-                  Back to Home <RiArrowRightUpLine />
-                </span>
-              </CreativeButton>
-            </div>
-
-            {/* Minimalist progress indicator */}
-            <div className="flex justify-center space-x-2">
-              <div className="w-2 h-2 bg-black rounded-full animate-pulse"></div>
-              <div className="w-2 h-2 bg-gray-300 rounded-full animate-pulse" style={{ animationDelay: '0.5s' }}></div>
-              <div className="w-2 h-2 bg-gray-300 rounded-full animate-pulse" style={{ animationDelay: '1s' }}></div>
+    <>
+      <section className="z-10 section-padding pt-12">
+        <div className="w-full m-auto">
+          <div className="rounded-b-[50%] bg-cover bg-center h-[50dvh] overflow-hidden flex justify-end" style={{ backgroundImage: `url(${profilPhoto})` }}>
+            <div className="absolute h-full flex flex-col justify-end overflow-hidden">
+              <CircularText text="THE*ONE*AND*ONLY*" centerIcon={
+                <div className="flex">
+                <HoverRotate className='text-secondary' to={"mailto:awaludintogar@gmail.com"}>
+                  <span>YOURS</span>
+                </HoverRotate>
+                </div>
+              } />
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 };
 
-export default ContactPage;
+export default AboutPage;
