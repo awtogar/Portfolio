@@ -1,10 +1,11 @@
 import { useRef } from 'react';
 import { RiAddLine, RiSubtractLine, RiCornerDownRightLine } from '@remixicon/react';
-import { ido, works, social_links, contact_info, pages_data } from '../data/data';
+import { ido, social_links, contact_info, pages_data } from '../data/data';
 import video1 from '../assets/videos/video-1.mp4';
 import { CreativeButton, HoverRotate, Footer } from '../components';
 import { useScrollTo } from '../hooks/useScrollTo';
 import VideoLoader from '../function/VideoLoader';
+import SelectedWorks from '../layout/SelectedWorks';
 
 const HomePage = () => {
   const scrollTo = useScrollTo();
@@ -132,44 +133,7 @@ const HomePage = () => {
               </div>
             </div>
           </div>
-          <div id='selected-works' className="flex flex-col space-300 pt-s900 pb-s900">
-            <div className="flex w-full flex-col gap-s400">
-              <h2 className="text-h100">
-                SELECTED <br />
-                WORKS
-              </h2>
-              <p className="text-brand-secondary/80 text-base-sm pt-s200">A showcase of my recent projects and collaborations.</p>
-            </div>
-            <div className="flex flex-col gap-s800">
-              {works.map((work, index) => (
-                <div key={index} className="space-300 pt-s600 pb-s200">
-                  <div className="flex flex-col gap-s300">
-                    <div className="h-[368px] overflow-hidden rounded-xl">
-                      <img src={work.image} alt={work.title} className="w-full h-full object-cover hover:scale-102 transition-transform duration-500" />
-                    </div>
-                    <div className="flex items-center justify-between">
-                      <h3 className="text-h300">{work.title}</h3>
-                      <div className="pt-s200 text-base-sm">
-                        <span>
-                          {work.date.month} - {work.date.year}
-                        </span>
-                      </div>
-                    </div>
-                    <div className="text-brand-secondary/80">
-                      <p className="text-brand-secondary/80">{work.description}</p>
-                      <div className="flex flex-wrap gap-s200 pt-s400">
-                        {work.tags.map((tag, tagIndex) => (
-                          <div key={tagIndex} className="tags-secondary">
-                            {tag}
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
+          <SelectedWorks />
         </div>
       </section>
       <section id='contact' className="z-10 section-padding-end">
