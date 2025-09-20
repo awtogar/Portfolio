@@ -3,13 +3,10 @@ import { RiAddLine, RiSubtractLine, RiCornerDownRightLine } from '@remixicon/rea
 import { ido, social_links, contact_info, pages_data } from '../data/data';
 import video1 from '../assets/videos/video-1.mp4';
 import { CreativeButton, HoverRotate, Footer } from '../components';
-import { useScrollTo } from '../hooks/useScrollTo';
 import VideoLoader from '../function/VideoLoader';
 import SelectedWorks from '../layout/SelectedWorks';
 
 const HomePage = () => {
-  const scrollTo = useScrollTo();
-
   return (
     <>
       <section id="hero" className="z-10 section-padding-hero">
@@ -81,7 +78,7 @@ const HomePage = () => {
         </div>
       </section>
 
-      <section id='what-i-do' className="z-10 section-padding-xy bg-primary text-brand-secondary">
+      <section id="what-i-do" className="z-10 section-padding-xy bg-primary text-brand-secondary">
         <div className="m-auto w-full">
           {/* Services Header */}
           <div className="flex flex-col rounded-t-lg">
@@ -136,7 +133,7 @@ const HomePage = () => {
           <SelectedWorks />
         </div>
       </section>
-      <section id='contact' className="z-10 section-padding-end">
+      <section id="contact" className="z-10 section-padding-end">
         <div className="m-auto w-full flex flex-col h-screen">
           <div className="flex flex-col gap-s100 justify-between items-center text-center flex-1">
             <div className="flex-1 flex items-center">
@@ -156,7 +153,7 @@ const HomePage = () => {
             </div>
             <div className="flex flex-col pb-s600 w-full">
               <HoverRotate href="mailto:info@awtogar.com" variant="outline" target="_blank" rel="noopener noreferrer" className="justify-center">
-                <span className='text-primary-muted'>Have any questions?</span>
+                <span className="text-primary-muted">Have any questions?</span>
                 <span className="flex items-center text-primary font-semibold">
                   <RiCornerDownRightLine size={24} />
                   <span>{contact_info.email}</span>

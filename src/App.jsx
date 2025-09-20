@@ -1,4 +1,4 @@
-import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
+import { Route, BrowserRouter as Router, Routes, useLocation } from 'react-router-dom';
 import { useRef, useEffect, useState } from 'react';
 import './styles/globals.css';
 import { SpeedInsights } from '@vercel/speed-insights/react';
@@ -7,7 +7,7 @@ import { SpeedInsights } from '@vercel/speed-insights/react';
 import { AnimatePresence } from 'framer-motion';
 
 import { Preloader, Header, StickyCursor, Grain } from './components';
-import LenisScroll from './function/LenisScroll';
+import SmoothScrollWrapper from './function/LenisScroll';
 import { useLenis } from './hooks/useLenis';
 
 // Pages
@@ -25,7 +25,9 @@ const AppContent = () => {
   const themeToggleElement = useRef(null);
   const logoElement = useRef(null);
   const [isLoading, setIsLoading] = useState(true);
-  const { scrollTo } = useLenis();
+  const { lenis, scrollTo } = useLenis();
+  const location = useLocation();
+  const prevLocation = useRef(location.pathname);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -38,9 +40,34 @@ const AppContent = () => {
   useEffect(() => {
     if (!isLoading && scrollTo) {
       scrollTo(0, { immediate: true });
-      // console.log('Scrolled using Lenis context');
+      console.log('Scrolled using Lenis context');
     }
   }, [isLoading, scrollTo]);
+
+  // TODO: THIS LENIS SCROLL RESET IS STILL NOT WORKING PERFECTLY ALWAYS FALLBACK TO WINDOW SCROLL
+  useEffect(() => {
+    if (prevLocation.current !== location.pathname) {
+      console.log('Route changed from', prevLocation.current, 'to', location.pathname);
+      // Update the ref for next comparison
+      prevLocation.current = location.pathname;
+      // Try multiple approaches to reset scroll
+      if (scrollTo) {
+        // Try the context method first
+        scrollTo(0, { immediate: true });
+        console.log('Reset scroll using context scrollTo');
+      }
+
+      if (lenis) {
+        // Directly use the lenis instance as backup
+        lenis.scrollTo(0, { immediate: true });
+        console.log('Reset scroll using direct lenis instance');
+      }
+
+      // Fallback to window scroll as last resort
+      window.scrollTo(0, 0);
+      console.log('Reset scroll using window.scrollTo fallback');
+    }
+  }, [location.pathname, scrollTo, lenis]);
 
   return (
     <>
@@ -65,9 +92,9 @@ const App = () => {
     <>
       <SpeedInsights />
       <Router>
-        <LenisScroll>
+        <SmoothScrollWrapper>
           <AppContent />
-        </LenisScroll>
+        </SmoothScrollWrapper>
       </Router>
     </>
   );

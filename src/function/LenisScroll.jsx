@@ -2,7 +2,7 @@ import Lenis from 'lenis';
 import { useEffect, useRef, useState, useMemo, useCallback } from 'react';
 import LenisContext from '../hooks/useLenis';
 
-const LenisScroll = ({ children }) => {
+const SmoothScrollWrapper = ({ children }) => {
   const wrapperRef = useRef(null);
   const [lenis, setLenis] = useState(null);
 
@@ -68,4 +68,4 @@ const LenisScroll = ({ children }) => {
   );
 };
 
-export default LenisScroll;
+export default SmoothScrollWrapper;

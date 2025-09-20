@@ -1,6 +1,6 @@
 import { useLenis } from './useLenis';
 
-export const useScrollTo = () => {
+export const useFooterScroll = () => {
   const { lenis } = useLenis();
   
   return (id) => {

@@ -1,13 +1,13 @@
 import React from 'react';
 import { HoverRotate } from '..';
 import { contact_info, social_links, pages_data } from '../../data/data';
-import { useScrollTo } from '../../hooks/useScrollTo';
+import { useFooterScroll } from '../../hooks/useFooterScroll';
 import { useLocation } from 'react-router-dom';
 
 const Footer = () => {
   const location = useLocation();
   const currentPath = location.pathname;
-  const scrollTo = useScrollTo();
+  const footerScroll = useFooterScroll();
 
   // Find current page data based on pathname
   const getCurrentPage = () => {
@@ -18,7 +18,7 @@ const Footer = () => {
   const currentPage = getCurrentPage();
   const handleSectionClick = (e, id) => {
     e.preventDefault();
-    scrollTo(id);
+    footerScroll(id);
   };
 
   return (
@@ -30,7 +30,7 @@ const Footer = () => {
             <div className="flex flex-col gap-s100">
               <span className="text-primary-muted/72 inline-block border-b border-primary-muted/35 pb-1 w-fit">Content Menu</span>
               {currentPage.sections.map(section => (
-                <HoverRotate className='text-primary-muted' key={section.id} href={`#${section.id}`} onClick={e => handleSectionClick(e, section.id)}>
+                <HoverRotate className="text-primary-muted" key={section.id} href={`#${section.id}`} onClick={e => handleSectionClick(e, section.id)}>
                   {section.title}
                 </HoverRotate>
               ))}
@@ -45,8 +45,8 @@ const Footer = () => {
             </div>
           </div>
           <div className="text-primary-muted/72  flex justify-between items-center pt-4 border-t border-primary-muted/35">
-            <span className='text-xs'>{contact_info.credits}</span>
-            <span className='text-xs'>{contact_info.copyright}</span>
+            <span className="text-xs">{contact_info.credits}</span>
+            <span className="text-xs">{contact_info.copyright}</span>
           </div>
         </div>
       </div>
