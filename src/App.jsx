@@ -62,8 +62,8 @@ const AppContent = () => {
     <>
       <AnimatePresence mode="wait">{isLoading && <Preloader key="preloader" />}</AnimatePresence>
       <Header burgerRef={burgerElement} themeToggleRef={themeToggleElement} logoElement={logoElement} />
+      <StickyCursor stickyElements={[burgerElement, themeToggleElement, logoElement]} />
       <main id="main" className="main-wrapper bg-neutral-100" style={{ visibility: isLoading ? 'hidden' : 'visible' }}>
-        <StickyCursor stickyElements={[burgerElement, themeToggleElement, logoElement]} />
         <Routes>
           <Route path={pages_data.home.href} element={<HomePage />} />
           <Route path={pages_data.about.href} element={<AboutPage />} />

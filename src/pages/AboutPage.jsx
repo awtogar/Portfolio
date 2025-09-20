@@ -48,36 +48,38 @@ const AboutPage = () => {
   const step = 1 / images.length;
 
   return (
-    <div className="min-h-screen">
-      <div className="h-screen flex items-center justify-center">about on development</div>
+    <section className="z-10 section-padding-y">
+      <div className="min-h-screen">
+        <div className="h-screen flex items-center justify-center">about on development</div>
 
-      <div ref={containerRef} className="relative h-[600vh]">
-        <div className="sticky top-0 h-screen overflow-hidden bg-neutral-100">
-          {images.map((image, i) => {
-            const start = step * i;
-            const end = step * (i + 1);
-            const maskSize = useTransform(scrollYProgress, [start, end], ['0px', `${maxMaskSize}px`]);
+        <div ref={containerRef} className="relative h-[600vh]">
+          <div className="sticky top-0 h-screen overflow-hidden bg-neutral-100">
+            {images.map((image, i) => {
+              const start = step * i;
+              const end = step * (i + 1);
+              const maskSize = useTransform(scrollYProgress, [start, end], ['0px', `${maxMaskSize}px`]);
 
-            return (
-              <motion.div
-                key={i}
-                className="absolute inset-0 w-full h-full mask-no-repeat mask-center"
-                style={{
-                  maskImage: `url('${maskSVG}')`,
-                  WebkitMaskImage: `url('${maskSVG}')`,
-                  maskSize,
-                  WebkitMaskSize: maskSize,
-                }}
-              >
-                <img src={image.src} alt={image.alt} className="absolute inset-0 w-full h-full object-cover" />
-              </motion.div>
-            );
-          })}
+              return (
+                <motion.div
+                  key={i}
+                  className="absolute inset-0 w-full h-full mask-no-repeat mask-center"
+                  style={{
+                    maskImage: `url('${maskSVG}')`,
+                    WebkitMaskImage: `url('${maskSVG}')`,
+                    maskSize,
+                    WebkitMaskSize: maskSize,
+                  }}
+                >
+                  <img src={image.src} alt={image.alt} className="absolute inset-0 w-full h-full object-cover" />
+                </motion.div>
+              );
+            })}
+          </div>
         </div>
-      </div>
 
-      <div className="h-screen flex items-center justify-center">on development</div>
-    </div>
+        <div className="h-screen flex items-center justify-center">on development</div>
+      </div>
+    </section>
   );
 };
 
