@@ -46,7 +46,7 @@ const AppContent = () => {
 
   useEffect(() => {
     if (prevLocation.current !== location.pathname) {
-      console.log('Route changed from', prevLocation.current, 'to', location.pathname);
+      // console.log('Route changed from', prevLocation.current, 'to', location.pathname);
 
       // Update the ref for next comparison
       prevLocation.current = location.pathname;
@@ -63,7 +63,7 @@ const AppContent = () => {
           lenis.scrollTo(0, { immediate: true });
           // Resume smooth scrolling
           lenis.start();
-          console.log('Reset scroll using optimized lenis approach');
+          // console.log('Reset scroll using optimized lenis approach');
         }, 50);
       }
     }

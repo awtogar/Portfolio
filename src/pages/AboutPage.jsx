@@ -1,10 +1,12 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { useScroll, useTransform, motion } from 'framer-motion';
-import { works } from '../data/data';
 
-const maskSVG = `data:image/svg+xml;base64,${btoa(`
-<svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 700 700" style="overflow: hidden; display: block;" width="700" height="700"><defs></defs><g id="two-0" transform="matrix(1 0 0 1 0 0)" opacity="1"><path transform="matrix(1 0 0 1 350 350)" id="two-14" d="M 174.491581 51.235351 C 180.454541 88.749734 255.797823 119.308856 233.504372 150.064148 C 207.966674 185.295095 137.266971 91.978099 104.880658 121.038731 C 69.064917 153.17663 139.240033 221.208549 121.439806 265.916084 C 109.600528 295.651937 77.220163 317.217058 47.207632 328.336293 C 17.945741 339.177425 -16.452128 333.698009 -47.349585 329.323594 C -78.265077 324.946625 -121.28165 328.501063 -137.96939 302.110821 C -168.906576 253.186288 -79.366718 176.836894 -111.523937 128.705484 C -123.637639 110.574266 -164.401707 131.565197 -175.684668 112.90568 C -187.309886 93.680146 -168.891782 67.161975 -159.392621 46.801896 C -151.302693 29.462303 -120.55206 18.569322 -125.166028 0 C -142.07911 -68.068188 -307.608394 -23.291247 -316.334633 -92.884229 C -320.323816 -124.698529 -271.559868 -142.879167 -242.131516 -155.608477 C -212.388773 -168.473778 -170.455374 -147.345405 -144.577306 -166.851106 C -122.203412 -183.715521 -139.779852 -241.573825 -112.005167 -245.257105 C -61.518907 -251.952231 -68.527571 -126.272597 -17.698497 -123.095746 C 1.638441 -121.887174 10.759678 -150.308701 23.686145 -164.740759 C 65.385012 -211.296439 80.507038 -304.769104 142.56632 -312.176698 C 174.304352 -315.965051 207.781889 -282.980185 219.402642 -253.204147 C 234.782996 -213.794822 212.738101 -166.350774 197.461803 -126.900996 C 185.487493 -95.978329 139.790201 -75.087136 143.498648 -42.135005 C 145.710285 -22.483078 180.570916 -18.983779 186.112191 -0.000001 C 190.970085 16.642588 171.769994 34.113206 174.491581 51.235351 Z " fill="bg-neutral-100" stroke="undefined" stroke-width="1" stroke-opacity="1" fill-opacity="1" visibility="visible" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4"></path></g></svg>
-`)}`;
+import intro1 from '../assets/images/img-1.jpg';
+import intro2 from '../assets/images/img-2.jpg';
+import Splatter from '../components/ui/Splatter';
+
+const maskSVG = `data:image/svg+xml;base64,${btoa(`${Splatter()}`)}`;
+
 const AboutPage = () => {
   const containerRef = useRef(null);
   const { scrollYProgress } = useScroll({
@@ -12,46 +14,69 @@ const AboutPage = () => {
     offset: ['start end', 'end start'],
   });
 
-  const step = 1 / works.length;
+  const [dimensions, setDimensions] = useState({
+    width: 0,
+    height: 0,
+  });
+
+  // Update dimensions on mount and resize
+  useEffect(() => {
+    function handleResize() {
+      setDimensions({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      });
+    }
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  // Calculate max mask size based on larger dimension kemudian dikali 3
+  const maxMaskSize = Math.max(dimensions.width, dimensions.height) * 3;
+
+  const images = [
+    {
+      src: intro1,
+      alt: 'Image 1',
+    },
+    {
+      src: intro2,
+      alt: 'Image 2',
+    },
+  ];
+  const step = 1 / images.length;
 
   return (
     <div className="min-h-screen">
-      <div className="h-screen flex items-center justify-center">
-        <h1 className="text-4xl font-bold text-primary">Scroll Down</h1>
-      </div>
+      <div className="h-screen flex items-center justify-center">about on development</div>
 
       <div ref={containerRef} className="relative h-[600vh]">
         <div className="sticky top-0 h-screen overflow-hidden bg-neutral-100">
-          {works.map((work, i) => {
+          {images.map((image, i) => {
             const start = step * i;
             const end = step * (i + 1);
-            const maskSize = useTransform(scrollYProgress, [start, end], ['0', '300vh']);
+            const maskSize = useTransform(scrollYProgress, [start, end], ['0px', `${maxMaskSize}px`]);
 
             return (
               <motion.div
                 key={i}
-                className="absolute inset-0 w-full h-full"
+                className="absolute inset-0 w-full h-full mask-no-repeat mask-center"
                 style={{
                   maskImage: `url('${maskSVG}')`,
                   WebkitMaskImage: `url('${maskSVG}')`,
-                  maskRepeat: 'no-repeat',
-                  WebkitMaskRepeat: 'no-repeat',
-                  maskPosition: 'center center',
-                  WebkitMaskPosition: 'center center',
                   maskSize,
                   WebkitMaskSize: maskSize,
                 }}
               >
-                <img src={work.image} alt={work.title} className="absolute inset-0 w-full h-full object-cover" />
+                <img src={image.src} alt={image.alt} className="absolute inset-0 w-full h-full object-cover" />
               </motion.div>
             );
           })}
         </div>
       </div>
 
-      <div className="h-screen flex items-center justify-center">
-        <h1 className="text-4xl font-bold text-white">End</h1>
-      </div>
+      <div className="h-screen flex items-center justify-center">on development</div>
     </div>
   );
 };
