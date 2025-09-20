@@ -40,30 +40,19 @@ const AppContent = () => {
   useEffect(() => {
     if (!isLoading && scrollTo) {
       scrollTo(0, { immediate: true });
-      // console.log('Scrolled using Lenis context');
     }
   }, [isLoading, scrollTo]);
 
   useEffect(() => {
     if (prevLocation.current !== location.pathname) {
-      // console.log('Route changed from', prevLocation.current, 'to', location.pathname);
-
-      // Update the ref for next comparison
       prevLocation.current = location.pathname;
-
-      // Use a more reliable approach with proper timing
       if (lenis) {
-        // Small delay to ensure DOM has updated
+        // Small delay to make sure lenis ready
         setTimeout(() => {
-          // Prevent scroll interruption
           lenis.stop();
-          // Force scroll position to top
           window.scrollTo(0, 0);
-          // Now use lenis to "acknowledge" this position
           lenis.scrollTo(0, { immediate: true });
-          // Resume smooth scrolling
           lenis.start();
-          // console.log('Reset scroll using optimized lenis approach');
         }, 50);
       }
     }
@@ -72,7 +61,6 @@ const AppContent = () => {
   return (
     <>
       <AnimatePresence mode="wait">{isLoading && <Preloader key="preloader" />}</AnimatePresence>
-      {/* <Grain /> */}
       <main id="main" className="main-wrapper bg-neutral-100" style={{ visibility: isLoading ? 'hidden' : 'visible' }}>
         <Header burgerRef={burgerElement} themeToggleRef={themeToggleElement} logoElement={logoElement} />
         <StickyCursor stickyElements={[burgerElement, themeToggleElement, logoElement]} />
