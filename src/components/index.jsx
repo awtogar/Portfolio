@@ -5,6 +5,11 @@ export { default as Link } from './commons/Link.jsx';
 export { default as Nav } from './commons/Nav.jsx';
 export { default as Footer } from './commons/Footer.jsx';
 
+// graphics components
+export { default as Splatter } from './ui/Splatter.jsx';
+
+
+
 // UI components
 export { default as Bounds } from './ui/Bounds.jsx';
 export { default as CreativeButton } from './ui/CreativeButton.jsx';
