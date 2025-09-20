@@ -40,34 +40,34 @@ const AppContent = () => {
   useEffect(() => {
     if (!isLoading && scrollTo) {
       scrollTo(0, { immediate: true });
-      console.log('Scrolled using Lenis context');
+      // console.log('Scrolled using Lenis context');
     }
   }, [isLoading, scrollTo]);
 
-  // TODO: THIS LENIS SCROLL RESET IS STILL NOT WORKING PERFECTLY ALWAYS FALLBACK TO WINDOW SCROLL
   useEffect(() => {
     if (prevLocation.current !== location.pathname) {
       console.log('Route changed from', prevLocation.current, 'to', location.pathname);
+
       // Update the ref for next comparison
       prevLocation.current = location.pathname;
-      // Try multiple approaches to reset scroll
-      if (scrollTo) {
-        // Try the context method first
-        scrollTo(0, { immediate: true });
-        console.log('Reset scroll using context scrollTo');
-      }
 
+      // Use a more reliable approach with proper timing
       if (lenis) {
-        // Directly use the lenis instance as backup
-        lenis.scrollTo(0, { immediate: true });
-        console.log('Reset scroll using direct lenis instance');
+        // Small delay to ensure DOM has updated
+        setTimeout(() => {
+          // Prevent scroll interruption
+          lenis.stop();
+          // Force scroll position to top
+          window.scrollTo(0, 0);
+          // Now use lenis to "acknowledge" this position
+          lenis.scrollTo(0, { immediate: true });
+          // Resume smooth scrolling
+          lenis.start();
+          console.log('Reset scroll using optimized lenis approach');
+        }, 50);
       }
-
-      // Fallback to window scroll as last resort
-      window.scrollTo(0, 0);
-      console.log('Reset scroll using window.scrollTo fallback');
     }
-  }, [location.pathname, scrollTo, lenis]);
+  }, [location.pathname, lenis]);
 
   return (
     <>

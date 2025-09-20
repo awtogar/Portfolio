@@ -10,7 +10,13 @@ const SmoothScrollWrapper = ({ children }) => {
     const lenisInstance = new Lenis({
       smooth: true,
       lerp: 0.1,
-      duration: 2.6,
+      duration: 1.2, // Try a shorter duration
+      wheelMultiplier: 1,
+      touchMultiplier: 1,
+      orientation: 'vertical',
+      gestureOrientation: 'vertical',
+      smoothWheel: true,
+      smoothTouch: false
     });
 
     // Set state to make lenis available to context consumers
