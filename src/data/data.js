@@ -48,10 +48,7 @@ const pages_data = {
     title: 'Projects',
     href: '/projects',
     label: 'projects',
-    sections: [{
-        id: 'about-project',
-        title: 'About the Project'
-      },
+    sections: [
       {
         id: 'design',
         title: 'Design'
@@ -63,6 +60,10 @@ const pages_data = {
       {
         id: 'showcase',
         title: 'Showcase'
+      },
+      {
+        id: 'contact',
+        title: 'Contact'
       }
     ]
   },
@@ -83,8 +84,8 @@ const pages_data = {
         title: 'Contact Form'
       },
       {
-        id: 'connect',
-        title: 'Connect'
+        id: 'contact',
+        title: 'Contact'
       }
     ]
   }
