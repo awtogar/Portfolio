@@ -133,37 +133,6 @@ const HomePage = () => {
           <SelectedWorks />
         </div>
       </section>
-      <section id="contact" className="z-10 section-padding-end">
-        <div className="m-auto w-full flex flex-col h-screen">
-          <div className="flex flex-col gap-s100 justify-between items-center text-center flex-1">
-            <div className="flex-1 flex items-center">
-              <div className="flex flex-col">
-                <div className="flex flex-col pb-s600">
-                  <h2 className="text-3xl text-center italic">
-                    <span className="text-5xl">Have</span> an idea
-                    <br />
-                    in <span className="text-5xl leading-snug">Mind?.</span>
-                  </h2>
-                  <p className="text-center">Let's work together.</p>
-                </div>
-                <CreativeButton to="/contact" variant="outline">
-                  TELL US
-                </CreativeButton>
-              </div>
-            </div>
-            <div className="flex flex-col pb-s600 w-full">
-              <HoverRotate href="mailto:info@awtogar.com" variant="outline" target="_blank" rel="noopener noreferrer" className="justify-center">
-                <span className="text-primary-muted">Have any questions?</span>
-                <span className="flex items-center text-primary font-semibold">
-                  <RiCornerDownRightLine size={24} />
-                  <span>{contact_info.email}</span>
-                </span>
-              </HoverRotate>
-            </div>
-          </div>
-        </div>
-      </section>
-      <Footer />
     </>
   );
 };
