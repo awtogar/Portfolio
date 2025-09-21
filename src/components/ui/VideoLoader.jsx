@@ -1,9 +1,6 @@
 import React from 'react';
 import { useVideoVisibility } from '../../function';
 
-/**
- * Video component that automatically plays when in viewport and pauses when not
- */
 const VideoLoader = ({ src, className, observerOptions, ...props }) => {
   const { videoRef } = useVideoVisibility(observerOptions);
 

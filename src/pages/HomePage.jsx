@@ -2,8 +2,7 @@ import { useRef } from 'react';
 import { RiAddLine, RiSubtractLine, RiCornerDownRightLine } from '@remixicon/react';
 import { ido, social_links, contact_info, pages_data } from '../data/data';
 import video1 from '../assets/videos/video-1.mp4';
-import { CreativeButton, HoverRotate, Footer } from '../components';
-import VideoLoader from '../function/VideoLoader';
+import { CreativeButton,VideoLoader } from '../components';
 import SelectedWorks from '../layout/SelectedWorks';
 
 const HomePage = () => {

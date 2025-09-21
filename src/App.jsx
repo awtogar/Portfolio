@@ -7,7 +7,7 @@ import { SpeedInsights } from '@vercel/speed-insights/react';
 import { AnimatePresence } from 'framer-motion';
 
 import { Preloader, Header, StickyCursor, Footer } from './components';
-import SmoothScrollWrapper from './function/LenisScroll';
+import {SmoothScrollWrapper} from './function';
 import { useLenis } from './hooks/useLenis';
 
 // Pages
