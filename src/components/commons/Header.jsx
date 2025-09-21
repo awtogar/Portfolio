@@ -5,8 +5,14 @@ import { Nav, Magnetic, Bounds } from '../../components';
 
 import { useLenis } from '../../hooks/useLenis';
 import { useTheme } from '../../hooks/useTheme';
+import { useStickyElement } from '../../hooks/useStickyElement';
 
-const Header = ({ burgerRef, themeToggleRef, logoElement }) => {
+const Header = () => {
+  
+  const menuSticky = useStickyElement();
+  const toggleSticky = useStickyElement();
+  const logoSticky = useStickyElement();
+
   // control menu state buat hamburger
   const [isActive, setIsActive] = useState(false);
   // track scroll direction and position
@@ -61,7 +67,7 @@ const Header = ({ burgerRef, themeToggleRef, logoElement }) => {
                 </g>
               </svg>
             </a>
-            <Bounds ref={logoElement} />
+            <Bounds ref={logoSticky} />
           </div>
         </Magnetic>
 
@@ -86,7 +92,7 @@ const Header = ({ burgerRef, themeToggleRef, logoElement }) => {
                   <RiSunLine className="hidden dark:inline transition-transform duration-300 ease-in-out group-hover:-rotate-90" size={24} />
                   <RiMoonLine className="inline dark:hidden transition-transform duration-300 ease-in-out group-hover:rotate-45" size={24} />
                 </div>
-                <Bounds ref={themeToggleRef} />
+                <Bounds ref={toggleSticky} />
               </button>
             </Magnetic>
           </motion.div>
@@ -107,7 +113,7 @@ const Header = ({ burgerRef, themeToggleRef, logoElement }) => {
                 ${isActive ? 'scale-x-50' : 'scale-x-60'} md:w-[30px] md:h-[2px]
                 ${isActive ? 'md:scale-x-100' : 'md:scale-x-60'} dark:bg-primary`}
               />
-              <Bounds ref={burgerRef} />
+              <Bounds ref={menuSticky} />
             </div>
           </Magnetic>
         </div>

@@ -7,8 +7,9 @@ import { SpeedInsights } from '@vercel/speed-insights/react';
 import { AnimatePresence } from 'framer-motion';
 
 import { Preloader, Header, StickyCursor, Footer } from './components';
-import {SmoothScrollWrapper} from './function';
+import { SmoothScrollWrapper } from './function';
 import { useLenis } from './hooks/useLenis';
+import { StickyProvider } from './context/StickyContext';
 
 // Pages
 import HomePage from './pages/HomePage';
@@ -61,8 +62,8 @@ const AppContent = () => {
   return (
     <>
       <AnimatePresence mode="wait">{isLoading && <Preloader key="preloader" />}</AnimatePresence>
-      <Header burgerRef={burgerElement} themeToggleRef={themeToggleElement} logoElement={logoElement} />
-      <StickyCursor stickyElements={[burgerElement, themeToggleElement, logoElement]} />
+      <Header />
+      <StickyCursor />
       <main id="main" className="main-wrapper bg-neutral-100" style={{ visibility: isLoading ? 'hidden' : 'visible' }}>
         <Routes>
           <Route path={pages_data.home.href} element={<HomePage />} />
@@ -82,7 +83,9 @@ const App = () => {
       <SpeedInsights />
       <Router>
         <SmoothScrollWrapper>
-          <AppContent />
+          <StickyProvider>
+            <AppContent />
+          </StickyProvider>
         </SmoothScrollWrapper>
       </Router>
     </>
