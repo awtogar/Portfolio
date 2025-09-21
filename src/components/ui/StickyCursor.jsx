@@ -1,8 +1,10 @@
 /* eslint-disable no-unused-vars */
 import { useEffect, useCallback, useMemo, useState, useRef } from 'react';
 import { motion, useMotionValue, useSpring } from 'framer-motion';
+import { useSticky } from '../../context/StickyContext';
 
-const StickyCursor = ({ stickyElements }) => {
+const StickyCursor = () => {
+  const { stickyElements } = useSticky();
   const [isHovered, setIsHovered] = useState(false);
   const [currentStickyElement, setCurrentStickyElement] = useState(null);
   const cursorSize = isHovered ? 60 : 6;
@@ -37,14 +39,11 @@ const StickyCursor = ({ stickyElements }) => {
       const { clientX, clientY } = e;
       if (currentStickyElement && currentStickyElement.current) {
         const { left, top, height, width } = currentStickyElement.current.getBoundingClientRect();
-        // Center position of the stickyElement
         const center = { x: left + width / 2, y: top + height / 2 };
 
         if (isHovered) {
-          // Distance between the mouse pointer and the center of the custom cursor
           const distance = { x: clientX - center.x, y: clientY - center.y };
 
-          // Move mouse to center of stickyElement + slightly move it towards the mouse pointer
           mouseX.set(center.x - cursorSize / 2 + distance.x * 0.1);
           mouseY.set(center.y - cursorSize / 2 + distance.y * 0.1);
         } else {
