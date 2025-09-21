@@ -2,13 +2,13 @@ import React from 'react';
 import { HoverRotate, CreativeButton } from '..';
 import { RiCornerDownRightLine } from '@remixicon/react';
 import { contact_info, social_links, pages_data } from '../../data/data';
-import { useFooterScroll } from '../../hooks/useFooterScroll';
+import { gotoSection } from '../../hooks/useFooterScroll';
 import { useLocation } from 'react-router-dom';
 
 const Footer = () => {
   const location = useLocation();
   const currentPath = location.pathname;
-  const footerScroll = useFooterScroll();
+  const scrollToSection = gotoSection();
 
   // Find current page data based on pathname
   const getCurrentPage = () => {
@@ -19,7 +19,7 @@ const Footer = () => {
   const currentPage = getCurrentPage();
   const handleSectionClick = (e, id) => {
     e.preventDefault();
-    footerScroll(id);
+    scrollToSection(id);
   };
 
   return (
