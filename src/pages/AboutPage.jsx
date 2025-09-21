@@ -1,9 +1,9 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef } from 'react';
 import { useScroll, useTransform, motion } from 'framer-motion';
 
-import intro1 from '../assets/images/img-1.jpg';
-import intro2 from '../assets/images/img-2.jpg';
-import Splatter from '../components/ui/Splatter';
+import intro1 from '../assets/images/img-2.jpg';
+import {Splatter} from '../components';
+import { useWindowDimensions } from '../function';
 
 const maskSVG = `data:image/svg+xml;base64,${btoa(`${Splatter()}`)}`;
 
@@ -11,48 +11,25 @@ const AboutPage = () => {
   const containerRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset: ['start end', 'end start'],
+    offset: ['start end', 'end end'],
   });
 
-  const [dimensions, setDimensions] = useState({
-    width: 0,
-    height: 0,
-  });
-
-  // Update dimensions on mount and resize
-  useEffect(() => {
-    function handleResize() {
-      setDimensions({
-        width: window.innerWidth,
-        height: window.innerHeight,
-      });
-    }
-    handleResize();
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
-  // Calculate max mask size based on larger dimension kemudian dikali 3
+  const dimensions = useWindowDimensions();
   const maxMaskSize = Math.max(dimensions.width, dimensions.height) * 3;
-
+  
   const images = [
     {
       src: intro1,
       alt: 'Image 1',
-    },
-    {
-      src: intro2,
-      alt: 'Image 2',
-    },
+    }
   ];
   const step = 1 / images.length;
 
   return (
     <section className="z-10 section-padding-y">
-      <div className="min-h-screen">
+      <div className="w-full m-auto">
         <div className="h-screen flex items-center justify-center">about on development</div>
-
-        <div ref={containerRef} className="relative h-[600vh]">
+        <div ref={containerRef} className="relative h-[200vh]">
           <div className="sticky top-0 h-screen overflow-hidden bg-neutral-100">
             {images.map((image, i) => {
               const start = step * i;
@@ -70,7 +47,7 @@ const AboutPage = () => {
                     WebkitMaskSize: maskSize,
                   }}
                 >
-                  <img src={image.src} alt={image.alt} className="absolute inset-0 w-full h-full object-cover" />
+                    <img src={image.src} alt={image.alt} className="absolute inset-0 w-full h-full object-cover" />
                 </motion.div>
               );
             })}
