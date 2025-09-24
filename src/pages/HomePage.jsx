@@ -2,7 +2,7 @@ import { useRef } from 'react';
 import { RiAddLine, RiSubtractLine, RiCornerDownRightLine } from '@remixicon/react';
 import { ido, social_links, contact_info, pages_data } from '../data/data';
 import video1 from '../assets/videos/video-1.mp4';
-import { CreativeButton,VideoLoader } from '../components';
+import { CreativeButton, VideoLoader } from '../components';
 import SelectedWorks from '../layout/SelectedWorks';
 
 const HomePage = () => {
@@ -12,8 +12,8 @@ const HomePage = () => {
         <div className="m-auto w-full lg:max-w-[1408px]">
           <div className="flex flex-col">
             <div className="flex flex-col gap-s600">
-              <h1 className="text-display">Graphics and web designer enthusiast</h1>
-              <p>I'm a person with a multidisciplinary background in design and development — learning through doing.</p>
+              <h1 className="text-h100">A Good things is was made not born</h1>
+              <p>I’m a multidisciplinary person within design and development background. Always interested to explore and learn new things.</p>
             </div>
             <div className="flex items-center gap-s400 pt-s600">
               <div className="flex-1">
