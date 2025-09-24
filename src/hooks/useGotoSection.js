@@ -1,6 +1,6 @@
 import { useLenis } from './useLenis';
 
-export const gotoSection = () => {
+export const useGotoSection = () => {
   const { lenis } = useLenis();
   
   return (id) => {
