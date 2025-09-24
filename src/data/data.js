@@ -73,7 +73,7 @@ const pages_data = {
     label: 'contact',
     sections: [{
         id: 'info',
-        title: 'Contact Information'
+        title: 'Info'
       },
       {
         id: 'collaboration',
@@ -81,7 +81,7 @@ const pages_data = {
       },
       {
         id: 'form',
-        title: 'Contact Form'
+        title: 'Form'
       },
       {
         id: 'contact',
