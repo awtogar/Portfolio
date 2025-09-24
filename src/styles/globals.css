@@ -65,4 +65,6 @@ html {
   --spacing-s800: var (--s800);
   --spacing-s900: var(--s900);
   --spacing-sfluid: var(--sfluid);
+
+  --animate-shine: shine var(--shine);
 }

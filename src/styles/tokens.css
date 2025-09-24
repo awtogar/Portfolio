@@ -10,13 +10,16 @@
     --neutral-400: #FDFDFD;
     --neutral-500: #FFFFFF;
     --primary: #0C0C09;
-    --primary-muted: #6e6e6e;
+    --primary-muted: #b9b9b9;
     --secondary: #FAFAFA;
     --secondary-muted: #F0F0F0;
     --brand-primary: #fff6d4;
     --brand-secondary: #f5ebc7;
     --brand-tertiary: #504B38;
-    
+
+    /* animation */
+    --shine: 5s linear infinite;
+
     /* font sizing */
     --display: clamp(3.8rem, 1.6rem + 7.1111vw, 8.4rem);
     --h100: clamp(3rem,2.25rem + 3.75vw,5.625rem);
@@ -50,7 +53,7 @@
     --neutral-400: #323232;
     --neutral-500: #3D3D3D;
     --primary: #FAFAFA;
-    --primary-muted: #F0F0F0;
+    --primary-muted: #8e8e8e;
     --secondary: #26240D;
     --secondary-muted: #1D1C16;
     --brand-primary: #2C3639;

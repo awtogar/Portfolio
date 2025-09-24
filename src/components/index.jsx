@@ -13,6 +13,7 @@ export { default as Splatter } from './ui/Splatter.jsx';
 // UI components
 export { default as Bounds } from './ui/Bounds.jsx';
 export { default as CircularText } from './ui/CircularText.jsx';
+export { default as ShinyText } from './ui/ShinyText.jsx';
 export { default as CreativeButton } from './ui/CreativeButton.jsx';
 export { default as Curve } from './ui/Curve.jsx';
 export { default as Grain } from './ui/Grain.jsx';
