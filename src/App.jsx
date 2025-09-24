@@ -1,5 +1,5 @@
 import { Route, BrowserRouter as Router, Routes, useLocation } from 'react-router-dom';
-import { useRef, useEffect, useState } from 'react';
+import { useRef, useEffect, useState, useCallback } from 'react';
 import './styles/globals.css';
 import { SpeedInsights } from '@vercel/speed-insights/react';
 
@@ -7,10 +7,10 @@ import { SpeedInsights } from '@vercel/speed-insights/react';
 import { AnimatePresence } from 'framer-motion';
 
 import { Preloader, Header, StickyCursor, Footer } from './components';
-import { SmoothScrollWrapper } from './function';
+import { SmoothScrollWrapper, useResetScroll } from './function';
 import { useLenis } from './hooks/useLenis';
 import { StickyProvider } from './context/StickyContext';
-
+ 
 // Pages
 import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
@@ -29,35 +29,29 @@ const AppContent = () => {
   const { lenis, scrollTo } = useLenis();
   const location = useLocation();
   const prevLocation = useRef(location.pathname);
+  const resetScroll = useResetScroll(); // Call the hook to get the function
 
+  // Handle initial load
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false);
       document.body.style.cursor = 'default';
+      if (scrollTo) {
+        scrollTo(0, { immediate: true });
+      }
     }, PRELOADER_DURATION);
     return () => clearTimeout(timer);
-  }, []);
+  }, [scrollTo]);
 
-  useEffect(() => {
-    if (!isLoading && scrollTo) {
-      scrollTo(0, { immediate: true });
-    }
-  }, [isLoading, scrollTo]);
-
+  // Handle route changes
   useEffect(() => {
     if (prevLocation.current !== location.pathname) {
       prevLocation.current = location.pathname;
       if (lenis) {
-        // Small delay to make sure lenis ready
-        setTimeout(() => {
-          lenis.stop();
-          window.scrollTo(0, 0);
-          lenis.scrollTo(0, { immediate: true });
-          lenis.start();
-        }, 50);
+        setTimeout(resetScroll, 50);
       }
     }
-  }, [location.pathname, lenis]);
+  }, [location.pathname, lenis, resetScroll]);
 
   return (
     <>

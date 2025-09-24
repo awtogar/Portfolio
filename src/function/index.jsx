@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef, useMemo, useCallback } from 'react';
 import Lenis from 'lenis';
-import LenisContext from '../hooks/useLenis';
+import LenisContext, { useLenis } from '../hooks/useLenis';
 
 /**
  * Smooth scrolling wrapper component using Lenis
@@ -111,7 +111,6 @@ export const useWindowDimensions = () => {
   return dimensions;
 };
 
-
 export const useVideoVisibility = (options = {}) => {
   const videoRef = useRef(null);
   const observerRef = useRef(null);
@@ -172,5 +171,18 @@ export const useVideoVisibility = (options = {}) => {
   return { videoRef };
 };
 
+export const useResetScroll = () => {
+  const { lenis, scrollTo } = useLenis();
 
-export default { SmoothScrollWrapper, useWindowDimensions, useVideoVisibility };
+  const resetScroll = useCallback(() => {
+    if (!lenis || !scrollTo) return;
+    lenis.stop();
+    window.scrollTo(0, 0);
+    scrollTo(0, { immediate: true });
+    lenis.start();
+  }, [lenis, scrollTo]);
+
+  return resetScroll;
+};
+
+export default { SmoothScrollWrapper, useWindowDimensions, useVideoVisibility, useResetScroll };
