@@ -52,10 +52,6 @@ const CircularText = ({ text, spinDuration = 20, onHover = 'speedUp', className 
         };
         scaleVal = 1;
         break;
-      case 'goBonkers':
-        transitionConfig = getTransition(spinDuration / 20, start);
-        scaleVal = 0.8;
-        break;
       default:
         transitionConfig = getTransition(spinDuration, start);
     }
@@ -78,10 +74,10 @@ const CircularText = ({ text, spinDuration = 20, onHover = 'speedUp', className 
   return (
     <div className="flex flex-col items-center justify-center">
       {/* Wrapper container */}
-      <div className="relative w-[200px] h-[200px]">
+      <div className="relative w-[168px] h-[168px]">
         {/* rotating text component */}
         <motion.div
-          className={`m-0 mx-auto rounded-full w-[200px] h-[200px] relative text-primary font-medium text-center cursor-pointer origin-center ${className}`}
+          className={`m-0 mx-auto rounded-full w-[168px] h-[168px] relative text-primary font-medium text-center cursor-pointer origin-center ${className}`}
           style={{ rotate: rotation }}
           initial={{ rotate: 0 }}
           animate={controls}
