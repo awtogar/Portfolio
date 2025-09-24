@@ -50,7 +50,7 @@ const Header = () => {
 
   return (
     <>
-      <motion.div
+      <motion.header
         className="pt-8 fixed flex w-full justify-between items-center mix-blend-difference z-[50]"
         initial={{ translateY: 0 }}
         animate={{
@@ -117,7 +117,7 @@ const Header = () => {
             </div>
           </Magnetic>
         </div>
-      </motion.div>
+      </motion.header>
       {/* <div className="nav-wrapper-test"> */}
       <AnimatePresence mode="wait">{isActive && <Nav closeMenu={closeMenu} />}</AnimatePresence>
       {/* </div> */}
