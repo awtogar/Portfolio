@@ -1,4 +1,4 @@
-import { useLenis } from './useLenis';
+import { useLenis } from '../context/lenisContext';
 
 export const useGotoSection = () => {
   const { lenis } = useLenis();

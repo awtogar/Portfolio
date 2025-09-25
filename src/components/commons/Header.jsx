@@ -3,12 +3,11 @@ import { RiSunLine, RiMoonLine } from '@remixicon/react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Nav, Magnetic, Bounds } from '../../components';
 
-import { useLenis } from '../../hooks/useLenis';
+import { useLenis } from '../../context/lenisContext';
 import { useTheme } from '../../hooks/useTheme';
 import { useStickyElement } from '../../hooks/useStickyElement';
 
 const Header = () => {
-  
   const menuSticky = useStickyElement();
   const toggleSticky = useStickyElement();
   const logoSticky = useStickyElement();
