@@ -23,6 +23,7 @@ import { PRELOADER_DURATION } from './data/const';
 const AppContent = () => {
   const [isLoading, setIsLoading] = useState(true);
 
+  // Loading effect before page is fully loaded for the first time
   useEffect(() => {
     const preloaderTimer = setTimeout(() => {
       setIsLoading(false);

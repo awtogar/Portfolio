@@ -29,9 +29,9 @@ const AboutPage = () => {
   const step = 1 / images.length;
 
   return (
-    <section className="z-10 section-padding-xy">
+    <section className="z-10">
       {/* content first */}
-      <div className="w-full m-auto lg:max-w-[1408px]">
+      <div className="section-padding-xy w-full m-auto lg:max-w-[1408px]">
         <div className="h-screen max-h-screen flex flex-col">
           <div className="relative">
             <div className="w-full h-full">
@@ -66,7 +66,7 @@ const AboutPage = () => {
       </div>
 
       {/* content second */}
-      <div ref={containerRef} className="relative h-[200vh]">
+      <div ref={containerRef} className="relative h-[200vh] w-full">
         <div className="sticky top-0 h-screen overflow-hidden bg-neutral-100">
           {images.map((image, i) => {
             const start = step * i;

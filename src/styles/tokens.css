@@ -6,13 +6,16 @@
   
     --neutral-100: #F5F5F5;
     --neutral-200: #F8F8F8;
-    --neutral-300: #FAFAFA;
+    --neutral-300: #fafafa;
     --neutral-400: #FDFDFD;
     --neutral-500: #FFFFFF;
+
     --primary: #0C0C09;
-    --primary-muted: #b9b9b9;
+    --primary-muted: #464634;
+
     --secondary: #FAFAFA;
     --secondary-muted: #F0F0F0;
+
     --brand-primary: #fff6d4;
     --brand-secondary: #f5ebc7;
     --brand-tertiary: #504B38;
