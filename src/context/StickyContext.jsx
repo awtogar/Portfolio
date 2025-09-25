@@ -1,8 +1,7 @@
 import { createContext, useContext, useRef, useCallback } from 'react';
 
-// Inistialize
-const StickyContext = createContext();
-
+export const StickyContext = createContext();
+// Initialize
 export function StickyProvider({ children }) {
   const stickyElementsRef = useRef([]);
 
@@ -37,6 +36,8 @@ export function StickyProvider({ children }) {
     </StickyContext.Provider>
   );
 }
+
+
 
 export const useSticky = () => {
   const context = useContext(StickyContext);
