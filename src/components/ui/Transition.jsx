@@ -60,7 +60,7 @@ export default function Transition({ children, backgroundColor }) {
         className="fixed top-0 left-0 w-screen h-[calc(100vh+600px)] pointer-events-none bg-primary transition-opacity duration-0 delay-100"
       />
       <motion.p 
-        className="absolute left-1/2 top-[40%] text-brand-primary z-[3] text-4xl font-bold items-center -translate-x-1/2 text-center duration-100 delay-0" 
+        className="absolute left-1/2 top-[40%] text-brand-primary z-[9998] text-4xl font-bold items-center -translate-x-1/2 text-center duration-100 delay-0" 
         {...anim(textTransitionAnim)}
       >
         {routes[location.pathname]}
