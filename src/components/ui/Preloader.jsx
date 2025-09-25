@@ -4,7 +4,7 @@ import { opacity, PreloaderFade, PreloaderSlideUp } from '../../data/anim';
 
 const TheWords = ['Tell None', 'Show them', 'Your Quality'];
 
-export default function Preloader() {
+const Preloader = () => {
   const [index, setIndex] = useState(0);
   const [dimension, setDimension] = useState({ width: 0, height: 0 });
 
@@ -103,4 +103,6 @@ export default function Preloader() {
       )}
     </motion.div>
   );
-}
+};
+
+export default Preloader;

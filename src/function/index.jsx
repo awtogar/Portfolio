@@ -1,12 +1,12 @@
 import { useState, useEffect, useRef, useMemo, useCallback } from 'react';
 import Lenis from 'lenis';
-import LenisContext, { useLenis } from '../hooks/useLenis';
+import LenisContext from '../context/lenisContext';
 
 /**
  * Smooth scrolling wrapper component using Lenis
  */
 export const SmoothScrollWrapper = ({ children }) => {
-  const wrapperRef = useRef(null);
+  const appRef = useRef(null);
   const [lenis, setLenis] = useState(null);
 
   useEffect(() => {
@@ -76,7 +76,7 @@ export const SmoothScrollWrapper = ({ children }) => {
 
   return (
     <LenisContext.Provider value={contextValue}>
-      <div ref={wrapperRef} className="App">
+      <div ref={appRef} className="App">
         {children}
       </div>
     </LenisContext.Provider>
@@ -85,7 +85,6 @@ export const SmoothScrollWrapper = ({ children }) => {
 
 /**
  * Custom hook to track window dimensions
- * @returns {Object} Current window dimensions {width, height}
  */
 export const useWindowDimensions = () => {
   const [dimensions, setDimensions] = useState({
@@ -171,18 +170,4 @@ export const useVideoVisibility = (options = {}) => {
   return { videoRef };
 };
 
-export const useResetScroll = () => {
-  const { lenis, scrollTo } = useLenis();
-
-  const resetScroll = useCallback(() => {
-    if (!lenis || !scrollTo) return;
-    lenis.stop();
-    window.scrollTo(0, 0);
-    scrollTo(0, { immediate: true });
-    lenis.start();
-  }, [lenis, scrollTo]);
-
-  return resetScroll;
-};
-
-export default { SmoothScrollWrapper, useWindowDimensions, useVideoVisibility, useResetScroll };
+export default { SmoothScrollWrapper, useWindowDimensions, useVideoVisibility };
