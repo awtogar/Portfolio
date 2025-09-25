@@ -4,7 +4,7 @@ import { useLocation } from 'react-router-dom';
 import { textTransitionAnim, curveTransitionAnim, translateTransitionAnim } from '../../data/anim';
 import { pages_data } from '../../data/data';
 
-// Create routes mapping from your pages_data
+
 const routes = {
   [pages_data.home.href]: pages_data.home.title,
   [pages_data.about.href]: pages_data.about.title,
@@ -21,7 +21,7 @@ const anim = variants => {
   };
 };
 
-export default function PageTransition({ children, backgroundColor }) {
+export default function Transition({ children, backgroundColor }) {
   const location = useLocation();
   const [dimensions, setDimensions] = useState({
     width: null,
@@ -48,7 +48,7 @@ export default function PageTransition({ children, backgroundColor }) {
     setShowContent(false);
     const timer = setTimeout(() => {
       setShowContent(true);
-    }, 800); // Adjust this delay to match your transition duration
+    }, 1200);
 
     return () => clearTimeout(timer);
   }, [location.pathname]);
@@ -57,10 +57,10 @@ export default function PageTransition({ children, backgroundColor }) {
     <div className="relative" style={{ backgroundColor }}>
       <div
         style={{ opacity: dimensions.width == null ? 1 : 0 }}
-        className="fixed top-0 left-0 w-screen h-[calc(100vh+600px)] pointer-events-none bg-black transition-opacity duration-0 delay-100"
+        className="fixed top-0 left-0 w-screen h-[calc(100vh+600px)] pointer-events-none bg-primary transition-opacity duration-0 delay-100"
       />
       <motion.p 
-        className="absolute left-1/2 top-[40%] text-white text-[46px] z-[3] -translate-x-1/2 text-center" 
+        className="absolute left-1/2 top-[40%] text-brand-primary z-[3] text-4xl font-bold items-center -translate-x-1/2 text-center duration-100 delay-0" 
         {...anim(textTransitionAnim)}
       >
         {routes[location.pathname]}
@@ -77,7 +77,7 @@ export default function PageTransition({ children, backgroundColor }) {
       </motion.div>
     </div>
   );
-}
+}  
 
 const SVG = ({ height, width }) => {
   const initialPath = `

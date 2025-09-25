@@ -4,7 +4,7 @@ import './styles/globals.css';
 import { SpeedInsights } from '@vercel/speed-insights/react';
 // Animation
 import { AnimatePresence } from 'framer-motion';
-import { Preloader, Header, StickyCursor, Footer, PageTransition } from './components';
+import { Preloader, Header, StickyCursor, Footer, Transition } from './components';
 import { SmoothScrollWrapper } from './function';
 import { StickyProvider } from './context/StickyContext';
 // Pages
@@ -26,31 +26,42 @@ const AppContent = () => {
       setIsLoading(false);
       document.body.style.cursor = 'default';
     }, PRELOADER_DURATION);
+
     return () => clearTimeout(preloaderTimer);
   }, []);
 
   return (
     <>
-      <AnimatePresence mode="wait">{isLoading && <Preloader key="preloader" />}</AnimatePresence>
-      <Header />
-      <StickyCursor />
-      <main id="main" className="main-wrapper bg-neutral-100" style={{ visibility: isLoading ? 'hidden' : 'visible' }}>
-          <PageTransition key={location.pathname} backgroundColor="var(--neutral-100)">
-        <AnimatePresence mode="wait">
-            <Routes location={location}>
-              <Route path={pages_data.home.href} element={<HomePage />} />
-              <Route path={pages_data.about.href} element={<AboutPage />} />
-              <Route path={pages_data.project.href} element={<ProjectPage />} />
-              <Route path={pages_data.contact.href} element={<ContactPage />} />
-            </Routes>
-        </AnimatePresence>
-          </PageTransition>
-      </main>
+      {/* Preloader - only shows on initial load */}
+      <AnimatePresence mode="wait">
+        {isLoading && <Preloader key="preloader" />}
+      </AnimatePresence>
 
-      <Footer />
+      {/* Main content - hidden during preloader */}
+      <div style={{ visibility: isLoading ? 'hidden' : 'visible' }}>
+        <Header />
+        <StickyCursor />
+        
+        <main id="main" className="bg-neutral-100">
+          {/* transitions */}
+          <AnimatePresence mode="wait">
+            <Transition key={location.pathname} backgroundColor="var(--neutral-100)">
+              <Routes location={location}>
+                <Route path={pages_data.home.href} element={<HomePage />} />
+                <Route path={pages_data.about.href} element={<AboutPage />} />
+                <Route path={pages_data.project.href} element={<ProjectPage />} />
+                <Route path={pages_data.contact.href} element={<ContactPage />} />
+              </Routes>
+            </Transition>
+          </AnimatePresence>
+        </main>
+        
+        <Footer />
+      </div>
     </>
   );
 };
+
 
 const App = () => {
   return (
