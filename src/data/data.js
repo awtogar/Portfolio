@@ -1,9 +1,9 @@
 // halaman navigasi dan bagian
 const pages_data = {
   home: {
-    href: '/',
     title: 'Home',
-    label: 'home',
+    href: '/',
+    label: 'Home',
     sections: [{
         id: 'hero',
         title: 'Hero'
@@ -25,7 +25,7 @@ const pages_data = {
   about: {
     title: 'About',
     href: '/about',
-    label: 'about',
+    label: 'About',
     sections: [{
         id: 'about',
         title: 'About me'
@@ -47,7 +47,7 @@ const pages_data = {
   project: {
     title: 'Projects',
     href: '/projects',
-    label: 'projects',
+    label: 'Projects',
     sections: [
       {
         id: 'design',
