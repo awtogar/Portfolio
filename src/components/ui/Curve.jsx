@@ -21,7 +21,7 @@ export default function Curve() {
   const initialPath = `M100 0 L100 ${dimensions.height} Q-100 ${dimensions.height/2} 100 0`
   const targetPath = `M100 0 L100 ${dimensions.height} Q100 ${dimensions.height/2} 100 0`
 
-  const curve = {
+  const curvePath = {
     initial: {
         d: initialPath
     },
@@ -38,7 +38,7 @@ export default function Curve() {
 
   return (
     <svg className="svgCurve absolute top-0 left-[-99px] w-[100px] h-full fill-primary stroke-none">
-        <motion.path variants={curve} initial="initial" animate="enter" exit="exit"></motion.path>
+        <motion.path variants={curvePath} initial="initial" animate="enter" exit="exit"></motion.path>
     </svg>
   )
 }
