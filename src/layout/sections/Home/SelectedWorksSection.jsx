@@ -1,8 +1,8 @@
 import React from 'react';
-import { works } from '../data/data';
-import { ScrollAnimatedImg } from '../components';
+import { works } from '../../../data/data';
+import { ScrollAnimatedImg } from '../../../components';
 
-const SelectedWorks = () => {
+const SelectedWorksSection = () => {
   return (
     <div id="selected-works" className="flex flex-col space-300 pt-s900 pb-s900">
       <div className="flex w-full flex-col gap-s400">
@@ -43,4 +43,4 @@ const SelectedWorks = () => {
   );
 };
 
-export default SelectedWorks;
+export default SelectedWorksSection;

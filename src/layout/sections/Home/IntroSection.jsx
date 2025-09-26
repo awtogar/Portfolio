@@ -1,0 +1,59 @@
+import React from 'react';
+import video1 from '../../../assets/videos/video-1.mp4';
+import { ido } from '../../../data/data';
+import { CreativeButton, VideoLoader } from '../../../components';
+
+const IntroSection = () => {
+  return (
+    <>
+      <section className="z-10">
+        <div className="m-auto w-full">
+          <div className="h-[468px] overflow-hidden">
+            <VideoLoader src={video1} className="w-full h-full object-cover" />
+          </div>
+        </div>
+      </section>
+      <section className="z-10 section-padding-xy">
+        <div className="m-auto w-full lg:max-w-[1408px]">
+          <div className="flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
+            <div className="flex flex-col gap-6 max-w-[640px]">
+              <p className="text-h500 leading-relaxed text-primary">
+                With over 2 years of experience and 100+ global clients, I specialize in creating impactful visual identities and digital experiences. Now, I extend my expertise to
+                web design & development, crafting solutions that blend creativity and functionality.
+              </p>
+
+              <CreativeButton href="https://www.instagram.com/nostratic.archv" variant={'outline'} target="_blank" rel="noopener noreferrer">
+                My design works
+              </CreativeButton>
+
+              {/* Tags */}
+              <div className="flex flex-wrap gap-s200 pt-s400">
+                {Array.from(new Set(ido.flatMap(service => service.tags))).map((tag, index) => (
+                  <div key={index} className="tags">
+                    {tag}
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Stats */}
+            <div className="flex flex-col gap-s600 bg-neutral-300 rounded-xl p-s600 shadow-sm">
+              <div className="grid grid-cols-2 gap-s600">
+                <div className="flex flex-col justify-center items-center">
+                  <span className="text-3xl font-semibold text-primary">100+</span>
+                  <span className="text-primary/60">Clients Worlwide</span>
+                </div>
+                <div className="flex flex-col justify-center items-center">
+                  <span className="text-3xl font-semibold text-primary">2+</span>
+                  <span className="text-primary/60">years experience</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </>
+  );
+};
+
+export default IntroSection;
