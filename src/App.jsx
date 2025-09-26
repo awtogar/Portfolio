@@ -41,6 +41,7 @@ const AppContent = () => {
               element={
                 <Transition>
                   <HomePage />
+                  <Footer />
                 </Transition>
               }
             />
@@ -49,6 +50,7 @@ const AppContent = () => {
               element={
                 <Transition>
                   <AboutPage />
+                  <Footer />
                 </Transition>
               }
             />
@@ -57,6 +59,7 @@ const AppContent = () => {
               element={
                 <Transition>
                   <ProjectPage />
+                  <Footer />
                 </Transition>
               }
             />
@@ -65,14 +68,13 @@ const AppContent = () => {
               element={
                 <Transition>
                   <ContactPage />
+                  <Footer />
                 </Transition>
               }
             />
           </Routes>
         </main>
       </AnimatePresence>
-
-      <Footer />
     </>
   );
 };

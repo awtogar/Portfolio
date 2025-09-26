@@ -13,7 +13,7 @@ const anim = variants => {
   };
 };
 
-export default function PageTransition({ children, backgroundColor = 'bg-neutral-100' }) {
+export default function Transition({ children, backgroundColor = 'bg-neutral-100' }) {
   const location = useLocation();
   const [dimensions, setDimensions] = useState({
     width: null,
