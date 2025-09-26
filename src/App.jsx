@@ -2,17 +2,14 @@ import { Route, BrowserRouter as Router, Routes, useLocation } from 'react-route
 import { useEffect, useState } from 'react';
 import './styles/globals.css';
 import { SpeedInsights } from '@vercel/speed-insights/react';
-// Animation
 import { AnimatePresence } from 'framer-motion';
 import { Preloader, Header, StickyCursor, Footer, Transition } from './components';
 import { SmoothScrollWrapper } from './function';
 import { StickyProvider } from './context/StickyContext';
-// Pages
 import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
 import ProjectPage from './pages/ProjectPage';
 import ContactPage from './pages/ContactPage';
-// Data
 import { pages_data } from './data/data';
 import { PRELOADER_DURATION } from './data/const';
 
@@ -20,7 +17,7 @@ const AppContent = () => {
   const [isLoading, setIsLoading] = useState(true);
   const location = useLocation();
 
-  // Loading effect for the first time visiting the site.
+  // Preloader timer
   useEffect(() => {
     const preloaderTimer = setTimeout(() => {
       setIsLoading(false);
@@ -32,16 +29,12 @@ const AppContent = () => {
 
   return (
     <>
-      {/* Preloader - only shows on initial load */}
       <AnimatePresence mode="wait">{isLoading && <Preloader key="preloader" />}</AnimatePresence>
-
-      {/* Main content - hidden during preloader */}
       <Header />
       <StickyCursor />
 
-      <main id="main" className="bg-neutral-100" style={{ visibility: isLoading ? 'hidden' : 'visible' }}>
-        {/* transitions */}
-        <AnimatePresence mode="wait">
+      <AnimatePresence mode="wait">
+        <main id="main" className="bg-neutral-100" style={{ visibility: isLoading ? 'hidden' : 'visible' }}>
           <Routes location={location} key={location.pathname}>
             <Route
               path={pages_data.home.href}
@@ -76,8 +69,8 @@ const AppContent = () => {
               }
             />
           </Routes>
-        </AnimatePresence>
-      </main>
+        </main>
+      </AnimatePresence>
 
       <Footer />
     </>
