@@ -33,35 +33,56 @@ const AppContent = () => {
   return (
     <>
       {/* Preloader - only shows on initial load */}
-      <AnimatePresence mode="wait">
-        {isLoading && <Preloader key="preloader" />}
-      </AnimatePresence>
+      <AnimatePresence mode="wait">{isLoading && <Preloader key="preloader" />}</AnimatePresence>
 
       {/* Main content - hidden during preloader */}
-      <div style={{ visibility: isLoading ? 'hidden' : 'visible' }}>
-        <Header />
-        <StickyCursor />
-        
-        <main id="main" className="bg-neutral-100">
-          {/* transitions */}
-          <AnimatePresence mode="wait">
-            <Transition key={location.pathname} backgroundColor="var(--neutral-100)">
-              <Routes location={location}>
-                <Route path={pages_data.home.href} element={<HomePage />} />
-                <Route path={pages_data.about.href} element={<AboutPage />} />
-                <Route path={pages_data.project.href} element={<ProjectPage />} />
-                <Route path={pages_data.contact.href} element={<ContactPage />} />
-              </Routes>
-            </Transition>
-          </AnimatePresence>
-        </main>
-        
-        <Footer />
-      </div>
+      <Header />
+      <StickyCursor />
+
+      <main id="main" className="bg-neutral-100" style={{ visibility: isLoading ? 'hidden' : 'visible' }}>
+        {/* transitions */}
+        <AnimatePresence mode="wait">
+          <Routes location={location} key={location.pathname}>
+            <Route
+              path={pages_data.home.href}
+              element={
+                <Transition>
+                  <HomePage />
+                </Transition>
+              }
+            />
+            <Route
+              path={pages_data.about.href}
+              element={
+                <Transition>
+                  <AboutPage />
+                </Transition>
+              }
+            />
+            <Route
+              path={pages_data.project.href}
+              element={
+                <Transition>
+                  <ProjectPage />
+                </Transition>
+              }
+            />
+            <Route
+              path={pages_data.contact.href}
+              element={
+                <Transition>
+                  <ContactPage />
+                </Transition>
+              }
+            />
+          </Routes>
+        </AnimatePresence>
+      </main>
+
+      <Footer />
     </>
   );
 };
-
 
 const App = () => {
   return (

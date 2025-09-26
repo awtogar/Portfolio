@@ -55,10 +55,13 @@
     --neutral-300: #282828;
     --neutral-400: #323232;
     --neutral-500: #3D3D3D;
+
     --primary: #FAFAFA;
-    --primary-muted: #8e8e8e;
     --secondary: #26240D;
+
+    --primary-muted: #8e8e8e;
     --secondary-muted: #1D1C16;
+    
     --brand-primary: #2C3639;
     --brand-secondary: #5C8374;
     --brand-tertiary: #93B1A6;
