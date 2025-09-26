@@ -7,7 +7,7 @@ import { pages_data, social_links } from '../../data/data';
 import { useLenis } from '../../context/lenisContext';
 import { useTheme } from '../../hooks/useTheme';
 import Curve from '../ui/Curve';
-import LinkComponent from './Link';
+import NavLink from './Link';
 import LinkOnHover from '../ui/HoverRotate';
 
 export default function Nav({ closeMenu }) {
@@ -92,7 +92,7 @@ export default function Nav({ closeMenu }) {
             </div>
             {Object.values(pages_data).map((data, index) => {
               return (
-                <LinkComponent key={index} data={{ ...data, index }} isActive={selectedIndicator === data.href} setSelectedIndicator={setSelectedIndicator} closeMenu={closeMenu} />
+                <NavLink key={index} data={{ ...data, index }} isActive={selectedIndicator === data.href} setSelectedIndicator={setSelectedIndicator} closeMenu={closeMenu} />
               );
             })}
           </div>

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { slide, scale } from '../../data/anim';
 
-export default function LinkComponent({ data, isActive, setSelectedIndicator, closeMenu }) {
+export default function NavLink({ data, isActive, setSelectedIndicator, closeMenu }) {
   const { title, href, index } = data;
   const [isHovering, setIsHovering] = useState(false);
 
