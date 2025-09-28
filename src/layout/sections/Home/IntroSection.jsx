@@ -37,15 +37,15 @@ const IntroSection = () => {
             </div>
 
             {/* Stats */}
-            <div className="flex flex-col gap-s600 bg-neutral-300 rounded-xl p-s600 shadow-sm">
+            <div className="flex flex-col gap-s600 bg-primary rounded-xl p-s600 shadow-sm">
               <div className="grid grid-cols-2 gap-s600">
                 <div className="flex flex-col justify-center items-center">
-                  <span className="text-3xl font-semibold text-primary">100+</span>
-                  <span className="text-primary/60">Clients Worlwide</span>
+                  <span className="text-3xl font-semibold text-secondary">100+</span>
+                  <span className="text-secondary/60">Clients Worldwide</span>
                 </div>
                 <div className="flex flex-col justify-center items-center">
-                  <span className="text-3xl font-semibold text-primary">2+</span>
-                  <span className="text-primary/60">years experience</span>
+                  <span className="text-3xl font-semibold text-secondary">2+</span>
+                  <span className="text-secondary/60">years experience</span>
                 </div>
               </div>
             </div>

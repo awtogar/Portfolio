@@ -77,12 +77,12 @@ export default function Nav({ closeMenu }) {
               >
                 <div
                   className={`
-              w-6 h-6 bg-neutral-100 rounded-full mx-auto transition-transform duration-150
+              w-6 h-6 bg-brand-tertiary rounded-full mx-auto transition-transform duration-150
               flex items-center justify-center shadow-sm
               ${isDark ? 'translate-y-2' : '-translate-y-2'}
             `}
                 >
-                  {isDark ? <RiMoonLine className="w-3 h-3 text-gray-600" /> : <RiSunLine className="w-3 h-3 text-gray-600" />}
+                  {isDark ? <RiMoonLine className="w-3 h-3 text-primary" /> : <RiSunLine className="w-3 h-3 text-primary" />}
                 </div>
               </button>
             </div>

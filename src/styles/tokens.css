@@ -11,10 +11,10 @@
     --neutral-100: hsl(47, 12%, 98%);
 
     --primary: #0C0C09;
-    --primary-muted: #495057;
+    --primary-muted: hsl(47, 6%, 12%);
 
     --secondary: #FAFAFA;
-    --secondary-muted: #F0F0F0;
+    --secondary-muted: hsl(47, 0%, 82%);
 
     --brand-primary: #fff6d6;
     --brand-secondary: #f5ebc7;
