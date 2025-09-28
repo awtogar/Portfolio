@@ -43,7 +43,7 @@ export default function Nav({ closeMenu }) {
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         transition={{ duration: 0.3 }}
-        className="fixed inset-0 bg-primary/35 dark:bg-neutral-100/35 z-[48]"
+        className="fixed inset-0 bg-primary/35 dark:bg-neutral-100/35 z-50"
         onClick={closeMenu}
       />
       <motion.div
@@ -52,58 +52,52 @@ export default function Nav({ closeMenu }) {
         animate="enter"
         exit="exit"
         className="
-          !h-[100dvh] w-[100svw] bg-primary fixed right-0 top-0 text-neutral-500 z-[49] md:w-[45svw]"
+          !h-[100dvh] w-[100svw] bg-primary fixed right-0 top-0 text-brand-tertiary z-[9997] md:w-[45svw]"
       >
-        <div
-          className="
-          box-border !h-full pl-16 pr-6 pt-16 pb-12 flex flex-col justify-between
-        "
-        >
+        <div className="box-border !h-full pl-16 pr-6 pt-16 pb-12 flex flex-col justify-between">
           <div
             onMouseLeave={() => {
               setSelectedIndicator(pathname);
             }}
             className="
-              flex flex-col text-[4rem] gap-2 mt-18
+              flex flex-col text-display gap-2 mt-s900 h-full
               lg:text-[56px] lg:gap-3 lg:mt-20
             "
           >
-            <div className="flex items-center w-full md:block">
-              <div className="text-neutral-100 uppercase text-[0.6rem] border-b border-neutral-100">
-                <p>Theme is</p>
-              </div>
-
-              <div className="flex-1 border-b border-neutral-100 mx-4 md:hidden"></div>
-
-              <div
-                className="md:hidden flex items-center justify-center text-[1rem] group cursor-pointer dark:text-neutral-500"
-                onClick={toggleTheme}
-                aria-label="Toggle dark mode"
-              >
-                <div className="relative border-b border-neutral-100">
-                  <div className="hidden dark:inline transition-transform duration-300 ease-in-out text-neutral-500 uppercase text-[0.6rem]">
-                    <span>[ dark ]</span>
-                  </div>
-                  <div className="inline dark:hidden transition-transform duration-300 ease-in-out text-neutral-500 uppercase text-[0.6rem]">
-                    <span>[ light ]</span>
-                  </div>
-                </div>
-              </div>
-            </div>
             {Object.values(pages_data).map((data, index) => {
-              return (
-                <NavLink key={index} data={{ ...data, index }} isActive={selectedIndicator === data.href} setSelectedIndicator={setSelectedIndicator} closeMenu={closeMenu} />
-              );
+              return <NavLink key={index} data={{ ...data, index }} isActive={selectedIndicator === data.href} setSelectedIndicator={setSelectedIndicator} closeMenu={closeMenu} />;
             })}
           </div>
-          <div className="flex w-full justify-between">
-            {social_links.map((data, i) => {
-              return (
-                <LinkOnHover key={i} href={data.href} target="_blank" rel="noopener noreferrer" textcolor1="text-secondary" textcolor2="text-secondary">
-                  <span>{data.title}</span>
-                </LinkOnHover>
-              );
-            })}
+          <div className="flex justify-between">
+            <div className="md:hidden flex flex-col items-center space-y-2">
+              <span className="text-brand-tertiary/35">Theme</span>
+              <button
+                onClick={toggleTheme}
+                className={`w-8 h-12 bg-neutral-400 rounded-full transition-colors duration-100`}
+              >
+                <div
+                  className={`
+              w-6 h-6 bg-neutral-100 rounded-full mx-auto transition-transform duration-150
+              flex items-center justify-center shadow-sm
+              ${isDark ? 'translate-y-2' : '-translate-y-2'}
+            `}
+                >
+                  {isDark ? <RiMoonLine className="w-3 h-3 text-gray-600" /> : <RiSunLine className="w-3 h-3 text-gray-600" />}
+                </div>
+              </button>
+            </div>
+            <div className="flex flex-col space-y-2">
+              <span className="text-brand-tertiary/35">Social</span>
+              <div className="flex flex-col">
+                {social_links.map((data, i) => {
+                  return (
+                    <LinkOnHover key={i} href={data.href} target="_blank" rel="noopener noreferrer" >
+                      <span>{data.title}</span>
+                    </LinkOnHover>
+                  );
+                })}
+              </div>
+            </div>
           </div>
         </div>
         <Curve />

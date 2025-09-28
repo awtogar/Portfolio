@@ -13,7 +13,6 @@ export const useTheme = () => {
       setIsDark(true);
     } else {
       document.documentElement.classList.remove('dark');
-      // Set to light theme by default if no preference is saved
       if (!savedTheme) localStorage.setItem('theme', 'light');
       setIsDark(false);
     }

@@ -29,7 +29,7 @@ const AppContent = () => {
 
   return (
     <>
-      <AnimatePresence mode="wait">{isLoading && <Preloader key="preloader" />}</AnimatePresence>
+      <Preloader isLoading={isLoading} />
       <Header />
       <StickyCursor />
 

@@ -19,10 +19,9 @@ export default function NavLink({ data, isActive, setSelectedIndicator, closeMen
       animate="enter"
       exit="exit"
     >
-      {/* Active indicator dot with scaling animation */}
-      <motion.div variants={scale} animate={isActive ? 'open' : 'closed'} className="absolute -left-6 w-2 h-2 top-1/2 -translate-y-1/2 bg-neutral-500 rounded-full" />
+      {/* indicator dot with scaling */}
+      <motion.div variants={scale} animate={isActive ? 'open' : 'closed'} className="absolute -left-6 w-2 h-2 top-1/2 -translate-y-1/2 bg-brand-tertiary rounded-full" />
 
-      {/* Link with hover text animation */}
       <Link to={href} onClick={closeMenu}>
         <motion.div
           className="all-unset flex cursor-pointer relative antialiased translate-z-0 will-change-transform overflow-clip"

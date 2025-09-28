@@ -25,11 +25,11 @@ const SelectedWorksSection = () => {
                   </span>
                 </div>
               </div>
-              <div className="text-brand-secondary/80">
-                <p className="text-brand-secondary/80">{work.description}</p>
+              <div className="text-brand-tertiary/80">
+                <p className="text-brand-tertiary/80">{work.description}</p>
                 <div className="flex flex-wrap gap-s200 pt-s400">
                   {work.tags.map((tag, tagIndex) => (
-                    <div key={tagIndex} className="tags-secondary">
+                    <div key={tagIndex} className="tags-tertiary">
                       {tag}
                     </div>
                   ))}

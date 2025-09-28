@@ -5,7 +5,7 @@ import { RiAddLine, RiSubtractLine } from '@remixicon/react';
 
 const WhatIdoSection = () => {
   return (
-    <section id="what-i-do" className="z-10 section-padding-xy bg-primary text-brand-secondary">
+    <section id="what-i-do" className="z-10 section-padding-xy bg-primary text-brand-tertiary">
       <div className="m-auto w-full">
         {/* Services Header */}
         <div className="flex flex-col rounded-t-lg">
@@ -13,7 +13,7 @@ const WhatIdoSection = () => {
             <h2 className="text-h100">
               WHAT <br />I DO ?
             </h2>
-            <div className="text-brand-secondary/80">
+            <div className="text-brand-tertiary/80">
               <div className="flex flex-col gap-s200">
                 <div>
                   <span>(SERVICES)</span>
@@ -40,7 +40,7 @@ const WhatIdoSection = () => {
                         {/* <RiSubtractLine/> */}
                       </div>
                     </div>
-                    <div className="text-brand-secondary/80 pt-s400">
+                    <div className="text-brand-tertiary/80 pt-s400">
                       <p>{service.description}</p>
                       <div className="flex flex-col pt-s200">
                         {service.features.map((feature, featureIndex) => (

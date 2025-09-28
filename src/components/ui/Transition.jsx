@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useLocation } from 'react-router-dom';
-import { textTransitionAnim, curveTransitionAnim, translateTransitionAnim } from '../../data/anim';
+import { transitionText, transitionCurve, transitionDirection } from '../../data/anim';
 import { pages_data } from '../../data/data';
 
 const anim = variants => {
@@ -13,7 +13,7 @@ const anim = variants => {
   };
 };
 
-export default function Transition({ children, backgroundColor = 'bg-neutral-100' }) {
+export default function Transition({ children, backgroundColor = 'bg-secondary' }) {
   const location = useLocation();
   const [dimensions, setDimensions] = useState({
     width: null,
@@ -61,8 +61,8 @@ export default function Transition({ children, backgroundColor = 'bg-neutral-100
           style={{ opacity: dimensions.width == null ? 1 : 0 }}
           className="fixed top-0 left-0 w-screen h-[calc(100vh+600px)] pointer-events-none transition-opacity duration-0 delay-100"
         />
-        <div className="fixed left-1/2 top-0 w-full h-full z-[9999] pointer-events-none flex items-center justify-center -translate-x-1/2 text-center">
-          <motion.p className="absolute text-brand-primary text-[46px] text-center" {...anim(textTransitionAnim)}>
+        <div className="fixed z-[9995] left-1/2 top-0 w-full h-full pointer-events-none flex items-center justify-center -translate-x-1/2 text-center">
+          <motion.p className="absolute text-brand-tertiary text-[46px] text-center" {...anim(transitionText)}>
             {getCurrentPageTitle()}
           </motion.p>
         </div>
@@ -95,8 +95,8 @@ const SVG = ({ height, width }) => {
   `;
 
   return (
-    <motion.svg className="fixed fill-primary top-0 left-0 w-screen h-[calc(100vh+600px)] pointer-events-none" {...anim(translateTransitionAnim)}>
-      <motion.path {...anim(curveTransitionAnim(initialPath, targetPath))} />
+    <motion.svg className="fixed fill-primary top-0 left-0 w-screen h-[calc(100vh+600px)] pointer-events-none" {...anim(transitionDirection)}>
+      <motion.path {...anim(transitionCurve(initialPath, targetPath))} />
     </motion.svg>
   );
 };

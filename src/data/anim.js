@@ -69,15 +69,26 @@ export const PreloaderSlideUp = {
   },
 };
 
+export const preloaderCurvePath = (initialPath, targetPath) => ({
+    initial: {
+      d: initialPath,
+      transition: { duration: 0.7, ease: [0.76, 0, 0.24, 1] },
+    },
+    exit: {
+      d: targetPath,
+      transition: { duration: 0.7, ease: [0.76, 0, 0.24, 1], delay: 0.3 },
+    },
+  });
+
 
 // page transition
-export const textTransitionAnim = {
+export const transitionText = {
     initial: {
         opacity: 1,
     },
     enter: {
         opacity: 0,
-        top: -100,
+        bottom: -100,
         transition: {duration: 0.4, delay: 0.4, ease: [0.76, 0, 0.24, 1]},
         transitionEnd: {top: "47.5%"}
     },
@@ -88,7 +99,7 @@ export const textTransitionAnim = {
     }
 }
 
-export const curveTransitionAnim = (initialPath, targetPath) => {
+export const transitionCurve = (initialPath, targetPath) => {
     return {
         initial: {
             d: initialPath
@@ -104,12 +115,12 @@ export const curveTransitionAnim = (initialPath, targetPath) => {
     }
 }
 
-export const translateTransitionAnim = {
+export const transitionDirection = {
     initial: {
         top: "-300px"
     },
     enter: {
-        top: "-100vh",
+        top: "100vh",
         transition: {duration: 0.75, delay: 0.35, ease: [0.76, 0, 0.24, 1]},
         transitionEnd : {
             top: "100vh"
