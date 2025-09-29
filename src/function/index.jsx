@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef, useMemo, useCallback } from 'react';
 import Lenis from 'lenis';
 import LenisContext from '../context/lenisContext';
+import { useLenis } from '../context/lenisContext';
 
 /**
  * Smooth scrolling wrapper component using Lenis
@@ -170,4 +171,22 @@ export const useVideoVisibility = (options = {}) => {
   return { videoRef };
 };
 
-export default { SmoothScrollWrapper, useWindowDimensions, useVideoVisibility };
+/**
+ * Custom hook untuk smooth scroll ke section tertentu
+ */
+export const useGotoSection = () => {
+  const { lenis } = useLenis();
+
+  return id => {
+    const element = document.getElementById(id);
+    if (element && lenis) {
+      lenis.scrollTo(element, {
+        offset: 0,
+        duration: 1.2,
+        easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      });
+    }
+  };
+};
+
+export default { SmoothScrollWrapper, useWindowDimensions, useVideoVisibility, useGotoSection };

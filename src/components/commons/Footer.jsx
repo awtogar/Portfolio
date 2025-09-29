@@ -2,7 +2,7 @@ import React from 'react';
 import { HoverRotate, CreativeButton } from '..';
 import { RiCornerDownRightLine } from '@remixicon/react';
 import { contact_info, social_links, pages_data } from '../../data/data';
-import { useGotoSection } from '../../hooks/useGotoSection';
+import { useGotoSection } from '../../function';
 import { useLocation } from 'react-router-dom';
 
 const Footer = () => {
