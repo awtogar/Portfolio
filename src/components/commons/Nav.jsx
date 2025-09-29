@@ -52,7 +52,7 @@ export default function Nav({ closeMenu }) {
         initial="initial"
         animate="enter"
         exit="exit"
-        className="!h-[100dvh] w-[100svw] bg-primary fixed right-0 top-0 text-brand-tertiary z-[9997] md:w-[45svw]"
+        className="!h-[100dvh] w-[100svw] bg-primary fixed right-0 top-0 text-brand-tertiary z-[9997] md:w-[45svw] will-change-transform"
       >
         <div className="box-border !h-full pl-16 pr-6 pt-16 pb-12 flex flex-col justify-between">
           <div
@@ -87,12 +87,12 @@ export default function Nav({ closeMenu }) {
             </div>
             <div className="md:hidden flex flex-col items-center space-y-2">
               <span className="text-brand-tertiary/35">Theme</span>
-              <button onClick={toggleTheme} className={`w-8 h-12 bg-neutral-400 rounded-full transition-colors duration-100`}>
+              <button onClick={toggleTheme} className={`flex flex-col w-8 h-full bg-neutral-500 rounded-full`}>
                 <div
                   className={`
               w-6 h-6 bg-brand-tertiary rounded-full mx-auto transition-transform duration-150
               flex items-center justify-center shadow-sm
-              ${isDark ? 'translate-y-2' : '-translate-y-2'}
+              ${isDark ? 'translate-y-18 transition-colors duration-500' : 'translate-y-0 transition-colors duration-500'}
             `}
                 >
                   {isDark ? <RiSunLine className="w-3 h-3 text-primary" /> : <RiMoonLine className="w-3 h-3 text-primary" />}

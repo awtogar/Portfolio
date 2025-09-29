@@ -4,13 +4,13 @@
     --serif: 'Gambetta', 'Georgia', 'Times New Roman', serif;
     --mono: 'SF Mono', 'Monaco', 'Cascadia Code', 'Roboto Mono', monospace;
   
-    --neutral-500: hsl(47, 12%, 6%);
-    --neutral-400: hsl(47, 12%, 24%);
-    --neutral-300: hsl(47, 12%, 38%);
-    --neutral-200: hsl(47, 12%, 68%);
-    --neutral-100: hsl(47, 12%, 98%);
+    --neutral-500: hsl(47, 12%, 10%);
+    --neutral-400: hsl(47, 8%, 24%);
+    --neutral-300: hsl(47, 6%, 38%);
+    --neutral-200: hsl(47, 4%, 68%);
+    --neutral-100: hsl(47, 0%, 98%);
 
-    --primary: #0C0C09;
+    --primary: hsl(47, 12%, 4%);
     --primary-muted: hsl(47, 6%, 12%);
 
     --secondary: #FAFAFA;
@@ -50,13 +50,16 @@
 }
 
 .dark {
-    --neutral-100: hsl(47, 12%, 6%);
-    --neutral-200: hsl(47, 12%, 24%);
-    --neutral-300: hsl(47, 12%, 38%);
-    --neutral-400: hsl(47, 12%, 68%);
-    --neutral-500: hsl(47, 12%, 86%);
 
-    --primary: #FAFAFA;
+
+
+    --neutral-100: hsl(47, 12%, 4%);
+    --neutral-200: hsl(47, 8%, 24%);
+    --neutral-300: hsl(47, 6%, 38%);
+    --neutral-400: hsl(47, 4%, 68%);
+    --neutral-500: hsl(47, 0%, 86%);
+
+    --primary: hsl(47, 12%, 98%);
     --secondary: #26240D;
 
     --primary-muted: #495057;
