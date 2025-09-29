@@ -5,12 +5,12 @@ import { ScrollAnimatedImg } from '../../../components';
 const SelectedWorksSection = () => {
   return (
     <div id="selected-works" className="flex flex-col space-300 pt-s900 pb-s900">
-      <div className="flex w-full flex-col gap-s400">
+      <div className="flex w-full flex-col gap-s400 text-brand-tertiary">
         <h2 className="text-h100">
           SELECTED <br />
           WORKS
         </h2>
-        <p className="text-brand-secondary/80 text-base-sm pt-s200">A showcase of my recent projects and collaborations.</p>
+        <p className="text-brand-tertiary/75 text-base-sm pt-s200">A showcase of my recent projects and collaborations.</p>
       </div>
       <div className="flex flex-col gap-s800">
         {works.map((work, index) => (
@@ -25,8 +25,8 @@ const SelectedWorksSection = () => {
                   </span>
                 </div>
               </div>
-              <div className="text-brand-tertiary/80">
-                <p className="text-brand-tertiary/80">{work.description}</p>
+              <div className="text-brand-tertiary/75 flex flex-col">
+                <p>{work.description}</p>
                 <div className="flex flex-wrap gap-s200 pt-s400">
                   {work.tags.map((tag, tagIndex) => (
                     <div key={tagIndex} className="tags-tertiary">

@@ -84,7 +84,7 @@ const AboutPage = () => {
                   WebkitMaskSize: maskSize,
                 }}
               >
-                <img src={image.src} alt={image.alt} className="absolute inset-0 w-full h-full object-cover rounded-lg" />
+                <img src={image.src} alt={image.alt} className="absolute inset-0 w-full h-full object-cover" />
               </motion.div>
             );
           })}
