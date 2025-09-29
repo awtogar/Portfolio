@@ -7,7 +7,7 @@ import { pages_data, social_links } from '../../data/data';
 import { useLenis } from '../../context/lenisContext';
 import { useTheme } from '../../hooks/useTheme';
 import Curve from '../ui/Curve';
-import NavLink from './Link';
+import NavLink from './NavLink';
 import LinkOnHover from '../ui/HoverRotate';
 
 export default function Nav({ closeMenu }) {
@@ -38,6 +38,7 @@ export default function Nav({ closeMenu }) {
 
   return (
     <>
+      {/* backdrop reduce content focus area*/}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -51,30 +52,42 @@ export default function Nav({ closeMenu }) {
         initial="initial"
         animate="enter"
         exit="exit"
-        className="
-          !h-[100dvh] w-[100svw] bg-primary fixed right-0 top-0 text-brand-tertiary z-[9997] md:w-[45svw]"
+        className="!h-[100dvh] w-[100svw] bg-primary fixed right-0 top-0 text-brand-tertiary z-[9997] md:w-[45svw]"
       >
         <div className="box-border !h-full pl-16 pr-6 pt-16 pb-12 flex flex-col justify-between">
           <div
             onMouseLeave={() => {
               setSelectedIndicator(pathname);
             }}
-            className="
-              flex flex-col text-display gap-2 mt-s900 h-full
-              lg:text-[56px] lg:gap-3 lg:mt-20
-            "
+            className="flex flex-col gap-2 mt-s600 h-full"
           >
-            {Object.values(pages_data).map((data, index) => {
-              return <NavLink key={index} data={{ ...data, index }} isActive={selectedIndicator === data.href} setSelectedIndicator={setSelectedIndicator} closeMenu={closeMenu} />;
-            })}
+            <div className="text-brand-tertiary/35 border-b border-brand-tertiary/35">
+              <span className="text-xs">NAVIGATION</span>
+            </div>
+            <div className="flex flex-col space-y-2 h-full">
+              {Object.values(pages_data).map((data, index) => {
+                return (
+                  <NavLink key={index} data={{ ...data, index }} isActive={selectedIndicator === data.href} setSelectedIndicator={setSelectedIndicator} closeMenu={closeMenu} />
+                );
+              })}
+            </div>
           </div>
           <div className="flex justify-between">
+            <div className="flex flex-col space-y-2">
+              <span className="text-brand-tertiary/35">Social</span>
+              <div className="flex flex-col">
+                {social_links.map((data, i) => {
+                  return (
+                    <LinkOnHover key={i} href={data.href} target="_blank" rel="noopener noreferrer">
+                      <span>{data.title}</span>
+                    </LinkOnHover>
+                  );
+                })}
+              </div>
+            </div>
             <div className="md:hidden flex flex-col items-center space-y-2">
               <span className="text-brand-tertiary/35">Theme</span>
-              <button
-                onClick={toggleTheme}
-                className={`w-8 h-12 bg-neutral-400 rounded-full transition-colors duration-100`}
-              >
+              <button onClick={toggleTheme} className={`w-8 h-12 bg-neutral-400 rounded-full transition-colors duration-100`}>
                 <div
                   className={`
               w-6 h-6 bg-brand-tertiary rounded-full mx-auto transition-transform duration-150
@@ -85,18 +98,6 @@ export default function Nav({ closeMenu }) {
                   {isDark ? <RiMoonLine className="w-3 h-3 text-primary" /> : <RiSunLine className="w-3 h-3 text-primary" />}
                 </div>
               </button>
-            </div>
-            <div className="flex flex-col space-y-2">
-              <span className="text-brand-tertiary/35">Social</span>
-              <div className="flex flex-col">
-                {social_links.map((data, i) => {
-                  return (
-                    <LinkOnHover key={i} href={data.href} target="_blank" rel="noopener noreferrer" >
-                      <span>{data.title}</span>
-                    </LinkOnHover>
-                  );
-                })}
-              </div>
             </div>
           </div>
         </div>
