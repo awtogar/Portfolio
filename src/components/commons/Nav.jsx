@@ -95,7 +95,7 @@ export default function Nav({ closeMenu }) {
               ${isDark ? 'translate-y-2' : '-translate-y-2'}
             `}
                 >
-                  {isDark ? <RiMoonLine className="w-3 h-3 text-primary" /> : <RiSunLine className="w-3 h-3 text-primary" />}
+                  {isDark ? <RiSunLine className="w-3 h-3 text-primary" /> : <RiMoonLine className="w-3 h-3 text-primary" />}
                 </div>
               </button>
             </div>
