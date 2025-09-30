@@ -1,10 +1,13 @@
-h1, h2, h3, h4, h5, h6{
-  @apply font-[500] font-sans tracking-[-3%] leading-[98%];
+h1, h2, h3, h4, h5, h6 {
+  @apply font-medium font-sans tracking-[-0.03em] leading-[0.94];
 }
 
-p{
-  @apply  font-serif font-normal tracking-[0%] leading-[136%];
+p {
+  @apply text-base font-serif font-normal tracking-[-0.005em] leading-[1.36];
 }
+
+
+
 /* Section components  */
 .section-padding-hero{
   @apply px-4 pb-s900 pt-[164px]
@@ -21,14 +24,20 @@ p{
   .section-padding-end {
     @apply px-4 pt-s900 pb-4;
   }
+  .textTransition{
+    @apply text-h100! absolute text-secondary text-center transition-transform uppercase;
+  }
+  .textPreloader{
+    @apply text-h100! text-secondary flex items-center uppercase;
+  }
 }
 
 /* ui components */
 .tags{
   @apply ring-0 border-primary-muted/75 border text-primary/75 font-light px-2 py-1 rounded-full text-xs;
 }
-.tags-secondary{
-  @apply ring-0 border-brand-secondary/75 border text-brand-secondary/75 font-light px-2 py-1 rounded-full text-xs;
+.tags-tertiary{
+  @apply ring-0 border-brand-tertiary/75 border text-brand-tertiary/75 font-light px-2 py-1 rounded-full text-xs;
 }
 
 @keyframes shine {

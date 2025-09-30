@@ -1,71 +1,60 @@
+:root {
+  --sans: 'General Sans', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --serif: 'Overused Grotesk', 'Georgia', 'Times New Roman', serif;
+  --mono: 'SF Mono', 'Monaco', 'Cascadia Code', 'Roboto Mono', monospace;
 
-:root{
-    --sans: 'General Sans', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-    --serif: 'Gambetta', 'Georgia', 'Times New Roman', serif;
-    --mono: 'SF Mono', 'Monaco', 'Cascadia Code', 'Roboto Mono', monospace;
-  
-    --neutral-500: hsl(47, 12%, 10%);
-    --neutral-400: hsl(47, 8%, 24%);
-    --neutral-300: hsl(47, 6%, 38%);
-    --neutral-200: hsl(47, 4%, 68%);
-    --neutral-100: hsl(47, 0%, 98%);
+  --neutral-100: hsl(47, 0%, 98%);
+  --neutral-200: hsl(47, 4%, 90%);
+  --neutral-300: hsl(47, 6%, 70%);
+  --neutral-400: hsl(47, 8%, 45%);
+  --neutral-500: hsl(47, 12%, 20%);
+  --primary: hsl(47, 12%, 10%);
+  --primary-muted: hsl(47, 8%, 35%);
+  --secondary: hsl(47, 0%, 98%);
+  --secondary-muted: hsl(47, 4%, 75%);
 
-    --primary: hsl(47, 12%, 4%);
-    --primary-muted: hsl(47, 6%, 12%);
+  --brand-primary: #fff6d6;
+  --brand-secondary: #2277c8;
+  --brand-tertiary: #10344a;
 
-    --secondary: #FAFAFA;
-    --secondary-muted: hsl(47, 0%, 82%);
+  /* animation */
+  --shine: 5s linear infinite;
 
-    --brand-primary: #fff6d6;
-    --brand-secondary: #f5ebc7;
-    --brand-tertiary: #e4dcbe;
-
-    /* animation */
-    --shine: 5s linear infinite;
-
-    /* font sizing */
-    --display: clamp(3.8rem, 1.6rem + 7.1111vw, 8.4rem);
-    --h100: clamp(3rem,2.25rem + 3.75vw,5.625rem);
-    --h200: clamp(1.9531rem,1.496rem + 2.2854vw,3.5529rem);
-    --h300: clamp(1.5625rem,1.2474rem + 1.5755vw,2.6653rem);
-    --h400: clamp(1.25rem,1.0359rem + 1.0707vw,1.9995rem);
-    --h500: clamp(1.13rem,1.004rem + .63vw,1.57rem);
-    --h600: clamp(1rem,.928rem + .36vw,1.25rem);
-    --base-lg: clamp(1.25rem,1.0359rem + 1.0707vw,1.9995rem);
-    --base: clamp(1rem,.928rem + .36vw,1.25rem);
-    --base-sm: clamp(1rem,.928rem + .36vw,1.25rem);
+  /* font sizing */
+  --display: clamp(3.8rem, 1.6rem + 7.1111vw, 8.4rem);
+  --h100: clamp(3rem, 2.25rem + 3.75vw, 5.625rem);
+  --h200: clamp(1.9531rem, 1.496rem + 2.2854vw, 3.5529rem);
+  --h300: clamp(1.5625rem, 1.2474rem + 1.5755vw, 2.6653rem);
+  --h400: clamp(1.25rem, 1.0359rem + 1.0707vw, 1.9995rem);
+  --h500: clamp(1.13rem, 1.004rem + .63vw, 1.57rem);
+  --h600: clamp(1rem, .928rem + .36vw, 1.25rem);
+  --base-lg: clamp(1.25rem, 1.0359rem + 1.0707vw, 1.9995rem);
+  --base: clamp(1rem, .928rem + .36vw, 1.25rem);
+  --base-sm: clamp(1rem, .928rem + .36vw, 1.25rem);
 
 
-    /* space sizing */
-    --s100: clamp(0.3125rem, 0.3125rem + 0vi, 0.3125rem);
-    --s200: clamp(0.5625rem, 0.5446rem + 0.0893vi, 0.625rem);
-    --s300: clamp(0.75rem, 0.7321rem + 0.0893vi, 0.8125rem);
-    --s400: clamp(0.9375rem, 0.9107rem + 0.1339vi, 1.0rem);
-    --s500: clamp(1.25rem, 1.2143rem + 0.1786vi, 1.375rem);
-    --s600: clamp(1.6875rem, 1.6339rem + 0.2679vi, 1.875rem);
-    --s700: clamp(2.25rem, 2.1786rem + 0.3571vi, 2.5rem);
-    --s800: clamp(2.8125rem, 2.7232rem + 0.4464vi, 3.125rem);
-    --s900: clamp(3.375rem, 3.2679rem + 0.5357vi, 3.75rem);
-    --sfluid: clamp(1rem, 0.8571rem + 1.0143vi, 3.5rem);
+  /* space sizing */
+  --s100: clamp(0.3125rem, 0.3125rem + 0vi, 0.3125rem);
+  --s200: clamp(0.5625rem, 0.5446rem + 0.0893vi, 0.625rem);
+  --s300: clamp(0.75rem, 0.7321rem + 0.0893vi, 0.8125rem);
+  --s400: clamp(0.9375rem, 0.9107rem + 0.1339vi, 1.0rem);
+  --s500: clamp(1.25rem, 1.2143rem + 0.1786vi, 1.375rem);
+  --s600: clamp(1.6875rem, 1.6339rem + 0.2679vi, 1.875rem);
+  --s700: clamp(2.25rem, 2.1786rem + 0.3571vi, 2.5rem);
+  --s800: clamp(2.8125rem, 2.7232rem + 0.4464vi, 3.125rem);
+  --s900: clamp(3.375rem, 3.2679rem + 0.5357vi, 3.75rem);
+  --sfluid: clamp(1rem, 0.8571rem + 1.0143vi, 3.5rem);
 }
 
 .dark {
+  --neutral-100: hsl(47, 12%, 8%);
+  --neutral-200: hsl(47, 10%, 16%);
+  --neutral-300: hsl(47, 8%, 40%);
+  --neutral-400: hsl(47, 6%, 65%);
+  --neutral-500: hsl(47, 4%, 90%);
 
-
-
-    --neutral-100: hsl(47, 12%, 4%);
-    --neutral-200: hsl(47, 8%, 24%);
-    --neutral-300: hsl(47, 6%, 38%);
-    --neutral-400: hsl(47, 4%, 68%);
-    --neutral-500: hsl(47, 0%, 86%);
-
-    --primary: hsl(47, 12%, 98%);
-    --secondary: #26240D;
-
-    --primary-muted: #495057;
-    --secondary-muted: #1D1C16;
-    
-    --brand-primary: hsl(47, 100%, 92%);
-    --brand-secondary: hsl(47, 70%, 87%);
-    --brand-tertiary: #145d40;
+  --primary: hsl(47, 8%, 95%);
+  --primary-muted: hsl(47, 6%, 70%);
+  --secondary: hsl(47, 12%, 12%);
+  --secondary-muted: hsl(47, 8%, 35%);
 }

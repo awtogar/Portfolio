@@ -79,7 +79,7 @@ const PreloaderContent = () => {
             initial="initial"
             animate="animate"
             exit="exit"
-            className="text-brand-tertiary text-4xl flex items-center uppercase"
+            className="textPreloader"
           >
             {PRELOADER_WORDS[index].split('').map((char, i) => (
               <motion.span key={i} variants={{}} className={`inline-block ${char === ' ' ? 'w-4' : ''}`} style={{ transformStyle: 'preserve-3d' }}>

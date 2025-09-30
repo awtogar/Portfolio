@@ -20,7 +20,7 @@ export default function NavLink({ data, isActive, setSelectedIndicator, closeMen
       exit="exit"
     >
       {/* indicator dot with scaling */}
-      <motion.div variants={scale} animate={isActive ? 'open' : 'closed'} className="absolute -left-6 w-2 h-2 top-1/2 -translate-y-1/2 bg-brand-tertiary rounded-full" />
+      <motion.div variants={scale} animate={isActive ? 'open' : 'closed'} className="absolute -left-6 w-2 h-2 top-1/2 -translate-y-1/2 bg-secondary rounded-full" />
 
       {/* link text with hover effect */}
       <Link to={href} onClick={closeMenu} className="text-display">

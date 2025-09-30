@@ -52,7 +52,7 @@ export default function Nav({ closeMenu }) {
         initial="initial"
         animate="enter"
         exit="exit"
-        className="!h-[100dvh] w-[100svw] bg-primary fixed right-0 top-0 text-brand-tertiary z-[9997] md:w-[45svw] will-change-transform"
+        className="!h-[100dvh] w-[100svw] bg-neutral-500 fixed right-0 top-0 text-secondary z-[9997] md:w-[45svw] will-change-transform"
       >
         <div className="box-border !h-full pl-16 pr-6 pt-16 pb-12 flex flex-col justify-between">
           <div
@@ -61,7 +61,7 @@ export default function Nav({ closeMenu }) {
             }}
             className="flex flex-col gap-2 mt-s600 h-full"
           >
-            <div className="text-brand-tertiary/35 border-b border-brand-tertiary/35">
+            <div className="text-secondary/55 border-b border-secondary/35">
               <span className="text-xs">NAVIGATION</span>
             </div>
             <div className="flex flex-col space-y-2 h-full">
@@ -74,7 +74,7 @@ export default function Nav({ closeMenu }) {
           </div>
           <div className="flex justify-between">
             <div className="flex flex-col space-y-2">
-              <span className="text-brand-tertiary/35">Social</span>
+              <span className="text-secondary/55 text-sm">Social</span>
               <div className="flex flex-col">
                 {social_links.map((data, i) => {
                   return (
@@ -85,17 +85,21 @@ export default function Nav({ closeMenu }) {
                 })}
               </div>
             </div>
-            <div className="md:hidden flex flex-col items-center space-y-2">
-              <span className="text-brand-tertiary/35">Theme</span>
-              <button onClick={toggleTheme} className={`flex flex-col w-8 h-full bg-neutral-500 rounded-full`}>
+            <div className="flex md:hidden flex-col items-center space-y-2">
+              <span className="text-secondary/55 text-sm">Theme</span>
+              <button onClick={toggleTheme} className={`flex flex-col w-8 h-full bg-neutral-400/75 rounded-full`}>
                 <div
                   className={`
-              w-6 h-6 bg-brand-tertiary rounded-full mx-auto transition-transform duration-150
-              flex items-center justify-center shadow-sm
-              ${isDark ? 'translate-y-18 transition-colors duration-500' : 'translate-y-0 transition-colors duration-500'}
+              w-6.5 h-6.5 bg-neutral-100 rounded-full mx-auto transition-transform duration-150 shadow-md shadow-primary/55
+              flex items-center justify-center
+              ${isDark ? 'translate-y-16 transition-colors duration-500' : 'translate-y-1 transition-colors duration-500'}
             `}
                 >
-                  {isDark ? <RiSunLine className="w-3 h-3 text-primary" /> : <RiMoonLine className="w-3 h-3 text-primary" />}
+                  {isDark ? (
+                    <RiSunLine className="w-4 h-4 text-primary transition-transform duration-500 ease-in-out rotate-180" />
+                  ) : (
+                    <RiMoonLine className="w-4 h-4 text-primary transition-transform duration-500 ease-in-out rotate-0" />
+                  )}
                 </div>
               </button>
             </div>

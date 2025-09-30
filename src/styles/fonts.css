@@ -12,23 +12,17 @@
   font-weight: 100 900;
   font-style: italic;
   font-display: swap;
-
 }
+
+
 @font-face {
-  font-family: 'Gambetta';
-  src: url('/assets/fonts/Gambetta-Variable.woff2') format('woff2');
+  font-family: 'Overused Grotesk';
+  src: url('/assets/fonts/OverusedGrotesk-VF.woff2') format('woff2');
   font-weight: 100 900;
   font-style: normal;
   font-display: swap;
 }
 
-@font-face {
-  font-family: 'Gambetta';
-  src: url('/assets/fonts/Gambetta-VariableItalic.woff2') format('woff2');
-  font-weight: 100 900;
-  font-style: italic;
-  font-display: swap;
-}
 
 /* Line height for Headings 85% ~ 100% */
 /* Letter Spacing for Headings -3% ~ -5% its should depens on fonts*/

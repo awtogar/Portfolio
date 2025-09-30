@@ -61,8 +61,8 @@ export default function Transition({ children, backgroundColor = 'bg-secondary' 
           style={{ opacity: dimensions.width == null ? 1 : 0 }}
           className="fixed top-0 left-0 w-screen h-[calc(100vh+600px)] pointer-events-none transition-opacity duration-0 delay-100"
         />
-        <div className="fixed z-[9995] left-1/2 top-0 w-full h-full pointer-events-none flex items-center justify-center -translate-x-1/2 text-center">
-          <motion.p className="absolute text-brand-tertiary text-[46px] text-center" {...anim(transitionText)}>
+        <div className="fixed z-[9995] left-1/2 top-0 w-full h-full pointer-events-none flex items-center justify-center -translate-x-1/2 text-center text-4xl">
+          <motion.p className="textTransition" {...anim(transitionText)}>
             {getCurrentPageTitle()}
           </motion.p>
         </div>
@@ -95,7 +95,7 @@ const SVG = ({ height, width }) => {
   `;
 
   return (
-    <motion.svg className="fixed fill-primary top-0 left-0 w-screen h-[calc(100vh+600px)] pointer-events-none" {...anim(transitionDirection)}>
+    <motion.svg className="fixed fill-neutral-500 top-0 left-0 w-screen h-[calc(100vh+600px)] pointer-events-none" {...anim(transitionDirection)}>
       <motion.path {...anim(transitionCurve(initialPath, targetPath))} />
     </motion.svg>
   );
