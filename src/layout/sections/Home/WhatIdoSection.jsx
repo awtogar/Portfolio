@@ -2,22 +2,19 @@ import React from 'react';
 import { ido } from '../../../data/data';
 import SelectedWorksSection from './SelectedWorksSection';
 import { RiAddLine, RiSubtractLine } from '@remixicon/react';
-import { Grain } from '../../../components';
 
 const WhatIdoSection = () => {
   return (
-    <section id="what-i-do" className="z-10 section-padding-xy bg-primary  relative">
+    <section id="what-i-do" className="z-10 section-padding-xy bg-primary text-brand-tertiary">
       <div className="m-auto w-full">
         {/* Services Header */}
-        <div className="flex flex-col rounded-t-lg text-brand-tertiary">
-          <div className="flex w-full flex-col gap-s400">
-            <h2 className="text-h100">
-              WHAT <br />I DO ?
-            </h2>
-            <div className="flex flex-col gap-s200">
-              <span>(SERVICES)</span>
-              <p className="text-brand-tertiary/75">I can help you create stunning visuals, seamless user experiences and be impactful based on your needs.</p>
+        <div className="flex flex-col rounded-t-lg">
+          <div className="flex w-full flex-col gap-s400 text-brand-tertiary">
+            <div className="flex flex-col">
+              <span className='text-brand-tertiary/75'>(SERVICES)</span>
+              <h2 className="text-h100">How I Can Help You?</h2>
             </div>
+            <p>I can help you create stunning visuals, seamless user experiences and be impactful based on your needs.</p>
           </div>
           {/* Services List */}
           <div className="w-full m-auto">
@@ -40,8 +37,8 @@ const WhatIdoSection = () => {
                       <div className="flex flex-col pt-s200">
                         {service.features.map((feature, featureIndex) => (
                           <div key={featureIndex} className="flex items-center mt-s200 gap-s200">
-                            <span className="">({feature.number})</span>
-                            <span className="">{feature.name}</span>
+                            <span>({feature.number})</span>
+                            <span>{feature.name}</span>
                           </div>
                         ))}
                       </div>
@@ -53,9 +50,6 @@ const WhatIdoSection = () => {
           </div>
         </div>
         <SelectedWorksSection />
-      </div>
-      <div className="absolute inset-0 overflow-hidden will-change-transform pointer-events-none">
-        <Grain />
       </div>
     </section>
   );

@@ -17,8 +17,8 @@ const HeroSections = () => {
               </CreativeButton>
             </div>
             <div className="flex-shrink-0">
-              <CreativeButton href="https://www.linkedin.com/in/awaluddintogar/" variant="outline" target="_blank" rel="noopener noreferrer">
-                My resume
+              <CreativeButton href="https://www.linkedin.com/in/awaluddintogar/" variant={'transparent'} target="_blank" rel="noopener noreferrer">
+                <span>My Resume</span>
               </CreativeButton>
             </div>
           </div>

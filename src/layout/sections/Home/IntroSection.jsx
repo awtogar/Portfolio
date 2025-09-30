@@ -16,37 +16,22 @@ const IntroSection = () => {
       <section className="z-10 section-padding-xy">
         <div className="m-auto w-full lg:max-w-[1408px]">
           <div className="flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
-            <div className="flex flex-col gap-6 max-w-[640px]">
-              <p className="text-h500 leading-relaxed text-primary">
+            <div className="flex flex-col gap-4">
+              <h2 className="text-h300">How I Started the Journey?</h2>
+              <p className='text-justify'>
                 With over 2 years of experience and 100+ global clients, I specialize in creating impactful visual identities and digital experiences. Now, I extend my expertise to
                 web design & development, crafting solutions that blend creativity and functionality.
               </p>
-
-              <CreativeButton href="https://www.instagram.com/nostratic.archv" variant={'outline'} target="_blank" rel="noopener noreferrer">
-                My design works
-              </CreativeButton>
-
-              {/* Tags */}
-              <div className="flex flex-wrap gap-s200 pt-s400">
-                {Array.from(new Set(ido.flatMap(service => service.tags))).map((tag, index) => (
-                  <div key={index} className="tags">
-                    {tag}
-                  </div>
-                ))}
-              </div>
             </div>
-
             {/* Stats */}
-            <div className="flex flex-col gap-s600 bg-primary rounded-xl p-s600 shadow-sm">
-              <div className="grid grid-cols-2 gap-s600">
-                <div className="flex flex-col justify-center items-center">
-                  <span className="text-3xl font-semibold text-secondary">100+</span>
-                  <span className="text-secondary/60">Clients Worldwide</span>
-                </div>
-                <div className="flex flex-col justify-center items-center">
-                  <span className="text-3xl font-semibold text-secondary">2+</span>
-                  <span className="text-secondary/60">years experience</span>
-                </div>
+            <div className="flex gap-s600 bg-primary rounded-xl p-s600 items-center justify-center">
+              <div className="flex flex-col justify-center items-center text-center">
+                <span className="text-3xl font-semibold text-secondary">100+</span>
+                <span className="text-secondary/60 text-xs">Clients Worldwide</span>
+              </div>
+              <div className="flex flex-col justify-center items-center text-center">
+                <span className="text-3xl font-semibold text-secondary">2+</span>
+                <span className="text-secondary/60 text-xs">Years Experience</span>
               </div>
             </div>
           </div>
