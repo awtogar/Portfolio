@@ -52,7 +52,7 @@ export default function Nav({ closeMenu }) {
         initial="initial"
         animate="enter"
         exit="exit"
-        className="!h-[100dvh] w-[100svw] bg-neutral-500 fixed right-0 top-0 text-secondary z-[9997] md:w-[45svw] will-change-transform"
+        className="!h-[100dvh] w-[100dvw] bg-neutral-500 fixed right-0 top-0 text-secondary z-[9997] md:w-[45svw] will-change-transform"
       >
         <div className="box-border !h-full pl-16 pr-6 pt-16 pb-12 flex flex-col justify-between">
           <div
