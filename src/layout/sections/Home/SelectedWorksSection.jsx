@@ -5,12 +5,12 @@ import { ScrollAnimatedImg } from '../../../components';
 const SelectedWorksSection = () => {
   return (
     <div id="selected-works" className="flex flex-col space-300 pt-s900 pb-s900">
-      <div className="flex w-full flex-col gap-s400 text-brand-tertiary">
+      <div className="flex w-full flex-col gap-s400 text-primary">
         <div className="flex flex-col">
-        <span className="text-brand-tertiary/75">( WORKS )</span>
+        <span className="text-primary/75">( WORKS )</span>
           <h2 className="text-h100">How I Can Help You?</h2>
         </div>
-        <p className="text-brand-tertiary/75 text-base-sm pt-s200">A showcase of my recent projects and collaborations.</p>
+        <p className="text-primary/75 text-base-sm pt-s200">A showcase of my recent projects and collaborations.</p>
       </div>
       <div className="flex flex-col gap-s800">
         {works.map((work, index) => (
@@ -18,7 +18,7 @@ const SelectedWorksSection = () => {
             <div className="flex flex-col gap-s300">
               <ScrollAnimatedImg src={work.image} alt={work.title} containerClassName="h-[348px] rounded-xl" scrollRange={['0%', '15%']} offset={['start end', 'end start']} />
               <div className="flex flex-col gap-2">
-                <div className="flex items-center justify-between text-brand-tertiary">
+                <div className="flex items-center justify-between text-primary">
                   <h3 className="text-h300">{work.title}</h3>
                   <div className="pt-s200 text-base-sm">
                     <span>
@@ -26,12 +26,12 @@ const SelectedWorksSection = () => {
                     </span>
                   </div>
                 </div>
-                <div className="text-brand-tertiary/75 flex flex-col">
+                <div className="text-primary/75 flex flex-col">
                   <p>{work.description}</p>
                   <div className="flex flex-wrap gap-2 pt-2">
                     {work.tags.map((tag, tagIndex) => (
-                      <div key={tagIndex} className="flex items-center gap-2 text-sm text-brand-tertiary/75">
-                        <span className="w-1.5 h-1.5 bg-brand-tertiary rounded-full"></span>
+                      <div key={tagIndex} className="flex items-center gap-2 text-sm text-primary/75">
+                        <span className="w-1.5 h-1.5 bg-primary rounded-full"></span>
                         {tag}
                       </div>
                     ))}
