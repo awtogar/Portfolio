@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef, useMemo, useCallback } from 'react';
 import Lenis from 'lenis';
-import LenisContext from '../context/lenisContext';
-import { useLenis } from '../context/lenisContext';
+import LenisContext from '../providers/LenisProvider';
+import { useLenis } from '../providers/LenisProvider';
 
 /**
  * Smooth scrolling wrapper component using Lenis

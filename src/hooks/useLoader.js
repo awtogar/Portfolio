@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import { useLenis } from '../context/lenisContext';
+import { useLenis } from '../providers/LenisProvider';
 
 const useLoader = (options = {}) => {
   const videoRef = useRef(null);

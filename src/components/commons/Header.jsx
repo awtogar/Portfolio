@@ -3,7 +3,7 @@ import { RiSunLine, RiMoonLine } from '@remixicon/react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Nav, Magnetic, Bounds } from '../../components';
 
-import { useLenis } from '../../context/lenisContext';
+import { useLenis } from '../../providers/LenisProvider';
 import { useTheme } from '../../hooks/useTheme';
 import { useStickyElement } from '../../hooks/useStickyElement';
 

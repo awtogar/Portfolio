@@ -4,11 +4,11 @@ import { useLocation } from 'react-router-dom';
 import { RiSunLine, RiMoonLine } from '@remixicon/react';
 import { menuSlide } from '../../data/anim';
 import { pages_data, social_links } from '../../data/data';
-import { useLenis } from '../../context/lenisContext';
+import { useLenis } from '../../providers/LenisProvider';
 import { useTheme } from '../../hooks/useTheme';
-import Curve from '../ui/Curve';
-import NavLink from './NavLink';
-import LinkOnHover from '../ui/HoverRotate';
+
+
+import {Curve, NavLink, HoverRotate} from '../../components';
 
 export default function Nav({ closeMenu }) {
   const location = useLocation();
@@ -78,9 +78,9 @@ export default function Nav({ closeMenu }) {
               <div className="flex flex-col">
                 {social_links.map((data, i) => {
                   return (
-                    <LinkOnHover key={i} href={data.href} target="_blank" rel="noopener noreferrer">
+                    <HoverRotate key={i} href={data.href} target="_blank" rel="noopener noreferrer">
                       <span>{data.title}</span>
-                    </LinkOnHover>
+                    </HoverRotate>
                   );
                 })}
               </div>

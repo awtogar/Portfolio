@@ -4,8 +4,8 @@ import './styles/globals.css';
 import { SpeedInsights } from '@vercel/speed-insights/react';
 import { AnimatePresence } from 'framer-motion';
 import { Preloader, Header, StickyCursor, Footer, Transition } from './components';
-import { SmoothScrollWrapper } from './function';
-import { StickyProvider } from './context/StickyContext';
+import { LenisProvider } from './providers/LenisProvider';
+import { StickyProvider } from './providers/StickyProvider';
 import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
 import ProjectPage from './pages/ProjectPage';
@@ -84,11 +84,11 @@ const App = () => {
     <>
       <SpeedInsights />
       <Router>
-        <SmoothScrollWrapper>
+        <LenisProvider>
           <StickyProvider>
             <AppContent />
           </StickyProvider>
-        </SmoothScrollWrapper>
+        </LenisProvider>
       </Router>
     </>
   );
