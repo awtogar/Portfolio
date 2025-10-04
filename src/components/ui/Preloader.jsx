@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { PreloaderSlideUp, preloaderCurvePath } from '../../data/anim';
+import { useDimensions } from '../../hooks/useDimensions';
 
 // Constants
 const PRELOADER_WORDS = ['Tell None', 'Show them', 'Your Quality'];
@@ -10,11 +11,7 @@ const SVG_HEIGHT_OFFSET = 300;
 
 const PreloaderContent = () => {
   const [index, setIndex] = useState(0);
-  const [dimension, setDimension] = useState({ width: 0, height: 0 });
-
-  useEffect(() => {
-    setDimension({ width: window.innerWidth, height: window.innerHeight });
-  }, []);
+  const dimensions = useDimensions();
 
   useEffect(() => {
     if (index === PRELOADER_WORDS.length - 1) return;
@@ -25,7 +22,7 @@ const PreloaderContent = () => {
   }, [index]);
 
   // Don't render SVG content until dimensions are available
-  if (dimension.width === 0) {
+  if (dimensions.width === null) {
     return (
       <motion.div
         variants={PreloaderSlideUp}
@@ -37,9 +34,8 @@ const PreloaderContent = () => {
     );
   }
 
-  const initialPath = `M0 0 L${dimension.width} 0 L${dimension.width} ${dimension.height} Q${dimension.width / 2} ${dimension.height + SVG_HEIGHT_OFFSET} 0 ${dimension.height} L0 0`;
-  const targetPath = `M0 0 L${dimension.width} 0 L${dimension.width} ${dimension.height} Q${dimension.width / 2} ${dimension.height} 0 ${dimension.height} L0 0`;
-
+  const initialPath = `M0 0 L${dimensions.width} 0 L${dimensions.width} ${dimensions.height} Q${dimensions.width / 2} ${dimensions.height + SVG_HEIGHT_OFFSET} 0 ${dimensions.height} L0 0`;
+  const targetPath = `M0 0 L${dimensions.width} 0 L${dimensions.width} ${dimensions.height} Q${dimensions.width / 2} ${dimensions.height} 0 ${dimensions.height} L0 0`;
 
   return (
     <motion.div
@@ -89,7 +85,7 @@ const PreloaderContent = () => {
         </AnimatePresence>
       </div>
 
-      <svg className="absolute top-0 left-0 w-full" height={dimension.height + SVG_HEIGHT_OFFSET}>
+      <svg className="absolute top-0 left-0 w-full" height={dimensions.height + SVG_HEIGHT_OFFSET}>
         <motion.path variants={preloaderCurvePath(initialPath, targetPath)} initial="initial" exit="exit" fill="currentColor" className="transition-colors duration-300" />
       </svg>
     </motion.div>
