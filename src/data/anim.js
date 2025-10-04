@@ -1,10 +1,10 @@
-export const menuSlide = {
+export const menuSlideLeft = {
     initial: {x: "calc(100% + 100px)"},
     enter: {x: "0", transition: {duration: 0.8, ease: [0.76, 0, 0.24, 1]}},
     exit: {x: "calc(100% + 100px)", transition: {duration: 0.9, ease: [0.76, 0, 0.24, 1]}}
 }
 
-export const slide = {
+export const navSlide = {
     initial: {x: 80, opacity: 0},
     enter: i => ({
         x: 0, 
@@ -26,38 +26,25 @@ export const slide = {
     })
 }
 
-export const scale = {
+export const navDotScalling = {
     open: {scale: 1, transition: {duration: 0.3}},
     closed: {scale: 0, transition: {duration: 0.4}}
 }
 
-export const slideUp = {
-    initial: {
-        y: "100%"
-    },
-    open: (i) => ({
-        y: "0%",
-        transition: {duration: 0.5, delay: 0.01 * i}
-    }),
-    closed: {
-        y: "100%",
-        transition: {duration: 0.5}
-    }
-}
-
-// export const opacity = {
+// export const slideUp = {
 //     initial: {
-//         opacity: 0
+//         y: "100%"
 //     },
-//     open: {
-//         opacity: 1,
-//         transition: {duration: 0.5}
-//     },
+//     open: (i) => ({
+//         y: "0%",
+//         transition: {duration: 0.5, delay: 0.01 * i}
+//     }),
 //     closed: {
-//         opacity: 0,
+//         y: "100%",
 //         transition: {duration: 0.5}
 //     }
 // }
+
 
 
 export const PreloaderSlideUp = {
@@ -79,8 +66,6 @@ export const preloaderCurvePath = (initialPath, targetPath) => ({
     },
   });
 
-
-// page transition
 export const transitionText = {
   initial: {
     opacity: 1,
@@ -102,7 +87,7 @@ export const transitionText = {
 export const transitionCurve = (initialPath, targetPath) => {
     return {
         initial: {
-            d: initialPath
+            d: initialPath,
         },
         enter: {
             d: targetPath,
@@ -117,16 +102,13 @@ export const transitionCurve = (initialPath, targetPath) => {
 
 export const transitionDirection = {
     initial: {
-        right: "-100vw",
-        top: "-300px"
+        top: 0
     },
     enter: {
-        right: "0",
         top: "100vh",
         transition: {
             duration: 1.4, // Longer duration
             ease: [0.76, 0, 0.24, 1],
-            right: { duration: 1.4, ease: [0.76, 0, 0.24, 1] }, // Longer duration
             top: { duration: 1.2, delay: 0.3, ease: [0.76, 0, 0.24, 1] } // Longer duration and delay
         },
         transitionEnd : {
@@ -134,12 +116,10 @@ export const transitionDirection = {
         }
     },
     exit: {
-        right: "-100vw",
         top: "-300px",
         transition: {
             duration: 1.4, // Longer duration
             ease: [0.76, 0, 0.24, 1],
-            right: { duration: 1.4, ease: [0.76, 0, 0.24, 1] }, // Longer duration
             top: { duration: 1.2, ease: [0.76, 0, 0.24, 1] } // Longer duration
         }
     }

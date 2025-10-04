@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useLocation } from 'react-router-dom';
 import { RiSunLine, RiMoonLine } from '@remixicon/react';
-import { menuSlide } from '../../data/anim';
+import { menuSlideLeft } from '../../data/anim';
 import { pages_data, social_links } from '../../data/data';
 import { useLenis } from '../../providers/LenisProvider';
 import { useTheme } from '../../hooks/useTheme';
@@ -48,7 +48,7 @@ export default function Nav({ closeMenu }) {
         onClick={closeMenu}
       />
       <motion.div
-        variants={menuSlide}
+        variants={menuSlideLeft}
         initial="initial"
         animate="enter"
         exit="exit"

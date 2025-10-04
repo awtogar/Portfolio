@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { slide, scale } from '../../data/anim';
+import { navSlide, navDotScalling } from '../../data/anim';
 
 export default function NavLink({ data, isActive, setSelectedIndicator, closeMenu }) {
   const { title, href, index } = data;
@@ -14,13 +14,13 @@ export default function NavLink({ data, isActive, setSelectedIndicator, closeMen
         setSelectedIndicator(href);
       }}
       custom={index}
-      variants={slide}
+      variants={navSlide}
       initial="initial"
       animate="enter"
       exit="exit"
     >
       {/* indicator dot with scaling */}
-      <motion.div variants={scale} animate={isActive ? 'open' : 'closed'} className="absolute -left-6 w-2 h-2 top-1/2 -translate-y-1/2 bg-secondary rounded-full" />
+      <motion.div variants={navDotScalling} animate={isActive ? 'open' : 'closed'} className="absolute -left-6 w-2 h-2 top-1/2 -translate-y-1/2 bg-secondary rounded-full" />
 
       {/* link text with hover effect */}
       <Link to={href} onClick={closeMenu} className="text-display">
