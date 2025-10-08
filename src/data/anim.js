@@ -29,23 +29,7 @@ export const navSlide = {
 export const navDotScalling = {
     open: {scale: 1, transition: {duration: 0.3}},
     closed: {scale: 0, transition: {duration: 0.4}}
-}
-
-// export const slideUp = {
-//     initial: {
-//         y: "100%"
-//     },
-//     open: (i) => ({
-//         y: "0%",
-//         transition: {duration: 0.5, delay: 0.01 * i}
-//     }),
-//     closed: {
-//         y: "100%",
-//         transition: {duration: 0.5}
-//     }
-// }
-
-
+};
 
 export const PreloaderSlideUp = {
   initial: { top: 0 },
@@ -66,61 +50,13 @@ export const preloaderCurvePath = (initialPath, targetPath) => ({
     },
   });
 
-export const transitionText = {
-  initial: {
-    opacity: 1,
-  },
-  enter: {
-    opacity: 0,
-    bottom: -100,
-    transition: {duration: 0.6, delay: 0.6, ease: [0.76, 0, 0.24, 1]},
-    transitionEnd: {top: "47.5%"}
-  },
-  exit: {
-    opacity: 1,
-    top: "40%",
-    transition: {duration: 0.5, delay: 0.1, ease: [0.33, 1, 0.68, 1]}
-  }
-}
-
-
-export const transitionCurve = (initialPath, targetPath) => {
-    return {
-        initial: {
-            d: initialPath,
-        },
-        enter: {
-            d: targetPath,
-            transition: {duration: 1.5, delay: 0.6, ease: [0.76, 0, 0.24, 1]}
-        },
-        exit: {
-            d: initialPath,
-            transition: {duration: 1.5, ease: [0.76, 0, 0.24, 1]}
-        }
-    }
-}
-
-export const transitionDirection = {
+export const transitionCurvePath = (initialPath, targetPath) => ({
     initial: {
-        top: 0
-    },
-    enter: {
-        top: "100vh",
-        transition: {
-            duration: 1.4, // Longer duration
-            ease: [0.76, 0, 0.24, 1],
-            top: { duration: 1.2, delay: 0.3, ease: [0.76, 0, 0.24, 1] } // Longer duration and delay
-        },
-        transitionEnd : {
-            top: "100vh"
-        }
+      d: initialPath,
+      transition: { duration: 0.7, ease: [0.76, 0, 0.24, 1] },
     },
     exit: {
-        top: "-300px",
-        transition: {
-            duration: 1.4, // Longer duration
-            ease: [0.76, 0, 0.24, 1],
-            top: { duration: 1.2, ease: [0.76, 0, 0.24, 1] } // Longer duration
-        }
-    }
-}
+      d: targetPath,
+      transition: { duration: 0.7, ease: [0.76, 0, 0.24, 1], delay: 0.3 },
+    },
+  });

@@ -1,27 +1,66 @@
 import { useEffect, useState } from 'react';
-import { AnimatePresence, motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useLocation } from 'react-router-dom';
-import { transitionText, transitionCurve, transitionDirection } from '../../data/anim';
+import { useDimensions } from '../../hooks/useDimensions';
+import { transitionCurvePath } from '../../data/anim';
 import { pages_data } from '../../data/data';
 
-const anim = variants => {
-  return {
-    variants,
-    initial: 'initial',
-    animate: 'enter',
-    exit: 'exit',
-  };
+const SVG_HEIGHT_OFFSET = 300;
+const TRANSITION_DURATION = 1200;
+
+const TransitionContent = ({ pageTitle, dimensions, backgroundColor }) => {
+  // Define the path with curve at the top that flattens as it moves down
+  const initialPath = `
+    M0 0
+    L${dimensions.width} 0
+    L${dimensions.width} ${SVG_HEIGHT_OFFSET}
+    Q${dimensions.width / 2} ${-100} 0 ${SVG_HEIGHT_OFFSET}
+    L0 0
+  `;
+
+  const targetPath = `
+    M0 0 
+    L${dimensions.width} 0 
+    L${dimensions.width} ${dimensions.height + SVG_HEIGHT_OFFSET} 
+    Q${dimensions.width / 2} ${dimensions.height + SVG_HEIGHT_OFFSET} 0 ${dimensions.height + SVG_HEIGHT_OFFSET} 
+    L0 0
+  `;
+
+  return (
+    <motion.div
+      className={`fixed inset-0 z-[9998] flex flex-col items-center justify-center overflow-hidden ${backgroundColor}`}
+      variants={{
+        initial: { y: 0 },
+        exit: { y: '100%', transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1] } },
+      }}
+      initial="initial"
+      exit="exit"
+    >
+      {/* SVG with correct path animation */}
+      <svg className="w-full z-[9999] fixed top-0" height={dimensions.height + SVG_HEIGHT_OFFSET} preserveAspectRatio="none">
+        <motion.path variants={transitionCurvePath(initialPath, targetPath)} initial="initial" exit="exit" fill="currentColor" className={backgroundColor} />
+      </svg>
+      <motion.div className="fixed z-[9998] flex flex-col items-center justify-center">
+        <motion.p
+          key={pageTitle}
+          className="z-10 mt-8 text-4xl md:text-6xl font-semibold text-secondary"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -20 }}
+          transition={{ duration: 0.4, ease: 'easeInOut' }}
+        >
+          {pageTitle}
+        </motion.p>
+      </motion.div>
+    </motion.div>
+  );
 };
 
-export default function Transition({ children, backgroundColor = 'bg-secondary' }) {
+export default function Transition({ children, backgroundColor = 'bg-primary' }) {
   const location = useLocation();
-  const [dimensions, setDimensions] = useState({
-    width: null,
-    height: null,
-  });
-  const [showContent, setShowContent] = useState(false);
+  const dimensions = useDimensions();
+  const [isTransitioning, setIsTransitioning] = useState(true);
 
-  // Get current page title berdasarkan dari pathname
   const getCurrentPageTitle = () => {
     const currentPage = Object.values(pages_data).find(page => {
       return page.href === location.pathname || location.pathname + '/' === page.href || location.pathname === page.href + '/';
@@ -30,71 +69,21 @@ export default function Transition({ children, backgroundColor = 'bg-secondary' 
   };
 
   useEffect(() => {
-    function resize() {
-      setDimensions({
-        width: window.innerWidth,
-        height: window.innerHeight,
-      });
-    }
-    resize();
-    window.addEventListener('resize', resize);
-    return () => {
-      window.removeEventListener('resize', resize);
-    };
-  }, []);
-
-  useEffect(() => {
-    setShowContent(false);
-    const timer = setTimeout(() => {
-      setShowContent(true);
-    }, 1600);
-
-    return () => clearTimeout(timer);
+    setIsTransitioning(true);
+    const timeout = setTimeout(() => {
+      setIsTransitioning(false);
+    }, TRANSITION_DURATION + 300);
+    return () => clearTimeout(timeout);
   }, [location.pathname]);
 
-  return (
-    <AnimatePresence mode="wait">
-      <div className="relative" style={{ backgroundColor }} key={location.pathname}>
-        <div
-          style={{ opacity: dimensions.width == null ? 1 : 1 }}
-          className="fixed top-0 left-0 w-screen h-[calc(100vh+600px)] pointer-events-none transition-opacity duration-0 delay-100"
-        />
-        <div className="fixed z-[9999] left-1/2 top-0 w-full h-full pointer-events-none flex items-center justify-center -translate-x-1/2 text-center text-4xl">
-          <motion.p className="textTransition" {...anim(transitionText)}>
-            {getCurrentPageTitle()}
-          </motion.p>
-        </div>
-        {dimensions.width != null && <SVG {...dimensions} key={location.pathname + '-svg'} />}
+  if (dimensions.width === null) return <>{children}</>;
 
-        {/* Content */}
-        <motion.div initial={{ opacity: 0 }} animate={{ opacity: showContent ? 1 : 0 }} transition={{ duration: 0.5, delay: 0.2 }}>
-          {children}
-        </motion.div>
-      </div>
-    </AnimatePresence>
+  return (
+    <>
+      <AnimatePresence mode="wait">
+        {isTransitioning && <TransitionContent key={location.pathname} pageTitle={getCurrentPageTitle()} dimensions={dimensions} backgroundColor={backgroundColor} />}
+      </AnimatePresence>
+      {children}
+    </>
   );
 }
-
-const SVG = ({ height, width }) => {
-  const initialPath = `
-    M0 300
-    Q${width / 2} 0 ${width} 300
-    L${width} ${height + 300}
-    Q${width / 2} ${height + 600} 0 ${height + 300}
-    L0 0
-  `;
-
-  const targetPath = `
-    M0 300
-    Q${width / 2} 0 ${width} 300
-    L${width} ${height}
-    Q${width / 2} ${height} 0 ${height}
-    L0 0
-  `;
-
-  return (
-    <motion.svg className="fixed z-[9998] fill-neutral-500 top-0 left-0 w-screen h-[calc(100vh+600px)] pointer-events-none" {...anim(transitionDirection)}>
-      <motion.path {...anim(transitionCurve(initialPath, targetPath))} />
-    </motion.svg>
-  );
-};
