@@ -50,13 +50,55 @@ export const preloaderCurvePath = (initialPath, targetPath) => ({
     },
   });
 
+export const transitionSlideDown = {
+  // mulai dari atas layar
+  initial: { top: "-100vh" }, 
+  animate: {
+    // turun ke posisi normal
+    top: "0", 
+    transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1] },
+  },
+  exit: {
+    top: "100vh", // keluar ke bawah layar
+    transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1], delay: 0.2 },
+  },
+};
+
+
 export const transitionCurvePath = (initialPath, targetPath) => ({
     initial: {
       d: initialPath,
       transition: { duration: 0.7, ease: [0.76, 0, 0.24, 1] },
     },
+    // animate: {
+    //   d: initialPath,
+    //   transition: { duration: 0.7, ease: [0.76, 0, 0.24, 1], delay: 0.3 },
+    // },
     exit: {
       d: targetPath,
       transition: { duration: 0.7, ease: [0.76, 0, 0.24, 1], delay: 0.3 },
     },
   });
+
+  export const transitionTextDirection = {
+  initial: { 
+    opacity: 0, 
+    y: "-50%" 
+  },
+  animate: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.4,
+      ease: [0.22, 1, 0.36, 1],
+    },
+  },
+  exit: {
+    opacity: 0,
+    y: "100%",
+    transition: {
+      duration: 0.4,
+      ease: [0.76, 0, 0.24, 1],
+    },
+  },
+};

@@ -25,7 +25,7 @@ p {
     @apply px-4 pt-s900 pb-4;
   }
   .textTransition{
-    @apply text-h100! absolute text-secondary text-center transition-transform uppercase;
+    @apply text-h100! text-secondary text-center transition-transform uppercase;
   }
   .textPreloader{
     @apply text-h100! text-secondary flex items-center uppercase;
