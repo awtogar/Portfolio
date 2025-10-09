@@ -1,25 +1,15 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react';
 import { motion } from 'framer-motion';
+import { useDimensions } from '../../hooks/useDimensions';
 
 export default function Curve() {
-  const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
+  const dimensions = useDimensions();
+  
 
-  useEffect(() => {
-    const updateDimensions = () => {
-      setDimensions({
-        width: window.innerWidth,
-        height: window.innerHeight
-      });
-    };
+  const dimensionHeight = dimensions.height || 0;
 
-    updateDimensions();
-    window.addEventListener('resize', updateDimensions);
-    
-    return () => window.removeEventListener('resize', updateDimensions);
-  }, []);
-
-  const initialPath = `M100 0 L100 ${dimensions.height} Q-100 ${dimensions.height/2} 100 0`
-  const targetPath = `M100 0 L100 ${dimensions.height} Q100 ${dimensions.height/2} 100 0`
+  const initialPath = `M100 0 L100 ${dimensionHeight} Q-100 ${dimensionHeight/2} 100 0`;
+  const targetPath = `M100 0 L100 ${dimensionHeight} Q100 ${dimensionHeight/2} 100 0`;
 
   const curvePath = {
     initial: {
@@ -35,10 +25,9 @@ export default function Curve() {
     }
   }
 
-
   return (
     <svg className="absolute top-0 left-[-99px] w-[100px] h-full fill-neutral-500 stroke-none">
-        <motion.path variants={curvePath} initial="initial" animate="enter" exit="exit"></motion.path>
+        <motion.path variants={curvePath} initial="initial" animate={dimensionHeight > 0 ? "enter" : "initial"} exit="exit"></motion.path>
     </svg>
   )
 }
