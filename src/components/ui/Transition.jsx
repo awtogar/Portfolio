@@ -9,10 +9,20 @@ const SVG_HEIGHT_OFFSET = 300;
 const TRANSITION_DURATION = 1200;
 
 const TransitionContent = ({ pageTitle, dimensions }) => {
-  // Define the path with curve at the top that flattens as it moves down
-  const initialPath = `M0 ${dimensions.height} L${dimensions.width} ${dimensions.height} L${dimensions.width} 0 Q${dimensions.width / 2} ${-SVG_HEIGHT_OFFSET} 0 0 L0 ${dimensions.height}`;
-
-  const targetPath = `M0 0 L${dimensions.width} 0 L${dimensions.width} ${dimensions.height} Q${dimensions.width / 2} ${dimensions.height} 0 ${dimensions.height} L0 0`;
+  const initialPath = `
+  M0 0 
+  L${dimensions.width} 0 
+  L${dimensions.width} ${-SVG_HEIGHT_OFFSET}
+  Q${dimensions.width / 2} ${-SVG_HEIGHT_OFFSET * 2} 0 ${-SVG_HEIGHT_OFFSET}
+  L0 0
+`;
+  const targetPath = `
+  M0 0 
+  L${dimensions.width} 0 
+  L${dimensions.width} ${-SVG_HEIGHT_OFFSET}
+  L0 ${-SVG_HEIGHT_OFFSET}
+  L0 0
+`;
 
   return (
     <motion.div
@@ -23,8 +33,15 @@ const TransitionContent = ({ pageTitle, dimensions }) => {
       exit="exit"
       style={{ height: '100vh', width: '100vw' }}
     >
-      <svg className="absolute top-0 left-0 w-full z-10 text-primary" height={dimensions.height  + SVG_HEIGHT_OFFSET}>
-        <motion.path variants={transitionCurvePath(initialPath, targetPath)} initial="initial"  exit="exit" fill="currentColor" className="transition-colors duration-300" />
+      <svg className="absolute top-0 left-0 w-full z-10 bg-primary" height={dimensions.height + SVG_HEIGHT_OFFSET}>
+        <motion.path
+          variants={transitionCurvePath(initialPath, targetPath)}
+          initial="initial"
+          animate="animate"
+          exit="exit"
+          fill="currentColor"
+          className="transition-colors duration-300"
+        />
       </svg>
       <motion.div className="relative z-20 text-center " variants={transitionTextDirection} initial="initial" animate="animate" exit="exit">
         <motion.p key={pageTitle} className="textTransition">

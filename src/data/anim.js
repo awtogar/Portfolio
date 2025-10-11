@@ -59,7 +59,8 @@ export const transitionSlideDown = {
     transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1] },
   },
   exit: {
-    top: "100vh", // keluar ke bawah layar
+     // keluar ke bawah layar
+    top: "100vh",
     transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1], delay: 0.2 },
   },
 };
@@ -70,10 +71,10 @@ export const transitionCurvePath = (initialPath, targetPath) => ({
       d: initialPath,
       transition: { duration: 0.7, ease: [0.76, 0, 0.24, 1] },
     },
-    // animate: {
-    //   d: initialPath,
-    //   transition: { duration: 0.7, ease: [0.76, 0, 0.24, 1], delay: 0.3 },
-    // },
+    animate: {
+      d: initialPath,
+      transition: { duration: 0.4, ease: [0.76, 0, 0.24, 1] },
+    },
     exit: {
       d: targetPath,
       transition: { duration: 0.7, ease: [0.76, 0, 0.24, 1], delay: 0.3 },
