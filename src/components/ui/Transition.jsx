@@ -52,10 +52,10 @@ const TransitionContent = ({ pageTitle, dimensions }) => {
   );
 };
 
-export default function Transition({ children }) {
+export default function Transition({ children, isLoading }) {
   const location = useLocation();
   const dimensions = useDimensions();
-  const [isTransitioning, setIsTransitioning] = useState(true);
+  const [isTransitioning, setIsTransitioning] = useState(false);
 
   const getCurrentPageTitle = () => {
     const currentPage = Object.values(pages_data).find(page => {
@@ -65,6 +65,8 @@ export default function Transition({ children }) {
   };
 
   useEffect(() => {
+    if (isLoading) return;
+    // non aktif transition kalo preloader masih jalan
     setIsTransitioning(true);
     const timeout = setTimeout(() => {
       setIsTransitioning(false);
@@ -81,5 +83,3 @@ export default function Transition({ children }) {
     </>
   );
 }
-
-// TODO: Make the content dissapear while the transition is happening with animation goes up. and enter again when the transition is done. with smoothly

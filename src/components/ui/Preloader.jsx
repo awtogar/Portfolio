@@ -15,13 +15,11 @@ const PreloaderContent = () => {
 
   useEffect(() => {
     if (index === PRELOADER_WORDS.length - 1) return;
-
     const timeout = setTimeout(() => setIndex(index + 1), index === 0 ? INITIAL_DELAY : WORD_TRANSITION_DELAY);
-
     return () => clearTimeout(timeout);
   }, [index]);
 
-  // Don't render SVG content until dimensions are available
+  // Fallback
   if (dimensions.width === null) {
     return (
       <motion.div
@@ -45,7 +43,7 @@ const PreloaderContent = () => {
       className="fixed inset-0 z-[9999] flex items-center justify-center bg-primary"
       style={{ height: '100vh', width: '100vw' }}
     >
-      <div className="absolute z-10 text-center perspective-1000">
+      <div className="absolute z-10 text-center">
         <AnimatePresence mode="wait">
           <motion.div
             key={index}
@@ -92,7 +90,6 @@ const PreloaderContent = () => {
   );
 };
 
-// Enhanced Preloader with built-in AnimatePresence
 const Preloader = ({ isLoading }) => {
   return <AnimatePresence mode="wait">{isLoading && <PreloaderContent key="preloader" />}</AnimatePresence>;
 };

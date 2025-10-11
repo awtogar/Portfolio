@@ -39,7 +39,7 @@ const AppContent = () => {
             <Route
               path={pages_data.home.href}
               element={
-                <Transition>
+                <Transition isLoading={isLoading}>
                   <HomePage />
                   <Footer />
                 </Transition>
@@ -48,7 +48,7 @@ const AppContent = () => {
             <Route
               path={pages_data.about.href}
               element={
-                <Transition>
+                <Transition isLoading={isLoading}>
                   <AboutPage />
                   <Footer />
                 </Transition>
@@ -57,7 +57,7 @@ const AppContent = () => {
             <Route
               path={pages_data.project.href}
               element={
-                <Transition>
+                <Transition isLoading={isLoading}>
                   <ProjectPage />
                   <Footer />
                 </Transition>
@@ -66,7 +66,7 @@ const AppContent = () => {
             <Route
               path={pages_data.contact.href}
               element={
-                <Transition>
+                <Transition isLoading={isLoading}>
                   <ContactPage />
                   <Footer />
                 </Transition>
