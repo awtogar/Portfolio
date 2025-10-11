@@ -1,6 +1,8 @@
 export const menuSlideLeft = {
-    initial: {x: "calc(100% + 100px)"},
-    enter: {x: "0", transition: {duration: 0.8, ease: [0.76, 0, 0.24, 1]}},
+    initial: {x: "calc(100% + 100px)",
+    transition: { duration: 0.6, ease: [0.76, 0, 0.24, 1] },
+    },
+    enter: {x: "0", transition: {duration: 0.84, ease: [0.76, 0, 0.24, 1]}},
     exit: {x: "calc(100% + 100px)", transition: {duration: 0.9, ease: [0.76, 0, 0.24, 1]}}
 }
 
@@ -51,35 +53,42 @@ export const preloaderCurvePath = (initialPath, targetPath) => ({
   });
 
 export const transitionSlideDown = {
-  // mulai dari atas layar
-  initial: { top: "-100vh" }, 
-  animate: {
-    // turun ke posisi normal
-    top: "0", 
-    transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1] },
+  initial: { y: '-100%' ,
   },
-  exit: {
-     // keluar ke bawah layar
-    top: "100vh",
-    transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1], delay: 0.2 },
+  animate: { 
+    y: 0,
+    transition: { 
+      duration: 1.2,
+      ease: [0.76, 0, 0.24, 1] 
+    }
   },
+  exit: { 
+    y: '100%',
+    transition: { duration: 0.8 }
+  }
 };
 
 
 export const transitionCurvePath = (initialPath, targetPath) => ({
-    initial: {
-      d: initialPath,
-      transition: { duration: 0.7, ease: [0.76, 0, 0.24, 1] },
+  initial: {
+    d: initialPath,
+  },
+  animate: {
+    d: initialPath, // start dari initial biar smooth
+    transition: { 
+      duration: 1.2,
+      ease: [0.76, 0, 0.24, 1],
+      delay: 0
     },
-    animate: {
-      d: initialPath,
-      transition: { duration: 0.4, ease: [0.76, 0, 0.24, 1] },
+  },
+  exit: {
+    d: targetPath, // balik ke initial pas exit
+    transition: { 
+      duration: 0.8, 
+      ease: [0.76, 0, 0.24, 1] 
     },
-    exit: {
-      d: targetPath,
-      transition: { duration: 0.7, ease: [0.76, 0, 0.24, 1], delay: 0.3 },
-    },
-  });
+  },
+});
 
   export const transitionTextDirection = {
   initial: { 

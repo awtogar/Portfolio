@@ -9,21 +9,10 @@ const SVG_HEIGHT_OFFSET = 300;
 const TRANSITION_DURATION = 1200;
 
 const TransitionContent = ({ pageTitle, dimensions }) => {
-  const initialPath = `
-  M0 0 
-  L${dimensions.width} 0 
-  L${dimensions.width} ${-SVG_HEIGHT_OFFSET}
-  Q${dimensions.width / 2} ${-SVG_HEIGHT_OFFSET * 2} 0 ${-SVG_HEIGHT_OFFSET}
-  L0 0
-`;
-  const targetPath = `
-  M0 0 
-  L${dimensions.width} 0 
-  L${dimensions.width} ${-SVG_HEIGHT_OFFSET}
-  L0 ${-SVG_HEIGHT_OFFSET}
-  L0 0
-`;
+  // Define the path with curve at the top that flattens as it moves down
+  const initialPath = `M0 ${dimensions.height} L${dimensions.width} ${dimensions.height} L${dimensions.width} 0 Q${dimensions.width / 2} ${-SVG_HEIGHT_OFFSET} 0 0 L0 ${dimensions.height}`;
 
+  const targetPath = `M0 0 L${dimensions.width} 0 L${dimensions.width} ${dimensions.height} Q${dimensions.width / 2} ${dimensions.height} 0 ${dimensions.height} L0 0`;
   return (
     <motion.div
       className="fixed inset-0 z-[9998] flex items-center justify-center"
@@ -33,21 +22,14 @@ const TransitionContent = ({ pageTitle, dimensions }) => {
       exit="exit"
       style={{ height: '100vh', width: '100vw' }}
     >
-      <svg className="absolute top-0 left-0 w-full z-10 bg-primary" height={dimensions.height + SVG_HEIGHT_OFFSET}>
-        <motion.path
-          variants={transitionCurvePath(initialPath, targetPath)}
-          initial="initial"
-          animate="animate"
-          exit="exit"
-          fill="currentColor"
-          className="transition-colors duration-300"
-        />
-      </svg>
-      <motion.div className="relative z-20 text-center " variants={transitionTextDirection} initial="initial" animate="animate" exit="exit">
+      <motion.div className="absolute z-10" variants={transitionTextDirection} initial="initial" animate="animate" exit="exit">
         <motion.p key={pageTitle} className="textTransition">
           {pageTitle}
         </motion.p>
       </motion.div>
+      <svg className="absolute top-0 left-0 w-full text-primary " height={dimensions.height + SVG_HEIGHT_OFFSET}>
+        <motion.path variants={transitionCurvePath(initialPath, targetPath)} initial="initial" animate="animate" exit="exit" fill="currentColor" className="transition-colors" />
+      </svg>
     </motion.div>
   );
 };
@@ -65,21 +47,25 @@ export default function Transition({ children, isLoading }) {
   };
 
   useEffect(() => {
+    // cek preloader masih jalan apa kga
     if (isLoading) return;
-    // non aktif transition kalo preloader masih jalan
+
     setIsTransitioning(true);
     const timeout = setTimeout(() => {
       setIsTransitioning(false);
-    }, TRANSITION_DURATION + 300);
+    }, TRANSITION_DURATION);
     return () => clearTimeout(timeout);
   }, [location.pathname]);
 
+  // Fallback kalo dimensions belum siap render langsung aje childrennya
   if (dimensions.width === null) return <>{children}</>;
 
   return (
     <>
-      <AnimatePresence mode="wait">{isTransitioning && <TransitionContent key={location.pathname} pageTitle={getCurrentPageTitle()} dimensions={dimensions} />}</AnimatePresence>
-      {children}
+      <AnimatePresence mode="wait">
+        {isTransitioning && <TransitionContent key={location.pathname} pageTitle={getCurrentPageTitle()} dimensions={dimensions} />}
+        {children}
+      </AnimatePresence>
     </>
   );
 }
