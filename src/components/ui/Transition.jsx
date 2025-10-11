@@ -62,10 +62,8 @@ export default function Transition({ children, isLoading }) {
 
   return (
     <>
-      <AnimatePresence mode="wait">
-        {isTransitioning && <TransitionContent key={location.pathname} pageTitle={getCurrentPageTitle()} dimensions={dimensions} />}
-        {children}
-      </AnimatePresence>
+      <AnimatePresence mode="wait">{isTransitioning && <TransitionContent key={location.pathname} pageTitle={getCurrentPageTitle()} dimensions={dimensions} />}</AnimatePresence>
+      {children}
     </>
   );
 }
