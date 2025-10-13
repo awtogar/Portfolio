@@ -52,43 +52,30 @@ export const preloaderCurvePath = (initialPath, targetPath) => ({
     },
   });
 
+// anim.js
 export const transitionSlideDown = {
-  initial: { y: '-100%' ,
-  },
-  animate: { 
+  initial: { y: '-100%' },
+  animate: {
     y: 0,
-    transition: { 
-      duration: 1.2,
-      ease: [0.76, 0, 0.24, 1] 
-    }
+    transition: { duration: 1.2, ease: [0.76, 0, 0.24, 1] },
   },
-  exit: { 
+  exit: {
     y: '100%',
-    transition: { duration: 0.8 }
-  }
+    transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1] },
+  },
 };
 
-
-export const transitionCurvePath = (initialPath, targetPath) => ({
+// FIXED: animate.d harus ke targetPath
+export const transitionCurvePath = (initialPath, targetPath, duration = 0.9) => ({
   initial: {
     d: initialPath,
   },
-  animate: {
-    d: initialPath, // start dari initial biar smooth
-    transition: { 
-      duration: 1.2,
-      ease: [0.76, 0, 0.24, 1],
-      delay: 0
-    },
-  },
   exit: {
-    d: targetPath, // balik ke initial pas exit
-    transition: { 
-      duration: 0.8, 
-      ease: [0.76, 0, 0.24, 1] 
-    },
+    d: targetPath, // if you want to revert on exit
+      transition: { duration: 0.7, ease: [0.83, 0, 0.17, 1], delay: 0.3 },
   },
 });
+
 
   export const transitionTextDirection = {
   initial: { 

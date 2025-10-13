@@ -7,12 +7,12 @@ import { pages_data } from '../../data/data';
 
 const SVG_HEIGHT_OFFSET = 300;
 const TRANSITION_DURATION = 1200;
+const TARGET_CURVE_Y = -SVG_HEIGHT_OFFSET * 0.2;
 
 const TransitionContent = ({ pageTitle, dimensions }) => {
-  // Define the path with curve at the top that flattens as it moves down
   const initialPath = `M0 ${dimensions.height} L${dimensions.width} ${dimensions.height} L${dimensions.width} 0 Q${dimensions.width / 2} ${-SVG_HEIGHT_OFFSET} 0 0 L0 ${dimensions.height}`;
+  const targetPath = `M0 0 L${dimensions.width} 0 L${dimensions.width} ${dimensions.height} Q${dimensions.width / 2} ${TARGET_CURVE_Y} 0 ${dimensions.height} L0 0`;
 
-  const targetPath = `M0 0 L${dimensions.width} 0 L${dimensions.width} ${dimensions.height} Q${dimensions.width / 2} ${dimensions.height} 0 ${dimensions.height} L0 0`;
   return (
     <motion.div
       className="fixed inset-0 z-[9998] flex items-center justify-center"
@@ -27,8 +27,17 @@ const TransitionContent = ({ pageTitle, dimensions }) => {
           {pageTitle}
         </motion.p>
       </motion.div>
-      <svg className="absolute top-0 left-0 w-full text-primary " height={dimensions.height + SVG_HEIGHT_OFFSET}>
-        <motion.path variants={transitionCurvePath(initialPath, targetPath)} initial="initial" animate="animate" exit="exit" fill="currentColor" className="transition-colors" />
+
+      <svg className="absolute top-0 left-0 w-full text-primary" height={dimensions.height + SVG_HEIGHT_OFFSET}>
+        <motion.path
+          // pass duration in seconds
+          variants={transitionCurvePath(initialPath, targetPath, TRANSITION_DURATION / 1000)}
+          initial="initial"
+          animate="animate"
+          exit="exit"
+          fill="currentColor"
+          className="transition-colors"
+        />
       </svg>
     </motion.div>
   );
