@@ -23,7 +23,7 @@ export const navSlide = {
         transition: {
             duration: 0.8, 
             ease: [0.76, 0, 0.24, 1], 
-            delay: 0.05 * (4 - i) // Reverse the cascade on exit
+            delay: 0.05 * (4 - i)
         }
     })
 }
@@ -52,27 +52,25 @@ export const preloaderCurvePath = (initialPath, targetPath) => ({
     },
   });
 
-// anim.js
 export const transitionSlideDown = {
-  initial: { y: '-100%' },
+  initial: { top: 0 },
   animate: {
-    y: 0,
+    top: 0,
     transition: { duration: 1.2, ease: [0.76, 0, 0.24, 1] },
   },
   exit: {
-    y: '100%',
+    top: "100vh",
     transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1] },
   },
 };
 
-// FIXED: animate.d harus ke targetPath
-export const transitionCurvePath = (initialPath, targetPath, duration = 0.9) => ({
+export const transitionCurvePath = (initialPath, targetPath) => ({
   initial: {
     d: initialPath,
   },
   exit: {
-    d: targetPath, // if you want to revert on exit
-      transition: { duration: 0.7, ease: [0.83, 0, 0.17, 1], delay: 0.3 },
+    d: targetPath,
+    transition: { duration: 0.7, ease: [0.83, 0, 0.17, 1], delay: 0.3 },
   },
 });
 
@@ -80,14 +78,14 @@ export const transitionCurvePath = (initialPath, targetPath, duration = 0.9) => 
   export const transitionTextDirection = {
   initial: { 
     opacity: 0, 
-    y: "-50%" 
+    y: "-50%",
   },
   animate: {
     opacity: 1,
     y: 0,
     transition: {
-      duration: 0.4,
-      ease: [0.22, 1, 0.36, 1],
+      duration: 0.3,
+      transition: { duration: 0.7, ease: [0.83, 0, 0.17, 1], delay: 0.3 },
     },
   },
   exit: {
@@ -95,7 +93,7 @@ export const transitionCurvePath = (initialPath, targetPath, duration = 0.9) => 
     y: "100%",
     transition: {
       duration: 0.4,
-      ease: [0.76, 0, 0.24, 1],
+      ease: [0.83, 0, 0.17, 1], delay: 0.3,
     },
   },
 };
