@@ -12,6 +12,7 @@ import ProjectPage from './pages/ProjectPage';
 import ContactPage from './pages/ContactPage';
 import { pages_data } from './data/data';
 import { PRELOADER_DURATION } from './data/const';
+import ScrollToTopPages from './function/ScrollToTopPages';
 
 const AppContent = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -32,6 +33,7 @@ const AppContent = () => {
       <Preloader isLoading={isLoading} />
       <Header />
       <StickyCursor />
+      <ScrollToTopPages />
 
       <AnimatePresence mode="wait">
         <main id="main" className="bg-neutral-100" style={{ visibility: isLoading ? 'hidden' : 'visible' }}>

@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { useLenis } from '../context/LenisContext';
+import { useLocation } from 'react-router-dom';
 
 /**
  * Custom hook to track window dimensions
@@ -35,7 +36,6 @@ export const useVideoVisibility = (options = {}) => {
   const videoRef = useRef(null);
   const observerRef = useRef(null);
   const isVisibleRef = useRef(false);
-
   const { rootMargin = '50px', threshold = 0.25 } = options;
 
   useEffect(() => {
@@ -91,26 +91,7 @@ export const useVideoVisibility = (options = {}) => {
   return { videoRef };
 };
 
-/**
- * Custom hook for smooth scroll to a section by id using Lenis
- */
-export const useGotoSection = () => {
-  const { lenis } = useLenis();
-
-  return id => {
-    const element = document.getElementById(id);
-    if (element && lenis) {
-      lenis.scrollTo(element, {
-        offset: 0,
-        duration: 1.2,
-        easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      });
-    }
-  };
-};
-
 export default {
   useWindowDimensions,
   useVideoVisibility,
-  useGotoSection,
 };
