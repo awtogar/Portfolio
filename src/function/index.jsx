@@ -1,88 +1,5 @@
-import { useState, useEffect, useRef, useMemo, useCallback } from 'react';
-import Lenis from 'lenis';
-import LenisContext from '../providers/LenisProvider';
-import { useLenis } from '../providers/LenisProvider';
-
-/**
- * Smooth scrolling wrapper component using Lenis
- */
-export const SmoothScrollWrapper = ({ children }) => {
-  const appRef = useRef(null);
-  const [lenis, setLenis] = useState(null);
-
-  useEffect(() => {
-    const lenisInstance = new Lenis({
-      smooth: true,
-      lerp: 0.1,
-      duration: 1.2,
-      wheelMultiplier: 1,
-      touchMultiplier: 1,
-      orientation: 'vertical',
-      gestureOrientation: 'vertical',
-      smoothWheel: true,
-      smoothTouch: false,
-    });
-
-    // Set state to make lenis available to context consumers
-    setLenis(lenisInstance);
-
-    // Keep window.lenis for backward compatibility
-    window.lenis = lenisInstance;
-
-    const raf = time => {
-      lenisInstance.raf(time);
-      requestAnimationFrame(raf);
-    };
-    requestAnimationFrame(raf);
-
-    return () => {
-      lenisInstance.destroy();
-      window.lenis = null;
-      setLenis(null);
-    };
-  }, []);
-
-  // Memoize callback to prevent unnecessary re-renders
-  const stopScroll = useCallback(() => {
-    if (lenis) {
-      lenis.stop();
-    }
-  }, [lenis]);
-
-  const startScroll = useCallback(() => {
-    if (lenis) {
-      lenis.start();
-    }
-  }, [lenis]);
-
-  const scrollTo = useCallback(
-    (target, options) => {
-      if (lenis) {
-        lenis.scrollTo(target, options);
-      }
-    },
-    [lenis]
-  );
-
-  // Memoize to prevent unnecessary re-renders
-  const contextValue = useMemo(
-    () => ({
-      lenis,
-      stopScroll,
-      startScroll,
-      scrollTo,
-    }),
-    [lenis, stopScroll, startScroll, scrollTo]
-  );
-
-  return (
-    <LenisContext.Provider value={contextValue}>
-      <div ref={appRef} className="App">
-        {children}
-      </div>
-    </LenisContext.Provider>
-  );
-};
+import { useState, useEffect, useRef } from 'react';
+import { useLenis } from '../context/LenisContext';
 
 /**
  * Custom hook to track window dimensions
@@ -111,6 +28,9 @@ export const useWindowDimensions = () => {
   return dimensions;
 };
 
+/**
+ * Custom hook to control video playback based on visibility
+ */
 export const useVideoVisibility = (options = {}) => {
   const videoRef = useRef(null);
   const observerRef = useRef(null);
@@ -172,7 +92,7 @@ export const useVideoVisibility = (options = {}) => {
 };
 
 /**
- * Custom hook untuk smooth scroll ke section tertentu
+ * Custom hook for smooth scroll to a section by id using Lenis
  */
 export const useGotoSection = () => {
   const { lenis } = useLenis();
@@ -189,4 +109,8 @@ export const useGotoSection = () => {
   };
 };
 
-export default { SmoothScrollWrapper, useWindowDimensions, useVideoVisibility, useGotoSection };
+export default {
+  useWindowDimensions,
+  useVideoVisibility,
+  useGotoSection,
+};

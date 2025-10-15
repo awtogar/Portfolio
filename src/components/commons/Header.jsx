@@ -3,7 +3,7 @@ import { RiSunLine, RiMoonLine } from '@remixicon/react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Nav, Magnetic, Bounds } from '../../components';
 
-import { useLenis } from '../../providers/LenisProvider';
+import { useLenis } from '../../context/LenisContext';
 import { useTheme } from '../../hooks/useTheme';
 import { useStickyElement } from '../../hooks/useStickyElement';
 
@@ -14,9 +14,10 @@ const Header = () => {
 
   // control menu state buat hamburger
   const [isActive, setIsActive] = useState(false);
-  // track scroll direction and position
+  // track scroll buat header
   const [scrollDirection, setScrollDirection] = useState('up');
   const [scrollPosition, setScrollPosition] = useState(0);
+
   const { lenis } = useLenis();
   const { toggleTheme, isDark } = useTheme();
 
@@ -34,11 +35,10 @@ const Header = () => {
       setScrollPosition(scroll);
     };
 
-    // Add Lenis scroll event listener
     lenis.on('scroll', handleLenisScroll);
 
     return () => {
-      // Clean up by removing the event listener
+      // Clean up dengan event listener
       lenis.off('scroll', handleLenisScroll);
     };
   }, [lenis, scrollPosition]);
@@ -117,9 +117,7 @@ const Header = () => {
           </Magnetic>
         </div>
       </motion.header>
-      {/* <div className="nav-wrapper-test"> */}
       <AnimatePresence mode="wait">{isActive && <Nav closeMenu={closeMenu} />}</AnimatePresence>
-      {/* </div> */}
     </>
   );
 };

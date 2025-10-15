@@ -1,27 +1,24 @@
-import { createContext, useContext, useState, useEffect, useRef, useCallback, useMemo } from 'react';
+import { useState, useEffect, useRef, useCallback, useMemo } from 'react';
 import Lenis from 'lenis';
-
-// Context creation
-const LenisContext = createContext(null);
+import { LenisContext } from '../context/LenisContext';
 
 /**
  * Lenis provider component for smooth scrolling
  */
 export const LenisProvider = ({ children }) => {
   const [lenis, setLenis] = useState(null);
-  const appRef = useRef(null);
 
   useEffect(() => {
     const lenisInstance = new Lenis({
       smooth: true,
       lerp: 0.1,
-      duration: 1.2,
+      duration: 1.6,
       wheelMultiplier: 1,
       touchMultiplier: 1,
       orientation: 'vertical',
       gestureOrientation: 'vertical',
       smoothWheel: true,
-      smoothTouch: false,
+      smoothTouch: true,
     });
 
     setLenis(lenisInstance);
@@ -55,25 +52,7 @@ export const LenisProvider = ({ children }) => {
     [lenis, stopScroll, startScroll, scrollTo]
   );
 
-  return (
-    <LenisContext.Provider value={contextValue}>
-      <div ref={appRef} className="App">
-        {children}
-      </div>
-    </LenisContext.Provider>
-  );
-};
-
-/**
- * Hook to access Lenis context
- * @returns {Object} Lenis context with lenis instance and control methods
- */
-export const useLenis = () => {
-  const context = useContext(LenisContext);
-  if (!context) {
-    throw new Error('useLenis must be used within LenisProvider');
-  }
-  return context;
+  return <LenisContext.Provider value={contextValue}>{children}</LenisContext.Provider>;
 };
 
 /**
@@ -99,4 +78,4 @@ export const useScrollTo = () => {
   );
 };
 
-export default { LenisProvider, useLenis, useScrollTo };
+export default LenisProvider;

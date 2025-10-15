@@ -4,7 +4,7 @@ import { useLocation } from 'react-router-dom';
 import { RiSunLine, RiMoonLine } from '@remixicon/react';
 import { menuSlideLeft } from '../../data/anim';
 import { pages_data, social_links } from '../../data/data';
-import { useLenis } from '../../providers/LenisProvider';
+import { useLenis } from '../../context/LenisContext';
 import { useTheme } from '../../hooks/useTheme';
 
 
