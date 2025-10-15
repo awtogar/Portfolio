@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion } from "motion/react"
 import React from 'react';
 
 export default function HoverRotate({ children, className = '', href, to, onClick, scrollToSection, textcolor1 = 'inherit', textcolor2 = 'inherit', ...props }) {

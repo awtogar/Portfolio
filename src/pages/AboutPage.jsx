@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { useScroll, useTransform, motion } from 'framer-motion';
+import { useScroll, useTransform, motion } from "motion/react"
 
 import intro1 from '../assets/images/img-2.jpg';
 import intro2 from '../assets/images/img-1.jpg';

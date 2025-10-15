@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import { useEffect, useCallback, useMemo, useState, useRef } from 'react';
-import { motion, useMotionValue, useSpring } from 'framer-motion';
+import { motion, useMotionValue, useSpring } from "motion/react"
 import { useSticky } from '../../providers/StickyProvider';
 
 const StickyCursor = () => {

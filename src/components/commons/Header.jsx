@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { RiSunLine, RiMoonLine } from '@remixicon/react';
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence, motion } from "motion/react"
 import { Nav, Magnetic, Bounds } from '../../components';
 
 import { useLenis } from '../../context/LenisContext';

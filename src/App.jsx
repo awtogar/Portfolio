@@ -2,7 +2,7 @@ import { Route, BrowserRouter as Router, Routes, useLocation } from 'react-route
 import { useEffect, useState } from 'react';
 import './styles/globals.css';
 import { SpeedInsights } from '@vercel/speed-insights/react';
-import { AnimatePresence } from 'framer-motion';
+import { AnimatePresence } from 'motion/react';
 import { Preloader, Header, StickyCursor, Footer, Transition } from './components';
 import { LenisProvider } from './providers/LenisProvider';
 import { StickyProvider } from './providers/StickyProvider';

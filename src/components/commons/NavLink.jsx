@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { motion } from "motion/react"
 import { navSlide, navDotScalling } from '../../data/anim';
 
 export default function NavLink({ data, isActive, setSelectedIndicator, closeMenu }) {

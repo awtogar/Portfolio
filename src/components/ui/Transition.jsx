@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence } from "motion/react"
 import { useLocation } from 'react-router-dom';
 import { useDimensions } from '../../hooks/useDimensions';
 import { transitionCurvePath, transitionTextDirection, transitionSlideDown } from '../../data/anim';
