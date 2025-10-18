@@ -156,7 +156,7 @@ const ido = [{
 
 // selected works section data
 import image1 from '../assets/images/img-1.jpg';
-import image2 from '../assets/images/img-2.jpg';
+import image2 from '../assets/images/img-5.jpg';
 import image3 from '../assets/images/img-3.jpg';
 const works = [{
     title: 'Dieter Rams Tribute',
