@@ -1,1 +1,0 @@
-export const PRELOADER_DURATION = 2000;

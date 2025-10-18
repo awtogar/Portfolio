@@ -6,7 +6,6 @@ import { transitionCurvePath, transitionTextDirection, transitionSlideDown } fro
 import { pages_data } from '../../data/data';
 
 const SVG_HEIGHT_OFFSET = 300;
-const TRANSITION_DURATION = 1200;
 const TARGET_CURVE_Y = -SVG_HEIGHT_OFFSET * 0.001;
 
 const TransitionContent = ({ pageTitle, dimensions }) => {
@@ -64,7 +63,7 @@ export default function Transition({ children, isLoading }) {
     setIsTransitioning(true);
     const timeout = setTimeout(() => {
       setIsTransitioning(false);
-    }, TRANSITION_DURATION);
+    }, 1200);
     return () => clearTimeout(timeout);
   }, [location.pathname]);
 

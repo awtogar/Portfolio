@@ -11,7 +11,6 @@ import AboutPage from './pages/AboutPage';
 import ProjectPage from './pages/ProjectPage';
 import ContactPage from './pages/ContactPage';
 import { pages_data } from './data/data';
-import { PRELOADER_DURATION } from './data/const';
 import ScrollToTopPages from './function/ScrollToTopPages';
 
 const AppContent = () => {
@@ -23,7 +22,7 @@ const AppContent = () => {
     const preloaderTimer = setTimeout(() => {
       setIsLoading(false);
       document.body.style.cursor = 'default';
-    }, PRELOADER_DURATION);
+    }, 2000);
 
     return () => clearTimeout(preloaderTimer);
   }, []);
