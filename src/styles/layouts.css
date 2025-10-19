@@ -8,15 +8,18 @@ p {
 
 
 
-/* Section components  */
-.section-padding-hero{
-  @apply px-4 pb-s900 pt-[164px]
-}
 
 @layer utilities {
+  /* Section components  */
+  .section-padding-hero{
+    @apply px-4 pb-s900 pt-[164px]
+  }
   /* heading spacing */
-  .section-padding {
+  .section-padding-x {
     @apply px-4;
+  }
+  .section-padding-y {
+    @apply py-s900;
   }
   .section-padding-xy {
     @apply px-4 py-s900;

@@ -12,9 +12,9 @@ import { useWindowDimensions } from '../function';
 const maskSVG = `data:image/svg+xml;base64,${btoa(`${Splatter()}`)}`;
 
 const AboutPage = () => {
-  const sectionRef = useRef(null);
+  const containerMaskRef = useRef(null);
   const { scrollYProgress } = useScroll({
-    target: sectionRef,
+    target: containerMaskRef,
     offset: ['start end', 'end end'],
   });
 
@@ -33,7 +33,7 @@ const AboutPage = () => {
     <>
       <section className="z-10 section-padding-xy ">
         <div className="w-full m-auto lg:max-w-[1440px]">
-          <div className="h-screen max-h-screen flex flex-col">
+          <div className="h-[100dvh] max-h-screen flex flex-col">
             <div className="relative">
               <div className="w-full h-full">
                 <ScrollAnimatedImg
@@ -55,7 +55,7 @@ const AboutPage = () => {
               </div>
             </div>
             <div className="flex flex-col">
-              <div className="flex flex-col gap-s600">
+              <div className="flex flex-col gap-s600 pt-6">
                 <h1 className="text-h100">Graphics designer and web developer</h1>
                 <p>I help global brands bring their ideas to life with impactful, mission-driven solutions that deliver results.</p>
               </div>
@@ -76,39 +76,51 @@ const AboutPage = () => {
         </div>
       </section>
       {/* Mask reveal section */}
-      <section ref={sectionRef} className="relative h-[200vh] w-full">
-        <div className="sticky top-0 h-screen overflow-hidden bg-neutral-100">
-          {images.map((image, i) => {
-            const start = step * i;
-            const end = step * (i + 1);
-            const target = Math.max(0, maxMaskSize - 500);
-            const maskSize = useTransform(scrollYProgress, [start, end], ['56px', `${target}px`]);
-            return (
-              <motion.div
-                key={i}
-                className="absolute inset-0 w-full h-full mask-no-repeat mask-center"
-                style={{
-                  maskImage: `url('${maskSVG}')`,
-                  WebkitMaskImage: `url('${maskSVG}')`,
-                  maskSize,
-                  WebkitMaskSize: maskSize,
-                }}
-              >
-                <ScrollAnimatedImg
-                  src={image.src}
-                  alt={image.alt}
-                  containerClassName="absolute inset-0 w-full h-full -py-18"
-                  imageClassName="w-full h-full object-cover"
-                  scrollRange={['0%', '5%']}
-                  offset={['start start', 'end start']}
-                />
-              </motion.div>
-            );
-          })}
+      <section className="z-10 section-padding-y">
+        <div className="w-full m-auto lg:max-w-[1440px]">
+          <div ref={containerMaskRef} className="h-[300dvh] relative">
+            <div className="sticky top-0 h-screen overflow-hidden bg-neutral-100">
+              {images.map((image, i) => {
+                const start = step * i;
+                const end = step * (i + 1);
+                const target = Math.max(0, maxMaskSize - 500);
+                const maskSize = useTransform(scrollYProgress, [start, end], ['56px', `${target}px`]);
+                return (
+                  <motion.div
+                    key={i}
+                    className="absolute inset-0 w-full h-full mask-no-repeat mask-center"
+                    style={{
+                      maskImage: `url('${maskSVG}')`,
+                      WebkitMaskImage: `url('${maskSVG}')`,
+                      maskSize,
+                      WebkitMaskSize: maskSize,
+                    }}
+                  >
+                    <ScrollAnimatedImg
+                      src={image.src}
+                      alt={image.alt}
+                      containerClassName="absolute inset-0 w-full h-full "
+                      imageClassName="w-full h-full object-cover"
+                      scrollRange={['0%', '5%']}
+                      offset={['start start', 'end start']}
+                    />
+                  </motion.div>
+                );
+              })}
+            </div>
+          </div>
         </div>
       </section>
-
-      <div className="h-screen flex items-center justify-center">on development</div>
+      <section className="z-10 section-padding-xy">
+        <div className="w-full m-auto lg:max-w-[1440px]">
+          <div className="flex flex-col">
+            <ShinyText text="Let's create something amazing together." className="text-h200" />
+            <p>
+              I'm excited to collaborate with you on your next project. Let's bring your vision to life!
+            </p>
+          </div>
+        </div>
+      </section>
     </>
   );
 };
