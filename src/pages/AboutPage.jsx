@@ -57,7 +57,7 @@ const AboutPage = () => {
           <div className="flex flex-col">
             <div className="flex flex-col gap-s600 pt-6">
               <h1 className="text-h100">Graphics designer and web developer</h1>
-              <p>I help global brands bring their ideas to life with impactful, mission-driven solutions that deliver results.</p>
+              <p>I help global brands bring their ideas to life with impactful solutions and keep their brand identity.</p>
             </div>
             <div className="flex items-center gap-s400 pt-s500">
               <div className="flex-1">
@@ -76,6 +76,7 @@ const AboutPage = () => {
       </SectionLayout>
 
       <SectionLayout sectionClassName="section-padding-y">
+        
         <div className="flex flex-col gap-s600">
           <ShinyText text="About Me" className="text-h200" />
           <p>

@@ -155,38 +155,41 @@ const ido = [{
 ];
 
 // selected works section data
-import image1 from '../assets/images/img-1.jpg';
-import image2 from '../assets/images/img-5.jpg';
-import image3 from '../assets/images/img-3.jpg';
+import ovelo_showreel from '../assets/images/selected-works/ovelo-kit.webp';
+
+import nostratic_showreel from '../assets/images/selected-works/nostratic-kit.webp';
+
+import lunavara_showreel from '../assets/images/selected-works/lunavara-kit.webp'
+
 const works = [{
-    title: 'Dieter Rams Tribute',
-    description: 'A selection of my recent projects showcasing my skills in graphic design and web development.',
+    title: 'Ovelo Eyewear',
+    description: 'An eyewear and Optical Care branding. focused on modern aesthetics and strong visuals branding.',
     tags: ['Graphics', 'Branding'],
     date: {
       month: 'Jun',
       year: '2024'
     },
-    image: image1
+    image: ovelo_showreel
   },
   {
-    title: 'Foodify App',
-    description: 'Mobile-first design for a food delivery service with interactive prototype.',
+    title: 'Nostratic Archive',
+    description: 'Branding and Web Development for a creative studio agency in Indonesia. that specializes in digital products.',
     tags: ['UI/UX', 'Prototype', 'Figma'],
     date: {
       month: 'Feb',
       year: '2025'
     },
-    image: image2
+    image: nostratic_showreel
   },
   {
-    title: 'Luminova Studio',
-    description: 'Portfolio website with smooth animations and mobile-first design for a creative agency.',
+    title: 'Lunavara',
+    description: 'Lunavara is a modern nursery and plant art. focused on aesthetic and minimalism audience',
     tags: ['Web Development', 'UI/UX'],
     date: {
       month: 'Aug',
       year: '2024'
     },
-    image: image3
+    image: lunavara_showreel
   }
 ];
 

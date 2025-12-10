@@ -7,10 +7,10 @@ const SelectedWorksSection = () => {
     <div id="selected-works" className="flex flex-col space-300 pt-s900 pb-s900">
       <div className="flex w-full flex-col gap-s400 text-primary">
         <div className="flex flex-col">
-        <span className="text-primary/75">( WORKS )</span>
-          <h2 className="text-h100">How I Can Help You?</h2>
+          <span className="text-primary/75">( WORKS )</span>
+          <h2 className="text-h100">Selected Workds</h2>
         </div>
-        <p className="text-primary/75 text-base-sm pt-s200">A showcase of my recent projects and collaborations.</p>
+        <p className="text-primary/75 text-base-sm pt-s200">A showcase of my recent projects that i've been done.</p>
       </div>
       <div className="flex flex-col gap-s800">
         {works.map((work, index) => (
