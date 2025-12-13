@@ -2,8 +2,8 @@ import React, { useRef } from 'react';
 import { useScroll, useTransform, motion } from 'motion/react';
 
 import images_1 from '../assets/images/about/about-0.jpeg';
-import images_2 from '../assets/images/about/about-1.jpeg';
-import images_3 from '../assets/images/about/about-2.jpeg';
+import images_2 from '../assets/images/about/about-1.jpg';
+import images_3 from '../assets/images/about/about-2.jpg';
 
 import { CreativeButton } from '../components';
 import { RiGeminiFill } from '@remixicon/react';
@@ -80,7 +80,7 @@ const AboutPage = () => {
         </div>
       </SectionLayout>
 
-      <SectionLayout sectionClassName="section-padding-y">
+      <SectionLayout sectionClassName="section-padding-x">
         
         <div className="flex flex-col gap-s600">
           <ShinyText text="About Me" className="text-h200" />
@@ -92,7 +92,7 @@ const AboutPage = () => {
       </SectionLayout>
 
       {/* Mask reveal section */}
-      <SectionLayout sectionClassName="section-padding-y">
+      <SectionLayout sectionClassName="pt-s200">
         <div ref={containerMaskRef} className="h-[300dvh] relative">
           <div className="sticky top-0 h-screen overflow-hidden bg-neutral-100">
             {images.map((image, i) => {
@@ -103,7 +103,7 @@ const AboutPage = () => {
               return (
                 <motion.div
                   key={i}
-                  className="absolute inset-0 w-full h-full mask-no-repeat mask-center"
+                  className="absolute inset-0 w-full h-full max-h-[100dvh] mask-no-repeat mask-center rounded-xl"
                   style={{
                     maskImage: `url('${maskSVG}')`,
                     WebkitMaskImage: `url('${maskSVG}')`,
@@ -126,7 +126,7 @@ const AboutPage = () => {
         </div>
       </SectionLayout>
 
-      <SectionLayout>
+      <SectionLayout className="section-padding-x">
         <div className="flex flex-col">
           <ShinyText text="Let's create something amazing together." className="text-h200" />
           <p>I'm excited to collaborate with you on your next project. Let's bring your vision to life!</p>

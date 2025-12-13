@@ -14,7 +14,7 @@ const SelectedWorksSection = () => {
       </div>
       <div className="flex flex-col gap-s800">
         {works.map((work, index) => (
-          <div key={index} className="space-300 pt-s600 pb-s200">
+          <div key={index} className="space-300 py-s600">
             <div className="flex flex-col gap-s300">
               <ScrollAnimatedImg src={work.image} alt={work.title} containerClassName="h-[348px] rounded-xl" imageClassName='rounded-xl' scrollRange={['0%', '15%']} offset={['start end', 'end start']} />
               <div className="flex flex-col gap-2">
