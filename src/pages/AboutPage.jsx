@@ -1,9 +1,10 @@
 import React, { useRef } from 'react';
 import { useScroll, useTransform, motion } from 'motion/react';
 
-import intro1 from '../assets/images/img-1.jpg';
-import intro2 from '../assets/images/img-2.png';
-import intro3 from '../assets/images/img-3.jpg';
+import images_1 from '../assets/images/about/about-0.jpeg';
+import images_2 from '../assets/images/about/about-1.jpeg';
+import images_3 from '../assets/images/about/about-2.jpeg';
+
 import { CreativeButton } from '../components';
 import { RiGeminiFill } from '@remixicon/react';
 import { CircularText, ScrollAnimatedImg, Splatter, ShinyText } from '../components';
@@ -24,8 +25,12 @@ const AboutPage = () => {
 
   const images = [
     {
-      src: intro1,
-      alt: 'Image 1',
+      src: images_2,
+      alt: 'Image 2',
+    },
+    {
+      src: images_3,
+      alt: 'Image 3',
     },
   ];
   const step = 1 / images.length;
@@ -33,11 +38,11 @@ const AboutPage = () => {
   return (
     <>
       <SectionLayout containerID="about-intro">
-        <div className="h-[100dvh] max-h-screen flex flex-col">
+        <div className="section-pad max-h-screen flex flex-col">
           <div className="relative">
             <div className="w-full h-full">
               <ScrollAnimatedImg
-                src={intro1}
+                src={images_1}
                 scrollRange={['0%', '15%']}
                 alt="Intro Image 1"
                 containerClassName="w-full h-[468px] md:h-[682px] lg:h-[912px] rounded-lg"

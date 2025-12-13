@@ -29,7 +29,7 @@ const WhatIdoSection = () => {
                         <span className="col-span-2 self-center text-nowrap">( {service.number} )</span>
                         <h3 className="capitalize">{service.title}</h3>
                       </div>
-                      <RiAddLine />
+                      {/* <RiAddLine className='text-primary/50'/> */}
                       {/* <RiSubtractLine/> */}
                     </div>
                     <div className="text-primary/75 pt-s400">
