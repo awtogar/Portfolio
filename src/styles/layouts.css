@@ -3,7 +3,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 p {
-  @apply text-base font-serif font-normal tracking-[0.005em] leading-[1.42];
+  @apply font-serif font-normal tracking-[0.005em] leading-[1.42];
 }
 
 
