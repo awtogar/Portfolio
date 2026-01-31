@@ -11,8 +11,8 @@ const WhatIdoSection = () => {
         <div className="flex flex-col rounded-t-lg">
           <div className="flex w-full flex-col gap-s400 text-primary">
             <div className="flex flex-col">
-              <span className='text-primary/75'>(SERVICES)</span>
-              <h2 className="text-h100">How I Can Help You?</h2>
+              <span className='text-primary/75'>(WHAT I DO?)</span>
+              <h2 className="text-h200">SERVICES</h2>
             </div>
             <p>I can help you create stunning visuals, seamless user experiences and be impactful based on your needs.</p>
           </div>

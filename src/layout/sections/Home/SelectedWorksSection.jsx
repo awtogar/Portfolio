@@ -7,8 +7,8 @@ const SelectedWorksSection = () => {
     <div id="selected-works" className="flex flex-col space-300 pt-s900 pb-s900">
       <div className="flex w-full flex-col gap-s400 text-primary">
         <div className="flex flex-col">
-          <span className="text-primary/75">( WORKS )</span>
-          <h2 className="text-h100">Selected Workds</h2>
+          <span className="text-primary/75">( SELECTED )</span>
+          <h2 className="text-h100">WORKS</h2>
         </div>
         <p className="text-primary/75 text-base-sm pt-s200">A showcase of my recent projects that i've been done.</p>
       </div>
@@ -21,8 +21,8 @@ const SelectedWorksSection = () => {
                 <div className="flex items-center justify-between text-primary">
                   <h3 className="text-h300">{work.title}</h3>
                   <div className="pt-s200 text-base-sm">
-                    <span>
-                      {work.date.month} - {work.date.year}
+                    <span className='text-primary/75'>
+                      {work.date.month} / {work.date.year}
                     </span>
                   </div>
                 </div>
