@@ -110,7 +110,7 @@ const CircularText = ({ text, spinDuration = 20, onHover = 'speedUp', className 
         >
           {/* inner mask */}
           <div
-            className={`w-full h-full bg-primary rounded-full flex items-center justify-center font-bold ${centerClassName}`}
+            className={`w-full h-full bg-primary dark:bg-secondary rounded-full flex items-center justify-center font-bold ${centerClassName}`}
           >
             {centerIcon}
           </div>
