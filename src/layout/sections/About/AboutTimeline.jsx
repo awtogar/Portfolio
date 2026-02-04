@@ -1,95 +1,112 @@
 import React from 'react';
 import BaseSection from '../BaseSection';
 import { work_experience } from '../../../data/data';
-import { RiArrowRightUpLine, RiBriefcaseLine, RiMapPinLine } from '@remixicon/react';
 
 const AboutTimeline = () => {
   return (
     <BaseSection sectionClassName="section-padding-xy bg-neutral-100 dark:bg-neutral-100" containerID="experience">
-      {/* Header */}
-      <div className="flex w-full flex-col gap-s400 text-primary max-w-5xl">
-        <div className="flex flex-col gap-s200">
-          <span className="text-primary/50 text-base-sm font-mono uppercase tracking-wider">(Career)</span>
-          <h2 className="text-h100 font-serif leading-[0.9] tracking-tight">Experience</h2>
+      {/* Header - Mobile Friendly */}
+      <div className="w-full max-w-7xl mb-s700 lg:mb-s900">
+        <div className="flex items-center gap-s300 mb-s400">
+          <div className="h-[2px] w-12 bg-primary"></div>
+          <span className="text-primary/30 text-base-sm font-mono uppercase tracking-[0.25em]">Career</span>
         </div>
-        <p className="text-primary/60 text-base-lg max-w-2xl leading-relaxed">
-          A chronological overview of my career in design and frontend engineering, showcasing growth, achievements, and technical evolution.
-        </p>
+        <h2 className="text-h300 sm:text-h200 font-sans font-black leading-[0.85] tracking-tighter mb-s400">Experience</h2>
+        <p className="text-primary/50 text-base-sm max-w-full lg:max-w-xl leading-[1.6]">A chronological overview of my career in design and frontend engineering.</p>
       </div>
 
-      {/* Timeline Container */}
-      <div className="mt-s900 space-y-6 max-w-6xl mx-auto">
+      {/* Timeline - Swiss Mobile Layout */}
+      <div className="w-full space-y-s800 max-w-7xl mx-auto">
         {work_experience.map((experience, index) => (
-          <article key={experience.id} className="bg-neutral-200 border border-neutral-900/10 overflow-hidden rounded-2xl">
-            {/* Header Bar */}
-            <div className="bg-primary px-8 py-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
-              <div className="flex items-center gap-3">
-                <span className="text-neutral-400 text-xs font-mono">{String(index + 1).padStart(2, '0')}</span>
-                <h3 className="text-neutral-100 text-lg font-medium tracking-tight">{experience.title}</h3>
+          <article key={experience.id} className="w-full">
+            {/* Swiss Grid Layout */}
+            <div className="grid grid-cols-[60px_4px_1fr] lg:grid-cols-[80px_4px_1fr] gap-s400 lg:gap-s500">
+              {/* Date Column */}
+              <div className="flex flex-col items-end pt-1">
+                <p className="text-[11px] lg:text-base-sm font-black leading-none text-primary mb-0.5">{experience.startDate}</p>
+                <p className="text-[11px] lg:text-base-sm font-black leading-none text-primary mb-4">{experience.endDate}</p>
+                <div className="mt-6 lg:mt-8">
+                  <p className="text-[9px] lg:text-[10px] font-bold text-primary/40 uppercase tracking-tighter [writing-mode:vertical-rl] rotate-180">
+                    {/* Calculate duration if needed */}
+                    Position {String(index + 1).padStart(2, '0')}
+                  </p>
+                </div>
               </div>
-              <div className="flex items-center gap-4 text-sm text-neutral-400 justify-between">
-                <span className="font-mono">
-                  {experience.startDate}—{experience.endDate}
-                </span>
-                <span className={`px-2 py-1 text-xs font-mono ${experience.isCurrent ? 'bg-neutral-100 text-neutral-900' : 'border border-neutral-600 text-neutral-400'}`}>
-                  {experience.isCurrent ? 'ACTIVE' : 'COMPLETED'}
-                </span>
-              </div>
-            </div>
 
-            {/* Content Grid */}
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-0">
-              {/* Main Content */}
-              <div className="lg:col-span-8 p-8 space-y-8">
-                {/* Company & Location */}
-                <div className="grid grid-cols-2 gap-6 pb-6 border-b border-neutral-900/10">
-                  <div>
-                    <div className="text-xs uppercase tracking-wider text-neutral-400 mb-2 font-mono">Company</div>
-                    <div className="text-sm text-neutral-900 font-medium">{experience.company}</div>
-                  </div>
-                  <div>
-                    <div className="text-xs uppercase tracking-wider text-neutral-400 mb-2 font-mono">Location</div>
-                    <div className="text-sm text-neutral-900 font-medium">{experience.location}</div>
-                  </div>
+              {/* Timeline Bar */}
+              <div className="bg-primary w-full"></div>
+
+              {/* Content Column */}
+              <div className="flex flex-col pb-s600">
+                {/* Type Badge */}
+                <div className="inline-block bg-primary text-neutral-100 text-[9px] lg:text-[10px] font-black uppercase tracking-[0.2em] px-2 py-1 mb-s400 self-start">
+                  {experience.type || 'Full-time'}
                 </div>
 
-                {/* Achievements */}
-                <div>
-                  <h4 className="text-xs uppercase tracking-wider text-neutral-400 mb-4 font-mono">Key Achievements</h4>
-                  <div className="space-y-3">
+                {/* Title */}
+                <h1 className="text-primary tracking-tighter text-[32px] sm:text-[42px] lg:text-h300 font-black leading-[0.85] mb-s400">
+                  {experience.title.split(' ').map((word, i) => (
+                    <React.Fragment key={i}>
+                      {word}
+                      {i < experience.title.split(' ').length - 1 && <br className="hidden sm:block" />}
+                      {i < experience.title.split(' ').length - 1 && <span className="sm:hidden"> </span>}
+                    </React.Fragment>
+                  ))}
+                </h1>
+
+                {/* Company */}
+                <div className="flex items-baseline gap-2 mb-s600 lg:mb-s700">
+                  <h2 className="text-primary text-lg sm:text-xl lg:text-h500 font-bold tracking-tight">{experience.company}</h2>
+                </div>
+
+                <div className="mb-s700 lg:mb-s800">
+                  <p className="text-[10px] lg:text-base-sm font-black uppercase tracking-[0.2em] text-primary/40 mb-s400 lg:mb-s500 border-b border-primary/10 pb-2">
+                    Achievements
+                  </p>
+                  <ul className="space-y-s400 lg:space-y-s500">
                     {experience.achievements.map((achievement, i) => (
-                      <div key={i} className="flex items-start gap-3 group">
-                        <span className="text-neutral-400 text-sm flex-shrink-0 mt-1">{String(i + 1).padStart(2, '0')}</span>
-                        <p className="text-sm text-neutral-700 leading-relaxed">{achievement}</p>
-                      </div>
+                      <li key={i} className="relative pl-0">
+                        <p className="text-[13px] lg:text-base-sm text-primary/70 leading-snug">{achievement}</p>
+                      </li>
                     ))}
-                  </div>
-                </div>
-              </div>
-
-              {/* Sidebar */}
-              <div className="lg:col-span-4 bg-neutral-200 p-8 space-y-8 border-t lg:border-t-0 lg:border-l border-neutral-900/10">
-                {/* Skills */}
-                <div>
-                  <h4 className="text-xs uppercase tracking-wider text-neutral-400 mb-4 font-mono">Technical Skills</h4>
-                  <div className="space-y-2">
-                    {experience.skills.map((skill, i) => (
-                      <div key={i} className="px-3 py-2 bg-neutral-200 border border-neutral-900/10 text-xs text-neutral-900 font-medium">
-                        {skill}
-                      </div>
-                    ))}
-                  </div>
+                  </ul>
                 </div>
 
-                {/* Tools */}
-                <div>
-                  <h4 className="text-xs uppercase tracking-wider text-neutral-400 mb-4 font-mono">Tools & Software</h4>
-                  <div className="flex flex-wrap gap-2">
-                    {experience.tools.map((tool, i) => (
-                      <span key={i} className="px-2 py-1 bg-neutral-200 text-xs text-neutral-700 font-mono">
-                        {tool}
-                      </span>
-                    ))}
+                {/* Skills & Tools Grid */}
+                <div className="grid grid-cols-2 gap-s600 lg:gap-s700 pt-s500 lg:pt-s600 border-t border-primary/10">
+                  {/* Skills */}
+                  <div>
+                    <p className="text-[10px] lg:text-base-sm font-black uppercase tracking-[0.2em] text-primary/40 mb-s300 lg:mb-s400">Competencies</p>
+                    <ul className="space-y-1">
+                      {experience.skills.slice(0, 4).map((skill, i) => (
+                        <li key={i} className="text-[12px] lg:text-base-sm tracking-tight text-primary">
+                          {skill}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  {/* Tools */}
+                  <div>
+                    <p className="text-[10px] lg:text-base-sm font-black uppercase tracking-[0.2em] text-primary/40 mb-s300 lg:mb-s400">Tools</p>
+                    <ul className="space-y-1">
+                      {experience.tools.slice(0, 4).map((tool, i) => (
+                        <li key={i} className="text-[12px] lg:text-base-sm tracking-tight text-primary">
+                          {tool}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+
+                {/* Footer - Location & Index */}
+                <div className="mt-s700 lg:mt-s800 flex justify-between items-end">
+                  <div className="flex flex-col">
+                    <p className="text-[9px] lg:text-[10px] font-black text-primary/40 uppercase tracking-widest mb-1">Location</p>
+                    <p className="text-[12px] lg:text-base-sm font-bold uppercase tracking-tighter text-primary">{experience.location}</p>
+                  </div>
+                  <div className="text-right">
+                    <p className="text-[48px] lg:text-[64px] font-black leading-none tracking-tighter text-primary/10">{String(index + 1).padStart(2, '0')}</p>
                   </div>
                 </div>
               </div>
@@ -98,11 +115,9 @@ const AboutTimeline = () => {
         ))}
       </div>
 
-      {/* Bottom Decoration */}
-      <div className="mt-s900 flex items-center justify-center gap-s300">
-        <div className="h-px w-20 bg-gradient-to-r from-transparent to-primary/20" />
-        <span className="text-primary/30 text-sm font-mono">End of Timeline</span>
-        <div className="h-px w-20 bg-gradient-to-l from-transparent to-primary/20" />
+      {/* Bottom Mark */}
+      <div className="mt-s900 pt-s700 border-t border-primary/10">
+        <span className="text-primary/15 text-base-sm font-mono uppercase tracking-[0.3em] block text-center">—</span>
       </div>
     </BaseSection>
   );

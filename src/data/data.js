@@ -135,7 +135,7 @@ const ido = [{
   {
     id: 3,
     number: '03',
-    title: 'Web Development',
+    title: 'Development',
     description: 'Creating responsive websites with seamless and brand-focused experiences.',
     features: [{
         number: '01',
@@ -150,7 +150,7 @@ const ido = [{
         name: 'Portfolio & Business Websites'
       }
     ],
-    tags: ['Frontend', 'Web Design', 'Web Development']
+    tags: ['Frontend', 'Web Design', 'Development']
   }
 ];
 
@@ -229,10 +229,93 @@ const contact_info = {
   copyright: `All rights reserved.`
 };
 
+// Work experience data
+const work_experience = [
+  {
+    id: 1,
+    title: 'IT Project Management',
+    company: 'PT Bank Negara Indonesia (Persero) Tbk',
+    position: 'Intern',
+    location: 'Jakarta, Indonesia',
+    startDate: 'Nov 2025',
+    endDate: 'Present',
+    isCurrent: true,
+    achievements: [
+      'Assisted in managing IT project timelines and task coordination',
+      'Supported cross-team communication and project documentation'
+    ],
+    skills: [
+      'Time Management',
+      'Prioritization',
+      'Communication',
+      'Leadership'
+    ],
+    tools: [
+      'Microsoft Excel',
+      'Microsoft PowerPoint',
+      'Project Documentation Tools'
+    ]
+  },
+  {
+    id: 2,
+    title: 'Assets and Art Data Management',
+    company: 'PT Digital Inisiatif (Kompas Gramedia)',
+    position: 'Intern',
+    location: 'Jakarta, Indonesia',
+    startDate: 'Sep 2024',
+    endDate: 'Dec 2024',
+    isCurrent: false,
+    achievements: [
+      'Implemented a QR-based system to display detailed artwork information',
+      'Designed a QR-based storage layout to map artwork placement accurately',
+      'Digitized and integrated 4,000+ art assets into a centralized system'
+    ],
+    skills: [
+      'Data Management',
+      'Automation Workflow',
+      'System Documentation'
+    ],
+    tools: [
+      'Adobe Creative Suite',
+      'Adobe Script',
+      'Google Workspace',
+      'QR Code Generator'
+    ]
+  },
+  {
+    id: 3,
+    title: 'Graphic Designer',
+    company: 'Nostratic Studio',
+    position: 'Freelance',
+    location: 'Jakarta, Indonesia',
+    startDate: 'Aug 2022',
+    endDate: 'Feb 2024',
+    isCurrent: false,
+    achievements: [
+      'Designed branding and visual identity projects for 100+ clients worldwide'
+    ],
+    skills: [
+      'Branding',
+      'Visual Identity Design',
+      'Typography',
+      'Creative Direction',
+      'Client Communication'
+    ],
+    tools: [
+      'Adobe Photoshop',
+      'Adobe Illustrator',
+      'Adobe InDesign',
+      'Figma'
+    ]
+  }
+];
+
+
 export {
   pages_data,
   ido,
   works,
   social_links,
-  contact_info
+  contact_info,
+  work_experience
 };

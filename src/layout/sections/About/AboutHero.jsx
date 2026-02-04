@@ -29,6 +29,7 @@ const AboutHero = () => {
             />
           </div>
         </div>
+        {/* Introduce */}
         <div className="flex flex-col">
           <div className="flex flex-col gap-s300 pt-6">
             <p className="font-bold tracking-widest mb-2 flex items-center">

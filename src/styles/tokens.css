@@ -21,16 +21,16 @@
   --shine: 5s linear infinite;
 
   /* font sizing */
-  --display: clamp(3.8rem, 1.6rem + 7.1111vw, 8.4rem);
-  --h100: clamp(3rem, 2.25rem + 3.75vw, 5.625rem);
-  --h200: clamp(1.9531rem, 1.496rem + 2.2854vw, 3.5529rem);
-  --h300: clamp(1.5625rem, 1.2474rem + 1.5755vw, 2.6653rem);
-  --h400: clamp(1.25rem, 1.0359rem + 1.0707vw, 1.9995rem);
-  --h500: clamp(1.13rem, 1.004rem + .63vw, 1.57rem);
-  --h600: clamp(1rem, .928rem + .36vw, 1.25rem);
-  --base-lg: clamp(1.25rem, 1.0359rem + 1.0707vw, 1.9995rem);
-  --base: clamp(1rem, .928rem + .36vw, 1.25rem);
-  --base-sm: clamp(1rem, .928rem + .36vw, 1.25rem);
+--display: clamp(4.768rem, 3.2rem + 7.84vw, 9.313rem);
+--h100: clamp(3.052rem, 2.304rem + 3.74vw, 5.96rem);
+--h200: clamp(2.441rem, 1.843rem + 2.99vw, 4.768rem);
+--h300: clamp(1.953rem, 1.474rem + 2.395vw, 3.815rem);
+--h400: clamp(1.563rem, 1.179rem + 1.916vw, 3.052rem);
+--h500: clamp(1.25rem, 0.944rem + 1.533vw, 2.441rem);
+--h600: clamp(1rem, 0.755rem + 1.226vw, 1.953rem);
+--base-lg: clamp(1.25rem, 0.944rem + 1.533vw, 2.441rem);
+--base: clamp(1rem, 0.755rem + 1.226vw, 1.953rem);
+--base-sm: clamp(0.8rem, 0.604rem + 0.981vw, 1.563rem);
 
 
   /* space sizing */
