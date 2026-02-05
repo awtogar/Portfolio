@@ -1,4 +1,3 @@
-// halaman navigasi dan bagian
 const pages_data = {
   home: {
     title: 'Home',
@@ -91,8 +90,7 @@ const pages_data = {
   }
 };
 
-// what i do section data
-const ido = [{
+const services = [{
     id: 1,
     number: '01',
     title: 'Graphic Design',
@@ -154,46 +152,33 @@ const ido = [{
   }
 ];
 
-// selected works section data
 import ovelo_showreel from '../assets/images/selected-works/ovelo-kit.webp';
-
 import nostratic_showreel from '../assets/images/selected-works/nostratic-kit.webp';
-
-import lunavara_showreel from '../assets/images/selected-works/lunavara-kit.webp'
+import lunavara_showreel from '../assets/images/selected-works/lunavara-kit.webp';
 
 const works = [{
     title: 'Ovelo Eyewear',
     description: 'An eyewear and Optical Care branding. focused on modern aesthetics and strong visuals branding.',
     tags: ['Graphics', 'Branding'],
-    date: {
-      month: 'Jun',
-      year: '2024'
-    },
+    date: '2024-06',
     image: ovelo_showreel
   },
   {
     title: 'Nostratic Archive',
     description: 'Branding and Web Development for a creative studio agency in Indonesia. that specializes in digital products.',
     tags: ['UI/UX', 'Prototype', 'Figma'],
-    date: {
-      month: 'Feb',
-      year: '2025'
-    },
+    date: '2025-02',
     image: nostratic_showreel
   },
   {
     title: 'Lunavara',
     description: 'Lunavara is a modern nursery and plant art. focused on aesthetic and minimalism audience',
     tags: ['Web Development', 'UI/UX'],
-    date: {
-      month: 'Aug',
-      year: '2024'
-    },
+    date: '2024-08',
     image: lunavara_showreel
   }
 ];
 
-// Social media links
 const social_links = [{
     title: 'Github',
     href: 'https://github.com/awtogar',
@@ -220,8 +205,6 @@ const social_links = [{
   },
 ];
 
-
-// Contact information
 const contact_info = {
   email: 'info@awtogar.com',
   phone: '+62 85156015818',
@@ -229,7 +212,6 @@ const contact_info = {
   copyright: `All rights reserved.`
 };
 
-// Work experience data
 const work_experience = [
   {
     id: 1,
@@ -237,9 +219,8 @@ const work_experience = [
     company: 'PT Bank Negara Indonesia (Persero) Tbk',
     position: 'Intern',
     location: 'Jakarta, Indonesia',
-    startDate: 'Nov 2025',
-    endDate: 'Present',
-    isCurrent: true,
+    startDate: '2025-11',
+    endDate: null,
     achievements: [
       'Assisted in managing IT project timelines and task coordination',
       'Supported cross-team communication and project documentation'
@@ -262,9 +243,8 @@ const work_experience = [
     company: 'PT Digital Inisiatif (Kompas Gramedia)',
     position: 'Intern',
     location: 'Jakarta, Indonesia',
-    startDate: 'Sep 2024',
-    endDate: 'Dec 2024',
-    isCurrent: false,
+    startDate: '2024-09',
+    endDate: '2024-12',
     achievements: [
       'Implemented a QR-based system to display detailed artwork information',
       'Designed a QR-based storage layout to map artwork placement accurately',
@@ -288,9 +268,8 @@ const work_experience = [
     company: 'Nostratic Studio',
     position: 'Freelance',
     location: 'Jakarta, Indonesia',
-    startDate: 'Aug 2022',
-    endDate: 'Feb 2024',
-    isCurrent: false,
+    startDate: '2022-08',
+    endDate: '2024-02',
     achievements: [
       'Designed branding and visual identity projects for 100+ clients worldwide'
     ],
@@ -310,10 +289,9 @@ const work_experience = [
   }
 ];
 
-
 export {
   pages_data,
-  ido,
+  services,
   works,
   social_links,
   contact_info,

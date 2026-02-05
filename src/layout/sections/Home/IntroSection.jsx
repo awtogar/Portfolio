@@ -1,6 +1,5 @@
 import React from 'react';
 import video1 from '../../../assets/videos/video-1.mp4';
-import { ido } from '../../../data/data';
 import { CreativeButton, VideoLoader } from '../../../components';
 
 const IntroSection = () => {

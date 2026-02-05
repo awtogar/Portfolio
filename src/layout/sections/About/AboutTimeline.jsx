@@ -1,60 +1,40 @@
 import React from 'react';
 import BaseSection from '../BaseSection';
 import { work_experience } from '../../../data/data';
+import { calculateDuration, formatDate } from '../../../utils/calculateDurations';
 
 const AboutTimeline = () => {
   return (
     <BaseSection sectionClassName="section-padding-xy bg-neutral-100 dark:bg-neutral-100" containerID="experience">
-      {/* Header - Mobile Friendly */}
-      <div className="w-full max-w-7xl mb-s700 lg:mb-s900">
-        <div className="flex items-center gap-s300 mb-s400">
-          <div className="h-[2px] w-12 bg-primary"></div>
-          <span className="text-primary/30 text-base-sm font-mono uppercase tracking-[0.25em]">Career</span>
+      <div className="flex w-full flex-col gap-s400 text-primary">
+        <div className="flex flex-col">
+          <span className="text-primary/75">(Career)</span>
+          <h2 className="text-h200">Experience</h2>
         </div>
-        <h2 className="text-h300 sm:text-h200 font-sans font-black leading-[0.85] tracking-tighter mb-s400">Experience</h2>
-        <p className="text-primary/50 text-base-sm max-w-full lg:max-w-xl leading-[1.6]">A chronological overview of my career in design and frontend engineering.</p>
+        <p>A chronological overview of my career in design and web development.</p>
       </div>
 
-      {/* Timeline - Swiss Mobile Layout */}
-      <div className="w-full space-y-s800 max-w-7xl mx-auto">
+      {/* timeline */}
+      <div className="mt-s900 gap-y-s800 w-full space-y-s800 max-w-7xl mx-auto">
         {work_experience.map((experience, index) => (
           <article key={experience.id} className="w-full">
-            {/* Swiss Grid Layout */}
-            <div className="grid grid-cols-[60px_4px_1fr] lg:grid-cols-[80px_4px_1fr] gap-s400 lg:gap-s500">
-              {/* Date Column */}
-              <div className="flex flex-col items-end pt-1">
-                <p className="text-[11px] lg:text-base-sm font-black leading-none text-primary mb-0.5">{experience.startDate}</p>
-                <p className="text-[11px] lg:text-base-sm font-black leading-none text-primary mb-4">{experience.endDate}</p>
-                <div className="mt-6 lg:mt-8">
+            <div className="">
+              <div className="flex flex-col items-start">
+                <div className="flex item-center justify-center">
+                  <p className="text-[11px] lg:text-base-sm font-black leading-none text-primary mb-0.5">{formatDate(experience.startDate)}</p>
+                </div>
+                <p className="text-[11px] lg:text-base-sm font-black leading-none text-primary mb-4">{formatDate(experience.endDate)}</p>
+                <div className="flex flex-col h-full items-center justify-center lg:mt-8">
                   <p className="text-[9px] lg:text-[10px] font-bold text-primary/40 uppercase tracking-tighter [writing-mode:vertical-rl] rotate-180">
-                    {/* Calculate duration if needed */}
-                    Position {String(index + 1).padStart(2, '0')}
+                    {calculateDuration(experience.startDate, experience.endDate)}
                   </p>
                 </div>
               </div>
 
-              {/* Timeline Bar */}
               <div className="bg-primary w-full"></div>
 
-              {/* Content Column */}
-              <div className="flex flex-col pb-s600">
-                {/* Type Badge */}
-                <div className="inline-block bg-primary text-neutral-100 text-[9px] lg:text-[10px] font-black uppercase tracking-[0.2em] px-2 py-1 mb-s400 self-start">
-                  {experience.type || 'Full-time'}
-                </div>
-
-                {/* Title */}
-                <h1 className="text-primary tracking-tighter text-[32px] sm:text-[42px] lg:text-h300 font-black leading-[0.85] mb-s400">
-                  {experience.title.split(' ').map((word, i) => (
-                    <React.Fragment key={i}>
-                      {word}
-                      {i < experience.title.split(' ').length - 1 && <br className="hidden sm:block" />}
-                      {i < experience.title.split(' ').length - 1 && <span className="sm:hidden"> </span>}
-                    </React.Fragment>
-                  ))}
-                </h1>
-
-                {/* Company */}
+              <div className="flex flex-col py-s600">
+                <h1 className="text-primary tracking-tighter text-[32px] sm:text-[42px] lg:text-h300 font-black leading-[0.85] mb-s400">({experience.title})</h1>
                 <div className="flex items-baseline gap-2 mb-s600 lg:mb-s700">
                   <h2 className="text-primary text-lg sm:text-xl lg:text-h500 font-bold tracking-tight">{experience.company}</h2>
                 </div>
@@ -72,13 +52,11 @@ const AboutTimeline = () => {
                   </ul>
                 </div>
 
-                {/* Skills & Tools Grid */}
                 <div className="grid grid-cols-2 gap-s600 lg:gap-s700 pt-s500 lg:pt-s600 border-t border-primary/10">
-                  {/* Skills */}
                   <div>
                     <p className="text-[10px] lg:text-base-sm font-black uppercase tracking-[0.2em] text-primary/40 mb-s300 lg:mb-s400">Competencies</p>
                     <ul className="space-y-1">
-                      {experience.skills.slice(0, 4).map((skill, i) => (
+                      {experience.skills.map((skill, i) => (
                         <li key={i} className="text-[12px] lg:text-base-sm tracking-tight text-primary">
                           {skill}
                         </li>
@@ -86,11 +64,10 @@ const AboutTimeline = () => {
                     </ul>
                   </div>
 
-                  {/* Tools */}
                   <div>
                     <p className="text-[10px] lg:text-base-sm font-black uppercase tracking-[0.2em] text-primary/40 mb-s300 lg:mb-s400">Tools</p>
                     <ul className="space-y-1">
-                      {experience.tools.slice(0, 4).map((tool, i) => (
+                      {experience.tools.map((tool, i) => (
                         <li key={i} className="text-[12px] lg:text-base-sm tracking-tight text-primary">
                           {tool}
                         </li>
@@ -99,7 +76,6 @@ const AboutTimeline = () => {
                   </div>
                 </div>
 
-                {/* Footer - Location & Index */}
                 <div className="mt-s700 lg:mt-s800 flex justify-between items-end">
                   <div className="flex flex-col">
                     <p className="text-[9px] lg:text-[10px] font-black text-primary/40 uppercase tracking-widest mb-1">Location</p>
@@ -114,10 +90,10 @@ const AboutTimeline = () => {
           </article>
         ))}
       </div>
+      {/* end timeline */}
 
-      {/* Bottom Mark */}
-      <div className="mt-s900 pt-s700 border-t border-primary/10">
-        <span className="text-primary/15 text-base-sm font-mono uppercase tracking-[0.3em] block text-center">—</span>
+      <div className="mt-s600 pt-s600 ">
+        <p className="text-primary text-base-lg uppercase tracking-[0.3em] block text-center">See the work</p>
       </div>
     </BaseSection>
   );

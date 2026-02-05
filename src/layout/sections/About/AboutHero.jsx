@@ -39,7 +39,7 @@ const AboutHero = () => {
               </span>
             </p>
             <h1 className="text-h200">A Creative Developer & Website Designer</h1>
-            <p className="text-base-lg">I help global brands bring their ideas to life with impactful solutions and keep their brand identity.</p>
+            <p className="text-base">I help global brands bring their ideas to life with impactful solutions and keep their brand identity.</p>
           </div>
           <div className="flex items-center gap-s400 pt-s500">
             <div className="flex-1">

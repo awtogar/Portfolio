@@ -1,5 +1,5 @@
 import React from 'react';
-import { ido } from '../../../data/data';
+import { services } from '../../../data/data';
 import SelectedWorksSection from './SelectedWorksSection';
 import { RiAddLine, RiSubtractLine } from '@remixicon/react';
 
@@ -19,7 +19,7 @@ const WhatIdoSection = () => {
           {/* Services List */}
           <div className="w-full m-auto">
             <div className="mt-s900 gap-y-s800 flex flex-col justify-between">
-              {ido.map((service, i) => {
+              {services.map((service, i) => {
                 const topValue = `calc(10vh + ${i * 5.75}em)`;
                 const marginBottomValue = `${17.25 - i * 5.75}em`;
                 return (
