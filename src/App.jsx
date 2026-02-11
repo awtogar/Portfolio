@@ -69,7 +69,6 @@ const AppContent = () => {
               element={
                 <Transition isLoading={isLoading}>
                   <ContactPage />
-                  <Footer />
                 </Transition>
               }
             />

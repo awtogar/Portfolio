@@ -61,7 +61,11 @@ const pages_data = {
         title: 'Showcase'
       },
       {
-        id: 'contact',
+        id: 'Testimonials',
+        title: 'Testimonials'
+      },
+      {
+        id: 'Contact',
         title: 'Contact'
       }
     ]
@@ -160,26 +164,41 @@ const works = [{
     title: 'Ovelo Eyewear',
     description: 'An eyewear and Optical Care branding. focused on modern aesthetics and strong visuals branding.',
     tags: ['Graphics', 'Branding'],
-    date: '2024-06',
+    date: [
+      {
+        month: 'June',
+        year: '2024'
+      }
+    ],
     image: ovelo_showreel
   },
   {
     title: 'Nostratic Archive',
     description: 'Branding and Web Development for a creative studio agency in Indonesia. that specializes in digital products.',
     tags: ['UI/UX', 'Prototype', 'Figma'],
-    date: '2025-02',
+    date: [
+      {
+        month: 'February',
+        year: '2025'
+      }
+    ],
     image: nostratic_showreel
   },
   {
     title: 'Lunavara',
     description: 'Lunavara is a modern nursery and plant art. focused on aesthetic and minimalism audience',
     tags: ['Web Development', 'UI/UX'],
-    date: '2024-08',
+    date: [
+      {
+        month: 'August',
+        year: '2024'
+      }
+    ],
     image: lunavara_showreel
   }
 ];
 
-const social_links = [{
+const socials = [{
     title: 'Github',
     href: 'https://github.com/awtogar',
     icon: 'github',
@@ -212,7 +231,7 @@ const contact_info = {
   copyright: `All rights reserved.`
 };
 
-const work_experience = [
+const experience = [
   {
     id: 1,
     title: 'IT Project Management',
@@ -225,9 +244,8 @@ const work_experience = [
       'Assisted in managing IT project timelines and task coordination',
       'Supported cross-team communication and project documentation'
     ],
-    skills: [
+    competencies: [
       'Time Management',
-      'Prioritization',
       'Communication',
       'Leadership'
     ],
@@ -250,7 +268,7 @@ const work_experience = [
       'Designed a QR-based storage layout to map artwork placement accurately',
       'Digitized and integrated 4,000+ art assets into a centralized system'
     ],
-    skills: [
+    competencies: [
       'Data Management',
       'Automation Workflow',
       'System Documentation'
@@ -259,7 +277,6 @@ const work_experience = [
       'Adobe Creative Suite',
       'Adobe Script',
       'Google Workspace',
-      'QR Code Generator'
     ]
   },
   {
@@ -273,18 +290,15 @@ const work_experience = [
     achievements: [
       'Designed branding and visual identity projects for 100+ clients worldwide'
     ],
-    skills: [
+    competencies: [
       'Branding',
       'Visual Identity Design',
-      'Typography',
       'Creative Direction',
-      'Client Communication'
     ],
     tools: [
-      'Adobe Photoshop',
-      'Adobe Illustrator',
-      'Adobe InDesign',
-      'Figma'
+      'Adobe Creative Suite',
+      'Adobe Script',
+      'Figma',
     ]
   }
 ];
@@ -293,7 +307,7 @@ export {
   pages_data,
   services,
   works,
-  social_links,
+  socials,
   contact_info,
-  work_experience
+  experience
 };

@@ -1,26 +1,11 @@
 import React from 'react';
 import { HoverRotate, CreativeButton } from '..';
 import { RiCornerDownRightLine } from '@remixicon/react';
-import { contact_info, social_links, pages_data } from '../../data/data';
-import { ScrollToSections } from '../../function/ScrollToSections';
-import { useLocation } from 'react-router-dom';
+import { contact_info, socials } from '../../data/data';
+import { useFooter } from '../../utils/footerHandling';
 
 const Footer = () => {
-  const location = useLocation();
-  const currentPath = location.pathname;
-  const scrollToSection = ScrollToSections();
-
-  // Find current page data based on pathname
-  const getCurrentPage = () => {
-    if (currentPath === '/') return pages_data.home;
-    return Object.values(pages_data).find(page => page.href === currentPath) || pages_data.home;
-  };
-
-  const currentPage = getCurrentPage();
-  const handleSectionClick = (e, id) => {
-    e.preventDefault();
-    scrollToSection(id);
-  };
+  const { currentPage, isContactPage, handleSectionClick, handleTellUsClick } = useFooter();
 
   return (
     <footer id="contact" className="z-10 section-padding-end">
@@ -36,9 +21,15 @@ const Footer = () => {
                 </h2>
                 <p className="text-center">Let's work together.</p>
               </div>
-              <CreativeButton to="/contact" variant="outline">
-                TELL US
-              </CreativeButton>
+              {isContactPage ? (
+                <CreativeButton onClick={handleTellUsClick} variant="outline">
+                  TELL US
+                </CreativeButton>
+              ) : (
+                <CreativeButton to="/contact" variant="outline">
+                  TELL US
+                </CreativeButton>
+              )}
             </div>
           </div>
           <div className="flex flex-col pb-s600 w-full">
@@ -66,7 +57,7 @@ const Footer = () => {
             </div>
             <div className="flex flex-col gap-s100">
               <span className="text-primary-muted/72 inline-block border-b border-primary-muted/35 pb-1 w-fit">Socials</span>
-              {social_links.map(social => (
+              {socials.map(social => (
                 <HoverRotate key={social.label} as="a" href={social.href} target="_blank" rel="noopener noreferrer" className="text-primary-muted">
                   {social.title}
                 </HoverRotate>

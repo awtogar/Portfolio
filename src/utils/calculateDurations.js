@@ -31,15 +31,15 @@ export function calculateDuration(startDate, endDate = null) {
   totalMonths = Math.max(1, totalMonths);
 
   if (totalMonths < 12) {
-    // Under 12 months: show as "X months" or "1 month"
-    return totalMonths === 1 ? '1 month' : `${totalMonths} months`;
+    // Under 12 months: show as "X mo"
+    return `${totalMonths} mo`;
   } else {
     // 12 months or more: show as "Xy Xmo"
     const years = Math.floor(totalMonths / 12);
     const months = totalMonths % 12;
 
     if (months === 0) {
-      return years === 1 ? '1y' : `${years}y`;
+      return `${years}y`;
     }
     return `${years}y ${months}mo`;
   }

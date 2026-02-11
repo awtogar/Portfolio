@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { motion } from  "motion/react"
+import { motion } from 'motion/react';
 import { useLocation } from 'react-router-dom';
 import { RiSunLine, RiMoonLine } from '@remixicon/react';
 import { menuSlideLeft } from '../../data/anim';
-import { pages_data, social_links } from '../../data/data';
+import { pages_data, socials } from '../../data/data';
 import { useLenis } from '../../context/LenisContext';
 import { useTheme } from '../../hooks/useTheme';
 
-
-import {Curve, NavLink, HoverRotate} from '../../components';
+import { Curve, NavLink, HoverRotate } from '../../components';
 
 export default function Nav({ closeMenu }) {
   const location = useLocation();
@@ -54,7 +53,7 @@ export default function Nav({ closeMenu }) {
         exit="exit"
         className="!h-[100dvh] w-[100dvw] bg-neutral-500 fixed right-0 top-0 text-secondary z-[9997] md:w-[45svw] will-change-transform"
       >
-        <div className="box-border !h-full pl-16 pr-6 pt-16 pb-12 flex flex-col justify-between">
+        <div className="box-border !h-full pl-16 pr-6 pt-[8dvh] pb-[8dvh] flex flex-col justify-between">
           <div
             onMouseLeave={() => {
               setSelectedIndicator(pathname);
@@ -64,7 +63,7 @@ export default function Nav({ closeMenu }) {
             <div className="text-secondary/55 border-b border-secondary/35">
               <span className="text-xs">NAVIGATION</span>
             </div>
-            <div className="flex flex-col space-y-2 h-full">
+            <div className="flex flex-col space-y-2 h-full justify-around mb-8">
               {Object.values(pages_data).map((data, index) => {
                 return (
                   <NavLink key={index} data={{ ...data, index }} isActive={selectedIndicator === data.href} setSelectedIndicator={setSelectedIndicator} closeMenu={closeMenu} />
@@ -76,7 +75,7 @@ export default function Nav({ closeMenu }) {
             <div className="flex flex-col space-y-2">
               <span className="text-secondary/55 text-sm">Social</span>
               <div className="flex flex-col">
-                {social_links.map((data, i) => {
+                {socials.map((data, i) => {
                   return (
                     <HoverRotate key={i} href={data.href} target="_blank" rel="noopener noreferrer">
                       <span>{data.title}</span>

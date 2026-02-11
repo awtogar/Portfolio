@@ -1,10 +1,10 @@
 h1, h2, h3, h4, h5, h6 {
-  @apply font-medium font-sans tracking-[-0.03em] leading-[0.94];
+  @apply font-medium font-sans;;
 }
 
-p {
+/* p {
   @apply font-serif font-normal tracking-[0.005em] leading-[1.42];
-}
+} */
 
 
 
@@ -33,17 +33,13 @@ p {
   .textPreloader{
     @apply text-h100! text-secondary flex items-center uppercase;
   }
-}
 
-/* ui components */
-.tags{
-  @apply ring-0 border-primary-muted/75 border text-primary/75 font-light px-2 py-1 rounded-full text-xs;
-}
-.tags-tertiary{
-  @apply ring-0 border-brand-tertiary/75 border text-brand-tertiary/75 font-light px-2 py-1 rounded-full text-xs;
-}
+  /* heading tracking and leading */
+  /* .ts-100{
+    @apply tracking-[-0.03em] leading-none;
+  } */
 
-@keyframes shine {
-  0% { background-position: 100%; }
-  100% { background-position: -100%; }
+  /* .ts-200{
+    @apply tracking-[-0.052em] leading-[1.24];
+  } */
 }
