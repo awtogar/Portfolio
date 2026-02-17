@@ -17,13 +17,10 @@ const IntroSection = () => {
           <div className="flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
             <div className="flex w-full flex-col gap-s400 text-primary">
               <div className="flex flex-col">
-                <span className="text-primary/75">THE START OF</span>
-                <h2 className="text-h200">MY JOURNEY</h2>
+                <span className="hsAccent uppercase text-primary/75">(Background)</span>
+                <h2 className="text-h200 uppercase">Career</h2>
               </div>
-              <p>
-                With over 2 years of experience and 100+ global clients, I specialize in creating impactful visual identities and digital experiences. Now, I extend my expertise to
-                web design & development, crafting solutions that blend creativity and functionality.
-              </p>
+              <p>With 2 years in graphic design and 100+ global clients, now focusing on web design and creative development to build impactful digital experiences.</p>
             </div>
             {/* Stats */}
             <div className="flex gap-s600 bg-primary rounded-xl p-s600 items-center justify-center">

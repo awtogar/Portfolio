@@ -124,7 +124,7 @@ const StickyCursor = () => {
         height: cursorSize,
       }}
       // 1. ini harus dibawah z index header supaya tidak tertutup icon headernya
-      className="hidden md:block fixed w-[15px] h-[15px] bg-primary rounded-full pointer-events-none z-[49]"
+      className="hidden lg:block fixed w-[15px] h-[15px] bg-primary rounded-full pointer-events-none z-[49]"
     ></motion.div>
   );
 };

@@ -17,24 +17,21 @@
   --brand-secondary: #2277c8;
   --brand-tertiary: #10344a;
 
-  /* animation */
-  --shine: 5s linear infinite;
 
-/* Headings - more conservative scaling */
---h100: clamp(2rem, 1.5rem + 2vw, 3.5rem);      /* 32px → 56px */
---h200: clamp(1.75rem, 1.35rem + 1.5vw, 2.75rem); /* 28px → 44px */
---h300: clamp(1.5rem, 1.2rem + 1.2vw, 2.25rem);   /* 24px → 36px */
---h400: clamp(1.25rem, 1.05rem + 0.8vw, 1.75rem); /* 20px → 28px */
---h500: clamp(1.125rem, 0.975rem + 0.6vw, 1.5rem);/* 18px → 24px */
---h600: clamp(1rem, 0.9rem + 0.4vw, 1.25rem);     /* 16px → 20px */
 
-/* Body text - minimal scaling */
---base-lg: clamp(1.125rem, 1.05rem + 0.3vw, 1.25rem); /* 18px → 20px */
---base: 1rem;                                          /* 16px always */
---base-sm: clamp(0.875rem, 0.825rem + 0.2vw, 0.938rem); /* 14px → 15px */
+--h100: clamp(3.2rem, 4.2vi + 2.2rem, 8.41rem);
+--h200: clamp(2.56rem, 3.4vi + 1.76rem, 6.31rem);   /* h100 ÷ 1.25 */
+--h300: clamp(2.05rem, 2.7vi + 1.41rem, 4.73rem);   /* h200 ÷ 1.25 */
+--h400: clamp(1.64rem, 2.2vi + 1.13rem, 3.55rem);   /* h300 ÷ 1.25 */
+--h500: clamp(1.31rem, 1.75vi + 0.9rem, 2.66rem);   /* h400 ÷ 1.25 */
+--h600: clamp(1.05rem, 1.4vi + 0.72rem, 1.5rem);    /* h500 ÷ 1.25 */
+--base-lg: clamp(1.31rem, 1.75vi + 0.9rem, 2rem);   /* between h500 & base */
+--base: clamp(1rem, 0.22vi + 0.95rem, 1.13rem);
+--base-sm: clamp(0.8rem, 0.18vi + 0.76rem, 0.9rem); /* base ÷ 1.25 */
+--base-extra-sm: clamp(0.64rem, 0.14vi + 0.61rem, 0.72rem); /* base-sm ÷ 1.25 */
 
-/* Display - special hero text only */
---display: clamp(3rem, 2rem + 4vw, 5rem);  /* 48px → 80px */
+  /* Display */
+  --display: clamp(5.96rem, 9.14vi + 3.9rem, 11.21rem);
 
 
   /* space sizing */

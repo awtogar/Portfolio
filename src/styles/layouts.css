@@ -1,14 +1,3 @@
-h1, h2, h3, h4, h5, h6 {
-  @apply font-medium font-sans;;
-}
-
-/* p {
-  @apply font-serif font-normal tracking-[0.005em] leading-[1.42];
-} */
-
-
-
-
 @layer utilities {
   /* Section components  */
   .section-padding-hero{
@@ -22,7 +11,7 @@ h1, h2, h3, h4, h5, h6 {
     @apply py-s900;
   }
   .section-padding-xy {
-    @apply px-4 py-s900;
+    @apply px-4 py-s900 md:px-12 lg:px-24;
   }
   .section-padding-end {
     @apply px-4 pt-s900 pb-4;
@@ -31,15 +20,12 @@ h1, h2, h3, h4, h5, h6 {
     @apply text-h100! text-secondary text-center transition-transform uppercase;
   }
   .textPreloader{
-    @apply text-h100! text-secondary flex items-center uppercase;
+    @apply text-h400! text-secondary flex items-center uppercase;
   }
 
-  /* heading tracking and leading */
-  /* .ts-100{
-    @apply tracking-[-0.03em] leading-none;
-  } */
-
-  /* .ts-200{
-    @apply tracking-[-0.052em] leading-[1.24];
-  } */
-}
+.cards-cols{
+  grid-template-columns: repeat(2,50rem);
+    gap: 10rem;
+    justify-content: space-between;
+  }
+  }

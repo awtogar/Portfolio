@@ -10,21 +10,21 @@ const AboutHero = () => {
     <BaseSection className="">
       <div className="lg:max-h-none flex flex-col gap-s200 lg:gap-s800">
         {/* Image Section */}
-        <div className=" w-full lg:max-w-[1408px] lg:mx-auto">
+        <div className="relative z-20">
           <div className="w-full h-full">
             <ScrollAnimatedImg
               src={images_1}
               scrollRange={['0%', '15%']}
               alt="Intro Image 1"
-              containerClassName="w-full h-[368px] md:h-[682px] lg:h-[912px] rounded-lg lg:rounded-2xl"
-              imageClassName="object-cover rounded-lg lg:rounded-2xl object-center"
+              containerClassName="w-full h-[428px] md:h-[682px] lg:h-[912px] rounded-lg"
+              imageClassName="object-cover rounded-lg object-center"
             />
           </div>
-          <div className="flex absolute right-4 md:right-8 lg:right-12 top-1/2 -translate-y-1/2 overflow-hidden">
+          <div className="flex absolute right-0 top-1/2 -translate-y-1/2 overflow-hidden">
             <CircularText
               text={'MADE*NOT*BORN*'}
               onHover="slowDown"
-              className="text-secondary dark:text-primary scale-90 md:scale-100 lg:scale-110"
+              className="text-secondary dark:text-primary"
               centerClassName="bg-neutral-100"
               centerIcon={<RiGeminiFill className="text-secondary dark:text-primary" size={48} />}
             />

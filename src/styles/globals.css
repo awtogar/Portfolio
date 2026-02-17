@@ -5,28 +5,12 @@
 @import './layouts.css';
 @custom-variant dark (&:where(.dark, .dark *));
 
-/* *{
-  border: 1px solid red;
-} */
-html {
-  position: relative;
-  -webkit-text-size-adjust: 100%;
-  -moz-text-size-adjust: 100%;
-  text-size-adjust: 100%;
-}
-
-@layer base {
-  body {
-    background-color: var(--color-neutral-100);
-    color: var(--color-primary);
-  }
-}
 
 @theme {
   --font-sans: var(--sans);
   --font-serif: var(--serif);
   --font-mono: var(--mono);
-
+  
   --color-neutral-100: var(--neutral-100);
   --color-neutral-200: var(--neutral-200);
   --color-neutral-300: var(--neutral-300);
@@ -39,12 +23,6 @@ html {
   --color-brand-primary: var(--brand-primary);
   --color-brand-secondary: var(--brand-secondary);
   --color-brand-tertiary: var(--brand-tertiary);
-
-  --breakpoint-*: initial;
-  --breakpoint-md: 46rem;
-  --breakpoint-lg: 60rem;
-  --breakpoint-xl: 80rem;
-  --breakpoint-2xl: 90rem;
 
   --text-display: var(--display);
   --text-h100: var(--h100);
@@ -63,9 +41,52 @@ html {
   --spacing-s500: var(--s500);
   --spacing-s600: var(--s600);
   --spacing-s700: var(--s700);
-  --spacing-s800: var (--s800);
+  --spacing-s800: var(--s800);
   --spacing-s900: var(--s900);
   --spacing-sfluid: var(--sfluid);
+  
+  --breakpoint-*: initial;
+  --breakpoint-md: 46rem;
+  --breakpoint-lg: 60rem;
+  --breakpoint-xl: 80rem;
+  --breakpoint-2xl: 90rem;
+}
 
-  --animate-shine: shine var(--shine);
+
+
+
+html {
+  position: relative;
+  -webkit-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  * {
+    /* border: 1px solid red; */
+    margin: 0;
+    padding: 0;
+    font: inherit;
+  }
+  body {
+    background-color: var(--color-neutral-100);
+    color: var(--color-primary);
+  }
+ p {
+    @apply leading-[150%] tracking-[0.025em];
+  }
+
+  :is(h1, h2, h3, h4, h5, h6) {
+    @apply leading-[90%] tracking-[-3%];
+  }
+  .hsAccent{
+    @apply leading-[150%] tracking-widest text-primary/75 uppercase;
+  }
 }

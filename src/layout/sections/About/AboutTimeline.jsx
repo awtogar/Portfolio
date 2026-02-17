@@ -16,92 +16,79 @@ const AboutTimeline = () => {
           </div>
           <p>I can help you create stunning visuals, seamless user experiences and be impactful based on your needs.</p>
         </div>
-
+        
         {/* Timeline */}
-        <div className="mt-s900 gap-y-s800 w-full space-y-s800">
-          {experience.map((experience, index) => (
-            <article key={experience.id} className="w-full pt-s600 pb-s900 border-t border-primary/10">
-              <div className="flex gap-x-s200 pb-s200">
-                {/* Metadata container */}
-                <div className="relative flex flex-col items-center gap-4">
-                  <div className="relative flex items-center justify-center">
-                    <div className="absolute w-10 h-10 rounded-full bg-primary/5 animate-pulse" />
-                    <div className="relative w-8 h-8 rounded-full bg-primary flex items-center justify-center shadow-lg shadow-primary/20">
-                      <span className="text-[11px] font-medium text-secondary">{index + 1}</span>
-                    </div>
-                  </div>
+        <div className="mt-s900 w-full">
+          {experience.map((exp, index) => (
+            <article key={exp.id} className="w-full border-t border-primary/10 group">
+              {/* ── Row wrapper: stacks on mobile, side-by-side on md+ ── */}
+              <div className="grid grid-cols-1 md:grid-cols-[140px_1fr] gap-x-s700">
+                {/* ── LEFT: Metadata column ─────────────────────────────── */}
+                <div className="flex flex-row md:flex-col items-center md:items-start justify-between md:justify-start gap-s300 py-s500 md:py-s700 md:pr-s600 md:border-r md:border-primary/10">
+                  {/* Index */}
+                  <span className="font-mono text-base-sm tracking-[0.2em] text-primary/30 tabular-nums">{String(index + 1).padStart(2, '0')}</span>
 
-                  {/* Vertical Connector */}
-                  <div className="flex-1 relative w-px bg-primary/20">
-                    <div className=" bg-gradient-to-b from-primary/40 to-transparent" />
-                  </div>
+                  {/* Position badge */}
+                  <span className="text-base-sm uppercase tracking-[0.18em] font-medium text-primary/50 border border-primary/15 px-2 py-1 hidden md:inline-flex">
+                    {exp.position}
+                  </span>
 
-                  {/* Date Chip */}
-                  <div className="flex flex-col gap-2">
-                    <div className="justify-center items-center flex px-4 py-1.5 rounded-full bg-primary text-secondary text-[11px] font-medium tracking-wide whitespace-nowrap">
-                      {formatDate(experience.startDate)}
-                    </div>
-                    <div className="w-full h-px bg-primary/20" />
-                    <div className="justify-center items-center flex px-3 py-1.5 rounded-full bg-primary/10 text-primary text-[11px] font-medium tracking-wide whitespace-nowrap">
-                      {formatDate(experience.endDate)}
-                    </div>
+                  {/* Date range — stacked on md, inline on mobile */}
+                  <div className="flex flex-row md:flex-col gap-s200 md:gap-0 md:mt-auto">
+                    <span className="font-mono text-base-sm tabular-nums tracking-wide text-primary/60">{formatDate(exp.startDate)}</span>
+                    <span className="font-mono text-base-sm text-primary/25 hidden md:block leading-none my-[3px]">|</span>
+                    <span className="font-mono text-base-sm text-primary/25 md:hidden leading-none my-[3px]">to</span>
+                    <span className="font-mono text-base-sm tabular-nums tracking-wide text-primary/40">{formatDate(exp.endDate)}</span>
                   </div>
                 </div>
 
-                {/* Content */}
-                <div className="flex flex-col flex-1 min-w-0">
-                  {/* Job Title - Largest */}
-                  <h3 className="text-primary text-h200 font-medium leading-tight mb-s300">{experience.title}</h3>
+                {/* ── RIGHT: Content column ─────────────────────────────── */}
+                <div className="py-s600 md:py-s700 flex flex-col gap-s600">
+                  {/* Title & Company */}
+                  <div className="flex flex-col gap-s100 md:gap-s500">
+                    <h3 className="text-primary text-h400 md:leading-[85%]">{exp.title}</h3>
+                    <span className="text-primary/50 text-base-lg md:text-h600 tracking-tight">{exp.company}</span>
+                  </div>
 
-                  {/* Company - Secondary */}
-                  <h4 className="text-primary text-h400 font-normal mb-s600">{experience.company}</h4>
-
-                  {/* Achievements Section */}
-                  <div className="mb-s700">
-                    {/* Label smaller than content - Swiss style */}
-                    <div className="inline-flex items-center gap-s400 mb-s400 border-b border-primary/10 pb-1">
-                      <p className="text-[10px] uppercase tracking-[0.15em] text-primary/40 font-medium">Key Achievements</p>
-                    </div>
-
-                    <ul className="space-y-s400">
-                      {experience.achievements.map((achievement, i) => (
-                        <li key={i} className="flex items-start gap-s300 group/item">
-                          <span className="flex-shrink-0 w-1.5 h-1.5 rounded-full bg-primary/30 mt-[7px]" />
-                          <p className="text-primary/80">{achievement}</p>
+                  {/* Achievements */}
+                  <div className="flex flex-col gap-s300">
+                    <p className="text-base-sm uppercase tracking-[0.2em] text-primary/30 font-medium border-b border-primary/8 pb-s200">Key Performance</p>
+                    <ul className="flex flex-col gap-s300">
+                      {exp.achievements.map((achievement, i) => (
+                        <li key={i} className="flex items-start gap-s300">
+                          {/* Swiss bullet: a short horizontal rule, not a dot */}
+                          <span className="flex-shrink-0 w-3 h-px bg-primary/30 mt-[9px]" />
+                          <p className="text-primary/70 text-sm leading-relaxed">{achievement}</p>
                         </li>
                       ))}
                     </ul>
                   </div>
 
-                  {/* Skills Grid - Labels smaller than list items */}
-                  <div className="gap-s700 pt-s500 border-t border-primary/10">
-                    <div className="flex-1">
-                      <p className="text-[10px] uppercase tracking-[0.15em] text-primary/40 font-medium mb-s300">Competencies</p>
-                      <ul className="space-y-[6px]">
-                        {experience.competencies.map((competency, i) => (
-                          <li key={i} className="text-base-sm font-normal text-primary">
-                            {competency}
+                  {/* Competencies & Tools — 2-col grid */}
+                  <div className="grid grid-cols-2 gap-s600 pt-s500 border-t border-primary/8">
+                    <div className="flex flex-col gap-s200">
+                      <p className="text-base-sm uppercase tracking-[0.2em] text-primary/30 font-medium">Competencies</p>
+                      <ul className="flex flex-col gap-[5px]">
+                        {exp.competencies.map((c, i) => (
+                          <li key={i} className="text-[12px] text-primary/70 font-normal leading-snug">
+                            {c}
                           </li>
                         ))}
                       </ul>
                     </div>
 
-                    <div className="flex-1">
-                      <p className="text-[10px] uppercase tracking-[0.15em] text-primary/40 font-medium mb-s300">Tools</p>
-                      <ul className="space-y-[6px]">
-                        {experience.tools.map((tool, i) => (
-                          <li key={i} className="text-base-sm font-normal text-primary">
-                            {tool}
+                    <div className="flex flex-col gap-s200">
+                      <p className="text-base-sm uppercase tracking-[0.2em] text-primary/30 font-medium">Tools</p>
+                      <ul className="flex flex-col gap-[5px]">
+                        {exp.tools.map((t, i) => (
+                          <li key={i} className="text-[12px] text-primary/70 font-normal leading-snug">
+                            {t}
                           </li>
                         ))}
                       </ul>
                     </div>
                   </div>
                 </div>
-              </div>
-              <div className="md:hidden flex items-center justify-between pt-s400 border-t border-primary/5 text-base-sm">
-                <span className="text-primary/50">Position</span>
-                <span className="text-primary">{experience.position}</span>
               </div>
             </article>
           ))}

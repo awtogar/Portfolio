@@ -97,7 +97,7 @@ const pages_data = {
 const services = [{
     id: 1,
     number: '01',
-    title: 'Graphic Design',
+    title: 'Graphic',
     description: 'Building strong brand visuals through creative concepts and graphics.',
     features: [{
         number: '01',
@@ -117,7 +117,7 @@ const services = [{
   {
     id: 2,
     number: '02',
-    title: 'UI/UX Design',
+    title: 'UI/UX',
     description: 'Crafting intuitive user experiences and visually appealing interfaces.',
     features: [{
         number: '01',
@@ -198,6 +198,60 @@ const works = [{
   }
 ];
 
+const projects = [
+  {
+    id: 1,
+    title: 'Punto Pago',
+    subtitle: 'The First Super-App in Latin America',
+    description: 'A comprehensive super-app for Latin American markets',
+    image: '/images/projects/punto-pago.jpg',
+    category: 'Applications',
+    tags: ['Mobile App', 'FinTech', 'Super App'],
+    link: '/projects/punto-pago',
+    featured: true
+  },
+  {
+    id: 2,
+    title: 'Kelvin Zero',
+    subtitle: 'A digital product for passwordless authentication',
+    description: 'Secure passwordless authentication solution',
+    image: '/images/projects/kelvin-zero.jpg',
+    category: 'Websites',
+    tags: ['Web App', 'Security', 'Authentication'],
+    link: '/projects/kelvin-zero',
+    featured: true
+  },
+  {
+    id: 3,
+    title: 'Calendar App',
+    subtitle: 'Modern scheduling and time management',
+    description: 'Intuitive calendar application for productivity',
+    image: '/images/projects/calendar-app.jpg',
+    category: 'Applications',
+    tags: ['Mobile App', 'Productivity', 'Calendar'],
+    link: '/projects/calendar-app',
+    featured: false
+  },
+  {
+    id: 4,
+    title: 'Brand Identity Project',
+    subtitle: 'Complete brand redesign',
+    description: 'Comprehensive branding and visual identity',
+    image: '/images/projects/brand-project.jpg',
+    category: 'Branding',
+    tags: ['Branding', 'Design', 'Identity'],
+    link: '/projects/brand-identity',
+    featured: false
+  }
+];
+
+const projectCategories = [
+  { id: 'all', label: 'All Projects' },
+  { id: 'websites', label: 'Websites' },
+  { id: 'applications', label: 'Applications' },
+  { id: 'branding', label: 'Branding' }
+];
+
 const socials = [{
     title: 'Github',
     href: 'https://github.com/awtogar',
@@ -257,7 +311,7 @@ const experience = [
   },
   {
     id: 2,
-    title: 'Assets and Art Data Management',
+    title: 'Data & Art Administrator',
     company: 'PT Digital Inisiatif (Kompas Gramedia)',
     position: 'Intern',
     location: 'Jakarta, Indonesia',
@@ -307,6 +361,8 @@ export {
   pages_data,
   services,
   works,
+  projects,
+  projectCategories,
   socials,
   contact_info,
   experience

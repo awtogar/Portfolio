@@ -63,7 +63,7 @@ export default function Nav({ closeMenu }) {
             <div className="text-secondary/55 border-b border-secondary/35">
               <span className="text-xs">NAVIGATION</span>
             </div>
-            <div className="flex flex-col space-y-2 h-full justify-around mb-8">
+            <div className="flex flex-col space-y-2 h-full mb-s400 pt-s400">
               {Object.values(pages_data).map((data, index) => {
                 return (
                   <NavLink key={index} data={{ ...data, index }} isActive={selectedIndicator === data.href} setSelectedIndicator={setSelectedIndicator} closeMenu={closeMenu} />

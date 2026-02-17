@@ -7,25 +7,18 @@ import { ScrollAnimatedImg } from '../../../components';
 const SelectedWorksSection = () => {
   return (
     <section id="selected-works" className="relative py-s900 overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/[0.02] to-transparent pointer-events-none" />
-
       <div className="relative">
         {/* Header */}
-        <header className="mb-s800">
-          <div className="inline-flex items-center gap-3 mb-s300">
-            <span className="text-xs font-medium tracking-[0.2em] text-primary/60 uppercase">(Selected)</span>
+        <div className="flex w-full flex-col gap-s500 text-primary mb-s500">
+          <div className="flex flex-col gap-2">
+            <span className="hsAccent">(selected)</span>
+            <h2 className="text-h200">WORKS</h2>
           </div>
-
-          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-s400">
-            <div>
-              <h2 className="text-h100 text-primary mb-s200 leading-none uppercase">Works</h2>
-              <p className="text-primary/70 max-w-2xl">Explore a curated collection of my recent work, showcasing innovation and craftsmanship.</p>
-            </div>
-          </div>
-        </header>
+          <p>Explore a curated collection of my recent work, showcasing innovation and craftsmanship.</p>
+        </div>
 
         {/* Works Grid */}
-        <div className="grid gap-s900">
+        <div className="flex flex-col gap-s900 md:hidden">
           {works.map((work, index) => (
             <article key={index} className="group relative">
               <div className="relative bg-primary/[0.02] rounded-2xl p-s400 md:p-s600 border border-primary/5 ">
@@ -34,39 +27,33 @@ const SelectedWorksSection = () => {
                   <ScrollAnimatedImg
                     src={work.image}
                     alt={work.title}
-                    containerClassName="aspect-[16/10] md:aspect-[21/9]"
+                    containerClassName="aspect-[5/4]"
                     imageClassName="rounded-xl object-cover w-full h-full transition-transform duration-700 group-hover:scale-101"
                     scrollRange={['0%', '15%']}
                     offset={['start end', 'end start']}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-xl pointer-events-none" />
                 </div>
-
-                {/* Content */}
                 <div className="space-y-s400">
                   {/* Title & Date Row */}
-                  <div className="flex md:flex-row justify-between md:items-start md:justify-between gap-s300">
-                    <h3 className="text-h300 text-primary leading-tight">{work.title}</h3>
-
-                    <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-primary/5 border border-primary/10 self-start">
-                      <RiCalendarLine size={14} className="text-primary/50" />
-                      <time className="text-sm font-medium text-primary/70 whitespace-nowrap tabular-nums">
-                        {work.date[0].month.slice(0, 3)} {work.date[0].year}
+                  <div className="flex justify-between gap-s300">
+                    <span className="text-base-lg">{work.title}</span>
+                    <div className="flex items-center">
+                      <time className=" text-primary/75 text-sm font-mono">
+                        {work.date[0].month.slice(0, 3)}/{work.date[0].year}
                       </time>
                     </div>
                   </div>
 
                   {/* Description */}
-                  <p className="text-base text-primary/75 leading-relaxed max-w-3xl">{work.description}</p>
-
+                  <p className="text-primary/75">{work.description}</p>
                   {/* Tags */}
                   <div className="flex flex-wrap gap-2 pt-s200">
                     {work.tags.map((tag, tagIndex) => (
                       <span
                         key={tagIndex}
-                        className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/5 border border-primary/10 text-sm text-primary/80 hover:bg-primary/10 hover:border-primary/20 transition-all duration-300"
+                        className="inline-flex items-center px-s200 py-[2px] rounded-full text-base-sm font-medium bg-primary/5 text-primary/40 border border-primary/10 transition-all duration-300 hover:bg-primary/10 hover:text-primary"
                       >
-                        <span className="w-1 h-1 bg-primary/60 rounded-full" />
                         {tag}
                       </span>
                     ))}
@@ -77,8 +64,110 @@ const SelectedWorksSection = () => {
           ))}
         </div>
 
-        {/* CTA Section */}
-        <footer className="mt-s900 pt-s900 border-t border-primary/10">
+        <div className="hidden md:grid md:grid-cols-2 gap-s600">
+          {/* Left Column */}
+          <div className="flex flex-col gap-s600">
+            {works
+              .filter((_, index) => index % 2 === 0)
+              .map((work, index) => (
+                <article key={index} className="group relative">
+                  <div className="relative bg-primary/[0.02] rounded-2xl p-s500 border border-primary/5 hover:border-primary/10 transition-all duration-500">
+                    {/* Image Container */}
+                    <div className="relative mb-s400 overflow-hidden rounded-xl">
+                      <ScrollAnimatedImg
+                        src={work.image}
+                        alt={work.title}
+                        containerClassName="aspect-[4/3]"
+                        imageClassName="rounded-xl object-cover w-full h-full transition-transform duration-700 group-hover:scale-105"
+                        scrollRange={['0%', '15%']}
+                        offset={['start end', 'end start']}
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-xl pointer-events-none" />
+                    </div>
+
+                    {/* Content */}
+                    <div className="space-y-s300">
+                      <div className="flex items-start justify-between gap-s300">
+                        <h3 className="text-h300 text-primary leading-tight">{work.title}</h3>
+                        <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-primary/5 border border-primary/10 shrink-0">
+                          <RiCalendarLine size={14} className="text-primary/50" />
+                          <time className="text-sm font-medium text-primary/70 whitespace-nowrap tabular-nums">
+                            {work.date[0].month.slice(0, 3)} {work.date[0].year}
+                          </time>
+                        </div>
+                      </div>
+
+                      <p className="text-base text-primary/75 leading-relaxed">{work.description}</p>
+
+                      <div className="flex flex-wrap gap-2 pt-s100">
+                        {work.tags.map((tag, tagIndex) => (
+                          <span
+                            key={tagIndex}
+                            className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/5 border border-primary/10 text-sm text-primary/80 hover:bg-primary/10 hover:border-primary/20 transition-all duration-300"
+                          >
+                            <span className="w-1 h-1 bg-primary/60 rounded-full" />
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </article>
+              ))}
+          </div>
+
+          {/* Right Column - Offset for Masonry Effect */}
+          <div className="flex flex-col gap-s600 mt-s900">
+            {works
+              .filter((_, index) => index % 2 === 1)
+              .map((work, index) => (
+                <article key={index} className="group relative">
+                  <div className="relative bg-primary/[0.02] rounded-2xl p-s500 border border-primary/5 hover:border-primary/10 transition-all duration-500">
+                    {/* Image Container */}
+                    <div className="relative mb-s400 overflow-hidden rounded-xl">
+                      <ScrollAnimatedImg
+                        src={work.image}
+                        alt={work.title}
+                        containerClassName="aspect-[4/5]"
+                        imageClassName="rounded-xl object-cover w-full h-full transition-transform duration-700 group-hover:scale-105"
+                        scrollRange={['0%', '15%']}
+                        offset={['start end', 'end start']}
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-xl pointer-events-none" />
+                    </div>
+
+                    {/* Content */}
+                    <div className="space-y-s300">
+                      <div className="flex items-start justify-between gap-s300">
+                        <h3 className="text-h300 text-primary leading-tight">{work.title}</h3>
+                        <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-primary/5 border border-primary/10 shrink-0">
+                          <RiCalendarLine size={14} className="text-primary/50" />
+                          <time className="text-sm font-medium text-primary/70 whitespace-nowrap tabular-nums">
+                            {work.date[0].month.slice(0, 3)} {work.date[0].year}
+                          </time>
+                        </div>
+                      </div>
+
+                      <p className="text-base text-primary/75 leading-relaxed">{work.description}</p>
+
+                      <div className="flex flex-wrap gap-2 pt-s100">
+                        {work.tags.map((tag, tagIndex) => (
+                          <span
+                            key={tagIndex}
+                            className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/5 border border-primary/10 text-sm text-primary/80 hover:bg-primary/10 hover:border-primary/20 transition-all duration-300"
+                          >
+                            <span className="w-1 h-1 bg-primary/60 rounded-full" />
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </article>
+              ))}
+          </div>
+        </div>
+        <div className="mt-s900 pt-s900 border-t border-primary/10">
           <div className="flex flex-col md:flex-row items-center justify-between gap-s600">
             <div className="text-center md:text-left">
               <p className="text-lg text-primary/70 mb-2">Interested in seeing more?</p>
@@ -93,7 +182,7 @@ const SelectedWorksSection = () => {
               </span>
             </HoverRotate>
           </div>
-        </footer>
+        </div>
       </div>
     </section>
   );

@@ -11,7 +11,7 @@ const WhatIdoSection = () => {
         <div className="flex flex-col rounded-t-lg">
           <div className="flex w-full flex-col gap-s400 text-primary">
             <div className="flex flex-col">
-              <span className='text-primary/75'>(WHAT I DO?)</span>
+              <span className='hsAccent'>(WHAT I DO?)</span>
               <h2 className="text-h200">SERVICES</h2>
             </div>
             <p>I can help you create stunning visuals, seamless user experiences and be impactful based on your needs.</p>
@@ -21,24 +21,22 @@ const WhatIdoSection = () => {
             <div className="mt-s900 gap-y-s800 flex flex-col justify-between">
               {services.map((service, i) => {
                 const topValue = `calc(10vh + ${i * 5.75}em)`;
-                const marginBottomValue = `${17.25 - i * 5.75}em`;
+                const marginBottomValue = `${17.75 - i * 5.75}em`;
                 return (
-                  <div key={i} className="sticky top-0 border-t border-t-primary/30 bg-neutral-200 pt-s300" style={{ top: topValue, marginBottom: marginBottomValue }}>
+                  <div key={i} className="sticky top-0 border-t border-t-primary/30 bg-neutral-200 mt-s300" style={{ top: topValue, marginBottom: marginBottomValue }}>
                     <div className="flex items-center justify-between">
-                      <div className="text-h300 flex grid-cols-12 items-center justify-start gap-4 py-6 text-left font-semibold spy-5 ">
-                        <span className="col-span-2 self-center text-nowrap">( {service.number} )</span>
-                        <h3 className="capitalize">{service.title}</h3>
+                      <div className="flex grid-cols-12 items-center justify-start gap-4 py-6 text-left spy-5 ">
+                        <span className="text-h500 col-span-2 self-center text-nowrap text-primary/75 font-mono">({service.number})</span>
+                        <h3 className="uppercase text-h300">{service.title}</h3>
                       </div>
-                      {/* <RiAddLine className='text-primary/50'/> */}
-                      {/* <RiSubtractLine/> */}
                     </div>
-                    <div className="text-primary/75 pt-s400">
-                      <p>{service.description}</p>
+                    <div className="pt-s400">
+                      <p className='text-primary'>{service.description}</p>
                       <div className="flex flex-col pt-s200">
                         {service.features.map((feature, featureIndex) => (
-                          <div key={featureIndex} className="flex items-center mt-s200 gap-s200">
-                            <span>({feature.number})</span>
-                            <span>{feature.name}</span>
+                          <div key={featureIndex} className="flex items-center mt-s200 gap-s200 text-primary/75">
+                            <p>({feature.number})</p>
+                            <p>{feature.name}</p>
                           </div>
                         ))}
                       </div>
