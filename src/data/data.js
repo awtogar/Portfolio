@@ -1,4 +1,4 @@
-const pages_data = {
+const pages = {
   home: {
     title: 'Home',
     href: '/',
@@ -156,94 +156,107 @@ const services = [{
   }
 ];
 
-import ovelo_showreel from '../assets/images/selected-works/ovelo-kit.webp';
-import nostratic_showreel from '../assets/images/selected-works/nostratic-kit.webp';
-import lunavara_showreel from '../assets/images/selected-works/lunavara-kit.webp';
-
-const works = [{
-    title: 'Ovelo Eyewear',
-    description: 'An eyewear and Optical Care branding. focused on modern aesthetics and strong visuals branding.',
-    tags: ['Graphics', 'Branding'],
-    date: [
-      {
-        month: 'June',
-        year: '2024'
-      }
-    ],
-    image: ovelo_showreel
-  },
-  {
-    title: 'Nostratic Archive',
-    description: 'Branding and Web Development for a creative studio agency in Indonesia. that specializes in digital products.',
-    tags: ['UI/UX', 'Prototype', 'Figma'],
-    date: [
-      {
-        month: 'February',
-        year: '2025'
-      }
-    ],
-    image: nostratic_showreel
-  },
-  {
-    title: 'Lunavara',
-    description: 'Lunavara is a modern nursery and plant art. focused on aesthetic and minimalism audience',
-    tags: ['Web Development', 'UI/UX'],
-    date: [
-      {
-        month: 'August',
-        year: '2024'
-      }
-    ],
-    image: lunavara_showreel
-  }
-];
-
 const projects = [
   {
     id: 1,
-    title: 'Punto Pago',
-    subtitle: 'The First Super-App in Latin America',
-    description: 'A comprehensive super-app for Latin American markets',
-    image: '/images/projects/punto-pago.jpg',
-    category: 'Applications',
-    tags: ['Mobile App', 'FinTech', 'Super App'],
-    link: '/projects/punto-pago',
-    featured: true
+    title: 'Ovelo Eyewear',
+    subtitle: 'Modern Eyewear Branding',
+    description: 'An eyewear and Optical Care branding. focused on modern aesthetics and strong visuals branding.',
+    image: 'https://placehold.co/800x600/1a1a1a/ffffff?text=1',
+    category: 'Branding',
+    tags: ['Graphics', 'Branding'],
+    date: {
+      month: 'June',
+      year: '2024'
+    },
+    link: '/projects/ovelo-eyewear',
+    featured: true,
+    selected: true
   },
   {
     id: 2,
-    title: 'Kelvin Zero',
-    subtitle: 'A digital product for passwordless authentication',
-    description: 'Secure passwordless authentication solution',
-    image: '/images/projects/kelvin-zero.jpg',
+    title: 'Nostratic Archive',
+    subtitle: 'Creative Studio Agency',
+    description: 'Branding and Web Development for a creative studio agency in Indonesia. that specializes in digital products.',
+    image: 'https://placehold.co/800x600/010101/ffffff?text=2',
     category: 'Websites',
-    tags: ['Web App', 'Security', 'Authentication'],
-    link: '/projects/kelvin-zero',
-    featured: true
+    tags: ['UI/UX', 'Prototype', 'Figma'],
+    date: {
+      month: 'February',
+      year: '2025'
+    },
+    link: '/projects/nostratic-archive',
+    featured: true,
+    selected: true
   },
   {
     id: 3,
-    title: 'Calendar App',
-    subtitle: 'Modern scheduling and time management',
-    description: 'Intuitive calendar application for productivity',
-    image: '/images/projects/calendar-app.jpg',
-    category: 'Applications',
-    tags: ['Mobile App', 'Productivity', 'Calendar'],
-    link: '/projects/calendar-app',
-    featured: false
+    title: 'Lunavara',
+    subtitle: 'Modern Nursery & Plant Art',
+    description: 'Lunavara is a modern nursery and plant art. focused on aesthetic and minimalism audience',
+    image: 'https://placehold.co/800x600/1a1a1a/ffffff?text=3',
+    category: 'Websites',
+    tags: ['Web Development', 'UI/UX'],
+    date: {
+      month: 'August',
+      year: '2024'
+    },
+    link: '/projects/lunavara',
+    featured: true,
+    selected: true
   },
   {
     id: 4,
+    title: 'Punto Pago',
+    subtitle: 'The First Super-App in Latin America',
+    description: 'A comprehensive super-app for Latin American markets',
+    image: 'https://placehold.co/800x600/1a1a1a/ffffff?text=4',
+    category: 'Applications',
+    tags: ['Mobile App', 'FinTech', 'Super App'],
+    link: '/projects/punto-pago',
+     featured: true,
+    selected: true
+  },
+  {
+    id: 5,
+    title: 'Kelvin Zero',
+    subtitle: 'A digital product for passwordless authentication',
+    description: 'Secure passwordless authentication solution',
+    image: 'https://placehold.co/800x600/1a1a1a/ffffff?text=5',
+    category: 'Websites',
+    tags: ['Web App', 'Security', 'Authentication'],
+    link: '/projects/kelvin-zero',
+    featured: true,
+    selected: true
+  },
+  {
+    id: 6,
+    title: 'Calendar App',
+    subtitle: 'Modern scheduling and time management',
+    description: 'Intuitive calendar application for productivity',
+    image: 'https://placehold.co/800x600/1a1a1a/ffffff?text=6',
+    category: 'Applications',
+    tags: ['Mobile App', 'Productivity', 'Calendar'],
+    link: '/projects/calendar-app',
+    featured: true,
+    selected: false
+  },
+  {
+    id: 7,
     title: 'Brand Identity Project',
     subtitle: 'Complete brand redesign',
     description: 'Comprehensive branding and visual identity',
-    image: '/images/projects/brand-project.jpg',
+    image: 'https://placehold.co/800x600/1a1a1a/ffffff?text=7',
     category: 'Branding',
     tags: ['Branding', 'Design', 'Identity'],
     link: '/projects/brand-identity',
-    featured: false
+    featured: false,
+    selected: true
   }
 ];
+
+// Derived: Selected works are projects marked as selected
+const works = projects.filter(project => project.selected);
 
 const projectCategories = [
   { id: 'all', label: 'All Projects' },
@@ -358,7 +371,7 @@ const experience = [
 ];
 
 export {
-  pages_data,
+  pages,
   services,
   works,
   projects,

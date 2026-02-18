@@ -50,7 +50,7 @@ const Header = () => {
   return (
     <>
       <motion.header
-        className="pt-8 fixed flex w-full justify-between items-center mix-blend-difference z-[9998]"
+        className="pt-8 fixed flex w-full justify-between items-center mix-blend-difference z-[9998] md:px-6 lg:px-8"
         initial={{ translateY: 0 }}
         animate={{
           translateY: scrollDirection === 'down' && !isActive ? -100 : 0,

@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "motion/react"
 import { useLocation } from 'react-router-dom';
 import { useDimensions } from '../../hooks/useDimensions';
 import { transitionCurvePath, transitionTextDirection, transitionSlideDown } from '../../data/anim';
-import { pages_data } from '../../data/data';
+import { pages } from '../../data/data';
 
 const SVG_HEIGHT_OFFSET = 300;
 const TARGET_CURVE_Y = -SVG_HEIGHT_OFFSET * 0.001;
@@ -50,7 +50,7 @@ export default function Transition({ children, isLoading }) {
   const [isTransitioning, setIsTransitioning] = useState(false);
 
   const getCurrentPageTitle = () => {
-    const currentPage = Object.values(pages_data).find(page => {
+    const currentPage = Object.values(pages).find(page => {
       return page.href === location.pathname || location.pathname + '/' === page.href || location.pathname === page.href + '/';
     });
     return currentPage ? currentPage.title : '';

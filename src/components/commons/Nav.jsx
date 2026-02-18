@@ -3,7 +3,7 @@ import { motion } from 'motion/react';
 import { useLocation } from 'react-router-dom';
 import { RiSunLine, RiMoonLine } from '@remixicon/react';
 import { menuSlideLeft } from '../../data/anim';
-import { pages_data, socials } from '../../data/data';
+import { pages, socials } from '../../data/data';
 import { useLenis } from '../../context/LenisContext';
 import { useTheme } from '../../hooks/useTheme';
 
@@ -64,7 +64,7 @@ export default function Nav({ closeMenu }) {
               <span className="text-xs">NAVIGATION</span>
             </div>
             <div className="flex flex-col space-y-2 h-full mb-s400 pt-s400">
-              {Object.values(pages_data).map((data, index) => {
+              {Object.values(pages).map((data, index) => {
                 return (
                   <NavLink key={index} data={{ ...data, index }} isActive={selectedIndicator === data.href} setSelectedIndicator={setSelectedIndicator} closeMenu={closeMenu} />
                 );

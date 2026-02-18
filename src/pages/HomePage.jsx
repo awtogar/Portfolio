@@ -1,11 +1,12 @@
-import { HeroSection, IntroSection, WhatIdoSection } from '../layout';
+import { HeroSection, IntroSection, WhatIdoSection,SelectedWorksSection } from '../layout';
 
 const HomePage = () => {
   return (
     <>
       <HeroSection />
       <IntroSection />
-      <WhatIdoSection/>
+      <WhatIdoSection />
+      <SelectedWorksSection />
     </>
   );
 };

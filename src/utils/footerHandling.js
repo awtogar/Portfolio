@@ -1,5 +1,5 @@
 import { useLocation } from 'react-router-dom';
-import { pages_data } from '../data/data';
+import { pages } from '../data/data';
 import { ScrollToSections } from '../function/ScrollToSections';
 
 export const useFooter = () => {
@@ -8,8 +8,8 @@ export const useFooter = () => {
   const scrollToSection = ScrollToSections();
 
   const getCurrentPage = () => {
-    if (currentPath === '/') return pages_data.home;
-    return Object.values(pages_data).find(page => page.href === currentPath) || pages_data.home;
+    if (currentPath === '/') return pages.home;
+    return Object.values(pages).find(page => page.href === currentPath) || pages.home;
   };
 
   const currentPage = getCurrentPage();

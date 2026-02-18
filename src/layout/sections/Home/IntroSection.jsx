@@ -1,18 +1,19 @@
 import React from 'react';
 import video1 from '../../../assets/videos/video-1.mp4';
 import { CreativeButton, VideoLoader } from '../../../components';
+import BaseSection from '../BaseSection';
 
 const IntroSection = () => {
   return (
     <>
-      <section className="z-10">
+      <BaseSection sectionClassName=''>
         <div className="m-auto w-full">
-          <div className="h-[468px] overflow-hidden">
-            <VideoLoader src={video1} className="w-full h-full object-cover" />
+          <div className="h-[468px] overflow-hidden lg:rounded-3xl">
+            <VideoLoader src={video1} className="w-full h-full object-cover -inset-1px lg:h-[calc(100%_+_2px)] lg:w-[calc(100%_+_2px)] transform overflow-clip rounded-[inherit]" />
           </div>
         </div>
-      </section>
-      <section className="z-10 section-padding-xy">
+      </BaseSection>
+      <BaseSection className="z-10 section-padding-xy">
         <div className="m-auto w-full lg:max-w-[1408px]">
           <div className="flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
             <div className="flex w-full flex-col gap-s400 text-primary">
@@ -35,7 +36,7 @@ const IntroSection = () => {
             </div>
           </div>
         </div>
-      </section>
+      </BaseSection>
     </>
   );
 };

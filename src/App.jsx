@@ -10,7 +10,7 @@ import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
 import ProjectPage from './pages/ProjectPage';
 import ContactPage from './pages/ContactPage';
-import { pages_data } from './data/data';
+import { pages } from './data/data';
 import ScrollToTopPages from './function/ScrollToTopPages';
 
 const AppContent = () => {
@@ -38,7 +38,7 @@ const AppContent = () => {
         <main id="main" className="bg-neutral-100" style={{ visibility: isLoading ? 'hidden' : 'visible' }}>
           <Routes location={location} key={location.pathname}>
             <Route
-              path={pages_data.home.href}
+              path={pages.home.href}
               element={
                 <Transition isLoading={isLoading}>
                   <HomePage />
@@ -47,7 +47,7 @@ const AppContent = () => {
               }
             />
             <Route
-              path={pages_data.about.href}
+              path={pages.about.href}
               element={
                 <Transition isLoading={isLoading}>
                   <AboutPage />
@@ -56,7 +56,7 @@ const AppContent = () => {
               }
             />
             <Route
-              path={pages_data.project.href}
+              path={pages.project.href}
               element={
                 <Transition isLoading={isLoading}>
                   <ProjectPage />
@@ -65,7 +65,7 @@ const AppContent = () => {
               }
             />
             <Route
-              path={pages_data.contact.href}
+              path={pages.contact.href}
               element={
                 <Transition isLoading={isLoading}>
                   <ContactPage />

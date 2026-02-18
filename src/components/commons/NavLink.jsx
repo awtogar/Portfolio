@@ -23,7 +23,7 @@ export default function NavLink({ data, isActive, setSelectedIndicator, closeMen
       <motion.div variants={navDotScalling} animate={isActive ? 'open' : 'closed'} className="absolute -left-6 w-2 h-2 top-1/2 -translate-y-1/2 bg-secondary rounded-full" />
 
       {/* link text with hover effect */}
-      <Link to={href} onClick={closeMenu} className="text-display">
+      <Link to={href} onClick={closeMenu} className="text-[3rem]">
         <motion.div
           className="all-unset flex cursor-pointer relative antialiased translate-z-0 will-change-transform overflow-clip"
           initial={false}

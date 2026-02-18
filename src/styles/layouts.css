@@ -1,11 +1,11 @@
 @layer utilities {
   /* Section components  */
   .section-padding-hero{
-    @apply px-4 pb-s900 pt-[164px]
+    @apply px-4 pb-s900 pt-[164px] md:px-12 lg:px-24;
   }
   /* heading spacing */
   .section-padding-x {
-    @apply px-4;
+    @apply px-4 md:px-12 lg:px-24;
   }
   .section-padding-y {
     @apply py-s900;

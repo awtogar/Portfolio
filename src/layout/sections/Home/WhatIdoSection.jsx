@@ -1,12 +1,14 @@
 import React from 'react';
 import { services } from '../../../data/data';
 import SelectedWorksSection from './SelectedWorksSection';
-import { RiAddLine, RiSubtractLine } from '@remixicon/react';
+import BaseSection from '../BaseSection';
 
 const WhatIdoSection = () => {
   return (
-    <section id="what-i-do" className="z-10 section-padding-xy bg-neutral-200 text-primary">
-      <div className="m-auto w-full">
+    <BaseSection 
+      containerID="what-i-do" 
+      sectionClassName="section-padding-x pt-s900 bg-neutral-200 text-primary"
+    >
         {/* Services Header */}
         <div className="flex flex-col rounded-t-lg">
           <div className="flex w-full flex-col gap-s400 text-primary">
@@ -47,9 +49,7 @@ const WhatIdoSection = () => {
             </div>
           </div>
         </div>
-        <SelectedWorksSection />
-      </div>
-    </section>
+    </BaseSection>
   );
 };
 
