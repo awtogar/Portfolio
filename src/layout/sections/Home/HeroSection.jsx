@@ -2,7 +2,6 @@ import React from 'react';
 import { CreativeButton } from '../../../components';
 import BaseSection from '../BaseSection';
 
-
 const HeroSections = () => {
   return (
     <BaseSection containerID="hero" sectionClassName="section-padding-hero">
@@ -12,7 +11,7 @@ const HeroSections = () => {
           <p>A multidisciplinary creative developer with designs and development background. Interested to explore and learn new things.</p>
         </div>
         <div className="flex items-center gap-s400 pt-s600">
-          <div className="flex-1">
+          <div className="flex-1 lg:flex-none lg:min-w-[200px]">
             <CreativeButton to="/contact" variant={'fill'}>
               Get in touch
             </CreativeButton>

@@ -178,7 +178,7 @@ const projects = [
     title: 'Nostratic Archive',
     subtitle: 'Creative Studio Agency',
     description: 'Branding and Web Development for a creative studio agency in Indonesia. that specializes in digital products.',
-    image: 'https://placehold.co/800x600/010101/ffffff?text=2',
+    image: 'https://placehold.co/800x600/1a1a1a/ffffff?text=2',
     category: 'Websites',
     tags: ['UI/UX', 'Prototype', 'Figma'],
     date: {
