@@ -11,7 +11,6 @@ const Header = () => {
   const menuSticky = useStickyElement();
   const toggleSticky = useStickyElement();
   const logoSticky = useStickyElement();
-  const backSticky = useStickyElement();
   const location = useLocation();
 
   // Hide header on project detail pages (they have their own navigation)
@@ -63,16 +62,16 @@ const Header = () => {
           }}
           transition={{ duration: 0.3, ease: 'easeInOut' }}
         >
-          <Magnetic>
-            <CreativeButton size="sm" variant="transparent" to="/projects" className="font-bold font-secondary tracking-tighter antialiased">
-              <span className="flex items-center">
-                <RiArrowLeftLine size={16} className='transition-transform duration-300 ease-in-out group-hover:-rotate-90' />
-                <span className='text-base-sm'>All Projects</span>
-              </span>
-              <Bounds ref={backSticky} />
-            </CreativeButton>
-
-          </Magnetic>
+         <Magnetic>
+            <div className="relative" to="/projects">
+<CreativeButton variant="fillReverse" to="/projects" size="md" className="font-bold font-secondary tracking-tighter antialiased px-4 py-2">
+<span className="flex items-center">
+<RiArrowLeftLine size={16} className='transition-transform duration-300 ease-in-out group-hover:-rotate-90' />
+<span className='text-base-sm'>All Projects</span>
+</span>
+</CreativeButton>
+</div>
+</Magnetic>
 
           {/* Right side: Back link + Toggle + Hamburger */}
           <div className="flex items-center h-[60px]">

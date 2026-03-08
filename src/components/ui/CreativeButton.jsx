@@ -16,6 +16,14 @@ const BUTTON_VARIANTS = {
     textcolor1: 'text-secondary',
     textcolor2: 'text-primary',
   },
+    fillReverse: {
+    background1: 'bg-secondary',
+    background2: 'bg-primary',
+    outline1: 'outline outline-1 outline-primary',
+    outline2: 'outline outline-1 outline-primary',
+    textcolor1: 'text-primary',
+    textcolor2: 'text-secondary',
+  },
   outline: {
     background1: 'bg-secondary',
     background2: 'bg-primary',
@@ -27,6 +35,14 @@ const BUTTON_VARIANTS = {
   transparent: {
     background1: 'bg-transparent',
     background2: 'bg-transparent',
+    outline1: 'outline-none',
+    outline2: 'outline-none',
+    textcolor1: 'text-primary',
+    textcolor2: 'text-primary',
+  },
+    outlineSecondary: {
+    background1: 'bg-secondary',
+    background2: 'bg-secondary',
     outline1: 'outline-none',
     outline2: 'outline-none',
     textcolor1: 'text-primary',
