@@ -6,15 +6,13 @@ import BaseSection from '../BaseSection';
 const IntroSection = () => {
   return (
     <>
-      <BaseSection sectionClassName=''>
-        <div className="m-auto w-full">
-          <div className="h-[468px] overflow-hidden lg:rounded-3xl">
-            <VideoLoader src={video1} className="w-full h-full object-cover -inset-1px lg:h-[calc(100%_+_2px)] lg:w-[calc(100%_+_2px)] transform overflow-clip rounded-[inherit]" />
-          </div>
+      <BaseSection sectionClassName="lg:px-24" containerClassName="">
+        <div className="h-[468px] overflow-hidden lg:rounded-3xl lg:h-[640px]">
+          <VideoLoader src={video1} className="w-full h-full object-cover -inset-1px lg:h-[calc(100%_+_2px)] lg:w-[calc(100%_+_2px)] transform overflow-clip rounded-[inherit]" />
         </div>
       </BaseSection>
       <BaseSection className="z-10 section-padding-xy">
-        <div className="m-auto w-full lg:max-w-[1408px]">
+        <div className="m-auto w-full">
           <div className="flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
             <div className="flex w-full flex-col gap-s400 text-primary">
               <div className="flex flex-col">

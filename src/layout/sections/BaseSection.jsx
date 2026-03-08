@@ -5,7 +5,7 @@ const BaseSection = ({
   children,
   containerID = '',
   sectionClassName = 'section-padding-xy',
-  containerClassName = 'max-w-full lg:max-w-[960px] xl:max-w-[1140px] 2xl:max-w-[1280px]',
+  containerClassName = 'max-w-full md:max-w-[768px] lg:max-w-[1080px] xl:max-w-[1440px]',
 }) => {
   return (
     <section className={`z-10 ${sectionClassName}`} id={containerID}>

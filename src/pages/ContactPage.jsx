@@ -4,7 +4,6 @@ import { useContactForm, services, budgetOptions } from '../utils/contactHandlin
 
 const ContactPage = () => {
   const { selectedServices, selectedBudget, setSelectedBudget, formData, attachment, toggleService, handleInputChange, handleFileChange, handleSubmit } = useContactForm();
-
   return (
     <BaseSection sectionClassName="min-h-screen bg-secondary py-s900" containerID="contact-form">
       <div className="w-full max-w-lg mx-auto">

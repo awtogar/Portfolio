@@ -60,9 +60,6 @@ const AboutImageReveal = () => {
           })}
         </div>
       </div>
-      <div className="bg-primary section-padding-y text-secondary">
-        <SlideText texts={['MADE NOT BORN', 'EVERYTHING IS POSSIBLE']} velocity={18} className="text-[4rem] leading-[3rem]" />
-      </div>
     </BaseSection>
   );
 };
