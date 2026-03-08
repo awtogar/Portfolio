@@ -9,6 +9,7 @@ import { StickyProvider } from './providers/StickyProvider';
 import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
 import ProjectPage from './pages/ProjectPage';
+import ProjectDetailPage from './pages/ProjectDetailPage';
 import ContactPage from './pages/ContactPage';
 import { pages } from './data/data';
 import ScrollToTopPages from './function/ScrollToTopPages';
@@ -60,6 +61,15 @@ const AppContent = () => {
               element={
                 <Transition isLoading={isLoading}>
                   <ProjectPage />
+                  <Footer />
+                </Transition>
+              }
+            />
+            <Route
+              path="/projects/:slug"
+              element={
+                <Transition isLoading={isLoading}>
+                  <ProjectDetailPage />
                   <Footer />
                 </Transition>
               }

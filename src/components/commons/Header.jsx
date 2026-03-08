@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
-import { RiSunLine, RiMoonLine } from '@remixicon/react';
+import { useLocation } from 'react-router-dom';
+import { RiSunLine, RiMoonLine, RiArrowLeftLine } from '@remixicon/react';
 import { AnimatePresence, motion } from "motion/react"
-import { Nav, Magnetic, Bounds } from '../../components';
-
+import { Nav, Magnetic, Bounds, CreativeButton } from '../../components';
 import { useLenis } from '../../context/LenisContext';
 import { useTheme } from '../../hooks/useTheme';
 import { useStickyElement } from '../../hooks/useStickyElement';
@@ -11,6 +11,11 @@ const Header = () => {
   const menuSticky = useStickyElement();
   const toggleSticky = useStickyElement();
   const logoSticky = useStickyElement();
+  const backSticky = useStickyElement();
+  const location = useLocation();
+
+  // Hide header on project detail pages (they have their own navigation)
+  const isProjectDetail = /^\/projects\/[^/]+$/.test(location.pathname);
 
   // control menu state buat hamburger
   const [isActive, setIsActive] = useState(false);
@@ -46,6 +51,80 @@ const Header = () => {
   const closeMenu = () => {
     setIsActive(false);
   };
+
+  if (isProjectDetail) {
+    return (
+      <>
+        <motion.header
+        className="pt-8 fixed flex w-full justify-between items-center mix-blend-difference z-[9998] md:px-6 lg:px-8"
+          initial={{ translateY: 0 }}
+          animate={{
+            translateY: scrollDirection === 'down' && !isActive ? -100 : 0,
+          }}
+          transition={{ duration: 0.3, ease: 'easeInOut' }}
+        >
+          <Magnetic>
+            <CreativeButton size="sm" variant="transparent" to="/projects" className="font-bold font-secondary tracking-tighter antialiased">
+              <span className="flex items-center">
+                <RiArrowLeftLine size={16} className='transition-transform duration-300 ease-in-out group-hover:-rotate-90' />
+                <span className='text-base-sm'>All Projects</span>
+              </span>
+              <Bounds ref={backSticky} />
+            </CreativeButton>
+
+          </Magnetic>
+
+          {/* Right side: Back link + Toggle + Hamburger */}
+          <div className="flex items-center h-[60px]">
+          <motion.div
+            className="toggle hidden md:flex text-neutral-100 dark:text-primary relative h-[60px] items-center justify-center"
+            animate={{
+              opacity: isActive ? 0 : 1,
+              pointerEvents: isActive ? 'none' : 'auto',
+            }}
+            transition={{
+              opacity: {
+                duration: isActive ? 0.3 : 1.5,
+                ease: 'easeInOut',
+              },
+            }}
+          >
+            <Magnetic>
+              <button className="cursor-pointer flex items-center justify-center h-[60px] group" onClick={toggleTheme} aria-label="Toggle dark mode" type="button">
+                <div className="relative">
+                  <RiSunLine className="hidden dark:inline transition-transform duration-300 ease-in-out group-hover:-rotate-90" size={24} />
+                  <RiMoonLine className="inline dark:hidden transition-transform duration-300 ease-in-out group-hover:rotate-45" size={24} />
+                </div>
+                <Bounds ref={toggleSticky} />
+              </button>
+            </Magnetic>
+          </motion.div>
+          <Magnetic>
+            <div
+              className={`px-4 relative flex flex-col justify-center items-center h-[60px] w-[60px] gap-[0.2rem] md:w-[4.5rem] md:gap-2 md:pointer-events-none cursor-pointer  ${isActive ? 'active' : ''}`}
+              onClick={() => {
+                setIsActive(!isActive);
+              }}
+            >
+              <div
+                className={`block w-11 h-[3px] bg-neutral-100 mix-blend-difference transition-transform duration-300 ease-in-out origin-center
+                ${isActive ? 'scale-x-50' : 'scale-x-60'} md:w-[30px] md:h-[2px]
+                ${isActive ? 'md:scale-x-100' : 'md:scale-x-60'} dark:bg-primary`}
+              />
+              <div
+                className={`block w-11 h-[3px] bg-neutral-100 mix-blend-difference transition-transform duration-300 ease-in-out origin-center
+                ${isActive ? 'scale-x-50' : 'scale-x-60'} md:w-[30px] md:h-[2px]
+                ${isActive ? 'md:scale-x-100' : 'md:scale-x-60'} dark:bg-primary`}
+              />
+              <Bounds ref={menuSticky} />
+            </div>
+          </Magnetic>
+        </div>
+        </motion.header>
+        <AnimatePresence mode="wait">{isActive && <Nav closeMenu={closeMenu} />}</AnimatePresence>
+      </>
+    );
+  }
 
   return (
     <>
