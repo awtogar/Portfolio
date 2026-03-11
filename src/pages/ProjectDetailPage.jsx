@@ -6,6 +6,7 @@ import { projects } from '../data/data';
 import { ScrollAnimatedImg, CreativeButton, TransitionLink } from '../components';
 import { RiArrowLeftLine, RiArrowRightUpLine } from '@remixicon/react';
 import { useCursorHover } from '../hooks/useCursorEffect';
+import NextProjectSection from '../layout/sections/Project/NextprojectSection';
 
 const fadeUp = {
   initial: { opacity: 0, y: 40 },
@@ -14,7 +15,6 @@ const fadeUp = {
 
 const ProjectDetailPage = () => {
   const { slug } = useParams();
-  const nextBtnRef = useCursorHover('arrow');
 
   const projectIndex = projects.findIndex((p) => p.slug === slug);
   const project = projects[projectIndex];
@@ -68,7 +68,6 @@ const ProjectDetailPage = () => {
       {/* Project Info Section */}
       <BaseSection containerClassName="max-w-full md:max-w-[768px] lg:max-w-[1080px] xl:max-w-[1440px]">
         <div className="flex flex-col gap-s700">
-          {/* Title & Subtitle */}
           <motion.div
             {...fadeUp}
             transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
@@ -78,8 +77,6 @@ const ProjectDetailPage = () => {
             <h1 className="text-h100">{project.title}</h1>
             <p className="text-h500 text-primary/60 max-w-2xl">{project.subtitle}</p>
           </motion.div>
-
-          {/* Metadata + Overview Grid */}
           <motion.div
             {...fadeUp}
             transition={{ duration: 0.7, delay: 0.15, ease: [0.25, 0.46, 0.45, 0.94] }}
@@ -176,44 +173,7 @@ const ProjectDetailPage = () => {
       )}
 
       {/* Next Project Section */}
-      {nextProject && (
-        <section className="border-t border-primary/10">
-          <BaseSection containerClassName="max-w-full md:max-w-[768px] lg:max-w-[1080px] xl:max-w-[1440px]">
-              <motion.div
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.7 }}
-                className="flex flex-col md:flex-row items-start md:items-center justify-between gap-s500"
-              >
-                <div className="flex flex-col gap-s300">
-                  <span className="text-xs uppercase tracking-widest text-primary/40 font-medium">
-                    Next Project
-                  </span>
-                  <h2 className="text-h200 text-primary group-hover:opacity-60 transition-opacity duration-300">
-                    {nextProject.title}
-                  </h2>
-                  <p className="text-primary/50 max-w-lg">
-                    {nextProject.subtitle}
-                  </p>
-                </div>
-            <TransitionLink
-              to={`/projects/${nextProject.slug}`}
-              className="group block">
-                  <CreativeButton ref={nextBtnRef} variant="outline">
- <RiArrowRightUpLine
-                    size={24}
-                    className="text-primary group-hover:text-secondary transition-colors duration-400"
-                  />
-                  </CreativeButton>
-            
-            </TransitionLink>
-
-              </motion.div>
-          </BaseSection>
-        </section>
-        
-      )}
+      <NextProjectSection nextProject={nextProject} />
     </div>
   );
 };

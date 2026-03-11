@@ -14,9 +14,9 @@ export function StickyProvider({ children }) {
   const stickyElementsRef = useRef([]);
   const [version, setVersion] = useState(0);
 
-  const registerStickyElement = useCallback((ref, variant = 'scale', sticky = false) => {
+  const registerStickyElement = useCallback((ref, variant = 'scale', sticky = false, fill = null) => {
     if (ref && !stickyElementsRef.current.some(item => item.ref === ref)) {
-      stickyElementsRef.current.push({ ref, variant, sticky });
+      stickyElementsRef.current.push({ ref, variant, sticky, fill });
       setVersion(v => v + 1);
       return true;
     }

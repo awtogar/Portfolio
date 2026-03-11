@@ -1,9 +1,39 @@
 import React from 'react';
 import { works } from '../../../data/data';
-import { CreativeButton, HoverRotate } from '../../../components';
+import { CreativeButton, HoverRotate, TransitionLink } from '../../../components';
 import { RiArrowRightUpLine, RiCalendarLine, RiCodeSSlashLine } from '@remixicon/react';
 import { ScrollAnimatedImg } from '../../../components';
 import BaseSection from '../BaseSection';
+import { useCursorHover } from '../../../hooks/useCursorEffect';
+
+const WorkCard = ({ work, index }) => {
+  const cardRef = useCursorHover('arrow');
+
+  return (
+    <article className="group relative">
+      <TransitionLink to={`/projects/${work.slug}`} className="block">
+        <div ref={cardRef} className="relative overflow-hidden rounded-2xl">
+          <ScrollAnimatedImg
+            src={work.image}
+            alt={work.title}
+            containerClassName="w-full aspect-[4/5]"
+            imageClassName="object-cover w-full h-full rounded-2xl"
+            scrollRange={['0%', '12%']}
+            offset={['start end', 'end start']}
+          />
+        </div>
+        <div className="pt-s500 space-y-s300">
+          <h3 className="text-primary text-h400 leading-tight">{work.title}</h3>
+          <p className="text-primary/60 leading-relaxed">{work.description}</p>
+          <div className="pt-s200">
+            <p className="text-primary/80 font-medium">{work.client || work.title}</p>
+            <p className="text-primary/50 text-sm">{work.role || 'Creative Developer'}</p>
+          </div>
+        </div>
+      </TransitionLink>
+    </article>
+  );
+};
 
 const SelectedWorksSection = () => {
   return (
@@ -22,26 +52,7 @@ const SelectedWorksSection = () => {
           {works
             .filter((_, i) => i % 2 === 0)
             .map((work, index) => (
-              <article key={index} className="group relative">
-                <div className="relative overflow-hidden rounded-2xl">
-                  <ScrollAnimatedImg
-                    src={work.image}
-                    alt={work.title}
-                    containerClassName="w-full aspect-[4/5]"
-                    imageClassName="object-cover w-full h-full rounded-2xl"
-                    scrollRange={['0%', '12%']}
-                    offset={['start end', 'end start']}
-                  />
-                </div>
-                <div className="pt-s500 space-y-s300">
-                  <h3 className="text-primary text-h400 leading-tight">{work.title}</h3>
-                  <p className="text-primary/60 leading-relaxed">{work.description}</p>
-                  <div className="pt-s200">
-                    <p className="text-primary/80 font-medium">{work.client || work.title}</p>
-                    <p className="text-primary/50 text-sm">{work.role || 'Creative Developer'}</p>
-                  </div>
-                </div>
-              </article>
+              <WorkCard key={work.id} work={work} index={index} />
             ))}
         </div>
 
@@ -50,26 +61,7 @@ const SelectedWorksSection = () => {
           {works
             .filter((_, i) => i % 2 === 1)
             .map((work, index) => (
-              <article key={index} className="group relative">
-                <div className="relative overflow-hidden rounded-2xl">
-                  <ScrollAnimatedImg
-                    src={work.image}
-                    alt={work.title}
-                    containerClassName="w-full aspect-[4/5]"
-                    imageClassName="object-cover w-full h-full rounded-2xl"
-                    scrollRange={['0%', '12%']}
-                    offset={['start end', 'end start']}
-                  />
-                </div>
-                <div className="pt-s500 space-y-s300">
-                  <h3 className="text-primary text-h400 leading-tight">{work.title}</h3>
-                  <p className="text-primary/60 leading-relaxed">{work.description}</p>
-                  <div className="pt-s200">
-                    <p className="text-primary/80 font-medium">{work.client || work.title}</p>
-                    <p className="text-primary/50 text-sm">{work.role || 'Creative Developer'}</p>
-                  </div>
-                </div>
-              </article>
+              <WorkCard key={work.id} work={work} index={index} />
             ))}
         </div>
       </div>
@@ -92,3 +84,4 @@ const SelectedWorksSection = () => {
 };
 
 export default SelectedWorksSection;
+

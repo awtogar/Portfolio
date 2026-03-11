@@ -5,21 +5,22 @@ import { useSticky } from '../context/StickyContext';
  * Custom hook to register an element for cursor HOVER effect only (non-sticky).
  * The cursor will change appearance on hover but will NOT snap to the element's center.
  * @param {string} variant - Cursor variant to use when hovering ('scale' | 'arrow' | 'scale2')
+ * @param {string} fill - Optional custom fill class (e.g. 'bg-accent'). Falls back to CURSOR_FILLS if not provided.
  * @returns {React.RefObject} Element ref to attach to the target element
  */
-export const useCursorHover = (variant = 'scale') => {
+export const useCursorHover = (variant = 'scale', fill = null) => {
   const { registerStickyElement, unregisterStickyElement } = useSticky();
   const elementRef = useRef(null);
 
   useLayoutEffect(() => {
     const el = elementRef.current;
     if (el) {
-      registerStickyElement(elementRef, variant, false);
+      registerStickyElement(elementRef, variant, false, fill);
       return () => {
         unregisterStickyElement(elementRef);
       };
     }
-  }, [elementRef.current, variant, registerStickyElement, unregisterStickyElement]);
+  }, [elementRef.current, variant, fill, registerStickyElement, unregisterStickyElement]);
 
   return elementRef;
 };
@@ -28,21 +29,22 @@ export const useCursorHover = (variant = 'scale') => {
  * Custom hook to register an element for STICKY cursor effect.
  * The cursor will snap to the element's center and follow with an elastic offset.
  * @param {string} variant - Cursor variant to use when hovering ('scale' | 'arrow' | 'scale2')
+ * @param {string} fill - Optional custom fill class (e.g. 'bg-accent'). Falls back to CURSOR_FILLS if not provided.
  * @returns {React.RefObject} Element ref to attach to the target element
  */
-export const useStickyElement = (variant = 'scale') => {
+export const useStickyElement = (variant = 'scale', fill = null) => {
   const { registerStickyElement, unregisterStickyElement } = useSticky();
   const elementRef = useRef(null);
 
   useLayoutEffect(() => {
     const el = elementRef.current;
     if (el) {
-      registerStickyElement(elementRef, variant, true);
+      registerStickyElement(elementRef, variant, true, fill);
       return () => {
         unregisterStickyElement(elementRef);
       };
     }
-  }, [elementRef.current, variant, registerStickyElement, unregisterStickyElement]);
+  }, [elementRef.current, variant, fill, registerStickyElement, unregisterStickyElement]);
 
   return elementRef;
 };
