@@ -1,8 +1,13 @@
 import React from 'react';
 import { CreativeButton } from '../../../components';
 import BaseSection from '../BaseSection';
+import { useCursorHover } from '../../../hooks/useCursorEffect';
+
 
 const HeroSections = () => {
+  const contactRef = useCursorHover('arrow');
+  const resumeRef = useCursorHover('arrow');
+
   return (
     <BaseSection containerID="hero" sectionClassName="section-padding-hero">
       <div className="flex flex-col">
@@ -12,7 +17,7 @@ const HeroSections = () => {
         </div>
         <div className="flex items-center gap-s400 pt-s600">
           <div className="flex-1 lg:flex-none lg:min-w-[200px]">
-            <CreativeButton to="/contact" variant={'fill'}>
+            <CreativeButton to="/contact" variant={'fill'} ref={contactRef}>
               Get in touch
             </CreativeButton>
           </div>
@@ -22,6 +27,7 @@ const HeroSections = () => {
               variant={'transparent'}
               target="_blank"
               rel="noopener noreferrer"
+              ref={resumeRef}
             >
               <span>My Resume</span>
             </CreativeButton>

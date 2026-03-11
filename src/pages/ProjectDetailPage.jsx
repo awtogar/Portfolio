@@ -5,6 +5,7 @@ import { BaseSection } from '../layout';
 import { projects } from '../data/data';
 import { ScrollAnimatedImg, CreativeButton, TransitionLink } from '../components';
 import { RiArrowLeftLine, RiArrowRightUpLine } from '@remixicon/react';
+import { useCursorHover } from '../hooks/useCursorEffect';
 
 const fadeUp = {
   initial: { opacity: 0, y: 40 },
@@ -13,6 +14,7 @@ const fadeUp = {
 
 const ProjectDetailPage = () => {
   const { slug } = useParams();
+  const nextBtnRef = useCursorHover('arrow');
 
   const projectIndex = projects.findIndex((p) => p.slug === slug);
   const project = projects[projectIndex];
@@ -198,7 +200,7 @@ const ProjectDetailPage = () => {
             <TransitionLink
               to={`/projects/${nextProject.slug}`}
               className="group block">
-                  <CreativeButton variant="outline">
+                  <CreativeButton ref={nextBtnRef} variant="outline">
  <RiArrowRightUpLine
                     size={24}
                     className="text-primary group-hover:text-secondary transition-colors duration-400"

@@ -3,11 +3,11 @@ import { motion, AnimatePresence } from 'motion/react';
 import { BaseSection } from '../layout';
 import { projects, projectCategories } from '../data/data';
 import { ScrollAnimatedImg, TransitionLink } from '../components';
-import { useStickyElement } from '../hooks/useStickyElement';
+import { useCursorHover } from '../hooks/useCursorEffect';
 
 
 const ProjectCard = ({ project, index }) => {
-const arrowRef = useStickyElement('arrow');
+const arrowRef = useCursorHover('arrow');
 
   return (
     <motion.article
@@ -23,7 +23,7 @@ const arrowRef = useStickyElement('arrow');
             src={project.image}
             alt={project.title}
             containerClassName="w-full aspect-[4/5]"
-            imageClassName="object-cover w-full h-full rounded-2xl transition-transform duration-700 group-hover:scale-105"
+            imageClassName="object-cover w-full h-full rounded-2xl transition-transform duration-700"
             scrollRange={['0%', '12%']}
             offset={['start end', 'end start']}
       
@@ -33,7 +33,7 @@ const arrowRef = useStickyElement('arrow');
 
         {/* Info */}
         <div className="pt-s500 space-y-s200">
-          <h3 className="text-primary text-h400 leading-tight group-hover:opacity-70 transition-opacity duration-300">
+          <h3 className="text-primary/85 text-h400 leading-tight transition-opacity duration-300">
             {project.title}
           </h3>
           <p className="text-primary/50 leading-relaxed text-base max-w-md">
@@ -104,7 +104,7 @@ const ProjectPage = () => {
                 ${
                   activeCategory === category.id
                     ? 'bg-primary text-secondary'
-                    : 'bg-transparent text-primary/50 border border-primary/15 hover:border-primary/40 hover:text-primary'
+                    : 'bg-transparent text-primary border border-primary/15 hover:border-primary/40'
                 }
               `}
               role="tab"

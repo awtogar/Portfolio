@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, forwardRef } from 'react';
 import { motion } from "motion/react"
 import { useTransition } from '../../context/TransitionContext';
 
@@ -59,7 +59,7 @@ const SIZE_VARIANTS = {
   full: 'w-full px-6 py-3',
 };
 
-export default function CreativeButton({
+const CreativeButton = forwardRef(function CreativeButton({
   children,
   className,
   href,
@@ -76,7 +76,7 @@ export default function CreativeButton({
   outline1,
   outline2,
   ...props
-}) {
+}, ref) {
   const [isHovering, setIsHovering] = useState(false);
   const { navigateTo } = useTransition();
 
@@ -131,7 +131,7 @@ export default function CreativeButton({
       initial={false}
       onMouseEnter={() => setIsHovering(true)}
       onMouseLeave={() => setIsHovering(false)}
-      ref={}
+      ref={ref}
       {...componentProps}
     >
       <motion.span
@@ -139,7 +139,7 @@ export default function CreativeButton({
         initial={false}
         transition={{ type: 'linear', duration: 0.3 }}
         animate={{ y: isHovering ? -36 : 0 }}
-      >
+    >
         {children}
       </motion.span>
 
@@ -163,4 +163,6 @@ export default function CreativeButton({
       />
     </Component>
   );
-}
+});
+
+export default CreativeButton;

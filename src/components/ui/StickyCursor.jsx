@@ -11,7 +11,7 @@ const CURSOR_SIZES = {
 };
 
 const StickyCursor = () => {
-  const { stickyElements } = useSticky();
+  const { stickyElements, version } = useSticky();
   const [isHovered, setIsHovered] = useState(false);
   const [currentStickyElement, setCurrentStickyElement] = useState(null);
   const [currentVariant, setCurrentVariant] = useState('scale');
@@ -112,7 +112,7 @@ const manageMouseMove = useCallback(e => {
         });
       };
     }
-  }, [stickyElements, manageMouseOver, manageMouseLeave]);
+  }, [stickyElements, version, manageMouseOver, manageMouseLeave]);
 
   useEffect(() => {
     window.addEventListener('mousemove', manageMouseMove);

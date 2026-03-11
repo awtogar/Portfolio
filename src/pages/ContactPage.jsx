@@ -1,13 +1,17 @@
 import React from 'react';
 import BaseSection from '../layout/sections/BaseSection';
 import { useContactForm, services, budgetOptions } from '../utils/contactHandling';
+import { CreativeButton } from '../components';
+import { useCursorHover } from '../hooks/useCursorEffect';
 
 const ContactPage = () => {
   const { selectedServices, selectedBudget, setSelectedBudget, formData, attachment, toggleService, handleInputChange, handleFileChange, handleSubmit } = useContactForm();
+  const ctaRef = useCursorHover('arrow'); 
+
   return (
     <BaseSection sectionClassName="min-h-screen bg-secondary py-s900" containerID="contact-form">
       <div className="w-full max-w-lg mx-auto">
-        <div className="rounded-3xl p-8 md:p-8 lg:p-12 shadow-xl">
+        <div className="rounded-3xl p-8 md:p-8 lg:p-12">
           {/* Header */}
           <div className="flex flex-col pb-s600">
             <h2 className="text-3xl text-center italic">
@@ -112,10 +116,9 @@ const ContactPage = () => {
               {attachment && <p className="mt-2 text-sm text-primary/60">{attachment.name}</p>}
             </div>
 
-            {/* Submit Button */}
-            <button type="submit" className="w-full py-4 bg-primary text-secondary rounded-full text-base hover:bg-primary/90 transition-colors">
+            <CreativeButton variant="fill" ref={ctaRef}   type="submit" className="w-full py-4 bg-primary text-secondary rounded-full text-base hover:bg-primary/90 transition-colors">
               Send Message
-            </button>
+            </CreativeButton>
 
             {/* reCAPTCHA Notice */}
             <p className="text-center text-xs text-primary/40 leading-relaxed">

@@ -1,4 +1,4 @@
-import { createContext, useContext, useRef, useCallback } from 'react';
+import { createContext, useContext, useRef, useCallback, useState } from 'react';
 
 const StickyContext = createContext();
 
@@ -12,10 +12,12 @@ export const useSticky = () => {
 
 export function StickyProvider({ children }) {
   const stickyElementsRef = useRef([]);
+  const [version, setVersion] = useState(0);
 
   const registerStickyElement = useCallback((ref, variant = 'scale', sticky = false) => {
     if (ref && !stickyElementsRef.current.some(item => item.ref === ref)) {
       stickyElementsRef.current.push({ ref, variant, sticky });
+      setVersion(v => v + 1);
       return true;
     }
     return false;
@@ -26,6 +28,7 @@ export function StickyProvider({ children }) {
       const index = stickyElementsRef.current.findIndex(item => item.ref === ref);
       if (index !== -1) {
         stickyElementsRef.current.splice(index, 1);
+        setVersion(v => v + 1);
         return true;
       }
     }
@@ -36,6 +39,7 @@ export function StickyProvider({ children }) {
     <StickyContext.Provider
       value={{
         stickyElements: stickyElementsRef.current,
+        version,
         registerStickyElement,
         unregisterStickyElement,
       }}
@@ -44,3 +48,4 @@ export function StickyProvider({ children }) {
     </StickyContext.Provider>
   );
 }
+

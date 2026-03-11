@@ -5,9 +5,7 @@ import { AnimatePresence, motion } from "motion/react"
 import { Nav, Magnetic, Bounds, CreativeButton } from '../../components';
 import { useLenis } from '../../context/LenisContext';
 import { useTheme } from '../../hooks/useTheme';
-import { useStickyElement } from '../../hooks/useStickyElement';
-
-// ─── Sub-components ──────────────────────────────────────────────
+import { useStickyElement, useCursorHover } from '../../hooks/useCursorEffect';
 
 const ThemeToggleButton = ({ isActive, toggleTheme, stickyRef }) => (
   <motion.div
@@ -59,17 +57,16 @@ const HamburgerButton = ({ isActive, onToggle, stickyRef }) => (
 // ─── Main Component ──────────────────────────────────────────────
 
 const Header = () => {
-  const menuSticky = useStickyElement('scale', true);
-  const toggleSticky = useStickyElement('scale', true);
-  const logoSticky = useStickyElement('scale', true);
+  const menuSticky = useStickyElement('scale');
+  const toggleSticky = useStickyElement('scale');
+  const logoSticky = useStickyElement('scale');
+  const backBtnRef = useCursorHover('arrow');
   const location = useLocation();
 
   const isProjectDetail = /^\/projects\/[^/]+$/.test(location.pathname);
 
   const [isActive, setIsActive] = useState(false);
   const [scrollDirection, setScrollDirection] = useState('up');
-
-  // Use a ref to avoid re-attaching the scroll listener on every scroll tick
   const scrollPositionRef = useRef(0);
 
   const { lenis } = useLenis();
@@ -104,11 +101,10 @@ const Header = () => {
         }}
         transition={{ duration: 0.3, ease: 'easeInOut' }}
       >
-        {/* Left side: Logo or Back button */}
         {isProjectDetail ? (
           <Magnetic>
             <div className="relative" to="/projects">
-              <CreativeButton variant="fillReverse" to="/projects" size="md" className="font-bold font-secondary tracking-tighter antialiased px-4 py-2">
+              <CreativeButton ref={backBtnRef} variant="fillReverse" to="/projects" size="md" className="font-bold font-secondary tracking-tighter antialiased px-4 py-2">
                 <span className="flex items-center">
                   <RiArrowLeftLine size={16} className='transition-transform duration-300 ease-in-out group-hover:-rotate-90' />
                   <span className='text-base-sm'>All Projects</span>
