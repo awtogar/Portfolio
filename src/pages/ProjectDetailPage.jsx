@@ -1,9 +1,9 @@
 import React from 'react';
-import { useParams, Link, useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { motion } from 'motion/react';
 import { BaseSection } from '../layout';
 import { projects } from '../data/data';
-import { ScrollAnimatedImg,CreativeButton } from '../components';
+import { ScrollAnimatedImg, CreativeButton, TransitionLink } from '../components';
 import { RiArrowLeftLine, RiArrowRightUpLine } from '@remixicon/react';
 
 const fadeUp = {
@@ -13,7 +13,6 @@ const fadeUp = {
 
 const ProjectDetailPage = () => {
   const { slug } = useParams();
-  const navigate = useNavigate();
 
   const projectIndex = projects.findIndex((p) => p.slug === slug);
   const project = projects[projectIndex];
@@ -25,12 +24,12 @@ const ProjectDetailPage = () => {
         <div className="flex flex-col items-center justify-center min-h-[60vh] gap-s500">
           <h1 className="text-h200 text-primary">Project not found</h1>
           <p className="text-primary/50">The project you're looking for doesn't exist.</p>
-          <Link
+          <TransitionLink
             to="/projects"
             className="px-6 py-3 rounded-full bg-primary text-secondary text-sm font-medium hover:opacity-80 transition-opacity"
           >
             Back to Projects
-          </Link>
+          </TransitionLink>
         </div>
       </BaseSection>
     );
@@ -196,7 +195,7 @@ const ProjectDetailPage = () => {
                     {nextProject.subtitle}
                   </p>
                 </div>
-            <Link
+            <TransitionLink
               to={`/projects/${nextProject.slug}`}
               className="group block">
                   <CreativeButton variant="outline">
@@ -206,7 +205,7 @@ const ProjectDetailPage = () => {
                   />
                   </CreativeButton>
             
-            </Link>
+            </TransitionLink>
 
               </motion.div>
           </BaseSection>

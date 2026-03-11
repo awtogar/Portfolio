@@ -1,8 +1,7 @@
 import { useState } from 'react';
 import { motion } from "motion/react"
-import { Link } from 'react-router-dom';
+import { useTransition } from '../../context/TransitionContext';
 
-const MotionLink = motion.create(Link);
 const MotionA = motion.create('a');
 const MotionButton = motion.create('button');
 
@@ -79,6 +78,7 @@ export default function CreativeButton({
   ...props
 }) {
   const [isHovering, setIsHovering] = useState(false);
+  const { navigateTo } = useTransition();
 
   // Apply variant styles or use custom props if provided
   const variantStyles = variant ? BUTTON_VARIANTS[variant] : {};
@@ -100,8 +100,17 @@ export default function CreativeButton({
   let componentProps = {};
 
   if (to) {
-    Component = MotionLink;
-    componentProps = { to, ...props };
+    // Internal navigation — use an anchor with transition-aware click handler
+    Component = MotionA;
+    componentProps = {
+      href: to,
+      onClick: (e) => {
+        e.preventDefault();
+        if (onClick) onClick(e);
+        navigateTo(to);
+      },
+      ...props,
+    };
   } else if (href) {
     Component = MotionA;
     componentProps = { href, ...props };

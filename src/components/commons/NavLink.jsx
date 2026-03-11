@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
 import { motion } from 'motion/react';
 import { navSlide, navDotScalling } from '../../data/anim';
+import TransitionLink from '../ui/TransitionLink';
 
 export default function NavLink({ data, isActive, setSelectedIndicator, closeMenu }) {
   const { title, href, index } = data;
@@ -23,7 +23,7 @@ export default function NavLink({ data, isActive, setSelectedIndicator, closeMen
       <motion.div variants={navDotScalling} animate={isActive ? 'open' : 'closed'} className="absolute -left-6 w-2 h-2 top-1/2 -translate-y-1/2 bg-secondary rounded-full" />
 
       {/* link text with hover effect */}
-      <Link to={href} onClick={closeMenu} className="text-[3rem]">
+      <TransitionLink to={href} onClick={closeMenu} className="text-[3rem]">
         <motion.div
           className="all-unset flex cursor-pointer relative antialiased translate-z-0 will-change-transform overflow-clip"
           initial={false}
@@ -42,7 +42,7 @@ export default function NavLink({ data, isActive, setSelectedIndicator, closeMen
             {title}
           </motion.span>
         </motion.div>
-      </Link>
+      </TransitionLink>
     </motion.div>
   );
 }

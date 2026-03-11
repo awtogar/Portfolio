@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'motion/react';
 import { BaseSection } from '../layout';
 import { projects, projectCategories } from '../data/data';
-import { ScrollAnimatedImg } from '../components';
+import { ScrollAnimatedImg, TransitionLink } from '../components';
 import { RiArrowRightUpLine } from '@remixicon/react';
 
 const ProjectCard = ({ project, index }) => {
@@ -15,7 +14,7 @@ const ProjectCard = ({ project, index }) => {
       transition={{ duration: 0.6, delay: index * 0.1, ease: [0.25, 0.46, 0.45, 0.94] }}
       className="group relative"
     >
-      <Link to={`/projects/${project.slug}`} className="block">
+      <TransitionLink to={`/projects/${project.slug}`} className="block">
         {/* Image */}
         <div className="relative overflow-hidden rounded-2xl">
           <ScrollAnimatedImg
@@ -55,7 +54,7 @@ const ProjectCard = ({ project, index }) => {
             </div>
           )}
         </div>
-      </Link>
+      </TransitionLink>
     </motion.article>
   );
 };

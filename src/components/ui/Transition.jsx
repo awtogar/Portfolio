@@ -1,79 +1,122 @@
-import { useEffect, useState } from 'react';
-import { motion, AnimatePresence } from "motion/react"
-import { useLocation } from 'react-router-dom';
+import { motion, AnimatePresence } from 'motion/react';
 import { useDimensions } from '../../hooks/useDimensions';
-import { transitionCurvePath, transitionTextDirection, transitionSlideDown } from '../../data/anim';
-import { pages } from '../../data/data';
+import { useTransition } from '../../context/TransitionContext';
+import {
+  transitionExitSlideDown,
+  transitionExitCurve,
+  transitionEnterSlideDown,
+  transitionEnterCurve,
+  transitionExitText,
+  transitionEnterText,
+} from '../../data/anim';
 
 const SVG_HEIGHT_OFFSET = 300;
-const TARGET_CURVE_Y = -SVG_HEIGHT_OFFSET * 0.001;
 
-const TransitionContent = ({ pageTitle, dimensions }) => {
-  const initialPath = `M0 ${dimensions.height} L${dimensions.width} ${dimensions.height} L${dimensions.width} 0 Q${dimensions.width / 2} ${-SVG_HEIGHT_OFFSET} 0 0 L0 ${dimensions.height}`;
-  const targetPath = `M0 ${dimensions.height} L${dimensions.width} ${dimensions.height} L${dimensions.width} 0 Q${dimensions.width / 2} ${TARGET_CURVE_Y} 0 0 L0 ${dimensions.height}`;
-  // debug
-  // console.log('transition initial', initialPath);
-  // console.log('transition target', targetPath);
+const ExitOverlay = ({ pageTitle, dimensions, onComplete }) => {
+  const w = dimensions.width;
+  const h = dimensions.height;
+
+  const initialPath = `M0 0 L${w} 0 L${w} ${h + SVG_HEIGHT_OFFSET} L0 ${h + SVG_HEIGHT_OFFSET} Z`;
+  const targetPath = `M0 0 L${w} 0 L${w} ${h + SVG_HEIGHT_OFFSET} L0 ${h + SVG_HEIGHT_OFFSET} Z`;
 
   return (
     <motion.div
-      className="fixed inset-0 z-[9998] flex items-center justify-center overflow-visible"
-      variants={transitionSlideDown}
+      variants={transitionExitSlideDown}
       initial="initial"
       animate="animate"
-      exit="exit"
+      onAnimationComplete={onComplete}
+      className="fixed inset-0 z-[9998] flex items-center justify-center"
       style={{ height: '100vh', width: '100vw' }}
     >
-      <motion.div className="absolute z-10" variants={transitionTextDirection} initial="initial" animate="animate" exit="exit">
-        <motion.p key={pageTitle} className="textTransition">
-          {pageTitle}
-        </motion.p>
+      <motion.div
+        className="absolute z-10"
+        variants={transitionExitText}
+        initial="initial"
+        animate="animate"
+      >
+        <p className="textTransition">{pageTitle}</p>
       </motion.div>
 
-      <svg className="absolute top-0 left-0 w-full text-primary overflow-visible" height={dimensions.height + SVG_HEIGHT_OFFSET * 2}>
+      <svg className="absolute top-0 left-0 w-full" height={h + SVG_HEIGHT_OFFSET}>
         <motion.path
-          variants={transitionCurvePath(initialPath, targetPath)}
+          variants={transitionExitCurve(initialPath, targetPath)}
           initial="initial"
           animate="animate"
-          exit="exit"
           fill="currentColor"
-          className="transition-colors"
+          className="transition-colors duration-300"
         />
       </svg>
     </motion.div>
   );
 };
 
-export default function Transition({ children, isLoading }) {
-  const location = useLocation();
-  const dimensions = useDimensions();
-  const [isTransitioning, setIsTransitioning] = useState(false);
+const EnterOverlay = ({ pageTitle, dimensions, onComplete }) => {
+  const w = dimensions.width;
+  const h = dimensions.height;
+  const offset = SVG_HEIGHT_OFFSET;
 
-  const getCurrentPageTitle = () => {
-    const currentPage = Object.values(pages).find(page => {
-      return page.href === location.pathname || location.pathname + '/' === page.href || location.pathname === page.href + '/';
-    });
-    return currentPage ? currentPage.title : '';
-  };
-
-  useEffect(() => {
-    // cek preloader masih jalan apa kga
-    if (isLoading) return;
-
-    setIsTransitioning(true);
-    const timeout = setTimeout(() => {
-      setIsTransitioning(false);
-    }, 1200);
-    return () => clearTimeout(timeout);
-  }, [location.pathname]);
-
-  // Fallback kalo dimensions belum siap render langsung aje childrennya
-  if (dimensions.width === null) return <>{children}</>;
+  const initialPath = `M0 ${offset} Q${w / 2} 0 ${w} ${offset} L${w} ${h + offset} L0 ${h + offset} Z`;
+  const targetPath = `M0 ${offset} Q${w / 2} ${offset} ${w} ${offset} L${w} ${h + offset} L0 ${h + offset} Z`;
 
   return (
-    <>
-      <AnimatePresence mode="wait">{isTransitioning && <TransitionContent key={location.pathname} pageTitle={getCurrentPageTitle()} dimensions={dimensions} />}</AnimatePresence>
-      {children}
-    </>
+    <motion.div
+      variants={transitionEnterSlideDown}
+      initial="initial"
+      animate="animate"
+      onAnimationComplete={onComplete}
+      className="fixed inset-0 z-[9998] flex items-center justify-center"
+      style={{ height: '100vh', width: '100vw', overflow: 'visible' }}
+    >
+      <motion.div
+        className="absolute z-10"
+        variants={transitionEnterText}
+        initial="initial"
+        animate="animate"
+      >
+        <p className="textTransition">{pageTitle}</p>
+      </motion.div>
+
+      <svg
+        className="absolute left-0 w-full"
+        style={{ top: -offset }}
+        height={h + 2 * offset}
+      >
+        <motion.path
+          variants={transitionEnterCurve(initialPath, targetPath)}
+          initial="initial"
+          animate="animate"
+          fill="currentColor"
+          className="transition-colors duration-300"
+        />
+      </svg>
+    </motion.div>
+  );
+};
+
+export default function Transition() {
+  const dimensions = useDimensions();
+  const { phase, pageTitle, onExitComplete, onEnterComplete } = useTransition();
+
+  if (dimensions.width === null) return null;
+
+  return (
+    <AnimatePresence mode="wait">
+      {phase === 'exit' && (
+        <ExitOverlay
+          key="exit"
+          pageTitle={pageTitle}
+          dimensions={dimensions}
+          onComplete={onExitComplete}
+        />
+      )}
+      {phase === 'enter' && (
+        <EnterOverlay
+          key="enter"
+          pageTitle={pageTitle}
+          dimensions={dimensions}
+          onComplete={onEnterComplete}
+        />
+      )}
+    </AnimatePresence>
   );
 }
