@@ -1,7 +1,15 @@
 import { createContext, useContext, useRef, useCallback } from 'react';
 
-export const StickyContext = createContext();
-// Initialize
+const StickyContext = createContext();
+
+export const useSticky = () => {
+  const context = useContext(StickyContext);
+  if (context === undefined) {
+    throw new Error('useSticky must be used within a StickyProvider');
+  }
+  return context;
+};
+
 export function StickyProvider({ children }) {
   const stickyElementsRef = useRef([]);
 
@@ -36,13 +44,3 @@ export function StickyProvider({ children }) {
     </StickyContext.Provider>
   );
 }
-
-
-
-export const useSticky = () => {
-  const context = useContext(StickyContext);
-  if (context === undefined) {
-    throw new Error('useSticky must be used within a StickyProvider');
-  }
-  return context;
-};

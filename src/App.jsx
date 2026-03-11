@@ -3,9 +3,7 @@ import { useEffect, useState } from 'react';
 import './styles/globals.css';
 import { SpeedInsights } from '@vercel/speed-insights/react';
 import { Preloader, Header, StickyCursor, Footer, Transition } from './components';
-import { LenisProvider } from './providers/LenisProvider';
-import { StickyProvider } from './providers/StickyProvider';
-import { TransitionProvider } from './context/TransitionContext';
+import AppProviders from './providers/AppProviders';
 import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
 import ProjectPage from './pages/ProjectPage';
@@ -91,13 +89,9 @@ const App = () => {
     <>
       <SpeedInsights />
       <Router>
-        <LenisProvider>
-          <StickyProvider>
-            <TransitionProvider>
-              <AppContent />
-            </TransitionProvider>
-          </StickyProvider>
-        </LenisProvider>
+        <AppProviders>
+          <AppContent />
+        </AppProviders>
       </Router>
     </>
   );

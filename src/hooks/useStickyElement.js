@@ -1,5 +1,5 @@
 import { useRef, useEffect } from 'react';
-import { useSticky } from '../providers/StickyProvider';
+import { useSticky } from '../context/StickyContext';
 
 /**
  * Custom hook to create a ref for a sticky element and register it in the StickyContext
