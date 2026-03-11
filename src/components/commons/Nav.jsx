@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
 import { useLocation } from 'react-router-dom';
 import { RiSunLine, RiMoonLine } from '@remixicon/react';
@@ -64,24 +64,20 @@ export default function Nav({ closeMenu }) {
               <span className="text-xs">NAVIGATION</span>
             </div>
             <div className="flex flex-col space-y-2 h-full mb-s400 pt-s400">
-              {Object.values(pages).map((data, index) => {
-                return (
-                  <NavLink key={index} data={{ ...data, index }} isActive={selectedIndicator === data.href} setSelectedIndicator={setSelectedIndicator} closeMenu={closeMenu} />
-                );
-              })}
+              {Object.values(pages).map((data, index) => (
+                  <NavLink key={data.href} data={{ ...data, index }} isActive={selectedIndicator === data.href} setSelectedIndicator={setSelectedIndicator} closeMenu={closeMenu} />
+              ))}
             </div>
           </div>
           <div className="flex justify-between">
             <div className="flex flex-col space-y-2">
               <span className="text-secondary/55 text-sm">Social</span>
               <div className="flex flex-col">
-                {socials.map((data, i) => {
-                  return (
-                    <HoverRotate key={i} href={data.href} target="_blank" rel="noopener noreferrer">
+                {socials.map(data => (
+                    <HoverRotate key={data.label} href={data.href} target="_blank" rel="noopener noreferrer">
                       <span>{data.title}</span>
                     </HoverRotate>
-                  );
-                })}
+                ))}
               </div>
             </div>
             <div className="flex md:hidden flex-col items-center space-y-2">

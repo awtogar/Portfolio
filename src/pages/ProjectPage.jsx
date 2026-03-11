@@ -3,9 +3,12 @@ import { motion, AnimatePresence } from 'motion/react';
 import { BaseSection } from '../layout';
 import { projects, projectCategories } from '../data/data';
 import { ScrollAnimatedImg, TransitionLink } from '../components';
-import { RiArrowRightUpLine } from '@remixicon/react';
+import { useStickyElement } from '../hooks/useStickyElement';
+
 
 const ProjectCard = ({ project, index }) => {
+const arrowRef = useStickyElement('arrow');
+
   return (
     <motion.article
       initial={{ opacity: 0, y: 60 }}
@@ -15,8 +18,7 @@ const ProjectCard = ({ project, index }) => {
       className="group relative"
     >
       <TransitionLink to={`/projects/${project.slug}`} className="block">
-        {/* Image */}
-        <div className="relative overflow-hidden rounded-2xl">
+        <div ref={arrowRef} className="relative overflow-hidden rounded-2xl">
           <ScrollAnimatedImg
             src={project.image}
             alt={project.title}
@@ -24,11 +26,9 @@ const ProjectCard = ({ project, index }) => {
             imageClassName="object-cover w-full h-full rounded-2xl transition-transform duration-700 group-hover:scale-105"
             scrollRange={['0%', '12%']}
             offset={['start end', 'end start']}
+      
           />
-          {/* Arrow indicator */}
-          <div className="absolute bottom-4 right-4 md:bottom-6 md:right-6 w-10 h-10 md:w-12 md:h-12 rounded-full bg-secondary/90 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-400">
-            <RiArrowRightUpLine className="w-5 h-5 md:w-6 md:h-6 text-primary" />
-          </div>
+
         </div>
 
         {/* Info */}

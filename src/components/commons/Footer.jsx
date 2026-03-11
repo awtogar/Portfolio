@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { HoverRotate, CreativeButton } from '..';
 import { RiCornerDownRightLine } from '@remixicon/react';
 import { contact_info, socials } from '../../data/data';
@@ -22,15 +22,14 @@ const Footer = () => {
                   </h2>
                   <p className="text-center">Let's work together.</p>
                 </div>
-                {isContactPage ? (
-                  <CreativeButton onClick={handleTellUsClick} variant="outline">
-                    TELL US
-                  </CreativeButton>
-                ) : (
-                  <CreativeButton to="/contact" variant="outline">
-                    TELL US
-                  </CreativeButton>
-                )}
+                <CreativeButton
+                  variant="outline"
+                  {...(isContactPage
+                    ? { onClick: handleTellUsClick }
+                    : { to: '/contact' })}
+                >
+                  TELL US
+                </CreativeButton>
               </div>
             </div>
             <div className="flex flex-col pb-s600 w-full">

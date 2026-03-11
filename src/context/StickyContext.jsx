@@ -13,9 +13,9 @@ export const useSticky = () => {
 export function StickyProvider({ children }) {
   const stickyElementsRef = useRef([]);
 
-  const registerStickyElement = useCallback(ref => {
-    if (ref && !stickyElementsRef.current.some(item => item === ref)) {
-      stickyElementsRef.current.push(ref);
+  const registerStickyElement = useCallback((ref, variant = 'scale', sticky = false) => {
+    if (ref && !stickyElementsRef.current.some(item => item.ref === ref)) {
+      stickyElementsRef.current.push({ ref, variant, sticky });
       return true;
     }
     return false;
@@ -23,7 +23,7 @@ export function StickyProvider({ children }) {
 
   const unregisterStickyElement = useCallback(ref => {
     if (ref) {
-      const index = stickyElementsRef.current.indexOf(ref);
+      const index = stickyElementsRef.current.findIndex(item => item.ref === ref);
       if (index !== -1) {
         stickyElementsRef.current.splice(index, 1);
         return true;

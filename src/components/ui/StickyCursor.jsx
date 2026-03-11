@@ -1,14 +1,24 @@
 /* eslint-disable no-unused-vars */
 import { useEffect, useCallback, useMemo, useState, useRef } from 'react';
-import { motion, useMotionValue, useSpring } from "motion/react"
+import { motion, useMotionValue, useSpring, AnimatePresence } from "motion/react"
 import { useSticky } from '../../context/StickyContext';
+import { RiArrowRightUpLine } from '@remixicon/react';
+
+const CURSOR_SIZES = {
+  scale: { idle: 6, hovered: 60 },
+  arrow: { idle: 6, hovered: 60 },
+  scale2: { idle: 6, hovered: 60 },
+};
 
 const StickyCursor = () => {
   const { stickyElements } = useSticky();
   const [isHovered, setIsHovered] = useState(false);
   const [currentStickyElement, setCurrentStickyElement] = useState(null);
-  const cursorSize = isHovered ? 60 : 6;
+  const [currentVariant, setCurrentVariant] = useState('scale');
   const cursorTrack = useRef(null);
+
+  const sizes = CURSOR_SIZES[currentVariant] || CURSOR_SIZES.scale;
+  const cursorSize = isHovered ? sizes.hovered : sizes.idle;
 
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
@@ -32,57 +42,56 @@ const StickyCursor = () => {
     return styles.display !== 'none';
   }, []);
 
-  const manageMouseMove = useCallback(
-    e => {
-      // Skip if cursor is not visible (mobile)
-      if (!isCursorVisible()) return;
-      const { clientX, clientY } = e;
-      if (currentStickyElement && currentStickyElement.current) {
-        const { left, top, height, width } = currentStickyElement.current.getBoundingClientRect();
-        const center = { x: left + width / 2, y: top + height / 2 };
+const manageMouseMove = useCallback(e => {
+  if (!isCursorVisible()) return;
+  const { clientX, clientY } = e;
 
-        if (isHovered) {
-          const distance = { x: clientX - center.x, y: clientY - center.y };
+  const isSticky = currentStickyElement?.isSticky; // ambil dari state
 
-          mouseX.set(center.x - cursorSize / 2 + distance.x * 0.1);
-          mouseY.set(center.y - cursorSize / 2 + distance.y * 0.1);
-        } else {
-          // Normal cursor movement
-          mouseX.set(clientX - cursorSize / 2);
-          mouseY.set(clientY - cursorSize / 2);
-        }
-      } else {
-        // Fallback to normal cursor movement
-        mouseX.set(clientX - cursorSize / 2);
-        mouseY.set(clientY - cursorSize / 2);
-      }
-    },
-    [mouseX, mouseY, currentStickyElement, isHovered, cursorSize, isCursorVisible]
-  );
+  if (currentStickyElement?.ref?.current && isSticky) {
+    // Sticky behavior — nempel ke center element
+    const { left, top, height, width } = currentStickyElement.ref.current.getBoundingClientRect();
+    const center = { x: left + width / 2, y: top + height / 2 };
+    if (isHovered) {
+      const distance = { x: clientX - center.x, y: clientY - center.y };
+      mouseX.set(center.x - cursorSize / 2 + distance.x * 0.1);
+      mouseY.set(center.y - cursorSize / 2 + distance.y * 0.1);
+    } else {
+      mouseX.set(clientX - cursorSize / 2);
+      mouseY.set(clientY - cursorSize / 2);
+    }
+  } else {
+    // Non-sticky — cursor normal ikut mouse
+    mouseX.set(clientX - cursorSize / 2);
+    mouseY.set(clientY - cursorSize / 2);
+  }
+}, [mouseX, mouseY, currentStickyElement, isHovered, cursorSize, isCursorVisible]);
 
-  const manageMouseOver = useCallback(
-    element => {
-      if (!isCursorVisible()) return;
-      setIsHovered(true);
-      setCurrentStickyElement(element);
-    },
-    [isCursorVisible]
-  );
+  const manageMouseOver = useCallback((element, variant, sticky) => {
+  if (!isCursorVisible()) return;
+  setIsHovered(true);
+  setCurrentStickyElement({ ref: element, isSticky: sticky }); // object bukan langsung ref
+  setCurrentVariant(variant);
+}, [isCursorVisible]);
 
   const manageMouseLeave = useCallback(() => {
     if (!isCursorVisible()) return;
     setIsHovered(false);
     setCurrentStickyElement(null);
+    setCurrentVariant('scale');
   }, [isCursorVisible]);
 
   useEffect(() => {
     if (stickyElements && stickyElements.length > 0) {
       const eventListeners = [];
 
-      stickyElements.forEach(stickyElement => {
+      stickyElements.forEach(stickyItem => {
+        const stickyElement = stickyItem.ref;
+        const variant = stickyItem.variant || 'default';
+
         if (stickyElement && stickyElement.current) {
           const element = stickyElement.current;
-          const mouseOverHandler = () => manageMouseOver(stickyElement);
+          const mouseOverHandler = () => manageMouseOver(stickyElement, variant, stickyItem.sticky);
           const mouseLeaveHandler = () => manageMouseLeave();
 
           element.addEventListener('mouseenter', mouseOverHandler);
@@ -112,6 +121,8 @@ const StickyCursor = () => {
     };
   }, [manageMouseMove]);
 
+  const isArrowVariant = isHovered && currentVariant === 'arrow';
+
   return (
     <motion.div
       ref={cursorTrack}
@@ -123,9 +134,23 @@ const StickyCursor = () => {
         width: cursorSize,
         height: cursorSize,
       }}
-      // 1. ini harus dibawah z index header supaya tidak tertutup icon headernya
-      className="hidden lg:block fixed w-[15px] h-[15px] bg-primary rounded-full pointer-events-none z-[49]"
-    ></motion.div>
+      // z-index below header so it doesn't cover header icons
+      className="hidden md:block fixed rounded-full pointer-events-none z-[49] bg-primary"
+    >
+      <AnimatePresence>
+        {isArrowVariant && (
+          <motion.div
+            initial={{ opacity: 0, scale: 0 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0 }}
+            transition={{ duration: 0.2, ease: 'easeOut' }}
+            className="w-full h-full flex items-center justify-center"
+          >
+            <RiArrowRightUpLine className="w-5 h-5 md:w-6 md:h-6 text-secondary" />
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.div>
   );
 };
 
