@@ -164,7 +164,7 @@ const projects = [
     subtitle: 'Modern Eyewear Branding',
     description: 'An eyewear and Optical Care branding. focused on modern aesthetics and strong visuals branding.',
     overview: 'Ovelo Eyewear is a premium eyewear brand that merges modern aesthetics with functional optical care. The branding project involved creating a comprehensive visual identity system — from logo design and typography choices to packaging and marketing collateral. Every element was crafted to communicate sophistication and clarity, reflecting the precision of optical craftsmanship.',
-    image: 'https://placehold.co/800x600/1a1a1a/ffffff?text=1',
+    image: 'https://placehold.co/800x600/ffffff/1a1a1a?text=1',
     category: 'Branding',
     tags: ['Graphics', 'Branding'],
     role: 'Brand Designer',
@@ -177,7 +177,7 @@ const projects = [
     featured: true,
     selected: true,
     gallery: [
-      'https://placehold.co/1200x800/1a1a1a/ffffff?text=Ovelo+1',
+      'https://placehold.co/1200x800/ffffff/1a1a1a?text=Ovelo+1',
       'https://placehold.co/1200x800/2a2a2a/ffffff?text=Ovelo+2',
       'https://placehold.co/1200x800/3a3a3a/ffffff?text=Ovelo+3',
     ]
@@ -189,7 +189,7 @@ const projects = [
     subtitle: 'Creative Studio Agency',
     description: 'Branding and Web Development for a creative studio agency in Indonesia. that specializes in digital products.',
     overview: 'Nostratic Archive is a creative studio based in Indonesia specializing in digital products and immersive experiences. The project encompassed full branding development and a custom-built website, designed to showcase the studio\'s portfolio with a bold, editorial feel. The website features smooth scroll-driven animations and a dark, cinematic aesthetic that captures the studio\'s creative identity.',
-    image: 'https://placehold.co/800x600/1a1a1a/ffffff?text=2',
+    image: 'https://placehold.co/800x600/ffffff/1a1a1a?text=2',
     category: 'Websites',
     tags: ['UI/UX', 'Prototype', 'Figma'],
     role: 'UI/UX Designer & Developer',
@@ -202,7 +202,7 @@ const projects = [
     featured: true,
     selected: true,
     gallery: [
-      'https://placehold.co/1200x800/1a1a1a/ffffff?text=Nostratic+1',
+      'https://placehold.co/1200x800/ffffff/1a1a1a?text=Nostratic+1',
       'https://placehold.co/1200x800/2a2a2a/ffffff?text=Nostratic+2',
       'https://placehold.co/1200x800/3a3a3a/ffffff?text=Nostratic+3',
     ]
@@ -214,7 +214,7 @@ const projects = [
     subtitle: 'Modern Nursery & Plant Art',
     description: 'Lunavara is a modern nursery and plant art. focused on aesthetic and minimalism audience',
     overview: 'Lunavara is a modern nursery and botanical art brand targeting design-conscious plant lovers. The project included creating a complete website experience with an emphasis on clean, minimal layouts that let the plant imagery breathe. The design balances organic warmth with modern grid structures, resulting in a digital space that feels both natural and curated.',
-    image: 'https://placehold.co/800x600/1a1a1a/ffffff?text=3',
+    image: 'https://placehold.co/800x600/ffffff/1a1a1a?text=3',
     category: 'Websites',
     tags: ['Web Development', 'UI/UX'],
     role: 'Frontend Developer',
@@ -227,7 +227,7 @@ const projects = [
     featured: true,
     selected: true,
     gallery: [
-      'https://placehold.co/1200x800/1a1a1a/ffffff?text=Lunavara+1',
+      'https://placehold.co/1200x800/ffffff/1a1a1a?text=Lunavara+1',
       'https://placehold.co/1200x800/2a2a2a/ffffff?text=Lunavara+2',
       'https://placehold.co/1200x800/3a3a3a/ffffff?text=Lunavara+3',
     ]
@@ -239,7 +239,7 @@ const projects = [
     subtitle: 'A Website app for calculate compound interest',
     description: 'A Calculator Website based app that can help you to calculate your compound interest and also can help you to plan your investment in the future.',
     overview: 'Investime+ is a web-based financial calculator designed to make compound interest calculations accessible and intuitive. The application features a clean, data-driven interface with interactive charts and real-time calculation updates. Built with a focus on financial literacy, it helps users visualize long-term investment growth through elegant data visualization and thoughtful UX patterns.',
-    image: 'https://placehold.co/800x600/1a1a1a/ffffff?text=4',
+    image: 'https://placehold.co/800x600/ffffff/1a1a1a?text=4',
     category: 'Applications',
     tags: ['Web App', 'FinTech'],
     role: 'Full-Stack Developer',
@@ -252,7 +252,7 @@ const projects = [
     featured: true,
     selected: true,
     gallery: [
-      'https://placehold.co/1200x800/1a1a1a/ffffff?text=Investime+1',
+      'https://placehold.co/1200x800/ffffff/1a1a1a?text=Investime+1',
       'https://placehold.co/1200x800/2a2a2a/ffffff?text=Investime+2',
     ]
   },
@@ -263,7 +263,7 @@ const projects = [
     subtitle: 'An App for manage and organize your assets as freelance designer',
     description: 'A design asset management platform for freelance designers to organize, tag, and share their creative files.',
     overview: 'Dyrit is a specialized asset management application built for freelance designers who need to efficiently organize, version, and share their design files. The platform offers intuitive folder structures, tagging systems, and client-sharing capabilities. The interface prioritizes speed and visual clarity, letting designers focus on their creative work rather than file management.',
-    image: 'https://placehold.co/800x600/1a1a1a/ffffff?text=5',
+    image: 'https://placehold.co/800x600/ffffff/1a1a1a?text=5',
     category: 'Websites',
     tags: ['Web App', 'Productivity'],
     role: 'Product Designer & Developer',
@@ -276,7 +276,7 @@ const projects = [
     featured: true,
     selected: true,
     gallery: [
-      'https://placehold.co/1200x800/1a1a1a/ffffff?text=Dyrit+1',
+      'https://placehold.co/1200x800/ffffff/1a1a1a?text=Dyrit+1',
       'https://placehold.co/1200x800/2a2a2a/ffffff?text=Dyrit+2',
       'https://placehold.co/1200x800/3a3a3a/ffffff?text=Dyrit+3',
     ]
@@ -288,7 +288,7 @@ const projects = [
     subtitle: 'Modern scheduling and time management',
     description: 'Intuitive application for productivity that can help you to manage the routines and time management in a modern and simple way.',
     overview: 'Routines+ is a productivity application that reimagines daily scheduling with a modern, minimal interface. The app helps users build consistent habits through intuitive time-blocking, visual progress tracking, and gentle reminder systems. Designed with a focus on reducing cognitive load, the UI uses calming colors and smooth animations to make planning feel effortless.',
-    image: 'https://placehold.co/800x600/1a1a1a/ffffff?text=6',
+    image: 'https://placehold.co/800x600/ffffff/1a1a1a?text=6',
     category: 'Applications',
     tags: ['Mobile App', 'Productivity'],
     role: 'UI/UX Designer',
@@ -301,7 +301,7 @@ const projects = [
     featured: true,
     selected: false,
     gallery: [
-      'https://placehold.co/1200x800/1a1a1a/ffffff?text=Routines+1',
+      'https://placehold.co/1200x800/ffffff/1a1a1a?text=Routines+1',
       'https://placehold.co/1200x800/2a2a2a/ffffff?text=Routines+2',
     ]
   },
@@ -312,7 +312,7 @@ const projects = [
     subtitle: 'Shukari branding and visual concept',
     description: 'Comprehensive branding and visual identity project for Shukari.',
     overview: 'Shukari is a bold branding project that establishes a strong visual identity through custom typography, an expressive color palette, and versatile brand assets. The identity system spans print and digital applications, from business cards and stationery to social media templates and merchandise mockups. Every touchpoint is designed to communicate the brand\'s distinctive personality.',
-    image: 'https://placehold.co/800x600/1a1a1a/ffffff?text=7',
+    image: 'https://placehold.co/800x600/ffffff/1a1a1a?text=7',
     category: 'Branding',
     tags: ['Branding', 'Design', 'Identity'],
     role: 'Brand Designer',
@@ -325,7 +325,7 @@ const projects = [
     featured: false,
     selected: true,
     gallery: [
-      'https://placehold.co/1200x800/1a1a1a/ffffff?text=Shukari+1',
+      'https://placehold.co/1200x800/ffffff/1a1a1a?text=Shukari+1',
       'https://placehold.co/1200x800/2a2a2a/ffffff?text=Shukari+2',
       'https://placehold.co/1200x800/3a3a3a/ffffff?text=Shukari+3',
     ]

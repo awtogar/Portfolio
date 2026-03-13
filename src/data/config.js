@@ -1,0 +1,1 @@
+const file_url = "../content/projects/${slug}.md";

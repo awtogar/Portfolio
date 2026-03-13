@@ -3,6 +3,7 @@
 @import './animation.css';
 @import './tokens.css';
 @import './layouts.css';
+@plugin "@tailwindcss/typography";
 @custom-variant dark (&:where(.dark, .dark *));
 
 
