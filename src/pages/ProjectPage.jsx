@@ -30,8 +30,6 @@ const arrowRef = useCursorHover('arrow');
           />
 
         </div>
-
-        {/* Info */}
         <div className="pt-s500 space-y-s200">
           <h3 className="text-primary/85 text-h400 leading-tight transition-opacity duration-300">
             {project.title}
@@ -39,8 +37,6 @@ const arrowRef = useCursorHover('arrow');
           <p className="text-primary/50 leading-relaxed text-base max-w-md">
             {project.description}
           </p>
-
-          {/* Tags */}
           {project.tags && (
             <div className="flex flex-wrap gap-2 pt-s200">
               {project.tags.map((tag, i) => (
@@ -86,8 +82,6 @@ const ProjectPage = () => {
             and application design — each crafted with intention and care.
           </p>
         </motion.div>
-
-        {/* Category Filter */}
         <motion.nav
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -126,7 +120,6 @@ const ProjectPage = () => {
           >
             {filteredProjects.length > 0 ? (
               <div className="md:grid md:grid-cols-2 md:gap-x-10 lg:gap-x-15 xl:gap-x-20">
-                {/* Left Column */}
                 <div className="flex flex-col gap-y-12 lg:gap-y-20">
                   {filteredProjects
                     .filter((_, i) => i % 2 === 0)
@@ -138,8 +131,6 @@ const ProjectPage = () => {
                       />
                     ))}
                 </div>
-
-                {/* Right Column — offset for stagger */}
                 <div className="flex flex-col gap-y-12 lg:gap-y-20 mt-12 md:mt-[clamp(150px,20vw,400px)]">
                   {filteredProjects
                     .filter((_, i) => i % 2 === 1)

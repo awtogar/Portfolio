@@ -1,10 +1,16 @@
 import { useRef } from 'react';
+import { useParams } from 'react-router-dom';
 import { motion, useScroll, useTransform } from 'motion/react';
 import { RiArrowRightUpLine } from '@remixicon/react';
 import { CreativeButton, TransitionLink } from '../../../components';
 import { useCursorHover } from '../../../hooks/useCursorHover';
+import { projects } from '../../../data/data';
 
-const NextProjectSection = ({ nextProject }) => {
+const NextProjectSection = () => {
+  const { slug } = useParams();
+  const projectIndex = projects.findIndex(p => p.slug === slug);
+  const nextProject = projectIndex !== -1 ? projects[(projectIndex + 1) % projects.length] : null;
+
   const nextBtnRef = useCursorHover('arrow');
   const sectionRef = useRef(null);
 
