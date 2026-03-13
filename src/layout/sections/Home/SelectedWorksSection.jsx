@@ -4,7 +4,7 @@ import { CreativeButton, HoverRotate, TransitionLink } from '../../../components
 import { RiArrowRightUpLine, RiCalendarLine, RiCodeSSlashLine } from '@remixicon/react';
 import { ScrollAnimatedImg } from '../../../components';
 import BaseSection from '../BaseSection';
-import { useCursorHover } from '../../../hooks/useCursorEffect';
+import { useCursorHover } from '../../../hooks/useCursorHover';
 
 const WorkCard = ({ work, index }) => {
   const cardRef = useCursorHover('arrow');

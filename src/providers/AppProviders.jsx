@@ -1,15 +1,15 @@
 import { LenisProvider } from '../context/LenisContext';
-import { StickyProvider } from '../context/StickyContext';
+import { CursorProvider } from '../context/CursorContext';
 import { TransitionProvider } from '../context/TransitionContext';
 
 const AppProviders = ({ children }) => {
   return (
     <LenisProvider>
-      <StickyProvider>
+      <CursorProvider>
         <TransitionProvider>
           {children}
         </TransitionProvider>
-      </StickyProvider>
+      </CursorProvider>
     </LenisProvider>
   );
 };

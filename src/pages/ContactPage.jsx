@@ -2,7 +2,7 @@ import React from 'react';
 import BaseSection from '../layout/sections/BaseSection';
 import { useContactForm, services, budgetOptions } from '../utils/contactHandling';
 import { CreativeButton } from '../components';
-import { useCursorHover } from '../hooks/useCursorEffect';
+import { useCursorHover } from '../hooks/useCursorHover';
 
 const ContactPage = () => {
   const { selectedServices, selectedBudget, setSelectedBudget, formData, attachment, toggleService, handleInputChange, handleFileChange, handleSubmit } = useContactForm();

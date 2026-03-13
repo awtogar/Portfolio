@@ -5,7 +5,8 @@ import { AnimatePresence, motion } from "motion/react"
 import { Nav, Magnetic, Bounds, CreativeButton } from '../../components';
 import { useLenis } from '../../context/LenisContext';
 import { useTheme } from '../../hooks/useTheme';
-import { useStickyElement, useCursorHover } from '../../hooks/useCursorEffect';
+import { useCursorHover } from '../../hooks/useCursorHover';
+import { useStickyElement } from '../../hooks/useStickyElement';
 
 const ThemeToggleButton = ({ isActive, toggleTheme, stickyRef }) => (
   <motion.div
@@ -99,15 +100,16 @@ const Header = () => {
         animate={{
           translateY: scrollDirection === 'down' && !isActive ? -100 : 0,
         }}
-        transition={{ duration: 0.3, ease: 'easeInOut' }}
-      >
+        transition={{ duration: 0.3, ease: 'easeInOut' }}>
+
+          {/* Header kalo lagi di detail project */}
         {isProjectDetail ? (
           <Magnetic>
-            <div className="relative" to="/projects">
+            <div className="relative pl-4" to="/projects">
               <CreativeButton ref={backBtnRef} variant="fillReverse" to="/projects" size="md" className="font-bold font-secondary tracking-tighter antialiased px-4 py-2">
-                <span className="flex items-center">
+                <span className="flex items-center gap-2">
                   <RiArrowLeftLine size={16} className='transition-transform duration-300 ease-in-out group-hover:-rotate-90' />
-                  <span className='text-base-sm'>All Projects</span>
+                  <span className='text-base-sm'>Back</span>
                 </span>
               </CreativeButton>
             </div>
@@ -126,8 +128,6 @@ const Header = () => {
             </div>
           </Magnetic>
         )}
-
-        {/* Right side: Theme toggle + Hamburger */}
         <div className="flex items-center h-[60px]">
           <ThemeToggleButton isActive={isActive} toggleTheme={toggleTheme} stickyRef={toggleSticky} />
           <HamburgerButton isActive={isActive} onToggle={toggleMenu} stickyRef={menuSticky} />

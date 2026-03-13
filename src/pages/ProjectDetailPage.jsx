@@ -5,7 +5,7 @@ import { BaseSection } from '../layout';
 import { projects } from '../data/data';
 import { ScrollAnimatedImg, CreativeButton, TransitionLink } from '../components';
 import { RiArrowLeftLine, RiArrowRightUpLine } from '@remixicon/react';
-import { useCursorHover } from '../hooks/useCursorEffect';
+import { useCursorHover } from '../hooks/useCursorHover';
 import NextProjectSection from '../layout/sections/Project/NextprojectSection';
 
 const fadeUp = {

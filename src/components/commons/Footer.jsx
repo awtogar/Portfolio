@@ -3,7 +3,7 @@ import { HoverRotate, CreativeButton } from '..';
 import { RiCornerDownRightLine } from '@remixicon/react';
 import { contact_info, socials } from '../../data/data';
 import { useFooter } from '../../utils/footerHandling';
-import { useCursorHover } from '../../hooks/useCursorEffect';
+import { useCursorHover } from '../../hooks/useCursorHover';
 
 const Footer = () => {
   const { currentPage, isContactPage, handleSectionClick, handleTellUsClick } = useFooter();

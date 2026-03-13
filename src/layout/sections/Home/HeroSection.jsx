@@ -1,7 +1,7 @@
 import React from 'react';
 import { CreativeButton } from '../../../components';
 import BaseSection from '../BaseSection';
-import { useCursorHover } from '../../../hooks/useCursorEffect';
+import { useCursorHover } from '../../../hooks/useCursorHover';
 
 
 const HeroSections = () => {

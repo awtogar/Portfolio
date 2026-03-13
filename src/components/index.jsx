@@ -21,7 +21,7 @@ export { default as Magnetic } from './ui/Magnetic.jsx';
 export { default as Marquee, MarqueeItem, ScrollAwareArrow } from './ui/Marquee.jsx';
 export { default as Preloader } from './ui/Preloader.jsx';
 export { default as ScrollAnimatedImg } from './ui/ScrollAnimatedImg.jsx';
-export { default as StickyCursor } from './ui/StickyCursor.jsx';
+export { default as CustomCursor } from './ui/CustomCursor.jsx';
 export { default as VideoLoader } from './ui/VideoLoader.jsx';
 
 export {default as SlideText} from './ui/SlideText.jsx';

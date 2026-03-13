@@ -2,7 +2,7 @@ import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'motion/react';
 import { RiArrowRightUpLine } from '@remixicon/react';
 import { CreativeButton, TransitionLink } from '../../../components';
-import { useCursorHover } from '../../../hooks/useCursorEffect';
+import { useCursorHover } from '../../../hooks/useCursorHover';
 
 const NextProjectSection = ({ nextProject }) => {
   const nextBtnRef = useCursorHover('arrow');

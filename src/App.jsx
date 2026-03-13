@@ -2,7 +2,7 @@ import { Route, BrowserRouter as Router, Routes, useLocation } from 'react-route
 import { useEffect, useState } from 'react';
 import './styles/globals.css';
 import { SpeedInsights } from '@vercel/speed-insights/react';
-import { Preloader, Header, StickyCursor, Footer, Transition } from './components';
+import { Preloader, Header, CustomCursor, Footer, Transition } from './components';
 import AppProviders from './providers/AppProviders';
 import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
@@ -30,7 +30,7 @@ const AppContent = () => {
     <>
       <Preloader isLoading={isLoading} />
       <Header />
-      <StickyCursor />
+      <CustomCursor />
       <ScrollToTopPages />
 
       {/* Global transition overlay — rendered once, persists across route changes */}

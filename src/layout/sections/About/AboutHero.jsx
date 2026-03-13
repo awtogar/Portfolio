@@ -4,7 +4,7 @@ import { RiGeminiFill, RiHand } from '@remixicon/react';
 import BaseSection from '../BaseSection';
 import { ScrollAnimatedImg, CircularText, CreativeButton } from '../../../components';
 import images_1 from '../../../assets/images/about/about-1.jpg';
-import { useCursorHover } from '../../../hooks/useCursorEffect';
+import { useCursorHover } from '../../../hooks/useCursorHover';
 
 const AboutHero = () => {
   const resumeRef = useCursorHover('arrow');

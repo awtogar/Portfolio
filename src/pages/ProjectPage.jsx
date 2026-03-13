@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { BaseSection } from '../layout';
 import { projects, projectCategories } from '../data/data';
 import { ScrollAnimatedImg, TransitionLink } from '../components';
-import { useCursorHover } from '../hooks/useCursorEffect';
+import { useCursorHover } from '../hooks/useCursorHover';
 
 
 const ProjectCard = ({ project, index }) => {
