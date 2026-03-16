@@ -17,7 +17,7 @@ const fadeUp = { initial: { opacity: 0, y: 32 }, animate: { opacity: 1, y: 0 } }
 /* ─── MetaRow — single field ─────────────────────────────────────────────── */
 const MetaRow = ({ label, children }) => (
   <div className="flex flex-col gap-s100">
-    <span className="hsAccent text-primary/30">{label}</span>
+    <span className="text-primary/30">{label}</span>
     <div className="text-primary">{children}</div>
   </div>
 );
@@ -33,27 +33,18 @@ const MetaDesktop = ({ project, index, total }) => {
       {...fadeUp}
       transition={{ duration: 0.65, delay: 0.3, ease }}
     >
-      <div className="flex items-center gap-s300 pb-s400 border-b border-primary/10">
-        <span className="font-mono text-base-sm text-primary/30">
-          {String(index + 1).padStart(2, '0')}
-        </span>
-        <div className="flex-1 h-px bg-primary/10" />
-        <span className="font-mono text-base-sm text-primary/20">
-          {String(total).padStart(2, '0')}
-        </span>
-      </div>
 
-      {project.role   && <MetaRow label="(Role)">{project.role}</MetaRow>}
-      {project.client && <MetaRow label="(Client)">{project.client}</MetaRow>}
+      {project.role   && <MetaRow label="Role">{project.role}</MetaRow>}
+      {project.client && <MetaRow label="Client">{project.client}</MetaRow>}
       {project.date   && (
-        <MetaRow label="(Year)">
+        <MetaRow label="Year">
           {project.date.year}
         </MetaRow>
       )}
 
       {project.tags?.length > 0 && (
         <div className="flex flex-col gap-s200">
-          <span className="hsAccent text-primary/30">(Technologies)</span>
+          <span className="text-primary/30">Technologies</span>
           <div className="flex flex-wrap gap-2">
             {project.tags.map((tag, i) => (
               <span
@@ -134,7 +125,7 @@ const MetaMobile = ({ project }) => (
     <div className="flex items-start gap-s500 overflow-x-auto pb-1 -mx-4 px-4 scrollbar-none">
       {project.role && (
         <div className="flex flex-col gap-s100 shrink-0">
-          <span className="hsAccent text-primary/30">(Role)</span>
+          <span className="text-primary/30">(Role)</span>
           <span className="text-primary text-base-sm whitespace-nowrap">{project.role}</span>
         </div>
       )}
@@ -142,7 +133,7 @@ const MetaMobile = ({ project }) => (
         <>
           <div className="w-px self-stretch bg-primary/10 shrink-0" />
           <div className="flex flex-col gap-s100 shrink-0">
-            <span className="hsAccent text-primary/30">(Client)</span>
+            <span className="text-primary/30">(Client)</span>
             <span className="text-primary text-base-sm whitespace-nowrap">{project.client}</span>
           </div>
         </>
@@ -151,7 +142,7 @@ const MetaMobile = ({ project }) => (
         <>
           <div className="w-px self-stretch bg-primary/10 shrink-0" />
           <div className="flex flex-col gap-s100 shrink-0">
-            <span className="hsAccent text-primary/30">(Year)</span>
+            <span className="text-primary/30">(Year)</span>
             <span className="text-primary text-base-sm whitespace-nowrap">
               {project.date.year}
             </span>
@@ -227,7 +218,6 @@ const ProjectInfoSection = () => {
           {...fadeUp}
           transition={{ duration: 0.7, delay: 0.1, ease }}
         >
-          <span className="hsAccent">({project.category})</span>
           <h1 className="text-h100">{project.title}</h1>
           {project.subtitle && (
             <p className="text-h500 text-primary/50 max-w-2xl">{project.subtitle}</p>

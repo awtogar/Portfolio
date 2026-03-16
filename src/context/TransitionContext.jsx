@@ -1,6 +1,6 @@
 import { createContext, useContext, useState, useCallback, useRef } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { pages } from '../data/data';
+import { pages, projects } from '../data/data';
 
 const TransitionContext = createContext(null);
 
@@ -14,13 +14,10 @@ export function TransitionProvider({ children }) {
   const navigate = useNavigate();
   const location = useLocation();
 
-  // "idle" | "exit" | "enter"
   const [phase, setPhase] = useState('idle');
   const [targetPath, setTargetPath] = useState(null);
   const [pageTitle, setPageTitle] = useState('');
   const isTransitioning = phase !== 'idle';
-
-  // Guard against double-triggers
   const transitionRef = useRef(false);
 
   const getPageTitle = useCallback((path) => {
@@ -31,8 +28,11 @@ export function TransitionProvider({ children }) {
     });
     if (page) return page.title;
 
-    // Handle dynamic routes like /projects/:slug
+    // Handle dynamic routes
     if (normalized.startsWith('/projects/')) {
+      const slug = normalized.split('/')[2];
+      const project = projects.find(p => p.slug === slug);
+      if (project) return project.title;
       return 'Project';
     }
     return '';
@@ -50,11 +50,9 @@ export function TransitionProvider({ children }) {
     setPhase('exit');
   }, [location.pathname, getPageTitle]);
 
-  // Called when exit animation completes
   const onExitComplete = useCallback(() => {
     if (targetPath) {
       navigate(targetPath);
-      // Small delay to let React render the new route before enter phase
       requestAnimationFrame(() => {
         requestAnimationFrame(() => {
           setPhase('enter');

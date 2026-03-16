@@ -17,6 +17,7 @@ const ProjectGallerySection = () => {
       sectionClassName="section-padding-x pb-s900"
       containerClassName="max-w-full md:max-w-[768px] lg:max-w-[1080px] xl:max-w-[1440px]"
     >
+      <span className="text-primary/30">(Gallery)</span>
       <motion.div
         className="flex flex-col gap-s600 md:gap-s700"
         initial={{ opacity: 0 }}
@@ -24,14 +25,6 @@ const ProjectGallerySection = () => {
         viewport={{ once: true, margin: '-80px' }}
         transition={{ duration: 0.7 }}
       >
-        <div className="flex items-center gap-s400 pb-s400 border-b border-primary/10">
-          <span className="hsAccent text-primary/30">(gallery)</span>
-          <div className="flex-1 h-px bg-primary/10" />
-          <span className="font-mono text-base-sm text-primary/20">
-            {String(project.gallery.length).padStart(2, '0')}
-          </span>
-        </div>
-
         <div className="flex flex-col gap-s500 md:gap-s600">
           {project.gallery.map((img, i) => (
             <motion.div
