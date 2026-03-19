@@ -21,7 +21,6 @@ const IntroSection = () => {
               </div>
               <p>With 2 years in graphic design and 100+ global clients, now focusing on web design and creative development to build impactful digital experiences.</p>
             </div>
-            {/* Stats */}
             <div className="flex gap-s600 bg-primary rounded-xl p-s600 items-center justify-center">
               <div className="flex flex-col justify-center items-center text-center">
                 <span className="text-3xl font-semibold text-secondary">100+</span>

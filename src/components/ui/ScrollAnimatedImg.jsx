@@ -21,11 +21,13 @@ const ScrollAnimatedImg = ({
 
   return (
     <div ref={containerRef} className={`overflow-hidden ${containerClassName}`}>
-      <motion.div style={{ y }} className={`w-full h-full ${className}`}>
+      <motion.div style={{ y, willChange: 'transform' }} className={`w-full h-full ${className}`}>
         <img
           src={src}
           alt={alt}
-          className={`w-full h-full object-cover transition-transform duration-500 ${imageClassName}`}
+          loading="lazy"
+          decoding="async"
+          className={`w-full h-full object-cover transition-[filter,opacity] duration-500 ${imageClassName}`}
         />
       </motion.div>
     </div>

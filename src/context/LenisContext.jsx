@@ -49,13 +49,15 @@ export function LenisProvider({ children }) {
     setLenis(lenisInstance);
     window.lenis = lenisInstance;
 
+    let rafId;
     const raf = time => {
       lenisInstance.raf(time);
-      requestAnimationFrame(raf);
+      rafId = requestAnimationFrame(raf);
     };
-    requestAnimationFrame(raf);
+    rafId = requestAnimationFrame(raf);
 
     return () => {
+      cancelAnimationFrame(rafId);
       lenisInstance.destroy();
       window.lenis = null;
       setLenis(null);

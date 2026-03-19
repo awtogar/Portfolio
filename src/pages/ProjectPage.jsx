@@ -7,9 +7,6 @@ import { useCursorHover } from '../hooks/useCursorHover';
 
 const ease = [0.7, 0, 0.3, 1];
 
-/* ─────────────────────────────────────────────
-   Standard card — portrait
-───────────────────────────────────────────── */
 const ProjectCard = ({ project, index }) => {
   const arrowRef = useCursorHover('arrow');
 
@@ -22,7 +19,6 @@ const ProjectCard = ({ project, index }) => {
       className="group relative"
     >
       <TransitionLink to={`/projects/${project.slug}`} className="block">
-        {/* Image */}
         <div ref={arrowRef} className="relative overflow-hidden rounded-2xl">
           <ScrollAnimatedImg
             src={project.image}
@@ -34,9 +30,7 @@ const ProjectCard = ({ project, index }) => {
           />
         </div>
 
-        {/* Meta */}
         <div className="pt-s400 flex flex-col gap-s300">
-          {/* Index + title */}
           <div className="flex items-baseline gap-s200">
             <span className="shrink-0 font-mono text-base-xs tracking-label text-primary/30">
               ({String(index + 1).padStart(2, '0')})
@@ -46,12 +40,10 @@ const ProjectCard = ({ project, index }) => {
             </h3>
           </div>
 
-          {/* Description */}
           <p className="text-base text-primary/55 leading-body max-w-[40ch]">
             {project.description}
           </p>
 
-          {/* Tags */}
           {project.tags?.length > 0 && (
             <div className="flex flex-wrap gap-s200">
               {project.tags.map((tag, i) => (
@@ -62,7 +54,6 @@ const ProjectCard = ({ project, index }) => {
             </div>
           )}
 
-          {/* Bottom stripe */}
           <div className="flex items-center justify-between pt-s200 border-t border-border">
             <span className="text-base-sm text-primary/75">{project.client || project.title}</span>
             <span className="text-base-xs tracking-label uppercase text-primary/40">{project.role || 'Creative Developer'}</span>
@@ -73,9 +64,6 @@ const ProjectCard = ({ project, index }) => {
   );
 };
 
-/* ─────────────────────────────────────────────
-   Grid renderer — Masonry layout
-───────────────────────────────────────────── */
 const ProjectGrid = ({ projects: list }) => {
   if (list.length === 0) {
     return (
@@ -88,7 +76,6 @@ const ProjectGrid = ({ projects: list }) => {
 
   return (
     <div className="md:grid md:grid-cols-2 gap-x-s700 lg:gap-x-s800">
-      {/* Left column */}
       <div className="flex flex-col gap-s800">
         {list
           .filter((_, i) => i % 2 === 0)
@@ -98,7 +85,6 @@ const ProjectGrid = ({ projects: list }) => {
           })}
       </div>
 
-      {/* Right column — staggered downward */}
       <div className="flex flex-col max-md:mt-s800 gap-s800 mt-[clamp(160px,20vw,400px)]">
         {list
           .filter((_, i) => i % 2 === 1)
@@ -111,9 +97,6 @@ const ProjectGrid = ({ projects: list }) => {
   );
 };
 
-/* ─────────────────────────────────────────────
-   Page
-───────────────────────────────────────────── */
 const ProjectPage = () => {
   const [activeCategory, setActiveCategory] = useState('all');
 
@@ -122,7 +105,6 @@ const ProjectPage = () => {
   return (
     <BaseSection sectionClassName="section-padding-hero section-padding-x">
       <div className="flex flex-col gap-s700">
-        {/* ── Header ── */}
         <motion.div initial={{ opacity: 0, y: 32 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, ease }} className="flex flex-col gap-s500">
           <div className="flex flex-col gap-s200">
             <span className="hsAccent">(Projects)</span>
@@ -133,10 +115,8 @@ const ProjectPage = () => {
           </p>
         </motion.div>
 
-        {/* Divider */}
         <div className="w-full h-px bg-border" />
 
-        {/* ── Filter nav ── */}
         <motion.nav
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
@@ -162,7 +142,6 @@ const ProjectPage = () => {
           })}
         </motion.nav>
 
-        {/* ── Grid ── */}
         <AnimatePresence mode="wait">
           <motion.div key={activeCategory} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.25, ease }}>
             <ProjectGrid projects={filteredProjects} />

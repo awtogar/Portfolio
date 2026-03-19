@@ -20,6 +20,7 @@ const CustomCursor = () => {
   const { isActive, variant, isSticky, stickyElement, fill } = cursorState;
   
   const cursorTrack = useRef(null);
+  const isVisibleRef = useRef(true);
 
   const sizes = CURSOR_SIZES[variant] || CURSOR_SIZES.scale;
   const cursorSize = isActive ? sizes.hovered : sizes.idle;
@@ -39,20 +40,23 @@ const CustomCursor = () => {
   const smoothX = useSpring(mouseX, smoothOptions);
   const smoothY = useSpring(mouseY, smoothOptions);
 
-  // Check if cursor is visible (md breakpoint and up)
-  const isCursorVisible = useCallback(() => {
-    if (!cursorTrack.current) return false;
-    const styles = window.getComputedStyle(cursorTrack.current);
-    return styles.display !== 'none';
+  // Cache visibility check — only re-evaluate on resize
+  useEffect(() => {
+    const checkVisibility = () => {
+      if (!cursorTrack.current) return;
+      isVisibleRef.current = window.getComputedStyle(cursorTrack.current).display !== 'none';
+    };
+    checkVisibility();
+    window.addEventListener('resize', checkVisibility);
+    return () => window.removeEventListener('resize', checkVisibility);
   }, []);
 
   const manageMouseMove = useCallback(
     (e) => {
-      if (!isCursorVisible()) return;
+      if (!isVisibleRef.current) return;
       const { clientX, clientY } = e;
 
       if (isActive && isSticky && stickyElement) {
-        // Sticky behavior — snap to center of element with elastic offset
         const { left, top, height, width } = stickyElement.getBoundingClientRect();
         const center = { x: left + width / 2, y: top + height / 2 };
         const distance = { x: clientX - center.x, y: clientY - center.y };
@@ -60,12 +64,11 @@ const CustomCursor = () => {
         mouseX.set(center.x - cursorSize / 2 + distance.x * 0.1);
         mouseY.set(center.y - cursorSize / 2 + distance.y * 0.1);
       } else {
-        // Non-sticky — cursor strictly follows mouse
         mouseX.set(clientX - cursorSize / 2);
         mouseY.set(clientY - cursorSize / 2);
       }
     },
-    [mouseX, mouseY, isActive, isSticky, stickyElement, cursorSize, isCursorVisible]
+    [mouseX, mouseY, isActive, isSticky, stickyElement, cursorSize]
   );
 
   useEffect(() => {

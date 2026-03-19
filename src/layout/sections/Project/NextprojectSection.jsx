@@ -29,7 +29,6 @@ const NextProjectSection = () => {
     <BaseSection sectionClassName="section-padding-xy">
       <div ref={sectionRef} className="flex flex-col gap-s600">
 
-          {/* Label row */}
           <div className="flex items-center gap-s300">
             <motion.div
               initial={{ scaleX: 0 }}
@@ -43,7 +42,6 @@ const NextProjectSection = () => {
             </span>
           </div>
 
-          {/* Title — parallax slide in */}
           <motion.h2
             className="text-h100 leading-none tracking-tight text-primary hover:opacity-50 transition-opacity duration-500"
             style={{
@@ -54,7 +52,6 @@ const NextProjectSection = () => {
             {nextProject.title}
           </motion.h2>
 
-          {/* Bottom row — meta + cta */}
           <div className="flex items-end justify-between gap-s600 flex-wrap pt-s300">
             <div className="flex flex-col gap-s200">
               <span className="text-base-xs uppercase tracking-label text-primary/30">

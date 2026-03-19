@@ -13,7 +13,6 @@ const WorkCard = ({ work, index }) => {
   return (
     <article className="group relative">
       <TransitionLink to={`/projects/${work.slug}`} className="block">
-        {/* Image */}
         <div ref={cardRef} className="relative overflow-hidden rounded-2xl">
           <ScrollAnimatedImg
             src={work.image}
@@ -25,9 +24,7 @@ const WorkCard = ({ work, index }) => {
           />
         </div>
 
-        {/* Meta */}
         <div className="pt-s500 flex flex-col gap-s300">
-          {/* Index + title row */}
           <div className="flex items-baseline gap-s300">
             <span className="shrink-0 font-mono text-base-sm tracking-label text-primary/40">
               ({String(index + 1).padStart(2, '0')})
@@ -37,12 +34,10 @@ const WorkCard = ({ work, index }) => {
             </h3>
           </div>
 
-          {/* Description */}
           <p className="text-base text-primary/55 leading-body">
             {work.description}
           </p>
 
-          {/* Client + role — his bottom meta stripe */}
           <div className="flex items-center justify-between pt-s200 border-t border-border">
             <span className="text-base-sm text-primary/75">
               {work.client || work.title}
@@ -60,7 +55,6 @@ const WorkCard = ({ work, index }) => {
 const SelectedWorksSection = () => {
   return (
     <BaseSection containerID="selected-works" sectionClassName="section-padding-xy relative overflow-hidden">
-      {/* ── Section header ── */}
       <div className="flex flex-col gap-s500 mb-s700">
         <div className="flex flex-col gap-s200">
           <span className="hsAccent">(selected)</span>
@@ -74,12 +68,9 @@ const SelectedWorksSection = () => {
         </p>
       </div>
 
-      {/* Stripe — divides header from grid */}
       <div className="w-full h-px mb-s700 bg-border" />
 
-      {/* ── Masonry two-column grid ── */}
       <div className="mb-s800 md:grid md:grid-cols-2 gap-x-s700 lg:gap-x-s800">
-        {/* Left column */}
         <div className="flex flex-col gap-s800">
           {works
             .filter((_, i) => i % 2 === 0)
@@ -97,8 +88,6 @@ const SelectedWorksSection = () => {
         </div>
       </div>
 
-      {/* ── CTA ── */}
-      {/* Stripe above CTA — his end-of-section divider pattern */}
       <div className="w-full h-px mb-s600 bg-border" />
 
       <div className="flex flex-col items-center gap-s300">

@@ -10,11 +10,9 @@ import { RiArrowRightUpLine } from '@remixicon/react';
 
 const markdownFiles = import.meta.glob('../../../content/projects/*.md', { query: '?raw', import: 'default' });
 
-// Animation presets
 const ease = [0.25, 0.46, 0.45, 0.94];
 const fadeUp = { initial: { opacity: 0, y: 32 }, animate: { opacity: 1, y: 0 } };
 
-// MetaRow — single field
 const MetaRow = ({ label, children }) => (
   <div className="flex flex-col gap-s100">
     <span className="text-primary/30">{label}</span>
@@ -22,7 +20,6 @@ const MetaRow = ({ label, children }) => (
   </div>
 );
 
-// Desktop metadata sidebar
 const MetaDesktop = ({ project, index, total }) => {
   const githubRef = useCursorHover('arrow');
   const liveRef   = useCursorHover('arrow');
@@ -94,7 +91,6 @@ const MetaDesktop = ({ project, index, total }) => {
   );
 };
 
-// Prose classes
 const proseClasses = [
   'prose prose-invert max-w-none',
   'prose-p:text-primary/70 prose-p:leading-relaxed',
@@ -115,7 +111,6 @@ const proseClasses = [
   'prose-hr:border-primary/10',
 ].join(' ');
 
-// Mobile metadata
 const MetaMobile = ({ project }) => (
   <motion.div
     className="flex flex-col gap-s500 md:hidden"

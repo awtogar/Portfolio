@@ -164,7 +164,7 @@ const projects = [
     subtitle: 'Modern Eyewear Branding',
     description: 'An eyewear and Optical Care branding. focused on modern aesthetics and strong visuals branding.',
     overview: 'Ovelo Eyewear is a premium eyewear brand that merges modern aesthetics with functional optical care. The branding project involved creating a comprehensive visual identity system — from logo design and typography choices to packaging and marketing collateral. Every element was crafted to communicate sophistication and clarity, reflecting the precision of optical craftsmanship.',
-    image: 'https://images.unsplash.com/photo-1577803645773-f96470509666?q=80&w=2000&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1577803645773-f96470509666?q=75&w=1200&auto=format&fit=crop',
     category: 'Branding',
     tags: ['Graphics', 'Branding'],
     role: 'Brand Designer',
@@ -177,9 +177,9 @@ const projects = [
     featured: true,
     selected: true,
     gallery: [
-      'https://images.unsplash.com/photo-1511499767150-a48a237f0083?q=80&w=2000&auto=format&fit=crop',
-      'https://images.unsplash.com/photo-1509695507497-903c140c43b0?q=80&w=2000&auto=format&fit=crop',
-      'https://images.unsplash.com/photo-1582142306909-195724d33ffc?q=80&w=2000&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1511499767150-a48a237f0083?q=75&w=1200&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1509695507497-903c140c43b0?q=75&w=1200&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1582142306909-195724d33ffc?q=75&w=1200&auto=format&fit=crop',
     ]
   },
   {
@@ -189,7 +189,7 @@ const projects = [
     subtitle: 'Creative Studio Agency',
     description: 'Branding and Web Development for a creative studio agency in Indonesia. that specializes in digital products.',
     overview: 'Nostratic Archive is a creative studio based in Indonesia specializing in digital products and immersive experiences. The project encompassed full branding development and a custom-built website, designed to showcase the studio\'s portfolio with a bold, editorial feel. The website features smooth scroll-driven animations and a dark, cinematic aesthetic that captures the studio\'s creative identity.',
-    image: 'https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?q=80&w=2000&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?q=75&w=1200&auto=format&fit=crop',
     category: 'Websites',
     tags: ['UI/UX', 'Prototype', 'Figma'],
     role: 'UI/UX Designer & Developer',
@@ -202,9 +202,9 @@ const projects = [
     featured: true,
     selected: true,
     gallery: [
-      'https://images.unsplash.com/photo-1618761714954-0b8cd0026356?q=80&w=2000&auto=format&fit=crop',
-      'https://images.unsplash.com/photo-1558655146-d09347e92766?q=80&w=2000&auto=format&fit=crop',
-      'https://images.unsplash.com/photo-1497215728101-856f4ea42174?q=80&w=2000&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1618761714954-0b8cd0026356?q=75&w=1200&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1558655146-d09347e92766?q=75&w=1200&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1497215728101-856f4ea42174?q=75&w=1200&auto=format&fit=crop',
     ]
   },
   {
@@ -214,7 +214,7 @@ const projects = [
   subtitle: 'Modern Nursery & Plant Art',
   description: 'Lunavara is a modern nursery and plant art. focused on aesthetic and minimalism audience',
   overview: 'Lunavara is a modern nursery and botanical art brand targeting design-conscious plant lovers. The project included creating a complete website experience with an emphasis on clean, minimal layouts that let the plant imagery breathe. The design balances organic warmth with modern grid structures, resulting in a digital space that feels both natural and curated.',
-  image: 'https://images.unsplash.com/photo-1501004318641-b39e6451bec6?q=80&w=2000&auto=format&fit=crop',
+  image: 'https://images.unsplash.com/photo-1501004318641-b39e6451bec6?q=75&w=1200&auto=format&fit=crop',
   category: 'Websites',
   tags: ['Web Development', 'UI/UX'],
   role: 'Frontend Developer',
@@ -227,8 +227,8 @@ const projects = [
   featured: true,
   selected: true,
   gallery: [
-    'https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?q=80&w=2000&auto=format&fit=crop',
-    'https://images.unsplash.com/photo-1497250681960-ef046c08a56e?q=80&w=2000&auto=format&fit=crop'
+    'https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?q=75&w=1200&auto=format&fit=crop',
+    'https://images.unsplash.com/photo-1497250681960-ef046c08a56e?q=75&w=1200&auto=format&fit=crop'
   ]
   },
   {
@@ -238,7 +238,7 @@ const projects = [
     subtitle: 'A Website app for calculate compound interest',
     description: 'A Calculator Website based app that can help you to calculate your compound interest and also can help you to plan your investment in the future.',
     overview: 'Investime+ is a web-based financial calculator designed to make compound interest calculations accessible and intuitive. The application features a clean, data-driven interface with interactive charts and real-time calculation updates. Built with a focus on financial literacy, it helps users visualize long-term investment growth through elegant data visualization and thoughtful UX patterns.',
-    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2000&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=75&w=1200&auto=format&fit=crop',
     category: 'Applications',
     tags: ['Web App', 'FinTech'],
     role: 'Full-Stack Developer',
@@ -251,8 +251,8 @@ const projects = [
     featured: true,
     selected: true,
     gallery: [
-      'https://images.unsplash.com/photo-1640161704729-cbe966a08476?q=80&w=2000&auto=format&fit=crop',
-      'https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?q=80&w=2000&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1640161704729-cbe966a08476?q=75&w=1200&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?q=75&w=1200&auto=format&fit=crop',
     ]
   },
   {
@@ -262,7 +262,7 @@ const projects = [
     subtitle: 'An App for manage and organize your assets as freelance designer',
     description: 'A design asset management platform for freelance designers to organize, tag, and share their creative files.',
     overview: 'Dyrit is a specialized asset management application built for freelance designers who need to efficiently organize, version, and share their design files. The platform offers intuitive folder structures, tagging systems, and client-sharing capabilities. The interface prioritizes speed and visual clarity, letting designers focus on their creative work rather than file management.',
-    image: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2000&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=75&w=1200&auto=format&fit=crop',
     category: 'Websites',
     tags: ['Web App', 'Productivity'],
     role: 'Product Designer & Developer',
@@ -275,9 +275,9 @@ const projects = [
     featured: true,
     selected: true,
     gallery: [
-      'https://images.unsplash.com/photo-1613909207039-6b173b755cc1?q=80&w=2000&auto=format&fit=crop',
-      'https://images.unsplash.com/photo-1614850523459-c2f4c699c52e?q=80&w=2000&auto=format&fit=crop',
-      'https://images.unsplash.com/photo-1618005192384-a83a8bd57fbe?q=80&w=2000&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1613909207039-6b173b755cc1?q=75&w=1200&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1614850523459-c2f4c699c52e?q=75&w=1200&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1618005192384-a83a8bd57fbe?q=75&w=1200&auto=format&fit=crop',
     ]
   },
   {
@@ -287,7 +287,7 @@ const projects = [
     subtitle: 'Modern scheduling and time management',
     description: 'Intuitive application for productivity that can help you to manage the routines and time management in a modern and simple way.',
     overview: 'Routines+ is a productivity application that reimagines daily scheduling with a modern, minimal interface. The app helps users build consistent habits through intuitive time-blocking, visual progress tracking, and gentle reminder systems. Designed with a focus on reducing cognitive load, the UI uses calming colors and smooth animations to make planning feel effortless.',
-    image: 'https://images.unsplash.com/photo-1506784365847-bbad939e9335?q=80&w=2000&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1506784365847-bbad939e9335?q=75&w=1200&auto=format&fit=crop',
     category: 'Applications',
     tags: ['Mobile App', 'Productivity'],
     role: 'UI/UX Designer',
@@ -300,8 +300,8 @@ const projects = [
     featured: true,
     selected: false,
     gallery: [
-      'https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?q=80&w=2000&auto=format&fit=crop',
-      'https://images.unsplash.com/photo-1512314889357-e157c22f938d?q=80&w=2000&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?q=75&w=1200&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1512314889357-e157c22f938d?q=75&w=1200&auto=format&fit=crop',
     ]
   },
   {
@@ -311,7 +311,7 @@ const projects = [
     subtitle: 'Shukari branding and visual concept',
     description: 'Comprehensive branding and visual identity project for Shukari.',
     overview: 'Shukari is a bold branding project that establishes a strong visual identity through custom typography, an expressive color palette, and versatile brand assets. The identity system spans print and digital applications, from business cards and stationery to social media templates and merchandise mockups. Every touchpoint is designed to communicate the brand\'s distinctive personality.',
-    image: 'https://images.unsplash.com/photo-1600132806370-bf17e65e942f?q=80&w=2000&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1600132806370-bf17e65e942f?q=75&w=1200&auto=format&fit=crop',
     category: 'Branding',
     tags: ['Branding', 'Design', 'Identity'],
     role: 'Brand Designer',
@@ -324,9 +324,9 @@ const projects = [
     featured: false,
     selected: true,
     gallery: [
-      'https://images.unsplash.com/photo-1557672172-298e090bd0f1?q=80&w=2000&auto=format&fit=crop',
-      'https://images.unsplash.com/photo-1558655146-364adaf1fcc9?q=80&w=2000&auto=format&fit=crop',
-      'https://images.unsplash.com/photo-1604871000636-074fa5117945?q=80&w=2000&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1557672172-298e090bd0f1?q=75&w=1200&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1558655146-364adaf1fcc9?q=75&w=1200&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1604871000636-074fa5117945?q=75&w=1200&auto=format&fit=crop',
     ]
   }
 ];

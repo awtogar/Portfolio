@@ -1,6 +1,5 @@
 import React from 'react';
 
-// A reusable layout component for sections. use default padding but can
 const BaseSection = ({
   children,
   containerID = '',

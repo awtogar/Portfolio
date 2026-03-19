@@ -12,7 +12,6 @@ const ContactPage = () => {
     <BaseSection sectionClassName="min-h-screen bg-secondary py-s900" containerID="contact-form">
       <div className="w-full max-w-lg mx-auto">
         <div className="rounded-3xl p-8 md:p-8 lg:p-12">
-          {/* Header */}
           <div className="flex flex-col pb-s600">
             <h2 className="text-3xl text-center italic">
               <span className="text-3xl">Let's <span className="font-medium">do</span></span>
@@ -22,7 +21,6 @@ const ContactPage = () => {
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-8">
-            {/* Services Selection */}
             <div>
               <p className="text-primary mb-4">I'm interested in...</p>
               <div className="flex flex-wrap gap-2 sm:gap-3">
@@ -41,7 +39,6 @@ const ContactPage = () => {
               </div>
             </div>
 
-            {/* Form Inputs */}
             <div className="space-y-6">
               <div>
                 <input
@@ -75,7 +72,6 @@ const ContactPage = () => {
               </div>
             </div>
 
-            {/* Budget Selection */}
             <div>
               <p className="text-primary mb-4">Project budget (USD)</p>
               <div className="flex flex-wrap gap-2 sm:gap-3">
@@ -94,7 +90,6 @@ const ContactPage = () => {
               </div>
             </div>
 
-            {/* File Attachment */}
             <div>
               <label className="inline-flex items-center gap-2 cursor-pointer text-primary hover:text-primary/70 transition-colors">
                 <svg
@@ -120,7 +115,6 @@ const ContactPage = () => {
               Send Message
             </CreativeButton>
 
-            {/* reCAPTCHA Notice */}
             <p className="text-center text-xs text-primary/40 leading-relaxed">
               This site is protected by reCAPTCHA and the Google{' '}
               <a href="#" className="text-blue-500 hover:underline">
