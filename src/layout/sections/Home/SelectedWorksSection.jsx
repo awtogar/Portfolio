@@ -1,10 +1,11 @@
 import React from 'react';
 import { works } from '../../../data/data';
-import { CreativeButton, HoverRotate, TransitionLink } from '../../../components';
-import { RiArrowRightUpLine, RiCalendarLine, RiCodeSSlashLine } from '@remixicon/react';
+import { HoverRotate, TransitionLink } from '../../../components';
+import { RiArrowRightUpLine } from '@remixicon/react';
 import { ScrollAnimatedImg } from '../../../components';
 import BaseSection from '../BaseSection';
 import { useCursorHover } from '../../../hooks/useCursorHover';
+
 
 const WorkCard = ({ work, index }) => {
   const cardRef = useCursorHover('arrow');
@@ -12,6 +13,7 @@ const WorkCard = ({ work, index }) => {
   return (
     <article className="group relative">
       <TransitionLink to={`/projects/${work.slug}`} className="block">
+        {/* Image */}
         <div ref={cardRef} className="relative overflow-hidden rounded-2xl">
           <ScrollAnimatedImg
             src={work.image}
@@ -22,12 +24,32 @@ const WorkCard = ({ work, index }) => {
             offset={['start end', 'end start']}
           />
         </div>
-        <div className="pt-s500 space-y-s300">
-          <h3 className="text-primary text-h400 leading-tight">{work.title}</h3>
-          <p className="text-primary/60 leading-relaxed">{work.description}</p>
-          <div className="pt-s200">
-            <p className="text-primary/80 font-medium">{work.client || work.title}</p>
-            <p className="text-primary/50 text-sm">{work.role || 'Creative Developer'}</p>
+
+        {/* Meta */}
+        <div className="pt-s500 flex flex-col gap-s300">
+          {/* Index + title row */}
+          <div className="flex items-baseline gap-s300">
+            <span className="shrink-0 font-mono text-base-sm tracking-label text-primary/40">
+              ({String(index + 1).padStart(2, '0')})
+            </span>
+            <h3 className="text-h400 text-primary leading-heading tracking-heading">
+              {work.title}
+            </h3>
+          </div>
+
+          {/* Description */}
+          <p className="text-base text-primary/55 leading-body">
+            {work.description}
+          </p>
+
+          {/* Client + role — his bottom meta stripe */}
+          <div className="flex items-center justify-between pt-s200 border-t border-border">
+            <span className="text-base-sm text-primary/75">
+              {work.client || work.title}
+            </span>
+            <span className="text-base-sm tracking-label uppercase text-primary/40">
+              {work.role || 'Creative Developer'}
+            </span>
           </div>
         </div>
       </TransitionLink>
@@ -37,51 +59,65 @@ const WorkCard = ({ work, index }) => {
 
 const SelectedWorksSection = () => {
   return (
-    <BaseSection id="selected-works" className="relative overflow-hidden">
-      <div className="flex w-full flex-col gap-s500 text-primary mb-s500">
-        <div className="flex flex-col gap-2">
+    <BaseSection containerID="selected-works" sectionClassName="section-padding-xy relative overflow-hidden">
+      {/* ── Section header ── */}
+      <div className="flex flex-col gap-s500 mb-s700">
+        <div className="flex flex-col gap-s200">
           <span className="hsAccent">(selected)</span>
-          <h2 className="text-h200">WORKS</h2>
+          <h2 className="text-h200 uppercase leading-heading tracking-heading">
+            Works
+          </h2>
         </div>
-        <p>Explore a curated collection of my recent work, showcasing innovation and craftsmanship.</p>
+
+        <p className="text-base max-w-[48ch] text-primary/55 leading-body">
+          Explore a curated collection of my recent work, showcasing innovation and craftsmanship.
+        </p>
       </div>
-      {/* Masonry Two-Column Grid */}
-      <div className="mb-8 md:mb-15 xl:mb-20 md:grid md:grid-cols-2 md:gap-x-10 lg:gap-x-15 xl:gap-x-20">
-        {/* Left Column */}
-        <div className="flex flex-col gap-y-10 lg:gap-y-20">
+
+      {/* Stripe — divides header from grid */}
+      <div className="w-full h-px mb-s700 bg-border" />
+
+      {/* ── Masonry two-column grid ── */}
+      <div className="mb-s800 md:grid md:grid-cols-2 gap-x-s700 lg:gap-x-s800">
+        {/* Left column */}
+        <div className="flex flex-col gap-s800">
           {works
             .filter((_, i) => i % 2 === 0)
             .map((work, index) => (
-              <WorkCard key={work.id} work={work} index={index} />
+              <WorkCard key={work.id} work={work} index={index * 2} />
             ))}
         </div>
 
-        {/* Right Column — offset downward to create stagger */}
-        <div className="flex flex-col gap-y-10 lg:gap-y-20 mt-[clamp(200px,25vw,500px)] max-md:mt-10">
+        <div className="flex flex-col max-md:mt-s700 gap-s800 mt-[clamp(160px,20vw,400px)]">
           {works
             .filter((_, i) => i % 2 === 1)
             .map((work, index) => (
-              <WorkCard key={work.id} work={work} index={index} />
+              <WorkCard key={work.id} work={work} index={index * 2 + 1} />
             ))}
         </div>
       </div>
 
-      {/* CTA to View All Projects */}
-      <div className="flex flex-col items-center">
-        <div className="text-center items-center gap-s400">
-          <span className="text-primary-muted/50 py-4 text-base-sm">Interested in seeing more?</span>
-          <HoverRotate to="/projects" target="_blank" rel="noopener noreferrer" className="justify-center">
-            <span className="text-primary/75">View All</span>
-            <span className="flex items-center justify-center gap-1 text-primary">
-              <span>Let's go</span>
-              <RiArrowRightUpLine className="pt-1.5" size={26} />
-            </span>
-          </HoverRotate>
-        </div>
+      {/* ── CTA ── */}
+      {/* Stripe above CTA — his end-of-section divider pattern */}
+      <div className="w-full h-px mb-s600 bg-border" />
+
+      <div className="flex flex-col items-center gap-s300">
+        <span className="text-base-sm text-primary/40 tracking-body">
+          Interested in seeing more?
+        </span>
+
+        <HoverRotate to="/projects" rel="noopener noreferrer" className="justify-center">
+          <span className="text-primary/65">
+            View All
+          </span>
+          <span className="flex items-center gap-1 text-primary">
+            <span>Let's go</span>
+            <RiArrowRightUpLine size={20} style={{ marginTop: '2px' }} />
+          </span>
+        </HoverRotate>
       </div>
     </BaseSection>
   );
 };
 
 export default SelectedWorksSection;
-

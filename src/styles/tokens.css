@@ -1,13 +1,28 @@
+/* -------------------------------------------------------------------------
+   Design Tokens — Snellenberg-inspired system
+   Font: General Sans (your existing) ↔ Neue Montreal (his)
+   Easing: cubic-bezier(.7, 0, .3, 1) — his signature curve
+   Spacing philosophy: 3 semantic tiers (section / container / gap)
+   Typography: fluid + viewport-driven, tight leading (1.065)
+   ------------------------------------------------------------------------- */
+
 :root {
+  /* -------------------------
+     Fonts
+  ------------------------- */
   --sans: 'General Sans', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   --serif: 'Overused Grotesk', 'Georgia', 'Times New Roman', serif;
   --mono: 'SF Mono', 'Monaco', 'Cascadia Code', 'Roboto Mono', monospace;
 
+  /* -------------------------
+     Colors (unchanged — your palette is already solid)
+  ------------------------- */
   --neutral-100: hsl(47, 0%, 98%);
   --neutral-200: hsl(47, 4%, 90%);
   --neutral-300: hsl(47, 6%, 70%);
   --neutral-400: hsl(47, 8%, 45%);
   --neutral-500: hsl(47, 12%, 20%);
+
   --primary: hsl(47, 12%, 10%);
   --primary-muted: hsl(47, 8%, 35%);
   --secondary: hsl(47, 0%, 98%);
@@ -17,35 +32,119 @@
   --brand-secondary: #2277c8;
   --brand-tertiary: #10344a;
 
+  /* His exact accent used for interactive states */
+  --accent: #455ce9;
+  --accent-dark: #334bd3;
 
+  /* Border system — taken directly from Dennis's source */
+  --color-border: rgba(28, 29, 32, 0.175);
+  --color-border-solid: #d2d2d2;
 
---h100: clamp(3.2rem, 4.2vi + 2.2rem, 8.41rem);
---h200: clamp(2.56rem, 3.4vi + 1.76rem, 6.31rem);   /* h100 ÷ 1.25 */
---h300: clamp(2.05rem, 2.7vi + 1.41rem, 4.73rem);   /* h200 ÷ 1.25 */
---h400: clamp(1.64rem, 2.2vi + 1.13rem, 3.55rem);   /* h300 ÷ 1.25 */
---h500: clamp(1.31rem, 1.75vi + 0.9rem, 2.66rem);   /* h400 ÷ 1.25 */
---h600: clamp(1.05rem, 1.4vi + 0.72rem, 1.5rem);    /* h500 ÷ 1.25 */
---base-lg: clamp(1.31rem, 1.75vi + 0.9rem, 2rem);   /* between h500 & base */
---base: clamp(1rem, 0.22vi + 0.95rem, 1.13rem);
---base-sm: clamp(0.8rem, 0.18vi + 0.76rem, 0.9rem); /* base ÷ 1.25 */
---base-extra-sm: clamp(0.64rem, 0.14vi + 0.61rem, 0.72rem); /* base-sm ÷ 1.25 */
+  /* -------------------------
+     Animation — Dennis's signature easing
+     cubic-bezier(.7, 0, .3, 1) = fast-out slow-in feel
+  ------------------------- */
+  --ease-primary: cubic-bezier(0.7, 0, 0.3, 1);
 
-  /* Display */
-  --display: clamp(5.96rem, 9.14vi + 3.9rem, 11.21rem);
+  --animation-fast: all 0.3s cubic-bezier(0.7, 0, 0.3, 1);
+  --animation-primary: all 0.5s cubic-bezier(0.7, 0, 0.3, 1);
+  --animation-smooth: all 0.7s cubic-bezier(0.7, 0, 0.3, 1);
+  --animation-slow: all 0.9s cubic-bezier(0.7, 0, 0.3, 1);
 
+  /* -------------------------
+     Typography Scale
+     Philosophy: viewport-fluid, tight leading (1.065 for headings),
+     relaxed leading (1.66) for body. Matches his clamp(3.25em, 7vw, 8em) logic.
+     --h100 is your largest heading. --display is for marquee/hero ticker.
+  ------------------------- */
 
-  /* space sizing */
-  --s100: clamp(0.3125rem, 0.3125rem + 0vi, 0.3125rem);
-  --s200: clamp(0.5625rem, 0.5446rem + 0.0893vi, 0.625rem);
-  --s300: clamp(0.75rem, 0.7321rem + 0.0893vi, 0.8125rem);
-  --s400: clamp(0.9375rem, 0.9107rem + 0.1339vi, 1.0rem);
-  --s500: clamp(1.25rem, 1.2143rem + 0.1786vi, 1.375rem);
-  --s600: clamp(1.6875rem, 1.6339rem + 0.2679vi, 1.875rem);
-  --s700: clamp(2.25rem, 2.1786rem + 0.3571vi, 2.5rem);
-  --s800: clamp(2.8125rem, 2.7232rem + 0.4464vi, 3.125rem);
-  --s900: clamp(3.375rem, 3.2679rem + 0.5357vi, 3.75rem);
+  /* Display / Marquee — his "Dennis Snellenberg" ticker at ~12–15vw */
+  --display: clamp(5rem, 12vw, 13rem);
+
+  /* Heading scale — mirrors his h1–h4 with the same 7vw / 5vw / 4.65vw / 2.3vw rhythm */
+  --h100: clamp(3.25rem, 7vw, 8rem); /* h1 — hero heading        */
+  --h200: clamp(2.5rem, 5vw, 4.5rem); /* h2 — section heading     */
+  --h300: clamp(2rem, 4.65vw, 4rem); /* h3 — sub-section heading */
+  --h400: clamp(1.55rem, 2.3vw, 2.5rem); /* h4 — card / list title   */
+  --h500: clamp(1.2rem, 1.6vw, 1.75rem); /* h5 — small heading       */
+  --h600: clamp(1rem, 1.2vw, 1.3rem); /* h6 / large label         */
+
+  /* Body — his body is clamp(16px, 1.2vw, 19px); mapped to rem */
+  --base-lg: clamp(1.2rem, 1.5vw, 1.5rem); /* p.big equivalent  */
+  --base: clamp(1rem, 1.2vw, 1.1875rem); /* body default      */
+  --base-sm: clamp(0.8rem, 0.9vw, 0.9rem); /* p.small           */
+  --base-extra-sm: clamp(0.65rem, 0.7vw, 0.75rem); /* micro labels      */
+
+  /* Leading — fixed values, not utility classes, so they stay consistent */
+  --leading-display: 1; /* marquee / giant text — very tight  */
+  --leading-heading: 1.065; /* his exact heading line-height       */
+  --leading-body: 1.66; /* his exact body line-height          */
+  --leading-relaxed: 1.75; /* p.small / captions                  */
+
+  /* Tracking */
+  --tracking-heading: -0.02em; /* slightly negative for big type     */
+  --tracking-label: 0.08em; /* uppercase micro labels — wide      */
+  --tracking-body: 0.015em;
+
+  /* -------------------------
+     Spacing — 3-tier semantic system (mirroring his architecture)
+
+     Tier 1: --section-padding  → vertical section rhythm (py on <section>)
+     Tier 2: --container-padding → horizontal container inset (px on .container)
+     Tier 3: --gap-padding       → internal component gaps (gap, p on cards)
+
+     These three vars drive ~80% of layout spacing decisions.
+     The --s* scale fills in precise component-level needs.
+  ------------------------- */
+
+  /* Semantic tiers — use these for section/container/gap decisions */
+  --section-padding: clamp(5rem, 21vh, 12rem); /* his exact value  */
+  --container-padding: clamp(2.5rem, 8vw, 8rem); /* his exact value  */
+  --gap-padding: clamp(1.5rem, 4vw, 2.5rem); /* his exact value  */
+
+  /* Precise step scale — for component-level spacing (margins, paddings, gaps) */
+  /* Recalibrated: minimum values lifted so even --s100 feels intentional      */
+  --s100: clamp(0.5rem, 0.5rem + 0vi, 0.5rem); /* 8px  — micro gap        */
+  --s200: clamp(0.75rem, 0.7rem + 0.25vi, 0.875rem); /* 12px — tight gap        */
+  --s300: clamp(1rem, 0.95rem + 0.35vi, 1.125rem); /* 16px — base gap         */
+  --s400: clamp(1.25rem, 1.2rem + 0.4vi, 1.5rem); /* 20px — comfortable gap  */
+  --s500: clamp(1.75rem, 1.6rem + 0.55vi, 2.25rem); /* 28px — medium gap       */
+  --s600: clamp(2.25rem, 2rem + 0.8vi, 3rem); /* 36px — section element  */
+  --s700: clamp(3rem, 2.75rem + 1vi, 4rem); /* 48px — component gap    */
+  --s800: clamp(4rem, 3.5rem + 1.5vi, 6rem); /* 64px — large gap        */
+  --s900: clamp(5rem, 4.5rem + 2vi, 8rem); /* 80px — section gap      */
+
+  /* Fluid utility — for one-off "feels right" spacing that scales freely */
   --sfluid: clamp(1rem, 0.8571rem + 1.0143vi, 3.5rem);
 }
+
+/* -------------------------
+   Responsive overrides — mirrors his breakpoint behaviour exactly
+------------------------- */
+
+@media screen and (max-width: 1200px) {
+  :root {
+    --container-padding: 6vw;
+  }
+}
+
+@media screen and (max-width: 720px) {
+  :root {
+    --section-padding: 12vh;
+  }
+}
+
+@media screen and (max-width: 540px) {
+  :root {
+    --color-border: rgba(28, 29, 32, 0.225);
+    --container-padding: clamp(1.25rem, 4vw, 2.5rem);
+    --section-padding: max(2.5rem, 12vh);
+  }
+}
+
+/* -------------------------
+   Dark mode
+------------------------- */
 
 .dark {
   --neutral-100: hsl(47, 12%, 8%);
@@ -58,4 +157,7 @@
   --primary-muted: hsl(47, 6%, 70%);
   --secondary: hsl(47, 12%, 12%);
   --secondary-muted: hsl(47, 8%, 35%);
+
+  --color-border: rgba(255, 255, 255, 0.2);
+  --color-border-solid: #545557;
 }

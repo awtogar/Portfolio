@@ -1,40 +1,86 @@
-@import "tailwindcss"; 
-@import "./fonts.css";
+@import 'tailwindcss';
+@import './fonts.css';
 @import './animation.css';
 @import './tokens.css';
 @import './layouts.css';
 @plugin "@tailwindcss/typography";
+
 @custom-variant dark (&:where(.dark, .dark *));
 
-
 @theme {
+  /* -------------------------
+     Fonts
+  ------------------------- */
   --font-sans: var(--sans);
   --font-serif: var(--serif);
   --font-mono: var(--mono);
-  
+
+  /* -------------------------
+     Colors
+  ------------------------- */
   --color-neutral-100: var(--neutral-100);
   --color-neutral-200: var(--neutral-200);
   --color-neutral-300: var(--neutral-300);
   --color-neutral-400: var(--neutral-400);
   --color-neutral-500: var(--neutral-500);
+
   --color-primary: var(--primary);
   --color-primary-muted: var(--primary-muted);
   --color-secondary: var(--secondary);
   --color-secondary-muted: var(--secondary-muted);
+
   --color-brand-primary: var(--brand-primary);
   --color-brand-secondary: var(--brand-secondary);
   --color-brand-tertiary: var(--brand-tertiary);
 
+  /* Accent — his #455CE9 interactive blue */
+  --color-accent: var(--accent);
+  --color-accent-dark: var(--accent-dark);
+
+  /* -------------------------
+     Typography — text-* utilities
+  ------------------------- */
   --text-display: var(--display);
+
   --text-h100: var(--h100);
   --text-h200: var(--h200);
   --text-h300: var(--h300);
   --text-h400: var(--h400);
   --text-h500: var(--h500);
+  --text-h600: var(--h600);
+
   --text-base-lg: var(--base-lg);
   --text-base: var(--base);
   --text-base-sm: var(--base-sm);
+  --text-base-xs: var(--base-extra-sm);
 
+  /* -------------------------
+     Leading — leading-* utilities
+     e.g. leading-heading, leading-body, leading-display
+  ------------------------- */
+  --leading-display: var(--leading-display);
+  --leading-heading: var(--leading-heading);
+  --leading-body: var(--leading-body);
+  --leading-relaxed: var(--leading-relaxed);
+
+  /* -------------------------
+     Tracking — tracking-* utilities
+     e.g. tracking-heading, tracking-label, tracking-body
+  ------------------------- */
+  --tracking-heading: var(--tracking-heading);
+  --tracking-label: var(--tracking-label);
+  --tracking-body: var(--tracking-body);
+
+  /* -------------------------
+     Spacing — spacing-* utilities
+     Semantic tiers → layout-level
+     e.g. py-section, px-container, gap-gap
+  ------------------------- */
+  --spacing-section: var(--section-padding);
+  --spacing-container: var(--container-padding);
+  --spacing-gap: var(--gap-padding);
+
+  /* Step scale → component-level */
   --spacing-s100: var(--s100);
   --spacing-s200: var(--s200);
   --spacing-s300: var(--s300);
@@ -45,17 +91,31 @@
   --spacing-s800: var(--s800);
   --spacing-s900: var(--s900);
   --spacing-sfluid: var(--sfluid);
-  
+
+  /* -------------------------
+     Breakpoints
+  ------------------------- */
   --breakpoint-*: initial;
   --breakpoint-md: 46rem;
   --breakpoint-lg: 60rem;
   --breakpoint-xl: 80rem;
   --breakpoint-2xl: 90rem;
+
+  /* -------------------------
+     Animation
+     e.g. duration-primary ease-primary
+  ------------------------- */
+  --ease-primary: var(--ease-primary);
+
+  --duration-fast: 300ms;
+  --duration-primary: 500ms;
+  --duration-smooth: 700ms;
+  --duration-slow: 900ms;
 }
 
-
-
-
+/* -------------------------
+   HTML baseline
+------------------------- */
 html {
   position: relative;
   -webkit-text-size-adjust: 100%;
@@ -63,6 +123,9 @@ html {
   text-size-adjust: 100%;
 }
 
+/* -------------------------
+   Base layer
+------------------------- */
 @layer base {
   *,
   *::before,
@@ -71,23 +134,109 @@ html {
   }
 
   * {
-    /* border: 1px solid red; */
     margin: 0;
     padding: 0;
     font: inherit;
   }
+
   body {
-    background-color: var(--color-neutral-100);
-    color: var(--color-primary);
-  }
- p {
-    @apply leading-[150%] tracking-[0.025em];
+    font-family: var(--sans);
+    font-weight: 450;
+    font-size: var(--base);
+    line-height: var(--leading-body);
+    color: var(--primary);
+    background-color: var(--neutral-100);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
+  /* -------------------------
+     tight leading (1.065), slightly negative tracking
+  ------------------------- */
   :is(h1, h2, h3, h4, h5, h6) {
-    @apply leading-[90%] tracking-[-3%];
+    line-height: var(--leading-heading);
+    letter-spacing: var(--tracking-heading);
+    font-weight: 450;
   }
-  .hsAccent{
-    @apply leading-[150%] tracking-widest text-primary/75 uppercase;
+
+  h1 {
+    font-size: var(--h100);
+  }
+  h2 {
+    font-size: var(--h200);
+  }
+  h3 {
+    font-size: var(--h300);
+  }
+  h4 {
+    font-size: var(--h400);
+  }
+  h5 {
+    font-size: var(--h500);
+  }
+  h6 {
+    font-size: var(--h600);
+  }
+
+  /* -------------------------
+     Paragraph
+  ------------------------- */
+  p {
+    line-height: var(--leading-body);
+    letter-spacing: var(--tracking-body);
+  }
+
+  /* -------------------------
+     Links
+  ------------------------- */
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  /* -------------------------
+     Media
+  ------------------------- */
+  canvas,
+  img,
+  video {
+    max-width: 100%;
+    height: auto;
+    box-sizing: border-box;
+    vertical-align: middle;
+  }
+
+  svg {
+    max-width: none;
+    height: auto;
+    box-sizing: border-box;
+    vertical-align: middle;
+  }
+
+  /* -------------------------
+     Selection — accent blue on highlight
+  ------------------------- */
+  ::selection {
+    background-color: var(--accent);
+    color: #fff;
+    text-shadow: none;
+  }
+  ::-moz-selection {
+    background-color: var(--accent);
+    color: #fff;
+    text-shadow: none;
+  }
+
+  /* -------------------------
+     Utility semantic classes
+  ------------------------- */
+
+  /* Accent label — uppercase micro copy e.g. "(selected)", "(WHAT I DO?)" */
+  .hsAccent {
+    font-size: var(--base-extra-sm);
+    line-height: var(--leading-relaxed);
+    letter-spacing: var(--tracking-label);
+    color: color-mix(in srgb, var(--primary) 75%, transparent);
+    text-transform: uppercase;
   }
 }

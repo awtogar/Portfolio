@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { motion, useScroll, useTransform } from 'motion/react';
 import { RiArrowRightUpLine } from '@remixicon/react';
 import { CreativeButton, TransitionLink } from '../../../components';
+import BaseSection from '../../sections/BaseSection';
 import { useCursorHover } from '../../../hooks/useCursorHover';
 import { projects } from '../../../data/data';
 
@@ -25,28 +26,27 @@ const NextProjectSection = () => {
   if (!nextProject) return null;
 
   return (
-    <section ref={sectionRef} className="border-t border-primary/10">
-        <div className="px-6 md:px-16 lg:px-24 py-16 md:py-24 flex flex-col gap-8">
+    <BaseSection sectionClassName="section-padding-xy">
+      <div ref={sectionRef} className="flex flex-col gap-s600">
 
           {/* Label row */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-s300">
             <motion.div
               initial={{ scaleX: 0 }}
               whileInView={{ scaleX: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
-              className="h-px w-8 bg-primary/30 origin-left"
+              className="h-px w-[32px] bg-primary/30 origin-left"
             />
-            <span className="text-xs uppercase tracking-[0.2em] text-primary/40 font-medium">
+            <span className="text-base-xs uppercase tracking-[0.2em] text-primary/40">
               Next
             </span>
           </div>
 
           {/* Title — parallax slide in */}
           <motion.h2
-            className="text-primary font-light leading-none tracking-tight group-hover:opacity-50 transition-opacity duration-500"
+            className="text-h100 leading-none tracking-tight text-primary hover:opacity-50 transition-opacity duration-500"
             style={{
-              fontSize: 'clamp(2.8rem, 9vw, 8rem)',
               x: titleX,
               opacity: titleOpacity,
             }}
@@ -55,12 +55,12 @@ const NextProjectSection = () => {
           </motion.h2>
 
           {/* Bottom row — meta + cta */}
-          <div className="flex items-end justify-between gap-6 flex-wrap">
-            <div className="flex flex-col gap-2">
-              <span className="text-xs uppercase tracking-widest text-primary/30 font-medium">
+          <div className="flex items-end justify-between gap-s600 flex-wrap pt-s300">
+            <div className="flex flex-col gap-s200">
+              <span className="text-base-xs uppercase tracking-label text-primary/30">
                 {nextProject.category}
               </span>
-              <p className="text-primary/50 text-sm max-w-sm leading-relaxed">
+              <p className="text-base-sm text-primary/50 max-w-[40ch] leading-body">
                 {nextProject.subtitle || nextProject.description}
               </p>
             </div>
@@ -76,8 +76,8 @@ const NextProjectSection = () => {
 
           </div>
 
-        </div>
-    </section>
+      </div>
+    </BaseSection>
   );
 };
 

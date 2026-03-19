@@ -208,29 +208,28 @@ const projects = [
     ]
   },
   {
-    id: 3,
-    slug: 'lunavara',
-    title: 'Lunavara',
-    subtitle: 'Modern Nursery & Plant Art',
-    description: 'Lunavara is a modern nursery and plant art. focused on aesthetic and minimalism audience',
-    overview: 'Lunavara is a modern nursery and botanical art brand targeting design-conscious plant lovers. The project included creating a complete website experience with an emphasis on clean, minimal layouts that let the plant imagery breathe. The design balances organic warmth with modern grid structures, resulting in a digital space that feels both natural and curated.',
-    image: 'https://images.unsplash.com/photo-1545241047-6083a36db158?q=80&w=2000&auto=format&fit=crop',
-    category: 'Websites',
-    tags: ['Web Development', 'UI/UX'],
-    role: 'Frontend Developer',
-    client: 'Lunavara',
-    date: {
-      month: 'August',
-      year: '2024'
-    },
-    link: '/projects/lunavara',
-    featured: true,
-    selected: true,
-    gallery: [
-      'https://images.unsplash.com/photo-1416879598558-1d2221b6ac48?q=80&w=2000&auto=format&fit=crop',
-      'https://images.unsplash.com/photo-1463320726281-696a485928c7?q=80&w=2000&auto=format&fit=crop',
-      'https://images.unsplash.com/photo-1505066211281-ed125c006f4c?q=80&w=2000&auto=format&fit=crop',
-    ]
+  id: 3,
+  slug: 'lunavara',
+  title: 'Lunavara',
+  subtitle: 'Modern Nursery & Plant Art',
+  description: 'Lunavara is a modern nursery and plant art. focused on aesthetic and minimalism audience',
+  overview: 'Lunavara is a modern nursery and botanical art brand targeting design-conscious plant lovers. The project included creating a complete website experience with an emphasis on clean, minimal layouts that let the plant imagery breathe. The design balances organic warmth with modern grid structures, resulting in a digital space that feels both natural and curated.',
+  image: 'https://images.unsplash.com/photo-1501004318641-b39e6451bec6?q=80&w=2000&auto=format&fit=crop',
+  category: 'Websites',
+  tags: ['Web Development', 'UI/UX'],
+  role: 'Frontend Developer',
+  client: 'Lunavara',
+  date: {
+    month: 'August',
+    year: '2024'
+  },
+  link: '/projects/lunavara',
+  featured: true,
+  selected: true,
+  gallery: [
+    'https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?q=80&w=2000&auto=format&fit=crop',
+    'https://images.unsplash.com/photo-1497250681960-ef046c08a56e?q=80&w=2000&auto=format&fit=crop'
+  ]
   },
   {
     id: 4,

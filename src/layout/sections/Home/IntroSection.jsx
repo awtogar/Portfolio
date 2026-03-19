@@ -6,8 +6,8 @@ import BaseSection from '../BaseSection';
 const IntroSection = () => {
   return (
     <>
-      <BaseSection sectionClassName="lg:px-24" containerClassName="">
-        <div className="h-[468px] overflow-hidden lg:rounded-3xl lg:h-[640px]">
+      <BaseSection sectionClassName="" containerClassName="max-w-full">
+        <div className="h-[468px] overflow-hidden lg:h-[640px]">
           <VideoLoader src={video1} className="w-full h-full object-cover -inset-1px lg:h-[calc(100%_+_2px)] lg:w-[calc(100%_+_2px)] transform overflow-clip rounded-[inherit]" />
         </div>
       </BaseSection>

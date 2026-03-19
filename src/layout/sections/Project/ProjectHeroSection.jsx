@@ -1,15 +1,14 @@
 import { useParams } from 'react-router-dom';
 import { projects } from '../../../data/data';
 import { ScrollAnimatedImg } from '../../../components';
-
+ 
 const ProjectHeroSection = () => {
   const { slug } = useParams();
-  const project = projects.find(p => p.slug === slug);
-
+  const project = projects.find((p) => p.slug === slug);
   if (!project) return null;
-
+ 
   return (
-    <section className="relative w-full">
+    <section className="relative w-full overflow-hidden">
       <ScrollAnimatedImg
         src={project.image}
         alt={project.title}
@@ -21,5 +20,5 @@ const ProjectHeroSection = () => {
     </section>
   );
 };
-
+ 
 export default ProjectHeroSection;

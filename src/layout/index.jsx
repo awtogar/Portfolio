@@ -15,3 +15,4 @@ export { default as ProjectHeroSection } from './sections/Project/ProjectHeroSec
 export { default as ProjectInfoSection } from './sections/Project/ProjectInfoSection';
 export { default as ProjectGallerySection } from './sections/Project/ProjectGallerySection';
 export { default as NextProjectSection } from './sections/Project/NextprojectSection';
+
