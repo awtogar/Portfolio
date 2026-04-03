@@ -4,7 +4,7 @@ export { default as useLoader } from './useLoader';
 export { default as usePreloader } from './usePreloader';
 export { useScrollToSection } from './useScrollToSection';
 export { default as useScrollToTop } from './useScrollToTop';
-export { useStickyElement } from './useStickyElement';
+export { useCursorInteraction } from './useCursorInteraction';
 export { useTheme } from './useTheme';
 export { useVideoVisibility } from './useVideoVisibility';
 export { useWindowDimensions } from './useWindowDimensions';

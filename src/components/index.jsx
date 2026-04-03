@@ -9,12 +9,6 @@ export { default as Splatter } from './ui/Splatter.jsx';
 
 // UI components
 
-// this components will make the element scaled
-export { default as Bounds } from './ui/Bounds.jsx';
-
-// this element will make the element magnetic
-export { default as Magnetic } from './ui/Magnetic.jsx';
-
 // this element will make the element of cursor follow have variants
 export { default as CustomCursor } from './ui/CustomCursor.jsx';
 

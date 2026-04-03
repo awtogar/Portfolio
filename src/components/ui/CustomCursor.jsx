@@ -6,14 +6,12 @@ import { RiArrowRightUpLine } from '@remixicon/react';
 const CURSOR_SIZES = {
   scale: { idle: 6, hovered: 60 },
   arrow: { idle: 6, hovered: 60 },
-  scale2: { idle: 6, hovered: 60 },
   text: { idle: 6, hovered: 70 },
 };
 
 const CURSOR_FILLS = {
   scale: 'bg-primary',
   arrow: 'bg-primary',
-  scale2: 'bg-primary',
   text: 'bg-primary',
 };
 
