@@ -1,5 +1,5 @@
 // Common components
-export { default as Header } from './commons/Header.jsx';
+export { default as Header } from './commons/Header/Header.jsx';
 export { default as NavLink } from './commons/NavLink.jsx';
 export { default as Nav } from './commons/Nav.jsx';
 export { default as Footer } from './commons/Footer.jsx';

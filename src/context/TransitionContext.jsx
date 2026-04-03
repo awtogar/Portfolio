@@ -20,7 +20,7 @@ export function TransitionProvider({ children }) {
   const isTransitioning = phase !== 'idle';
   const transitionRef = useRef(false);
 
-  const getPageTitle = useCallback((path) => {
+  const getPageTitle = useCallback(path => {
     const normalized = path.endsWith('/') ? path.slice(0, -1) : path;
     const page = Object.values(pages).find(p => {
       const pNorm = p.href.endsWith('/') ? p.href.slice(0, -1) : p.href;
@@ -38,17 +38,20 @@ export function TransitionProvider({ children }) {
     return '';
   }, []);
 
-  const navigateTo = useCallback((path) => {
-    // Don't transition to the same page
-    if (path === location.pathname) return;
-    // Don't start a new transition if one is in progress
-    if (transitionRef.current) return;
+  const navigateTo = useCallback(
+    path => {
+      // Don't transition to the same page
+      if (path === location.pathname) return;
+      // Don't start a new transition if one is in progress
+      if (transitionRef.current) return;
 
-    transitionRef.current = true;
-    setTargetPath(path);
-    setPageTitle(getPageTitle(path));
-    setPhase('exit');
-  }, [location.pathname, getPageTitle]);
+      transitionRef.current = true;
+      setTargetPath(path);
+      setPageTitle(getPageTitle(path));
+      setPhase('exit');
+    },
+    [location.pathname, getPageTitle]
+  );
 
   const onExitComplete = useCallback(() => {
     if (targetPath) {

@@ -7,17 +7,19 @@ const CURSOR_SIZES = {
   scale: { idle: 6, hovered: 60 },
   arrow: { idle: 6, hovered: 60 },
   scale2: { idle: 6, hovered: 60 },
+  text: { idle: 6, hovered: 70 },
 };
 
 const CURSOR_FILLS = {
   scale: 'bg-primary',
   arrow: 'bg-primary',
   scale2: 'bg-primary',
+  text: 'bg-primary',
 };
 
 const CustomCursor = () => {
   const { cursorState } = useCursor();
-  const { isActive, variant, isSticky, stickyElement, fill } = cursorState;
+  const { isActive, variant, text, isSticky, stickyElement, fill } = cursorState;
   
   const cursorTrack = useRef(null);
   const isVisibleRef = useRef(true);
@@ -78,7 +80,8 @@ const CustomCursor = () => {
     };
   }, [manageMouseMove]);
 
-  const isArrowVariant = isActive && variant === 'arrow';
+  const isArrowVariant = isActive && variant === 'arrow' && !text;
+  const isTextVariant = isActive && (variant === 'text' || text);
   const cursorFill = fill || CURSOR_FILLS[variant] || 'bg-primary';
 
   return (
@@ -104,6 +107,17 @@ const CustomCursor = () => {
             className="w-full h-full flex items-center justify-center"
           >
             <RiArrowRightUpLine className="w-5 h-5 md:w-6 md:h-6 text-secondary" />
+          </motion.div>
+        )}
+        {isTextVariant && (
+          <motion.div
+            initial={{ opacity: 0, scale: 0 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0 }}
+            transition={{ duration: 0.2, ease: 'easeOut' }}
+            className="w-full h-full flex items-center justify-center font-secondary font-bold text-sm tracking-tight text-secondary pointer-events-none"
+          >
+            {text}
           </motion.div>
         )}
       </AnimatePresence>

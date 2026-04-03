@@ -1,6 +1,5 @@
 import { useRef, useLayoutEffect, useState } from 'react';
 import { motion, useScroll, useSpring, useTransform, useMotionValue, useVelocity, useAnimationFrame } from 'motion/react';
-import { BaseSection } from '../../layout';
 
 function useElementWidth(ref) {
   const [width, setWidth] = useState(0);

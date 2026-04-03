@@ -156,6 +156,8 @@ const services = [{
 }
 ];
 
+import { ovelo1, ovelo2, ovelo3, ovelo4, ovelo5, ovelo6, ovelo7, ovelo8 } from '@/assets';
+
 const projects = [
   {
     id: 1,
@@ -177,9 +179,14 @@ const projects = [
     featured: true,
     selected: true,
     gallery: [
-      'https://images.unsplash.com/photo-1511499767150-a48a237f0083?q=75&w=1200&auto=format&fit=crop',
-      'https://images.unsplash.com/photo-1509695507497-903c140c43b0?q=75&w=1200&auto=format&fit=crop',
-      'https://images.unsplash.com/photo-1582142306909-195724d33ffc?q=75&w=1200&auto=format&fit=crop',
+      ovelo1,
+      ovelo2,
+      ovelo3,
+      ovelo4,
+      ovelo5,
+      ovelo6,
+      ovelo7,
+      ovelo8
     ]
   },
   {

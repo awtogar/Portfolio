@@ -1,100 +1,63 @@
-import { Route, BrowserRouter as Router, Routes, useLocation } from 'react-router-dom';
-import { useEffect, useState } from 'react';
-import './styles/globals.css';
+import { Route, BrowserRouter as Router, Routes, Outlet, useLocation } from 'react-router-dom';
+import '@/styles/globals.css';
 import { SpeedInsights } from '@vercel/speed-insights/react';
-import { Preloader, Header, CustomCursor, Footer, Transition } from './components';
-import AppProviders from './providers/AppProviders';
-import HomePage from './pages/HomePage';
-import AboutPage from './pages/AboutPage';
-import ProjectPage from './pages/ProjectPage';
-import ProjectDetailPage from './pages/ProjectDetailPage';
-import ContactPage from './pages/ContactPage';
-import { pages } from './data/data';
-import ScrollToTopPages from './function/ScrollToTopPages';
+import { Preloader, Header, CustomCursor, Footer, Transition } from '@/components';
+import AppProviders from '@/context/AppProviders';
+import {
+  HomePage,
+  AboutPage,
+  ProjectPage,
+  ProjectDetailPage,
+  ContactPage,
+} from '@/pages';
+import { pages } from '@/data/data';
+import { useScrollToTop, usePreloader } from '@/hooks';
+
+// Layout for pages that include the Footer
+const WithFooter = () => (
+  <>
+    <Outlet />
+    <Footer />
+  </>
+);
 
 const AppContent = () => {
-  const [isLoading, setIsLoading] = useState(true);
+  const isLoading = usePreloader();
   const location = useLocation();
 
-  // Preloader timer
-  useEffect(() => {
-    const preloaderTimer = setTimeout(() => {
-      setIsLoading(false);
-      document.body.style.cursor = 'default';
-    }, 2000);
-
-    return () => clearTimeout(preloaderTimer);
-  }, []);
+  useScrollToTop();
 
   return (
     <>
       <Preloader isLoading={isLoading} />
       <Header />
       <CustomCursor />
-      <ScrollToTopPages />
-
-      {/* Global transition overlay — rendered once, persists across route changes */}
       <Transition />
 
-      <main id="main" className="bg-neutral-100" style={{ visibility: isLoading ? 'hidden' : 'visible' }}>
+      <main id="main" className="bg-neutral-100">
         <Routes location={location} key={location.pathname}>
-          <Route
-            path={pages.home.href}
-            element={
-              <>
-                <HomePage />
-                <Footer />
-              </>
-            }
-          />
-          <Route
-            path={pages.about.href}
-            element={
-              <>
-                <AboutPage />
-                <Footer />
-              </>
-            }
-          />
-          <Route
-            path={pages.project.href}
-            element={
-              <>
-                <ProjectPage />
-                <Footer />
-              </>
-            }
-          />
-          <Route
-            path="/projects/:slug"
-            element={
-              <>
-                <ProjectDetailPage />
-                <Footer />
-              </>
-            }
-          />
-          <Route
-            path={pages.contact.href}
-            element={<ContactPage />}
-          />
+          <Route element={<WithFooter />}>
+            <Route path={pages.home.href} element={<HomePage />} />
+            <Route path={pages.about.href} element={<AboutPage />} />
+            <Route path={pages.project.href} element={<ProjectPage />} />
+            <Route path="/projects/:slug" element={<ProjectDetailPage />} />
+          </Route>
+          <Route path={pages.contact.href} element={<ContactPage />} />
         </Routes>
       </main>
     </>
   );
 };
 
-const App = () => {
-  return (
-    <>
-      <SpeedInsights />
-      <Router>
-        <AppProviders>
-          <AppContent />
-        </AppProviders>
-      </Router>
-    </>
-  );
-};
+const App = () => (
+  <>
+    <SpeedInsights />
+    <Router>
+      <AppProviders>
+        <AppContent />
+      </AppProviders>
+    </Router>
+  </>
+);
 
 export default App;

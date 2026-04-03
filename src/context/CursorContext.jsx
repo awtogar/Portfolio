@@ -14,6 +14,7 @@ export function CursorProvider({ children }) {
   const [cursorState, setCursorState] = useState({
     isActive: false,
     variant: 'scale',
+    text: null,
     isSticky: false,
     stickyElement: null,
     fill: null,
@@ -27,6 +28,7 @@ export function CursorProvider({ children }) {
     setCursorState({
       isActive: false,
       variant: 'scale',
+      text: null,
       isSticky: false,
       stickyElement: null,
       fill: null,

@@ -1,13 +1,12 @@
-
 import { HoverRotate, CreativeButton } from '..';
 import { RiCornerDownRightLine } from '@remixicon/react';
 import { contact_info, socials } from '../../data/data';
-import { useFooter } from '../../utils/footerHandling';
-import { useCursorHover } from '../../hooks/useCursorHover';
+import { useFooter } from './useFooter';
+import { useCursorHoverContent } from '../../hooks';
 
 const Footer = () => {
   const { currentPage, isContactPage, handleSectionClick, handleTellUsClick } = useFooter();
-  const ctaRef = useCursorHover('arrow');
+  const ctaRef = useCursorHoverContent('arrow');
 
   return (
     <footer id="contact" className="z-10 section-padding-xy">
@@ -24,13 +23,7 @@ const Footer = () => {
                   </h2>
                   <p className="text-center">Let's work together.</p>
                 </div>
-                <CreativeButton
-                ref={ctaRef}
-                  variant="outline"
-                  {...(isContactPage
-                    ? { onClick: handleTellUsClick }
-                    : { to: '/contact' })}
-                >
+                <CreativeButton ref={ctaRef} variant="outline" {...(isContactPage ? { onClick: handleTellUsClick } : { to: '/contact' })}>
                   TELL US
                 </CreativeButton>
               </div>
