@@ -8,16 +8,12 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-  /* -------------------------
-     Fonts
-  ------------------------- */
+  /* Fonts */
   --font-sans: var(--sans);
   --font-serif: var(--serif);
   --font-mono: var(--mono);
 
-  /* -------------------------
-     Colors
-  ------------------------- */
+  /* Colors */
   --color-neutral-100: var(--neutral-100);
   --color-neutral-200: var(--neutral-200);
   --color-neutral-300: var(--neutral-300);
@@ -33,13 +29,11 @@
   --color-brand-secondary: var(--brand-secondary);
   --color-brand-tertiary: var(--brand-tertiary);
 
-  /* Accent — his #455CE9 interactive blue */
+  /* Accent */
   --color-accent: var(--accent);
   --color-accent-dark: var(--accent-dark);
 
-  /* -------------------------
-     Typography — text-* utilities
-  ------------------------- */
+  /* Typography */
   --text-display: var(--display);
 
   --text-h100: var(--h100);
@@ -54,33 +48,23 @@
   --text-base-sm: var(--base-sm);
   --text-base-xs: var(--base-extra-sm);
 
-  /* -------------------------
-     Leading — leading-* utilities
-     e.g. leading-heading, leading-body, leading-display
-  ------------------------- */
+  /* Leading */
   --leading-display: var(--leading-display);
   --leading-heading: var(--leading-heading);
   --leading-body: var(--leading-body);
   --leading-relaxed: var(--leading-relaxed);
 
-  /* -------------------------
-     Tracking — tracking-* utilities
-     e.g. tracking-heading, tracking-label, tracking-body
-  ------------------------- */
+  /* Tracking */
   --tracking-heading: var(--tracking-heading);
   --tracking-label: var(--tracking-label);
   --tracking-body: var(--tracking-body);
 
-  /* -------------------------
-     Spacing — spacing-* utilities
-     Semantic tiers → layout-level
-     e.g. py-section, px-container, gap-gap
-  ------------------------- */
+  /* Spacing layout */
   --spacing-section: var(--section-padding);
   --spacing-container: var(--container-padding);
   --spacing-gap: var(--gap-padding);
 
-  /* Step scale → component-level */
+  /* spacing component */
   --spacing-s100: var(--s100);
   --spacing-s200: var(--s200);
   --spacing-s300: var(--s300);
@@ -92,19 +76,14 @@
   --spacing-s900: var(--s900);
   --spacing-sfluid: var(--sfluid);
 
-  /* -------------------------
-     Breakpoints
-  ------------------------- */
+  /* Breakpoints */
   --breakpoint-*: initial;
   --breakpoint-md: 46rem;
   --breakpoint-lg: 60rem;
   --breakpoint-xl: 80rem;
   --breakpoint-2xl: 90rem;
 
-  /* -------------------------
-     Animation
-     e.g. duration-primary ease-primary
-  ------------------------- */
+  /* Animation */
   --ease-primary: var(--ease-primary);
 
   --duration-fast: 300ms;
@@ -113,9 +92,7 @@
   --duration-slow: 900ms;
 }
 
-/* -------------------------
-   HTML baseline
-------------------------- */
+/* HTML baseline */
 html {
   position: relative;
   -webkit-text-size-adjust: 100%;
@@ -123,9 +100,7 @@ html {
   text-size-adjust: 100%;
 }
 
-/* -------------------------
-   Base layer
-------------------------- */
+/* Base layer */
 @layer base {
   *,
   *::before,
@@ -150,9 +125,7 @@ html {
     -moz-osx-font-smoothing: grayscale;
   }
 
-  /* -------------------------
-     tight leading (1.065), slightly negative tracking
-  ------------------------- */
+  /* tight leading (1.065), slightly negative tracking */
   :is(h1, h2, h3, h4, h5, h6) {
     line-height: var(--leading-heading);
     letter-spacing: var(--tracking-heading);
@@ -178,25 +151,19 @@ html {
     font-size: var(--h600);
   }
 
-  /* -------------------------
-     Paragraph
-  ------------------------- */
+  /* Paragraph*/
   p {
     line-height: var(--leading-body);
     letter-spacing: var(--tracking-body);
   }
 
-  /* -------------------------
-     Links
-  ------------------------- */
+  /* Links*/
   a {
     color: inherit;
     text-decoration: none;
   }
 
-  /* -------------------------
-     Media
-  ------------------------- */
+  /* Media */
   canvas,
   img,
   video {
@@ -213,9 +180,7 @@ html {
     vertical-align: middle;
   }
 
-  /* -------------------------
-     Selection — accent blue on highlight
-  ------------------------- */
+  /* Selection */
   ::selection {
     background-color: var(--accent);
     color: #fff;
@@ -227,11 +192,7 @@ html {
     text-shadow: none;
   }
 
-  /* -------------------------
-     Utility semantic classes
-  ------------------------- */
-
-  /* Accent label — uppercase micro copy e.g. "(selected)", "(WHAT I DO?)" */
+  /* Custom Classes */
   .hsAccent {
     font-size: var(--base-extra-sm);
     line-height: var(--leading-relaxed);

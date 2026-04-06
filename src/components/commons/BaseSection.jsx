@@ -4,10 +4,10 @@ const BaseSection = ({
   children,
   containerID = '',
   sectionClassName = 'section-padding-xy',
-  containerClassName = 'max-w-full md:max-w-[768px] lg:max-w-[1080px] xl:max-w-[1440px]',
+  containerClassName = 'max-w-[1920px]',
 }) => {
   return (
-    <section className={`z-10 ${sectionClassName}`} id={containerID}>
+    <section className={`relative z-10 w-full ${sectionClassName}`} id={containerID}>
       <div className={`m-auto w-full ${containerClassName}`}>{children}</div>
     </section>
   );

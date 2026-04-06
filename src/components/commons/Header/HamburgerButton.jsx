@@ -6,7 +6,7 @@ const HamburgerButton = ({ isActive, onToggle }) => {
   return (
     <div
       ref={targetRef}
-      className={`pr-2 relative flex flex-col justify-center items-center h-[60px] w-[60px] gap-[0.2rem] md:w-[4.5rem] md:gap-2 md:pointer-events-none cursor-pointer  ${isActive ? 'active' : ''}`}
+      className={`relative flex flex-col justify-center items-center h-[60px] w-[60px] gap-[0.2rem] md:w-[4.5rem] md:gap-2 md:pointer-events-none cursor-pointer  ${isActive ? 'active' : ''}`}
       onClick={onToggle}
     >
       <div

@@ -1,7 +1,7 @@
 import React from 'react';
 import { RiGeminiFill, RiHand } from '@remixicon/react';
 import BaseSection from '../../../components/commons/BaseSection';
-import { ScrollAnimatedImg, CircularText, CreativeButton } from '../../../components';
+import { CustomCard, CircularText, CreativeButton } from '../../../components';
 import { aboutHeroImg } from '@/assets';
 import { useCursorHoverContent } from '../../../hooks/useCursorHoverContent';
 
@@ -12,7 +12,7 @@ const AboutHero = () => {
     <BaseSection sectionClassName="section-padding-hero">
       <div className="flex flex-col gap-s700 lg:gap-s800">
         <div className="relative">
-          <ScrollAnimatedImg
+          <CustomCard
             src={aboutHeroImg}
             scrollRange={['0%', '15%']}
             alt="About — portrait"

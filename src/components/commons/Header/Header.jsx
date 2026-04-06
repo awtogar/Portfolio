@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState, useCallback } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { AnimatePresence, motion } from 'motion/react';
-import { Nav, CreativeButton } from '../..';
+import { Nav } from '../..';
 import { useLenis } from '../../../context/LenisContext';
 import { useTheme } from '../../../hooks/useTheme';
 import { useCursorInteraction } from '../../../hooks/useCursorInteraction';
@@ -47,7 +47,7 @@ const Header = () => {
   return (
     <>
     <motion.header
-        className="pt-8 fixed flex w-full justify-between items-center mix-blend-difference z-[9998] md:px-6 lg:px-8"
+        className="pt-8 top-0 fixed flex w-full justify-between items-center mix-blend-difference z-[9998] md:px-6 lg:px-8"
         initial={{ translateY: 0 }}
         animate={{
           translateY: scrollDirection === 'down' && !isActive ? -100 : 0,
@@ -83,7 +83,7 @@ const Header = () => {
             <div ref={logoBoundsRef} className="hidden md:block absolute top-0 left-0 w-[100%] h-[100%] pointer-events-auto hover:scale-[3]" />
           </div>
         )}
-        <div className="flex items-center h-[60px] mix-blend-difference">
+        <div className="flex items-center h-[60px] mix-blend-difference md:gap-2">
           <ThemeToggleButton isActive={isActive} toggleTheme={toggleTheme} />
           <HamburgerButton isActive={isActive} onToggle={toggleMenu} />
         </div>

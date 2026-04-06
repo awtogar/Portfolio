@@ -1,20 +1,31 @@
 @layer utilities {
   /* Section components  */
-  .section-padding-hero{
-    @apply px-4 pb-s900 pt-[164px] md:px-12 lg:px-24;
+  .section-padding-hero {
+    padding-left: var(--spacing-container);
+    padding-right: var(--spacing-container);
+    padding-bottom: var(--spacing-s900);
+    padding-top: 164px;
   }
   /* heading spacing */
   .section-padding-x {
-    @apply px-4 md:px-12 lg:px-24;
+    padding-left: var(--spacing-container);
+    padding-right: var(--spacing-container);
   }
   .section-padding-y {
-    @apply py-s900;
+    padding-top: var(--spacing-s900);
+    padding-bottom: var(--spacing-s900);
   }
   .section-padding-xy {
-    @apply px-4 py-s900 md:px-12 lg:px-24;
+    padding-left: var(--spacing-container);
+    padding-right: var(--spacing-container);
+    padding-top: var(--spacing-s900);
+    padding-bottom: var(--spacing-s900);
   }
   .section-padding-end {
-    @apply px-4 pt-s900 pb-4;
+    padding-left: var(--spacing-container);
+    padding-right: var(--spacing-container);
+    padding-top: var(--spacing-s900);
+    padding-bottom: 1rem;
   }
   .textTransition{
     @apply text-h100! text-secondary text-center transition-transform uppercase;

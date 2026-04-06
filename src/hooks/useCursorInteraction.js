@@ -2,13 +2,7 @@ import { useRef, useEffect, useState } from 'react';
 import { useCursor } from '../context/CursorContext';
 import gsap from 'gsap';
 
-export const useCursorInteraction = ({
-  variant = 'scale',
-  text = null,
-  magnetic = false,
-  sticky = false,
-  fill = null,
-} = {}) => {
+export const useCursorInteraction = ({ content = null, textColor = 'text-secondary', size = 'small', magnetic = false, sticky = false, fill = 'primary', cursorSize = null } = {}) => {
   const targetRef = useRef(null);
   const boundsRef = useRef(null);
   const { setCursor, resetCursor } = useCursor();
@@ -24,7 +18,7 @@ export const useCursorInteraction = ({
   useEffect(() => {
     const target = targetRef.current;
     const hitArea = boundsRef.current || target;
-    
+
     // For magnetic effects, we need a target. For pure hover, just hitArea is fine
     if (!hitArea || (magnetic && !target)) return;
 
@@ -36,16 +30,16 @@ export const useCursorInteraction = ({
     }
 
     const handleMouseEnter = () => {
-      if (variant || sticky) {
-        setCursor({
-          isActive: true,
-          variant,
-          text,
-          isSticky: sticky,
-          stickyElement: target || hitArea,
-          fill,
-        });
-      }
+      setCursor({
+        isActive: true,
+        size,
+        content,
+        textColor,
+        isSticky: Boolean(sticky),
+        stickyElement: sticky ? hitArea : null,
+        fill,
+        cursorSize,
+      });
     };
 
     const handleMouseLeave = () => {
@@ -56,7 +50,7 @@ export const useCursorInteraction = ({
       resetCursor();
     };
 
-    const handleMouseMove = (e) => {
+    const handleMouseMove = e => {
       if (magnetic && !isMobile && xTo && yTo && target) {
         const { clientX, clientY } = e;
         const { height, width, left, top } = target.getBoundingClientRect();
@@ -69,7 +63,7 @@ export const useCursorInteraction = ({
 
     hitArea.addEventListener('mouseenter', handleMouseEnter);
     hitArea.addEventListener('mouseleave', handleMouseLeave);
-    
+
     if (magnetic) {
       hitArea.addEventListener('mousemove', handleMouseMove);
     }
@@ -82,7 +76,7 @@ export const useCursorInteraction = ({
       }
       resetCursor();
     };
-  }, [variant, text, magnetic, sticky, fill, isMobile, setCursor, resetCursor]);
+  }, [content, textColor, size, magnetic, sticky, fill, cursorSize, isMobile, setCursor, resetCursor]);
 
   return { targetRef, boundsRef };
 };

@@ -32,7 +32,7 @@ export function TransitionProvider({ children }) {
     if (normalized.startsWith('/projects/')) {
       const slug = normalized.split('/')[2];
       const project = projects.find(p => p.slug === slug);
-      if (project) return project.title;
+      if (project) return project.client;
       return 'Project';
     }
     return '';

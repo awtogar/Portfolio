@@ -3,6 +3,29 @@ import BaseSection from '../../components/commons/BaseSection';
 import { useContactForm, services, budgetOptions } from './useContactForm';
 import { CreativeButton } from '../../components';
 import { useCursorHoverContent } from '../../hooks/useCursorHoverContent';
+import { useCursorInteraction } from '../../hooks/useCursorInteraction';
+
+const BudgetButton = ({ option, isSelected, onClick }) => {
+  const { targetRef } = useCursorInteraction({
+    magnetic: false,
+    sticky: true,
+    variant: 'scale',
+    cursorSize: 40,
+  });
+
+  return (
+    <button
+      ref={targetRef}
+      type="button"
+      onClick={onClick}
+      className={`relative z-50 px-4 sm:px-5 py-2.5 rounded-full text-sm transition-all ease-out whitespace-nowrap hover:bg-accent hover:text-secondary ${
+        isSelected ? 'bg-primary text-secondary' : 'bg-transparent text-primary border border-primary/20 hover:border-primary'
+      }`}
+    >
+      {option.label}
+    </button>
+  );
+};
 
 const ContactPage = () => {
   const { selectedServices, selectedBudget, setSelectedBudget, formData, attachment, toggleService, handleInputChange, handleFileChange, handleSubmit } = useContactForm();
@@ -78,16 +101,7 @@ const ContactPage = () => {
               <p className="text-primary mb-4">Project budget (USD)</p>
               <div className="flex flex-wrap gap-2 sm:gap-3">
                 {budgetOptions.map(option => (
-                  <button
-                    key={option.id}
-                    type="button"
-                    onClick={() => setSelectedBudget(option.id)}
-                    className={`px-4 sm:px-5 py-2.5 rounded-full text-sm transition-all duration-200 whitespace-nowrap ${
-                      selectedBudget === option.id ? 'bg-primary text-secondary' : 'bg-transparent text-primary border border-primary/20 hover:border-primary/40'
-                    }`}
-                  >
-                    {option.label}
-                  </button>
+                  <BudgetButton key={option.id} option={option} isSelected={selectedBudget === option.id} onClick={() => setSelectedBudget(option.id)} />
                 ))}
               </div>
             </div>

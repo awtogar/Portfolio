@@ -1,40 +1,49 @@
 import { useState, useEffect } from 'react';
+import { useLenis } from '@/context/LenisContext';
 
 const MIN_DURATION = 800; // minimum ms for animation to play
 
-const usePreloader = () => {
+const usePreloader = (criticalPromises = []) => {
   const [isLoading, setIsLoading] = useState(true);
+  const { lenis } = useLenis();
 
   useEffect(() => {
-    let networkReady = document.readyState === 'complete';
-    let minElapsed = false;
-    let done = false;
+    let isMounted = true;
 
-    const finish = () => {
-      if (done || !networkReady || !minElapsed) return;
-      done = true;
-      setIsLoading(false);
-    };
+    const minTimePromise = new Promise(resolve => setTimeout(resolve, MIN_DURATION));
 
-    // Fires when all resources (images, video, fonts) are loaded
-    const onLoad = () => { networkReady = true; finish(); };
+    const windowLoadPromise = new Promise(resolve => {
+      if (document.readyState === 'complete') {
+        resolve();
+      } else {
+        window.addEventListener('load', resolve, { once: true });
+      }
+    });
 
-    if (!networkReady) {
-      window.addEventListener('load', onLoad);
-    }
+    const fontsPromise = document.fonts ? document.fonts.ready : Promise.resolve();
 
-    const minTimer = setTimeout(() => { minElapsed = true; finish(); }, MIN_DURATION);
+    Promise.allSettled([minTimePromise, windowLoadPromise, fontsPromise, ...criticalPromises]).then(() => {
+      if (isMounted) {
+        setIsLoading(false);
+      }
+    });
 
     return () => {
-      window.removeEventListener('load', onLoad);
-      clearTimeout(minTimer);
+      isMounted = false;
     };
   }, []);
 
   useEffect(() => {
-    document.body.style.overflow = isLoading ? 'hidden' : '';
-    document.body.style.cursor = isLoading ? 'wait' : 'default';
-  }, [isLoading]);
+    if (isLoading) {
+      document.body.style.overflow = 'hidden';
+      document.body.style.cursor = 'wait';
+      lenis?.stop();
+    } else {
+      document.body.style.overflow = '';
+      document.body.style.cursor = 'default';
+      lenis?.start();
+    }
+  }, [isLoading, lenis]);
 
   return isLoading;
 };

@@ -4,26 +4,35 @@ import { useCursor } from '../../context/CursorContext';
 import { RiArrowRightUpLine } from '@remixicon/react';
 
 const CURSOR_SIZES = {
-  scale: { idle: 6, hovered: 60 },
-  arrow: { idle: 6, hovered: 60 },
-  text: { idle: 6, hovered: 70 },
+  small: { idle: 6, hovered: 60 },
+  medium: { idle: 6, hovered: 60 },
+  large: { idle: 6, hovered: 70 },
+  xlarge: { idle: 6, hovered: 70 },
 };
 
 const CURSOR_FILLS = {
-  scale: 'bg-primary',
-  arrow: 'bg-primary',
-  text: 'bg-primary',
+  transparent: 'bg-transparent',
+  primary: 'bg-primary',
+  secondary: 'bg-secondary',
+  accent: 'bg-accent',
+};
+
+const CURSOR_CONTENTS = {
+  arrow: <RiArrowRightUpLine className="w-5 h-5 md:w-6 md:h-6" />,
+  text: <span className="text-primary tracking-widest uppercase">View</span>,
 };
 
 const CustomCursor = () => {
   const { cursorState } = useCursor();
-  const { isActive, variant, text, isSticky, stickyElement, fill } = cursorState;
-  
+  const { isActive, size, content, textColor, isSticky, stickyElement, fill, cursorSize: explicitSize } = cursorState;
+
   const cursorTrack = useRef(null);
   const isVisibleRef = useRef(true);
 
-  const sizes = CURSOR_SIZES[variant] || CURSOR_SIZES.scale;
-  const cursorSize = isActive ? sizes.hovered : sizes.idle;
+  const sizes = CURSOR_SIZES[size] || CURSOR_SIZES.small;
+
+  // If active and an explicit size is provided, use it, otherwise fallback to the variant's default hovered size
+  const cursorSize = isActive ? (explicitSize ?? sizes.hovered) : sizes.idle;
 
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
@@ -52,7 +61,7 @@ const CustomCursor = () => {
   }, []);
 
   const manageMouseMove = useCallback(
-    (e) => {
+    e => {
       if (!isVisibleRef.current) return;
       const { clientX, clientY } = e;
 
@@ -60,7 +69,7 @@ const CustomCursor = () => {
         const { left, top, height, width } = stickyElement.getBoundingClientRect();
         const center = { x: left + width / 2, y: top + height / 2 };
         const distance = { x: clientX - center.x, y: clientY - center.y };
-        
+
         mouseX.set(center.x - cursorSize / 2 + distance.x * 0.1);
         mouseY.set(center.y - cursorSize / 2 + distance.y * 0.1);
       } else {
@@ -78,9 +87,8 @@ const CustomCursor = () => {
     };
   }, [manageMouseMove]);
 
-  const isArrowVariant = isActive && variant === 'arrow' && !text;
-  const isTextVariant = isActive && (variant === 'text' || text);
-  const cursorFill = fill || CURSOR_FILLS[variant] || 'bg-primary';
+  const cursorFill = fill && CURSOR_FILLS[fill] ? CURSOR_FILLS[fill] : fill || CURSOR_FILLS.primary;
+  const displayContent = CURSOR_CONTENTS[content] !== undefined ? CURSOR_CONTENTS[content] : content;
 
   return (
     <motion.div
@@ -96,26 +104,16 @@ const CustomCursor = () => {
       className={`hidden md:block fixed rounded-full pointer-events-none z-[49] ${cursorFill}`}
     >
       <AnimatePresence>
-        {isArrowVariant && (
+        {isActive && content && (
           <motion.div
             initial={{ opacity: 0, scale: 0 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0 }}
             transition={{ duration: 0.2, ease: 'easeOut' }}
-            className="w-full h-full flex items-center justify-center"
+            className={`w-full h-full flex items-center justify-center font-secondary font-bold text-sm tracking-tight pointer-events-none ${textColor}`}
           >
-            <RiArrowRightUpLine className="w-5 h-5 md:w-6 md:h-6 text-secondary" />
-          </motion.div>
-        )}
-        {isTextVariant && (
-          <motion.div
-            initial={{ opacity: 0, scale: 0 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0 }}
-            transition={{ duration: 0.2, ease: 'easeOut' }}
-            className="w-full h-full flex items-center justify-center font-secondary font-bold text-sm tracking-tight text-secondary pointer-events-none"
-          >
-            {text}
+            {/* content inside the cursor follow */}
+            {displayContent}
           </motion.div>
         )}
       </AnimatePresence>
@@ -124,3 +122,9 @@ const CustomCursor = () => {
 };
 
 export default CustomCursor;
+
+
+/*
+
+
+*/

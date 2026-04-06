@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import { useScroll, useTransform, motion } from 'motion/react';
 import BaseSection from '../../../components/commons/BaseSection';
-import { ScrollAnimatedImg, Splatter, Marquee, MarqueeItem, SlideText } from '../../../components';
+import { CustomCard, Splatter, Marquee, MarqueeItem, SlideText } from '../../../components';
 import { useWindowDimensions } from '@/hooks';
 import { RiArrowRightUpLine } from '@remixicon/react';
 
@@ -46,7 +46,7 @@ const AboutImageReveal = () => {
                   WebkitMaskSize: maskSize,
                 }}
               >
-                <ScrollAnimatedImg
+                <CustomCard
                   src={image.src}
                   alt={image.alt}
                   containerClassName="absolute inset-0 w-full h-full "

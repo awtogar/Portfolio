@@ -5,9 +5,9 @@ import BaseSection from '../../../components/commons/BaseSection';
 
 const WhatIdoSection = () => {
   return (
-    <BaseSection containerID="what-i-do" sectionClassName="section-padding-x pt-s900 bg-neutral-200 text-primary">
+    <BaseSection containerID="what-i-do" sectionClassName="section-padding-x pt-s900 text-primary bg-neutral-200">
       {/* Services Header */}
-      <div className="flex flex-col rounded-t-lg">
+      <div className="flex flex-col pt-s400">
         <div className="flex w-full flex-col gap-s400 text-primary">
           <div className="flex flex-col">
             <span className="hsAccent">(WHAT I DO?)</span>

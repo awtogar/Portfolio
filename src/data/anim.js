@@ -3,7 +3,7 @@ export const menuSlideLeft = {
     x: "calc(100% + 100px)",
     transition: { duration: 0.6, ease: [0.76, 0, 0.24, 1] },
   },
-  enter: { x: "0", transition: { duration: 0.84, ease: [0.76, 0, 0.24, 1] } },
+  enter: { x: "0", transition: { duration: 0.9, ease: [0.76, 0, 0.24, 1] } },
   exit: { x: "calc(100% + 100px)", transition: { duration: 0.9, ease: [0.76, 0, 0.24, 1] } }
 }
 

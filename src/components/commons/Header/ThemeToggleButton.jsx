@@ -1,13 +1,13 @@
 import { RiSunLine, RiMoonLine } from '@remixicon/react';
 import { motion } from 'motion/react';
-import { useCursorInteraction } from '../../../hooks/useCursorInteraction';
+import { useCursorInteraction } from '../../../hooks';
 
 const ThemeToggleButton = ({ isActive, toggleTheme }) => {
   const { targetRef, boundsRef } = useCursorInteraction({ magnetic: true, sticky: true });
 
   return (
     <motion.div
-      className="toggle hidden md:flex text-neutral-100 dark:text-primary h-[60px] items-center justify-center w-[60px] md:w-[4.5rem] md:pointer-events-none cursor-pointer"
+      className="toggle hidden md:flex text-neutral-100 dark:text-primary h-[60px] items-center justify-center w-[60px] md:pointer-events-none cursor-pointer"
       animate={{
         opacity: isActive ? 0 : 1,
         pointerEvents: isActive ? 'none' : 'auto',
@@ -21,7 +21,7 @@ const ThemeToggleButton = ({ isActive, toggleTheme }) => {
     >
       <div
         ref={targetRef}
-        className={`px-2 relative flex items-center justify-center h-[60px] w-[60px] md:w-[4.5rem] group ${isActive ? 'pointer-events-none' : 'cursor-pointer'}`}
+        className={`relative flex items-center justify-center w-full h-full group ${isActive ? 'pointer-events-none' : 'cursor-pointer'}`}
         onClick={isActive ? undefined : toggleTheme}
         aria-label="Toggle dark mode"
         type="button"
