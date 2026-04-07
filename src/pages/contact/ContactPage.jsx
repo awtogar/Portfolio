@@ -4,13 +4,15 @@ import { useContactForm, services, budgetOptions } from './useContactForm';
 import { CreativeButton } from '../../components';
 import { useCursorHoverContent } from '../../hooks/useCursorHoverContent';
 import { useCursorInteraction } from '../../hooks/useCursorInteraction';
+import { LetterScroll } from '../../components/ui/LetterScroll';
 
 const BudgetButton = ({ option, isSelected, onClick }) => {
   const { targetRef } = useCursorInteraction({
+    content: option.label,
+    size: 'large',
+    textColor: 'text-secondary',
+    fill: 'accent',
     magnetic: false,
-    sticky: true,
-    variant: 'scale',
-    cursorSize: 40,
   });
 
   return (
@@ -29,7 +31,13 @@ const BudgetButton = ({ option, isSelected, onClick }) => {
 
 const ContactPage = () => {
   const { selectedServices, selectedBudget, setSelectedBudget, formData, attachment, toggleService, handleInputChange, handleFileChange, handleSubmit } = useContactForm();
-  const ctaRef = useCursorHoverContent('arrow');
+  const { targetRef: ctaRef } = useCursorInteraction({
+    content: 'arrow',
+    size: 'large',
+    textColor: 'text-secondary',
+    fill: 'accent',
+    magnetic: false,
+  });
 
   return (
     <BaseSection sectionClassName="min-h-screen bg-secondary py-s900" containerID="contact-form">

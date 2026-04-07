@@ -22,14 +22,14 @@ const WithFooter = () => (
 );
 
 const AppContent = () => {
-  const isLoading = usePreloader();
+  const { isLoading, progress } = usePreloader();
   const location = useLocation();
 
   useScrollToTop();
 
   return (
     <>
-      <Preloader isLoading={isLoading} />
+      <Preloader isLoading={isLoading} progress={progress} />
       <Header />
       <CustomCursor />
       <Transition />

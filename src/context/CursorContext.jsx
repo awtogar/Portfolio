@@ -13,12 +13,11 @@ export const useCursor = () => {
 export function CursorProvider({ children }) {
   const [cursorState, setCursorState] = useState({
     isActive: false,
-    size: 'small',
-    content: null,
-    textColor: 'text-secondary',
+    variant: 'scale',
+    text: null,
     isSticky: false,
     stickyElement: null,
-    fill: 'primary',
+    fill: null,
     cursorSize: null,
   });
 
@@ -29,12 +28,11 @@ export function CursorProvider({ children }) {
   const resetCursor = useCallback(() => {
     setCursorState({
       isActive: false,
-      size: 'small',
-      content: null,
-      textColor: 'text-secondary',
+      variant: 'scale',
+      text: null,
       isSticky: false,
       stickyElement: null,
-      fill: 'primary',
+      fill: null,
       cursorSize: null,
     });
   }, []);

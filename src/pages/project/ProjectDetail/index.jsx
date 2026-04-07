@@ -36,7 +36,7 @@ const ProjectDetailPage = () => {
             <ProjectGallerySection />
           </div>
         </div>
-        <NextProjectSection />
+        {/* <NextProjectSection /> */}
       </main>
     </>
   );

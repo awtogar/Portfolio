@@ -41,7 +41,6 @@ const ProjectCard = ({ project, index }) => {
     size: 'large',
     textColor: 'text-secondary',
     fill: 'accent',
-
   });
 
   return (
@@ -50,7 +49,7 @@ const ProjectCard = ({ project, index }) => {
         to={`/projects/${project.slug}`}
         className="flex flex-col gap-4 lg:gap-5 px-3 lg:px-4 pt-3 lg:pt-4 pb-5 lg:pb-6 rounded-xl lg:rounded-2xl bg-neutral-900 cursor-pointer group relative"
       >
-        <div ref={targetRef} className="relative rounded-lg lg:rounded-xl overflow-hidden w-full h-[260px] md:h-[350px] lg:h-[clamp(500px,32vw,800px)]">
+        <div ref={targetRef} className="relative rounded-lg lg:rounded-xl overflow-hidden w-full aspect-4/3 md:aspect-video lg:aspect-square">
           <CustomCard
             src={project.thumbnail}
             alt={project.client}
@@ -103,7 +102,7 @@ const ProjectPage = () => {
       </div>
 
       <div className="px-2 lg:px-4 py-4 lg:py-6 mt-s600">
-        <div className="w-full bg-neutral-200 rounded-2xl lg:rounded-[20px] p-3 lg:p-4">
+        <div className="w-full rounded-2xl lg:rounded-[20px]">
           <ul className="grid grid-cols-1 lg:grid-cols-2 gap-3 lg:gap-4 w-full">
             {projects.map((project, idx) => (
               <ProjectCard key={project.id} project={project} index={idx} />

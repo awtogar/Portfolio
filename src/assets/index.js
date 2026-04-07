@@ -11,3 +11,5 @@ export { default as ovelo4 } from './images/projects/ovelo/ovelo-4.webp';
 
 // Videos
 export { default as introVideo1 } from './videos/video-1.mp4';
+export { default as introVideo2 } from './videos/video-2.mp4';
+

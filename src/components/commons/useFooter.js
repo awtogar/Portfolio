@@ -9,7 +9,9 @@ export const useFooter = () => {
 
   const getCurrentPage = () => {
     if (currentPath === '/') return pages.home;
-    return Object.values(pages).find(page => page.href === currentPath) || pages.home;
+    return Object.values(pages).find(page => 
+      currentPath === page.href || currentPath.startsWith(`${page.href}/`)
+    ) || pages.home;
   };
 
   const currentPage = getCurrentPage();

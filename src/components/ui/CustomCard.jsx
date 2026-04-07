@@ -41,7 +41,7 @@ const CustomCard = ({
     >
       <motion.div
         style={{ y }}
-        className={`w-full h-full transform-gpu ${className || ''}`}
+        className={`w-full h-full transform-gpu  ${className || ''}`}
       >
         {hasEntered && (
           <img
@@ -50,22 +50,23 @@ const CustomCard = ({
             loading="lazy"
             decoding="async"
             fetchPriority="low"
-            className={`w-full h-full object-cover ${videoSrc ? 'transition-transform duration-700 ease-out ' + (isHovered ? 'scale-110' : 'scale-100') : ''} ${imageClassName || ''}`}
+            className={`w-full h-full object-cover ${videoSrc ? 'transition-transform duration-700 ease-out ' + (isHovered ? 'scale-105' : 'scale-100') : ''} ${imageClassName || ''}`}
           />
         )}
       </motion.div>
 
       {blur && (
-        <div className="absolute inset-0 bg-neutral-900/30 backdrop-blur-md z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-in-out pointer-events-none" />
+        <div className="absolute inset-0 bg-neutral-900/30 backdrop-blur-md z-10 opacity-0 group-hover:opacity-85 transition-opacity duration-500 ease-in-out pointer-events-none" />
       )}
 
       {videoSrc && (
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none p-[8%] z-10">
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none p-4 md:p-[8%] z-10">
           <motion.div
             initial={{ opacity: 0, scale: 0.85, y: 8 }}
             animate={{ opacity: isHovered ? 1 : 0, scale: isHovered ? 1 : 0.85, y: isHovered ? 0 : 8 }}
             transition={{ duration: 0.45, ease: [0.7, 0, 0.3, 1] }}
-            className="w-[55%] aspect-6/5 rounded-xl overflow-hidden shadow-[0_24px_60px_rgba(0,0,0,0.5)] bg-black/30"
+            // video class
+            className="w-full md:w-[75%] max-w-[700px] aspect-video rounded-xl overflow-hidden"
           >
             {hasEntered && isHovered && <video src={videoSrc} autoPlay loop muted playsInline className="w-full h-full object-cover" />}
           </motion.div>

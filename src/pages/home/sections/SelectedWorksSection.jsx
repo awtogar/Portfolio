@@ -49,10 +49,7 @@ const WorkCard = ({ work }) => {
         className="flex flex-col gap-4 lg:gap-5 px-3 lg:px-4 pt-3 lg:pt-4 pb-5 lg:pb-6 rounded-xl lg:rounded-2xl bg-neutral-900 cursor-pointer group relative"
       >
         {/* Image + video container */}
-        <div
-          ref={targetRef}
-          className="relative rounded-lg lg:rounded-xl overflow-hidden w-full h-[260px] md:h-[350px] lg:h-[clamp(500px,32vw,800px)] group/video"
-        >
+        <div ref={targetRef} className="relative rounded-lg lg:rounded-xl overflow-hidden w-full aspect-4/3 md:aspect-video lg:aspect-square group/video">
           <CustomCard
             src={work.thumbnail}
             alt={work.title}
@@ -92,6 +89,12 @@ const WorkCard = ({ work }) => {
 
 const SelectedWorksSection = () => {
   const works = projects.filter(project => project.selected);
+  const { ctaRef } = useCursorInteraction({
+    content: 'text',
+    size: 'medium',
+    textColor: 'text-secondary',
+    fill: 'accent',
+  });
 
   return (
     <BaseSection containerID="selected-works" sectionClassName="section-padding-xy relative overflow-hidden">
@@ -103,23 +106,25 @@ const SelectedWorksSection = () => {
         <p className="text-base max-w-[48ch] text-primary/55 leading-body">Explore a curated collection of my recent work, showcasing innovation and craftsmanship.</p>
       </div>
 
-      <div className="w-full bg-neutral-200 rounded-2xl lg:rounded-[20px] p-3 lg:p-4 mb-s800">
-        <ul className="grid grid-cols-1 lg:grid-cols-2 gap-3 lg:gap-4 w-full">
-          {works.map(work => (
-            <WorkCard key={work.id} work={work} />
-          ))}
-        </ul>
-      </div>
+      <div className="flex flex-col">
+        <div className="w-full rounded-2xl lg:rounded-[20px] mb-s500">
+          <ul className="grid grid-cols-1 lg:grid-cols-2 gap-2 lg:gap-4 w-full">
+            {works.map(work => (
+              <WorkCard key={work.id} work={work} />
+            ))}
+          </ul>
+        </div>
 
-      <div className="flex flex-col items-center gap-s300">
-        <span className="text-base-sm text-primary/40 tracking-body">Interested in seeing more?</span>
-        <HoverRotate to="/projects" rel="noopener noreferrer" className="justify-center">
-          <span className="text-primary/65">View All</span>
-          <span className="flex items-center gap-1 text-primary">
-            <span>Let's go</span>
-            <RiArrowRightUpLine size={20} style={{ marginTop: '2px' }} />
-          </span>
-        </HoverRotate>
+        <div className="flex flex-col items-center gap-s300">
+          {/* <span className="text-base-sm text-primary/40 tracking-body">Interested in seeing more?</span> */}
+          <HoverRotate to="/projects" rel="noopener noreferrer" className="justify-center" ref={ctaRef}>
+            <span className="text-primary/65">View All</span>
+            <span className="flex items-center gap-1 text-primary">
+              <span>Let's go</span>
+              <RiArrowRightUpLine size={20} style={{ marginTop: '2px' }} />
+            </span>
+          </HoverRotate>
+        </div>
       </div>
     </BaseSection>
   );

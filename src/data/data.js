@@ -163,7 +163,8 @@ const services = [
   },
 ];
 
-import { ovelo1, ovelo2, ovelo3, ovelo4, ovelo5, ovelo6, ovelo7, ovelo8 } from '@/assets';
+import { ovelo1, ovelo2, ovelo3, ovelo4 } from '@/assets';
+import {introVideo1, introVideo2} from '@/assets';
 
 const projects = [
   {
@@ -174,7 +175,7 @@ const projects = [
     year: '2025',
     logo: ovelo1,
     thumbnail: ovelo1,
-    video: 'https://www.w3schools.com/html/mov_bbb.mp4',
+    video: introVideo1,
     description: 'An eyewear and Optical Care branding. focused on modern aesthetics and strong visuals branding.',
     tags: ['Graphics', 'Branding'],
     date: {
@@ -182,7 +183,7 @@ const projects = [
       year: '2024',
     },
     selected: true,
-    gallery: [ovelo1, ovelo2, ovelo3, ovelo4, ovelo5, ovelo6, ovelo7, ovelo8],
+    gallery: [ovelo1, ovelo2, ovelo3, ovelo4],
   },
   {
     id: 2,
