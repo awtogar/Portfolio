@@ -30,8 +30,6 @@ const CustomCursor = () => {
   const isVisibleRef = useRef(true);
 
   const sizes = CURSOR_SIZES[size] || CURSOR_SIZES.small;
-
-  // If active and an explicit size is provided, use it, otherwise fallback to the variant's default hovered size
   const cursorSize = isActive ? (explicitSize ?? sizes.hovered) : sizes.idle;
 
   const mouseX = useMotionValue(0);

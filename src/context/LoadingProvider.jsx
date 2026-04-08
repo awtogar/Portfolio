@@ -2,23 +2,30 @@ import { createContext, useContext, useState, useCallback, useRef } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom';
 import { pages, projects } from '../data/data';
 
-const TransitionContext = createContext(null);
+const LoadingContext = createContext(null);
 
-export function useTransition() {
-  const ctx = useContext(TransitionContext);
-  if (!ctx) throw new Error('useTransition must be used within TransitionProvider');
+export function useLoading() {
+  const ctx = useContext(LoadingContext);
+  if (!ctx) throw new Error('useLoading must be used within LoadingProvider');
   return ctx;
 }
 
-export function TransitionProvider({ children }) {
+export function LoadingProvider({ children }) {
   const navigate = useNavigate();
   const location = useLocation();
 
+  // --- Initial Preloader State ---
+  const [isInitialLoading, setIsInitialLoading] = useState(true);
+  const [initialProgress, setInitialProgress] = useState(0);
+
+  // --- Transition State ---
   const [phase, setPhase] = useState('idle');
   const [targetPath, setTargetPath] = useState(null);
   const [pageTitle, setPageTitle] = useState('');
-  const isTransitioning = phase !== 'idle';
   const transitionRef = useRef(false);
+
+  const isTransitioning = phase !== 'idle';
+  const isLoading = isInitialLoading || isTransitioning;
 
   const getPageTitle = useCallback(path => {
     const normalized = path.endsWith('/') ? path.slice(0, -1) : path;
@@ -73,10 +80,15 @@ export function TransitionProvider({ children }) {
   }, []);
 
   return (
-    <TransitionContext.Provider
+    <LoadingContext.Provider
       value={{
+        isInitialLoading,
+        setIsInitialLoading,
+        initialProgress,
+        setInitialProgress,
         phase,
         isTransitioning,
+        isLoading,
         targetPath,
         pageTitle,
         navigateTo,
@@ -85,6 +97,6 @@ export function TransitionProvider({ children }) {
       }}
     >
       {children}
-    </TransitionContext.Provider>
+    </LoadingContext.Provider>
   );
 }

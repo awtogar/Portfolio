@@ -1,15 +1,11 @@
 import React from 'react';
 import { motion } from "motion/react"
-import { useDimensions } from '../../hooks/useDimensions';
 
 export default function Curve() {
-  const dimensions = useDimensions();
-  
-
-  const dimensionHeight = dimensions.height || 0;
-
-  const initialPath = `M100 0 L100 ${dimensionHeight} Q-100 ${dimensionHeight/2} 100 0`;
-  const targetPath = `M100 0 L100 ${dimensionHeight} Q100 ${dimensionHeight/2} 100 0`;
+  // Using viewBox 100x100 and preserveAspectRatio="none" 
+  // means we don't need JS height calculations! It seamlessly scales to 100dvh.
+  const initialPath = `M100 0 L100 100 Q-100 50 100 0`;
+  const targetPath = `M100 0 L100 100 Q100 50 100 0`;
 
   const curvePath = {
     initial: {
@@ -17,17 +13,28 @@ export default function Curve() {
     },
     enter: {
         d: targetPath,
-        transition: {duration: 1, ease: [0.76, 0, 0.24, 1]}
+        // Perfectly matching menuSlideLeft duration (0.9s)
+        transition: {duration: 0.9, ease: [0.76, 0, 0.24, 1]}
     },
     exit: {
         d: initialPath,
-        transition: {duration: 0.8, ease: [0.76, 0, 0.24, 1]}
+        // Perfectly matching menuSlideLeft exit duration (0.9s)
+        transition: {duration: 0.9, ease: [0.76, 0, 0.24, 1]}
     }
   }
 
   return (
-    <svg className="absolute top-0 left-[-99px] w-[100px] h-full fill-neutral-500 stroke-none">
-        <motion.path variants={curvePath} initial="initial" animate={dimensionHeight > 0 ? "enter" : "initial"} exit="exit"></motion.path>
+    <svg 
+      className="absolute top-0 left-[-99px] w-[100px] h-full fill-neutral-500 stroke-none"
+      viewBox="0 0 100 100"
+      preserveAspectRatio="none"
+    >
+        <motion.path 
+          variants={curvePath} 
+          initial="initial" 
+          animate="enter" 
+          exit="exit" 
+        />
     </svg>
   )
 }

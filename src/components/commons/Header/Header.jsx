@@ -26,6 +26,11 @@ const Header = () => {
   const { toggleTheme } = useTheme();
 
   useEffect(() => {
+    // Silently close the sidebar when the route changes (hidden behind the transition mask)
+    setIsActive(false);
+  }, [location.pathname]);
+
+  useEffect(() => {
     if (!lenis) return;
 
     const handleLenisScroll = ({ scroll }) => {

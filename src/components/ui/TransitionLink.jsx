@@ -1,9 +1,8 @@
-import { useTransition } from '../../context/TransitionContext';
+import { useLoading } from '../../context/LoadingProvider';
 
 export default function TransitionLink({ to, children, onClick, className, ...props }) {
-  const { navigateTo } = useTransition();
-
-  const handleClick = (e) => {
+  const { navigateTo } = useLoading();
+  const handleClick = e => {
     e.preventDefault();
     if (onClick) onClick(e);
     navigateTo(to);

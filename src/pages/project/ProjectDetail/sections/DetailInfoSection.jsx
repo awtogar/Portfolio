@@ -16,8 +16,8 @@ const DetailInfoSection = () => {
           <p className="text-xs lg:text-[clamp(14px,0.8vw,18px)] text-neutral-400 uppercase font-medium tracking-wider">Year</p>
         </div>
         <div className="overflow-hidden">
-          <p className="text-[clamp(48px,3.5vw,96px)] text-neutral-100 font-semibold tracking-tight leading-[0.8]">
-            {project.year || "2025"}
+          <p className="text-[clamp(48px,3.5vw,96px)] text-neutral-400 font-semibold tracking-tight leading-[0.8]">
+            {project.year}
           </p>
         </div>
       </div>
@@ -28,7 +28,7 @@ const DetailInfoSection = () => {
         </div>
         <ul className="flex gap-1.5 2xl:gap-2 flex-wrap">
           {project.tags?.map((tag, i) => (
-            <li key={i} className="text-[10px] lg:text-[clamp(12px,0.7vw,16px)] text-neutral-100 uppercase tracking-[1.1] bg-neutral-100/10 px-2 3xl:px-3 pt-2 pb-1.5 rounded-md whitespace-nowrap">
+            <li key={i} className="text-[10px] text-neutral-400 lg:text-[clamp(12px,0.7vw,16px)] uppercase tracking-[1.1] bg-neutral-100/10 px-2 3xl:px-3 pt-2 pb-1.5 rounded-md whitespace-nowrap">
               {tag}
             </li>
           ))}

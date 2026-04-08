@@ -10,7 +10,7 @@ const Footer = () => {
   return (
     <footer id="contact" className="z-10 section-padding-x">
       <div className="m-auto w-full max-w-full lg:max-w-[960px] xl:max-w-[1140px] 2xl:max-w-[1280px]">
-        <LetterScroll lines={['MAKE', 'NO MISTAKES']} start="top 80%" end="bottom 0%" scrub={0.5} />
+        <LetterScroll lines={['MODERN', 'TECH STACK']} start="top 80%" end="bottom 0%" scrub={0.5} />
         <div className="w-full m-auto">
           <div className="flex flex-col gap-s600 justify-between">
             <div className="flex justify-between flex-wrap gap-8">

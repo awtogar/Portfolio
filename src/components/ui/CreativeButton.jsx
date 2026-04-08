@@ -1,6 +1,6 @@
 import { useState, forwardRef } from 'react';
 import { motion } from "motion/react"
-import { useTransition } from '../../context/TransitionContext';
+import { useLoading } from '../../context/LoadingProvider';
 
 const MotionA = motion.create('a');
 const MotionButton = motion.create('button');
@@ -78,7 +78,7 @@ const CreativeButton = forwardRef(function CreativeButton({
   ...props
 }, ref) {
   const [isHovering, setIsHovering] = useState(false);
-  const { navigateTo } = useTransition();
+  const { navigateTo } = useLoading();
 
   // Apply variant styles or use custom props if provided
   const variantStyles = variant ? BUTTON_VARIANTS[variant] : {};

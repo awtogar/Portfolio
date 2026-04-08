@@ -1,12 +1,12 @@
 import { LenisProvider } from './LenisContext';
 import { CursorProvider } from './CursorContext';
-import { TransitionProvider } from './TransitionContext';
+import { LoadingProvider } from './LoadingProvider';
 
 const AppProviders = ({ children }) => {
   return (
     <LenisProvider>
       <CursorProvider>
-        <TransitionProvider>{children}</TransitionProvider>
+        <LoadingProvider>{children}</LoadingProvider>
       </CursorProvider>
     </LenisProvider>
   );

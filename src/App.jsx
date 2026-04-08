@@ -22,18 +22,17 @@ const WithFooter = () => (
 );
 
 const AppContent = () => {
-  const { isLoading, progress } = usePreloader();
+  usePreloader();
   const location = useLocation();
 
   useScrollToTop();
 
   return (
     <>
-      <Preloader isLoading={isLoading} progress={progress} />
+      <Preloader />
       <Header />
       <CustomCursor />
       <Transition />
-
       <main id="main" className="bg-neutral-100">
         <Routes location={location} key={location.pathname}>
           <Route element={<WithFooter />}>

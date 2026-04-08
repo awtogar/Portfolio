@@ -38,8 +38,8 @@ const WorkCard = ({ work }) => {
   const { targetRef } = useCursorInteraction({
     content: 'view',
     size: 'medium',
-    textColor: 'text-secondary',
-    fill: 'accent',
+    textColor: 'text-primary',
+    fill: 'bg-neutral-200',
   });
 
   return (
