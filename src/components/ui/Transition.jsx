@@ -19,8 +19,8 @@ const ExitOverlay = ({ pageTitle, dimensions, onComplete }) => {
       <motion.div
         initial={{ top: '-100vh' }}
         animate={{ top: 0 }}
-        transition={{ duration: 0.6, ease: [0.76, 0, 0.24, 1] }}
-        className="backdrop backdrop-1 fixed inset-0 z-9997 bg-accent/35 dark:bg-neutral-100/35"
+        transition={{ duration: 0.3, ease: [0.76, 0, 0.24, 1] }}
+        className="backdrop backdrop-1 fixed inset-0 z-9997 bg-neutral-50/30 dark:bg-neutral-100/35 blur-lg"
         style={{ height: '100vh', width: '100vw' }}
       />
 
