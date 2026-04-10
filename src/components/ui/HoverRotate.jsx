@@ -8,10 +8,9 @@ export default function HoverRotate({ children, className = '', href, to, onClic
   const Component = href ? motion.a : motion.button;
   const componentProps = href ? { href, ...props } : { onClick, ...props };
 
-  // Get the first and second child elements
   const childrenArray = React.Children.toArray(children);
   const firstText = childrenArray[0] || null;
-  const secondText = childrenArray[1] || firstText; // Fallback to first text if second not provided
+  const secondText = childrenArray[1] || firstText;
 
   const handleClick = e => {
     if (scrollToSection && href && href.startsWith('#')) {

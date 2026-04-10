@@ -56,7 +56,7 @@ const ProjectCard = ({ project, index }) => {
             containerClassName="absolute inset-0 w-full h-[120%] -top-[10%] lg:-top-[15%]"
             imageClassName="object-cover scale-105 group-hover:scale-105 transition-transform duration-500 ease-in-out"
             scrollRange={['0%', '12%']}
-            blur={true} // pass false to turn off blur overlay
+            blur={false} // pass false to turn off blur overlay
             offset={['start end', 'end start']}
           />
         </div>

@@ -1,16 +1,27 @@
 import { HoverRotate, CreativeButton } from '..';
 import { RiCornerDownRightLine } from '@remixicon/react';
-import { contact_info, socials } from '../../data/data';
-import { useFooter } from './useFooter';
+import { contact_info, socials, pages } from '../../data/data';
 import { LetterScroll } from '../ui/LetterScroll';
+import { useLocation } from 'react-router-dom';
+import { useScrollToSection } from '@/hooks';
 
 const Footer = () => {
-  const { currentPage, handleSectionClick } = useFooter();
+  const { pathname } = useLocation();
+  const scrollToSection = useScrollToSection();
+
+  const currentPage = Object.values(pages).find(page => 
+    pathname === page.href || pathname.startsWith(`${page.href}/`)
+  ) || pages.home;
+
+  const handleSectionClick = (e, id) => {
+    e.preventDefault();
+    scrollToSection(id);
+  };
 
   return (
     <footer id="contact" className="z-10 section-padding-x">
       <div className="m-auto w-full max-w-full lg:max-w-[960px] xl:max-w-[1140px] 2xl:max-w-[1280px]">
-        <LetterScroll lines={['MODERN', 'TECH STACK']} start="top 80%" end="bottom 0%" scrub={0.5} />
+        <LetterScroll lines={['MODERN', 'TECH STACK']} start="top 100%" end="bottom -20%" scrub={0.5} />
         <div className="w-full m-auto">
           <div className="flex flex-col gap-s600 justify-between">
             <div className="flex justify-between flex-wrap gap-8">

@@ -19,7 +19,7 @@ const HeroSection = () => {
 
         <div className="flex items-center gap-s400">
           <div className="flex-1 lg:flex-none lg:min-w-[200px]">
-            <CreativeButton to="/contact" variant="fill" ref={contactRef}>
+            <CreativeButton to="/contact" variant="fillReverse" ref={contactRef}>
               Get in touch
             </CreativeButton>
           </div>

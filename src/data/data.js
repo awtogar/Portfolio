@@ -1,3 +1,11 @@
+import {
+  about1, about2,
+  img1, img3, img4, img5, img6,
+  ovelo1, ovelo2, ovelo3, ovelo4,
+  nostraticLogo, lunavaraLogo, colorrideLogo, synoraLogo,
+  introVideo1, introVideo2
+} from '../assets';
+
 const pages = {
   home: {
     title: 'Home',
@@ -163,9 +171,6 @@ const services = [
   },
 ];
 
-import { ovelo1, ovelo2, ovelo3, ovelo4 } from '@/assets';
-import {introVideo1, introVideo2} from '@/assets';
-
 const projects = [
   {
     id: 1,
@@ -191,9 +196,9 @@ const projects = [
     client: 'Nostratic Studio',
     type: 'Websites',
     year: '2025',
-    logo: null,
-    thumbnail: 'https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?q=75&w=1200&auto=format&fit=crop',
-    video: 'https://www.w3schools.com/html/mov_bbb.mp4',
+    logo: nostraticLogo,
+    thumbnail: img1,
+    video: null,
     description: 'Branding and Web Development for a creative studio agency in Indonesia. that specializes in digital products.',
     tags: ['UI/UX', 'Prototype', 'Figma'],
     date: {
@@ -201,11 +206,7 @@ const projects = [
       year: '2025',
     },
     selected: true,
-    gallery: [
-      'https://images.unsplash.com/photo-1618761714954-0b8cd0026356?q=75&w=1200&auto=format&fit=crop',
-      'https://images.unsplash.com/photo-1558655146-d09347e92766?q=75&w=1200&auto=format&fit=crop',
-      'https://images.unsplash.com/photo-1497215728101-856f4ea42174?q=75&w=1200&auto=format&fit=crop',
-    ],
+    gallery: [img3, img4, img5],
   },
   {
     id: 3,
@@ -213,9 +214,9 @@ const projects = [
     client: 'Lunavara',
     type: 'Websites',
     year: '2024',
-    logo: null,
-    thumbnail: 'https://images.unsplash.com/photo-1501004318641-b39e6451bec6?q=75&w=1200&auto=format&fit=crop',
-    video: 'https://www.w3schools.com/html/mov_bbb.mp4',
+    logo: lunavaraLogo,
+    thumbnail: img4,
+    video: null,
     description: 'Lunavara is a modern nursery and plant art. focused on aesthetic and minimalism audience',
     tags: ['Web Development', 'UI/UX'],
     date: {
@@ -223,10 +224,7 @@ const projects = [
       year: '2024',
     },
     selected: false,
-    gallery: [
-      'https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?q=75&w=1200&auto=format&fit=crop',
-      'https://images.unsplash.com/photo-1497250681960-ef046c08a56e?q=75&w=1200&auto=format&fit=crop',
-    ],
+    gallery: [img1, img6],
   },
   {
     id: 4,
@@ -234,9 +232,9 @@ const projects = [
     client: 'Investime+',
     type: 'Applications',
     year: '2024',
-    logo: null,
-    thumbnail: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=75&w=1200&auto=format&fit=crop',
-    video: 'https://www.w3schools.com/html/mov_bbb.mp4',
+    logo: colorrideLogo,
+    thumbnail: img5,
+    video: null,
     description: 'A Calculator Website based app that can help you to calculate your compound interest and also can help you to plan your investment in the future.',
     tags: ['Web App', 'FinTech'],
     date: {
@@ -244,10 +242,7 @@ const projects = [
       year: '2024',
     },
     selected: false,
-    gallery: [
-      'https://images.unsplash.com/photo-1640161704729-cbe966a08476?q=75&w=1200&auto=format&fit=crop',
-      'https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?q=75&w=1200&auto=format&fit=crop',
-    ],
+    gallery: [img3, img4],
   },
   {
     id: 5,
@@ -255,9 +250,9 @@ const projects = [
     client: 'Routines+',
     type: 'Applications',
     year: '2024',
-    logo: null,
-    thumbnail: 'https://images.unsplash.com/photo-1506784365847-bbad939e9335?q=75&w=1200&auto=format&fit=crop',
-    video: 'https://www.w3schools.com/html/mov_bbb.mp4',
+    logo: synoraLogo,
+    thumbnail: img6,
+    video: null,
     description: 'Intuitive application for productivity that can help you to manage the routines and time management in a modern and simple way.',
     tags: ['Mobile App', 'Productivity'],
     date: {
@@ -265,10 +260,7 @@ const projects = [
       year: '2024',
     },
     selected: false,
-    gallery: [
-      'https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?q=75&w=1200&auto=format&fit=crop',
-      'https://images.unsplash.com/photo-1512314889357-e157c22f938d?q=75&w=1200&auto=format&fit=crop',
-    ],
+    gallery: [img1, img5],
   },
   {
     id: 6,
@@ -276,9 +268,9 @@ const projects = [
     client: 'Shukari',
     type: 'Branding',
     year: '2023',
-    logo: null,
-    thumbnail: 'https://images.unsplash.com/photo-1600132806370-bf17e65e942f?q=75&w=1200&auto=format&fit=crop',
-    video: 'https://www.w3schools.com/html/mov_bbb.mp4',
+    logo: nostraticLogo,
+    thumbnail: about1,
+    video: null,
     description: 'Comprehensive branding and visual identity project for Shukari.',
     tags: ['Branding', 'Design', 'Identity'],
     date: {
@@ -286,11 +278,7 @@ const projects = [
       year: '2023',
     },
     selected: false,
-    gallery: [
-      'https://images.unsplash.com/photo-1557672172-298e090bd0f1?q=75&w=1200&auto=format&fit=crop',
-      'https://images.unsplash.com/photo-1558655146-364adaf1fcc9?q=75&w=1200&auto=format&fit=crop',
-      'https://images.unsplash.com/photo-1604871000636-074fa5117945?q=75&w=1200&auto=format&fit=crop',
-    ],
+    gallery: [about2, img3, img4],
   },
 ];
 
@@ -342,8 +330,8 @@ const experience = [
     company: 'PT Bank Negara Indonesia (Persero) Tbk',
     position: 'Intern',
     location: 'Jakarta, Indonesia',
-    startDate: '2025-11',
-    endDate: null,
+    startDate: '11/2025',
+    endDate: 'Present',
     achievements: ['Assisted in managing IT project timelines and task coordination', 'Supported cross-team communication and project documentation'],
     competencies: ['Time Management', 'Communication', 'Leadership'],
     tools: ['Microsoft Excel', 'Microsoft PowerPoint', 'Project Documentation Tools'],
@@ -354,8 +342,8 @@ const experience = [
     company: 'PT Digital Inisiatif (Kompas Gramedia)',
     position: 'Intern',
     location: 'Jakarta, Indonesia',
-    startDate: '2024-09',
-    endDate: '2024-12',
+    startDate: '09/2024',
+    endDate: '12/2024',
     achievements: [
       'Implemented a QR-based system to display detailed artwork information',
       'Designed a QR-based storage layout to map artwork placement accurately',
@@ -370,8 +358,8 @@ const experience = [
     company: 'Nostratic Studio',
     position: 'Freelance',
     location: 'Jakarta, Indonesia',
-    startDate: '2022-08',
-    endDate: '2024-02',
+    startDate: '08/2022',
+    endDate: '02/2024',
     achievements: ['Designed branding and visual identity projects for 100+ clients worldwide'],
     competencies: ['Branding', 'Visual Identity Design', 'Creative Direction'],
     tools: ['Adobe Creative Suite', 'Adobe Script', 'Figma'],

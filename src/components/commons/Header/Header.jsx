@@ -10,8 +10,8 @@ import HamburgerButton from './HamburgerButton';
 import { RiArrowLeftLine } from '@remixicon/react';
 
 const Header = () => {
-  const { targetRef: backBtnTargetRef, boundsRef: backBtnBoundsRef } = useCursorInteraction({ magnetic: true, sticky: true });
-  const { targetRef: logoTargetRef, boundsRef: logoBoundsRef } = useCursorInteraction({ magnetic: true, sticky: true });
+  const { targetRef: backBtnRef, boundsRef: backBtnBoundsRef } = useCursorInteraction({ magnetic: true, sticky: true });
+  const { targetRef: logoBtnRef, boundsRef: logoBtnBoundsRef } = useCursorInteraction({ magnetic: true, sticky: true });
   
   const location = useLocation();
   const navigate = useNavigate();
@@ -61,7 +61,7 @@ const Header = () => {
       >
         {isProjectDetail ? (
           <div
-            ref={backBtnTargetRef}
+            ref={backBtnRef}
             onClick={() => navigate('/projects')}
             className="relative pl-2 flex items-center justify-center h-[60px] w-[60px] group cursor-pointer"
           >
@@ -75,7 +75,7 @@ const Header = () => {
           </div>
         ) : (
           <div
-            ref={logoTargetRef}
+            ref={logoBtnRef}
             className={`flex items-center font-bold font-secondary tracking-tighter justify-center md:text-2xl antialiased px-4 h-[60px] mix-blend-difference transition-all duration-300 ${isActive ? 'opacity-0 invisible md:opacity-100 md:visible' : 'opacity-100 visible'}`}
           >
             <a href="/" className="relative cursor-pointer text-neutral-100 dark:text-primary" aria-label="Home">
@@ -85,7 +85,7 @@ const Header = () => {
                 </g>
               </svg>
             </a>
-            <div ref={logoBoundsRef} className="hidden md:block absolute top-0 left-0 w-[100%] h-[100%] pointer-events-auto hover:scale-[3]" />
+            <div ref={logoBtnBoundsRef} className="hidden md:block absolute top-0 left-0 w-[100%] h-[100%] pointer-events-auto hover:scale-[3]" />
           </div>
         )}
         <div className="flex items-center h-[60px] mix-blend-difference md:gap-2">

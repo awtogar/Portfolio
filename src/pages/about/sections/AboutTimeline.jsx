@@ -1,7 +1,6 @@
 import React from 'react';
 import BaseSection from '../../../components/commons/BaseSection';
 import { experience } from '../../../data/data';
-import { calculateDuration, formatDate } from '@/utils/calculateDurations';
 
 const AboutTimeline = () => {
   return (
@@ -32,9 +31,9 @@ const AboutTimeline = () => {
                 </div>
 
                 <div className="flex flex-row md:flex-col gap-s100 md:mt-auto">
-                  <span className="font-mono tabular-nums text-base-sm text-primary/55">{formatDate(exp.startDate)}</span>
+                  <span className="font-mono tabular-nums text-base-sm text-primary/55">{exp.startDate}</span>
                   <span className="font-mono text-base-sm text-primary/20">—</span>
-                  <span className="font-mono tabular-nums text-base-sm text-primary/35">{formatDate(exp.endDate)}</span>
+                  <span className="font-mono tabular-nums text-base-sm text-primary/35">{exp.endDate}</span>
                 </div>
               </div>
 

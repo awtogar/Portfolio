@@ -49,7 +49,7 @@ export const LetterScroll = ({ lines, start = 'top 0%', end = 'bottom 120%', scr
           start,
           end,
           scrub,
-          markers: true,
+          // markers: true,
         },
       });
 

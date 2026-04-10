@@ -11,24 +11,7 @@ export const useLenis = () => {
   return context;
 };
 
-export const useScrollTo = () => {
-  const { lenis } = useLenis();
 
-  return useCallback(
-    (id, options = {}) => {
-      const element = document.getElementById(id);
-      if (element && lenis) {
-        lenis.scrollTo(element, {
-          offset: 0,
-          duration: 1.2,
-          easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-          ...options,
-        });
-      }
-    },
-    [lenis]
-  );
-};
 
 export function LenisProvider({ children }) {
   const [lenis, setLenis] = useState(null);
@@ -36,14 +19,29 @@ export function LenisProvider({ children }) {
   useEffect(() => {
     const lenisInstance = new Lenis({
       smooth: true,
-      lerp: 0.1,
-      duration: 1.6,
-      wheelMultiplier: 1,
+      lerp: 0.05,
+      duration: 2,
+      wheelMultiplier: 0.5,
       touchMultiplier: 1,
       orientation: 'vertical',
       gestureOrientation: 'vertical',
       smoothWheel: true,
       smoothTouch: true,
+    });
+
+    // Dynamic friction based on scroll direction
+    lenisInstance.on('scroll', (e) => {
+      if (e.direction === 1) {
+        // Scrolling down: defaults
+        lenisInstance.options.lerp = 0.05;
+        lenisInstance.options.wheelMultiplier = 0.5;
+        lenisInstance.options.duration = 2;
+      } else if (e.direction === -1) {
+        // Scrolling up: custom adjustment
+        lenisInstance.options.lerp = 0.1;
+        lenisInstance.options.wheelMultiplier = 1;
+        lenisInstance.options.duration = 1.6;
+      }
     });
 
     setLenis(lenisInstance);

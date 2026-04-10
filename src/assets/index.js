@@ -2,6 +2,21 @@
 export { default as aboutHeroImg } from './images/about-0.jpeg';
 export { default as aboutImg1 } from './images/about-1.jpg';
 export { default as aboutImg2 } from './images/about-2.jpg';
+export { default as about1 } from './images/about-1.jpg';
+export { default as about2 } from './images/about-2.jpg';
+
+// Generic Images
+export { default as img1 } from './images/img-1.jpg';
+export { default as img3 } from './images/img-3.jpg';
+export { default as img4 } from './images/img-4.jpg';
+export { default as img5 } from './images/img-5.jpg';
+export { default as img6 } from './images/img-6.png';
+
+// Project Logos
+export { default as nostraticLogo } from './images/projects/nostratic/nostratic.svg';
+export { default as lunavaraLogo } from './images/projects/lunavara/lunavara.svg';
+export { default as colorrideLogo } from './images/projects/coloride/colorride.svg';
+export { default as synoraLogo } from './images/projects/synora/synora.svg';
 
 // Ovelo Project
 export { default as ovelo1 } from './images/projects/ovelo/ovelo-1.webp';

@@ -48,7 +48,6 @@ const WorkCard = ({ work }) => {
         to={`/projects/${work.slug}`}
         className="flex flex-col gap-4 lg:gap-5 px-3 lg:px-4 pt-3 lg:pt-4 pb-5 lg:pb-6 rounded-xl lg:rounded-2xl bg-neutral-900 cursor-pointer group relative"
       >
-        {/* Image + video container */}
         <div ref={targetRef} className="relative rounded-lg lg:rounded-xl overflow-hidden w-full aspect-4/3 md:aspect-video lg:aspect-square group/video">
           <CustomCard
             src={work.thumbnail}
@@ -62,11 +61,13 @@ const WorkCard = ({ work }) => {
           />
         </div>
 
-        <div className="flex flex-col gap-4 lg:gap-5 px-3 lg:px-4">
+        <div className="flex flex-col gap-4 md:px-2 lg:px-4 md:gap-2 lg:gap-5 ">
           <div className="flex justify-between items-center w-full relative">
             <div className="flex items-center gap-2 lg:gap-3">
               {work.logo ? (
-                <img src={work.logo} alt={work.client || work.title} width={32} height={32} className="w-6 h-6 lg:w-8 lg:h-8 rounded-full object-cover" />
+                <div className="bg-neutral-50 w-8 h-8 lg:w-10 lg:h-10 rounded-full items-center justify-center flex">
+                  <img src={work.logo} alt={work.client || work.title} width={32} height={32} className=" object-cover fill-neutral-50 dark:fill-neutral-900" />
+                </div>
               ) : (
                 <div className="w-6 h-6 lg:w-8 lg:h-8 rounded-full bg-white/10 flex items-center justify-center shrink-0">
                   <span className="text-neutral-100/50 font-mono text-[10px]">{(work.client || work.title).charAt(0)}</span>

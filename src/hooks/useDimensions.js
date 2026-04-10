@@ -13,13 +13,13 @@ export function useDimensions() {
         height: window.innerHeight,
       });
     }
-    
+
     // Initialize dimensions
     resize();
-    
+
     // Add event listener
     window.addEventListener('resize', resize);
-    
+
     // Cleanup
     return () => {
       window.removeEventListener('resize', resize);

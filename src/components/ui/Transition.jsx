@@ -16,13 +16,14 @@ const ExitOverlay = ({ pageTitle, dimensions, onComplete }) => {
   return (
     <>
       {/* Leading sliding backdrop (drops faster than main overlay) */}
-      <motion.div
+
+      {/* <motion.div
         initial={{ top: '-100vh' }}
         animate={{ top: 0 }}
         transition={{ duration: 0.3, ease: [0.76, 0, 0.24, 1] }}
-        className="backdrop backdrop-1 fixed inset-0 z-9997 bg-neutral-50/30 dark:bg-neutral-100/35 blur-lg"
+        className="backdrop backdrop-1 fixed inset-0 z-9997 bg-primary dark:bg-neutral-100"
         style={{ height: '100vh', width: '100vw' }}
-      />
+      /> */}
 
       <motion.div
         variants={transitionExitSlideDown}
@@ -37,7 +38,7 @@ const ExitOverlay = ({ pageTitle, dimensions, onComplete }) => {
         </motion.div>
 
         <svg className="absolute top-0 left-0 w-full" height={h + SVG_HEIGHT_OFFSET}>
-          <motion.path variants={transitionExitCurve(initialPath, targetPath)} initial="initial" animate="animate" fill="currentColor" className="transition-colors duration-300" />
+          <motion.path variants={transitionExitCurve(initialPath, targetPath)} initial="initial" animate="animate" fill="currentColor" className="bg-brand-tertiary transition-colors duration-300" />
         </svg>
       </motion.div>
     </>
@@ -58,8 +59,8 @@ const EnterOverlay = ({ pageTitle, dimensions, onComplete }) => {
       {/* <motion.div
         initial={{ top: 0 }}
         animate={{ top: "100vh" }}
-        transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1], delay: 0.6 }}
-        className="backdrop backdrop-2 fixed inset-0 z-9997 bg-red-400"
+        transition={{ duration: 0.3, ease: [0.76, 0, 0.24, 1], delay: 0.3 }}
+        className="backdrop backdrop-2 fixed inset-0 z-9997 bg-accent dark:bg-primary"
         style={{ height: '100vh', width: '100vw' }}
       /> */}
 
@@ -68,7 +69,7 @@ const EnterOverlay = ({ pageTitle, dimensions, onComplete }) => {
         initial="initial"
         animate="animate"
         onAnimationComplete={onComplete}
-        className="fixed inset-0 z-9998 flex items-center justify-center"
+        className="fixed inset-0 z-9998 flex items-center justify-center " 
         style={{ height: '100vh', width: '100vw', overflow: 'visible' }}
       >
         <motion.div className="absolute z-10" variants={transitionEnterText} initial="initial" animate="animate">
@@ -83,6 +84,7 @@ const EnterOverlay = ({ pageTitle, dimensions, onComplete }) => {
             fill="currentColor"
             className="transition-colors duration-300"
           />
+          
         </svg>
       </motion.div>
     </>

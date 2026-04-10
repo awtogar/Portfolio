@@ -9,17 +9,20 @@ const usePreloader = (criticalPromises = []) => {
   const { setIsInitialLoading, setInitialProgress } = useLoading();
   const { lenis } = useLenis();
 
-  // Stop lenis immediately on mount, not on state change
   const lenisRef = useRef(lenis);
   lenisRef.current = lenis;
   useEffect(() => {
     document.body.style.overflow = 'hidden';
     document.body.style.cursor = 'wait';
     lenisRef.current?.stop();
+
+    return () => {
+      document.body.style.overflow = '';
+      document.body.style.cursor = '';
+    };
   }, []);
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  const criticalKey = JSON.stringify(criticalPromises.map((_, i) => i));
+  const criticalKey = criticalPromises.length;
 
   useEffect(() => {
     let isMounted = true;
@@ -38,7 +41,6 @@ const usePreloader = (criticalPromises = []) => {
         const elapsed = now - startTime;
         const t = Math.min(elapsed / duration, 1);
 
-        // Apply easing function
         const eased = easeFn(t);
         const next = start + diff * eased;
 
@@ -62,17 +64,14 @@ const usePreloader = (criticalPromises = []) => {
 
     const timeoutPromise = new Promise(resolve => setTimeout(resolve, MAX_DURATION));
 
-    // 1. Kickstart a steady, linearly-eased progress count up to 99 over the MIN_DURATION.
     smoothTo(99, MIN_DURATION, t => t);
 
-    // 2. We wait until ALL real crucial data (window, fonts, custom critical promises) is truly loaded.
     Promise.all([
       new Promise(resolve => setTimeout(resolve, MIN_DURATION)),
       Promise.race([Promise.all([windowLoadPromise, fontsPromise, ...criticalPromises]), timeoutPromise]),
     ]).then(() => {
       if (!isMounted) return;
 
-      // 3. Complete the final 1% quickly now that we confirmed data is loaded!
       smoothTo(100, 300);
 
       setTimeout(() => {
@@ -82,14 +81,13 @@ const usePreloader = (criticalPromises = []) => {
           document.body.style.cursor = '';
           lenisRef.current?.start();
         }
-      }, 500); // UI slide away delay once hitting 100
+      }, 500);
     });
 
     return () => {
       isMounted = false;
       if (rafId) cancelAnimationFrame(rafId);
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [criticalKey]);
 };
 
