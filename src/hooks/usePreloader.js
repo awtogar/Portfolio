@@ -3,7 +3,7 @@ import { useLenis } from '@/context/LenisContext';
 import { useLoading } from '@/context/LoadingProvider';
 
 const MAX_DURATION = 6000;
-const MIN_DURATION = 2000;
+const MIN_DURATION = 500;
 
 const usePreloader = (criticalPromises = []) => {
   const { setIsInitialLoading, setInitialProgress } = useLoading();
