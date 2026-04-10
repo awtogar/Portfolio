@@ -1,8 +1,8 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { motion, useAnimationFrame } from 'motion/react';
-import { projects } from '../../../data/data';
+import { projects } from '@/data/projects';
 import { HoverRotate, TransitionLink, CustomCard } from '../../../components';
-import BaseSection from '../../../components/commons/BaseSection';
+import BaseSection from '../../../components/common/BaseSection';
 import { useCursorInteraction } from '../../../hooks';
 import { RiArrowRightUpLine } from '@remixicon/react';
 

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'motion/react';
-import { navSlide, navDotScalling } from '../../data/anim';
+import { navSlide, navDotScalling } from '@/data/anim/nav';
 import TransitionLink from '../ui/TransitionLink';
 
 export default function NavLink({ data, isActive, setSelectedIndicator, closeMenu }) {

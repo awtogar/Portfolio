@@ -1,8 +1,8 @@
 import { useParams } from 'react-router-dom';
 import { motion } from 'motion/react';
-import { projects } from '../../../../data/data';
+import { projects } from '@/data/projects';
 
-const DetailHeroSection = () => {
+const HeroSection = () => {
   const { slug } = useParams();
   const project = projects.find(p => p.slug === slug);
   if (!project) return null;
@@ -21,4 +21,4 @@ const DetailHeroSection = () => {
   );
 };
 
-export default DetailHeroSection;
+export default HeroSection;

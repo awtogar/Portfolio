@@ -1,6 +1,7 @@
 import { createContext, useContext, useState, useCallback, useRef } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { pages, projects } from '../data/data';
+import { pages } from '@/data/navigation';
+import { projects } from '@/data/projects';
 
 
 const LoadingContext = createContext(null);

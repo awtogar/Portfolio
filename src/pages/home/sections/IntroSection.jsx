@@ -1,7 +1,7 @@
 import React from 'react';
 import { introVideo1 } from '@/assets';
 import { CreativeButton, VideoLoader } from '../../../components';
-import BaseSection from '../../../components/commons/BaseSection';
+import BaseSection from '../../../components/common/BaseSection';
 
 
 const IntroSection = () => {

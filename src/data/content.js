@@ -1,0 +1,81 @@
+export const services = [
+  {
+    id: 1,
+    number: '01',
+    title: 'Graphic',
+    description: 'Building strong brand visuals through creative concepts and graphics.',
+    features: [
+      { number: '01', name: 'Product & Merchandise' },
+      { number: '02', name: 'Branding Concepts' },
+      { number: '03', name: 'Visual Identity Systems' },
+    ],
+    tags: ['Graphics', 'Branding', 'Creative Direction'],
+  },
+  {
+    id: 2,
+    number: '02',
+    title: 'UI/UX',
+    description: 'Crafting intuitive user experiences and visually appealing interfaces.',
+    features: [
+      { number: '01', name: 'User Experience Research' },
+      { number: '02', name: 'Interface Design' },
+      { number: '03', name: 'Prototyping & Wireframing' },
+    ],
+    tags: ['UI/UX', 'User Research', 'Prototyping'],
+  },
+  {
+    id: 3,
+    number: '03',
+    title: 'Development',
+    description: 'Creating responsive websites with seamless and brand-focused experiences.',
+    features: [
+      { number: '01', name: 'Responsive Web Development' },
+      { number: '02', name: 'Frontend Implementation' },
+      { number: '03', name: 'Portfolio & Business Websites' },
+    ],
+    tags: ['Frontend', 'Web Design', 'Development'],
+  },
+];
+
+export const experience = [
+  {
+    id: 1,
+    title: 'IT Project Management',
+    company: 'PT Bank Negara Indonesia (Persero) Tbk',
+    position: 'Intern',
+    location: 'Jakarta, Indonesia',
+    startDate: '11/2025',
+    endDate: 'Present',
+    achievements: ['Assisted in managing IT project timelines and task coordination', 'Supported cross-team communication and project documentation'],
+    competencies: ['Time Management', 'Communication', 'Leadership'],
+    tools: ['Microsoft Excel', 'Microsoft PowerPoint', 'Project Documentation Tools'],
+  },
+  {
+    id: 2,
+    title: 'Data & Art Administrator',
+    company: 'PT Digital Inisiatif (Kompas Gramedia)',
+    position: 'Intern',
+    location: 'Jakarta, Indonesia',
+    startDate: '09/2024',
+    endDate: '12/2024',
+    achievements: [
+      'Implemented a QR-based system to display detailed artwork information',
+      'Designed a QR-based storage layout to map artwork placement accurately',
+      'Digitized and integrated 4,000+ art assets into a centralized system',
+    ],
+    competencies: ['Data Management', 'Automation Workflow', 'System Documentation'],
+    tools: ['Adobe Creative Suite', 'Adobe Script', 'Google Workspace'],
+  },
+  {
+    id: 3,
+    title: 'Graphic Designer',
+    company: 'Nostratic Studio',
+    position: 'Freelance',
+    location: 'Jakarta, Indonesia',
+    startDate: '08/2022',
+    endDate: '02/2024',
+    achievements: ['Designed branding and visual identity projects for 100+ clients worldwide'],
+    competencies: ['Branding', 'Visual Identity Design', 'Creative Direction'],
+    tools: ['Adobe Creative Suite', 'Adobe Script', 'Figma'],
+  },
+];

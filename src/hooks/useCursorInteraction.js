@@ -80,3 +80,8 @@ export const useCursorInteraction = ({ content = null, textColor = 'text-seconda
 
   return { targetRef, boundsRef };
 };
+
+export const useCursorHoverContent = (content = null, fill = 'primary', size = 'small', textColor = 'text-secondary') => {
+  const { boundsRef } = useCursorInteraction({ content, size, fill, textColor, magnetic: false, sticky: false });
+  return boundsRef;
+};

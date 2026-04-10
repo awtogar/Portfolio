@@ -1,6 +1,6 @@
 import { HoverRotate, CreativeButton } from '..';
 import { RiCornerDownRightLine } from '@remixicon/react';
-import { contact_info, socials, pages } from '../../data/data';
+import { contact_info, socials, pages } from '@/data/navigation';
 import { LetterScroll } from '../ui/LetterScroll';
 import { useLocation } from 'react-router-dom';
 import { useScrollToSection } from '@/hooks';

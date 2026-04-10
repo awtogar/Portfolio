@@ -1,6 +1,6 @@
 import { createContext, useContext, useState, useCallback } from 'react';
 
-const CursorContext = createContext();
+const CursorContext = createContext(null);
 
 export const useCursor = () => {
   const context = useContext(CursorContext);

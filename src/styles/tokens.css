@@ -95,7 +95,8 @@
    Dark mode
 ------------------------- */
 
-.dark {
+.dark,
+[data-theme~='dark'] {
   --neutral-100: hsl(47, 12%, 8%);
   --neutral-200: hsl(47, 10%, 16%);
   --neutral-300: hsl(47, 8%, 40%);

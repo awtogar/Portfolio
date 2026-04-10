@@ -2,8 +2,8 @@ import { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
 import { useLocation } from 'react-router-dom';
 import { RiSunLine, RiMoonLine } from '@remixicon/react';
-import { menuSlideLeft } from '../../data/anim';
-import { pages, socials } from '../../data/data';
+import { menuSlideLeft } from '@/data/anim/nav';
+import { pages, socials } from '@/data/navigation';
 import { useLenis } from '../../context/LenisContext';
 import { useTheme } from '../../hooks/useTheme';
 
@@ -43,7 +43,7 @@ export default function Nav({ closeMenu }) {
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         transition={{ duration: 0.3 }}
-        className="fixed inset-0 bg-primary/35 dark:bg-neutral-100/35 z-50"
+        className="fixed inset-0 bg-white/35 z-50"
         onClick={closeMenu}
       />
       <motion.div

@@ -1,21 +1,18 @@
-import { lazy, Suspense, useEffect } from 'react';
+import { lazy, Suspense } from 'react';
 import { Route, BrowserRouter as Router, Routes, Outlet, useLocation } from 'react-router-dom';
 import '@/styles/globals.css';
 import { SpeedInsights } from '@vercel/speed-insights/react';
-import { Preloader, Header, CustomCursor, Footer, Transition } from '@/components';
+import { Preloader, Header, CustomCursor, Footer, Transition, RouteChangeNotifier } from '@/components';
 import AppProviders from '@/context/AppProviders';
-import { pages } from '@/data/data';
+import { pages } from '@/data/navigation';
 import { useScrollToTop, usePreloader } from '@/hooks';
-import { useLoading } from '@/context/LoadingProvider';
 
-// Lazy loaded pages
 const HomePage = lazy(() => import('@/pages/home/HomePage'));
 const AboutPage = lazy(() => import('@/pages/about/AboutPage'));
-const ProjectPage = lazy(() => import('@/pages/project'));
-const ProjectDetailPage = lazy(() => import('@/pages/project/ProjectDetail'));
+const ProjectPage = lazy(() => import('@/pages/project/ProjectPage'));
+const ProjectDetailPage = lazy(() => import('@/pages/project/project-detail'));
 const ContactPage = lazy(() => import('@/pages/contact/ContactPage'));
 
-// Layout
 const WithFooter = () => (
   <>
     <Outlet />
@@ -23,25 +20,9 @@ const WithFooter = () => (
   </>
 );
 
-const RouteChangeNotifier = () => {
-  const location = useLocation();
-  const { setPageReady, phase } = useLoading();
-
-  useEffect(() => {
-    if (phase === 'wait-for-ready') {
-      requestAnimationFrame(() => {
-        setPageReady();
-      });
-    }
-  }, [location.pathname, phase, setPageReady]);
-
-  return null;
-};
-
 const AppContent = () => {
   usePreloader();
   const location = useLocation();
-
   useScrollToTop();
 
   return (

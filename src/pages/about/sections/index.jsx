@@ -1,3 +1,3 @@
-export { default as AboutHero } from './AboutHero';
-export { default as AboutTimeline } from './AboutTimeline';
-export { default as AboutImageReveal } from './AboutImageReveal';
+export { default as HeroSection } from './HeroSection';
+export { default as TimelineSection } from './TimelineSection';
+export { default as ImageRevealSection } from './ImageRevealSection';

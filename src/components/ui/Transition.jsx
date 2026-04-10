@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from 'motion/react';
 import { useLoading } from '../../context/LoadingProvider';
-import { transitionExitSlideDown, transitionExitCurve, transitionEnterSlideDown, transitionEnterCurve, transitionExitText, transitionEnterText } from '../../data/anim';
+import { transitionExitSlideDown, transitionExitCurve, transitionEnterSlideDown, transitionEnterCurve, transitionExitText, transitionEnterText } from '@/data/anim/transition';
 import { useDimensions } from '../../hooks/useDimensions';
 
 const SVG_HEIGHT_OFFSET = 300;

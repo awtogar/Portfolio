@@ -1,9 +1,9 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
-import { projects } from '../../../../data/data';
+import { projects } from '@/data/projects';
 import { RiArrowRightUpLine } from '@remixicon/react';
 
-const DetailInfoSection = () => {
+const InfoSection = () => {
   const { slug } = useParams();
   const project = projects.find(p => p.slug === slug);
 
@@ -59,4 +59,4 @@ const DetailInfoSection = () => {
   );
 };
 
-export default DetailInfoSection;
+export default InfoSection;

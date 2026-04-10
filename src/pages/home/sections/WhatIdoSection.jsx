@@ -1,7 +1,7 @@
 import React from 'react';
-import { services } from '../../../data/data';
+import { services } from '@/data/content';
 import SelectedWorksSection from './SelectedWorksSection';
-import BaseSection from '../../../components/commons/BaseSection';
+import BaseSection from '../../../components/common/BaseSection';
 
 const WhatIdoSection = () => {
   return (

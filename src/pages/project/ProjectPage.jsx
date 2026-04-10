@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import { motion, useAnimationFrame } from 'motion/react';
-import BaseSection from '../../components/commons/BaseSection';
-import { projects } from '../../data/data';
+import BaseSection from '../../components/common/BaseSection';
+import { projects } from '@/data/projects';
 import { CustomCard, TransitionLink } from '../../components';
 import { useCursorInteraction } from '../../hooks';
 

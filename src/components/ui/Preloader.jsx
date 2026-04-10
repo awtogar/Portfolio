@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from 'motion/react';
-import { PreloaderSlideUp, preloaderCurvePath } from '../../data/anim';
+import { PreloaderSlideUp, preloaderCurvePath } from '@/data/anim/preloader';
 import { useLoading } from '../../context/LoadingProvider';
 import { useDimensions } from '../../hooks/useDimensions';
 

@@ -1,0 +1,48 @@
+import { useParams } from 'react-router-dom';
+import { projects } from '@/data/projects';
+import { CustomCard } from '@/components';
+
+const GallerySection = () => {
+  const { slug } = useParams();
+  const project = projects.find(p => p.slug === slug);
+
+  if (!project || !project.gallery?.length) return null;
+
+  return (
+    <div className="flex flex-col gap-4 lg:gap-5">
+      {project.gallery.map((media, i) => {
+        if (i === 3 && project.gallery.length >= 4) return null;
+        if (i === 2 && project.gallery.length >= 4) {
+          return (
+            <div key={i} className="flex gap-4 lg:gap-5 w-full">
+              <CustomCard
+                src={media}
+                alt={`${project.client} - ${i + 1}`}
+                containerClassName="w-1/2 h-[160px] lg:h-[clamp(600px,40vw,1200px)] rounded-lg lg:rounded-xl"
+                imageClassName="object-cover object-center"
+              />
+              <CustomCard
+                src={project.gallery[3]}
+                alt={`${project.client} - 4`}
+                containerClassName="w-1/2 h-[160px] lg:h-[clamp(600px,40vw,1200px)] rounded-lg lg:rounded-xl"
+                imageClassName="object-cover object-center"
+              />
+            </div>
+          );
+        }
+
+        return (
+          <CustomCard
+            key={i}
+            src={media}
+            alt={`${project.client} - ${i + 1}`}
+            containerClassName="w-full h-[200px] md:h-[400px] lg:h-[clamp(600px,57vw,1200px)] rounded-lg lg:rounded-xl"
+            imageClassName="object-cover object-center"
+          />
+        );
+      })}
+    </div>
+  );
+};
+
+export default GallerySection;

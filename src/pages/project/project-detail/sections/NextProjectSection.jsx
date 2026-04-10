@@ -3,11 +3,11 @@ import { useParams } from 'react-router-dom';
 import { motion, useScroll, useTransform } from 'motion/react';
 import { RiArrowRightUpLine } from '@remixicon/react';
 import { CreativeButton, TransitionLink } from '../../../../components';
-import BaseSection from '../../../../components/commons/BaseSection';
-import { useCursorHoverContent } from '../../../../hooks/useCursorHoverContent';
-import { projects } from '../../../../data/data';
+import BaseSection from '../../../../components/common/BaseSection';
+import { useCursorHoverContent } from '@/hooks/useCursorInteraction';
+import { projects } from '@/data/projects';
 
-const DetailNextProject = () => {
+const NextProjectSection = () => {
   const { slug } = useParams();
   const projectIndex = projects.findIndex(p => p.slug === slug);
   const nextProject = projectIndex !== -1 ? projects[(projectIndex + 1) % projects.length] : null;
@@ -65,4 +65,4 @@ const DetailNextProject = () => {
   );
 };
 
-export default DetailNextProject;
+export default NextProjectSection;

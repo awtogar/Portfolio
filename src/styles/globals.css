@@ -4,7 +4,7 @@
 @import './layouts.css';
 @plugin "@tailwindcss/typography";
 
-@custom-variant dark (&:where(.dark, .dark *));
+@custom-variant dark (&:where([data-theme~="dark"], [data-theme~="dark"], .dark *));
 
 @theme {
   /* Fonts */
@@ -202,10 +202,10 @@ html {
 }
 
 /* Theme Transitions */
-.theme-changing,
-.theme-changing *,
-.theme-changing *::before,
-.theme-changing *::after {
+[data-theme~="theme-changing"],
+[data-theme~="theme-changing"] *,
+[data-theme~="theme-changing"] *::before,
+[data-theme~="theme-changing"] *::after {
   transition: background-color var(--duration-smooth) var(--ease-primary),
               color var(--duration-smooth) var(--ease-primary),
               border-color var(--duration-smooth) var(--ease-primary),

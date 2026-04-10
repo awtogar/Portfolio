@@ -1,11 +1,11 @@
 import React from 'react';
 import { RiGeminiFill, RiHand } from '@remixicon/react';
-import BaseSection from '../../../components/commons/BaseSection';
+import BaseSection from '../../../components/common/BaseSection';
 import { CustomCard, CircularText, CreativeButton } from '../../../components';
 import { aboutHeroImg } from '@/assets';
-import { useCursorHoverContent } from '../../../hooks/useCursorHoverContent';
+import { useCursorHoverContent } from '@/hooks/useCursorInteraction';
 
-const AboutHero = () => {
+const HeroSection = () => {
   const resumeRef = useCursorHoverContent('arrow');
 
   return (
@@ -54,4 +54,4 @@ const AboutHero = () => {
   );
 };
 
-export default AboutHero;
+export default HeroSection;

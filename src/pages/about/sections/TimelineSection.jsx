@@ -3,12 +3,12 @@
 import { useRef, useEffect } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import BaseSection from '../../../components/commons/BaseSection';
-import { experience } from '../../../data/data';
+import BaseSection from '../../../components/common/BaseSection';
+import { experience } from '@/data/content';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const ExperienceEntry = ({ exp, index }) => {
+const ExperienceEntry = ({ exp, index, isLast }) => {
   const rowRef = useRef(null);
   const rightRef = useRef(null);
 
@@ -33,7 +33,8 @@ const ExperienceEntry = ({ exp, index }) => {
     <article ref={rowRef} className="w-full group">
       <div className="w-full h-px bg-border" />
       <div className="grid grid-cols-1 md:grid-cols-[120px_1fr] gap-x-s700">
-        <div className="hidden md:flex flex-col py-s700 pr-s600 border-r border-border">
+        <div className="hidden md:flex flex-col py-s700 pr-s600 border-r border-border relative">
+          {isLast && <div className="absolute top-0 right-0 w-[1px] h-full bg-gradient-to-b from-transparent via-neutral-100/50 to-neutral-100 pointer-events-none" />}
           <span className="font-mono text-base-xs tracking-label text-primary/25 tabular-nums">{String(index + 1).padStart(2, '0')}</span>
           <div className="flex flex-col gap-s100 mt-auto">
             <span className="font-mono text-base-sm text-primary/55 tabular-nums">{exp.startDate}</span>
@@ -83,7 +84,7 @@ const ExperienceEntry = ({ exp, index }) => {
   );
 };
 
-const AboutTimeline = () => {
+const TimelineSection = () => {
   return (
     <BaseSection sectionClassName="section-padding-xy" containerID="experience">
       <div className="flex flex-col gap-s500 mb-s700">
@@ -98,7 +99,7 @@ const AboutTimeline = () => {
 
       <div className="w-full">
         {experience.map((exp, index) => (
-          <ExperienceEntry key={exp.id} exp={exp} index={index} />
+          <ExperienceEntry key={exp.id} exp={exp} index={index} isLast={index === experience.length - 1} />
         ))}
         <div className="w-full h-px bg-border" />
       </div>
@@ -106,4 +107,4 @@ const AboutTimeline = () => {
   );
 };
 
-export default AboutTimeline;
+export default TimelineSection;

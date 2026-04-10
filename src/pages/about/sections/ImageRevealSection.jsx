@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { useScroll, useTransform, motion } from 'motion/react';
-import BaseSection from '../../../components/commons/BaseSection';
+import BaseSection from '../../../components/common/BaseSection';
 import { CustomCard, Splatter, Marquee, MarqueeItem, SlideText } from '../../../components';
 import { useDimensions } from '@/hooks';
 import { RiArrowRightUpLine } from '@remixicon/react';
@@ -14,7 +14,7 @@ const images = [
   { src: aboutImg2, alt: 'Image 3' },
 ];
 
-const AboutImageReveal = () => {
+const ImageRevealSection = () => {
   const containerMaskRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: containerMaskRef,
@@ -63,4 +63,4 @@ const AboutImageReveal = () => {
   );
 };
 
-export default AboutImageReveal;
+export default ImageRevealSection;

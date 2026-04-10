@@ -1,7 +1,7 @@
 import React from 'react';
 import { CreativeButton } from '../../../components';
-import BaseSection from '../../../components/commons/BaseSection';
-import { useCursorHoverContent } from '../../../hooks/useCursorHoverContent';
+import BaseSection from '../../../components/common/BaseSection';
+import { useCursorHoverContent } from '@/hooks/useCursorInteraction';
 
 const HeroSection = () => {
   const contactRef = useCursorHoverContent('arrow');
