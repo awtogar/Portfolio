@@ -20,12 +20,12 @@ const MarqueeTags = ({ tags = [] }) => {
 
   return (
     <div className="flex justify-center items-center h-4 md:h-[18px] overflow-hidden relative w-full">
-      <div className="absolute left-0 top-0 h-full w-8 lg:w-10 bg-linear-to-r from-neutral-900/95 to-transparent z-10" />
-      <div className="absolute right-0 top-0 h-full w-8 lg:w-10 bg-linear-to-l from-neutral-900/95 to-transparent z-10" />
+      <div className="absolute left-0 top-0 h-full w-8 lg:w-10 group z-10" />
+      <div className="absolute right-0 top-0 h-full w-8 lg:w-10 group z-10" />
       <div className="flex overflow-hidden">
-        <div ref={innerRef} className="flex whitespace-nowrap will-change-transform">
-          {[...tags, ...tags, ...tags, ...tags].map((tag, i) => (
-            <span key={i} className="text-[10px] md:text-xs tracking-widest text-neutral-300 uppercase pr-1.5 font-mono">
+        <div ref={innerRef} className="flex whitespace-nowrap will-change-transform w-max">
+          {Array(20).fill(tags).flat().map((tag, i) => (
+            <span key={i} className="text-[10px] md:text-xs tracking-widest text-neutral-300 dark:text-neutral-300 uppercase pr-1.5 font-mono shrink-0">
               {tag},{' '}
             </span>
           ))}
@@ -47,14 +47,14 @@ const ProjectCard = ({ project, index }) => {
     <motion.li initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: Math.min(index * 0.1, 0.5), ease }} className="w-full list-none">
       <TransitionLink
         to={`/projects/${project.slug}`}
-        className="flex flex-col gap-4 lg:gap-5 px-3 lg:px-4 pt-3 lg:pt-4 pb-5 lg:pb-6 rounded-xl lg:rounded-2xl bg-neutral-900 cursor-pointer group relative"
+        className="flex flex-col gap-4 lg:gap-5 px-3 lg:px-4 pt-3 lg:pt-4 pb-5 lg:pb-6 rounded-xl lg:rounded-2xl bg-black dark:bg-white cursor-pointer group relative"
       >
         <div ref={targetRef} className="relative rounded-lg lg:rounded-xl overflow-hidden w-full aspect-4/3 md:aspect-video lg:aspect-square">
           <CustomCard
             src={project.thumbnail}
             alt={project.client}
             containerClassName="absolute inset-0 w-full h-[120%] -top-[10%] lg:-top-[15%]"
-            imageClassName="object-cover scale-105 group-hover:scale-105 transition-transform duration-500 ease-in-out"
+            imageClassName="object-top scale-105 group-hover:scale-105 transition-transform duration-500 ease-in-out"
             scrollRange={['0%', '12%']}
             blur={false} // pass false to turn off blur overlay
             offset={['start end', 'end start']}

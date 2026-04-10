@@ -30,7 +30,7 @@ export const projects = [
     year: '2025',
     logo: nostraticLogo,
     thumbnail: img1,
-    video: null,
+    video: introVideo1,
     description: 'Branding and Web Development for a creative studio agency in Indonesia. that specializes in digital products.',
     tags: ['UI/UX', 'Prototype', 'Figma'],
     date: { month: 'February', year: '2025' },

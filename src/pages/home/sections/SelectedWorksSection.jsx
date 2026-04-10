@@ -95,6 +95,7 @@ const SelectedWorksSection = () => {
     size: 'medium',
     textColor: 'text-secondary',
     fill: 'accent',
+    video: true,
   });
 
   return (

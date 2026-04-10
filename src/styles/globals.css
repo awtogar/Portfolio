@@ -4,7 +4,7 @@
 @import './layouts.css';
 @plugin "@tailwindcss/typography";
 
-@custom-variant dark (&:where([data-theme~="dark"], [data-theme~="dark"], .dark *));
+@custom-variant dark (&:where([data-theme~="dark"], [data-theme~="dark"] *));
 
 @theme {
   /* Fonts */

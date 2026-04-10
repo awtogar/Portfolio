@@ -2,7 +2,15 @@ import { useRef, useEffect, useState } from 'react';
 import { useCursor } from '../context/CursorContext';
 import gsap from 'gsap';
 
-export const useCursorInteraction = ({ content = null, textColor = 'text-secondary', size = 'small', magnetic = false, sticky = false, fill = 'primary', cursorSize = null } = {}) => {
+export const useCursorInteraction = ({
+  content = null,
+  textColor = 'text-secondary',
+  size = 'small',
+  magnetic = false,
+  sticky = false,
+  fill = 'primary',
+  cursorSize = null,
+} = {}) => {
   const targetRef = useRef(null);
   const boundsRef = useRef(null);
   const { setCursor, resetCursor } = useCursor();
