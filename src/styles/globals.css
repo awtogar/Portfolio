@@ -201,3 +201,16 @@ html {
     text-transform: uppercase;
   }
 }
+
+/* Theme Transitions */
+.theme-changing,
+.theme-changing *,
+.theme-changing *::before,
+.theme-changing *::after {
+  transition: background-color var(--duration-smooth) var(--ease-primary),
+              color var(--duration-smooth) var(--ease-primary),
+              border-color var(--duration-smooth) var(--ease-primary),
+              fill var(--duration-smooth) var(--ease-primary),
+              stroke var(--duration-smooth) var(--ease-primary) !important;
+  transition-behavior: allow-discrete;
+}
