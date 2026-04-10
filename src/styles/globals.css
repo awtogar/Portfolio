@@ -1,6 +1,5 @@
 @import 'tailwindcss';
 @import './fonts.css';
-@import './animation.css';
 @import './tokens.css';
 @import './layouts.css';
 @plugin "@tailwindcss/typography";

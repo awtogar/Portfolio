@@ -5,4 +5,3 @@ export { useScrollToSection, useScrollToTop } from './useScroll';
 export { useCursorInteraction } from './useCursorInteraction';
 export { useTheme } from './useTheme';
 export { useVideoVisibility } from './useVideoVisibility';
-export { useWindowDimensions } from './useWindowDimensions';

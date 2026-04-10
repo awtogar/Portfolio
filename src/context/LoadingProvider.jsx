@@ -15,11 +15,11 @@ export function LoadingProvider({ children }) {
   const navigate = useNavigate();
   const location = useLocation();
 
-  // --- Initial Preloader State ---
+  // preloader state
   const [isInitialLoading, setIsInitialLoading] = useState(true);
   const [initialProgress, setInitialProgress] = useState(0);
 
-  // --- Transition State ---
+  // transisi state
   const [phase, setPhase] = useState('idle');
   const [targetPath, setTargetPath] = useState(null);
   const [pageTitle, setPageTitle] = useState('');
@@ -48,9 +48,7 @@ export function LoadingProvider({ children }) {
 
   const navigateTo = useCallback(
     path => {
-      // Don't transition to the same page
       if (path === location.pathname) return;
-      // Don't start a new transition if one is in progress
       if (transitionRef.current) return;
 
       transitionRef.current = true;
@@ -64,15 +62,16 @@ export function LoadingProvider({ children }) {
   const onExitComplete = useCallback(() => {
     if (targetPath) {
       navigate(targetPath);
-      requestAnimationFrame(() => {
-        requestAnimationFrame(() => {
-          setPhase('enter');
-        });
-      });
+      setPhase('wait-for-ready'); 
     }
   }, [targetPath, navigate]);
 
-  // Called when enter animation completes
+  const setPageReady = useCallback(() => {
+    if (transitionRef.current) {
+      setPhase('enter');
+    }
+  }, []);
+
   const onEnterComplete = useCallback(() => {
     setPhase('idle');
     setTargetPath(null);
@@ -95,6 +94,7 @@ export function LoadingProvider({ children }) {
         navigateTo,
         onExitComplete,
         onEnterComplete,
+        setPageReady,
       }}
     >
       {children}

@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import { useScroll, useTransform, motion } from 'motion/react';
 import BaseSection from '../../../components/commons/BaseSection';
 import { CustomCard, Splatter, Marquee, MarqueeItem, SlideText } from '../../../components';
-import { useWindowDimensions } from '@/hooks';
+import { useDimensions } from '@/hooks';
 import { RiArrowRightUpLine } from '@remixicon/react';
 
 import { aboutImg1, aboutImg2 } from '@/assets';
@@ -21,7 +21,7 @@ const AboutImageReveal = () => {
     offset: ['start end', 'end end'],
   });
 
-  const dimensions = useWindowDimensions();
+  const dimensions = useDimensions();
   const maxMaskSize = Math.max(dimensions.width, dimensions.height) * 3;
 
   const step = 1 / images.length;

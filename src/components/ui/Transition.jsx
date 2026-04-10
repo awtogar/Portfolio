@@ -99,7 +99,14 @@ export default function Transition() {
 
   return (
     <AnimatePresence mode="wait">
-      {phase === 'exit' && <ExitOverlay key="exit" pageTitle={pageTitle} dimensions={dimensions} onComplete={onExitComplete} />}
+      {(phase === 'exit' || phase === 'wait-for-ready') && (
+        <ExitOverlay 
+          key="exit" 
+          pageTitle={pageTitle} 
+          dimensions={dimensions} 
+          onComplete={phase === 'exit' ? onExitComplete : undefined} 
+        />
+      )}
       {phase === 'enter' && <EnterOverlay key="enter" pageTitle={pageTitle} dimensions={dimensions} onComplete={onEnterComplete} />}
     </AnimatePresence>
   );
