@@ -19,8 +19,8 @@ const WhatIdoSection = () => {
         <div className="w-full m-auto">
           <div className="mt-s900 gap-y-s800 flex flex-col justify-between">
             {services.map((service, i) => {
-              const topValue = `calc(10vh + ${i * 5.75}em)`;
-              const marginBottomValue = `${17.75 - i * 5.75}em`;
+              const topValue = `calc(10dvh + ${i * 6.75}em)`;
+              const marginBottomValue = `${17.75 - i * 6.75}em`;
               return (
                 <div key={i} className="sticky top-0 border-t border-t-primary/30 bg-neutral-200 mt-s300" style={{ top: topValue, marginBottom: marginBottomValue }}>
                   <div className="flex items-center justify-between">
@@ -29,7 +29,7 @@ const WhatIdoSection = () => {
                       <h3 className="uppercase text-h300">{service.title}</h3>
                     </div>
                   </div>
-                  <div className="pt-s400">
+                  <div className="pt-s300 md:pt-s400 md:pb-s400 lg:pt-s500 lg:pb-s500">
                     <p className="text-primary">{service.description}</p>
                     <div className="flex flex-col pt-s200">
                       {service.features.map((feature, featureIndex) => (

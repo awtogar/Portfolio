@@ -3,11 +3,9 @@ import { useEffect, useState } from 'react';
 export const useTheme = () => {
   const [isDark, setIsDark] = useState(false);
 
-  // Initialize theme on mount
   useEffect(() => {
     const savedTheme = localStorage.getItem('theme');
     
-    // Only use saved preference, default to light if none exists
     if (savedTheme === 'dark') {
       document.documentElement.classList.add('dark');
       setIsDark(true);
@@ -19,9 +17,15 @@ export const useTheme = () => {
   }, []);
 
   const toggleTheme = () => {
+    document.documentElement.classList.add('theme-changing');
+    
     const newIsDark = document.documentElement.classList.toggle('dark');
     localStorage.setItem('theme', newIsDark ? 'dark' : 'light');
     setIsDark(newIsDark);
+    
+    setTimeout(() => {
+      document.documentElement.classList.remove('theme-changing');
+    }, 700); 
   };
 
   return { toggleTheme, isDark };
