@@ -1,33 +1,25 @@
 'use client';
 
-import { useRef, useEffect } from 'react';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useRef } from 'react';
 import { BaseSection } from '@/components';
 import { experience } from '@/data/content';
-
-gsap.registerPlugin(ScrollTrigger);
+import { useFadeUp } from '@/hooks';
 
 const ExperienceEntry = ({ exp, index, isLast }) => {
   const rowRef = useRef(null);
   const rightRef = useRef(null);
 
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.from(rightRef.current, {
-        y: 32,
-        opacity: 0,
-        duration: 0.9,
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: rowRef.current,
-          start: 'top 82%',
-          once: false,
-        },
-      });
-    });
-    return () => ctx.revert();
-  }, []);
+  useFadeUp(rightRef, {
+    y: 32,
+    duration: 0.9,
+    config: {
+      scrollTrigger: {
+        trigger: rowRef,
+        start: 'top 82%',
+        once: false,
+      },
+    },
+  });
 
   return (
     <article ref={rowRef} className="w-full group">

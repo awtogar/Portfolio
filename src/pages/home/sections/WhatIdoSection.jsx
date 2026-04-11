@@ -6,7 +6,7 @@ import BaseSection from '../../../components/common/BaseSection';
 const WhatIdoSection = () => {
   return (
     <BaseSection containerID="what-i-do" sectionClassName="section-padding-x pt-s900 text-primary bg-neutral-200">
-      {/* Services Header */}
+      {/* Services */}
       <div className="flex flex-col pt-s400">
         <div className="flex w-full flex-col gap-s400 text-primary">
           <div className="flex flex-col">
@@ -15,12 +15,13 @@ const WhatIdoSection = () => {
           </div>
           <p>I can help you create stunning visuals, seamless user experiences and be impactful based on your needs.</p>
         </div>
-        {/* Services List */}
         <div className="w-full m-auto">
           <div className="mt-s900 gap-y-s800 flex flex-col justify-between">
             {services.map((service, i) => {
-              const topValue = `calc(10dvh + ${i * 6.75}em)`;
-              const marginBottomValue = `${17.75 - i * 6.75}em`;
+              // const topValue = `calc(10dvh + ${i * 6.75}em)`;
+              // const marginBottomValue = `${17.75 - i * 6.75}em`;
+              const topValue = `calc(10dvh + ${i * 5.75}em)`;
+              const marginBottomValue = `${17.75 - i * 5.75}em`;
               return (
                 <div key={i} className="sticky top-0 border-t border-t-primary/30 bg-neutral-200 mt-s300" style={{ top: topValue, marginBottom: marginBottomValue }}>
                   <div className="flex items-center justify-between">

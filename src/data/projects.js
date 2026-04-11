@@ -1,10 +1,6 @@
-import {
-  about1, about2,
-  img1, img3, img4, img5, img6,
-  ovelo1, ovelo2, ovelo3, ovelo4,
-  nostraticLogo, lunavaraLogo, colorrideLogo, synoraLogo,
-  introVideo1, introVideo2
-} from '../assets';
+import { about1, about2, img1, img3, img4, img5, img6, ovelo1, ovelo2, ovelo3, ovelo4, introVideo1, introVideo2 } from '../assets';
+
+import { OveloLogo, NostraticLogo, LunvaraLogo, SynoraLogo, ColorrideLogo, Investime } from '@/components/Logos/ProjectLogos';
 
 export const projects = [
   {
@@ -13,7 +9,7 @@ export const projects = [
     client: 'ovelo',
     type: 'Branding',
     year: '2025',
-    logo: ovelo1,
+    logo: OveloLogo,
     thumbnail: ovelo1,
     video: introVideo1,
     description: 'An eyewear and Optical Care branding. focused on modern aesthetics and strong visuals branding.',
@@ -28,7 +24,7 @@ export const projects = [
     client: 'Nostratic Studio',
     type: 'Websites',
     year: '2025',
-    logo: nostraticLogo,
+    logo: NostraticLogo,
     thumbnail: img1,
     video: introVideo1,
     description: 'Branding and Web Development for a creative studio agency in Indonesia. that specializes in digital products.',
@@ -43,8 +39,8 @@ export const projects = [
     client: 'Lunavara',
     type: 'Websites',
     year: '2024',
-    logo: lunavaraLogo,
-    thumbnail: img4,
+    logo: LunvaraLogo,
+    thumbnail: img3,
     video: null,
     description: 'Lunavara is a modern nursery and plant art. focused on aesthetic and minimalism audience',
     tags: ['Web Development', 'UI/UX'],
@@ -58,7 +54,7 @@ export const projects = [
     client: 'Investime+',
     type: 'Applications',
     year: '2024',
-    logo: colorrideLogo,
+    logo: Investime,
     thumbnail: img5,
     video: null,
     description: 'A Calculator Website based app that can help you to calculate your compound interest and also can help you to plan your investment in the future.',
@@ -73,8 +69,8 @@ export const projects = [
     client: 'Routines+',
     type: 'Applications',
     year: '2024',
-    logo: synoraLogo,
-    thumbnail: img6,
+    logo: ColorrideLogo,
+    thumbnail: about1,
     video: null,
     description: 'Intuitive application for productivity that can help you to manage the routines and time management in a modern and simple way.',
     tags: ['Mobile App', 'Productivity'],
@@ -84,14 +80,14 @@ export const projects = [
   },
   {
     id: 6,
-    slug: 'shukari',
-    client: 'Shukari',
+    slug: 'Synora',
+    client: 'Synora',
     type: 'Branding',
     year: '2023',
-    logo: nostraticLogo,
-    thumbnail: about1,
+    logo: SynoraLogo,
+    thumbnail: img4,
     video: null,
-    description: 'Comprehensive branding and visual identity project for Shukari.',
+    description: 'Comprehensive branding and visual identity project for Synora.',
     tags: ['Branding', 'Design', 'Identity'],
     date: { month: 'November', year: '2023' },
     selected: false,

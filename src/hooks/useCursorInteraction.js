@@ -29,7 +29,7 @@ export const useCursorInteraction = ({
     const target = targetRef.current;
     const hitArea = boundsRef.current || target;
 
-    // Immediately abort if device lacks a mouse, eliminating 100% of calculation and listeners on mobile
+    // kalo gada mouse jgn pake fx cursor
     if (!hasMouse || !hitArea || (magnetic && !target)) return;
 
     let xTo, yTo;

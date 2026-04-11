@@ -1,8 +1,5 @@
-import { useEffect, useRef, useMemo } from 'react';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
-gsap.registerPlugin(ScrollTrigger);
+import { useRef, useMemo } from 'react';
+import { useLetterScroll } from '@/hooks';
 
 const LINE_STYLES = [
   {
@@ -35,50 +32,7 @@ export const LetterScroll = ({ lines, start = 'top 0%', end = 'bottom 120%', scr
     [lines]
   );
 
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      const tracks = containerRef.current?.querySelectorAll('.ls-track');
-      if (!tracks?.length) return;
-
-      // pastikan start dari rapi
-      gsap.set(tracks, { y: 0 });
-
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start,
-          end,
-          scrub,
-          // markers: true,
-        },
-      });
-
-      // phase 1: rapi → berantakan
-      tl.to(tracks, {
-        y: (i, el) => {
-          const count = parseInt(el.dataset.clones, 10);
-          return `-${count}em`;
-        },
-        stagger: {
-          each: 0.02,
-          from: 'random',
-        },
-        ease: 'power1.inOut',
-      });
-
-      // phase 2: berantakan → rapi lagi
-      tl.to(tracks, {
-        y: 0,
-        stagger: {
-          each: 0.0,
-          from: 'random',
-        },
-        ease: 'power1.inOut',
-      });
-    }, containerRef);
-
-    return () => ctx.revert();
-  }, [linesData, start, end, scrub]);
+  useLetterScroll(containerRef, [linesData], { start, end, scrub });
 
   return (
     <div ref={containerRef} className="relative flex flex-col items-center justify-center md:py-28 overflow-hidden select-none h-screen">

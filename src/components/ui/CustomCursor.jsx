@@ -1,7 +1,7 @@
 import { useCallback, useMemo, useRef, useEffect, useState } from 'react';
 import { motion, useMotionValue, useSpring, AnimatePresence } from 'motion/react';
 import { useCursor } from '../../context/CursorContext';
-import { RiArrowRightUpLine } from '@remixicon/react';
+import { RiArrowRightUpLine, RiCheckLine } from '@remixicon/react';
 
 const CURSOR_SIZES = {
   small: { idle: 6, hovered: 60 },
@@ -19,7 +19,8 @@ const CURSOR_FILLS = {
 
 const CURSOR_CONTENTS = {
   arrow: <RiArrowRightUpLine className="w-5 h-5 md:w-6 md:h-6" />,
-  text: <span className="text-primary tracking-widest uppercase">View</span>,
+  text: <span className="text-primary tracking-widest uppercase">children</span>,
+  check: <RiCheckLine className="w-5 h-5 md:w-6 md:h-6" />,
 };
 
 const CustomCursor = () => {

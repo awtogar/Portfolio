@@ -17,6 +17,7 @@ export { default as nostraticLogo } from './images/projects/nostratic/nostratic.
 export { default as lunavaraLogo } from './images/projects/lunavara/lunavara.svg';
 export { default as colorrideLogo } from './images/projects/coloride/colorride.svg';
 export { default as synoraLogo } from './images/projects/synora/synora.svg';
+export { default as oveloLogo } from './images/projects/ovelo/ovelo.svg';
 
 // Ovelo Project
 export { default as ovelo1 } from './images/projects/ovelo/ovelo-1.webp';

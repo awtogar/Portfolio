@@ -1,11 +1,8 @@
-import React, { useRef, useState, useEffect } from 'react';
-import gsap from 'gsap';
-import { useLenis } from '../../context/LenisContext';
+import React, { useRef } from 'react';
 import { RiArrowRightUpLine } from '@remixicon/react';
+import { useMarquee } from '@/hooks';
 
-/**
- * ScrollAwareArrow - Arrow that rotates based on scroll direction
- */
+
 export const ScrollAwareArrow = ({ size = 48, className = '', Icon = RiArrowRightUpLine, isScrollingDown = true }) => {
   return (
     <div
@@ -43,71 +40,7 @@ export const MarqueeItem = ({ text, icon: Icon = RiArrowRightUpLine, iconSize = 
  */
 const Marquee = ({ children, speed = 5, scrollAware = true, direction = 'left', className = '', innerClassName = '' }) => {
   const marqueeRef = useRef(null);
-  const tweenRef = useRef(null);
-  const [isScrollingDown, setIsScrollingDown] = useState(direction === 'left');
-  const { lenis } = useLenis();
-
-  // Setup GSAP animation
-  useEffect(() => {
-    if (!marqueeRef.current) return;
-
-    const marqueeInner = marqueeRef.current.querySelector('.marquee_inner');
-    const marqueeParts = marqueeRef.current.querySelectorAll('.marquee_part');
-
-    // Clone marquee parts to create seamless loop
-    marqueeParts.forEach(part => {
-      const clone = part.cloneNode(true);
-      marqueeInner.appendChild(clone);
-    });
-
-    // Determine initial direction
-    const initialDirection = direction === 'left' ? 1 : -1;
-
-    // Create infinite horizontal tween
-    tweenRef.current = gsap
-      .to('.marquee_part', {
-        xPercent: -100 * initialDirection,
-        repeat: -1,
-        duration: speed,
-        ease: 'linear',
-      })
-      .totalProgress(0.5);
-
-    // Set initial position for inner container
-    gsap.set('.marquee_inner', { xPercent: -50 });
-
-    return () => {
-      if (tweenRef.current) {
-        tweenRef.current.kill();
-      }
-    };
-  }, [speed, direction]);
-
-  // Listen to Lenis scroll direction
-  useEffect(() => {
-    if (!lenis || !scrollAware) return;
-
-    const handleScroll = ({ direction: scrollDirection }) => {
-      // direction: 1 = scrolling down, -1 = scrolling up
-      const scrollingDown = scrollDirection > 0;
-      setIsScrollingDown(scrollingDown);
-
-      // Update marquee direction based on scroll
-      if (tweenRef.current) {
-        gsap.to(tweenRef.current, {
-          timeScale: scrollingDown ? 1 : -1,
-          duration: 0.5,
-          ease: 'power2.out',
-        });
-      }
-    };
-
-    lenis.on('scroll', handleScroll);
-
-    return () => {
-      lenis.off('scroll', handleScroll);
-    };
-  }, [lenis, scrollAware]);
+  const { isScrollingDown } = useMarquee(marqueeRef, { speed, direction, scrollAware });
 
   return (
     <div ref={marqueeRef} className={`marquee relative overflow-hidden ${className}`}>

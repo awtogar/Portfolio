@@ -1,36 +1,82 @@
-import React from 'react';
-import BaseSection from '../../components/common/BaseSection';
+import React, { useRef } from 'react';
+import { motion } from 'motion/react';
+import { RiArrowRightUpLine, RiAttachment2 } from '@remixicon/react';
 import { useContactForm, services, budgetOptions } from '@/hooks/useContactForm';
-import { CreativeButton } from '@/components';
 import { useCursorInteraction } from '@/hooks/useCursorInteraction';
-import { LetterScroll } from '../../components/ui/LetterScroll';
 
-const BudgetButton = ({ option, isSelected, onClick }) => {
+const ease = [0.7, 0, 0.3, 1];
+
+const fadeUp = (delay = 0) => ({
+  initial: { opacity: 0, y: 28 },
+  animate: { opacity: 1, y: 0 },
+  transition: { duration: 0.75, delay, ease },
+});
+
+const pillCls = active =>
+  `px-4 py-2 rounded-full text-base-xs tracking-label transition-all duration-300 whitespace-nowrap border cursor-pointer ${
+    active ? 'bg-primary text-secondary border-primary' : 'bg-transparent text-primary/55 border-border hover:border-primary/40 hover:text-primary'
+  }`;
+
+const ServicePill = ({ label, active, onClick }) => {
   const { targetRef } = useCursorInteraction({
-    content: option.label,
-    size: 'large',
-    textColor: 'text-secondary',
-    fill: 'accent',
+    content: 'check',
+    size: 'small',
+    fill: 'primary',
     magnetic: false,
   });
 
   return (
-    <button
-      ref={targetRef}
-      type="button"
-      onClick={onClick}
-      className={`relative z-50 px-4 sm:px-5 py-2.5 rounded-full text-sm transition-all ease-out whitespace-nowrap hover:bg-accent hover:text-secondary ${
-        isSelected ? 'bg-primary text-secondary' : 'bg-transparent text-primary border border-primary/20 hover:border-primary'
-      }`}
-    >
-      {option.label}
+    <button ref={targetRef} type="button" onClick={onClick} className={pillCls(active)}>
+      {label}
     </button>
   );
 };
 
+const BudgetPill = ({ label, active, onClick }) => {
+  const { targetRef } = useCursorInteraction({
+    content: label,
+    size: 'large',
+    textColor: 'text-secondary',
+    fill: 'primary',
+    magnetic: false,
+  });
+
+  return (
+    <button ref={targetRef} type="button" onClick={onClick} className={pillCls(active)}>
+      {label}
+    </button>
+  );
+};
+
+const Field = ({ children }) => <div className="group border-b border-border focus-within:border-primary/50 transition-colors duration-300">{children}</div>;
+
+const inputCls = 'w-full py-s400 bg-transparent text-primary text-base placeholder:text-primary/25 focus:outline-none';
+
+const VerticalMarquee = () => {
+  const words = ['BRANDING', 'WEB DEV', 'UI/UX', 'MOTION', 'WEBFLOW', 'PRODUCT'];
+
+  return (
+    <div className="hidden lg:flex flex-col overflow-hidden h-full pointer-events-none select-none">
+      <motion.div animate={{ y: ['0%', '-50%'] }} transition={{ duration: 18, repeat: Infinity, ease: 'linear' }} className="flex flex-col gap-s600">
+        {[...words, ...words].map((w, i) => (
+          <span
+            key={i}
+            className="text-h100 font-black uppercase leading-none tracking-tight text-primary/[0.04] dark:text-primary/[0.06] whitespace-nowrap"
+            style={{ writingMode: 'vertical-rl', transform: 'rotate(180deg)' }}
+          >
+            {w}
+          </span>
+        ))}
+      </motion.div>
+    </div>
+  );
+};
+
+/* ── Main ── */
 const ContactPage = () => {
   const { selectedServices, selectedBudget, setSelectedBudget, formData, attachment, toggleService, handleInputChange, handleFileChange, handleSubmit } = useContactForm();
-  const { targetRef: ctaRef } = useCursorInteraction({
+
+  const { targetRef: submitRef } = useCursorInteraction({
     content: 'arrow',
     size: 'large',
     textColor: 'text-secondary',
@@ -39,123 +85,118 @@ const ContactPage = () => {
   });
 
   return (
-    <BaseSection sectionClassName="min-h-screen bg-secondary py-s900" containerID="contact-form">
-      <div className="w-full max-w-lg mx-auto">
-        <div className="rounded-3xl p-8 md:p-8 lg:p-12">
-          <div className="flex flex-col pb-s600">
-            <h2 className="text-3xl text-center italic">
-              <span className="text-3xl">
-                Let's <span className="font-medium">do</span>
-              </span>
+    <BaseSection sectionClassName="section-padding-hero lg:h-svh lg:overflow-hidden" containerID="contact-form">
+      <div className="grid grid-cols-1 lg:grid-cols-[1fr_520px] xl:grid-cols-[1fr_600px] gap-s700 lg:gap-s900 items-start lg:h-full">
+        <div className="flex flex-col gap-s700 lg:justify-between lg:h-full lg:py-s200">
+          <motion.div {...fadeUp(0.05)} className="flex flex-col gap-s300">
+            <span className="hsAccent">(Let's talk)</span>
+            <h1 className="text-h200 md:text-h100 leading-heading tracking-heading">
+              Let's <em className="font-serif italic font-normal">create</em>
               <br />
-              <span className="font-medium">Something</span> Great.
-            </h2>
-          </div>
+              something
+              <br />
+              <span className="text-primary/25">great.</span>
+            </h1>
+          </motion.div>
 
-          <form onSubmit={handleSubmit} className="space-y-8">
-            <div>
-              <p className="text-primary mb-4">I'm interested in...</p>
-              <div className="flex flex-wrap gap-2 sm:gap-3">
-                {services.map(service => (
-                  <button
-                    key={service.id}
-                    type="button"
-                    onClick={() => toggleService(service.id)}
-                    className={`px-4 sm:px-5 py-2.5 rounded-full text-sm transition-all duration-200 whitespace-nowrap ${
-                      selectedServices.includes(service.id) ? 'bg-primary text-secondary' : 'bg-transparent text-primary border border-primary/20 hover:border-primary/40'
-                    }`}
-                  >
-                    {service.title}
-                  </button>
+          <motion.div {...fadeUp(0.12)} className="flex flex-col gap-s400 max-w-[38ch]">
+            <p className="text-base text-primary/55 leading-body">
+              Got a project in mind? I'd love to hear about it. Send me a message and let's build something remarkable together.
+            </p>
+
+            <div className="flex flex-col gap-s200">
+              {[
+                { label: 'Email', value: 'hello@garr.dev' },
+                { label: 'Based in', value: 'Depok, Indonesia' },
+                { label: 'Availability', value: 'Open to projects' },
+              ].map(({ label, value }) => (
+                <div key={label} className="flex items-baseline gap-s300 text-base-sm">
+                  <span className="text-base-xs tracking-label uppercase text-primary/30 w-[80px] shrink-0">{label}</span>
+                  <span className="text-primary/65">{value}</span>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+
+          <motion.div {...fadeUp(0.18)} className="hidden lg:flex items-center gap-s400 mt-auto">
+            <span className="font-mono text-base-xs tracking-label text-primary/20">01 / 01</span>
+            <div className="flex-1 h-px bg-border" />
+          </motion.div>
+        </div>
+
+        <motion.div {...fadeUp(0.1)} className="lg:h-full lg:overflow-y-auto lg:py-s200 scrollbar-none">
+          <form onSubmit={handleSubmit} className="flex flex-col gap-s700">
+            <div className="flex flex-col gap-s300">
+              <p className="text-base-xs tracking-label uppercase text-primary/30">I'm interested in</p>
+              <div className="flex flex-wrap gap-2">
+                {services.map(s => (
+                  <ServicePill key={s.id} label={s.title} active={selectedServices.includes(s.id)} onClick={() => toggleService(s.id)} />
                 ))}
               </div>
             </div>
 
-            <div className="space-y-6">
-              <div>
-                <input
-                  type="text"
-                  name="name"
-                  placeholder="Your name"
-                  value={formData.name}
-                  onChange={handleInputChange}
-                  className="w-full px-0 py-4 bg-transparent border-0 border-b border-primary/20 text-primary placeholder:text-primary/40 focus:outline-none focus:border-primary/60 transition-colors"
-                />
-              </div>
-              <div>
-                <input
-                  type="email"
-                  name="email"
-                  placeholder="Email"
-                  value={formData.email}
-                  onChange={handleInputChange}
-                  className="w-full px-0 py-4 bg-transparent border-0 border-b border-primary/20 text-primary placeholder:text-primary/40 focus:outline-none focus:border-primary/60 transition-colors"
-                />
-              </div>
-              <div>
+            <div className="flex flex-col gap-s100">
+              <Field>
+                <input type="text" name="name" placeholder="Your name" value={formData.name} onChange={handleInputChange} className={inputCls} />
+              </Field>
+              <Field>
+                <input type="email" name="email" placeholder="Email address" value={formData.email} onChange={handleInputChange} className={inputCls} />
+              </Field>
+              <Field>
                 <textarea
                   name="project"
-                  placeholder="Tell us about your project"
+                  placeholder="Tell me about your project"
                   value={formData.project}
                   onChange={handleInputChange}
-                  rows={1}
-                  className="w-full px-0 py-4 bg-transparent border-0 border-b border-primary/20 text-primary placeholder:text-primary/40 focus:outline-none focus:border-primary/60 transition-colors resize-none"
+                  rows={4}
+                  className={`${inputCls} resize-none`}
                 />
-              </div>
+              </Field>
             </div>
 
-            <div>
-              <p className="text-primary mb-4">Project budget (USD)</p>
+            {/* Budget */}
+            <div className="flex flex-col gap-s300">
+              <p className="text-base-xs tracking-label uppercase text-primary/30">Project budget (USD)</p>
               <div className="flex flex-wrap gap-2">
-                {budgetOptions.map(option => (
-                  <BudgetButton key={option.id} option={option} isSelected={selectedBudget === option.id} onClick={() => setSelectedBudget(option.id)} />
+                {budgetOptions.map(opt => (
+                  <BudgetPill key={opt.id} label={opt.label} active={selectedBudget === opt.id} onClick={() => setSelectedBudget(opt.id)} />
                 ))}
               </div>
             </div>
 
-            <div>
-              <label className="inline-flex items-center gap-2 cursor-pointer text-primary hover:text-primary/70 transition-colors">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48" />
-                </svg>
-                <span className="border-b border-primary">Add attachment</span>
+            <div className="flex flex-col gap-s200">
+              <label className="inline-flex items-center gap-s200 cursor-pointer group w-fit">
+                <RiAttachment2 size={16} className="text-primary/35 group-hover:text-primary transition-colors duration-200" />
+                <span className="text-base-sm text-primary/45 group-hover:text-primary border-b border-border group-hover:border-primary/40 transition-all duration-200">
+                  Add attachment
+                </span>
                 <input type="file" onChange={handleFileChange} className="hidden" />
               </label>
-              {attachment && <p className="mt-2 text-sm text-primary/60">{attachment.name}</p>}
+              {attachment && <p className="text-base-xs tracking-label text-primary/35">{attachment.name}</p>}
             </div>
 
-            <CreativeButton
-              variant="fill"
-              ref={ctaRef}
-              type="submit"
-              className="w-full py-4 bg-primary text-secondary rounded-full text-base hover:bg-primary/90 transition-colors"
-            >
-              Send Message
-            </CreativeButton>
+            <div className="flex flex-col gap-s400">
+              <CreativeButton ref={submitRef} type="submit" variant="fill" className="w-full">
+                <span className="flex items-center justify-center gap-s300">
+                  Send Message
+                  <RiArrowRightUpLine size={18} />
+                </span>
+              </CreativeButton>
 
-            <p className="text-center text-xs text-primary/40 leading-relaxed">
-              This site is protected by reCAPTCHA and the Google{' '}
-              <a href="#" className="text-accent hover:underline">
-                Privacy Policy
-              </a>{' '}
-              and{' '}
-              <a href="#" className="text-accent hover:underline">
-                Terms of Service
-              </a>{' '}
-              apply.
-            </p>
+              <p className="text-center text-base-xs text-primary/25 leading-relaxed">
+                Protected by reCAPTCHA —{' '}
+                <a href="#" className="text-accent hover:underline underline-offset-2">
+                  Privacy Policy
+                </a>{' '}
+                &{' '}
+                <a href="#" className="text-accent hover:underline underline-offset-2">
+                  Terms
+                </a>{' '}
+                apply.
+              </p>
+            </div>
           </form>
-        </div>
+        </motion.div>
       </div>
     </BaseSection>
   );
