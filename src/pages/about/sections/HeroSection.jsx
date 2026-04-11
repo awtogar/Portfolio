@@ -1,7 +1,6 @@
 import React from 'react';
 import { RiGeminiFill, RiHand } from '@remixicon/react';
-import BaseSection from '../../../components/common/BaseSection';
-import { CustomCard, CircularText, CreativeButton } from '../../../components';
+import { CustomCard, CircularText, CreativeButton, BaseSection } from '@/components';
 import { aboutHeroImg } from '@/assets';
 import { useCursorHoverContent } from '@/hooks/useCursorInteraction';
 

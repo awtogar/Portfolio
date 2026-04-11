@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState, useCallback } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { AnimatePresence, motion } from 'motion/react';
-import { Nav } from '../..';
+import { SideBar } from '../..';
 import { useLenis } from '../../../context/LenisContext';
 import { useTheme } from '../../../hooks/useTheme';
 import { useCursorInteraction } from '../../../hooks/useCursorInteraction';
@@ -98,7 +98,7 @@ const Header = () => {
           <HamburgerButton isActive={isActive} onToggle={toggleMenu} />
         </div>
       </motion.header>
-      <AnimatePresence mode="wait">{isActive && <Nav closeMenu={closeMenu} />}</AnimatePresence>
+      <AnimatePresence mode="wait">{isActive && <SideBar closeMenu={closeMenu} />}</AnimatePresence>
     </>
   );
 };

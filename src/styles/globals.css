@@ -99,6 +99,21 @@ html {
   text-size-adjust: 100%;
 }
 
+/* For Firefox */
+.element {
+  scrollbar-width: none;
+}
+
+/* For Chrome, Safari, and Opera */
+.-webkit-scrollbar {
+  display: none;
+}
+
+/* For Internet Explorer and Edge */
+.element {
+  -ms-overflow-style: none;
+}
+
 /* Base layer */
 @layer base {
   *,

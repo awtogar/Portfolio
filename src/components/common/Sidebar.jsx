@@ -7,9 +7,9 @@ import { pages, socials } from '@/data/navigation';
 import { useLenis } from '../../context/LenisContext';
 import { useTheme } from '../../hooks/useTheme';
 
-import { Curve, NavLink, HoverRotate } from '../../components';
+import { Curve, NavigationLink, HoverRotate } from '..';
 
-export default function Nav({ closeMenu }) {
+export default function SideBar({ closeMenu }) {
   const location = useLocation();
   const pathname = location.pathname;
   const [selectedIndicator, setSelectedIndicator] = useState(pathname);
@@ -24,13 +24,10 @@ export default function Nav({ closeMenu }) {
       }
     };
     document.addEventListener('keydown', handleKeyDown);
-
-    // Stop Lenis scrolling when menu is open
     stopScroll();
 
     return () => {
       document.removeEventListener('keydown', handleKeyDown);
-      // Resume Lenis scrolling when menu closes
       startScroll();
     };
   }, [closeMenu, stopScroll, startScroll]);
@@ -65,7 +62,13 @@ export default function Nav({ closeMenu }) {
             </div>
             <div className="flex flex-col space-y-2 h-full mb-s400 pt-s400">
               {Object.values(pages).map((data, index) => (
-                  <NavLink key={data.href} data={{ ...data, index }} isActive={selectedIndicator === data.href} setSelectedIndicator={setSelectedIndicator} closeMenu={closeMenu} />
+                <NavigationLink
+                  key={data.href}
+                  data={{ ...data, index }}
+                  isActive={selectedIndicator === data.href}
+                  setSelectedIndicator={setSelectedIndicator}
+                  closeMenu={closeMenu}
+                />
               ))}
             </div>
           </div>
@@ -74,16 +77,16 @@ export default function Nav({ closeMenu }) {
               <span className="text-secondary/55 text-sm">Social</span>
               <div className="flex flex-col">
                 {socials.map(data => (
-                    <HoverRotate key={data.label} href={data.href} target="_blank" rel="noopener noreferrer">
-                      <span>{data.title}</span>
-                    </HoverRotate>
+                  <HoverRotate key={data.label} href={data.href} target="_blank" rel="noopener noreferrer">
+                    <span>{data.title}</span>
+                  </HoverRotate>
                 ))}
               </div>
             </div>
             <div className="flex md:hidden flex-col items-center space-y-2">
               <span className="text-secondary/55 text-sm">Theme</span>
-              <button 
-                onClick={toggleTheme} 
+              <button
+                onClick={toggleTheme}
                 className="flex flex-col w-8 h-full bg-neutral-400/75 rounded-full p-[3px]"
                 style={{ justifyContent: isDark ? 'flex-end' : 'flex-start' }}
               >
@@ -92,8 +95,12 @@ export default function Nav({ closeMenu }) {
                   transition={{ type: 'spring', stiffness: 500, damping: 30 }}
                   className="relative w-6.5 h-6.5 bg-neutral-100 rounded-full mx-auto shadow-md shadow-primary/55 flex items-center justify-center shrink-0"
                 >
-                  <RiSunLine className={`absolute w-4 h-4 text-primary transition-all duration-500 ease-in-out ${isDark ? 'opacity-100 rotate-0 scale-100' : 'opacity-0 rotate-90 scale-50'}`} />
-                  <RiMoonLine className={`absolute w-4 h-4 text-primary transition-all duration-500 ease-in-out ${isDark ? 'opacity-0 -rotate-90 scale-50' : 'opacity-100 rotate-0 scale-100'}`} />
+                  <RiSunLine
+                    className={`absolute w-4 h-4 text-primary transition-all duration-500 ease-in-out ${isDark ? 'opacity-100 rotate-0 scale-100' : 'opacity-0 rotate-90 scale-50'}`}
+                  />
+                  <RiMoonLine
+                    className={`absolute w-4 h-4 text-primary transition-all duration-500 ease-in-out ${isDark ? 'opacity-0 -rotate-90 scale-50' : 'opacity-100 rotate-0 scale-100'}`}
+                  />
                 </motion.div>
               </button>
             </div>

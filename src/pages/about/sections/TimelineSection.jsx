@@ -3,7 +3,7 @@
 import { useRef, useEffect } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import BaseSection from '../../../components/common/BaseSection';
+import { BaseSection } from '@/components';
 import { experience } from '@/data/content';
 
 gsap.registerPlugin(ScrollTrigger);

@@ -106,7 +106,7 @@ const ContactPage = () => {
 
             <div>
               <p className="text-primary mb-4">Project budget (USD)</p>
-              <div className="flex flex-wrap gap-2 sm:gap-3">
+              <div className="flex flex-wrap gap-2">
                 {budgetOptions.map(option => (
                   <BudgetButton key={option.id} option={option} isSelected={selectedBudget === option.id} onClick={() => setSelectedBudget(option.id)} />
                 ))}
@@ -145,11 +145,11 @@ const ContactPage = () => {
 
             <p className="text-center text-xs text-primary/40 leading-relaxed">
               This site is protected by reCAPTCHA and the Google{' '}
-              <a href="#" className="text-blue-500 hover:underline">
+              <a href="#" className="text-accent hover:underline">
                 Privacy Policy
               </a>{' '}
               and{' '}
-              <a href="#" className="text-blue-500 hover:underline">
+              <a href="#" className="text-accent hover:underline">
                 Terms of Service
               </a>{' '}
               apply.

@@ -3,7 +3,7 @@ import { motion } from 'motion/react';
 import { navSlide, navDotScalling } from '@/data/anim/nav';
 import TransitionLink from '../ui/TransitionLink';
 
-export default function NavLink({ data, isActive, setSelectedIndicator, closeMenu }) {
+export default function NavigationLink({ data, isActive, setSelectedIndicator, closeMenu }) {
   const { title, href, index } = data;
   const [isHovering, setIsHovering] = useState(false);
 

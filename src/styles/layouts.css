@@ -27,16 +27,17 @@
     padding-top: var(--spacing-s900);
     padding-bottom: 1rem;
   }
-  .textTransition{
+  .textTransition {
     @apply text-h100! text-secondary text-center transition-transform uppercase;
   }
-  .textPreloader{
+  .textPreloader {
     @apply text-h400! text-secondary flex items-center uppercase;
   }
 
-.cards-cols{
-  grid-template-columns: repeat(2,50rem);
+  .cards-cols {
+    grid-template-columns: repeat(2, 50rem);
     gap: 10rem;
     justify-content: space-between;
   }
-  }
+}
+

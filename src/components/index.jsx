@@ -1,10 +1,11 @@
 // Common
 export { default as Header } from './common/Header/Header';
-export { default as Nav } from './common/Nav';
-export { default as NavLink } from './common/NavLink';
+export { default as SideBar } from './common/Sidebar';
+export { default as NavigationLink} from './common/NavigationLink';
 export { default as Footer } from './common/Footer';
 
 // UI
+export { default as BaseSection } from './common/BaseSection';
 export { default as CircularText } from './ui/CircularText';
 export { default as CreativeButton } from './ui/CreativeButton';
 export { default as Curve } from './ui/Curve';

@@ -1,9 +1,7 @@
 import React, { useRef } from 'react';
 import { useScroll, useTransform, motion } from 'motion/react';
-import BaseSection from '../../../components/common/BaseSection';
-import { CustomCard, Splatter, Marquee, MarqueeItem, SlideText } from '../../../components';
+import { CustomCard, Splatter, BaseSection } from '@/components';
 import { useDimensions } from '@/hooks';
-import { RiArrowRightUpLine } from '@remixicon/react';
 
 import { aboutImg1, aboutImg2 } from '@/assets';
 
