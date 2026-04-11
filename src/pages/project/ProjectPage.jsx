@@ -20,8 +20,6 @@ const MarqueeTags = ({ tags = [] }) => {
 
   return (
     <div className="flex justify-center items-center h-4 md:h-[18px] overflow-hidden relative w-full">
-      <div className="absolute left-0 top-0 h-full w-8 lg:w-10 group z-10" />
-      <div className="absolute right-0 top-0 h-full w-8 lg:w-10 group z-10" />
       <div className="flex overflow-hidden">
         <div ref={innerRef} className="flex whitespace-nowrap will-change-transform w-max">
           {Array(20).fill(tags).flat().map((tag, i) => (

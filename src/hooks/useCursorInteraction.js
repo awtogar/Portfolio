@@ -14,25 +14,27 @@ export const useCursorInteraction = ({
   const targetRef = useRef(null);
   const boundsRef = useRef(null);
   const { setCursor, resetCursor } = useCursor();
-  const [isMobile, setIsMobile] = useState(false);
+  const [hasMouse, setHasMouse] = useState(true);
 
   useEffect(() => {
-    const checkMobile = () => setIsMobile(window.innerWidth < 736);
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
+    // Best practice: Detect actual pointer capability, not screen width, for tablets and mobile devices
+    const mediaQuery = window.matchMedia('(hover: hover) and (pointer: fine)');
+    setHasMouse(mediaQuery.matches);
+    const handler = (e) => setHasMouse(e.matches);
+    mediaQuery.addEventListener('change', handler);
+    return () => mediaQuery.removeEventListener('change', handler);
   }, []);
 
   useEffect(() => {
     const target = targetRef.current;
     const hitArea = boundsRef.current || target;
 
-    // For magnetic effects, we need a target. For pure hover, just hitArea is fine
-    if (!hitArea || (magnetic && !target)) return;
+    // Immediately abort if device lacks a mouse, eliminating 100% of calculation and listeners on mobile
+    if (!hasMouse || !hitArea || (magnetic && !target)) return;
 
     let xTo, yTo;
 
-    if (magnetic && !isMobile && target) {
+    if (magnetic && target) {
       xTo = gsap.quickTo(target, 'x', { duration: 1, ease: 'elastic.out(1, 0.3)' });
       yTo = gsap.quickTo(target, 'y', { duration: 1, ease: 'elastic.out(1, 0.3)' });
     }
@@ -51,7 +53,7 @@ export const useCursorInteraction = ({
     };
 
     const handleMouseLeave = () => {
-      if (magnetic && !isMobile && xTo && yTo) {
+      if (magnetic && xTo && yTo) {
         xTo(0);
         yTo(0);
       }
@@ -59,7 +61,7 @@ export const useCursorInteraction = ({
     };
 
     const handleMouseMove = e => {
-      if (magnetic && !isMobile && xTo && yTo && target) {
+      if (magnetic && xTo && yTo && target) {
         const { clientX, clientY } = e;
         const { height, width, left, top } = target.getBoundingClientRect();
         const x = clientX - (left + width / 2);
@@ -84,7 +86,7 @@ export const useCursorInteraction = ({
       }
       resetCursor();
     };
-  }, [content, textColor, size, magnetic, sticky, fill, cursorSize, isMobile, setCursor, resetCursor]);
+  }, [content, textColor, size, magnetic, sticky, fill, cursorSize, hasMouse, setCursor, resetCursor]);
 
   return { targetRef, boundsRef };
 };

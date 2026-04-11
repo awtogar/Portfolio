@@ -19,12 +19,10 @@ const MarqueeTags = ({ tags = [] }) => {
 
   return (
     <div className="flex justify-center items-center h-4 md:h-[18px] overflow-hidden relative w-full">
-      <div className="absolute left-0 top-0 h-full w-8 lg:w-10 bg-linear-to-r from-neutral-900/95 to-transparent z-10" />
-      <div className="absolute right-0 top-0 h-full w-8 lg:w-10 bg-linear-to-l from-neutral-900/95 to-transparent z-10" />
       <div className="flex overflow-hidden">
         <div ref={innerRef} className="flex whitespace-nowrap will-change-transform">
-          {[...tags, ...tags, ...tags, ...tags].map((tag, i) => (
-            <span key={i} className="text-[10px] md:text-xs tracking-widest text-neutral-300 uppercase pr-1.5 font-mono">
+          {Array(20).fill(tags).flat().map((tag, i) => (
+            <span key={i} className="text-[10px] md:text-xs tracking-widest text-neutral-300 dark:text-neutral-300 uppercase pr-1.5 font-mono shrink-0">
               {tag},{' '}
             </span>
           ))}
@@ -46,7 +44,7 @@ const WorkCard = ({ work }) => {
     <li className="w-full list-none">
       <TransitionLink
         to={`/projects/${work.slug}`}
-        className="flex flex-col gap-4 lg:gap-5 px-3 lg:px-4 pt-3 lg:pt-4 pb-5 lg:pb-6 rounded-xl lg:rounded-2xl bg-neutral-900 cursor-pointer group relative"
+        className="flex flex-col gap-4 lg:gap-5 px-3 lg:px-4 pt-3 lg:pt-4 pb-5 lg:pb-6 rounded-xl lg:rounded-2xl bg-neutral-900 dark:bg-neutral-50 cursor-pointer group relative"
       >
         <div ref={targetRef} className="relative rounded-lg lg:rounded-xl overflow-hidden w-full aspect-4/3 md:aspect-video lg:aspect-square group/video">
           <CustomCard
@@ -93,8 +91,8 @@ const SelectedWorksSection = () => {
   const { ctaRef } = useCursorInteraction({
     content: 'text',
     size: 'medium',
-    textColor: 'text-secondary',
-    fill: 'accent',
+    textColor: 'text-neutral-50 dark:text-neutral-900',
+    fill: 'accent dark:accent',
     video: true,
   });
 

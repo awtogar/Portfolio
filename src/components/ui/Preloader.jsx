@@ -8,7 +8,7 @@ const SVG_HEIGHT_OFFSET = 300;
 const numberVariants = {
   initial: { y: 0 },
   exit: {
-    y: '-30%',
+    y: '0%',
     transition: { duration: 0.6, ease: [0.76, 0, 0.24, 1] },
   },
 };
@@ -57,7 +57,6 @@ const PreloaderContent = () => {
     >
       <motion.div
         initial={{ scale: 1 }}
-        animate={{ scale: (progress / 100) * 2 * 3 }}
         transition={{ duration: 0.4, ease: [0.76, 0, 0.24, 1] }}
         className="absolute z-10 text-center"
       >

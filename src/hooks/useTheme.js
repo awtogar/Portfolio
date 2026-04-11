@@ -1,36 +1,39 @@
 import { useEffect, useState } from 'react';
 
-const getThemeTokens = (isDark) => {
-  const tokens = [];
-  if (isDark) tokens.push('dark');
-  return tokens.join(' ');
-};
-
 export const useTheme = () => {
   const [isDark, setIsDark] = useState(false);
 
   useEffect(() => {
     const savedTheme = localStorage.getItem('theme');
-
-    if (savedTheme === 'dark') {
-      setIsDark(true);
-      document.documentElement.dataset.theme = getThemeTokens(true);
-    } else {
-      setIsDark(false);
-      document.documentElement.dataset.theme = getThemeTokens(false);
-      if (!savedTheme) localStorage.setItem('theme', 'light');
+    
+    // Automatically apply and set initial state without triggering delays
+    const initialTheme = savedTheme === 'dark';
+    
+    setIsDark(initialTheme);
+    document.documentElement.dataset.theme = initialTheme ? 'dark' : 'light';
+    
+    if (!savedTheme) {
+      localStorage.setItem('theme', 'light');
     }
   }, []);
 
   const toggleTheme = () => {
     const newIsDark = !isDark;
-    document.documentElement.dataset.theme = `theme-changing ${newIsDark ? 'dark' : ''}`.trim();
-    localStorage.setItem('theme', newIsDark ? 'dark' : 'light');
-    setIsDark(newIsDark);
+    
+    // Abstract the DOM + Data mutation
+    const applyTheme = () => {
+      document.documentElement.dataset.theme = newIsDark ? 'dark' : 'light';
+      localStorage.setItem('theme', newIsDark ? 'dark' : 'light');
+      setIsDark(newIsDark);
+    };
 
-    setTimeout(() => {
-      document.documentElement.dataset.theme = getThemeTokens(newIsDark);
-    }, 700);
+    // Use smooth, hardware-accelerated View Transition API where supported (super buttery!) 
+    // Fallbacks perfectly to an instant change for older browsers, stopping layout stutter
+    if (document.startViewTransition) {
+      document.startViewTransition(applyTheme);
+    } else {
+      applyTheme();
+    }
   };
 
   return { toggleTheme, isDark };

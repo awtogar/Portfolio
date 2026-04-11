@@ -5,6 +5,7 @@ import { Nav } from '../..';
 import { useLenis } from '../../../context/LenisContext';
 import { useTheme } from '../../../hooks/useTheme';
 import { useCursorInteraction } from '../../../hooks/useCursorInteraction';
+import { useLoading } from '../../../context/LoadingProvider';
 import ThemeToggleButton from './ThemeToggleButton';
 import HamburgerButton from './HamburgerButton';
 import { RiArrowLeftLine } from '@remixicon/react';
@@ -25,11 +26,14 @@ const Header = () => {
 
   const { lenis } = useLenis();
   const { toggleTheme } = useTheme();
+  const { phase } = useLoading();
 
   useEffect(() => {
-    // Silently close the sidebar when the route changes (hidden behind the transition mask)
-    setIsActive(false);
-  }, [location.pathname]);
+    // Unmount sidebar only when the screen is fully obscured to save rendering power
+    if (phase === 'wait-for-ready') {
+      setIsActive(false);
+    }
+  }, [phase]);
 
   useEffect(() => {
     if (!lenis) return;

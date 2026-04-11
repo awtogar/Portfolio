@@ -120,6 +120,7 @@ html {
     line-height: var(--leading-body);
     color: var(--primary);
     background-color: var(--neutral-100);
+    transition: background-color var(--duration-smooth) var(--ease-primary), color var(--duration-smooth) var(--ease-primary);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
@@ -201,15 +202,15 @@ html {
   }
 }
 
-/* Theme Transitions */
-[data-theme~="theme-changing"],
-[data-theme~="theme-changing"] *,
-[data-theme~="theme-changing"] *::before,
-[data-theme~="theme-changing"] *::after {
-  transition: background-color var(--duration-smooth) var(--ease-primary),
-              color var(--duration-smooth) var(--ease-primary),
-              border-color var(--duration-smooth) var(--ease-primary),
-              fill var(--duration-smooth) var(--ease-primary),
-              stroke var(--duration-smooth) var(--ease-primary) !important;
-  transition-behavior: allow-discrete;
+@keyframes scroll-x {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@utility animate-scroll-x {
+  animation: scroll-x 20s linear infinite;
 }

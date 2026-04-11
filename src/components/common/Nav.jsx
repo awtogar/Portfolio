@@ -82,20 +82,19 @@ export default function Nav({ closeMenu }) {
             </div>
             <div className="flex md:hidden flex-col items-center space-y-2">
               <span className="text-secondary/55 text-sm">Theme</span>
-              <button onClick={toggleTheme} className={`flex flex-col w-8 h-full bg-neutral-400/75 rounded-full`}>
-                <div
-                  className={`
-              w-6.5 h-6.5 bg-neutral-100 rounded-full mx-auto transition-transform duration-150 shadow-md shadow-primary/55
-              flex items-center justify-center
-              ${isDark ? 'translate-y-16 transition-colors duration-500' : 'translate-y-1 transition-colors duration-500'}
-            `}
+              <button 
+                onClick={toggleTheme} 
+                className="flex flex-col w-8 h-full bg-neutral-400/75 rounded-full p-[3px]"
+                style={{ justifyContent: isDark ? 'flex-end' : 'flex-start' }}
+              >
+                <motion.div
+                  layout
+                  transition={{ type: 'spring', stiffness: 500, damping: 30 }}
+                  className="relative w-6.5 h-6.5 bg-neutral-100 rounded-full mx-auto shadow-md shadow-primary/55 flex items-center justify-center shrink-0"
                 >
-                  {isDark ? (
-                    <RiSunLine className="w-4 h-4 text-primary transition-transform duration-500 ease-in-out rotate-180" />
-                  ) : (
-                    <RiMoonLine className="w-4 h-4 text-primary transition-transform duration-500 ease-in-out rotate-0" />
-                  )}
-                </div>
+                  <RiSunLine className={`absolute w-4 h-4 text-primary transition-all duration-500 ease-in-out ${isDark ? 'opacity-100 rotate-0 scale-100' : 'opacity-0 rotate-90 scale-50'}`} />
+                  <RiMoonLine className={`absolute w-4 h-4 text-primary transition-all duration-500 ease-in-out ${isDark ? 'opacity-0 -rotate-90 scale-50' : 'opacity-100 rotate-0 scale-100'}`} />
+                </motion.div>
               </button>
             </div>
           </div>
