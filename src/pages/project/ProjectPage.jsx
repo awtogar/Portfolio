@@ -44,7 +44,7 @@ const ProjectCard = ({ project, index }) => {
     fill: 'secondary',
   });
   const Logo = project.logo;
-  const isComponent = typeof Logo === 'function';
+  const isComponent = typeof Logo === 'function' || typeof Logo === 'object';
 
   return (
     <motion.li initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: Math.min(index * 0.1, 0.5), ease }} className="w-full list-none">
@@ -59,7 +59,7 @@ const ProjectCard = ({ project, index }) => {
             containerClassName="absolute inset-0 w-full h-[120%] -top-[10%] lg:-top-[15%]"
             imageClassName="object-top scale-105 group-hover:scale-105 transition-transform duration-500 ease-in-out"
             scrollRange={['0%', '12%']}
-            blur={false} // pass false to turn off blur overlay
+            blur={false}
             offset={['start end', 'end start']}
           />
         </div>
@@ -67,22 +67,22 @@ const ProjectCard = ({ project, index }) => {
         <div className="flex flex-col gap-4 lg:gap-5 px-3 lg:px-4">
           <div className="flex justify-between items-center w-full relative">
             <div className="flex items-center gap-2 lg:gap-3">
-              <div className="w-6 h-6 lg:w-8 lg:h-8 flex items-center justify-center">
+              <div className="w-6 h-6 lg:w-8 lg:h-8 flex items-center justify-center text-neutral-100 dark:text-neutral-900">
                 {Logo ? (
                   isComponent ? (
-                    <Logo className="w-full h-full text-secondary" />
+                    <Logo className="w-full h-full" />
                   ) : (
-                    <img src={Logo} className="w-full h-full object-cover" />
+                    <img src={Logo} alt={`${project.client} logo`} className="w-full h-full object-contain" />
                   )
                 ) : (
-                  <span className="text-xs">{project.client.charAt(0)}</span>
+                  <span className="text-xs font-semibold">{project.client?.charAt(0) || 'P'}</span>
                 )}
               </div>
-              <p className="text-[clamp(14px,1.2vw,18px)] uppercase font-semibold text-neutral-100 tracking-wide">{project.client}</p>
+              <p className="text-[clamp(14px,1.2vw,18px)] uppercase font-semibold text-neutral-100 dark:text-neutral-900 tracking-wide">{project.client}</p>
             </div>
             <div className="flex gap-3 lg:gap-5">
-              <p className="text-[clamp(14px,1.2vw,18px)] uppercase font-semibold text-neutral-300 tracking-wide">{project.type}</p>
-              <p className="text-[clamp(14px,1.2vw,18px)] uppercase font-semibold text-neutral-300 tracking-wide">{project.year}</p>
+              <p className="text-[clamp(14px,1.2vw,18px)] uppercase font-semibold text-neutral-300 dark:text-neutral-600 tracking-wide">{project.type}</p>
+              <p className="text-[clamp(14px,1.2vw,18px)] uppercase font-semibold text-neutral-300 dark:text-neutral-600 tracking-wide">{project.year}</p>
             </div>
           </div>
 

@@ -1,6 +1,7 @@
+import { forwardRef } from 'react';
 import { useLoading } from '../../context/LoadingProvider';
 
-export default function TransitionLink({ to, children, onClick, className, ...props }) {
+const TransitionLink = forwardRef(({ to, children, onClick, className, ...props }, ref) => {
   const { navigateTo } = useLoading();
   const handleClick = e => {
     e.preventDefault();
@@ -9,8 +10,10 @@ export default function TransitionLink({ to, children, onClick, className, ...pr
   };
 
   return (
-    <a href={to} onClick={handleClick} className={className} {...props}>
+    <a href={to} onClick={handleClick} className={className} ref={ref} {...props}>
       {children}
     </a>
   );
-}
+});
+
+export default TransitionLink;

@@ -6,6 +6,7 @@ import BaseSection from '../../../components/common/BaseSection';
 import { useCursorInteraction } from '../../../hooks';
 import { RiArrowRightUpLine } from '@remixicon/react';
 
+
 const MarqueeTags = ({ tags = [] }) => {
   const x = useRef(0);
   const innerRef = useRef(null);
@@ -21,11 +22,14 @@ const MarqueeTags = ({ tags = [] }) => {
     <div className="flex justify-center items-center h-4 md:h-[18px] overflow-hidden relative w-full">
       <div className="flex overflow-hidden">
         <div ref={innerRef} className="flex whitespace-nowrap will-change-transform">
-          {Array(20).fill(tags).flat().map((tag, i) => (
-            <span key={i} className="text-[10px] md:text-xs tracking-widest text-neutral-300 dark:text-neutral-300 uppercase pr-1.5 font-mono shrink-0">
-              {tag},{' '}
-            </span>
-          ))}
+          {Array(20)
+            .fill(tags)
+            .flat()
+            .map((tag, i) => (
+              <span key={i} className="text-[10px] md:text-xs tracking-widest text-neutral-300 dark:text-neutral-300 uppercase pr-1.5 font-mono shrink-0">
+                {tag},{' '}
+              </span>
+            ))}
         </div>
       </div>
     </div>
@@ -39,6 +43,10 @@ const WorkCard = ({ work }) => {
     textColor: 'text-primary',
     fill: 'bg-neutral-200',
   });
+
+
+  const ProjectLogo = work.logo;
+  const isComponent = typeof ProjectLogo === 'function' || typeof ProjectLogo === 'object';
 
   return (
     <li className="w-full list-none">
@@ -62,15 +70,17 @@ const WorkCard = ({ work }) => {
         <div className="flex flex-col gap-4 md:px-2 lg:px-4 md:gap-2 lg:gap-5 ">
           <div className="flex justify-between items-center w-full relative">
             <div className="flex items-center gap-2 lg:gap-3">
-              {work.logo ? (
-                <div className="bg-neutral-50 w-8 h-8 lg:w-10 lg:h-10 rounded-full items-center justify-center flex">
-                  <img src={work.logo} alt={work.client || work.title} width={32} height={32} className=" object-cover fill-neutral-50 dark:fill-neutral-900" />
-                </div>
-              ) : (
-                <div className="w-6 h-6 lg:w-8 lg:h-8 rounded-full bg-white/10 flex items-center justify-center shrink-0">
-                  <span className="text-neutral-100/50 font-mono text-[10px]">{(work.client || work.title).charAt(0)}</span>
-                </div>
-              )}
+              <div className="w-6 h-6 lg:w-8 lg:h-8 flex items-center justify-center text-neutral-100">
+                {ProjectLogo ? (
+                  isComponent ? (
+                    <ProjectLogo className="w-full h-full" />
+                  ) : (
+                    <img src={ProjectLogo} alt={`${work.client} logo`} className="w-full h-full object-contain" />
+                  )
+                ) : (
+                  <span className="text-xs">{work.client?.charAt(0) || 'W'}</span>
+                )}
+              </div>
               <p className="text-[clamp(14px,1.2vw,18px)] uppercase font-semibold text-neutral-100 tracking-wide">{work.client || work.title}</p>
             </div>
             <div className="flex gap-3 lg:gap-5">

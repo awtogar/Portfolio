@@ -1,12 +1,14 @@
-import { useState } from 'react';
+import React, { useState, forwardRef } from 'react';
 import { motion } from 'motion/react';
-import React from 'react';
+import TransitionLink from './TransitionLink';
 
-export default function HoverRotate({ children, className = '', href, to, onClick, scrollToSection, textcolor1 = 'inherit', textcolor2 = 'inherit', ...props }) {
+const MotionTransitionLink = motion.create(TransitionLink);
+
+const HoverRotate = forwardRef(({ children, className = '', href, to, onClick, scrollToSection, textcolor1 = 'inherit', textcolor2 = 'inherit', ...props }, ref) => {
   const [isHovering, setIsHovering] = useState(false);
 
-  const Component = href ? motion.a : motion.button;
-  const componentProps = href ? { href, ...props } : { onClick, ...props };
+  const Component = to ? MotionTransitionLink : href ? motion.a : motion.button;
+  const componentProps = to ? { to, ...props } : href ? { href, ...props } : { onClick, ...props };
 
   const childrenArray = React.Children.toArray(children);
   const firstText = childrenArray[0] || null;
@@ -24,11 +26,12 @@ export default function HoverRotate({ children, className = '', href, to, onClic
 
   return (
     <Component
+      ref={ref}
       className={`ring-0 w-full all-unset flex cursor-pointer relative overflow-clip ${className} antialiased translate-z-0 will-change-transform`}
       initial={false}
       onMouseEnter={() => setIsHovering(true)}
       onMouseLeave={() => setIsHovering(false)}
-      onClick={handleClick}
+      onClick={to ? onClick : handleClick}
       {...componentProps}
     >
       <motion.span className={`m-0 z-20 will-change-transform ${textcolor1}`} initial={false} transition={{ type: 'linear', duration: 0.3 }} animate={{ y: isHovering ? -36 : 0 }}>
@@ -55,4 +58,6 @@ export default function HoverRotate({ children, className = '', href, to, onClic
       />
     </Component>
   );
-}
+});
+
+export default HoverRotate;
