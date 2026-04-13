@@ -24,7 +24,11 @@ export default function ParallaxGrid() {
 
   return (
       <BaseSection sectionClassName="" containerClassName="max-w-full">
-    <div className="h-[100vh]"></div>
+    <div className="h-[100vh]">
+
+{/* will comming soon component */}
+
+    </div>
     <div ref={gallery} className="h-[175vh] overflow-hidden bg-[#2D2D2D]">
       <div className="relative -top-[12.5vh] h-[200vh] flex gap-[2vw] p-[2vw]">
         <Column images={[images[0], images[1], images[2]]} y={y} topClass="-top-[45%]" />
@@ -33,7 +37,11 @@ export default function ParallaxGrid() {
         <Column images={[images[9], images[10], images[11]]} y={y4} topClass="-top-[60%]" />
       </div>
     </div>
-    <div className="h-[100vh]"></div>
+    <div className="h-[100vh]">
+
+      {/* old footer content here */}
+
+    </div>
   </BaseSection>
   );
 }
