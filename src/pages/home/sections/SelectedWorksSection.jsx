@@ -6,7 +6,6 @@ import BaseSection from '../../../components/common/BaseSection';
 import { useCursorInteraction } from '../../../hooks';
 import { RiArrowRightUpLine } from '@remixicon/react';
 
-
 const MarqueeTags = ({ tags = [] }) => {
   const x = useRef(0);
   const innerRef = useRef(null);
@@ -43,7 +42,6 @@ const WorkCard = ({ work }) => {
     textColor: 'text-primary',
     fill: 'bg-neutral-200',
   });
-
 
   const ProjectLogo = work.logo;
   const isComponent = typeof ProjectLogo === 'function' || typeof ProjectLogo === 'object';
@@ -126,7 +124,6 @@ const SelectedWorksSection = () => {
         </div>
 
         <div className="flex flex-col items-center gap-s300">
-          {/* <span className="text-base-sm text-primary/40 tracking-body">Interested in seeing more?</span> */}
           <HoverRotate to="/projects" rel="noopener noreferrer" className="justify-center" ref={ctaRef}>
             <span className="text-primary/65">View All</span>
             <span className="flex items-center gap-1 text-primary">

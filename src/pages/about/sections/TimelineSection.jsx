@@ -79,21 +79,22 @@ const ExperienceEntry = ({ exp, index, isLast }) => {
 const TimelineSection = () => {
   return (
     <BaseSection sectionClassName="section-padding-xy" containerID="experience">
-      <div className="flex flex-col gap-s500 mb-s700">
-        <div className="flex flex-col gap-s200">
-          <span className="hsAccent">(Career)</span>
-          <h2 className="text-h200 uppercase leading-heading tracking-heading">Experience</h2>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[1fr_1.5fr] xl:grid-cols-[1fr_2fr] gap-s700 lg:gap-s900 items-start">
+        <div className="flex flex-col gap-s500 lg:sticky lg:top-[25svh]">
+          <div className="flex flex-col gap-s200">
+            <span className="hsAccent">(Career)</span>
+            <h2 className="text-h200 uppercase leading-heading tracking-heading">Experience</h2>
+          </div>
+          <p className="text-base max-w-[48ch] text-primary/55 leading-body">
+            I can help you create stunning visuals, seamless user experiences and be impactful based on your needs.
+          </p>
         </div>
-        <p className="text-base max-w-[48ch] text-primary/55 leading-body">
-          I can help you create stunning visuals, seamless user experiences and be impactful based on your needs.
-        </p>
-      </div>
-
-      <div className="w-full">
-        {experience.map((exp, index) => (
-          <ExperienceEntry key={exp.id} exp={exp} index={index} isLast={index === experience.length - 1} />
-        ))}
-        <div className="w-full h-px bg-border" />
+        <div className="w-full">
+          {experience.map((exp, index) => (
+            <ExperienceEntry key={exp.id} exp={exp} index={index} isLast={index === experience.length - 1} />
+          ))}
+          <div className="w-full h-px bg-border" />
+        </div>
       </div>
     </BaseSection>
   );

@@ -48,26 +48,20 @@ const CustomCursor = () => {
   const smoothX = useSpring(mouseX, smoothOptions);
   const smoothY = useSpring(mouseY, smoothOptions);
 
-  // Cache visibility check — only re-evaluate on resize
   const [hasMouse, setHasMouse] = useState(true);
 
   useEffect(() => {
-    // Best practice mobile/touch-device check. Don't rely on arbitrary CSS classes like `hidden md:block`!
     const mediaQuery = window.matchMedia('(hover: hover) and (pointer: fine)');
     setHasMouse(mediaQuery.matches);
-    const handler = (e) => setHasMouse(e.matches);
+    const handler = e => setHasMouse(e.matches);
     mediaQuery.addEventListener('change', handler);
     return () => mediaQuery.removeEventListener('change', handler);
   }, []);
 
-  // Ensure perfect performance: simply do not run any logic if there is no mouse
   const isActivelyTracking = hasMouse && cursorTrack.current;
 
-  // No longer using isVisibleRef since `hasMouse` fully controls rendering
   useEffect(() => {
     if (!isActivelyTracking) return;
-    
-    // Kept here for parity, but typically `hasMouse` replaces this logic entirely.
     const checkVisibility = () => {
       if (!cursorTrack.current) return;
       isVisibleRef.current = window.getComputedStyle(cursorTrack.current).display !== 'none';
@@ -141,7 +135,6 @@ const CustomCursor = () => {
 };
 
 export default CustomCursor;
-
 
 /*
 

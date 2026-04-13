@@ -1,16 +1,16 @@
 // About Sections
-export { default as aboutHeroImg } from './images/about-0.jpeg';
-export { default as aboutImg1 } from './images/about-1.jpg';
-export { default as aboutImg2 } from './images/about-2.jpg';
-export { default as about1 } from './images/about-1.jpg';
-export { default as about2 } from './images/about-2.jpg';
+export { default as aboutHeroImg } from './images/1.jpg';
+export { default as aboutImg1 } from './images/2.jpg';
+export { default as aboutImg2 } from './images/3.jpg';
+export { default as about1 } from './images/4.jpg';
+export { default as about2 } from './images/5.jpg';
 
 // Generic Images
-export { default as img1 } from './images/img-1.jpg';
-export { default as img3 } from './images/img-3.jpg';
-export { default as img4 } from './images/img-4.jpg';
-export { default as img5 } from './images/img-5.jpg';
-export { default as img6 } from './images/img-6.png';
+export { default as img1 } from './images/6.jpg';
+export { default as img3 } from './images/7.jpg';
+export { default as img4 } from './images/8.jpg';
+export { default as img5 } from './images/9.jpg';
+export { default as img6 } from './images/11.jpg';
 
 // Project Logos
 export { default as nostraticLogo } from './images/projects/nostratic/nostratic.svg';

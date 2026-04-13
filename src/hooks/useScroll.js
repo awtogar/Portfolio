@@ -26,7 +26,6 @@ export const useScrollToTop = () => {
   const { scrollTo } = useLenis();
 
   useEffect(() => {
-    window.scrollTo(0, 0);
     scrollTo(0, { immediate: true });
   }, [pathname, scrollTo]);
 };
