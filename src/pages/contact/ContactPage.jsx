@@ -5,7 +5,6 @@ import { useContactForm, services, budgetOptions } from '@/hooks/useContactForm'
 import { useCursorInteraction } from '@/hooks/useCursorInteraction';
 import { BaseSection, CreativeButton } from '@/components';
 import { fadeIn, fadeUp } from '@/data/anim/basic';
-import ParallaxGrid from '@/pages/contact/sections/ParallaxGrid';
 
 const ToggleRow = ({ label, active, onClick, index }) => {
   const { targetRef } = useCursorInteraction({
@@ -175,7 +174,6 @@ const ContactPage = () => {
           </motion.div>
         </div>
       </BaseSection>
-      <ParallaxGrid />
     </>
   );
 };
