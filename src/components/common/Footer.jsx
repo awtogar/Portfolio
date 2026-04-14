@@ -41,7 +41,7 @@ export default function Footer() {
       <div className="h-[100vh]">{/* coming soon component */}</div>
 
       {/* parallax grid */}
-      <div ref={gallery} className="h-[175vh] overflow-hidden bg-neutral-100">
+      <div ref={gallery} className="h-[200vh] overflow-hidden bg-neutral-100 pointer-events-none select-none">
         <div className="relative -top-[12.5vh] h-[200vh] flex gap-[4vw] p-[4vw] md:gap-[2vw] md:p-[2vw]">
           <Column images={[images[0], images[1], images[2]]} y={y} topClass="-top-[45%]" />
           <Column images={[images[3], images[4], images[5]]} y={y2} topClass="-top-[80%]" />
@@ -89,7 +89,7 @@ const Column = ({ images, y, topClass }) => (
   <motion.div className={`relative h-full w-1/2 md:w-1/4 min-w-0 flex flex-col gap-[4vw] md:gap-[2vw] whitespace-nowrap ${topClass}`} style={{ y }}>
     {images.map((src, i) => (
       <div key={i} className="relative h-[33%] w-full rounded-[2vw] md:rounded-[1vw] overflow-hidden">
-        <img src={src} alt="image" className="object-cover w-full h-full" />
+        <img src={src} alt="image" draggable="false" className="object-cover w-full h-full" />{' '}
       </div>
     ))}
   </motion.div>
