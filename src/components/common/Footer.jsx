@@ -1,7 +1,6 @@
 'use client';
 import { useRef } from 'react';
 import { useLocation } from 'react-router-dom';
-import { useDimensions } from '@/hooks/useDimensions';
 import { motion, useScroll, useTransform } from 'motion/react';
 import { aboutHeroImg, aboutImg1, aboutImg2, img1, img3, img4, img5, img6 } from '@/assets';
 import BaseSection from '@/components/common/BaseSection';
@@ -13,7 +12,6 @@ const images = [aboutHeroImg, aboutImg1, aboutImg2, img1, img3, img4, img5, img6
 
 export default function Footer() {
   const gallery = useRef(null);
-  const dimension = useDimensions();
   const { pathname } = useLocation();
   const scrollToSection = useScrollToSection();
 
@@ -22,7 +20,10 @@ export default function Footer() {
     offset: ['start end', 'end start'],
   });
 
-  const { height } = dimension;
+  // Calculate static height to avoid re-renders on Android address bar toggle which triggers resize
+  const isBrowser = typeof window !== 'undefined';
+  const height = isBrowser ? window.innerHeight : 800;
+
   const y = useTransform(scrollYProgress, [0, 1], [0, height * 2]);
   const y2 = useTransform(scrollYProgress, [0, 1], [0, height * 3.3]);
   const y3 = useTransform(scrollYProgress, [0, 1], [0, height * 1.25]);
@@ -36,19 +37,21 @@ export default function Footer() {
   };
 
   return (
-    <BaseSection sectionClassName="" containerClassName="max-w-full">
+    <BaseSection as="footer" sectionClassName="" containerClassName="max-w-full">
       <div className="h-[100vh]">{/* coming soon component */}</div>
 
+      {/* parallax grid */}
       <div ref={gallery} className="h-[175vh] overflow-hidden bg-neutral-200">
         <div className="relative -top-[12.5vh] h-[200vh] flex gap-[2vw] p-[2vw]">
           <Column images={[images[0], images[1], images[2]]} y={y} topClass="-top-[45%]" />
           <Column images={[images[3], images[4], images[5]]} y={y2} topClass="-top-[80%]" />
-          <Column images={[images[6], images[7], images[8]]} y={y3} topClass="-top-[30%]" />
-          <Column images={[images[9], images[10], images[11]]} y={y4} topClass="-top-[60%]" />
+          <Column images={[images[6], images[7], images[8]]} y={y3} topClass="hidden md:block -top-[30%]" />
+          <Column images={[images[9], images[10], images[11]]} y={y4} topClass="hidden md:block -top-[60%]" />
         </div>
       </div>
 
-      <footer id="contact" className="h-[100vh] bg-neutral-200 section-padding-x flex items-end">
+      {/* footer section */}
+      <div id="contact" className="h-[100vh] bg-neutral-200 section-padding-x flex items-end">
         <div className="m-auto w-full max-w-full lg:max-w-[960px] xl:max-w-[1140px] 2xl:max-w-[1280px] pb-8">
           <div className="flex flex-col gap-s600 justify-between">
             <div className="flex justify-between flex-wrap gap-8">
@@ -77,7 +80,7 @@ export default function Footer() {
             </div>
           </div>
         </div>
-      </footer>
+      </div>
     </BaseSection>
   );
 }

@@ -26,7 +26,7 @@ export function LenisProvider({ children }) {
       orientation: 'vertical',
       gestureOrientation: 'vertical',
       smoothWheel: true,
-      smoothTouch: true,
+      smoothTouch: false,
     });
 
     setLenis(lenisInstance);
