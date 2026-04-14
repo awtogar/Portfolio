@@ -41,17 +41,17 @@ export default function Footer() {
       <div className="h-[100vh]">{/* coming soon component */}</div>
 
       {/* parallax grid */}
-      <div ref={gallery} className="h-[175vh] overflow-hidden bg-neutral-200">
-        <div className="relative -top-[12.5vh] h-[200vh] flex gap-[2vw] p-[2vw]">
+      <div ref={gallery} className="h-[175vh] overflow-hidden bg-neutral-100">
+        <div className="relative -top-[12.5vh] h-[200vh] flex gap-[4vw] p-[4vw] md:gap-[2vw] md:p-[2vw]">
           <Column images={[images[0], images[1], images[2]]} y={y} topClass="-top-[45%]" />
           <Column images={[images[3], images[4], images[5]]} y={y2} topClass="-top-[80%]" />
-          <Column images={[images[6], images[7], images[8]]} y={y3} topClass="hidden md:block -top-[30%]" />
-          <Column images={[images[9], images[10], images[11]]} y={y4} topClass="hidden md:block -top-[60%]" />
+          <Column images={[images[6], images[7], images[8]]} y={y3} topClass="hidden md:flex -top-[30%]" />
+          <Column images={[images[9], images[10], images[11]]} y={y4} topClass="hidden md:flex -top-[60%]" />
         </div>
       </div>
 
       {/* footer section */}
-      <div id="contact" className="h-[100vh] bg-neutral-200 section-padding-x flex items-end">
+      <div id="contact" className="h-[100vh] bg-neutral-100 section-padding-x flex items-end">
         <div className="m-auto w-full max-w-full lg:max-w-[960px] xl:max-w-[1140px] 2xl:max-w-[1280px] pb-8">
           <div className="flex flex-col gap-s600 justify-between">
             <div className="flex justify-between flex-wrap gap-8">
@@ -86,9 +86,9 @@ export default function Footer() {
 }
 
 const Column = ({ images, y, topClass }) => (
-  <motion.div className={`relative h-full w-1/4 min-w-[250px] flex flex-col gap-[2vw] whitespace-nowrap ${topClass}`} style={{ y }}>
+  <motion.div className={`relative h-full w-1/2 md:w-1/4 min-w-0 flex flex-col gap-[4vw] md:gap-[2vw] whitespace-nowrap ${topClass}`} style={{ y }}>
     {images.map((src, i) => (
-      <div key={i} className="relative h-[33%] w-full rounded-[1vw] overflow-hidden">
+      <div key={i} className="relative h-[33%] w-full rounded-[2vw] md:rounded-[1vw] overflow-hidden">
         <img src={src} alt="image" className="object-cover w-full h-full" />
       </div>
     ))}
