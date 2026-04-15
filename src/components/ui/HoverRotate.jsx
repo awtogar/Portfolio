@@ -27,22 +27,29 @@ const HoverRotate = forwardRef(({ children, className = '', href, to, onClick, s
   return (
     <Component
       ref={ref}
-      className={`ring-0 w-full all-unset flex cursor-pointer relative overflow-clip ${className} antialiased translate-z-0 will-change-transform`}
+      className={`ring-0 all-unset inline-flex justify-center cursor-pointer relative overflow-clip ${className} antialiased translate-z-0 will-change-transform`}
       initial={false}
       onMouseEnter={() => setIsHovering(true)}
       onMouseLeave={() => setIsHovering(false)}
       onClick={to ? onClick : handleClick}
       {...componentProps}
     >
-      <motion.span className={`m-0 z-20 will-change-transform ${textcolor1}`} initial={false} transition={{ type: 'linear', duration: 0.3 }} animate={{ y: isHovering ? -36 : 0 }}>
+      <span className="invisible m-0">{firstText}</span>
+
+      <motion.span 
+        className={`absolute inset-0 flex items-center justify-center m-0 z-20 will-change-transform ${textcolor1}`} 
+        initial={false} 
+        transition={{ type: 'linear', duration: 0.3 }} 
+        animate={{ y: isHovering ? "-100%" : "0%" }}
+      >
         {firstText}
       </motion.span>
 
       <motion.span
-        className={`m-0 h-full top-0 translate-y-1/2 absolute flex items-center z-20 will-change-transform ${textcolor2}`}
+        className={`absolute inset-0 flex items-center justify-center m-0 z-20 will-change-transform ${textcolor2}`}
         initial={false}
         transition={{ type: 'linear', duration: 0.4 }}
-        animate={{ y: isHovering ? -12 : 12 }}
+        animate={{ y: isHovering ? "0%" : "100%" }}
       >
         {secondText}
       </motion.span>

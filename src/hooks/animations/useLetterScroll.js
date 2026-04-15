@@ -6,16 +6,15 @@ if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger);
 }
 
-export const useLetterScroll = (containerRef, dependencies, { start = 'top 0%', end = 'bottom 120%', scrub = 2 } = {}) => {
+export const useLetterScroll = (containerRef, dependencies, { start = 'top bottom', end = 'bottom top', scrub = 1.5 } = {}) => {
   useEffect(() => {
     if (!containerRef.current) return;
     
     const ctx = gsap.context(() => {
-      const tracks = containerRef.current.querySelectorAll('.ls-track');
-      if (!tracks.length) return;
+      const letters = containerRef.current.querySelectorAll('.letter');
+      if (!letters.length) return;
 
-      // Ensure start is neat
-      gsap.set(tracks, { y: 0 });
+      gsap.set(letters, { yPercent: 100, force3D: true });
 
       const tl = gsap.timeline({
         scrollTrigger: {
@@ -23,30 +22,22 @@ export const useLetterScroll = (containerRef, dependencies, { start = 'top 0%', 
           start,
           end,
           scrub,
+          invalidateOnRefresh: true,
         },
       });
 
-      // phase 1: neat -> messy
-      tl.to(tracks, {
-        y: (i, el) => {
-          const count = parseInt(el.dataset.clones, 10);
-          return `-${count}em`;
-        },
-        stagger: {
-          each: 0.02,
-          from: 'random',
-        },
-        ease: 'power1.inOut',
-      });
+      const delays = [0.02, 0.15, 0.33, 0.08, 0.25, 0.45, 0.12, 0.38, 0.05, 0.28, 0.50, 0.18, 0.42, 0.10, 0.35];
 
-      // phase 2: messy -> neat
-      tl.to(tracks, {
-        y: 0,
-        stagger: {
-          each: 0.0,
-          from: 'random',
+      tl.to(letters, {
+        yPercent: 0,
+        stagger: function(index, target) {
+          const charIdx = parseInt(target.dataset.charIdx, 10) || 0;
+          const wordIdx = parseInt(target.dataset.wordIdx, 10) || 0;
+          
+          const waveDelay = delays[charIdx % delays.length];
+          return (wordIdx * 0.15) + waveDelay;
         },
-        ease: 'power1.inOut',
+        ease: 'none',
       });
     }, containerRef);
 

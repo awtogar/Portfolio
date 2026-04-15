@@ -1,8 +1,12 @@
+import { img9,img10,img11 } from '../assets';
+
+
 export const services = [
   {
     id: 1,
     number: '01',
     title: 'Graphic',
+    image: img9,
     description: 'Building strong brand visuals through creative concepts and graphics.',
     features: [
       { number: '01', name: 'Product & Merchandise' },
@@ -15,6 +19,7 @@ export const services = [
     id: 2,
     number: '02',
     title: 'UI/UX',
+    image: img10,
     description: 'Crafting intuitive user experiences and visually appealing interfaces.',
     features: [
       { number: '01', name: 'User Experience Research' },
@@ -27,6 +32,7 @@ export const services = [
     id: 3,
     number: '03',
     title: 'Development',
+    image: img11,
     description: 'Creating responsive websites with seamless and brand-focused experiences.',
     features: [
       { number: '01', name: 'Responsive Web Development' },

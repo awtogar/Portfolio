@@ -1,10 +1,9 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { motion, useAnimationFrame } from 'motion/react';
 import { projects } from '@/data/projects';
-import { HoverRotate, TransitionLink, CustomCard } from '../../../components';
+import { TransitionLink, CreativeButton, CustomCard } from '../../../components';
 import BaseSection from '../../../components/common/BaseSection';
 import { useCursorInteraction } from '../../../hooks';
-import { RiArrowRightUpLine } from '@remixicon/react';
 
 const MarqueeTags = ({ tags = [] }) => {
   const x = useRef(0);
@@ -96,12 +95,11 @@ const WorkCard = ({ work }) => {
 
 const SelectedWorksSection = () => {
   const works = projects.filter(project => project.selected);
-  const { ctaRef } = useCursorInteraction({
-    content: 'text',
+  const { targetRef: ctaRef } = useCursorInteraction({
+    content: 'view',
     size: 'medium',
-    textColor: 'text-neutral-50 dark:text-neutral-900',
-    fill: 'accent dark:accent',
-    video: true,
+    textColor: 'text-primary',
+    fill: 'bg-neutral-200',
   });
 
   return (
@@ -124,13 +122,9 @@ const SelectedWorksSection = () => {
         </div>
 
         <div className="flex flex-col items-center gap-s300">
-          <HoverRotate to="/projects" rel="noopener noreferrer" className="justify-center" ref={ctaRef}>
-            <span className="text-primary/65">View All</span>
-            <span className="flex items-center gap-1 text-primary">
-              <span>Let's go</span>
-              <RiArrowRightUpLine size={20} style={{ marginTop: '2px' }} />
-            </span>
-          </HoverRotate>
+          <CreativeButton to="/projects" variant="transparent" rel="noopener noreferrer" ref={ctaRef}>
+            <span>View All</span>
+          </CreativeButton>
         </div>
       </div>
     </BaseSection>

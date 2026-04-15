@@ -5,7 +5,6 @@ import { useLoading } from '../../context/LoadingProvider';
 const MotionA = motion.create('a');
 const MotionButton = motion.create('button');
 
-// Predefined button variants
 const BUTTON_VARIANTS = {
   fill: {
     background1: 'bg-primary',
@@ -66,7 +65,7 @@ const CreativeButton = forwardRef(function CreativeButton({
   to,
   onClick,
   variant,
-  size = 'md',
+  size,
   width,
   height,
   background1,
@@ -95,12 +94,10 @@ const CreativeButton = forwardRef(function CreativeButton({
     outline2: outline2 || variantStyles.outline2 || 'outline outliner-1 outline-secondary',
   };
 
-  // Determine which component to use
   let Component;
   let componentProps = {};
 
   if (to) {
-    // Internal navigation — use an anchor with transition-aware click handler
     Component = MotionA;
     componentProps = {
       href: to,
@@ -126,7 +123,7 @@ const CreativeButton = forwardRef(function CreativeButton({
 
   return (
     <Component
-      className={`font-light text-center ring-0 all-unset flex content-center justify-center cursor-pointer ${styles.background1} ${styles.outline1} rounded-full relative overflow-clip antialiased translate-z-0 will-change-transform ${sizeClasses} ${className}`}
+      className={`font-light text-center ring-0 all-unset inline-flex content-center justify-center cursor-pointer ${styles.background1} ${styles.outline1} rounded-full relative overflow-clip antialiased translate-z-0 will-change-transform ${sizeClasses} ${className}`}
       style={Object.keys(customSizeStyle).length > 0 ? customSizeStyle : undefined}
       initial={false}
       onMouseEnter={() => setIsHovering(true)}
@@ -134,20 +131,23 @@ const CreativeButton = forwardRef(function CreativeButton({
       ref={ref}
       {...componentProps}
     >
+      {/* Invisible static child to correctly size the button based on fluid font sizes */}
+      <span className="invisible m-0">{children}</span>
+
       <motion.span
-        className={`m-0 z-20 will-change-transform ${styles.textcolor1}`}
+        className={`absolute inset-0 flex items-center justify-center m-0 z-20 will-change-transform ${styles.textcolor1}`}
         initial={false}
         transition={{ type: 'linear', duration: 0.3 }}
-        animate={{ y: isHovering ? -36 : 0 }}
-    >
+        animate={{ y: isHovering ? "-100%" : "0%" }}
+      >
         {children}
       </motion.span>
 
       <motion.span
-        className={`m-0 h-full top-0 translate-y-1/2 absolute flex items-center z-20 will-change-transform ${styles.textcolor2}`}
+        className={`absolute inset-0 flex items-center justify-center m-0 z-20 will-change-transform ${styles.textcolor2}`}
         initial={false}
         transition={{ type: 'linear', duration: 0.3 }}
-        animate={{ y: isHovering ? -26 : 8 }}
+        animate={{ y: isHovering ? "0%" : "100%" }}
       >
         {children}
       </motion.span>

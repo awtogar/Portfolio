@@ -17,19 +17,26 @@ const HeroSection = () => {
           </p>
         </div>
 
-        <div className="flex items-center gap-s400">
-          <div className="flex-1 lg:flex-none lg:min-w-[200px]">
-            <CreativeButton to="/contact" variant="fillReverse" ref={contactRef}>
+        <div className="flex flex-row items-center gap-4 md:gap-s400">
+          <div className="w-full md:w-auto">
+            <CreativeButton 
+              to="/contact" 
+              variant="fillReverse" 
+              ref={contactRef}
+              size="lg"
+              className="w-full md:w-auto min-w-[200px]"
+            >
               Get in touch
             </CreativeButton>
           </div>
-          <div className="flex-shrink-0">
+          <div className="w-full md:w-auto flex justify-center">
             <CreativeButton
               href="https://drive.google.com/drive/folders/1FQxb0go777UcmJ2PuAbwEmcLEZdM7QEQ?usp=sharing"
               variant="transparent"
               target="_blank"
               rel="noopener noreferrer"
               ref={resumeRef}
+              className="w-full md:w-auto"
             >
               <span>My Resume</span>
             </CreativeButton>
