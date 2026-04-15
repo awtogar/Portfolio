@@ -6,20 +6,14 @@
     padding-bottom: var(--spacing-s900);
     padding-top: 164px;
   }
-  /* heading spacing */
   .section-padding-x {
-    padding-left: var(--spacing-container);
-    padding-right: var(--spacing-container);
+    @apply px-4;
   }
   .section-padding-y {
-    padding-top: var(--spacing-s900);
-    padding-bottom: var(--spacing-s900);
+    @apply py-4;
   }
   .section-padding-xy {
-    padding-left: var(--spacing-container);
-    padding-right: var(--spacing-container);
-    padding-top: var(--spacing-s900);
-    padding-bottom: var(--spacing-s900);
+    @apply px-4 py-s900;
   }
   .section-padding-end {
     padding-left: var(--spacing-container);
@@ -40,4 +34,3 @@
     justify-content: space-between;
   }
 }
-

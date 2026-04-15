@@ -10,7 +10,11 @@ export { default as img1 } from './images/6.jpg';
 export { default as img3 } from './images/7.jpg';
 export { default as img4 } from './images/8.jpg';
 export { default as img5 } from './images/9.jpg';
-export { default as img6 } from './images/11.jpg';
+export { default as img6 } from './images/13.jpg';
+export { default as img9 } from './images/6.jpg';
+export { default as img10 } from './images/3.jpg';
+export { default as img11 } from './images/2.jpg';
+
 
 // Project Logos
 export { default as nostraticLogo } from './images/projects/nostratic/nostratic.svg';

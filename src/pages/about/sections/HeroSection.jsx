@@ -2,10 +2,10 @@ import React from 'react';
 import { RiGeminiFill, RiHand } from '@remixicon/react';
 import { CustomCard, CircularText, CreativeButton, BaseSection } from '@/components';
 import { aboutHeroImg } from '@/assets';
-import { useCursorHoverContent } from '@/hooks/useCursorInteraction';
+import { useCursorInteraction } from '@/hooks/useCursorInteraction';
 
 const HeroSection = () => {
-  const resumeRef = useCursorHoverContent('arrow');
+  const resumeRef = useCursorInteraction('arrow');
 
   return (
     <BaseSection sectionClassName="section-padding-hero">
@@ -43,9 +43,11 @@ const HeroSection = () => {
           </div>
 
           <div className="w-full max-w-[200px]">
-            <CreativeButton ref={resumeRef} to="/contact" variant="outline">
-              See my resume
-            </CreativeButton>
+            <div className="flex-1 lg:flex-none lg:min-w-[200px]">
+              <CreativeButton ref={resumeRef} to="/contact" variant="outline">
+                See my resume
+              </CreativeButton>
+            </div>
           </div>
         </div>
       </div>
