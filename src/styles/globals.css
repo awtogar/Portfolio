@@ -34,6 +34,8 @@
 
   /* Typography */
   --text-display: var(--display);
+  --text-display-sm: var(--display-sm);
+  --text-display-xs: var(--display-xs);
 
   --text-h100: var(--h100);
   --text-h200: var(--h200);
@@ -42,8 +44,8 @@
   --text-h500: var(--h500);
   --text-h600: var(--h600);
 
-  --text-base-lg: var(--base-lg);
   --text-base: var(--base);
+  --text-base-lg: var(--base-lg);
   --text-base-sm: var(--base-sm);
   --text-base-xs: var(--base-extra-sm);
 
@@ -135,7 +137,9 @@ html {
     line-height: var(--leading-body);
     color: var(--primary);
     background-color: var(--neutral-100);
-    transition: background-color var(--duration-smooth) var(--ease-primary), color var(--duration-smooth) var(--ease-primary);
+    transition:
+      background-color var(--duration-smooth) var(--ease-primary),
+      color var(--duration-smooth) var(--ease-primary);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
@@ -147,29 +151,9 @@ html {
     font-weight: 450;
   }
 
-  h1 {
-    font-size: var(--h100);
-  }
-  h2 {
-    font-size: var(--h200);
-  }
-  h3 {
-    font-size: var(--h300);
-  }
-  h4 {
-    font-size: var(--h400);
-  }
-  h5 {
-    font-size: var(--h500);
-  }
-  h6 {
-    font-size: var(--h600);
-  }
-
   /* Paragraph*/
   p {
-    line-height: var(--leading-body);
-    letter-spacing: var(--tracking-body);
+    @apply text-base;
   }
 
   /* Links*/

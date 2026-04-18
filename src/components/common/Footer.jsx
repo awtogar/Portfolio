@@ -39,16 +39,16 @@ export default function Footer() {
 
   return (
     <BaseSection as="footer" sectionClassName="" containerClassName="max-w-full">
-      <div className="h-fit md:h-[100vh]"><LetterScroll lines={['MODERN', 'TECH STACK']} /></div>
+      <div className="h-fit md:h-[100vh]">
+        <LetterScroll lines={['MODERN', 'TECH STACK']} />
+      </div>
 
-      {/* mobile parallax — single column stacked */}
       <div className="md:hidden bg-neutral-100 pointer-events-none select-none">
         {mobileImages.map((src, i) => (
           <MobileParallaxImage key={i} src={src} />
         ))}
       </div>
 
-      {/* parallax grid on md or larger screen */}
       <div ref={gallery} className="h-[200vh] overflow-hidden bg-neutral-100 pointer-events-none select-none hidden md:block">
         <div className="relative -top-[12.5vh] h-[200vh] flex gap-[4vw] p-[4vw] md:gap-[2vw] md:p-[2vw]">
           <Column images={[images[0], images[1], images[2]]} y={y} topClass="-top-[45%]" />
@@ -57,9 +57,6 @@ export default function Footer() {
           <Column images={[images[9], images[10], images[11]]} y={y4} topClass="hidden md:flex -top-[60%]" />
         </div>
       </div>
-
-      {/* footer section on md or larger screen */}
-      {/* contact — desktop */}
       <div id="contact" className="h-[100vh] bg-neutral-100 section-padding-x items-end hidden md:flex">
         <div className="m-auto w-full max-w-full lg:max-w-[960px] xl:max-w-[1140px] 2xl:max-w-[1280px] pb-8">
           <div className="flex flex-col gap-s600 justify-between">
@@ -67,7 +64,12 @@ export default function Footer() {
               <div className="flex flex-col gap-s100 items-start">
                 <span className="text-primary-muted/72 inline-block border-b border-primary-muted/35 pb-1 w-fit">Content Menu</span>
                 {currentPage.sections.map(section => (
-                  <HoverRotate key={section.id} className="text-primary-muted text-5xl font-medium uppercase tracking-tight leading-[1.1]" href={`#${section.id}`} onClick={e => handleSectionClick(e, section.id)}>
+                  <HoverRotate
+                    key={section.id}
+                    className="text-primary-muted text-5xl font-medium uppercase tracking-tight leading-[1.1]"
+                    href={`#${section.id}`}
+                    onClick={e => handleSectionClick(e, section.id)}
+                  >
                     {section.title}
                   </HoverRotate>
                 ))}
@@ -75,7 +77,14 @@ export default function Footer() {
               <div className="flex flex-col gap-s100 items-end">
                 <span className="text-primary-muted/72 inline-block border-b border-primary-muted/35 pb-1 w-fit">Socials</span>
                 {socials.map(social => (
-            <HoverRotate key={social.label} as="a" href={social.href} target="_blank" rel="noopener noreferrer" className="text-primary-muted text-5xl font-medium uppercase tracking-tight leading-[1.1]">
+                  <HoverRotate
+                    key={social.label}
+                    as="a"
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-primary-muted text-5xl font-medium uppercase tracking-tight leading-[1.1]"
+                  >
                     {social.title}
                   </HoverRotate>
                 ))}
@@ -88,8 +97,6 @@ export default function Footer() {
           </div>
         </div>
       </div>
-
-      {/* contact — mobile */}
       <div className="min-h-screen bg-neutral-100 section-padding-x pb-10 pt-24 flex flex-col md:hidden">
         <div className="flex flex-col h-full justify-end flex-1">
           <div className="flex flex-col justify-end items-end h-full gap-20 pb-16">
@@ -97,7 +104,12 @@ export default function Footer() {
               <span className="text-primary-muted/60 text-[11px] uppercase tracking-[0.2em] pt-4 min-w-[70px]">Content</span>
               <div className="flex flex-col items-start">
                 {currentPage.sections.map(section => (
-                  <HoverRotate key={section.id} className="text-primary-muted text-5xl font-medium uppercase tracking-tight leading-[1.1]" href={`#${section.id}`} onClick={e => handleSectionClick(e, section.id)}>
+                  <HoverRotate
+                    key={section.id}
+                    className="text-primary-muted text-5xl font-medium uppercase tracking-tight leading-[1.1]"
+                    href={`#${section.id}`}
+                    onClick={e => handleSectionClick(e, section.id)}
+                  >
                     {section.title}
                   </HoverRotate>
                 ))}
@@ -107,7 +119,14 @@ export default function Footer() {
               <span className="text-primary-muted/60 text-[11px] uppercase tracking-[0.2em] pt-4 min-w-[70px]">Socials</span>
               <div className="flex flex-col items-start text-start">
                 {socials.map(social => (
-                  <HoverRotate key={social.label} as="a" href={social.href} target="_blank" rel="noopener noreferrer" className="text-primary-muted text-5xl font-medium uppercase tracking-tight leading-[1.1]">
+                  <HoverRotate
+                    key={social.label}
+                    as="a"
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-primary-muted text-5xl font-medium uppercase tracking-tight leading-[1.1]"
+                  >
                     {social.title}
                   </HoverRotate>
                 ))}

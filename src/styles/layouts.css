@@ -1,19 +1,17 @@
 @layer utilities {
   /* Section components  */
+
   .section-padding-hero {
-    padding-left: var(--spacing-container);
-    padding-right: var(--spacing-container);
-    padding-bottom: var(--spacing-s900);
-    padding-top: 164px;
+    @apply px-6 pt-[8rem] pb-[6rem] md:pt-[12rem] md:pb-[10rem]  md:px-8 lg:px-10;
   }
   .section-padding-x {
-    @apply px-4;
+    @apply px-6 md:px-8 lg:px-10;
   }
   .section-padding-y {
-    @apply py-4;
+    @apply py-s900 md:py-[10rem];
   }
   .section-padding-xy {
-    @apply px-4 py-s900;
+    @apply px-4 md:px-6 py-s900 md:py-[10rem] lg:px-10;
   }
   .section-padding-end {
     padding-left: var(--spacing-container);

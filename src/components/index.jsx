@@ -13,6 +13,7 @@ export { default as CustomCard } from './ui/CustomCard';
 export { default as CustomCursor } from './ui/CustomCursor';
 export { default as HoverRotate } from './ui/HoverRotate';
 export { default as Marquee, MarqueeItem, ScrollAwareArrow } from './ui/Marquee';
+export { default as OverlayImages } from './ui/OverlayImages';
 export { default as Preloader } from './ui/Preloader';
 export { default as RouteChangeNotifier } from './ui/RouteChangeNotifier';
 export { default as ShinyText } from './ui/ShinyText';

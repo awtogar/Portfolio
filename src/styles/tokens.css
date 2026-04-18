@@ -30,7 +30,9 @@
   --animation-smooth: all 0.7s cubic-bezier(0.7, 0, 0.3, 1);
   --animation-slow: all 0.9s cubic-bezier(0.7, 0, 0.3, 1);
 
-  --display: clamp(5rem, 12vw, 13rem);
+  --display: clamp(48px, 12vw, 200px);
+  --display-sm: clamp(3.25rem, 7vw, 8rem);
+  --display-xs: clamp(2.5rem, 5vw, 4.5rem);
 
   --h100: clamp(3.25rem, 7vw, 8rem);
   --h200: clamp(2.5rem, 5vw, 4.5rem);
@@ -39,10 +41,14 @@
   --h500: clamp(1.2rem, 1.6vw, 1.75rem);
   --h600: clamp(1rem, 1.2vw, 1.3rem);
 
-  --base-lg: clamp(1.2rem, 1.5vw, 1.5rem);
-  --base: clamp(1rem, 1.2vw, 1.1875rem);
-  --base-sm: clamp(0.8rem, 0.9vw, 0.9rem);
-  --base-extra-sm: clamp(0.65rem, 0.7vw, 0.75rem);
+  --base: clamp(1rem, 1.2vw, 1.25rem);
+
+  --base-lg: clamp(1.5rem, 3.3vw, 3.5rem);
+
+  --base-sm: clamp(0.875rem, 0.8vw, 1.125rem);
+
+  --base-xs: clamp(0.8rem, 0.7vw, 1rem);
+  --base-extra-sm: clamp(0.625rem, 0.9vw, 0.75rem);
 
   --leading-display: 1;
   --leading-heading: 1.065;
@@ -65,7 +71,7 @@
   --s600: clamp(2.25rem, 2rem + 0.8vi, 3rem);
   --s700: clamp(3rem, 2.75rem + 1vi, 4rem);
   --s800: clamp(4rem, 3.5rem + 1.5vi, 6rem);
-  --s900: clamp(5rem, 4.5rem + 2vi, 8rem);
+  --s900: clamp(5rem, 4.5rem + 2vi, 10rem);
 
   --sfluid: clamp(1rem, 0.8571rem + 1.0143vi, 3.5rem);
 }
