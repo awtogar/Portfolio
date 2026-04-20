@@ -17,7 +17,15 @@ export { default as img11 } from './images/2.jpg';
 
 
 // Project Logos
-export { default as nostraticLogo } from './images/projects/nostratic/nostratic.svg';
+export { default as nostraticLogo } from './images/projects/nostratic/nostratic.svg'
+export {default as nostratic1} from './images/projects/nostratic/nostratic-1.webp'
+export {default as nostratic2} from './images/projects/nostratic/nostratic-2.webp'
+export {default as nostratic3} from './images/projects/nostratic/nostratic-3.webp'
+export {default as nostratic4} from './images/projects/nostratic/nostratic-4.webp'
+export {default as nostratic5} from './images/projects/nostratic/nostratic-5.webp'
+
+
+;
 export { default as lunavaraLogo } from './images/projects/lunavara/lunavara.svg';
 export { default as colorrideLogo } from './images/projects/coloride/colorride.svg';
 export { default as synoraLogo } from './images/projects/synora/synora.svg';
@@ -32,4 +40,6 @@ export { default as ovelo4 } from './images/projects/ovelo/ovelo-4.webp';
 // Videos
 export { default as introVideo1 } from './videos/video-1.mp4';
 export { default as introVideo2 } from './videos/video-2.mp4';
+export {default as nostraticReels} from './videos/nostratic-reels.mp4'
+
 
