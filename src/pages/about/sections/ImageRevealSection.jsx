@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { useScroll, useTransform, motion } from 'motion/react';
-import { CustomCard, Splatter, BaseSection } from '@/components';
+import { HoverVideoCard, Splatter, BaseSection } from '@/components';
 import { useDimensions } from '@/hooks';
 
 import { aboutImg1, aboutImg2 } from '@/assets';
@@ -44,7 +44,7 @@ const ImageRevealSection = () => {
                   WebkitMaskSize: maskSize,
                 }}
               >
-                <CustomCard
+                <HoverVideoCard
                   src={image.src}
                   alt={image.alt}
                   containerClassName="absolute inset-0 w-full h-full "

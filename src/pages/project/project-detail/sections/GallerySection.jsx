@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom';
 import { projects } from '@/data/projects';
-import { CustomCard } from '@/components';
+import { HoverVideoCard } from '@/components';
 
 const GallerySection = () => {
   const { slug } = useParams();
@@ -15,13 +15,13 @@ const GallerySection = () => {
         if (i === 2 && project.gallery.length >= 4) {
           return (
             <div key={i} className="flex gap-4 lg:gap-5 w-full">
-              <CustomCard
+              <HoverVideoCard
                 src={media}
                 alt={`${project.client} - ${i + 1}`}
                 containerClassName="w-1/2 h-[160px] lg:h-[clamp(600px,40vw,1200px)] rounded-lg lg:rounded-xl"
                 imageClassName="object-cover object-center"
               />
-              <CustomCard
+              <HoverVideoCard
                 src={project.gallery[3]}
                 alt={`${project.client} - 4`}
                 containerClassName="w-1/2 h-[160px] lg:h-[clamp(600px,40vw,1200px)] rounded-lg lg:rounded-xl"
@@ -32,7 +32,7 @@ const GallerySection = () => {
         }
 
         return (
-          <CustomCard
+          <HoverVideoCard
             key={i}
             src={media}
             alt={`${project.client} - ${i + 1}`}

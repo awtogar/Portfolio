@@ -1,6 +1,6 @@
 import React from 'react';
 import { RiGeminiFill, RiHand } from '@remixicon/react';
-import { CustomCard, CircularText, CreativeButton, BaseSection } from '@/components';
+import { HoverVideoCard, CircularText, CreativeButton, BaseSection } from '@/components';
 import { aboutHeroImg } from '@/assets';
 import { useCursorInteraction } from '@/hooks/useCursorInteraction';
 
@@ -11,7 +11,7 @@ const HeroSection = () => {
     <BaseSection sectionClassName="section-padding-hero">
       <div className="flex flex-col gap-s700 lg:gap-s800">
         <div className="relative overflow-hidden">
-          <CustomCard
+          <HoverVideoCard
             src={aboutHeroImg}
             scrollRange={['0%', '15%']}
             alt="About — portrait"

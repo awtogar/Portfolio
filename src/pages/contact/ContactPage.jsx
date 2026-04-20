@@ -108,7 +108,7 @@ const ContactPage = () => {
                 ))}
               </div>
 
-              <div className="flex flex-col gap-s500 mt-s800">
+              <div className="flex flex-col lg:gap-s500 lg:mt-s800">
                 <Field label="Name">
                   <input type="text" name="name" placeholder="Your full name" value={formData.name} onChange={handleInputChange} className={inputCls} />
                 </Field>

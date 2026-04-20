@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import { motion, useAnimationFrame } from 'motion/react';
 import BaseSection from '../../components/common/BaseSection';
 import { projects } from '@/data/projects';
-import { CustomCard, TransitionLink } from '../../components';
+import { HoverVideoCard, TransitionLink } from '../../components';
 import { useCursorInteraction } from '../../hooks';
 
 const ease = [0.7, 0, 0.3, 1];
@@ -53,7 +53,7 @@ const ProjectCard = ({ project, index }) => {
         className="flex flex-col gap-4 lg:gap-5 px-3 lg:px-4 pt-3 lg:pt-4 pb-5 lg:pb-6 rounded-xl lg:rounded-2xl bg-black dark:bg-white cursor-pointer group relative"
       >
         <div ref={targetRef} className="relative rounded-lg lg:rounded-xl overflow-hidden w-full aspect-4/3 md:aspect-video lg:aspect-square">
-          <CustomCard
+          <HoverVideoCard
             src={project.thumbnail}
             alt={project.client}
             containerClassName="absolute inset-0 w-full h-[120%] -top-[10%] lg:-top-[15%]"
@@ -67,7 +67,7 @@ const ProjectCard = ({ project, index }) => {
         <div className="flex flex-col gap-4 lg:gap-5 px-3 lg:px-4">
           <div className="flex justify-between items-center w-full relative">
             <div className="flex items-center gap-2 lg:gap-3">
-              <div className="w-6 h-6 lg:w-8 lg:h-8 flex items-center justify-center text-neutral-100 dark:text-neutral-900">
+              <div className="w-6 h-6 md:w-10 md:h-10 lg:w-10 lg:h-10 px-1 py-1 md:px-2 flex items-center justify-center rounded-full bg-neutral-100 dark:bg-neutral-100 overflow-hidden text-primary dark:text-primary ">
                 {Logo ? (
                   isComponent ? (
                     <Logo className="w-full h-full" />
