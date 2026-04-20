@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import { motion, useScroll, useTransform, useInView } from "motion/react";
 
-const CustomCard = ({
+const HoverVideoCard = ({
   src,
   videoSrc = null,
   alt,
@@ -76,4 +76,4 @@ const CustomCard = ({
   );
 };
 
-export default CustomCard;
+export default HoverVideoCard;

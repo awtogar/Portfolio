@@ -1,7 +1,17 @@
 import React, { useRef, useState } from 'react';
 import { motion, useScroll, useTransform, useInView } from 'motion/react';
 
-const Card = ({ src, videoSrc = null, alt, scrollRange = ['0%', '15%'], offset = ['start end', 'end start'], className, imageClassName, containerClassName, blur = false }) => {
+const ClipRevealCard = ({
+  src,
+  videoSrc = null,
+  alt,
+  scrollRange = ['0%', '15%'],
+  offset = ['start end', 'end start'],
+  className,
+  imageClassName,
+  containerClassName,
+  blur = false,
+}) => {
   const containerRef = useRef(null);
   const [hasEntered, setHasEntered] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
@@ -57,4 +67,4 @@ const Card = ({ src, videoSrc = null, alt, scrollRange = ['0%', '15%'], offset =
   );
 };
 
-export default Card;
+export default ClipRevealCard;
