@@ -8,7 +8,7 @@ const HeroSection = () => {
   const resumeRef = useCursorHoverContent('arrow');
 
   return (
-    <BaseSection containerID="hero" sectionClassName="section-padding-hero">
+    <BaseSection containerID="hero" sectionClassName="pt-section pb-s200 section-padding-x">
       <div className="flex flex-col gap-s700 md:gap-s800">
         <div className="flex flex-col gap-s500">
           <h1 className="text-display-sm leading-heading tracking-heading max-w-[18ch] font-[600] uppercase">A Good things its was made not born.</h1>

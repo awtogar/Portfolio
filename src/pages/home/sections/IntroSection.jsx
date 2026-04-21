@@ -6,7 +6,7 @@ import BaseSection from '../../../components/common/BaseSection';
 const IntroSection = () => {
   return (
     <>
-      <BaseSection sectionClassName="" containerClassName="max-w-full">
+      <BaseSection sectionClassName="py-s900" containerClassName="max-w-full">
         <div className="h-[468px] overflow-hidden lg:h-[640px]">
           <VideoLoader
             src={introVideo1}

@@ -42,7 +42,6 @@ export default function Footer() {
       <div className="h-fit md:h-[100vh]">
         <LetterScroll lines={['MODERN', 'TECH STACK']} />
       </div>
-
       <div className="md:hidden bg-neutral-100 pointer-events-none select-none">
         {mobileImages.map((src, i) => (
           <MobileParallaxImage key={i} src={src} />
@@ -57,6 +56,8 @@ export default function Footer() {
           <Column images={[images[9], images[10], images[11]]} y={y4} topClass="hidden md:flex -top-[60%]" />
         </div>
       </div>
+
+      {/* Mobile Footer END */}
       <div id="contact" className="h-[100vh] bg-neutral-100 section-padding-x items-end hidden md:flex">
         <div className="m-auto w-full max-w-full lg:max-w-[960px] xl:max-w-[1140px] 2xl:max-w-[1280px] pb-8">
           <div className="flex flex-col gap-s600 justify-between">
@@ -97,46 +98,48 @@ export default function Footer() {
           </div>
         </div>
       </div>
-      <div className="min-h-screen bg-neutral-100 section-padding-x pb-10 pt-24 flex flex-col md:hidden">
-        <div className="flex flex-col h-full justify-end flex-1">
-          <div className="flex flex-col justify-end items-end h-full gap-20 pb-16">
-            <div className="flex items-start gap-4">
-              <span className="text-primary-muted/60 text-[11px] uppercase tracking-[0.2em] pt-4 min-w-[70px]">Content</span>
-              <div className="flex flex-col items-start">
-                {currentPage.sections.map(section => (
+      <div className="h-screen bg-neutral-100 section-padding-x flex flex-col justify-between md:hidden py-10">
+        <div className="grid flex-1 grid-cols-1 gap-y-8">
+          <div>
+            <span className="mb-2 block text-[10px] font-mono font-medium tracking-[0.2em] text-primary-muted/50 uppercase">Sitemap</span>
+            <ul className="flex flex-col">
+              {currentPage.sections.map((section, i) => (
+                <li key={section.id} className="border-b border-primary-muted/10 last:border-b-0">
                   <HoverRotate
-                    key={section.id}
-                    className="text-primary-muted text-5xl font-medium uppercase tracking-tight leading-[1.1]"
                     href={`#${section.id}`}
                     onClick={e => handleSectionClick(e, section.id)}
+                    className="group flex items-center justify-between py-1 transition-all hover:border-primary-muted/30"
                   >
-                    {section.title}
+                    <span className="text-[2.6rem] font-medium uppercase tracking-tight text-primary sm:text-4xl">{section.title}</span>
                   </HoverRotate>
-                ))}
-              </div>
-            </div>
-            <div className="flex items-start gap-4">
-              <span className="text-primary-muted/60 text-[11px] uppercase tracking-[0.2em] pt-4 min-w-[70px]">Socials</span>
-              <div className="flex flex-col items-start text-start">
-                {socials.map(social => (
+                  {section.description && <span className="mt-0.5 inline-block text-[9px] font-mono uppercase tracking-[0.1em] text-primary-muted/40">{section.description}</span>}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <span className="mb-2 block text-[10px] font-mono font-medium tracking-[0.2em] text-primary-muted/50 uppercase">Connect</span>
+            <ul className="flex flex-col">
+              {socials.map((social, i) => (
+                <li key={social.label} className="border-b border-primary-muted/10 last:border-b-0">
                   <HoverRotate
-                    key={social.label}
                     as="a"
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-primary-muted text-5xl font-medium uppercase tracking-tight leading-[1.1]"
+                    className="group flex items-center justify-between py-1 transition-all hover:border-primary-muted/30"
                   >
-                    {social.title}
+                    <span className="text-display-xs font-medium uppercase tracking-tight text-primary-muted sm:text-3xl">{social.title}</span>
                   </HoverRotate>
-                ))}
-              </div>
-            </div>
+                  {social.handle && <span className="mt-0.5 inline-block text-[9px] font-mono uppercase tracking-[0.1em] text-primary-muted/40">{social.handle}</span>}
+                </li>
+              ))}
+            </ul>
           </div>
-          <div className="text-primary-muted/72 flex justify-between items-center gap-3 pt-6 border-t border-primary-muted/35">
-            <span className="text-[10px] text-center tracking-wider uppercase">{contact_info.credits}</span>
-            <span className="text-[10px] text-center opacity-75 tracking-wider uppercase">{contact_info.copyright}</span>
-          </div>
+        </div>
+        <div className="flex flex-col gap-3 border-t border-primary-muted/20 pt-5 text-[10px] font-mono uppercase tracking-wider text-primary-muted/50 sm:flex-row sm:justify-between">
+          <span>{contact_info.credits}</span>
+          <span>{contact_info.copyright}</span>
         </div>
       </div>
     </BaseSection>

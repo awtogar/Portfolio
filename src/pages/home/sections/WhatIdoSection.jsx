@@ -19,12 +19,13 @@ const WhatIdoSection = () => {
 
         <div className="flex flex-col bg-neutral-800 dark:bg-white rounded-xl lg:rounded-2xl px-4 lg:px-5">
           <div className="flex flex-col">
+            
             {services.map((service, i) => (
               <div
                 key={i}
-                className="sticky bg-neutral-800 dark:bg-white"
+                className="bg-neutral-800 dark:bg-white"
                 style={{
-                  top: `calc(172px + ${i * 24}px)`,
+                  top: `calc(92px + ${i * 24}px)`,
                   zIndex: i + 1,
                 }}
               >

@@ -11,7 +11,7 @@
     @apply py-s900 md:py-[10rem];
   }
   .section-padding-xy {
-    @apply px-4 md:px-6 py-s900 md:py-[10rem] lg:px-10;
+    @apply px-4 md:px-6 py-s500 md:py-[10rem] lg:px-10;
   }
   .section-padding-end {
     @apply px-container pt-s900 pb-4;
