@@ -35,8 +35,8 @@ const MarqueeTags = ({ tags = [] }) => {
 
   return (
     <div ref={marqueeContainerRef} className="flex justify-center items-center h-4 md:h-4.5 overflow-hidden relative w-full">
-      <div className="absolute left-0 h-full w-8 lg:w-10 bg-gradient-to-r from-neutral-900  dark:from-neutral-50 to-transparent z-10 pointer-events-none" />
-      <div className="absolute right-0 h-full w-8 lg:w-10 bg-gradient-to-l from-neutral-900 dark:from-neutral-50 to-transparent z-10 pointer-events-none" />
+      <div className="absolute left-0 h-full w-8 lg:w-10 bg-gradient-to-r from-neutral-900  dark:from-neutral-50 to-transparent pointer-events-none" />
+      <div className="absolute right-0 h-full w-8 lg:w-10 bg-gradient-to-l from-neutral-900 dark:from-neutral-50 to-transparent pointer-events-none" />
       <div className="flex overflow-hidden w-full">
         <p ref={marqueeFirstRef} className="text-[10px] md:text-xs tracking-widest text-neutral-300 uppercase whitespace-nowrap pr-1.5 shrink-0">
           {repeatedTags.map((tag, i) => (

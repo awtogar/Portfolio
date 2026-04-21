@@ -5,12 +5,12 @@ import { ParallaxImage } from '../../../components';
 
 const WhatIdoSection = () => {
   return (
-    <BaseSection containerID="what-i-do" sectionClassName="section-padding-xy" containerClassName="bg-neutral-900 dark:bg-neutral-50 rounded-2xl lg:rounded-[20px]">
+    <BaseSection containerID="what-i-do" sectionClassName="section-padding-xy" containerClassName="bg-neutral-900 dark:bg-neutral-50 rounded-2xl lg:rounded-[20px] m-auto w-full">
       <div className="flex flex-col gap-16 lg:gap-24 px-4 pt-16 lg:pt-24 pb-4">
         <div className="lg:grid lg:grid-cols-12 gap-24">
           <div className="flex flex-col col-span-12 lg:col-span-10 lg:col-start-3">
             <h2 className="text-base text-neutral-400 dark:text-neutral-300 uppercase font-medium tracking-wider mb-2">Services</h2>
-            <p className="text-neutral-100 dark:text-neutral-900 text-base-lg font-medium leading-[1.1] lg:leading-[1.05]">
+            <p className="text-neutral-100 dark:text-neutral-900 text-base-lg font-medium leading-[1.1] lg:leading-[1.05] max-w-full">
               Evolving with every brief and built for impact, my process spans design, development, and brand strategy—aligning vision with execution to bring clarity and edge to
               every project.
             </p>

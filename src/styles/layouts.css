@@ -14,10 +14,7 @@
     @apply px-4 md:px-6 py-s900 md:py-[10rem] lg:px-10;
   }
   .section-padding-end {
-    padding-left: var(--spacing-container);
-    padding-right: var(--spacing-container);
-    padding-top: var(--spacing-s900);
-    padding-bottom: 1rem;
+    @apply px-container pt-s900 pb-4;
   }
   .textTransition {
     @apply text-h100! text-secondary text-center transition-transform uppercase;
