@@ -20,12 +20,10 @@ const MarqueeTags = ({ tags = [] }) => {
 
   useAnimationFrame((_, delta) => {
     if (!marqueeFirstRef.current || !marqueeSecondRef.current || !marqueeItemWidthRef.current) return;
-
     marqueeOffsetRef.current -= delta * 0.03;
     if (marqueeOffsetRef.current <= -marqueeItemWidthRef.current) {
       marqueeOffsetRef.current += marqueeItemWidthRef.current;
     }
-
     const translateValue = `translateX(${marqueeOffsetRef.current}px)`;
     marqueeFirstRef.current.style.transform = translateValue;
     marqueeSecondRef.current.style.transform = translateValue;
@@ -35,7 +33,7 @@ const MarqueeTags = ({ tags = [] }) => {
 
   return (
     <div ref={marqueeContainerRef} className="flex justify-center items-center h-4 md:h-4.5 overflow-hidden relative w-full">
-      <div className="absolute left-0 h-full w-8 lg:w-10 bg-gradient-to-r from-neutral-900  dark:from-neutral-50 to-transparent pointer-events-none" />
+      <div className="absolute left-0 h-full w-8 lg:w-10 bg-gradient-to-r from-neutral-900 dark:from-neutral-50 to-transparent pointer-events-none" />
       <div className="absolute right-0 h-full w-8 lg:w-10 bg-gradient-to-l from-neutral-900 dark:from-neutral-50 to-transparent pointer-events-none" />
       <div className="flex overflow-hidden w-full">
         <p ref={marqueeFirstRef} className="text-[10px] md:text-xs tracking-widest text-neutral-300 uppercase whitespace-nowrap pr-1.5 shrink-0">
@@ -68,74 +66,71 @@ const WorkCard = ({ work }) => {
   const isLogoComponent = typeof LogoComponent === 'function' || typeof LogoComponent === 'object';
 
   return (
-    <li className="w-full lg:w-1/2" style={{ opacity: 1, transform: 'none' }}>
-      <div style={{ opacity: 1, transform: 'none' }}>
-        <TransitionLink
-          to={`/projects/${work.slug}`}
-          className="flex flex-col gap-4 lg:gap-5 px-3 lg:px-4 pt-3 lg:pt-4 pb-5 lg:pb-6 rounded-xl lg:rounded-2xl bg-neutral-900 dark:bg-neutral-50 cursor-pointer group relative"
-          onMouseEnter={() => setIsHovered(true)}
-          onMouseLeave={() => setIsHovered(false)}
-        >
-          <div ref={imageContainerRef} className="relative rounded-lg lg:rounded-xl overflow-hidden w-full h-[248px] md:h-[350px] lg:h-[clamp(500px,32vw,800px)]">
-            <div className="absolute inset-0 bg-neutral-900/30 dark:bg-neutral-50/30 backdrop-blur-md z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-in-out" />
+    <li className="w-full lg:w-1/2">
+      <TransitionLink
+        to={`/projects/${work.slug}`}
+        className="flex flex-col gap-4 lg:gap-5 px-3 lg:px-4 pt-3 lg:pt-4 pb-5 lg:pb-6 rounded-xl lg:rounded-2xl bg-neutral-900 dark:bg-neutral-50 cursor-pointer group relative"
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+      >
+        <div ref={imageContainerRef} className="relative rounded-lg lg:rounded-xl overflow-hidden w-full h-[248px] md:h-[350px] lg:h-[clamp(500px,32vw,800px)]">
+          <div className="absolute inset-0 bg-neutral-900/30 dark:bg-neutral-50/30 backdrop-blur-md z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-in-out" />
 
-            {work.video && (
-              <motion.video
-                src={work.video}
-                className="absolute top-1/2 left-1/2 -translate-x-1/2 w-[clamp(260px,56%,600px)] h-auto lg:max-h-2/4 rounded-lg object-cover z-20"
-                animate={{
-                  clipPath: isHovered ? 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)' : 'polygon(30% 50%, 70% 50%, 70% 50%, 30% 50%)',
-                  y: isHovered ? '-50%' : '-8.33%',
-                }}
-                transition={{ duration: 0.7, ease: [0.87, 0, 0.13, 1] }}
-                muted
-                loop
-                playsInline
-                autoPlay
+          {work.video && (
+            <motion.video
+              src={work.video}
+              className="absolute top-1/2 left-1/2 -translate-x-1/2 w-[clamp(260px,56%,600px)] h-auto lg:max-h-2/4 rounded-lg object-cover z-20"
+              animate={{
+                clipPath: isHovered ? 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)' : 'polygon(30% 50%, 70% 50%, 70% 50%, 30% 50%)',
+                y: isHovered ? '-50%' : '-8.33%',
+              }}
+              transition={{ duration: 0.7, ease: [0.87, 0, 0.13, 1] }}
+              muted
+              loop
+              playsInline
+              autoPlay
+            />
+          )}
+
+          <div className="w-full h-full">
+            <motion.div className="absolute inset-0 w-full h-[120%] -top-[10%] lg:-top-[15%]" style={{ y: parallaxY }}>
+              <img
+                src={work.thumbnail}
+                alt={work.title}
+                loading="lazy"
+                decoding="async"
+                className="object-cover w-full h-full scale-105 group-hover:scale-100 transition-transform duration-500 ease-in-out"
+                style={{ position: 'absolute', height: '100%', width: '100%', left: 0, top: 0, right: 0, bottom: 0 }}
               />
-            )}
-
-            <div className="w-full h-full">
-              <motion.div className="absolute inset-0 w-full h-[120%] -top-[10%] lg:-top-[15%]" style={{ y: parallaxY }}>
-                <img
-                  src={work.thumbnail}
-                  alt={work.title}
-                  loading="lazy"
-                  decoding="async"
-                  className="object-cover w-full h-full scale-105 group-hover:scale-100 transition-transform duration-500 ease-in-out"
-                  style={{ position: 'absolute', height: '100%', width: '100%', left: 0, top: 0, right: 0, bottom: 0 }}
-                />
-              </motion.div>
-            </div>
+            </motion.div>
           </div>
+        </div>
 
-          {/* Metadata */}
-          <div className="flex flex-col gap-4 lg:gap-5 lg:px-0">
-            <div className="flex justify-between items-center w-full relative">
-              <div className="flex items-center gap-2 lg:gap-3">
-                <div className="w-6 h-6 md:w-10 md:h-10 lg:w-10 lg:h-10 px-1 py-1 md:px-2 flex items-center justify-center rounded-full bg-neutral-100 dark:bg-neutral-100 overflow-hidden text-primary dark:text-primary ">
-                  {LogoComponent ? (
-                    isLogoComponent ? (
-                      <LogoComponent className="w-full h-full" />
-                    ) : (
-                      <img src={LogoComponent} alt={`${work.client} logo`} className="w-full h-full object-contain text-primary" />
-                    )
+        {/* Metadata */}
+        <div className="flex flex-col gap-4 lg:gap-5">
+          <div className="flex justify-between items-center w-full">
+            <div className="flex items-center gap-2 lg:gap-3">
+              <div className="w-6 h-6 md:w-10 md:h-10 px-1 py-1 md:px-2 flex items-center justify-center rounded-full bg-neutral-100 dark:bg-neutral-100 overflow-hidden text-primary dark:text-primary">
+                {LogoComponent ? (
+                  isLogoComponent ? (
+                    <LogoComponent className="w-full h-full" />
                   ) : (
-                    <span className="text-xs text-neutral-100">{work.client?.charAt(0) || 'W'}</span>
-                  )}
-                </div>
-                <p className="text-[clamp(14px,1.2vw,18px)] uppercase font-semibold text-neutral-100 tracking-wide">{work.client || work.title}</p>
+                    <img src={LogoComponent} alt={`${work.client} logo`} className="w-full h-full object-contain" />
+                  )
+                ) : (
+                  <span className="text-xs text-neutral-100">{work.client?.charAt(0) || 'W'}</span>
+                )}
               </div>
-              <div className="flex gap-3 lg:gap-5">
-                <p className="text-[clamp(14px,1.2vw,18px)] uppercase font-semibold text-neutral-300 tracking-wide">{work.type || work.role || 'Portfolio'}</p>
-                <p className="text-[clamp(14px,1.2vw,18px)] uppercase font-semibold text-neutral-300 tracking-wide">{work.year || '2025'}</p>
-              </div>
+              <p className="text-[clamp(14px,1.2vw,18px)] uppercase font-semibold text-neutral-100 tracking-wide">{work.client || work.title}</p>
             </div>
-
-            <MarqueeTags tags={work.tags || []} />
+            <div className="flex gap-3 lg:gap-5">
+              <p className="text-[clamp(14px,1.2vw,18px)] uppercase font-semibold text-neutral-300 tracking-wide">{work.type || work.role || 'Portfolio'}</p>
+              <p className="text-[clamp(14px,1.2vw,18px)] uppercase font-semibold text-neutral-300 tracking-wide">{work.year || '2025'}</p>
+            </div>
           </div>
-        </TransitionLink>
-      </div>
+          <MarqueeTags tags={work.tags || []} />
+        </div>
+      </TransitionLink>
     </li>
   );
 };
@@ -151,46 +146,33 @@ const SelectedWorksSection = () => {
 
   return (
     <BaseSection containerID="selected-works" sectionClassName="section-padding-xy relative overflow-hidden">
-      <div className="flex flex-col gap-s500 mb-s200">
-        <div className="flex flex-col gap-s200">
+      <div className="flex flex-col gap-s300 mb-s600 lg:mb-s700">
+        <div className="flex items-center justify-between">
           <span className="text-base">(selected)</span>
-          <h2 className="flex justify-between w-full mb-6 lg:mb-8">
-            <span className="text-[clamp(48px,16vw,200px)] font-bold tracking-tight leading-[0.8] uppercase" aria-label="Work">
-              <div className="line-mask line1-mask" aria-hidden="true" style={{ position: 'relative', display: 'block', textAlign: 'start', overflow: 'clip' }}>
-                <div
-                  className="line line1"
-                  aria-hidden="true"
-                  style={{ position: 'relative', display: 'block', textAlign: 'start', translate: 'none', rotate: 'none', scale: 'none', transform: 'translate(0px)' }}
-                >
-                  Work
-                </div>
-              </div>
-            </span>
-            <span className="text-[clamp(48px,16vw,200px)] font-bold tracking-tight leading-[0.8] uppercase" aria-label="'25">
-              <div className="line-mask line1-mask" aria-hidden="true" style={{ position: 'relative', display: 'block', textAlign: 'start', overflow: 'clip' }}>
-                <div
-                  className="line line1"
-                  aria-hidden="true"
-                  style={{ position: 'relative', display: 'block', textAlign: 'start', translate: 'none', rotate: 'none', scale: 'none', transform: 'translate(0px)' }}
-                >
-                  '25
-                </div>
-              </div>
-            </span>
-          </h2>{' '}
         </div>
+        <div className="flex items-end justify-between w-full">
+          <span className="font-[700] tracking-[-0.03em] leading-[0.85] uppercase" style={{ fontSize: 'clamp(4rem, 12vw, 12rem)' }}>
+            Work
+          </span>
+
+          <div className="flex flex-col items-end gap-1 pb-1 lg:pb-2">
+            <span className="font-[700] tracking-[-0.03em] leading-[0.85] uppercase" style={{ fontSize: 'clamp(4rem, 12vw, 12rem)' }}>
+              '25
+            </span>
+          </div>
+        </div>
+        <div className="h-px w-full bg-primary/10" />
       </div>
 
-      {/* Use flex layout instead of grid */}
-      <ul className="flex flex-col lg:flex-row gap-3 lg:gap-4 w-full mb-8 lg:mb-16">
+      <ul className="flex flex-col lg:flex-row gap-2 lg:gap-4 w-full mb-s600 lg:mb-s800">
         {selectedWorks.map(work => (
           <WorkCard key={work.id} work={work} />
         ))}
       </ul>
 
-      <div className="flex flex-col items-center gap-s300">
-        <CreativeButton to="/projects" variant="transparent" rel="noopener noreferrer" ref={seeAllButtonRef}>
-          <span>See all</span>
+      <div ref={seeAllButtonRef} className='flex items-center justify-center'>
+        <CreativeButton to="/projects" variant="transparent" rel="noopener noreferrer">
+          <span>See all projects</span>
         </CreativeButton>
       </div>
     </BaseSection>
