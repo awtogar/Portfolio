@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'motion/react';
 
-const ParallaxImage = ({ src, alt, scrollRange = ['-10vh', '10vh'], offset = ['start end', 'end start'], containerClassName }) => {
+const ParallaxImage = ({ src, alt, scrollRange = ['-3vh', '0vh'], offset = ['start end', 'end start'], containerClassName }) => {
   const containerRef = useRef(null);
 
   const { scrollYProgress } = useScroll({
@@ -14,14 +14,20 @@ const ParallaxImage = ({ src, alt, scrollRange = ['-10vh', '10vh'], offset = ['s
 
   return (
     <div ref={containerRef} className={`relative rounded-lg overflow-hidden ${containerClassName || ''}`}>
-      <div className="w-full h-full">
-        <motion.div className="absolute inset-0 w-full h-[120%] -top-[10%] lg:-top-[15%]" style={{ y }}>
+      <div className="w-full h-full relative">
+        <motion.div
+          className="absolute inset-0 w-full h-[120%] lg:-top-[10%]"
+          style={{
+            y,
+            clipPath: 'polygon(0px 0px, 100% 0px, 100% 100%, 0px 100%)',
+          }}
+        >
           <img
             src={src}
             alt={alt}
             loading="lazy"
             decoding="async"
-            className="object-cover w-full h-full scale-105"
+            className="object-cover w-full h-full"
             style={{ position: 'absolute', height: '100%', width: '100%', left: 0, top: 0, right: 0, bottom: 0 }}
           />
         </motion.div>
@@ -31,5 +37,3 @@ const ParallaxImage = ({ src, alt, scrollRange = ['-10vh', '10vh'], offset = ['s
 };
 
 export default ParallaxImage;
-
-

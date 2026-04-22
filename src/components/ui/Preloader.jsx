@@ -70,8 +70,12 @@ const PreloaderContent = () => {
 };
 
 const Preloader = () => {
-  const { isInitialLoading } = useLoading();
-  return <AnimatePresence mode="wait">{isInitialLoading && <PreloaderContent key="preloader" />}</AnimatePresence>;
+  const { isInitialLoading, setIsReady } = useLoading();
+  return (
+    <AnimatePresence mode="wait" onExitComplete={() => setIsReady(true)}>
+      {isInitialLoading && <PreloaderContent key="preloader" />}
+    </AnimatePresence>
+  );
 };
 
 export default Preloader;

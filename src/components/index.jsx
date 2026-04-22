@@ -19,6 +19,7 @@ export { default as Preloader } from './ui/Preloader';
 export { default as RouteChangeNotifier } from './ui/RouteChangeNotifier';
 export { default as ShinyText } from './ui/ShinyText';
 export { default as SlideText } from './ui/SlideText';
+export { default as TextReveal } from './ui/TextReveal';
 export { default as Splatter } from './ui/Splatter';
 export { default as Transition } from './ui/Transition';
 export { default as TransitionLink } from './ui/TransitionLink';

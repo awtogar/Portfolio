@@ -1,9 +1,11 @@
 import React from 'react';
-import { CreativeButton } from '../../../components';
+import { CreativeButton, TextReveal } from '../../../components';
 import BaseSection from '../../../components/common/BaseSection';
 import { useCursorHoverContent } from '@/hooks/useCursorInteraction';
+// import { useLoading } from '@/context/LoadingProvider';
 
 const HeroSection = () => {
+  // const { isReady } = useLoading();
   const contactRef = useCursorHoverContent('arrow');
   const resumeRef = useCursorHoverContent('arrow');
 
@@ -12,9 +14,13 @@ const HeroSection = () => {
       <div className="flex flex-col gap-s700 md:gap-s800">
         <div className="flex flex-col gap-s500">
           <h1 className="text-display-sm leading-heading tracking-heading max-w-[18ch] font-[600] uppercase">A Good things its was made not born.</h1>
-          <p className="text-base text-primary/60 leading-body">
-            A multidisciplinary creative developer with designs and development background. Interested to explore and learn new things.
-          </p>
+          <TextReveal
+            text="A multidisciplinary creative developer with designs and development background. Interested to explore and learn new things."
+            className="text-base text-primary/60 leading-body"
+            staggerDelay={0.2}
+            startDelay={0.05}
+            // ready={isReady}
+          />
         </div>
 
         <div className="flex flex-row items-center gap-4 md:gap-s400">

@@ -18,6 +18,7 @@ export function LoadingProvider({ children }) {
 
   // preloader state
   const [isInitialLoading, setIsInitialLoading] = useState(true);
+  const [isReady, setIsReady] = useState(false);
   const [initialProgress, setInitialProgress] = useState(0);
 
   // transisi state
@@ -85,6 +86,8 @@ export function LoadingProvider({ children }) {
       value={{
         isInitialLoading,
         setIsInitialLoading,
+        isReady,
+        setIsReady,
         initialProgress,
         setInitialProgress,
         phase,

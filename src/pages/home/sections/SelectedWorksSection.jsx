@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { motion, useAnimationFrame, useScroll, useTransform } from 'motion/react';
 import { projects } from '@/data/projects';
-import { TransitionLink, CreativeButton, HoverVideoCard } from '../../../components';
+import { TransitionLink, CreativeButton, HoverVideoCard, TextReveal } from '../../../components';
 import BaseSection from '../../../components/common/BaseSection';
 import { useCursorInteraction } from '../../../hooks';
 
@@ -151,14 +151,24 @@ const SelectedWorksSection = () => {
           <span className="text-base">(selected)</span>
         </div>
         <div className="flex items-end justify-between w-full">
-          <span className="font-[700] tracking-[-0.03em] leading-[0.85] uppercase" style={{ fontSize: 'clamp(4rem, 12vw, 12rem)' }}>
-            Work
-          </span>
+          <TextReveal
+            lines={['WORK']}
+            style={{ fontSize: 'clamp(4rem, 12vw, 12rem)' }}
+            className="font-[700] tracking-[-0.03em] leading-[0.85] uppercase"
+            staggerDelay={0.06}
+            startDelay={0.1}
+            as="span"
+          />
 
           <div className="flex flex-col items-end gap-1 pb-1 lg:pb-2">
-            <span className="font-[700] tracking-[-0.03em] leading-[0.85] uppercase" style={{ fontSize: 'clamp(4rem, 12vw, 12rem)' }}>
-              '25
-            </span>
+            <TextReveal
+              lines={['25']}
+              style={{ fontSize: 'clamp(4rem, 12vw, 12rem)' }}
+              className="font-[700] tracking-[-0.03em] leading-[0.85] uppercase"
+              staggerDelay={0.06}
+              startDelay={0.1}
+              as="span"
+            />
           </div>
         </div>
         <div className="h-px w-full bg-primary/10" />
@@ -170,7 +180,7 @@ const SelectedWorksSection = () => {
         ))}
       </ul>
 
-      <div ref={seeAllButtonRef} className='flex items-center justify-center'>
+      <div ref={seeAllButtonRef} className="flex items-center justify-center">
         <CreativeButton to="/projects" variant="transparent" rel="noopener noreferrer">
           <span>See all projects</span>
         </CreativeButton>

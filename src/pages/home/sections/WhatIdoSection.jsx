@@ -1,62 +1,86 @@
 import React from 'react';
 import { services } from '@/data/content';
-import BaseSection from '../../../components/common/BaseSection';
-import { ParallaxImage } from '../../../components';
+import { ParallaxImage, TextReveal } from '../../../components';
+
+const MAIN_TEXT =
+  'Evolving with every brief and built for impact, my process spans design, development, and brand strategy—aligning vision with execution to bring clarity and edge to every project.';
 
 const WhatIdoSection = () => {
   return (
-    <BaseSection containerID="what-i-do" sectionClassName="section-padding-xy" containerClassName="bg-neutral-900 dark:bg-neutral-50 rounded-2xl lg:rounded-[20px] m-auto w-full">
-      <div className="flex flex-col gap-16 lg:gap-24 px-4 pt-16 lg:pt-24 pb-4">
-        <div className="lg:grid lg:grid-cols-12 gap-24">
+    <section className="px-2 lg:px-4 py-16 lg:py-24">
+      <div className="flex flex-col gap-16 lg:gap-24 bg-neutral-900 dark:bg-neutral-50 px-4 pt-16 lg:pt-24 pb-4 rounded-2xl lg:rounded-[20px]">
+        <div className="lg:grid lg:grid-cols-12 lg:gap-24">
           <div className="flex flex-col col-span-12 lg:col-span-10 lg:col-start-3">
-            <h2 className="text-base text-neutral-400 dark:text-neutral-300 uppercase font-medium tracking-wider mb-2">Services</h2>
-            <p className="text-neutral-100 dark:text-neutral-900 text-base-lg font-medium leading-[1.1] lg:leading-[1.05] max-w-full">
-              Evolving with every brief and built for impact, my process spans design, development, and brand strategy—aligning vision with execution to bring clarity and edge to
-              every project.
-            </p>
+            <h2 className="text-xs lg:text-[clamp(14px,0.8vw,18px)] text-neutral-400 dark:text-neutral-300 uppercase font-medium tracking-wider mb-2">
+              <div className="relative block overflow-clip">
+                <div className="relative block">Services</div>
+              </div>
+            </h2>
+
+            <TextReveal
+              text={MAIN_TEXT}
+              as="p"
+              className="text-neutral-100 dark:text-neutral-900 text-[clamp(24px,3.3vw,56px)] font-medium leading-[1.1] lg:leading-[1.05]"
+              staggerDelay={0.05}
+              startDelay={0.2}
+            />
           </div>
         </div>
 
         <div className="flex flex-col bg-neutral-800 dark:bg-white rounded-xl lg:rounded-2xl px-4 lg:px-5">
-          <div className="flex flex-col">
-            
+          <ul className="flex flex-col">
             {services.map((service, i) => (
-              <div
+              <li
                 key={i}
-                className="bg-neutral-800 dark:bg-white"
-                style={{
-                  top: `calc(92px + ${i * 24}px)`,
-                  zIndex: i + 1,
-                }}
+                className="flex flex-col lg:grid lg:grid-cols-12 lg:gap-8 pt-10 last:pb-4 not-last:pb-10 lg:last:pb-10 not-last:border-b not-last:border-neutral-700 dark:not-last:border-neutral-200"
               >
-                <div className="flex flex-col lg:grid lg:grid-cols-12 lg:gap-8 pt-10 pb-10 border-b border-neutral-700 dark:border-neutral-200 last:border-0 last:pb-4">
-                  <div className="flex items-center gap-3 pb-4 lg:pb-0 lg:contents">
-                    <p className="text-base text-neutral-300 dark:text-neutral-500 uppercase font-medium tracking-wider lg:col-span-2">{String(service.number).padStart(2, '0')}</p>
-                    <h3 className="text-base-lg text-neutral-100 dark:text-neutral-900 font-medium lg:col-span-4 lg:-mt-4">{service.title}</h3>
-                  </div>
-                  <div className="flex flex-col gap-4 lg:gap-6 lg:col-span-3 mb-8 lg:mb-0">
-                    <p className="text-base text-neutral-100 dark:text-neutral-800 font-medium leading-[1.3]">{service.description}</p>
-                    <ul className="flex gap-1.5 flex-wrap">
-                      {service.features.map((feature, idx) => (
-                        <li
-                          key={idx}
-                          className="text-base-xs text-neutral-100 dark:text-neutral-50 uppercase tracking-[1.1] bg-neutral-100/10 dark:bg-neutral-100 px-2 pt-2 pb-1.5 rounded-md whitespace-nowrap"
-                        >
-                          {feature.name}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                  <div className="lg:col-span-3">
-                    <ParallaxImage src={service.image} alt={service.title} containerClassName="h-[220px] sm:h-[400px] md:h-[450px] lg:h-[clamp(220px,15vw,360px)]" />
+                <div className="text-xs lg:text-[clamp(14px,0.8vw,18px)] text-neutral-300 dark:text-neutral-500 uppercase font-medium tracking-wider mb-1 lg:col-span-2">
+                  <div className="relative block overflow-clip">
+                    <div className="relative block">{String(service.number).padStart(2, '0')}</div>
                   </div>
                 </div>
-              </div>
+
+                <h3 className="text-[clamp(24px,3.3vw,56px)] text-neutral-100 dark:text-neutral-900 font-medium lg:col-span-4 mb-6 lg:mb-0 lg:-mt-4">
+                  <div className="relative block overflow-clip">
+                    <div className="relative block">{service.title}</div>
+                  </div>
+                </h3>
+
+                <div className="flex flex-col gap-4 lg:gap-6 lg:col-span-3 mb-8 lg:mb-0">
+                  <TextReveal
+                    text={service.description}
+                    as="p"
+                    className="text-[clamp(16px,1.2vw,20px)] text-neutral-100 dark:text-neutral-800 font-medium leading-[1.3]"
+                    staggerDelay={0.03}
+                    startDelay={0.3}
+                  />
+
+                  <ul className="flex gap-1.5 flex-wrap">
+                    {service.features.map((feature, idx) => (
+                      <li
+                        key={idx}
+                        className="text-[10px] text-neutral-100 dark:text-neutral-900 uppercase tracking-[1.1] bg-neutral-100/10 dark:bg-neutral-100 px-2 3xl:px-3 pt-2 pb-1.5 rounded-md whitespace-nowrap"
+                      >
+                        {feature.name}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div className="lg:col-span-3">
+                  <ParallaxImage
+                    src={service.image}
+                    alt={service.title}
+                    scrollRange={i === 0 ? ['-2.82vh', '0vh'] : ['-3vh', '0vh']}
+                    containerClassName="h-[220px] sm:h-[400px] md:h-[450px] lg:h-[clamp(220px,15vw,360px)]"
+                  />
+                </div>
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
       </div>
-    </BaseSection>
+    </section>
   );
 };
 
