@@ -105,16 +105,16 @@ html {
 .element {
   scrollbar-width: none;
 }
-
 /* For Chrome, Safari, and Opera */
 .-webkit-scrollbar {
   display: none;
 }
-
 /* For Internet Explorer and Edge */
 .element {
   -ms-overflow-style: none;
 }
+
+
 
 /* Base layer */
 @layer base {
@@ -151,18 +151,15 @@ html {
     font-weight: 450;
   }
 
-  /* Paragraph*/
   p {
     @apply text-base;
   }
 
-  /* Links*/
   a {
     color: inherit;
     text-decoration: none;
   }
 
-  /* Media */
   canvas,
   img,
   video {
@@ -179,7 +176,6 @@ html {
     vertical-align: middle;
   }
 
-  /* Selection */
   ::selection {
     background-color: var(--accent);
     color: #fff;
@@ -189,15 +185,6 @@ html {
     background-color: var(--accent);
     color: #fff;
     text-shadow: none;
-  }
-
-  /* Custom Classes */
-  .hsAccent {
-    font-size: var(--base-extra-sm);
-    line-height: var(--leading-relaxed);
-    letter-spacing: var(--tracking-label);
-    color: color-mix(in srgb, var(--primary) 75%, transparent);
-    text-transform: uppercase;
   }
 }
 

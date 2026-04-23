@@ -8,18 +8,22 @@ const HeroSection = () => {
   // const { isReady } = useLoading();
   const contactRef = useCursorHoverContent('arrow');
   const resumeRef = useCursorHoverContent('arrow');
-
+  const HeroTextSplit = ['A Good things', 'its was made', 'not born.'];
   return (
     <BaseSection containerID="hero" sectionClassName="pt-section pb-s200 section-padding-x">
       <div className="flex flex-col gap-s700 md:gap-s800">
         <div className="flex flex-col gap-s500">
-          <h1 className="text-display-sm leading-heading tracking-heading max-w-[18ch] font-[600] uppercase">A Good things its was made not born.</h1>
           <TextReveal
-            text="A multidisciplinary creative developer with designs and development background. Interested to explore and learn new things."
+            as="h1"
+            lines={HeroTextSplit}
+            className="text-display-sm leading-heading tracking-heading max-w-[18ch] font-[600] uppercase"
+          />
+          <TextReveal
+            as="p"
+            lines={['A multidisciplinary creative developer with designs and development background. Interested to explore and learn new things.']}
             className="text-base text-primary/60 leading-body"
             staggerDelay={0.2}
             startDelay={0.05}
-            // ready={isReady}
           />
         </div>
 

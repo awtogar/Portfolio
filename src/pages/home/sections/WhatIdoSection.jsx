@@ -1,11 +1,20 @@
 import React from 'react';
 import { services } from '@/data/content';
 import { ParallaxImage, TextReveal } from '../../../components';
-
-const MAIN_TEXT =
-  'Evolving with every brief and built for impact, my process spans design, development, and brand strategy—aligning vision with execution to bring clarity and edge to every project.';
+import { useDimensions } from '@/hooks/useDimensions';
 
 const WhatIdoSection = () => {
+  const { width } = useDimensions();
+
+  const paragraphLines =
+    width >= 768
+      ? ['A multidisciplinary creative developer', 'with designs and development background.', 'Interested to explore and learn new things.']
+      : ['A multidisciplinary creative developer with', 'designs and development background. Interested', 'to explore and learn new things.'];
+      
+    width >= 1024
+      ? ['A multidisciplinary creative developer', 'with designs and development background.', 'Interested to explore and learn new things.']
+      : ['A multidisciplinary creative developer with', 'designs and development background. Interested', 'to explore and learn new things.'];
+      
   return (
     <section className="px-2 lg:px-4 py-16 lg:py-24">
       <div className="flex flex-col gap-16 lg:gap-24 bg-neutral-900 dark:bg-neutral-50 px-4 pt-16 lg:pt-24 pb-4 rounded-2xl lg:rounded-[20px]">
@@ -17,11 +26,11 @@ const WhatIdoSection = () => {
               </div>
             </h2>
             <TextReveal
-              text={MAIN_TEXT}
+              lines={paragraphLines}
               as="p"
               className="text-neutral-100 dark:text-neutral-900 text-[clamp(24px,3.3vw,56px)] font-medium leading-[1.1] lg:leading-[1.05] flex-1"
+              startDelay={0.1}
               staggerDelay={0.05}
-              startDelay={0.2}
             />
           </div>
         </div>
@@ -47,11 +56,11 @@ const WhatIdoSection = () => {
                 </div>
                 <div className="flex flex-col gap-4 lg:gap-6 lg:col-span-3 mb-8 lg:mb-0">
                   <TextReveal
-                    text={service.description}
+                    lines={[service.description]}
                     as="p"
                     className="text-[clamp(16px,1.2vw,20px)] text-neutral-100 dark:text-neutral-800 font-medium leading-[1.3]"
-                    staggerDelay={0.03}
-                    startDelay={0.3}
+                    startDelay={0}
+                    staggerDelay={0.04}
                   />
                   <ul className="flex gap-1.5 flex-wrap">
                     {service.features.map((feature, idx) => (
