@@ -200,3 +200,7 @@ html {
 @utility animate-scroll-x {
   animation: scroll-x 20s linear infinite;
 }
+
+@utility animate-marquee {
+  animation: scroll-x var(--marquee-speed, 20s) linear infinite;
+}
