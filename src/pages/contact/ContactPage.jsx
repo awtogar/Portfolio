@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'motion/react';
 import { RiArrowRightUpLine, RiAttachment2, RiCheckLine } from '@remixicon/react';
 import { useContactForm, services, budgetOptions } from '@/hooks/useContactForm';
-import { useCursorInteraction } from '@/hooks/useCursorInteraction';
+import { useCursorInteraction } from '@/cursor';
 import { BaseSection, CreativeButton } from '@/components';
 import { fadeIn, fadeUp } from '@/data/anim/basic';
 

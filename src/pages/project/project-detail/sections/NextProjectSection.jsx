@@ -4,7 +4,7 @@ import { motion, useScroll, useTransform } from 'motion/react';
 import { RiArrowRightUpLine } from '@remixicon/react';
 import { CreativeButton, TransitionLink } from '../../../../components';
 import BaseSection from '../../../../components/common/BaseSection';
-import { useCursorHoverContent } from '@/hooks/useCursorInteraction';
+import { useCursorHoverContent } from '@/cursor';
 import { projects } from '@/data/projects';
 
 const NextProjectSection = () => {

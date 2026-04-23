@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, useCallback } from 'react';
+import { createContext, useContext, useState, useCallback, useEffect } from 'react';
 
 const CursorContext = createContext(null);
 
@@ -11,6 +11,7 @@ export const useCursor = () => {
 };
 
 export function CursorProvider({ children }) {
+  const [hasMouse, setHasMouse] = useState(true);
   const [cursorState, setCursorState] = useState({
     isActive: false,
     variant: 'scale',
@@ -20,6 +21,15 @@ export function CursorProvider({ children }) {
     fill: null,
     cursorSize: null,
   });
+
+  // Single source of truth for mouse capability detection
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(hover: hover) and (pointer: fine)');
+    setHasMouse(mediaQuery.matches);
+    const handler = (e) => setHasMouse(e.matches);
+    mediaQuery.addEventListener('change', handler);
+    return () => mediaQuery.removeEventListener('change', handler);
+  }, []);
 
   const setCursor = useCallback((state) => {
     setCursorState((prev) => ({ ...prev, ...state }));
@@ -38,7 +48,7 @@ export function CursorProvider({ children }) {
   }, []);
 
   return (
-    <CursorContext.Provider value={{ cursorState, setCursor, resetCursor }}>
+    <CursorContext.Provider value={{ cursorState, setCursor, resetCursor, hasMouse }}>
       {children}
     </CursorContext.Provider>
   );

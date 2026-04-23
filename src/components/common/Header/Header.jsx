@@ -4,7 +4,7 @@ import { AnimatePresence, motion } from 'motion/react';
 import { SideBar } from '../..';
 import { useLenis } from '../../../context/LenisContext';
 import { useTheme } from '../../../hooks/useTheme';
-import { useCursorInteraction } from '../../../hooks/useCursorInteraction';
+import { useCursorInteraction } from '@/cursor';
 import { useLoading } from '../../../context/LoadingProvider';
 import ThemeToggleButton from './ThemeToggleButton';
 import HamburgerButton from './HamburgerButton';

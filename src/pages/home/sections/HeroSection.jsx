@@ -1,7 +1,7 @@
 import React from 'react';
 import { CreativeButton, TextReveal } from '../../../components';
 import BaseSection from '../../../components/common/BaseSection';
-import { useCursorHoverContent } from '@/hooks/useCursorInteraction';
+import { useCursorHoverContent } from '@/cursor';
 // import { useLoading } from '@/context/LoadingProvider';
 
 const HeroSection = () => {

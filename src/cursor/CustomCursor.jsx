@@ -1,30 +1,10 @@
-import { useCallback, useMemo, useRef, useEffect, useState } from 'react';
+import { useCallback, useMemo, useRef, useEffect } from 'react';
 import { motion, useMotionValue, useSpring, AnimatePresence } from 'motion/react';
-import { useCursor } from '../../context/CursorContext';
-import { RiArrowRightUpLine, RiCheckLine } from '@remixicon/react';
-
-const CURSOR_SIZES = {
-  small: { idle: 6, hovered: 60 },
-  medium: { idle: 6, hovered: 60 },
-  large: { idle: 6, hovered: 70 },
-  xlarge: { idle: 6, hovered: 70 },
-};
-
-const CURSOR_FILLS = {
-  transparent: 'bg-transparent',
-  primary: 'bg-primary',
-  secondary: 'bg-secondary',
-  accent: 'bg-accent',
-};
-
-const CURSOR_CONTENTS = {
-  arrow: <RiArrowRightUpLine className="w-5 h-5 md:w-6 md:h-6" />,
-  text: <span className="text-primary tracking-widest uppercase">children</span>,
-  check: <RiCheckLine className="w-5 h-5 md:w-6 md:h-6" />,
-};
+import { useCursor } from './CursorProvider';
+import { CURSOR_SIZES, CURSOR_FILLS, CURSOR_CONTENTS } from './constants';
 
 const CustomCursor = () => {
-  const { cursorState } = useCursor();
+  const { cursorState, hasMouse } = useCursor();
   const { isActive, size, content, textColor, isSticky, stickyElement, fill, cursorSize: explicitSize } = cursorState;
 
   const cursorTrack = useRef(null);
@@ -47,16 +27,6 @@ const CustomCursor = () => {
 
   const smoothX = useSpring(mouseX, smoothOptions);
   const smoothY = useSpring(mouseY, smoothOptions);
-
-  const [hasMouse, setHasMouse] = useState(true);
-
-  useEffect(() => {
-    const mediaQuery = window.matchMedia('(hover: hover) and (pointer: fine)');
-    setHasMouse(mediaQuery.matches);
-    const handler = e => setHasMouse(e.matches);
-    mediaQuery.addEventListener('change', handler);
-    return () => mediaQuery.removeEventListener('change', handler);
-  }, []);
 
   const isActivelyTracking = hasMouse && cursorTrack.current;
 
@@ -125,7 +95,6 @@ const CustomCursor = () => {
             transition={{ duration: 0.2, ease: 'easeOut' }}
             className={`w-full h-full flex items-center justify-center font-secondary font-bold text-sm tracking-tight pointer-events-none ${textColor}`}
           >
-            {/* content inside the cursor follow */}
             {displayContent}
           </motion.div>
         )}
@@ -135,8 +104,3 @@ const CustomCursor = () => {
 };
 
 export default CustomCursor;
-
-/*
-
-
-*/

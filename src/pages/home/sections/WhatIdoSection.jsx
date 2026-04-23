@@ -10,11 +10,11 @@ const WhatIdoSection = () => {
     width >= 768
       ? ['A multidisciplinary creative developer', 'with designs and development background.', 'Interested to explore and learn new things.']
       : ['A multidisciplinary creative developer with', 'designs and development background. Interested', 'to explore and learn new things.'];
-      
-    width >= 1024
-      ? ['A multidisciplinary creative developer', 'with designs and development background.', 'Interested to explore and learn new things.']
-      : ['A multidisciplinary creative developer with', 'designs and development background. Interested', 'to explore and learn new things.'];
-      
+
+  width >= 1024
+    ? ['A multidisciplinary creative developer', 'with designs and development background.', 'Interested to explore and learn new things.']
+    : ['A multidisciplinary creative developer with', 'designs and development background. Interested', 'to explore and learn new things.'];
+
   return (
     <section className="px-2 lg:px-4 py-16 lg:py-24">
       <div className="flex flex-col gap-16 lg:gap-24 bg-neutral-900 dark:bg-neutral-50 px-4 pt-16 lg:pt-24 pb-4 rounded-2xl lg:rounded-[20px]">

@@ -2,7 +2,7 @@ import React from 'react';
 import { RiGeminiFill, RiHand } from '@remixicon/react';
 import { HoverVideoCard, CircularText, CreativeButton, BaseSection } from '@/components';
 import { aboutHeroImg } from '@/assets';
-import { useCursorInteraction } from '@/hooks/useCursorInteraction';
+import { useCursorInteraction } from '@/cursor';
 
 const HeroSection = () => {
   const resumeRef = useCursorInteraction('arrow');

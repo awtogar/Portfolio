@@ -1,4 +1,4 @@
-import { useCursorInteraction } from '../../../hooks/useCursorInteraction';
+import { useCursorInteraction } from '@/cursor';
 
 const HamburgerButton = ({ isActive, onToggle }) => {
   const { targetRef, boundsRef } = useCursorInteraction({ magnetic: true, sticky: true });

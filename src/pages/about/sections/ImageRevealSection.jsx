@@ -1,11 +1,11 @@
 import React, { useRef } from 'react';
 import { useScroll, useTransform, motion } from 'motion/react';
-import { HoverVideoCard, Splatter, BaseSection } from '@/components';
+import { HoverVideoCard, SvgImageMask, BaseSection } from '@/components';
 import { useDimensions } from '@/hooks';
 
 import { aboutImg1, aboutImg2 } from '@/assets';
 
-const maskSVG = `data:image/svg+xml;base64,${btoa(`${Splatter()}`)}`;
+const maskSVG = `data:image/svg+xml;base64,${btoa(`${SvgImageMask()}`)}`;
 
 const images = [
   { src: aboutImg1, alt: 'Image 2' },

@@ -1,5 +1,5 @@
 import { LenisProvider } from './LenisContext';
-import { CursorProvider } from './CursorContext';
+import { CursorProvider } from '../cursor';
 import { LoadingProvider } from './LoadingProvider';
 
 const AppProviders = ({ children }) => {

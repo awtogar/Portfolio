@@ -2,7 +2,6 @@ import React, { useRef } from 'react';
 import { RiArrowRightUpLine } from '@remixicon/react';
 import { useMarquee } from '@/hooks';
 
-
 export const ScrollAwareArrow = ({ size = 48, className = '', Icon = RiArrowRightUpLine, isScrollingDown = true }) => {
   return (
     <div

@@ -16,11 +16,7 @@ export function useDimensions() {
 
     // Initialize dimensions
     resize();
-
-    // Add event listener
     window.addEventListener('resize', resize);
-
-    // Cleanup
     return () => {
       window.removeEventListener('resize', resize);
     };

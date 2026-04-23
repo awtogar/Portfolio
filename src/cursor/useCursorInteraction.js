@@ -1,5 +1,5 @@
-import { useRef, useEffect, useState } from 'react';
-import { useCursor } from '../context/CursorContext';
+import { useRef, useEffect } from 'react';
+import { useCursor } from './CursorProvider';
 import gsap from 'gsap';
 
 export const useCursorInteraction = ({
@@ -13,17 +13,7 @@ export const useCursorInteraction = ({
 } = {}) => {
   const targetRef = useRef(null);
   const boundsRef = useRef(null);
-  const { setCursor, resetCursor } = useCursor();
-  const [hasMouse, setHasMouse] = useState(true);
-
-  useEffect(() => {
-    // Best practice: Detect actual pointer capability, not screen width, for tablets and mobile devices
-    const mediaQuery = window.matchMedia('(hover: hover) and (pointer: fine)');
-    setHasMouse(mediaQuery.matches);
-    const handler = (e) => setHasMouse(e.matches);
-    mediaQuery.addEventListener('change', handler);
-    return () => mediaQuery.removeEventListener('change', handler);
-  }, []);
+  const { setCursor, resetCursor, hasMouse } = useCursor();
 
   useEffect(() => {
     const target = targetRef.current;

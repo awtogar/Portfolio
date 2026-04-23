@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Splatter = (
+const SvgImageMask = (
   color = 'bg-neutral-100',
 ) => {
   return `
@@ -26,4 +26,4 @@ const Splatter = (
   `;
 };
 
-export default Splatter;
+export default SvgImageMask;
