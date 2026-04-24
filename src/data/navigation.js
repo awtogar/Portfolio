@@ -4,7 +4,8 @@ export const pages = {
     href: '/',
     label: 'Home',
     sections: [
-      { id: 'hero', title: 'Hero' },
+      { id: 'welcome', title: 'Welcome' },
+      { id: 'showreels', title: 'showreels' },
       { id: 'what-i-do', title: 'What I Do' },
       { id: 'selected-works', title: 'Selected Works' },
       { id: 'contact', title: 'Contact' },

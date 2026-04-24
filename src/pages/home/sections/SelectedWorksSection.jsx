@@ -93,7 +93,7 @@ const SelectedWorksSection = () => {
         <div className="h-px w-full bg-primary/10" />
       </div>
 
-      <ul className="flex flex-col lg:flex-row gap-2 lg:gap-4 w-full mb-s600 lg:mb-s800">
+      <ul className="flex flex-col lg:flex-row gap-2 lg:gap-4 w-full pb-s600 lg:pb-s800">
         {selectedWorks.map(work => (
           <AnimatedCard
             key={work.id}

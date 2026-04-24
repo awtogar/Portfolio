@@ -8,6 +8,16 @@ import { LetterScroll } from '@/components/ui/LetterScroll';
 import { HoverRotate } from '..';
 import { contact_info, socials, pages } from '@/data/navigation';
 import { useScrollToSection } from '@/hooks';
+import { useCursorInteraction } from '@/cursor';
+
+const LinkHoverRotate = ({ cursorConfig = {}, children, ...props }) => {
+  const { targetRef } = useCursorInteraction(cursorConfig);
+  return (
+    <HoverRotate ref={targetRef} {...props}>
+      {children}
+    </HoverRotate>
+  );
+};
 
 const images = [aboutHeroImg, aboutImg1, aboutImg2, img1, img3, img4, img5, img6, aboutImg1, img5, img4, aboutHeroImg];
 const mobileImages = [aboutHeroImg];
@@ -38,8 +48,8 @@ export default function Footer() {
   };
 
   return (
-    <BaseSection as="footer" sectionClassName="" containerClassName="max-w-full">
-      <div className="h-fit md:h-[100vh]">
+    <BaseSection as="footer" containerID="footer" containerClassName="max-w-full">
+      <div className="h-fit md:h-[100vh">
         <LetterScroll lines={['MODERN', 'TECH STACK']} />
       </div>
       <div className="md:hidden bg-neutral-100 pointer-events-none select-none">
@@ -56,52 +66,10 @@ export default function Footer() {
           <Column images={[images[9], images[10], images[11]]} y={y4} topClass="hidden md:flex -top-[60%]" />
         </div>
       </div>
-
-      {/* Mobile Footer END */}
-      <div id="contact" className="h-[100vh] bg-neutral-100 section-padding-x items-end hidden md:flex">
-        <div className="m-auto w-full max-w-full lg:max-w-[960px] xl:max-w-[1140px] 2xl:max-w-[1280px] pb-8">
-          <div className="flex flex-col gap-s600 justify-between">
-            <div className="flex justify-between flex-wrap gap-8">
-              <div className="flex flex-col gap-s100 items-start">
-                <span className="text-primary-muted/72 inline-block border-b border-primary-muted/35 pb-1 w-fit">Content Menu</span>
-                {currentPage.sections.map(section => (
-                  <HoverRotate
-                    key={section.id}
-                    className="text-primary-muted text-5xl font-medium uppercase tracking-tight leading-[1.1]"
-                    href={`#${section.id}`}
-                    onClick={e => handleSectionClick(e, section.id)}
-                  >
-                    {section.title}
-                  </HoverRotate>
-                ))}
-              </div>
-              <div className="flex flex-col gap-s100 items-end">
-                <span className="text-primary-muted/72 inline-block border-b border-primary-muted/35 pb-1 w-fit">Socials</span>
-                {socials.map(social => (
-                  <HoverRotate
-                    key={social.label}
-                    as="a"
-                    href={social.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-primary-muted text-5xl font-medium uppercase tracking-tight leading-[1.1]"
-                  >
-                    {social.title}
-                  </HoverRotate>
-                ))}
-              </div>
-            </div>
-            <div className="text-primary-muted/72 flex justify-between items-center pt-4 border-t border-primary-muted/35">
-              <span className="text-xs">{contact_info.credits}</span>
-              <span className="text-xs">{contact_info.copyright}</span>
-            </div>
-          </div>
-        </div>
-      </div>
       <div className="h-screen bg-neutral-100 section-padding-x flex flex-col justify-between md:hidden py-10">
         <div className="grid flex-1 grid-cols-1 gap-y-8">
           <div>
-            <span className="mb-2 block text-[10px] font-mono font-medium tracking-[0.2em] text-primary-muted/50 uppercase">Sitemap</span>
+            <span className="mb-2 block text-[10px] font-mono font-medium tracking-[0.2em] text-primary-muted/50 uppercase">Contents</span>
             <ul className="flex flex-col">
               {currentPage.sections.map((section, i) => (
                 <li key={section.id} className="border-b border-primary-muted/10 last:border-b-0">
@@ -118,7 +86,7 @@ export default function Footer() {
             </ul>
           </div>
           <div>
-            <span className="mb-2 block text-[10px] font-mono font-medium tracking-[0.2em] text-primary-muted/50 uppercase">Connect</span>
+            <span className="mb-2 block text-[10px] font-mono font-medium tracking-[0.2em] text-primary-muted/50 uppercase">Socials</span>
             <ul className="flex flex-col">
               {socials.map((social, i) => (
                 <li key={social.label} className="border-b border-primary-muted/10 last:border-b-0">
@@ -140,6 +108,50 @@ export default function Footer() {
         <div className="flex flex-col gap-3 border-t border-primary-muted/20 pt-5 text-[10px] font-mono uppercase tracking-wider text-primary-muted/50 sm:flex-row sm:justify-between">
           <span>{contact_info.credits}</span>
           <span>{contact_info.copyright}</span>
+        </div>
+      </div>
+
+      {/* Desktop */}
+      <div id="contact" className="hidden md:flex h-[100vh] bg-neutral-100 section-padding-x items-end">
+        <div className="m-auto w-full max-w-full lg:max-w-[960px] xl:max-w-[1140px] 2xl:max-w-[1280px] pb-8">
+          <div className="flex flex-col gap-s600 justify-between">
+            <div className="flex justify-between flex-wrap gap-8">
+              <div className="flex flex-col gap-s100 items-start">
+                <span className="text-primary-muted/72 inline-block border-b border-primary-muted/35 pb-1 w-fit">Content Menu</span>
+                {currentPage.sections.map(section => (
+                  <LinkHoverRotate
+                    key={section.id}
+                    cursorConfig={{ magnetic: true, content: 'arrow' }}
+                    className="text-primary-muted text-5xl font-medium uppercase tracking-tight leading-[1.1]"
+                    href={`#${section.id}`}
+                    onClick={e => handleSectionClick(e, section.id)}
+                  >
+                    {section.title}
+                  </LinkHoverRotate>
+                ))}
+              </div>
+              <div className="flex flex-col gap-s100 items-end">
+                <span className="text-primary-muted/72 inline-block border-b border-primary-muted/35 pb-1 w-fit">Socials</span>
+                {socials.map(social => (
+                  <LinkHoverRotate
+                    key={social.label}
+                    cursorConfig={{ magnetic: true, content: 'arrow'}}
+                    as="a"
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-primary-muted text-5xl font-medium uppercase tracking-tight leading-[1.1]"
+                  >
+                    {social.title}
+                  </LinkHoverRotate>
+                ))}
+              </div>
+            </div>
+            <div className="text-primary-muted/72 flex justify-between items-center pt-4 border-t border-primary-muted/35">
+              <span className="text-xs">{contact_info.credits}</span>
+              <span className="text-xs">{contact_info.copyright}</span>
+            </div>
+          </div>
         </div>
       </div>
     </BaseSection>

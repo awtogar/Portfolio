@@ -8,8 +8,8 @@ const HeroSection = () => {
   const resumeRef = useCursorHoverContent('arrow');
   const HeroTextSplit = ['A Good things', 'its was made', 'not born.'];
   return (
-    <BaseSection containerID="hero" sectionClassName="pt-section pb-s200 section-padding-x">
-      <div className="flex flex-col gap-s700 md:gap-s800">
+    <BaseSection containerID="welcome" sectionClassName="pt-section pb-s200 section-padding-x">
+      <div className="flex flex-col gap-s700 md:gap-s800 md:pt-12">
         <div className="flex flex-col gap-s500">
           <TextReveal as="h1" lines={HeroTextSplit} className="text-display-sm leading-heading tracking-heading max-w-[18ch] font-[600] uppercase" />
           <TextReveal

@@ -1,6 +1,6 @@
 import React from 'react';
 import { services } from '@/data/content';
-import { ParallaxImage, TextReveal } from '../../../components';
+import { BaseSection, ParallaxImage, TextReveal } from '../../../components';
 import { useDimensions } from '@/hooks/useDimensions';
 
 const WhatIdoSection = () => {
@@ -16,7 +16,7 @@ const WhatIdoSection = () => {
     : ['A multidisciplinary creative developer with', 'designs and development background. Interested', 'to explore and learn new things.'];
 
   return (
-    <section className="px-2 lg:px-4 py-16 lg:py-24">
+    <BaseSection containerID='what-i-do' sectionClassName="px-2 lg:px-4 py-16 lg:py-24">
       <div className="flex flex-col gap-16 lg:gap-24 bg-neutral-900 dark:bg-neutral-50 px-4 pt-16 lg:pt-24 pb-4 rounded-2xl lg:rounded-[20px]">
         <div className="flex flex-col lg:flex-row">
           <div className="flex flex-col md:flex-row md:gap-8 lg:gap-16">
@@ -66,7 +66,7 @@ const WhatIdoSection = () => {
                     {service.features.map((feature, idx) => (
                       <li
                         key={idx}
-                        className="text-[10px] text-neutral-100 dark:text-neutral-900 uppercase tracking-[1.1] bg-neutral-100/10 dark:bg-neutral-100 px-2 3xl:px-3 pt-2 pb-1.5 rounded-md whitespace-nowrap"
+                        className="text-[10px] text-neutral-100 dark:text-neutral-50 uppercase tracking-[1.1] bg-neutral-100/10 dark:bg-neutral-100 px-2 3xl:px-3 pt-2 pb-1.5 rounded-md whitespace-nowrap"
                       >
                         {feature.name}
                       </li>
@@ -87,7 +87,7 @@ const WhatIdoSection = () => {
           </ul>
         </div>
       </div>
-    </section>
+    </BaseSection>
   );
 };
 
