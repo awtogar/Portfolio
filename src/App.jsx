@@ -10,7 +10,7 @@ import { useScrollToTop, usePreloader } from '@/hooks';
 const HomePage = lazy(() => import('@/pages/home/HomePage'));
 const AboutPage = lazy(() => import('@/pages/about/AboutPage'));
 const ProjectPage = lazy(() => import('@/pages/project/ProjectPage'));
-const ProjectDetailPage = lazy(() => import('@/pages/project/project-detail'));
+const ProjectDetailPage = lazy(() => import('@/pages/project/project-detail/ProjectDetailPage'));
 const ContactPage = lazy(() => import('@/pages/contact/ContactPage'));
 
 const WithFooter = () => (

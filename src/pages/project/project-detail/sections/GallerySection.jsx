@@ -1,12 +1,7 @@
-import { useParams } from 'react-router-dom';
-import { projects } from '@/data/projects';
 import { HoverVideoCard } from '@/components';
 
-const GallerySection = () => {
-  const { slug } = useParams();
-  const project = projects.find(p => p.slug === slug);
-
-  if (!project || !project.gallery?.length) return null;
+const GallerySection = ({ project }) => {
+  if (!project.gallery?.length) return null;
 
   return (
     <div className="flex flex-col gap-4 lg:gap-5">
