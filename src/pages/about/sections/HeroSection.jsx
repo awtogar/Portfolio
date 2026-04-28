@@ -1,15 +1,15 @@
 import React from 'react';
-import { RiGeminiFill, RiHand } from '@remixicon/react';
-import { HoverVideoCard, CircularText, CreativeButton, BaseSection } from '@/components';
+import { RiGeminiFill } from '@remixicon/react';
+import { HoverVideoCard, CircularText, TextReveal, CreativeButton, BaseSection } from '@/components';
 import { aboutHeroImg } from '@/assets';
-import { useCursorInteraction } from '@/cursor';
+import { useCursorHoverContent } from '@/cursor';
 
 const HeroSection = () => {
-  const resumeRef = useCursorInteraction('arrow');
+  const resumeRef = useCursorHoverContent('arrow');
 
   return (
-    <BaseSection sectionClassName="section-padding-hero">
-      <div className="flex flex-col gap-s700 lg:gap-s800">
+    <BaseSection sectionClassName="pt-section pb-s200 section-padding-x">
+      <div className="flex flex-col gap-s700 md:gap-s800 md:pt-12">
         <div className="relative overflow-hidden">
           <HoverVideoCard
             src={aboutHeroImg}
@@ -29,25 +29,22 @@ const HeroSection = () => {
           </div>
         </div>
 
-        <div className="flex flex-col gap-s600 max-w-3xl">
-          <p className="flex items-center gap-s200 text-base text-primary/55">
-            Hey! It's me Togar,
-            <RiHand size={20} />
-          </p>
+        <div className="flex flex-col gap-s500">
+          <TextReveal as="h1" lines={['A Creative Developer', '& Web Designer']} className="text-display-sm leading-heading tracking-heading max-w-[18ch] font-[600] uppercase" />
+          <TextReveal
+            as="p"
+            lines={['I help global brands bring their ideas to life with impactful solutions and keep their brand identity.']}
+            className="text-base text-primary/60 leading-body"
+            staggerDelay={0.2}
+            startDelay={0.05}
+          />
+        </div>
 
-          <div className="flex flex-col gap-s400">
-            <h1 className="text-h200 leading-heading tracking-heading">A Creative Developer &amp; Web Designer</h1>
-            <p className="text-base max-w-[42ch] text-primary/55 leading-body">
-              I help global brands bring their ideas to life with impactful solutions and keep their brand identity.
-            </p>
-          </div>
-
-          <div className="w-full max-w-[200px]">
-            <div className="flex-1 lg:flex-none lg:min-w-[200px]">
-              <CreativeButton ref={resumeRef} to="/contact" variant="outline">
-                See my resume
-              </CreativeButton>
-            </div>
+        <div className="flex flex-row items-center gap-4 md:gap-s400">
+          <div className="w-full md:w-auto">
+            <CreativeButton ref={resumeRef} to="/contact" variant="fillReverse" size="lg" className="w-full md:w-auto min-w-[200px]">
+              See my resume
+            </CreativeButton>
           </div>
         </div>
       </div>

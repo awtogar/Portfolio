@@ -73,9 +73,9 @@ export default function SideBar({ closeMenu }) {
             </div>
           </div>
           <div className="flex justify-between">
-            <div className="flex flex-col space-y-2">
+            <div className="flex flex-col space-y-2 md:space-y-0">
               <span className="text-secondary/55 text-sm">Social</span>
-              <div className="flex flex-col">
+              <div className="flex flex-col md:flex-row md:justify-between w-full">
                 {socials.map(data => (
                   <HoverRotate key={data.label} href={data.href} target="_blank" rel="noopener noreferrer">
                     <span>{data.title}</span>
