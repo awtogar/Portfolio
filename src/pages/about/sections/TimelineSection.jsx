@@ -1,5 +1,3 @@
-'use client';
-
 import { useRef } from 'react';
 import { BaseSection, TimelineSVGLine } from '@/components';
 import { experience } from '@/data/content';

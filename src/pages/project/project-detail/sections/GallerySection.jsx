@@ -4,7 +4,7 @@ const GallerySection = ({ project }) => {
   if (!project.gallery?.length) return null;
 
   return (
-    <div className="flex flex-col gap-4 lg:gap-5">
+    <div className="flex flex-col gap-4 lg:gap-5 ">
       {project.gallery.map((media, i) => {
         if (i === 3 && project.gallery.length >= 4) return null;
         if (i === 2 && project.gallery.length >= 4) {
@@ -31,7 +31,7 @@ const GallerySection = ({ project }) => {
             key={i}
             src={media}
             alt={`${project.client} - ${i + 1}`}
-            containerClassName="w-full h-[200px] md:h-[400px] lg:h-[clamp(600px,57vw,1200px)] rounded-lg lg:rounded-xl"
+            containerClassName="w-full aspect-square md:aspect-[4/3] lg:aspect-[16/10] rounded-lg lg:rounded-xl"
             imageClassName="object-cover object-center"
           />
         );

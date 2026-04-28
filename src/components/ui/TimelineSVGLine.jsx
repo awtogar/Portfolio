@@ -65,7 +65,7 @@ const TimelineSVGLine = ({ containerRef }) => {
       <path ref={thinPathRef} stroke="currentColor" strokeWidth="1" strokeOpacity="0.15" fill="none" />
 
       {/* progress */}
-      <path ref={progressPathRef} stroke="#39362d" strokeWidth="1" fill="none" strokeLinecap="round" pathLength="1" strokeDasharray="1" strokeDashoffset="1" />
+      <path ref={progressPathRef} className="stroke-primary" strokeWidth="1" fill="none" strokeLinecap="round" pathLength="1" strokeDasharray="1" strokeDashoffset="1" />
     </svg>
   );
 };

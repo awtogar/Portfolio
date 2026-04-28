@@ -35,13 +35,13 @@ const HoverVideoCard = ({
   return (
     <div 
       ref={innerRef} 
-      className={`overflow-hidden ${videoSrc || blur ? 'relative' : ''} ${containerClassName || ''}`}
+      className={`overflow-hidden  ${videoSrc || blur ? 'relative' : ''} ${containerClassName || ''}`}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
       <motion.div
         style={{ y }}
-        className={`w-full h-full transform-gpu  ${className || ''}`}
+        className={`w-full h-full transform-gpu ${className || ''}`}
       >
         {hasEntered && (
           <img
@@ -50,7 +50,7 @@ const HoverVideoCard = ({
             loading="lazy"
             decoding="async"
             fetchPriority="low"
-            className={`w-full h-full object-cover ${videoSrc ? 'transition-transform duration-700 ease-out ' + (isHovered ? 'scale-105' : 'scale-100') : ''} ${imageClassName || ''}`}
+            className={`w-full h-full object-cover rounded-xl ${videoSrc ? 'transition-transform duration-700 ease-out ' + (isHovered ? 'scale-105' : 'scale-100') : ''} ${imageClassName || ''}`}
           />
         )}
       </motion.div>
@@ -65,7 +65,6 @@ const HoverVideoCard = ({
             initial={{ opacity: 0, scale: 0.85, y: 8 }}
             animate={{ opacity: isHovered ? 1 : 0, scale: isHovered ? 1 : 0.85, y: isHovered ? 0 : 8 }}
             transition={{ duration: 0.45, ease: [0.7, 0, 0.3, 1] }}
-            // video class
             className="w-full md:w-[75%] max-w-[700px] aspect-video rounded-xl overflow-hidden"
           >
             {hasEntered && isHovered && <video src={videoSrc} autoPlay loop muted playsInline className="w-full h-full object-cover" />}

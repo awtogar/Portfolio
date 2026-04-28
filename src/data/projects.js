@@ -13,11 +13,17 @@ import {
   introVideo1,
   introVideo2,
   nostraticReels,
-  nostratic1,
-  nostratic2,
-  nostratic3,
-  nostratic4,
-  nostratic5,
+  nostraticAssets1,
+  nostraticAssets2,
+  nostraticAssets3,
+  nostraticAssets4,
+  nostraticAssets5,
+  nostraticAssets6,
+  nostraticAssets7,
+  nostraticAssets8,
+  nostraticAssets9,
+  nostraticAssets10
+
 } from '../assets';
 
 import { OveloLogo, NostraticLogo, LunvaraLogo, SynoraLogo, ColorrideLogo, Investime } from '@/components/Logos/ProjectLogos';
@@ -45,13 +51,13 @@ export const projects = [
     type: 'Websites',
     year: '2025',
     logo: NostraticLogo,
-    thumbnail: nostratic1,
+    thumbnail: nostraticAssets1,
     video: nostraticReels,
     description: 'Branding and Web Development for a creative studio agency in Indonesia. that specializes in digital products.',
     tags: ['UI/UX', 'Prototype', 'Figma'],
     date: { month: 'February', year: '2025' },
     selected: true,
-    gallery: [nostratic1, nostratic2, nostratic3, nostratic4, nostratic5],
+    gallery: [nostraticAssets1, nostraticAssets2, nostraticAssets3, nostraticAssets4, nostraticAssets5, nostraticAssets6,nostraticAssets7, nostraticAssets8, nostraticAssets9, nostraticAssets10],
   },
   {
     id: 3,
