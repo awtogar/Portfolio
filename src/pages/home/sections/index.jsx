@@ -1,4 +1,4 @@
-export { default as HeroSection } from './HeroSection';
-export { default as IntroSection } from './IntroSection';
-export { default as SelectedWorksSection } from './SelectedWorksSection';
-export { default as WhatIdoSection } from './WhatIdoSection';
+export { default as HomeHeroSection } from './HomeHeroSection';
+export { default as HomeIntroSection } from './HomeIntroSection';
+export { default as HomeSelectedWorksSection } from './HomeSelectedWorksSection';
+export { default as HomeWhatIdoSection } from './HomeWhatIdoSection';

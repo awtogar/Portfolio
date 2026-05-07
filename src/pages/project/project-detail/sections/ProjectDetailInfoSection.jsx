@@ -1,7 +1,7 @@
 import React from 'react';
 import { RiArrowRightUpLine } from '@remixicon/react';
 
-const InfoSection = ({ project }) => {
+const ProjectDetailInfoSection = ({ project }) => {
   return (
     <div className="flex flex-col gap-8 lg:grid lg:grid-cols-12">
       <div className="flex flex-col gap-3 col-span-2">
@@ -56,4 +56,4 @@ const InfoSection = ({ project }) => {
   );
 };
 
-export default InfoSection;
+export default ProjectDetailInfoSection;

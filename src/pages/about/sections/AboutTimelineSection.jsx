@@ -64,7 +64,7 @@ const ExperienceEntry = ({ exp }) => {
   );
 };
 
-const TimelineSection = () => {
+const AboutTimelineSection = () => {
   const listRef = useRef(null);
 
   return (
@@ -99,4 +99,4 @@ const TimelineSection = () => {
   );
 };
 
-export default TimelineSection;
+export default AboutTimelineSection;

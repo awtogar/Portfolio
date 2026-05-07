@@ -1,4 +1,4 @@
-export { default as HeroSection } from './HeroSection';
-export { default as GallerySection } from './GallerySection';
-export { default as InfoSection } from './InfoSection';
-export { default as NextProjectSection } from './NextProjectSection';
+export { default as ProjectDetailHeroSection } from './ProjectDetailHeroSection';
+export { default as ProjectDetailGallerySection } from './ProjectDetailGallerySection';
+export { default as ProjectDetailInfoSection } from './ProjectDetailInfoSection';
+export { default as ProjectDetailNextProjectSection } from './ProjectDetailNextProjectSection';

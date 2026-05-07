@@ -7,7 +7,7 @@ import BaseSection from '../../../../components/common/BaseSection';
 import { useCursorHoverContent } from '@/cursor';
 import { projects } from '@/data/projects';
 
-const NextProjectSection = () => {
+const ProjectDetailNextProjectSection = () => {
   const { slug } = useParams();
   const projectIndex = projects.findIndex(p => p.slug === slug);
   const nextProject = projectIndex !== -1 ? projects[(projectIndex + 1) % projects.length] : null;
@@ -65,4 +65,4 @@ const NextProjectSection = () => {
   );
 };
 
-export default NextProjectSection;
+export default ProjectDetailNextProjectSection;

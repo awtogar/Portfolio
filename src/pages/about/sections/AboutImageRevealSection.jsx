@@ -3,16 +3,16 @@ import { useScroll, useTransform, motion } from 'motion/react';
 import { HoverVideoCard, SvgImageMask, BaseSection } from '@/components';
 import { useDimensions } from '@/hooks';
 
-import { aboutImg1, aboutImg2 } from '@/assets';
+import { site2, site3 } from '@/assets';
 
 const maskSVG = `data:image/svg+xml;base64,${btoa(`${SvgImageMask()}`)}`;
 
 const images = [
-  { src: aboutImg1, alt: 'Image 2' },
-  { src: aboutImg2, alt: 'Image 3' },
+  { src: site2, alt: 'Image 2' },
+  { src: site3, alt: 'Image 3' },
 ];
 
-const ImageRevealSection = () => {
+const AboutImageRevealSection = () => {
   const containerMaskRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: containerMaskRef,
@@ -61,4 +61,4 @@ const ImageRevealSection = () => {
   );
 };
 
-export default ImageRevealSection;
+export default AboutImageRevealSection;

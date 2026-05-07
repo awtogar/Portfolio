@@ -2,7 +2,7 @@ import { useRef } from 'react';
 import { motion } from 'motion/react';
 import { useLoading } from '@/context/LoadingProvider';
 
-const HeroSection = ({ project }) => {
+const ProjectDetailHeroSection = ({ project }) => {
   const { phase } = useLoading();
   const hasPlayed = useRef(false);
   if (phase === 'idle') hasPlayed.current = true;
@@ -21,4 +21,4 @@ const HeroSection = ({ project }) => {
   );
 };
 
-export default HeroSection;
+export default ProjectDetailHeroSection;

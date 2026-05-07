@@ -2,7 +2,7 @@
 import { useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 import { motion, useScroll, useTransform } from 'motion/react';
-import { aboutHeroImg, aboutImg1, aboutImg2, img1, img3, img4, img5, img6 } from '@/assets';
+import { site1, site2, site3, site6, site7, site8, site9, site13 } from '@/assets';
 import BaseSection from '@/components/common/BaseSection';
 import { LetterScroll } from '@/components/ui/LetterScroll';
 import { HoverRotate } from '..';
@@ -19,8 +19,8 @@ const LinkHoverRotate = ({ cursorConfig = {}, children, ...props }) => {
   );
 };
 
-const images = [aboutHeroImg, aboutImg1, aboutImg2, img1, img3, img4, img5, img6, aboutImg1, img5, img4, aboutHeroImg];
-const mobileImages = [aboutHeroImg];
+const images = [site1, site2, site3, site6, site7, site8, site9, site13, site2, site9, site8, site1];
+const mobileImages = [site1];
 
 export default function Footer() {
   const gallery = useRef(null);
@@ -38,7 +38,7 @@ export default function Footer() {
   const y = useTransform(scrollYProgress, [0, 1], [0, height * 2]);
   const y2 = useTransform(scrollYProgress, [0, 1], [0, height * 3.3]);
   const y3 = useTransform(scrollYProgress, [0, 1], [0, height * 1.25]);
-  const y4 = useTransform(scrollYProgress, [0, 1], [0, height * 3]);
+  const y4 = useTransform(scrollYProgress, [0, 1], [0, height * 3.3]);
 
   const currentPage = Object.values(pages).find(page => pathname === page.href || pathname.startsWith(`${page.href}/`)) || pages.home;
 
@@ -48,9 +48,14 @@ export default function Footer() {
   };
 
   return (
-    <BaseSection as="footer" containerID="footer" containerClassName="max-w-full">
-      <div className="h-fit md:h-[100vh">
-        <LetterScroll lines={['MODERN', 'TECH STACK']} />
+    <BaseSection as="footer" containerID="footer" containerClassName="max-w-full" sectionClassName="">
+      <div className="relative h-screen md:h-[100vh]">
+        <div className="absolute inset-0">
+          <LetterScroll lines={['MODERN', 'TECH STACK']} textColor="text-primary" />
+        </div>
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none px-4">
+          <div className="w-full h-[56%] rounded-2xl" />
+        </div>
       </div>
       <div className="md:hidden bg-neutral-100 pointer-events-none select-none">
         {mobileImages.map((src, i) => (
@@ -66,6 +71,7 @@ export default function Footer() {
           <Column images={[images[9], images[10], images[11]]} y={y4} topClass="hidden md:flex -top-[60%]" />
         </div>
       </div>
+      {/* mobile */}
       <div className="h-screen bg-neutral-100 section-padding-x flex flex-col justify-between md:hidden py-10">
         <div className="grid flex-1 grid-cols-1 gap-y-8">
           <div>
@@ -112,11 +118,11 @@ export default function Footer() {
       </div>
 
       {/* Desktop */}
-      <div id="contact" className="hidden md:flex h-[100vh] bg-neutral-100 section-padding-x items-end">
-        <div className="m-auto w-full max-w-full lg:max-w-[960px] xl:max-w-[1140px] 2xl:max-w-[1280px] pb-8">
-          <div className="flex flex-col gap-s600 justify-between">
+      <div id="contact" className="hidden md:flex h-[100vh] bg-neutral-100 section-padding-x items-center relative overflow-hidden clip">
+        <div className="m-auto w-full max-w-full lg:max-w-[960px] xl:max-w-[1140px] 2xl:max-w-[1280px] md:pb-0">
+          <div className="flex flex-col gap-s800 justify-between pt-18">
             <div className="flex justify-between flex-wrap gap-8">
-              <div className="flex flex-col gap-s100 items-start">
+              <div className="flex flex-col gap-s100 items-start md:gap-s400">
                 <span className="text-primary-muted/72 inline-block border-b border-primary-muted/35 pb-1 w-fit">Content Menu</span>
                 {currentPage.sections.map(section => (
                   <LinkHoverRotate
@@ -130,12 +136,12 @@ export default function Footer() {
                   </LinkHoverRotate>
                 ))}
               </div>
-              <div className="flex flex-col gap-s100 items-end">
+              <div className="flex flex-col gap-s100 items-end md:gap-s400">
                 <span className="text-primary-muted/72 inline-block border-b border-primary-muted/35 pb-1 w-fit">Socials</span>
                 {socials.map(social => (
                   <LinkHoverRotate
                     key={social.label}
-                    cursorConfig={{ magnetic: true, content: 'arrow'}}
+                    cursorConfig={{ magnetic: true, content: 'arrow' }}
                     as="a"
                     href={social.href}
                     target="_blank"
@@ -147,7 +153,7 @@ export default function Footer() {
                 ))}
               </div>
             </div>
-            <div className="text-primary-muted/72 flex justify-between items-center pt-4 border-t border-primary-muted/35">
+            <div className="absolute bottom-0 left-0 right-0 section-padding-x text-primary-muted/72 flex justify-between items-center py-4 border-t border-primary-muted/35">
               <span className="text-xs">{contact_info.credits}</span>
               <span className="text-xs">{contact_info.copyright}</span>
             </div>

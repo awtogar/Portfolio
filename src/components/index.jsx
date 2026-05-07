@@ -3,6 +3,7 @@ export { default as Header } from './common/Header/Header';
 export { default as SideBar } from './common/Sidebar';
 export { default as Footer } from './common/Footer';
 export { default as BaseSection } from './common/BaseSection';
+export { default as HeroBentoGrid } from './ui/HeroBentoGrid';
 
 // Navigation
 export { default as NavigationLink } from './common/NavigationLink';

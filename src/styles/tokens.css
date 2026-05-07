@@ -31,8 +31,8 @@
   --animation-slow: all 0.9s cubic-bezier(0.7, 0, 0.3, 1);
 
   --display: clamp(48px, 12vw, 200px);
-  --display-sm: clamp(3.25rem, 7vw, 8rem);
-  --display-xs: clamp(2.5rem, 5vw, 4.5rem);
+  --display-sm: clamp(3.5rem, 8vw, 6rem);
+  --display-xs: clamp(3rem, 7vw, 5rem);
 
   --h100: clamp(3.25rem, 7vw, 8rem);
   --h200: clamp(2.5rem, 5vw, 4.5rem);

@@ -1,10 +1,9 @@
 import React from 'react';
 import { projects } from '@/data/projects';
-import { TransitionLink, CreativeButton, TextReveal, AnimatedCard } from '../../../components';
-import BaseSection from '../../../components/common/BaseSection';
+import { TransitionLink, CreativeButton, TextReveal, AnimatedCard, BaseSection } from '../../../components';
 import { useCursorInteraction } from '@/cursor';
 
-const MarqueeTags = ({ tags = [], speed = 20 }) => {
+const MarqueeTags = ({ tags = [], speed = 16 }) => {
   const tagsIndex = tags.join(', ') + ', ';
   return (
     <div className="flex items-center h-4 md:h-4.5 overflow-hidden relative w-full">
@@ -23,28 +22,18 @@ const MarqueeTags = ({ tags = [], speed = 20 }) => {
 
 const WorkCardMeta = ({ work }) => {
   const LogoComponent = work.logo;
-  const isLogoComponent = typeof LogoComponent === 'function' || typeof LogoComponent === 'object';
-
   return (
     <div className="flex flex-col gap-4 lg:gap-5">
       <div className="flex justify-between items-center w-full">
         <div className="flex items-center gap-2 lg:gap-3">
           <div className="w-6 h-6 md:w-10 md:h-10 px-1 py-1 md:px-2 flex items-center justify-center rounded-full bg-neutral-100 dark:bg-neutral-100 overflow-hidden text-primary dark:text-primary">
-            {LogoComponent ? (
-              isLogoComponent ? (
-                <LogoComponent className="w-full h-full" />
-              ) : (
-                <img src={LogoComponent} alt={`${work.client} logo`} className="w-full h-full object-contain" />
-              )
-            ) : (
-              <span className="text-xs text-neutral-100">{work.client?.charAt(0) || 'W'}</span>
-            )}
+            <LogoComponent className="w-full h-full" />
           </div>
-          <p className="text-[clamp(14px,1.2vw,18px)] uppercase font-semibold text-neutral-100 tracking-wide">{work.client || work.title}</p>
+          <p className="text-[clamp(12px,1.2vw,16px)] uppercase font-semibold text-neutral-100 tracking-wide">{work.client}</p>
         </div>
         <div className="flex gap-3 lg:gap-5">
-          <p className="text-[clamp(14px,1.2vw,18px)] uppercase font-semibold text-neutral-300 tracking-wide">{work.type || work.role || 'Portfolio'}</p>
-          <p className="text-[clamp(14px,1.2vw,18px)] uppercase font-semibold text-neutral-300 tracking-wide">{work.year || '2025'}</p>
+          <p className="text-[clamp(12px,1.2vw,16px)] uppercase font-semibold text-neutral-300 tracking-wide">{work.type}</p>
+          <p className="text-[clamp(12px,1.2vw,16px)] uppercase font-semibold text-neutral-300 tracking-wide">{work.year}</p>
         </div>
       </div>
       <MarqueeTags tags={work.tags || []} />
@@ -59,21 +48,20 @@ const cursorConfig = {
   fill: 'bg-neutral-200',
 };
 
-const SelectedWorksSection = () => {
+const HomeSelectedWorksSection = () => {
   const selectedWorks = projects.filter(project => project.selected);
   const { targetRef: seeAllButtonRef } = useCursorInteraction(cursorConfig);
 
   return (
     <BaseSection containerID="selected-works" sectionClassName="section-padding-xy relative overflow-hidden">
-      <div className="flex flex-col gap-s300 mb-s600 lg:mb-s700">
+      <div className="flex flex-col gap-s200 mb-s200 lg:mb-s700">
         <div className="flex items-center justify-between">
           <span className="text-base">(selected)</span>
         </div>
         <div className="flex items-end justify-between w-full">
           <TextReveal
             lines={['WORK']}
-            style={{ fontSize: 'clamp(4rem, 12vw, 12rem)' }}
-            className="font-[700] tracking-[-0.03em] leading-[0.85] uppercase"
+            className="text-[clamp(3.5rem,8vw,6rem)] md:text-[clamp(5rem,7vw,8rem)] font-[700] tracking-[-0.03em] leading-[0.85] uppercase"
             staggerDelay={0.06}
             startDelay={0.1}
             as="span"
@@ -82,8 +70,7 @@ const SelectedWorksSection = () => {
           <div className="flex flex-col items-end gap-1 pb-1 lg:pb-2">
             <TextReveal
               lines={['25']}
-              style={{ fontSize: 'clamp(4rem, 12vw, 12rem)' }}
-              className="font-[700] tracking-[-0.03em] leading-[0.85] uppercase"
+              className="text-[clamp(3.5rem,8vw,6rem)] md:text-[clamp(5rem,7vw,8rem)] font-[700] tracking-[-0.03em] leading-[0.85] uppercase"
               staggerDelay={0.06}
               startDelay={0.1}
               as="span"
@@ -120,4 +107,4 @@ const SelectedWorksSection = () => {
   );
 };
 
-export default SelectedWorksSection;
+export default HomeSelectedWorksSection;

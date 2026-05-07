@@ -4,7 +4,7 @@ export const useVideoVisibility = (options = {}) => {
   const videoRef = useRef(null);
   const observerRef = useRef(null);
   const isVisibleRef = useRef(false);
-  const { rootMargin = '50px', threshold = 0.25 } = options;
+  const { rootMargin = '36px', threshold = 0.2 } = options;
 
   useEffect(() => {
     const video = videoRef.current;

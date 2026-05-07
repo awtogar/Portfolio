@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { motion, useInView } from 'motion/react';
 import { useLoading } from '@/context/LoadingProvider';
 
@@ -7,8 +7,11 @@ const TextReveal = ({ lines = [], as: Component = 'div', className = '', lineCla
   const globalReady = isReady && !isTransitioning;
 
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: '0px 0px -10% 0px' });
+  const isInView = useInView(ref, { once: true, margin: '0px 0px -15% 0px' });
   const shouldAnimate = isInView && globalReady && ready;
+  const [hasAnimated, setHasAnimated] = useState(false);
+
+  if (shouldAnimate && !hasAnimated) setHasAnimated(true);
 
   const animation = {
     initial: { y: '100%' },
@@ -26,7 +29,7 @@ const TextReveal = ({ lines = [], as: Component = 'div', className = '', lineCla
     <Component ref={ref} className={className} style={style}>
       {lines.map((line, idx) => (
         <span key={idx} style={{ display: 'block', overflow: 'hidden' }}>
-          <motion.span className={lineClassName} style={{ display: 'block' }} custom={idx} variants={animation} initial="initial" animate={shouldAnimate ? 'enter' : 'initial'}>
+          <motion.span className={lineClassName} style={{ display: 'block' }} custom={idx} variants={animation} initial="initial" animate={hasAnimated ? 'enter' : 'initial'}>
             {line}
           </motion.span>
         </span>

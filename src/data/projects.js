@@ -1,30 +1,25 @@
+// Project assets — imported from per-project barrel files
 import {
-  about1,
-  about2,
-  img1,
-  img3,
-  img4,
-  img5,
-  img6,
-  ovelo1,
-  ovelo2,
-  ovelo3,
-  ovelo4,
-  introVideo1,
-  introVideo2,
+  ovelo1, ovelo2, ovelo3, ovelo4, ovelo5, ovelo6, ovelo7, oveloReels
+} from '../assets/projects/ovelo';
+import {
+  nostratic1,
+  nostratic2,
+  nostratic3,
+  nostratic4,
+  nostratic5,
+  nostratic6,
+  nostratic7,
+  nostratic8,
+  nostratic9,
+  nostratic10,
   nostraticReels,
-  nostraticAssets1,
-  nostraticAssets2,
-  nostraticAssets3,
-  nostraticAssets4,
-  nostraticAssets5,
-  nostraticAssets6,
-  nostraticAssets7,
-  nostraticAssets8,
-  nostraticAssets9,
-  nostraticAssets10
+} from '../assets/projects/nostratic';
 
-} from '../assets';
+import { synora1, synora2, synora3, synora4, synora5, synora6 } from '../assets/projects/synora';
+
+// Site assets — only for projects that don't have their own images yet
+import { site6, site7, site8, site9, site13, site4, site5 } from '../assets';
 
 import { OveloLogo, NostraticLogo, LunvaraLogo, SynoraLogo, ColorrideLogo, Investime } from '@/components/Logos/ProjectLogos';
 
@@ -37,12 +32,14 @@ export const projects = [
     year: '2025',
     logo: OveloLogo,
     thumbnail: ovelo1,
-    video: introVideo1,
+    video: oveloReels,
     description: 'An eyewear and Optical Care branding. focused on modern aesthetics and strong visuals branding.',
     tags: ['Graphics', 'Branding'],
     date: { month: 'June', year: '2024' },
     selected: true,
-    gallery: [ovelo1, ovelo2, ovelo3, ovelo4],
+    gallery: [
+      ovelo1, ovelo2, ovelo3, ovelo4, ovelo5, ovelo6, ovelo7
+    ],
   },
   {
     id: 2,
@@ -51,13 +48,24 @@ export const projects = [
     type: 'Websites',
     year: '2025',
     logo: NostraticLogo,
-    thumbnail: nostraticAssets1,
+    thumbnail: nostratic1,
     video: nostraticReels,
     description: 'Branding and Web Development for a creative studio agency in Indonesia. that specializes in digital products.',
     tags: ['UI/UX', 'Prototype', 'Figma'],
     date: { month: 'February', year: '2025' },
     selected: true,
-    gallery: [nostraticAssets1, nostraticAssets2, nostraticAssets3, nostraticAssets4, nostraticAssets5, nostraticAssets6,nostraticAssets7, nostraticAssets8, nostraticAssets9, nostraticAssets10],
+    gallery: [
+      nostratic1,
+      nostratic2,
+      nostratic3,
+      nostratic4,
+      nostratic5,
+      nostratic6,
+      nostratic7,
+      nostratic8,
+      nostratic9,
+      nostratic10,
+    ],
   },
   {
     id: 3,
@@ -66,13 +74,13 @@ export const projects = [
     type: 'Websites',
     year: '2024',
     logo: LunvaraLogo,
-    thumbnail: img3,
+    thumbnail: site7,
     video: null,
     description: 'Lunavara is a modern nursery and plant art. focused on aesthetic and minimalism audience',
     tags: ['Web Development', 'UI/UX'],
     date: { month: 'August', year: '2024' },
     selected: false,
-    gallery: [img1, img6],
+    gallery: [site6, site13],
   },
   {
     id: 4,
@@ -81,13 +89,13 @@ export const projects = [
     type: 'Applications',
     year: '2024',
     logo: Investime,
-    thumbnail: img5,
+    thumbnail: site9,
     video: null,
     description: 'A Calculator Website based app that can help you to calculate your compound interest and also can help you to plan your investment in the future.',
     tags: ['Web App', 'FinTech'],
     date: { month: 'May', year: '2024' },
     selected: false,
-    gallery: [img3, img4],
+    gallery: [site7, site8],
   },
   {
     id: 5,
@@ -96,13 +104,13 @@ export const projects = [
     type: 'Applications',
     year: '2024',
     logo: ColorrideLogo,
-    thumbnail: about1,
+    thumbnail: site4,
     video: null,
     description: 'Intuitive application for productivity that can help you to manage the routines and time management in a modern and simple way.',
     tags: ['Mobile App', 'Productivity'],
     date: { month: 'January', year: '2024' },
     selected: false,
-    gallery: [img1, img5],
+    gallery: [site6, site9],
   },
   {
     id: 6,
@@ -111,19 +119,12 @@ export const projects = [
     type: 'Branding',
     year: '2023',
     logo: SynoraLogo,
-    thumbnail: img4,
+    thumbnail: synora1,
     video: null,
     description: 'Comprehensive branding and visual identity project for Synora.',
     tags: ['Branding', 'Design', 'Identity'],
     date: { month: 'November', year: '2023' },
     selected: false,
-    gallery: [about2, img3, img4],
+    gallery: [synora1, synora2, synora3, synora4, synora5, synora6],
   },
-];
-
-export const projectCategories = [
-  { id: 'all', label: 'All Projects' },
-  { id: 'websites', label: 'Websites' },
-  { id: 'applications', label: 'Applications' },
-  { id: 'branding', label: 'Branding' },
 ];

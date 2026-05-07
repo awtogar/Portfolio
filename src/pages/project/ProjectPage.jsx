@@ -1,8 +1,7 @@
 import React, { useRef } from 'react';
 import { motion, useAnimationFrame } from 'motion/react';
-import BaseSection from '../../components/common/BaseSection';
 import { projects } from '@/data/projects';
-import { HoverVideoCard, TransitionLink } from '../../components';
+import { HoverVideoCard, TransitionLink, BaseSection, TextReveal } from '../../components';
 import { useCursorInteraction } from '../../hooks';
 
 const ease = [0.7, 0, 0.3, 1];
@@ -78,11 +77,11 @@ const ProjectCard = ({ project, index }) => {
                   <span className="text-xs font-semibold">{project.client?.charAt(0) || 'P'}</span>
                 )}
               </div>
-              <p className="text-[clamp(14px,1.2vw,18px)] uppercase font-semibold text-neutral-100 dark:text-neutral-900 tracking-wide">{project.client}</p>
+              <p className="text-[clamp(14px,1.2vw,16px)] uppercase font-semibold text-neutral-100 dark:text-neutral-900 tracking-wide">{project.client}</p>
             </div>
             <div className="flex gap-3 lg:gap-5">
-              <p className="text-[clamp(14px,1.2vw,18px)] uppercase font-semibold text-neutral-300 dark:text-neutral-600 tracking-wide">{project.type}</p>
-              <p className="text-[clamp(14px,1.2vw,18px)] uppercase font-semibold text-neutral-300 dark:text-neutral-600 tracking-wide">{project.year}</p>
+              <p className="text-[clamp(12px,1.2vw,16px)] uppercase font-semibold text-neutral-300 dark:text-neutral-600 tracking-wide">{project.type}</p>
+              <p className="text-[clamp(12px,1.2vw,16px)] uppercase font-semibold text-neutral-300 dark:text-neutral-600 tracking-wide">{project.year}</p>
             </div>
           </div>
 
@@ -97,20 +96,36 @@ const ProjectPage = () => {
   return (
     <BaseSection sectionClassName="section-padding-hero lg:min-h-screen pt-4 lg:pt-6">
       <div className="flex flex-col gap-s700 lg:gap-s900 px-4 lg:px-8">
-        <motion.div initial={{ opacity: 0, y: 32 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, ease }} className="flex flex-col gap-s500">
-          <div className="flex flex-col gap-s200">
-            <span className="hsAccent">(Projects)</span>
-            <h1 className="text-h100 uppercase leading-heading tracking-heading">Works</h1>
+        <div className="flex flex-col">
+          <div className="flex items-center justify-between">
+            <span className="text-base">(recent)</span>
           </div>
-          <p className="text-base max-w-[48ch] text-primary/55 leading-body">
-            A curated selection of projects spanning branding, web development, and application design — each crafted with intention and care.
-          </p>
-        </motion.div>
+          <div className="flex items-end justify-between w-full flex-wrap">
+            <TextReveal
+              lines={['Project']}
+              className="text-[clamp(3.5rem,8vw,6rem)] md:text-[clamp(5rem,7vw,8rem)] font-[700] tracking-[-0.03em] leading-[0.85] uppercase"
+              staggerDelay={0.06}
+              startDelay={0.1}
+              as="span"
+            />
+
+            <div className="flex flex-col items-end gap-1 pb-1 lg:pb-2">
+              <TextReveal
+                lines={['2025']}
+                className="text-[clamp(3.5rem,8vw,6rem)] md:text-[clamp(5rem,7vw,8rem)] font-[700] tracking-[-0.03em] leading-[0.85] uppercase"
+                staggerDelay={0.06}
+                startDelay={0.1}
+                as="span"
+              />
+            </div>
+          </div>
+          <div className="h-px w-full bg-primary/10" />
+        </div>
       </div>
 
-      <div className="px-2 lg:px-4 py-4 lg:py-6 mt-s600">
+      <div className="px-2 lg:px-4 pt-6 lg:py-4">
         <div className="w-full rounded-2xl lg:rounded-[20px]">
-          <ul className="grid grid-cols-1 lg:grid-cols-2 gap-3 lg:gap-4 w-full">
+          <ul className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6 w-full">
             {projects.map((project, idx) => (
               <ProjectCard key={project.id} project={project} index={idx} />
             ))}

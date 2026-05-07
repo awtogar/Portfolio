@@ -1,6 +1,6 @@
 import { HoverVideoCard } from '@/components';
 
-const GallerySection = ({ project }) => {
+const ProjectDetailGallerySection = ({ project }) => {
   if (!project.gallery?.length) return null;
 
   return (
@@ -40,4 +40,4 @@ const GallerySection = ({ project }) => {
   );
 };
 
-export default GallerySection;
+export default ProjectDetailGallerySection;

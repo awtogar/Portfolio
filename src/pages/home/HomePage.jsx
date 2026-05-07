@@ -1,12 +1,12 @@
-import { HeroSection, IntroSection, WhatIdoSection, SelectedWorksSection } from './sections';
+import { HomeHeroSection, HomeIntroSection, HomeWhatIdoSection, HomeSelectedWorksSection } from './sections';
 
 const HomePage = () => {
   return (
     <>
-      <HeroSection />
-      <IntroSection />
-      <WhatIdoSection />
-      <SelectedWorksSection />
+      <HomeHeroSection />
+      <HomeIntroSection />
+      <HomeWhatIdoSection />
+      <HomeSelectedWorksSection />
     </>
   );
 };

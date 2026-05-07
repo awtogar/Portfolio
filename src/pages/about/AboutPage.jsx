@@ -1,13 +1,13 @@
 import React from 'react';
 
-import { HeroSection, TimelineSection, ImageRevealSection } from './sections';
+import { AboutHeroSection, AboutTimelineSection, AboutImageRevealSection } from './sections';
 
 const AboutPage = () => {
   return (
     <>
-      <HeroSection />
-      <TimelineSection />
-      <ImageRevealSection />
+      <AboutHeroSection />
+      <AboutTimelineSection />
+      <AboutImageRevealSection />
     </>
   );
 };

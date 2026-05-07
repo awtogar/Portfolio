@@ -1,0 +1,11 @@
+export { default as nostratic1 } from './2.webp';
+export { default as nostratic2 } from './1.webp';
+export { default as nostratic3 } from './3.webp';
+export { default as nostratic4 } from './4.webp';
+export { default as nostratic5 } from './5.webp';
+export { default as nostratic6 } from './6.webp';
+export { default as nostratic7 } from './7.webp';
+export { default as nostratic8 } from './8.webp';
+export { default as nostratic9 } from './9.webp';
+export { default as nostratic10 } from './10.webp';
+export { default as nostraticReels } from './nostratic-reels.mp4';

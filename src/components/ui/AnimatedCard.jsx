@@ -24,7 +24,7 @@ const AnimatedCard = ({
     offset: ['start end', 'end start'],
   });
 
-  const parallaxY = useTransform(scrollYProgress, [0, 1], ['-10vh', '10vh']);
+  const parallaxY = useTransform(scrollYProgress, [0, 1], ['-10%', '10%']);
 
   return (
     <Component ref={cursor ? targetRef : undefined} className={className}>
@@ -36,7 +36,7 @@ const AnimatedCard = ({
         onMouseLeave={() => setIsHovered(false)}
       >
         <div ref={imageContainerRef} className="relative rounded-lg lg:rounded-xl overflow-hidden w-full h-[248px] md:h-[350px] lg:h-[clamp(500px,32vw,800px)]">
-          <div className="absolute inset-0 bg-neutral-900/30 dark:bg-neutral-50/30 backdrop-blur-md z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-in-out" />
+          <div className="absolute inset-0 bg-neutral-900/30 backdrop-blur-md z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-in-out" />
 
           {video && (
             <motion.video
