@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Component } from 'react';
 import { motion } from 'motion/react';
 import { useLocation } from 'react-router-dom';
 import { RiSunLine, RiMoonLine } from '@remixicon/react';
@@ -33,8 +33,7 @@ export default function SideBar({ closeMenu }) {
   }, [closeMenu, stopScroll, startScroll]);
 
   return (
-    <>
-      {/* backdrop reduce content focus area*/}
+    <div className="">
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -50,7 +49,7 @@ export default function SideBar({ closeMenu }) {
         exit="exit"
         className="h-dvh! bg-neutral-500 fixed right-0 top-0 text-secondary z-[9997] will-change-transform w-full md:w-[50vw] lg:w-[45vw]"
       >
-        <div className="box-border !h-full pl-16 pr-6 pt-[8dvh] pb-[8dvh] flex flex-col justify-between">
+        <div className="box-border !h-full pl-4 pr-6 pt-[8dvh] pb-[8dvh] flex flex-col justify-between">
           <div
             onMouseLeave={() => {
               setSelectedIndicator(pathname);
@@ -109,6 +108,6 @@ export default function SideBar({ closeMenu }) {
         </div>
         <Curve />
       </motion.div>
-    </>
+    </div>
   );
 }

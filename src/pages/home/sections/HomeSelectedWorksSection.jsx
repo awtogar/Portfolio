@@ -1,6 +1,6 @@
 import React from 'react';
 import { projects } from '@/data/projects';
-import { TransitionLink, CreativeButton, TextReveal, AnimatedCard, BaseSection } from '../../../components';
+import { TransitionLink, CreativeButton, TextReveal, Card, BaseSection } from '@/components';
 import { useCursorInteraction } from '@/cursor';
 
 const MarqueeTags = ({ tags = [], speed = 16 }) => {
@@ -59,22 +59,14 @@ const HomeSelectedWorksSection = () => {
           <span className="text-base">(selected)</span>
         </div>
         <div className="flex items-end justify-between w-full">
-          <TextReveal
-            lines={['WORK']}
-            className="text-[clamp(3.5rem,8vw,6rem)] md:text-[clamp(5rem,7vw,8rem)] font-[700] tracking-[-0.03em] leading-[0.85] uppercase"
-            staggerDelay={0.06}
-            startDelay={0.1}
-            as="span"
-          />
+          <TextReveal as="h2" className="text-[clamp(3.5rem,8vw,6rem)] md:text-[clamp(5rem,7vw,8rem)] font-[700] tracking-[-0.03em] leading-[0.85] uppercase">
+            WORK
+          </TextReveal>
 
           <div className="flex flex-col items-end gap-1 pb-1 lg:pb-2">
-            <TextReveal
-              lines={['25']}
-              className="text-[clamp(3.5rem,8vw,6rem)] md:text-[clamp(5rem,7vw,8rem)] font-[700] tracking-[-0.03em] leading-[0.85] uppercase"
-              staggerDelay={0.06}
-              startDelay={0.1}
-              as="span"
-            />
+            <TextReveal as="h2" className="text-[clamp(3.5rem,8vw,6rem)] md:text-[clamp(5rem,7vw,8rem)] font-[700] tracking-[-0.03em] leading-[0.85] uppercase">
+              25
+            </TextReveal>
           </div>
         </div>
         <div className="h-px w-full bg-primary/10" />
@@ -82,7 +74,7 @@ const HomeSelectedWorksSection = () => {
 
       <ul className="flex flex-col lg:flex-row gap-2 lg:gap-4 w-full pb-s600 lg:pb-s800">
         {selectedWorks.map(work => (
-          <AnimatedCard
+          <Card
             key={work.id}
             as="li"
             className="w-full lg:w-1/2"
@@ -94,7 +86,7 @@ const HomeSelectedWorksSection = () => {
             LinkComponent={TransitionLink}
           >
             <WorkCardMeta work={work} />
-          </AnimatedCard>
+          </Card>
         ))}
       </ul>
 

@@ -3,7 +3,6 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { pages } from '@/data/navigation';
 import { projects } from '@/data/projects';
 
-
 const LoadingContext = createContext(null);
 
 export function useLoading() {
@@ -64,7 +63,7 @@ export function LoadingProvider({ children }) {
   const onExitComplete = useCallback(() => {
     if (targetPath) {
       navigate(targetPath);
-      setPhase('wait-for-ready'); 
+      setPhase('wait-for-ready');
     }
   }, [targetPath, navigate]);
 

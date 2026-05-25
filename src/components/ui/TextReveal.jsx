@@ -1,39 +1,106 @@
-import React, { useRef, useState } from 'react';
-import { motion, useInView } from 'motion/react';
-import { useLoading } from '@/context/LoadingProvider';
+import { useRef, useEffect } from 'react';
+import { gsap } from 'gsap';
+import { SplitText } from 'gsap/SplitText';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useLoading } from '@/context';
 
-const TextReveal = ({ lines = [], as: Component = 'div', className = '', lineClassName = '', style, staggerDelay = 0.075, startDelay = 0, ready = true }) => {
+gsap.registerPlugin(SplitText, ScrollTrigger);
+
+const TextReveal = ({ children, lines, lineClassName, as: Component = 'div', className = '', style, staggerDelay = 0.075, startDelay = 0, ready = true, isHero = false }) => {
   const { isReady, isTransitioning } = useLoading();
   const globalReady = isReady && !isTransitioning;
 
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: '0px 0px -15% 0px' });
-  const shouldAnimate = isInView && globalReady && ready;
-  const [hasAnimated, setHasAnimated] = useState(false);
+  const splitRef = useRef(null);
+  const stRef = useRef(null);
+  const hasPlayedRef = useRef(false);
+  const pendingPlayRef = useRef(false);
 
-  if (shouldAnimate && !hasAnimated) setHasAnimated(true);
+  const playAnimation = () => {
+    if (hasPlayedRef.current || !splitRef.current) return;
+    hasPlayedRef.current = true;
+    pendingPlayRef.current = false;
 
-  const animation = {
-    initial: { y: '100%' },
-    enter: i => ({
-      y: '0%',
-      transition: {
-        duration: 0.75,
-        ease: [0.33, 1, 0.68, 1],
-        delay: startDelay + i * staggerDelay,
-      },
-    }),
+    gsap.fromTo(
+      splitRef.current.lines,
+      { yPercent: 100 },
+      {
+        yPercent: 0,
+        duration: 1,
+        ease: 'power3.out',
+        stagger: staggerDelay,
+        delay: startDelay,
+      }
+    );
   };
+
+  useEffect(() => {
+    if (!ref.current) return;
+
+    // hide until onSplit fires
+    gsap.set(ref.current, { visibility: 'hidden' });
+
+    splitRef.current = SplitText.create(ref.current, {
+      type: 'lines',
+      mask: 'lines',
+      autoSplit: true,
+      onSplit: self => {
+        gsap.set(self.lines, { yPercent: 100 });
+        gsap.set(ref.current, { visibility: 'visible' });
+
+        if (pendingPlayRef.current) {
+          playAnimation();
+        } else if (hasPlayedRef.current) {
+          gsap.set(self.lines, { yPercent: 0 });
+        }
+      },
+    });
+
+    return () => {
+      stRef.current?.kill();
+      splitRef.current?.revert();
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!isHero || !ready || !globalReady) return;
+    if (splitRef.current) {
+      playAnimation();
+    } else {
+      pendingPlayRef.current = true;
+    }
+  }, [globalReady, isHero, ready]);
+
+  useEffect(() => {
+    if (isHero || !ref.current || !globalReady || !ready) return;
+
+    stRef.current = ScrollTrigger.create({
+      trigger: ref.current,
+      start: 'top 85%',
+      once: true,
+      onEnter: () => {
+        if (splitRef.current) {
+          playAnimation();
+        } else {
+          pendingPlayRef.current = true;
+        }
+      },
+    });
+
+    return () => stRef.current?.kill();
+  }, [globalReady, ready, isHero]);
+
+  const content = lines
+    ? lines.map((line, i) => (
+        <span key={i} style={{ display: 'block' }} className={lineClassName}>
+          {line}
+        </span>
+      ))
+    : children;
 
   return (
     <Component ref={ref} className={className} style={style}>
-      {lines.map((line, idx) => (
-        <span key={idx} style={{ display: 'block', overflow: 'hidden' }}>
-          <motion.span className={lineClassName} style={{ display: 'block' }} custom={idx} variants={animation} initial="initial" animate={hasAnimated ? 'enter' : 'initial'}>
-            {line}
-          </motion.span>
-        </span>
-      ))}
+      {content}
     </Component>
   );
 };

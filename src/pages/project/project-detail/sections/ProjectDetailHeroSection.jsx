@@ -8,7 +8,7 @@ const ProjectDetailHeroSection = ({ project }) => {
   if (phase === 'idle') hasPlayed.current = true;
 
   return (
-    <div className="overflow-hidden w-full px-4">
+    <div className="overflow-hidden w-full">
       <motion.h1
         initial={{ y: '100%' }}
         animate={hasPlayed.current ? { y: 0 } : { y: '100%' }}

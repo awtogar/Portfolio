@@ -2,18 +2,7 @@ import React, { useRef, useState } from 'react';
 import { motion, useScroll, useTransform } from 'motion/react';
 import { useCursorInteraction } from '@/cursor';
 
-const AnimatedCard = ({
-  as: Component = 'li',
-  thumbnail,
-  alt,
-  video = null,
-  to,
-  linkClassName,
-  className,
-  cursor = null,
-  children,
-  LinkComponent = 'a',
-}) => {
+const AnimatedCard = ({ as: Component = 'li', thumbnail, alt, video = null, to, linkClassName, className, cursor = null, children, LinkComponent = 'a' }) => {
   const imageContainerRef = useRef(null);
   const [isHovered, setIsHovered] = useState(false);
 

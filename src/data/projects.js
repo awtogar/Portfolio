@@ -1,7 +1,5 @@
 // Project assets — imported from per-project barrel files
-import {
-  ovelo1, ovelo2, ovelo3, ovelo4, ovelo5, ovelo6, ovelo7, oveloReels
-} from '../assets/projects/ovelo';
+import { ovelo1, ovelo2, ovelo3, ovelo4, ovelo5, ovelo6, ovelo7, ovelo10, ovelo11, ovelo12, ovelo15, oveloReels } from '../assets/projects/ovelo';
 import {
   nostratic1,
   nostratic2,
@@ -31,15 +29,13 @@ export const projects = [
     type: 'Branding',
     year: '2025',
     logo: OveloLogo,
-    thumbnail: ovelo1,
+    thumbnail: ovelo15,
     video: oveloReels,
     description: 'An eyewear and Optical Care branding. focused on modern aesthetics and strong visuals branding.',
     tags: ['Graphics', 'Branding'],
     date: { month: 'June', year: '2024' },
     selected: true,
-    gallery: [
-      ovelo1, ovelo2, ovelo3, ovelo4, ovelo5, ovelo6, ovelo7
-    ],
+    gallery: [ovelo1, ovelo2, ovelo3, ovelo4, ovelo5, ovelo6, ovelo7],
   },
   {
     id: 2,
@@ -54,18 +50,7 @@ export const projects = [
     tags: ['UI/UX', 'Prototype', 'Figma'],
     date: { month: 'February', year: '2025' },
     selected: true,
-    gallery: [
-      nostratic1,
-      nostratic2,
-      nostratic3,
-      nostratic4,
-      nostratic5,
-      nostratic6,
-      nostratic7,
-      nostratic8,
-      nostratic9,
-      nostratic10,
-    ],
+    gallery: [nostratic1, nostratic2, nostratic3, nostratic4, nostratic5, nostratic6, nostratic7, nostratic8, nostratic9, nostratic10],
   },
   {
     id: 3,

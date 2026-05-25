@@ -7,7 +7,7 @@ export const pages = {
       { id: 'welcome', title: 'Welcome' },
       { id: 'showreels', title: 'showreels' },
       { id: 'what-i-do', title: 'What I Do' },
-      { id: 'selected-works', title: 'Selected Works' },
+      { id: 'works', title: 'Works' },
       { id: 'contact', title: 'Contact' },
     ],
   },

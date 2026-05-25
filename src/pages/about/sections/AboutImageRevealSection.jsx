@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { useScroll, useTransform, motion } from 'motion/react';
-import { HoverVideoCard, SvgImageMask, BaseSection } from '@/components';
+import { Card, SvgImageMask, BaseSection } from '@/components';
 import { useDimensions } from '@/hooks';
 
 import { site2, site3 } from '@/assets';
@@ -44,7 +44,7 @@ const AboutImageRevealSection = () => {
                   WebkitMaskSize: maskSize,
                 }}
               >
-                <HoverVideoCard
+                <Card
                   src={image.src}
                   alt={image.alt}
                   containerClassName="absolute inset-0 w-full h-full "

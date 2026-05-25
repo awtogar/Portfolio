@@ -1,50 +1,64 @@
-import React from 'react';
-import { CreativeButton, TextReveal, BaseSection, ParallaxImage, HeroBentoGrid } from '../../../components';
-import { useCursorHoverContent } from '@/cursor';
-import { site1 } from '../../../assets';
+import { BaseSection, TextReveal } from '@/components';
+import { useState, useEffect } from 'react';
 
 const HomeHeroSection = () => {
-  const contactRef = useCursorHoverContent('arrow');
-  const resumeRef = useCursorHoverContent('arrow');
-  const HeroTextSplit = ['Well Good', 'Things', 'Dont Last'];
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [prevIndex, setPrevIndex] = useState(-1);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveIndex(prev => {
+        setPrevIndex(prev);
+        return (prev + 1) % 2;
+      });
+    }, 1550);
+    return () => clearInterval(interval);
+  }, []);
+
+  const words = ['developer', 'creative'];
+
+  const getWordClass = wordIndex => {
+    const base = '[grid-area:1/1] flex items-center whitespace-nowrap';
+
+    if (wordIndex === activeIndex) return `${base} animate-slide-in-down`;
+    if (wordIndex === prevIndex) return `${base} animate-slide-out-down`;
+    if (wordIndex === 0 && prevIndex === -1) return `${base} opacity-100 translate-y-0`;
+    return `${base} opacity-0 translate-y-full`;
+  };
 
   return (
-    <BaseSection containerID="welcome" sectionClassName="section-padding-hero">
-      <div className="flex flex-col gap-s700 md:grid md:grid-cols-[55fr_40fr] md:gap-s200">
-        <div className="flex flex-col gap-s700 md:gap-s800">
-          <div className="flex flex-col gap-4">
-            <TextReveal as="h1" lines={HeroTextSplit} className="text-display-sm leading-heading tracking-heading max-w-[18ch] font-[600] uppercase" />
-            <TextReveal
-              as="p"
-              lines={['A multidisciplinary creative developer with designs and development background. Interested to explore and learn new things.']}
-              className="text-base text-primary/60 leading-body"
-              staggerDelay={0.2}
-              startDelay={0.05}
-            />
+    <BaseSection sectionClassName="section-padding-x" containerClassName="flex-col h-[75vh] md:h-[85vh] lg:h-[95vh] m-auto w-full max-w-[1920px]">
+      <div className="flex flex-col justify-between h-full w-full pt-[36px]">
+        <div className="pt-[64px] lg:pt-[84px] text-[clamp(1rem,6vw,1.5rem)] font-medium leading-[1.1] tracking-[-0.02em] text-foreground">
+          <div className="flex gap-2">
+            {/* welcome text */}
+            <TextReveal as="span" isHero startDelay={1.1}>
+              Junior
+            </TextReveal>
+            <span className="inline-grid overflow-hidden items-center">
+              {words.map((word, i) => (
+                <TextReveal key={word} className={getWordClass(i)} isHero startDelay={1.6}>
+                  {word}
+                </TextReveal>
+              ))}
+            </span>
           </div>
-          <div className="flex flex-row items-center gap-4 pb-4 md:gap-s400">
-            <div className="w-full md:w-auto">
-              <CreativeButton to="/contact" variant="fillReverse" ref={contactRef} size="lg" className="w-full md:w-auto min-w-[200px]">
-                Get in touch
-              </CreativeButton>
-            </div>
-            <div className="w-full md:w-auto flex justify-center">
-              <CreativeButton
-                href="https://drive.google.com/drive/folders/1FQxb0go777UcmJ2PuAbwEmcLEZdM7QEQ?usp=sharing"
-                variant="transparent"
-                target="_blank"
-                rel="noopener noreferrer"
-                ref={resumeRef}
-                className="w-full md:w-auto"
-              >
-                <span>My Resume</span>
-              </CreativeButton>
-            </div>
+          <div className="flex">
+            <TextReveal as="span" className="m-0" startDelay={1.25} isHero>
+              based in Jakarta.
+            </TextReveal>
           </div>
         </div>
 
-        <div className="hidden md:block md:h-full md:self-stretch">
-          <ParallaxImage src={site1} alt="Hero" containerClassName="w-full h-full min-h-[70vh] rounded-2xl" scrollRange={['-5vh', '5vh']} />
+        <div className="flex w-full justify-center pb-6">
+          <TextReveal
+            as="h1"
+            className="text-[calc(100vw/10)] font-[500] leading-[1.2] tracking-[-0.03em] w-full text-center whitespace-nowrap flex justify-center"
+            isHero
+            startDelay={0.75}
+          >
+            Awaluddin Togar
+          </TextReveal>
         </div>
       </div>
     </BaseSection>

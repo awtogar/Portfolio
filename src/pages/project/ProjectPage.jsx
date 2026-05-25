@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
-import { motion, useAnimationFrame } from 'motion/react';
+import { motion, useAnimationFrame } from 'framer-motion';
 import { projects } from '@/data/projects';
-import { HoverVideoCard, TransitionLink, BaseSection, TextReveal } from '../../components';
+import { AnimatedCard, TransitionLink, BaseSection, TextReveal, Card } from '@/components';
 import { useCursorInteraction } from '../../hooks';
 
 const ease = [0.7, 0, 0.3, 1];
@@ -46,17 +46,17 @@ const ProjectCard = ({ project, index }) => {
   const isComponent = typeof Logo === 'function' || typeof Logo === 'object';
 
   return (
-    <motion.li initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: Math.min(index * 0.1, 0.5), ease }} className="w-full list-none">
+    <li className="w-full list-none">
       <TransitionLink
         to={`/projects/${project.slug}`}
         className="flex flex-col gap-4 lg:gap-5 px-3 lg:px-4 pt-3 lg:pt-4 pb-5 lg:pb-6 rounded-xl lg:rounded-2xl bg-black dark:bg-white cursor-pointer group relative"
       >
         <div ref={targetRef} className="relative rounded-lg lg:rounded-xl overflow-hidden w-full aspect-4/3 md:aspect-video lg:aspect-square">
-          <HoverVideoCard
+          <Card
             src={project.thumbnail}
             alt={project.client}
             containerClassName="absolute inset-0 w-full h-[120%] -top-[10%] lg:-top-[15%]"
-            imageClassName="object-top scale-105 group-hover:scale-105 transition-transform duration-500 ease-in-out"
+            imageClassName="object-top"
             scrollRange={['0%', '12%']}
             blur={false}
             offset={['start end', 'end start']}
@@ -66,7 +66,7 @@ const ProjectCard = ({ project, index }) => {
         <div className="flex flex-col gap-4 lg:gap-5 px-3 lg:px-4">
           <div className="flex justify-between items-center w-full relative">
             <div className="flex items-center gap-2 lg:gap-3">
-              <div className="w-6 h-6 md:w-10 md:h-10 lg:w-10 lg:h-10 px-1 py-1 md:px-2 flex items-center justify-center rounded-full bg-neutral-100 dark:bg-neutral-100 overflow-hidden text-primary dark:text-primary ">
+              <div className="w-6 h-6 md:w-10 md:h-10 px-1 py-1 md:px-2 flex items-center justify-center rounded-full bg-neutral-100 dark:bg-neutral-100 overflow-hidden text-primary dark:text-primary">
                 {Logo ? (
                   isComponent ? (
                     <Logo className="w-full h-full" />
@@ -84,11 +84,10 @@ const ProjectCard = ({ project, index }) => {
               <p className="text-[clamp(12px,1.2vw,16px)] uppercase font-semibold text-neutral-300 dark:text-neutral-600 tracking-wide">{project.year}</p>
             </div>
           </div>
-
           <MarqueeTags tags={project.tags || []} />
         </div>
       </TransitionLink>
-    </motion.li>
+    </li>
   );
 };
 
@@ -101,22 +100,14 @@ const ProjectPage = () => {
             <span className="text-base">(recent)</span>
           </div>
           <div className="flex items-end justify-between w-full flex-wrap">
-            <TextReveal
-              lines={['Project']}
-              className="text-[clamp(3.5rem,8vw,6rem)] md:text-[clamp(5rem,7vw,8rem)] font-[700] tracking-[-0.03em] leading-[0.85] uppercase"
-              staggerDelay={0.06}
-              startDelay={0.1}
-              as="span"
-            />
+            <TextReveal className="text-[clamp(3.5rem,8vw,6rem)] md:text-[clamp(5rem,7vw,8rem)] font-[700] tracking-[-0.03em] leading-[0.85] uppercase" as="span">
+              Project
+            </TextReveal>
 
             <div className="flex flex-col items-end gap-1 pb-1 lg:pb-2">
-              <TextReveal
-                lines={['2025']}
-                className="text-[clamp(3.5rem,8vw,6rem)] md:text-[clamp(5rem,7vw,8rem)] font-[700] tracking-[-0.03em] leading-[0.85] uppercase"
-                staggerDelay={0.06}
-                startDelay={0.1}
-                as="span"
-              />
+              <TextReveal className="text-[clamp(3.5rem,8vw,6rem)] md:text-[clamp(5rem,7vw,8rem)] font-[700] tracking-[-0.03em] leading-[0.85] uppercase" as="span">
+                25
+              </TextReveal>
             </div>
           </div>
           <div className="h-px w-full bg-primary/10" />

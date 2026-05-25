@@ -1,13 +1,12 @@
 import { RiSunLine, RiMoonLine } from '@remixicon/react';
 import { motion } from 'motion/react';
 import { useCursorInteraction } from '../../../hooks';
+import { TextReveal } from '@/components';
 
-const ThemeToggleButton = ({ isActive, toggleTheme }) => {
-  const { targetRef, boundsRef } = useCursorInteraction({ magnetic: true, sticky: true });
-
+const ThemeToggleButton = ({ isActive, toggleTheme, ...props }) => {
   return (
     <motion.div
-      className="toggle hidden md:flex text-white h-[60px] items-center justify-center w-[60px] md:pointer-events-none cursor-pointer"
+      className="flex text-white h-[60px] items-center justify-center w-[60px] md:pointer-events-none cursor-pointer"
       animate={{
         opacity: isActive ? 0 : 1,
         pointerEvents: isActive ? 'none' : 'auto',
@@ -20,17 +19,23 @@ const ThemeToggleButton = ({ isActive, toggleTheme }) => {
       }}
     >
       <div
-        ref={targetRef}
+        data-cursor
+        data-cursor-magnetic
+        data-cursor-sticky
+        data-cursor-size="small"
         className={`relative flex items-center justify-center w-full h-full group ${isActive ? 'pointer-events-none' : 'cursor-pointer'}`}
         onClick={isActive ? undefined : toggleTheme}
         aria-label="Toggle dark mode"
         type="button"
       >
-        <div className="relative">
-          <RiSunLine className="hidden dark:inline transition-transform duration-300 ease-in-out group-hover:-rotate-90" size={24} />
-          <RiMoonLine className="inline dark:hidden transition-transform duration-300 ease-in-out group-hover:rotate-45" size={24} />
+        <div className="relative flex h-6 w-6 items-center justify-center" data-cursor data-cursor-magnetic data-cursor-sticky data-cursor-size="large">
+          <TextReveal className="block dark:hidden" startDelay={0.55}>
+            <RiSunLine className="block dark:hidden transition-transform duration-300 ease-in-out group-hover:-rotate-90" size={24} />
+          </TextReveal>
+          <TextReveal className="hidden dark:block" startDelay={0.55}>
+            <RiMoonLine className="transition-transform duration-300 ease-in-out group-hover:rotate-45" size={24} />
+          </TextReveal>
         </div>
-        <div ref={boundsRef} className={`hidden md:block absolute top-0 left-0 w-[100%] h-[100%] pointer-events-auto hover:scale-[3] ${isActive ? '!pointer-events-none' : ''}`} />
       </div>
     </motion.div>
   );

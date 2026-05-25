@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'motion/react';
 
-const ParallaxImage = ({ src, alt, scrollRange = ['-3vh', '0vh'], offset = ['start end', 'end start'], containerClassName }) => {
+const CardParallax = ({ src, alt, scrollRange = ['-12%', '0%'], offset = ['start end', 'end start'], containerClassName }) => {
   const containerRef = useRef(null);
 
   const { scrollYProgress } = useScroll({
@@ -36,4 +36,4 @@ const ParallaxImage = ({ src, alt, scrollRange = ['-3vh', '0vh'], offset = ['sta
   );
 };
 
-export default ParallaxImage;
+export default CardParallax;

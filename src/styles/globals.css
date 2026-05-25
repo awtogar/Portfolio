@@ -204,3 +204,18 @@ html {
 @utility animate-marquee {
   animation: scroll-x var(--marquee-speed, 20s) linear infinite;
 }
+
+@keyframes slideInDown {
+  from { transform: translateY(-100%); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes slideOutDown {
+  from { transform: translateY(0); opacity: 1; }
+  to { transform: translateY(100%); opacity: 0; }
+}
+
+@theme {
+  --animate-slide-in-down: slideInDown 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  --animate-slide-out-down: slideOutDown 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}

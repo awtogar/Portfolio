@@ -1,5 +1,7 @@
 // Layout
 export { default as Header } from './common/Header/Header';
+export { default as HamburgerButton } from './common/Header/HamburgerButton';
+export { default as ThemeToggleButton } from './common/Header/ThemeToggleButton';
 export { default as SideBar } from './common/Sidebar';
 export { default as Footer } from './common/Footer';
 export { default as BaseSection } from './common/BaseSection';
@@ -17,10 +19,11 @@ export { default as HoverRotate } from './ui/HoverRotate';
 // Text & Typography
 export { default as CircularText } from './ui/CircularText';
 export { default as TextReveal } from './ui/TextReveal';
+export { default as Logo } from './ui/Logo';
 
 // Media & Cards
-export { default as HoverVideoCard } from './ui/HoverVideoCard';
-export { default as ParallaxImage } from './ui/ParallaxImage';
+export { default as Card } from './ui/Card';
+export { default as CardParallax } from './ui/CardParallax';
 export { default as SvgImageMask } from './ui/SvgImageMask';
 export { default as VideoLoader } from './ui/VideoLoader';
 export { default as AnimatedCard } from './ui/AnimatedCard';

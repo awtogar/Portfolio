@@ -30,7 +30,7 @@
   --animation-smooth: all 0.7s cubic-bezier(0.7, 0, 0.3, 1);
   --animation-slow: all 0.9s cubic-bezier(0.7, 0, 0.3, 1);
 
-  --display: clamp(48px, 12vw, 200px);
+  --display: clamp(48px, 10vw, 10rem);
   --display-sm: clamp(3.5rem, 8vw, 6rem);
   --display-xs: clamp(3rem, 7vw, 5rem);
 
