@@ -1,4 +1,4 @@
-import { site6, site3, site2 } from '../assets';
+import { site6, site3, site2, placeholder } from '../assets';
 
 
 export const services = [
@@ -6,7 +6,7 @@ export const services = [
     id: 1,
     number: '01',
     title: 'Graphic',
-    image: site6,
+    image: placeholder,
     description: 'Building strong brand visuals through creative concepts and graphics.',
     features: [
       { number: '01', name: 'Product & Merchandise' },
@@ -19,7 +19,7 @@ export const services = [
     id: 2,
     number: '02',
     title: 'UI/UX',
-    image: site3,
+    image: placeholder,
     description: 'Crafting intuitive user experiences and visually appealing interfaces.',
     features: [
       { number: '01', name: 'User Experience Research' },
@@ -32,7 +32,7 @@ export const services = [
     id: 3,
     number: '03',
     title: 'Development',
-    image: site2,
+    image: placeholder,
     description: 'Creating responsive websites with seamless and brand-focused experiences.',
     features: [
       { number: '01', name: 'Responsive Web Development' },

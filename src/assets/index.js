@@ -1,3 +1,6 @@
+// default
+export { default as placeholder } from './Placeholder.jpg';
+
 // Site Images
 export { default as site1 } from './site/1.jpg';
 export { default as site2 } from './site/2.jpg';

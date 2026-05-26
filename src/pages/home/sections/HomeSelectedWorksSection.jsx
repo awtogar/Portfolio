@@ -1,7 +1,6 @@
 import React from 'react';
 import { projects } from '@/data/projects';
 import { TransitionLink, CreativeButton, TextReveal, Card, BaseSection } from '@/components';
-import { useCursorInteraction } from '@/cursor';
 
 const MarqueeTags = ({ tags = [], speed = 16 }) => {
   const tagsIndex = tags.join(', ') + ', ';
@@ -41,16 +40,9 @@ const WorkCardMeta = ({ work }) => {
   );
 };
 
-const cursorConfig = {
-  content: 'view',
-  size: 'medium',
-  textColor: 'text-primary',
-  fill: 'bg-neutral-200',
-};
 
 const HomeSelectedWorksSection = () => {
   const selectedWorks = projects.filter(project => project.selected);
-  const { targetRef: seeAllButtonRef } = useCursorInteraction(cursorConfig);
 
   return (
     <BaseSection containerID="selected-works" sectionClassName="section-padding-xy relative overflow-hidden">
@@ -81,17 +73,14 @@ const HomeSelectedWorksSection = () => {
             thumbnail={work.thumbnail}
             alt={work.title}
             video={work.video}
-            to={`/projects/${work.slug}`}
-            cursor={cursorConfig}
-            LinkComponent={TransitionLink}
-          >
+            to={`/projects/${work.slug}`}            LinkComponent={TransitionLink}>
             <WorkCardMeta work={work} />
           </Card>
         ))}
       </ul>
 
-      <div ref={seeAllButtonRef} className="flex items-center justify-center">
-        <CreativeButton to="/projects" variant="transparent" rel="noopener noreferrer">
+      <div className="flex items-center justify-center">
+        <CreativeButton data-cursor data-cursor-magnetic data-cursor-size="large" cursor-content="view" to="/projects" variant="transparent" rel="noopener noreferrer">
           <span>See all projects</span>
         </CreativeButton>
       </div>
