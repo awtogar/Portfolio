@@ -1,62 +1,31 @@
 import React from 'react';
 import { projects } from '@/data/projects';
-import { TransitionLink, CreativeButton, TextReveal, Card, BaseSection } from '@/components';
-
-const MarqueeTags = ({ tags = [], speed = 16 }) => {
-  const tagsIndex = tags.join(', ') + ', ';
-  return (
-    <div className="flex items-center h-4 md:h-4.5 overflow-hidden relative w-full">
-      <div className="absolute left-0 h-full w-8 lg:w-10 bg-gradient-to-r from-neutral-900 dark:from-neutral-50 to-transparent pointer-events-none z-10" />
-      <div className="absolute right-0 h-full w-8 lg:w-10 bg-gradient-to-l from-neutral-900 dark:from-neutral-50 to-transparent pointer-events-none z-10" />
-      <div className="flex whitespace-nowrap animate-marquee" style={{ '--marquee-speed': `${speed}s` }}>
-        {[0, 1].map(copy => (
-          <span key={copy} className="text-[10px] md:text-xs tracking-widest text-neutral-300 uppercase shrink-0 pr-1.5">
-            {tagsIndex.repeat(5)}
-          </span>
-        ))}
-      </div>
-    </div>
-  );
-};
-
-const WorkCardMeta = ({ work }) => {
-  const LogoComponent = work.logo;
-  return (
-    <div className="flex flex-col gap-4 lg:gap-5">
-      <div className="flex justify-between items-center w-full">
-        <div className="flex items-center gap-2 lg:gap-3">
-          <div className="w-6 h-6 md:w-10 md:h-10 px-1 py-1 md:px-2 flex items-center justify-center rounded-full bg-neutral-100 dark:bg-neutral-100 overflow-hidden text-primary dark:text-primary">
-            <LogoComponent className="w-full h-full" />
-          </div>
-          <p className="text-[clamp(12px,1.2vw,16px)] uppercase font-semibold text-neutral-100 tracking-wide">{work.client}</p>
-        </div>
-        <div className="flex gap-3 lg:gap-5">
-          <p className="text-[clamp(12px,1.2vw,16px)] uppercase font-semibold text-neutral-300 tracking-wide">{work.type}</p>
-          <p className="text-[clamp(12px,1.2vw,16px)] uppercase font-semibold text-neutral-300 tracking-wide">{work.year}</p>
-        </div>
-      </div>
-      <MarqueeTags tags={work.tags || []} />
-    </div>
-  );
-};
-
+import { TransitionLink, CreativeButton, TextReveal, BaseSection } from '@/components';
+import AnimatedCard, { CardMeta } from '@/components/ui/AnimatedCard';
 
 const HomeSelectedWorksSection = () => {
   const selectedWorks = projects.filter(project => project.selected);
+  const CURSOR_CONFIG = {
+    content: 'view',
+    size: 'large',
+    textColor: 'text-primary',
+    fill: 'secondary',
+  };
 
   return (
     <BaseSection containerID="selected-works" sectionClassName="section-padding-xy relative overflow-hidden">
       <div className="flex flex-col gap-s200 mb-s200 lg:mb-s700">
         <div className="flex items-center justify-between">
-          <span className="text-base">(selected)</span>
+          <TextReveal as="span" startDelay={0.25} className="text-base">
+            (selected)
+          </TextReveal>
         </div>
         <div className="flex items-end justify-between w-full">
-          <TextReveal as="h2" className="text-[clamp(3.5rem,8vw,6rem)] md:text-[clamp(5rem,7vw,8rem)] font-[700] tracking-[-0.03em] leading-[0.85] uppercase">
+          <TextReveal as="h2" className="text-display heading-display">
             WORK
           </TextReveal>
-
           <div className="flex flex-col items-end gap-1 pb-1 lg:pb-2">
-            <TextReveal as="h2" className="text-[clamp(3.5rem,8vw,6rem)] md:text-[clamp(5rem,7vw,8rem)] font-[700] tracking-[-0.03em] leading-[0.85] uppercase">
+            <TextReveal as="h2" className="text-display heading-display">
               25
             </TextReveal>
           </div>
@@ -66,21 +35,32 @@ const HomeSelectedWorksSection = () => {
 
       <ul className="flex flex-col lg:flex-row gap-2 lg:gap-4 w-full pb-s600 lg:pb-s800">
         {selectedWorks.map(work => (
-          <Card
+          <AnimatedCard
             key={work.id}
             as="li"
             className="w-full lg:w-1/2"
             thumbnail={work.thumbnail}
             alt={work.title}
             video={work.video}
-            to={`/projects/${work.slug}`}            LinkComponent={TransitionLink}>
-            <WorkCardMeta work={work} />
-          </Card>
+            to={`/projects/${work.slug}`}
+            LinkComponent={TransitionLink}
+            cursor={CURSOR_CONFIG}
+          >
+            <CardMeta client={work.client} type={work.type} year={work.year} tags={work.tags} logo={work.logo} />
+          </AnimatedCard>
         ))}
       </ul>
 
       <div className="flex items-center justify-center">
-        <CreativeButton data-cursor data-cursor-magnetic data-cursor-size="large" cursor-content="view" to="/projects" variant="transparent" rel="noopener noreferrer">
+        <CreativeButton
+          data-cursor
+          data-cursor-content="view"
+          data-cursor-fill="primary"
+          data-cursor-text-color="secondary"
+          data-cursor-size="large"
+          variant="outline"
+          to="/projects"
+        >
           <span>See all projects</span>
         </CreativeButton>
       </div>

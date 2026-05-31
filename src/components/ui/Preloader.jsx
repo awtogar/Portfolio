@@ -55,11 +55,7 @@ const PreloaderContent = () => {
       className="fixed inset-0 z-9999 flex items-center justify-center bg-primary text-primary"
       style={{ height: '100vh', width: '100vw' }}
     >
-      <motion.div
-        initial={{ scale: 1 }}
-        transition={{ duration: 0.4, ease: [0.76, 0, 0.24, 1] }}
-        className="absolute z-10 text-center"
-      >
+      <motion.div initial={{ scale: 1 }} transition={{ duration: 0.4, ease: [0.76, 0, 0.24, 1] }} className="absolute z-10 text-center">
         {numberEl}
       </motion.div>
       <svg className="absolute top-0 left-0 w-full" height={dimensions.height + SVG_HEIGHT_OFFSET}>

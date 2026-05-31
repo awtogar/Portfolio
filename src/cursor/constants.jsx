@@ -19,3 +19,11 @@ export const CURSOR_CONTENTS = {
   text: <span className="text-primary tracking-widest uppercase">children</span>,
   check: <RiCheckLine className="w-5 h-5 md:w-6 md:h-6" />,
 };
+
+export const CURSOR_TEXT_COLORS = {
+  primary: 'text-primary',
+  secondary: 'text-secondary',
+  brandPrimary: 'text-brand-primary',
+  brandSecondary: 'text-brand-secondary',
+  brandTertiary: 'text-brand-tertiary',
+};

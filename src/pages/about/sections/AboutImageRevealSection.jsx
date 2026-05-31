@@ -1,11 +1,11 @@
 import React, { useRef } from 'react';
 import { useScroll, useTransform, motion } from 'motion/react';
-import { Card, SvgImageMask, BaseSection } from '@/components';
+import { ImageMaskSVG, BaseSection } from '@/components';
 import { useDimensions } from '@/hooks';
 
 import { site2, site3 } from '@/assets';
 
-const maskSVG = `data:image/svg+xml;base64,${btoa(`${SvgImageMask()}`)}`;
+const maskSVG = `data:image/svg+xml;base64,${btoa(`${ImageMaskSVG()}`)}`;
 
 const images = [
   { src: site2, alt: 'Image 2' },
@@ -44,14 +44,7 @@ const AboutImageRevealSection = () => {
                   WebkitMaskSize: maskSize,
                 }}
               >
-                <Card
-                  src={image.src}
-                  alt={image.alt}
-                  containerClassName="absolute inset-0 w-full h-full "
-                  imageClassName="w-full h-full object-cover"
-                  scrollRange={['0%', '8%']}
-                  offset={['start start', 'end start']}
-                />
+                <img className="w-full h-full object-cover" src={image.src} alt={image.alt} />
               </motion.div>
             );
           })}

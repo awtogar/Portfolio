@@ -1,7 +1,7 @@
 import { useCallback, useMemo, useRef, useEffect } from 'react';
 import { motion, useMotionValue, useSpring, AnimatePresence } from 'motion/react';
 import { useCursor } from './CursorProvider';
-import { CURSOR_SIZES, CURSOR_FILLS, CURSOR_CONTENTS } from './constants';
+import { CURSOR_SIZES, CURSOR_FILLS, CURSOR_CONTENTS, CURSOR_TEXT_COLORS } from './constants';
 
 const CustomCursor = () => {
   const { cursorState, hasMouse } = useCursor();
@@ -68,6 +68,7 @@ const CustomCursor = () => {
     };
   }, [manageMouseMove]);
 
+  const cursorTextColor = CURSOR_TEXT_COLORS[textColor] || textColor || CURSOR_TEXT_COLORS.primary;
   const cursorFill = fill && CURSOR_FILLS[fill] ? CURSOR_FILLS[fill] : fill || CURSOR_FILLS.primary;
   const displayContent = CURSOR_CONTENTS[content] !== undefined ? CURSOR_CONTENTS[content] : content;
 
@@ -93,7 +94,7 @@ const CustomCursor = () => {
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0 }}
             transition={{ duration: 0.2, ease: 'easeOut' }}
-            className={`w-full h-full flex items-center justify-center font-secondary font-bold text-sm tracking-tight pointer-events-none ${textColor}`}
+            className={`w-full h-full flex items-center justify-center font-secondary font-bold text-sm tracking-tight pointer-events-none ${cursorTextColor}`}
           >
             {displayContent}
           </motion.div>

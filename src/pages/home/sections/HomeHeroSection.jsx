@@ -53,7 +53,7 @@ const HomeHeroSection = () => {
         <div className="flex w-full justify-center pb-6">
           <TextReveal
             as="h1"
-            className="text-[calc(100vw/10)] font-[500] leading-[1.2] tracking-[-0.03em] w-full text-center whitespace-nowrap flex justify-center"
+            className="text-h100 font-[700] leading-[1.2] tracking-[-0.02em] w-full text-center whitespace-nowrap flex justify-center"
             isHero
             startDelay={0.75}
           >

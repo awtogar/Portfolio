@@ -18,6 +18,7 @@ export function CursorProvider({ children }) {
     variant: 'scale',
     text: null,
     isSticky: false,
+    textColor: null, // ← add
     stickyElement: null,
     fill: null,
     cursorSize: null,
@@ -44,6 +45,7 @@ export function CursorProvider({ children }) {
       stickyElement: null,
       fill: null,
       cursorSize: null,
+      textColor: null,
     });
   }, []);
 
@@ -57,6 +59,7 @@ export function CursorProvider({ children }) {
     const getConfig = el => ({
       magnetic: el.dataset.cursorMagnetic !== undefined,
       sticky: el.dataset.cursorSticky !== undefined,
+      textColor: el.dataset.cursorTextColor || 'primary',
       fill: el.dataset.cursorFill || 'primary',
       size: el.dataset.cursorSize || 'small',
       content: el.dataset.cursorContent || null,
@@ -82,6 +85,7 @@ export function CursorProvider({ children }) {
         isSticky: config.sticky,
         stickyElement: config.sticky ? el : null,
         fill: config.fill,
+        textColor: config.textColor,
       });
     };
 

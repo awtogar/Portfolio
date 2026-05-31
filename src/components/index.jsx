@@ -24,7 +24,7 @@ export { default as Logo } from './ui/Logo';
 // Media & Cards
 export { default as Card } from './ui/Card';
 export { default as CardParallax } from './ui/CardParallax';
-export { default as SvgImageMask } from './ui/SvgImageMask';
+export { default as ImageMaskSVG } from './ui/ImageMaskSVG';
 export { default as VideoLoader } from './ui/VideoLoader';
 export { default as AnimatedCard } from './ui/AnimatedCard';
 

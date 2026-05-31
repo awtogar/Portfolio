@@ -53,11 +53,10 @@
   --leading-display: var(--leading-display);
   --leading-heading: var(--leading-heading);
   --leading-body: var(--leading-body);
-  --leading-relaxed: var(--leading-relaxed);
+  --leading-mono: var(--leading-mono);
 
   /* Tracking */
   --tracking-heading: var(--tracking-heading);
-  --tracking-label: var(--tracking-label);
   --tracking-body: var(--tracking-body);
 
   /* Spacing layout */
@@ -146,13 +145,11 @@ html {
 
   /* tight leading (1.065), slightly negative tracking */
   :is(h1, h2, h3, h4, h5, h6) {
-    line-height: var(--leading-heading);
-    letter-spacing: var(--tracking-heading);
-    font-weight: 450;
+    @apply leading-[1.065] tracking-[-0.02em];
   }
 
   p {
-    @apply text-base;
+    @apply text-base leading-[1.2] tracking-[0.02em];
   }
 
   a {

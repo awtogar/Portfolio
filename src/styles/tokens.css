@@ -1,63 +1,58 @@
 :root {
+  /* font */
   --sans: 'General Sans', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   --serif: 'Overused Grotesk', 'Georgia', 'Times New Roman', serif;
   --mono: 'SF Mono', 'Monaco', 'Cascadia Code', 'Roboto Mono', monospace;
 
+  /* colors */
   --neutral-100: hsl(47, 0%, 98%);
   --neutral-200: hsl(47, 4%, 90%);
   --neutral-300: hsl(47, 6%, 70%);
   --neutral-400: hsl(47, 8%, 45%);
   --neutral-500: hsl(47, 12%, 20%);
-
   --primary: hsl(47, 12%, 10%);
   --primary-muted: hsl(47, 8%, 35%);
   --secondary: hsl(47, 0%, 98%);
   --secondary-muted: hsl(47, 4%, 75%);
-
-  --brand-primary: #fff6d6;
-  --brand-secondary: #2277c8;
-  --brand-tertiary: #10344a;
-
-  --accent: #8eadfb;
-
+  --brand-primary: #8eadfb;
+  --brand-secondary: #fff6d6;
+  --brand-tertiary: #ab96ff;
+  --accent: #ffe365;
   --color-border: rgba(28, 29, 32, 0.175);
   --color-border-solid: #d2d2d2;
 
-  --ease-primary: cubic-bezier(0.7, 0, 0.3, 1);
+  
 
-  --animation-fast: all 0.3s cubic-bezier(0.7, 0, 0.3, 1);
-  --animation-primary: all 0.5s cubic-bezier(0.7, 0, 0.3, 1);
-  --animation-smooth: all 0.7s cubic-bezier(0.7, 0, 0.3, 1);
-  --animation-slow: all 0.9s cubic-bezier(0.7, 0, 0.3, 1);
-
-  --display: clamp(48px, 10vw, 10rem);
+  /* Typography */
+    /* Rarely used (Branding Extra Large Text sizing */
+  --display: clamp(3.4rem,7vw,6rem);
   --display-sm: clamp(3.5rem, 8vw, 6rem);
   --display-xs: clamp(3rem, 7vw, 5rem);
 
-  --h100: clamp(3.25rem, 7vw, 8rem);
+    /* Heading */
+  --h100: clamp(3.2rem,6vw,6rem);
   --h200: clamp(2.5rem, 5vw, 4.5rem);
   --h300: clamp(2rem, 4.65vw, 4rem);
   --h400: clamp(1.55rem, 2.3vw, 2.5rem);
   --h500: clamp(1.2rem, 1.6vw, 1.75rem);
   --h600: clamp(1rem, 1.2vw, 1.3rem);
 
+  /* Body e.g paragraph and span */
+  --base-lg: clamp(1.25rem, 2.8vw, 3.5rem);
   --base: clamp(1rem, 1.2vw, 1.25rem);
-
-  --base-lg: clamp(1.5rem, 3.3vw, 3.5rem);
-
   --base-sm: clamp(0.875rem, 0.8vw, 1.125rem);
-
   --base-xs: clamp(0.8rem, 0.7vw, 1rem);
   --base-extra-sm: clamp(0.625rem, 0.9vw, 0.75rem);
 
+  /* Leading for heading */
   --leading-display: 1;
   --leading-heading: 1.065;
+  /* Leading for body */
   --leading-body: 1.66;
-  --leading-relaxed: 1.75;
+  --leading-mono: 1.75;
 
   --tracking-heading: -0.02em;
-  --tracking-label: 0.08em;
-  --tracking-body: 0.015em;
+  --tracking-body: 0.04em;
 
   --section-padding: clamp(5rem, 21vh, 12rem);
   --container-padding: clamp(2.5rem, 8vw, 8rem);
@@ -73,24 +68,46 @@
   --s800: clamp(4rem, 3.5rem + 1.5vi, 6rem);
   --s900: clamp(5rem, 4.5rem + 2vi, 10rem);
 
-  --sfluid: clamp(1rem, 0.8571rem + 1.0143vi, 3.5rem);
+  --animation-fast: all 0.3s cubic-bezier(0.7, 0, 0.3, 1);
+  --animation-primary: all 0.5s cubic-bezier(0.7, 0, 0.3, 1);
+  --animation-smooth: all 0.7s cubic-bezier(0.7, 0, 0.3, 1);
+  --animation-slow: all 0.9s cubic-bezier(0.7, 0, 0.3, 1);
 }
 
 @media screen and (min-width: 640) {
   :root {
-    --color-border: rgba(28, 29, 32, 0.225);
+    --display: clamp(5rem, 7vw, 8rem);
+    /*
     --container-padding: clamp(1.25rem, 4vw, 2.5rem);
-    --section-padding: max(2.5rem, 12vh);
+    --section-padding: max(2.5rem, 12vh); */
+
+    /* siapin buat display sm tablet */
+    /* --display-sm: clamp(3.5rem, 8vw, 6rem);
+    --display-xs: clamp(3rem, 7vw, 5rem);
+    --h100: clamp(3.2rem,12vw,6rem);
+    --h200: clamp(2.5rem, 5vw, 4.5rem);
+    --h300: clamp(2rem, 4.65vw, 4rem);
+    --h400: clamp(1.55rem, 2.3vw, 2.5rem);
+    --h500: clamp(1.2rem, 1.6vw, 1.75rem);
+    --h600: clamp(1rem, 1.2vw, 1.3rem);
+    --base: clamp(1rem, 1.2vw, 1.25rem);
+    --base-lg: clamp(1.5rem, 3.3vw, 3.5rem);
+    --base-sm: clamp(0.875rem, 0.8vw, 1.125rem);
+    --base-xs: clamp(0.8rem, 0.7vw, 1rem);
+    --base-extra-sm: clamp(0.625rem, 0.9vw, 0.75rem); */
   }
 }
 @media screen and (min-width: 768px) {
   :root {
     --section-padding: 12vh;
+    --container-padding: 4vw;;
   }
 }
 @media screen and (min-width: 1280px) {
   :root {
+    --section-padding: 12vh;
     --container-padding: 6vw;
+
   }
 }
 
@@ -110,11 +127,10 @@
   --primary-muted: hsl(47, 6%, 70%);
   --secondary: hsl(47, 12%, 12%);
   --secondary-muted: hsl(47, 8%, 35%);
-
-  --brand-primary: #10344a;
-  --brand-secondary: #2277c8;
-  --brand-tertiary: #fff6d6;
-
+  
+  --brand-primary: #fff6d6;
+  --brand-secondary: #348de0;
+  --brand-tertiary: #ab96ff;
   --accent: #ffe365;
 
   --color-border: rgba(255, 255, 255, 0.2);

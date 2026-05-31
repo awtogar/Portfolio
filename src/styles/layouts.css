@@ -23,6 +23,25 @@
     @apply text-h400! text-secondary flex items-center uppercase;
   }
 
+/* Typhography */
+  .heading-display{
+    @apply font-[700] leading-[1.065] tracking-[-0.02em];
+  }
+  .heading-bold {
+    @apply font-[600] leading-[1.065] tracking-[-0.02em];
+  }
+  .heading-medium {
+    @apply font-[500] leading-[1.065] tracking-[-0.02em];
+  }
+  .heading-normal {
+    @apply font-[400] leading-[1.065] tracking-[-0.02em];
+  }
+  .heading-light {
+    @apply font-[300] leading-[1.065] tracking-[-0.02em];
+  }
+
+
+
   .cards-cols {
     grid-template-columns: repeat(2, 50rem);
     gap: 10rem;

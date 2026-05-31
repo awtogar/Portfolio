@@ -30,7 +30,7 @@ const AppContent = () => {
       <Preloader />
       <Header />
       <CustomCursor />
-      <Transition />
+      {/* <Transition /> */}
       <main id="main" className="bg-neutral-100">
         <Suspense fallback={null}>
           <RouteChangeNotifier />
