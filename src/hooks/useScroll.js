@@ -1,6 +1,7 @@
 import { useEffect, useCallback } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useLenis } from '@/context/LenisContext';
+import { useLoading } from '@/context/LoadingProvider';
 
 export const useScrollToSection = () => {
   const { scrollTo } = useLenis();
@@ -21,16 +22,19 @@ export const useScrollToSection = () => {
   );
 };
 
+export const resetScrollImmediate = (lenis) => {
+  window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+  lenis?.scrollTo(0, { immediate: true });
+};
+
+
 export const useScrollToTop = () => {
   const { pathname } = useLocation();
-  const { scrollTo } = useLenis();
+  const { lenis } = useLenis();
+  const { isTransitioning } = useLoading();
 
   useEffect(() => {
-    window.scrollTo(0, 0);
-    if (scrollTo) {
-      requestAnimationFrame(() => {
-        scrollTo(0, { immediate: true });
-      });
-    }
-  }, [pathname, scrollTo]);
+    if (isTransitioning) return;
+    resetScrollImmediate(lenis);
+  }, [pathname, lenis, isTransitioning]);
 };

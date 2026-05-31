@@ -52,12 +52,21 @@ export function LoadingProvider({ children }) {
       if (path === location.pathname) return;
       if (transitionRef.current) return;
 
+      const prefersReducedMotion =
+        typeof window !== 'undefined' &&
+        window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      if (prefersReducedMotion) {
+        navigate(path);
+        return;
+      }
+
       transitionRef.current = true;
       setTargetPath(path);
       setPageTitle(getPageTitle(path));
       setPhase('exit');
     },
-    [location.pathname, getPageTitle]
+    [location.pathname, getPageTitle, navigate]
   );
 
   const onExitComplete = useCallback(() => {

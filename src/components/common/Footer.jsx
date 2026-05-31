@@ -6,7 +6,7 @@ import { site1, site2, site3, site6, site7, site8, site9, site13 } from '@/asset
 import BaseSection from '@/components/common/BaseSection';
 import { LetterScroll } from '@/components/ui/LetterScroll';
 import { HoverRotate } from '..';
-import { contact_info, socials, pages } from '@/data/navigation';
+import { contact_info, socials } from '@/data/navigation';
 import { useScrollToSection } from '@/hooks';
 import { useCursorInteraction } from '@/cursor';
 
@@ -40,8 +40,6 @@ export default function Footer() {
   const y3 = useTransform(scrollYProgress, [0, 1], [0, height * 1.25]);
   const y4 = useTransform(scrollYProgress, [0, 1], [0, height * 3.3]);
 
-  const currentPage = Object.values(pages).find(page => pathname === page.href || pathname.startsWith(`${page.href}/`)) || pages.home;
-
   const handleSectionClick = (e, id) => {
     e.preventDefault();
     scrollToSection(id);
@@ -50,7 +48,7 @@ export default function Footer() {
   return (
     <BaseSection as="footer" containerID="footer" containerClassName="max-w-full" sectionClassName="">
       {/* Content first */}
-      <div className="relative h-screen md:h-[100vh]">
+      <div className="relative h-[65vh] md:h-[100vh]">
         <div className="absolute inset-0">
           <LetterScroll lines={['MODERN', 'TECH STACK']} textColor="text-primary" />
         </div>
@@ -76,92 +74,67 @@ export default function Footer() {
 
       {/* content Third */}
       <div className="bg-neutral-100 section-padding-x">
-        {/* Mobile */}
-        <div className="flex flex-col justify-between md:hidden py-10 gap-10">
-          <div className="flex flex-col gap-8">
-            <div>
-              <span className="mb-2 block text-[10px] font-mono font-medium tracking-[0.2em] text-primary-muted/50 uppercase">Contents</span>
-              <ul className="flex flex-col">
-                {currentPage.sections.map(section => (
-                  <li key={section.id} className="border-b border-primary-muted/10 last:border-b-0">
-                    <HoverRotate
-                      href={`#${section.id}`}
-                      onClick={e => handleSectionClick(e, section.id)}
-                      className="group flex items-center justify-between py-1 transition-all hover:border-primary-muted/30"
-                    >
-                      <span className="text-[2.6rem] font-medium uppercase tracking-tight text-primary sm:text-4xl">{section.title}</span>
-                    </HoverRotate>
-                    {section.description && (
-                      <span className="mt-0.5 inline-block text-[9px] font-mono uppercase tracking-[0.1em] text-primary-muted/40">{section.description}</span>
-                    )}
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <span className="mb-2 block text-[10px] font-mono font-medium tracking-[0.2em] text-primary-muted/50 uppercase">Socials</span>
-              <ul className="flex flex-col">
-                {socials.map(social => (
-                  <li key={social.label} className="border-b border-primary-muted/10 last:border-b-0">
-                    <HoverRotate
-                      as="a"
-                      href={social.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="group flex items-center justify-between py-1 transition-all hover:border-primary-muted/30"
-                    >
-                      <span className="text-display-xs font-medium uppercase tracking-tight text-primary-muted sm:text-3xl">{social.title}</span>
-                    </HoverRotate>
-                    {social.handle && <span className="mt-0.5 inline-block text-[9px] font-mono uppercase tracking-[0.1em] text-primary-muted/40">{social.handle}</span>}
-                  </li>
-                ))}
-              </ul>
-            </div>
+        <div className="flex flex-col min-h-screen md:hidden py-6 gap-10">
+          {/* Heading */}
+          <div className="mt-6">
+            <h2 className="text-[clamp(3rem,10vw,4.5rem)] leading-[0.9] font-medium">This is not finished.</h2>
+
+            <p className="mt-2 text-[clamp(3rem,10vw,4.5rem)] leading-[0.9] italic font-serif">What will we create next?</p>
           </div>
-          <div className="flex flex-col gap-3 border-t border-primary-muted/20 pt-5 text-[10px] font-mono uppercase tracking-wider text-primary-muted/50 sm:flex-row sm:justify-between">
-            <span>{contact_info.credits}</span>
-            <span>{contact_info.copyright}</span>
+
+          {/* Contact */}
+          <div className="mt-16 space-y-14">
+            <div>
+              <p className="text-xs uppercase tracking-wide mb-3">Mail</p>
+
+              <a href={`mailto:${contact_info.email}`} className=" inline-block text-[clamp(1.5rem,6vw,2.25rem)] leading-none border-bborder-current break-all">
+                {contact_info.email}
+              </a>
+            </div>
+
+            <div>
+              <p className="text-xs uppercase tracking-wide mb-3">Call</p>
+
+              <a href={`tel:${contact_info.phone}`} className="inline-block text-[clamp(1.5rem,6vw,2.25rem)] leading-none border-b border-current">
+                {contact_info.phone}
+              </a>
+            </div>
+
+            <div>
+              <p className="text-xs uppercase tracking-wide mb-3">Add</p>
+              <a href={socials.linkedin} target="_blank" rel="noopener noreferrer" className="inline-block text-[clamp(1.5rem,6vw,2.25rem)] leading-none border-b border-current">
+                LinkedIn
+              </a>
+            </div>
           </div>
         </div>
 
         {/* Desktop */}
-        <div className="hidden md:flex h-[100vh] items-center">
-          <div className="flex flex-col gap-s800 justify-between py-8 w-full">
-            <div className="flex justify-between flex-wrap gap-8">
-              <div className="flex flex-col gap-s100 items-start md:gap-s400">
-                <span className="text-primary-muted/72 inline-block border-b border-primary-muted/35 pb-1 w-fit">Content Menu</span>
-                {currentPage.sections.map(section => (
-                  <LinkHoverRotate
-                    key={section.id}
-                    cursorConfig={{ magnetic: true, content: 'arrow' }}
-                    className="text-primary-muted text-5xl font-medium uppercase tracking-tight leading-[1.1]"
-                    href={`#${section.id}`}
-                    onClick={e => handleSectionClick(e, section.id)}
-                  >
-                    {section.title}
-                  </LinkHoverRotate>
-                ))}
-              </div>
-              <div className="flex flex-col gap-s100 items-end md:gap-s400">
-                <span className="text-primary-muted/72 inline-block border-b border-primary-muted/35 pb-1 w-fit">Socials</span>
-                {socials.map(social => (
-                  <LinkHoverRotate
-                    key={social.label}
-                    cursorConfig={{ magnetic: true, content: 'arrow' }}
-                    as="a"
-                    href={social.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-primary-muted text-5xl font-medium uppercase tracking-tight leading-[1.1]"
-                  >
-                    {social.title}
-                  </LinkHoverRotate>
-                ))}
-              </div>
+        <div className="hidden md:flex h-screen items-center">
+          <div className="w-full flex justify-between items-start">
+            {/* LEFT */}
+            <div className="max-w-[40vw]">
+              <h2 className="text-[clamp(4rem,5vw,6rem)] leading-[0.95] font-medium">This is not finished.</h2>
+
+              <p className="mt-2 text-[clamp(4rem,5vw,6rem)] italic leading-[0.9]">What will we create next?</p>
             </div>
-            <div className="text-primary-muted/72 flex justify-between items-center pt-6 border-t border-primary-muted/35">
-              <span className="text-xs">{contact_info.credits}</span>
-              <span className="text-xs">{contact_info.copyright}</span>
+
+            {/* RIGHT */}
+            <div className="w-[40vw] max-w-[650px]">
+              <div className="grid grid-cols-[80px_1fr] gap-y-10">
+                <span className="text-xs uppercase">Mail</span>
+                <a href={`mailto:${contact_info.email}`} className="text-4xl border-b border-current w-fit">
+                  {contact_info.email}
+                </a>
+                <span className="text-xs uppercase">Call</span>
+                <a href={`tel:${contact_info.phone}`} className="text-4xl border-b border-current w-fit">
+                  {contact_info.phone}
+                </a>
+                <span className="text-xs uppercase">Add</span>
+                <a href={socials.links} target="_blank" rel="noopener noreferrer" className="text-4xl border-b border-current w-fit">
+                  LinkedIn
+                </a>
+              </div>
             </div>
           </div>
         </div>

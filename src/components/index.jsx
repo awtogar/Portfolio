@@ -32,7 +32,7 @@ export { default as AnimatedCard } from './ui/AnimatedCard';
 export { default as Curve } from './ui/Curve';
 export { default as Marquee, MarqueeItem, ScrollAwareArrow } from './ui/Marquee';
 export { default as Preloader } from './ui/Preloader';
-export { default as Transition } from './ui/Transition';
+export { default as PageTransition } from './ui/PageTransition';
 export { default as TimelineSVGLine } from './ui/TimelineSVGLine';
 
 // Cursor (external module)

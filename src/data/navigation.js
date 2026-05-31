@@ -56,7 +56,7 @@ export const socials = [
 
 export const contact_info = {
   email: 'info@awtogar.com',
-  phone: '+62 85156015818',
+  phone: '+62 8139 9090 251',
   credits: `© ${new Date().getFullYear()} Awtogar.`,
   copyright: `All rights reserved.`,
 };

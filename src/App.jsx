@@ -2,7 +2,7 @@ import { lazy, Suspense } from 'react';
 import { Route, BrowserRouter as Router, Routes, Outlet, useLocation } from 'react-router-dom';
 import '@/styles/globals.css';
 import { SpeedInsights } from '@vercel/speed-insights/react';
-import { Preloader, Header, CustomCursor, Footer, Transition, RouteChangeNotifier } from '@/components';
+import { Preloader, Header, CustomCursor, Footer, PageTransition, RouteChangeNotifier } from '@/components';
 import AppProviders from '@/context/AppProviders';
 import { pages } from '@/data/navigation';
 import { useScrollToTop, usePreloader } from '@/hooks';
@@ -30,8 +30,7 @@ const AppContent = () => {
       <Preloader />
       <Header />
       <CustomCursor />
-      {/* <Transition /> */}
-      <main id="main" className="bg-neutral-100">
+      <div id="main" className="page-container bg-neutral-100">
         <Suspense fallback={null}>
           <RouteChangeNotifier />
           <Routes location={location} key={location.pathname}>
@@ -44,7 +43,8 @@ const AppContent = () => {
             <Route path={pages.contact.href} element={<ContactPage />} />
           </Routes>
         </Suspense>
-      </main>
+      </div>
+      <PageTransition />
     </>
   );
 };

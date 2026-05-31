@@ -95,6 +95,7 @@
 /* HTML baseline */
 html {
   position: relative;
+  scrollbar-gutter: stable;
   -webkit-text-size-adjust: 100%;
   -moz-text-size-adjust: 100%;
   text-size-adjust: 100%;

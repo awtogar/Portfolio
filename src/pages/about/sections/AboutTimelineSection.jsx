@@ -36,7 +36,7 @@ const AboutTimelineSection = () => {
         animation: tween,
         scrub: 1,
         invalidateOnRefresh: true,
-        markers: true,
+        markers: false,
       });
 
       requestAnimationFrame(() => {

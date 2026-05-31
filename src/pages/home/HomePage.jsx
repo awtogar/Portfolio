@@ -2,12 +2,12 @@ import { HomeHeroSection, HomeIntroSection, HomeWhatIdoSection, HomeSelectedWork
 
 const HomePage = () => {
   return (
-    <>
+    <main className="page-container">
       <HomeHeroSection />
       <HomeIntroSection />
       <HomeWhatIdoSection />
       <HomeSelectedWorksSection />
-    </>
+    </main>
   );
 };
 

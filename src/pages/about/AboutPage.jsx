@@ -4,11 +4,11 @@ import { AboutHeroSection, AboutTimelineSection, AboutImageRevealSection } from 
 
 const AboutPage = () => {
   return (
-    <>
+    <main className="page-container">
       <AboutHeroSection />
       <AboutTimelineSection />
       <AboutImageRevealSection />
-    </>
+    </main>
   );
 };
 

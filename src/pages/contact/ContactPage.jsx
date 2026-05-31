@@ -57,7 +57,7 @@ const ContactPage = () => {
   });
 
   return (
-    <>
+    <main className="page-container">
       <BaseSection sectionClassName="section-padding-hero" containerID="contact-form">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[1fr_420px] xl:grid-cols-[1fr_480px] gap-s700 lg:gap-s900 items-start">
           <div className="flex flex-col gap-s700 lg:sticky lg:top-8 h-[100dvh]">
@@ -174,7 +174,7 @@ const ContactPage = () => {
           </motion.div>
         </div>
       </BaseSection>
-    </>
+    </main>
   );
 };
 

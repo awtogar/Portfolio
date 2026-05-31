@@ -12,6 +12,7 @@ const CURSOR_CONFIG = {
 
 const ProjectPage = () => {
   return (
+    <main className="page-container">
     <BaseSection sectionClassName="section-padding-hero lg:min-h-screen pt-4 lg:pt-6">
       <div className="flex flex-col gap-s700 lg:gap-s900 px-4 lg:px-8">
         <div className="flex flex-col">
@@ -54,6 +55,7 @@ const ProjectPage = () => {
         </ul>
       </div>
     </BaseSection>
+    </main>
   );
 };
 
