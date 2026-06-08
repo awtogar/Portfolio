@@ -2,13 +2,24 @@ import { useRef, useEffect } from 'react';
 import { gsap } from 'gsap';
 import { SplitText } from 'gsap/SplitText';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { useLoading } from '@/context';
+import { usePageFlow } from '@/context';
 
 gsap.registerPlugin(SplitText, ScrollTrigger);
 
-const TextReveal = ({ children, lines, lineClassName, as: Component = 'div', className = '', style, staggerDelay = 0.075, startDelay = 0, ready = true, isHero = false }) => {
-  const { isReady, isTransitioning } = useLoading();
-  const globalReady = isReady && !isTransitioning;
+const TextReveal = ({
+  children,
+  lines,
+  lineClassName,
+  as: Component = 'div',
+  className = '',
+  style,
+  staggerDelay = 0.075,
+  startDelay = 0,
+  ready = true,
+  isHero = false,
+  replayOnNavigate = false,
+}) => {
+  const { canRevealContent, revealEpoch } = usePageFlow();
 
   const ref = useRef(null);
   const splitRef = useRef(null);
@@ -63,16 +74,31 @@ const TextReveal = ({ children, lines, lineClassName, as: Component = 'div', cla
   }, []);
 
   useEffect(() => {
-    if (!isHero || !ready || !globalReady) return;
+    if (!isHero || replayOnNavigate || !ready || !canRevealContent) return;
     if (splitRef.current) {
       playAnimation();
     } else {
       pendingPlayRef.current = true;
     }
-  }, [globalReady, isHero, ready]);
+  }, [canRevealContent, isHero, ready, replayOnNavigate]);
 
   useEffect(() => {
-    if (isHero || !ref.current || !globalReady || !ready) return;
+    if (!isHero || !replayOnNavigate || !ready || !canRevealContent) return;
+
+    hasPlayedRef.current = false;
+    if (splitRef.current?.lines) {
+      gsap.set(splitRef.current.lines, { yPercent: 100 });
+    }
+
+    if (splitRef.current) {
+      playAnimation();
+    } else {
+      pendingPlayRef.current = true;
+    }
+  }, [canRevealContent, isHero, ready, replayOnNavigate, revealEpoch]);
+
+  useEffect(() => {
+    if (isHero || !ref.current || !canRevealContent || !ready) return;
 
     stRef.current = ScrollTrigger.create({
       trigger: ref.current,
@@ -88,7 +114,7 @@ const TextReveal = ({ children, lines, lineClassName, as: Component = 'div', cla
     });
 
     return () => stRef.current?.kill();
-  }, [globalReady, ready, isHero]);
+  }, [canRevealContent, ready, isHero, revealEpoch]);
 
   const content = lines
     ? lines.map((line, i) => (

@@ -45,9 +45,8 @@
   --text-h600: var(--h600);
 
   --text-base: var(--base);
-  --text-base-lg: var(--base-lg);
   --text-base-sm: var(--base-sm);
-  --text-base-xs: var(--base-extra-sm);
+  --text-base-xs: var(--base-xs);
 
   /* Leading */
   --leading-display: var(--leading-display);
@@ -75,13 +74,6 @@
   --spacing-s800: var(--s800);
   --spacing-s900: var(--s900);
   --spacing-sfluid: var(--sfluid);
-
-  /* Breakpoints */
-  --breakpoint-*: initial;
-  --breakpoint-md: 46rem;
-  --breakpoint-lg: 60rem;
-  --breakpoint-xl: 80rem;
-  --breakpoint-2xl: 90rem;
 
   /* Animation */
   --ease-primary: var(--ease-primary);
@@ -144,13 +136,11 @@ html {
     -moz-osx-font-smoothing: grayscale;
   }
 
-  /* tight leading (1.065), slightly negative tracking */
   :is(h1, h2, h3, h4, h5, h6) {
-    @apply leading-[1.065] tracking-[-0.02em];
+    @apply font-serif;
   }
-
   p {
-    @apply text-base leading-[1.2] tracking-[0.02em];
+    @apply font-sans;
   }
 
   a {

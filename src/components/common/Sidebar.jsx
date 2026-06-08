@@ -2,9 +2,9 @@ import { useState, useEffect, Component } from 'react';
 import { motion } from 'motion/react';
 import { useLocation } from 'react-router-dom';
 import { RiSunLine, RiMoonLine } from '@remixicon/react';
-import { menuSlideLeft } from '@/data/anim/nav';
+import { getMenuSlideVariants } from '@/data/anim/nav';
 import { pages, socials } from '@/data/navigation';
-import { useLenis } from '../../context/LenisContext';
+import { useLenis, usePageFlow } from '@/context';
 import { useTheme } from '../../hooks/useTheme';
 
 import { Curve, NavigationLink, HoverRotate } from '..';
@@ -16,6 +16,9 @@ export default function SideBar({ closeMenu }) {
   const { stopScroll, startScroll } = useLenis();
 
   const { toggleTheme, isDark } = useTheme();
+  const { isTransitioning } = usePageFlow();
+  const menuVariants = getMenuSlideVariants(isTransitioning);
+  const overlayTransition = isTransitioning ? { duration: 0 } : { duration: 0.3 };
 
   useEffect(() => {
     const handleKeyDown = event => {
@@ -38,12 +41,12 @@ export default function SideBar({ closeMenu }) {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        transition={{ duration: 0.3 }}
+        transition={overlayTransition}
         className="fixed inset-0 bg-black/35 z-50"
         onClick={closeMenu}
       />
       <motion.div
-        variants={menuSlideLeft}
+        variants={menuVariants}
         initial="initial"
         animate="enter"
         exit="exit"
@@ -106,7 +109,7 @@ export default function SideBar({ closeMenu }) {
             </div>
           </div>
         </div>
-        <Curve />
+        <Curve instant={isTransitioning} />
       </motion.div>
     </div>
   );

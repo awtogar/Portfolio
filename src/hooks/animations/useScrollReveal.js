@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 import { useInView } from 'motion/react';
-import { useAnimationReady } from './useAnimationReady';
+import { useCanRevealContent } from './useCanRevealContent';
 import { revealPresets, defaultEase } from '@/data/anim/presets';
 
 export const useScrollReveal = ({
@@ -13,7 +13,7 @@ export const useScrollReveal = ({
   ready: externalReady,
 } = {}) => {
   const ref = useRef(null);
-  const globalReady = useAnimationReady();
+  const globalReady = useCanRevealContent();
   const isInView = useInView(ref, { once, margin });
 
   const ready = externalReady !== undefined ? externalReady : globalReady;

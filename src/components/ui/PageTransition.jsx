@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { motion } from 'motion/react';
-import { useLoading } from '@/context/LoadingProvider';
+import { usePageFlow } from '@/context';
 import { PAGE_TRANSITION, CURTAIN_LAYERS } from '@/data/anim/pageTransition';
 
 const Y = {
@@ -51,7 +51,7 @@ const titleVariants = {
 };
 
 export default function PageTransition() {
-  const { phase, pageTitle, onExitComplete, onEnterComplete } = useLoading();
+  const { phase, pageTitle, onExitComplete, onEnterComplete } = usePageFlow();
   const doneRef = useRef({ phase: null, layers: new Set() });
 
   useEffect(() => {

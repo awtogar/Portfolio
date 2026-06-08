@@ -1,9 +1,9 @@
 import { useRef } from 'react';
 import { motion } from 'motion/react';
-import { useLoading } from '@/context/LoadingProvider';
+import { usePageFlow } from '@/context';
 
 const ProjectDetailHeroSection = ({ project }) => {
-  const { phase } = useLoading();
+  const { phase } = usePageFlow();
   const hasPlayed = useRef(false);
   if (phase === 'idle') hasPlayed.current = true;
 

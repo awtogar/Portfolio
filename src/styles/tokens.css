@@ -1,8 +1,28 @@
 :root {
   /* font */
-  --sans: 'General Sans', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  --serif: 'Overused Grotesk', 'Georgia', 'Times New Roman', serif;
-  --mono: 'SF Mono', 'Monaco', 'Cascadia Code', 'Roboto Mono', monospace;
+--sans: 'General Sans',
+  Inter,
+  'SF Pro Display',
+  -apple-system,
+  BlinkMacSystemFont,
+  'Segoe UI',
+  sans-serif;
+
+--serif: 'Overused Grotesk',
+  Inter,
+  'SF Pro Display',
+  -apple-system,
+  BlinkMacSystemFont,
+  'Segoe UI',
+  sans-serif;
+
+--mono: 'JetBrains Mono',
+  'Roboto Mono',
+  'SF Mono',
+  Menlo,
+  Monaco,
+  Consolas,
+  monospace;
 
   /* colors */
   --neutral-100: hsl(47, 0%, 98%);
@@ -21,38 +41,28 @@
   --color-border: rgba(28, 29, 32, 0.175);
   --color-border-solid: #d2d2d2;
 
-  
-
-  /* Typography */
-    /* Rarely used (Branding Extra Large Text sizing */
-  --display: clamp(3.4rem,7vw,6rem);
+  --display: clamp(2rem, 11vw, 14rem);
   --display-sm: clamp(3.5rem, 8vw, 6rem);
   --display-xs: clamp(3rem, 7vw, 5rem);
-
-    /* Heading */
-  --h100: clamp(3.2rem,6vw,6rem);
-  --h200: clamp(2.5rem, 5vw, 4.5rem);
-  --h300: clamp(2rem, 4.65vw, 4rem);
-  --h400: clamp(1.55rem, 2.3vw, 2.5rem);
-  --h500: clamp(1.2rem, 1.6vw, 1.75rem);
-  --h600: clamp(1rem, 1.2vw, 1.3rem);
-
-  /* Body e.g paragraph and span */
-  --base-lg: clamp(1.25rem, 2.8vw, 3.5rem);
-  --base: clamp(1rem, 1.2vw, 1.25rem);
-  --base-sm: clamp(0.875rem, 0.8vw, 1.125rem);
-  --base-xs: clamp(0.8rem, 0.7vw, 1rem);
-  --base-extra-sm: clamp(0.625rem, 0.9vw, 0.75rem);
+  /* Heading */
+  --h100: clamp(3.0518rem, 2.3786rem + 2.9919vw, 3.8147rem);
+  --h200: clamp(2.4414rem, 1.9029rem + 2.3935vw, 3.0518rem);
+  --h300:  clamp(1.9531rem, 1.5223rem + 1.9148vw, 2.4414rem);
+  --h400: clamp(1.5625rem, 1.2178rem + 1.5319vw, 1.9531rem);
+  --h500: clamp(1.25rem, 0.9743rem + 1.2255vw, 1.5625rem);
+  --h600: clamp(1rem, 0.7794rem + 0.9804vw, 1.25rem);
+  /* boody */
+  --base: clamp(1rem, 0.7794rem + 0.9804vw, 1.25rem);
+  --base-sm: clamp(0.85rem, 0.6625rem + 0.8333vw, 1.0625rem);
+  --base-xs: clamp(0.750rem, 0.8607rem + -0.1383vw, 0.833rem);
 
   /* Leading for heading */
   --leading-display: 1;
   --leading-heading: 1.065;
-  /* Leading for body */
   --leading-body: 1.66;
   --leading-mono: 1.75;
-
   --tracking-heading: -0.02em;
-  --tracking-body: 0.04em;
+  --tracking-body: 0.004em;
 
   --section-padding: clamp(5rem, 21vh, 12rem);
   --container-padding: clamp(2.5rem, 8vw, 8rem);
@@ -73,47 +83,6 @@
   --animation-smooth: all 0.7s cubic-bezier(0.7, 0, 0.3, 1);
   --animation-slow: all 0.9s cubic-bezier(0.7, 0, 0.3, 1);
 }
-
-@media screen and (min-width: 640) {
-  :root {
-    --display: clamp(5rem, 7vw, 8rem);
-    /*
-    --container-padding: clamp(1.25rem, 4vw, 2.5rem);
-    --section-padding: max(2.5rem, 12vh); */
-
-    /* siapin buat display sm tablet */
-    /* --display-sm: clamp(3.5rem, 8vw, 6rem);
-    --display-xs: clamp(3rem, 7vw, 5rem);
-    --h100: clamp(3.2rem,12vw,6rem);
-    --h200: clamp(2.5rem, 5vw, 4.5rem);
-    --h300: clamp(2rem, 4.65vw, 4rem);
-    --h400: clamp(1.55rem, 2.3vw, 2.5rem);
-    --h500: clamp(1.2rem, 1.6vw, 1.75rem);
-    --h600: clamp(1rem, 1.2vw, 1.3rem);
-    --base: clamp(1rem, 1.2vw, 1.25rem);
-    --base-lg: clamp(1.5rem, 3.3vw, 3.5rem);
-    --base-sm: clamp(0.875rem, 0.8vw, 1.125rem);
-    --base-xs: clamp(0.8rem, 0.7vw, 1rem);
-    --base-extra-sm: clamp(0.625rem, 0.9vw, 0.75rem); */
-  }
-}
-@media screen and (min-width: 768px) {
-  :root {
-    --section-padding: 12vh;
-    --container-padding: 4vw;;
-  }
-}
-@media screen and (min-width: 1280px) {
-  :root {
-    --section-padding: 12vh;
-    --container-padding: 6vw;
-
-  }
-}
-
-/* -------------------------
-   Dark mode
-------------------------- */
 
 .dark,
 [data-theme~='dark'] {
@@ -136,3 +105,22 @@
   --color-border: rgba(255, 255, 255, 0.2);
   --color-border-solid: #545557;
 }
+
+/* ganti value */
+@media screen and (min-width: 768px) {
+  :root {
+    --display: clamp(7.2rem, 10vw, 9rem);
+    --section-padding: 12vh;
+    --container-padding: 4vw;;
+  }
+}
+@media screen and (min-width: 1280px) {
+  :root {
+    --display: clamp(13.6rem, 12vw, 14rem);
+    --section-padding: 12vh;
+    --container-padding: 6vw;
+
+  }
+}
+
+

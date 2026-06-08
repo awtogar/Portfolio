@@ -6,6 +6,7 @@ import { site1, site2, site3, site6, site7, site8, site9, site13 } from '@/asset
 import BaseSection from '@/components/common/BaseSection';
 import { LetterScroll } from '@/components/ui/LetterScroll';
 import { HoverRotate } from '..';
+import { TextReveal } from '@/components';
 import { contact_info, socials } from '@/data/navigation';
 import { useScrollToSection } from '@/hooks';
 import { useCursorInteraction } from '@/cursor';
@@ -115,8 +116,9 @@ export default function Footer() {
             {/* LEFT */}
             <div className="max-w-[40vw]">
               <h2 className="text-[clamp(4rem,5vw,6rem)] leading-[0.95] font-medium">This is not finished.</h2>
-
-              <p className="mt-2 text-[clamp(4rem,5vw,6rem)] italic leading-[0.9]">What will we create next?</p>
+              <TextReveal as="p" className="mt-2 text-[clamp(4rem,5vw,6rem)] italic leading-[0.9]">
+                What will we create next?
+              </TextReveal>
             </div>
 
             {/* RIGHT */}

@@ -16,16 +16,16 @@ const HomeSelectedWorksSection = () => {
     <BaseSection containerID="selected-works" sectionClassName="section-padding-xy relative overflow-hidden">
       <div className="flex flex-col gap-s200 mb-s200 lg:mb-s700">
         <div className="flex items-center justify-between">
-          <TextReveal as="span" startDelay={0.25} className="text-base">
+          <TextReveal as="span" startDelay={0.25} className="text-h500 heading-display">
             (selected)
           </TextReveal>
         </div>
         <div className="flex items-end justify-between w-full">
-          <TextReveal as="h2" className="text-display heading-display">
+          <TextReveal as="h2" className="text-display heading-display font-bold">
             WORK
           </TextReveal>
           <div className="flex flex-col items-end gap-1 pb-1 lg:pb-2">
-            <TextReveal as="h2" className="text-display heading-display">
+            <TextReveal as="h2" className="text-display heading-display font-bold">
               25
             </TextReveal>
           </div>
@@ -58,7 +58,7 @@ const HomeSelectedWorksSection = () => {
           data-cursor-fill="primary"
           data-cursor-text-color="secondary"
           data-cursor-size="large"
-          variant="outline"
+          variant="transparent"
           to="/projects"
         >
           <span>See all projects</span>

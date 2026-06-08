@@ -2,8 +2,7 @@ import { useEffect, useRef, useState, useCallback } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { AnimatePresence, motion } from 'motion/react';
 import { Logo, SideBar } from '../..';
-import { useLenis } from '../../../context/LenisContext';
-import { useLoading } from '@/context';
+import { useLenis, usePageFlow } from '@/context';
 import { HamburgerButton, ThemeToggleButton, TransitionLink, TextReveal } from '@/components';
 import { RiArrowLeftLine } from '@remixicon/react';
 import { useDimensions, useTheme } from '@/hooks';
@@ -31,13 +30,13 @@ const Header = () => {
 
   const { lenis } = useLenis();
   const { toggleTheme } = useTheme();
-  const { phase } = useLoading();
+  const { isTransitioning } = usePageFlow();
   const { width } = useDimensions();
   const isDesktop = width >= 1024;
 
   useEffect(() => {
-    if (phase === 'wait-for-ready') setIsActive(false);
-  }, [phase]);
+    if (isTransitioning) setIsActive(false);
+  }, [isTransitioning]);
 
   useEffect(() => {
     if (!lenis) return;
@@ -75,14 +74,14 @@ const Header = () => {
   return (
     <header>
       <motion.div
-        className="pt-8 top-0 fixed w-full z-[9998] mix-blend-difference"
+        className="px-2 md:px-4 lg:px-6 pt-8 top-0 fixed w-full z-[9998] mix-blend-difference"
         initial={{ translateY: 0 }}
         animate={{
           translateY: scrollDirection === 'down' && !isActive ? -100 : 0,
         }}
         transition={{ duration: 0.3, ease: 'easeInOut' }}
       >
-        <div className="max-w-[1920px] mx-auto flex justify-between items-center px-4 md:px-6 lg:px-8">
+        <div className="mx-auto max-w-[1920px] flex justify-between items-center">
           {/* LEFT */}
           <div className="flex items-center">
             {isProjectDetail ? (
@@ -107,7 +106,7 @@ const Header = () => {
                 className={`flex items-center font-bold font-secondary tracking-tighter justify-center md:text-2xl antialiased px-4 h-[60px] mix-blend-difference transition-all duration-300 ${isActive ? 'opacity-0 invisible lg:opacity-100 lg:visible' : 'opacity-100 visible'}`}
               >
                 <TransitionLink to="/" className="relative cursor-pointer text-white" aria-label="Home">
-                  <TextReveal as="span" className="relative inline-block" isHero startDelay={0.15}>
+                  <TextReveal as="span" className="relative inline-block" isHero replayOnNavigate startDelay={0.15}>
                     <Logo className="w-auto h-6 md:h-8 lg:h-10" />
                   </TextReveal>
                 </TransitionLink>
@@ -133,7 +132,7 @@ const Header = () => {
                     .map((page, index) => (
                       <li key={page.href} data-cursor data-cursor-magnetic data-cursor-sticky data-cursor-size="small">
                         <TransitionLink to={page.href} className="nav-link-hover relative inline-block cursor-pointer overflow-hidden">
-                          <TextReveal as="span" className="link-text-top relative inline-block" isHero startDelay={0.35 + index * 0.1}>
+                          <TextReveal as="span" className="link-text-top relative inline-block" isHero replayOnNavigate startDelay={0.35 + index * 0.1}>
                             {page.title}
                           </TextReveal>
                         </TransitionLink>

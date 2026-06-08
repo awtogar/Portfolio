@@ -17,16 +17,26 @@ const ProjectPage = () => {
       <div className="flex flex-col gap-s700 lg:gap-s900 px-4 lg:px-8">
         <div className="flex flex-col">
           <div className="flex items-center justify-between">
-            <TextReveal as="span" className="text-base">
+            <TextReveal as="span" className="text-base" isHero startDelay={0.1}>
               (recent)
             </TextReveal>
           </div>
           <div className="flex items-end justify-between w-full flex-wrap">
-            <TextReveal className="text-[clamp(3.5rem,8vw,6rem)] md:text-[clamp(5rem,7vw,8rem)] font-[700] tracking-[-0.03em] leading-[0.85] uppercase" as="span">
+            <TextReveal
+              className="text-[clamp(3.5rem,8vw,6rem)] md:text-[clamp(5rem,7vw,8rem)] font-[700] tracking-[-0.03em] leading-[0.85] uppercase"
+              as="span"
+              isHero
+              startDelay={0.2}
+            >
               Project
             </TextReveal>
             <div className="flex flex-col items-end gap-1 pb-1 lg:pb-2">
-              <TextReveal className="text-[clamp(3.5rem,8vw,6rem)] md:text-[clamp(5rem,7vw,8rem)] font-[700] tracking-[-0.03em] leading-[0.85] uppercase" as="span">
+              <TextReveal
+                className="text-[clamp(3.5rem,8vw,6rem)] md:text-[clamp(5rem,7vw,8rem)] font-[700] tracking-[-0.03em] leading-[0.85] uppercase"
+                as="span"
+                isHero
+                startDelay={0.35}
+              >
                 25
               </TextReveal>
             </div>

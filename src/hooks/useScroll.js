@@ -36,5 +36,5 @@ export const useScrollToTop = () => {
   useEffect(() => {
     if (isTransitioning) return;
     resetScrollImmediate(lenis);
-  }, [pathname, lenis, isTransitioning]);
+  }, [pathname, lenis]);
 };

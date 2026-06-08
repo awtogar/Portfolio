@@ -1,12 +1,15 @@
 import { LenisProvider } from './LenisContext';
 import { CursorProvider } from '../cursor';
-import { LoadingProvider } from './LoadingProvider';
+import { PageFlowProvider } from './PageFlowContext';
+import { OverlayProvider } from './OverlayContext';
 
 const AppProviders = ({ children }) => {
   return (
     <LenisProvider>
       <CursorProvider>
-        <LoadingProvider>{children}</LoadingProvider>
+        <PageFlowProvider>
+          <OverlayProvider>{children}</OverlayProvider>
+        </PageFlowProvider>
       </CursorProvider>
     </LenisProvider>
   );

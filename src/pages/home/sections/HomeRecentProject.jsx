@@ -3,10 +3,8 @@ import { gsap } from 'gsap';
 import { BaseSection } from '@/components';
 import { useCursorInteraction } from '@/cursor';
 import { projects } from '@/data/projects';
-import { useOverlay } from '@/context/OverlayContext';
-import { useLenis } from '@/context/LenisContext';
+import { useOverlay, useLenis } from '@/context';
 
-// ── Thumbnail Card ──────────────────────────────────────────────────────────
 function ThumbCard({ project, onExpand }) {
   const wrapRef = useRef(null);
   const imgRef = useRef(null);

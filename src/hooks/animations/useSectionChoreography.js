@@ -1,11 +1,11 @@
-import { useAnimationReady } from './useAnimationReady';
+import { useCanRevealContent } from './useCanRevealContent';
 
 export const useSectionChoreography = ({
   stagger = 0.1,
   baseDelay = 0,
   preset = 'fadeUp',
 } = {}) => {
-  const ready = useAnimationReady();
+  const ready = useCanRevealContent();
 
   const getChildProps = (index, overrides = {}) => ({
     preset,

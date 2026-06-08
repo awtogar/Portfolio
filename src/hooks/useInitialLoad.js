@@ -1,12 +1,15 @@
 import { useEffect, useRef } from 'react';
-import { useLenis } from '@/context/LenisContext';
-import { useLoading } from '@/context/LoadingProvider';
+import { useLenis, usePageFlow } from '@/context';
 
 const MAX_DURATION = 6000;
 const MIN_DURATION = 500;
 
-const usePreloader = (criticalPromises = []) => {
-  const { setIsInitialLoading, setInitialProgress } = useLoading();
+/**
+ * Runs the first-visit asset preload sequence and drives PageFlow preloader state.
+ * Mount once in App (not per-page).
+ */
+const useInitialLoad = (criticalPromises = []) => {
+  const { setIsInitialLoading, setInitialProgress } = usePageFlow();
   const { lenis } = useLenis();
 
   const lenisRef = useRef(lenis);
@@ -88,7 +91,7 @@ const usePreloader = (criticalPromises = []) => {
       isMounted = false;
       if (rafId) cancelAnimationFrame(rafId);
     };
-  }, [criticalKey]);
+  }, [criticalKey, setIsInitialLoading, setInitialProgress]);
 };
 
-export default usePreloader;
+export default useInitialLoad;

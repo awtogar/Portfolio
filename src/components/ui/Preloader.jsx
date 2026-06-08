@@ -1,6 +1,7 @@
+import { useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { PreloaderSlideUp, preloaderCurvePath } from '@/data/anim/preloader';
-import { useLoading } from '../../context/LoadingProvider';
+import { usePageFlow } from '@/context';
 import { useDimensions } from '../../hooks/useDimensions';
 
 const SVG_HEIGHT_OFFSET = 300;
@@ -14,7 +15,7 @@ const numberVariants = {
 };
 
 const PreloaderContent = () => {
-  const { initialProgress: progress } = useLoading();
+  const { initialProgress: progress } = usePageFlow();
   const dimensions = useDimensions();
   const showFallback = dimensions.width === 0;
   const initialPath = showFallback
@@ -66,9 +67,15 @@ const PreloaderContent = () => {
 };
 
 const Preloader = () => {
-  const { isInitialLoading, setIsReady } = useLoading();
+  const { isInitialLoading, setIsReady } = usePageFlow();
+
   return (
-    <AnimatePresence mode="wait" onExitComplete={() => setIsReady(true)}>
+    <AnimatePresence
+      mode="wait"
+      onExitComplete={() => {
+        requestAnimationFrame(() => requestAnimationFrame(() => setIsReady(true)));
+      }}
+    >
       {isInitialLoading && <PreloaderContent key="preloader" />}
     </AnimatePresence>
   );

@@ -1,6 +1,6 @@
 import { useState, forwardRef } from 'react';
 import { motion } from "motion/react"
-import { useLoading } from '../../context/LoadingProvider';
+import { usePageFlow } from '@/context';
 
 const MotionA = motion.create('a');
 const MotionButton = motion.create('button');
@@ -77,12 +77,10 @@ const CreativeButton = forwardRef(function CreativeButton({
   ...props
 }, ref) {
   const [isHovering, setIsHovering] = useState(false);
-  const { navigateTo } = useLoading();
+  const { navigateTo } = usePageFlow();
 
-  // Apply variant styles or use custom props if provided
   const variantStyles = variant ? BUTTON_VARIANTS[variant] : {};
 
-  // Get size classes or default to custom dimensions
   const sizeClasses = SIZE_VARIANTS[size] || SIZE_VARIANTS.md;
 
   const styles = {

@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from "motion/react"
 
-export default function Curve() {
+export default function Curve({ instant = false }) {
   // Using viewBox 100x100 and preserveAspectRatio="none" 
   // means we don't need JS height calculations! It seamlessly scales to 100dvh.
   const initialPath = `M100 0 L100 100 Q-100 50 100 0`;
@@ -18,8 +18,9 @@ export default function Curve() {
     },
     exit: {
         d: initialPath,
-        // Perfectly matching menuSlideLeft exit duration (0.9s)
-        transition: {duration: 0.9, ease: [0.76, 0, 0.24, 1]}
+        transition: instant
+          ? { duration: 0 }
+          : { duration: 0.9, ease: [0.76, 0, 0.24, 1] },
     }
   }
 

@@ -28,6 +28,10 @@ export function LoadingProvider({ children }) {
 
   const isTransitioning = phase !== 'idle';
   const isLoading = isInitialLoading || isTransitioning;
+  // Reveal as soon as preloader is done and the new page is ready — not after the transition finishes.
+  const canRevealContent = isReady && phase !== 'exit';
+
+  const [revealEpoch, setRevealEpoch] = useState(0);
 
   const getPageTitle = useCallback(path => {
     const normalized = path.endsWith('/') ? path.slice(0, -1) : path;
@@ -78,6 +82,7 @@ export function LoadingProvider({ children }) {
 
   const setPageReady = useCallback(() => {
     if (transitionRef.current) {
+      setRevealEpoch(e => e + 1);
       setPhase('enter');
     }
   }, []);
@@ -100,6 +105,8 @@ export function LoadingProvider({ children }) {
         setInitialProgress,
         phase,
         isTransitioning,
+        canRevealContent,
+        revealEpoch,
         isLoading,
         targetPath,
         pageTitle,

@@ -5,8 +5,7 @@ import BaseSection from '../../../components/common/BaseSection';
 
 const HomeIntroSection = () => {
   return (
-    <>
-      <BaseSection containerID="showreels" sectionClassName="section-padding-y" containerClassName="m-auto w-full max-w-[1920px]">
+      <BaseSection containerID="showreels" sectionClassName="section-padding-y" containerClassName="m-auto w-full">
         <div className="h-[468px] overflow-hidden lg:h-[640px]">
           <VideoLoader
             src={siteReels3}
@@ -14,7 +13,6 @@ const HomeIntroSection = () => {
           />
         </div>
       </BaseSection>
-    </>
   );
 };
 

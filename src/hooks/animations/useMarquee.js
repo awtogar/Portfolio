@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
-import { useLenis } from '@/context/LenisContext';
+import { useLenis } from '@/context';
 
 export const useMarquee = (marqueeRef, { speed = 5, direction = 'left', scrollAware = true } = {}) => {
   const tweenRef = useRef(null);

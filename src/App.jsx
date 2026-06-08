@@ -5,7 +5,7 @@ import { SpeedInsights } from '@vercel/speed-insights/react';
 import { Preloader, Header, CustomCursor, Footer, PageTransition, RouteChangeNotifier } from '@/components';
 import AppProviders from '@/context/AppProviders';
 import { pages } from '@/data/navigation';
-import { useScrollToTop, usePreloader } from '@/hooks';
+import { useScrollToTop, useInitialLoad } from '@/hooks';
 
 const HomePage = lazy(() => import('@/pages/home/HomePage'));
 const AboutPage = lazy(() => import('@/pages/about/AboutPage'));
@@ -13,15 +13,9 @@ const ProjectPage = lazy(() => import('@/pages/project/ProjectPage'));
 const ProjectDetailPage = lazy(() => import('@/pages/project/project-detail/ProjectDetailPage'));
 const ContactPage = lazy(() => import('@/pages/contact/ContactPage'));
 
-const WithFooter = () => (
-  <>
-    <Outlet />
-    <Footer />
-  </>
-);
 
 const AppContent = () => {
-  usePreloader();
+  useInitialLoad();
   const location = useLocation();
   useScrollToTop();
 
@@ -30,20 +24,19 @@ const AppContent = () => {
       <Preloader />
       <Header />
       <CustomCursor />
-      <div id="main" className="page-container bg-neutral-100">
+      <main id="main" className="page-container bg-neutral-100">
         <Suspense fallback={null}>
           <RouteChangeNotifier />
           <Routes location={location} key={location.pathname}>
-            <Route element={<WithFooter />}>
               <Route path={pages.home.href} element={<HomePage />} />
               <Route path={pages.about.href} element={<AboutPage />} />
               <Route path={pages.project.href} element={<ProjectPage />} />
               <Route path="/projects/:slug" element={<ProjectDetailPage />} />
-            </Route>
             <Route path={pages.contact.href} element={<ContactPage />} />
           </Routes>
         </Suspense>
-      </div>
+      </main>
+      <Footer />
       <PageTransition />
     </>
   );

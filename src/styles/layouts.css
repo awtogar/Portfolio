@@ -5,41 +5,37 @@
     @apply px-4 pt-[12rem] pb-[4rem] md:pt-[8rem] md:pb-[2.5rem] md:px-8 lg:px-14;
   }
   .section-padding-x {
-    @apply px-4 md:px-8 lg:px-14;
+    @apply px-2 md:px-6 lg:px-14;
   }
   .section-padding-y {
     @apply pt-[4rem] pb-[2rem];
   }
 .section-padding-xy {
-  @apply px-4 pt-[4rem] pb-[2rem] md:px-8 lg:px-14;
+  @apply px-2 pt-[4rem] pb-[2rem] md:px-8 lg:px-14;
 }
   .section-padding-end {
-    @apply px-4 pt-s900 pb-4;
+    @apply px-2 pt-s900 pb-4;
   }
   .textTransition {
-    @apply text-h100! text-secondary text-center transition-transform uppercase;
+    @apply text-h100! text-secondary text-center transition-transform uppercase will-change-transform;
   }
   .textPreloader {
     @apply text-h400! text-secondary flex items-center uppercase;
   }
 
-/* Typhography */
-  .heading-display{
-    @apply font-[700] leading-[1.065] tracking-[-0.02em];
-  }
-  .heading-bold {
-    @apply font-[600] leading-[1.065] tracking-[-0.02em];
-  }
-  .heading-medium {
-    @apply font-[500] leading-[1.065] tracking-[-0.02em];
-  }
-  .heading-normal {
-    @apply font-[400] leading-[1.065] tracking-[-0.02em];
-  }
-  .heading-light {
-    @apply font-[300] leading-[1.065] tracking-[-0.02em];
-  }
 
+/*Letter spacing and line heigh for heading  */
+.heading-display{
+  @apply tracking-[-0.02em] leading-[0.92] font-serif;
+}
+/*Letter spacing and line heigh for body  */
+  .body-display{
+    @apply tracking-[-0.01em] leading-[1.4] font-sans;
+  }
+    .body-mono{
+      @apply tracking-[0.01em] leading-[1.75] font-mono;
+    }
+    /* TODO: APPly above formate for all sections  */
 
 
   .cards-cols {

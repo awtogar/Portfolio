@@ -1,8 +1,7 @@
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import { useLoading } from '@/context/LoadingProvider';
-import { useLenis } from '@/context/LenisContext';
-import { resetScrollImmediate } from '@/hooks/useScroll';
+import { usePageFlow, useLenis } from '@/context';
+import { resetScrollImmediate } from '@/hooks';
 
 async function waitForRoutePaint() {
   if (document.fonts?.ready) {
@@ -18,7 +17,7 @@ async function waitForRoutePaint() {
 
 const RouteChangeNotifier = () => {
   const location = useLocation();
-  const { setPageReady, phase } = useLoading();
+  const { setPageReady, phase } = usePageFlow();
   const { lenis } = useLenis();
 
   useEffect(() => {

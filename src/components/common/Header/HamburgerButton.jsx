@@ -3,7 +3,7 @@ import { TextReveal } from '@/components';
 const HamburgerButton = ({ isActive, onToggle }) => {
   return (
     <div onClick={onToggle}>
-      <TextReveal as="div" isHero startDelay={0.35}>
+      <TextReveal as="div" isHero replayOnNavigate startDelay={0.35}>
         <div
           data-cursor
           data-cursor-magnetic
