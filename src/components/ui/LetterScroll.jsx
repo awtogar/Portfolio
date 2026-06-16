@@ -19,7 +19,8 @@ export const LetterScroll = ({ lines, containerClassName = '', textColor = 'text
 
   return (
     <div ref={containerRef} className={`relative w-full h-full ${textColor}`}>
-      <ul className="letter-scroll flex flex-col justify-center items-center h-[500px] lg:h-[800px] md:py-12">
+      <ul className="letter-scroll flex flex-col justify-center items-center h-[300px] lg:h-[500px]">
+        {/* <ul className="letter-scroll flex flex-col justify-center items-center h-[500px] lg:h-[800px] md:py-12"> */}
         {(() => {
           let globalWordIndex = 0;
           return parsedLines.map((words, lineIndex) => (

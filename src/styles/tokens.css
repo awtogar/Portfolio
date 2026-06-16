@@ -30,18 +30,26 @@
   --neutral-300: hsl(47, 6%, 70%);
   --neutral-400: hsl(47, 8%, 45%);
   --neutral-500: hsl(47, 12%, 20%);
+
   --primary: hsl(47, 12%, 10%);
   --primary-muted: hsl(47, 8%, 35%);
+
   --secondary: hsl(47, 0%, 98%);
   --secondary-muted: hsl(47, 4%, 75%);
+
   --brand-primary: #8eadfb;
   --brand-secondary: #fff6d6;
   --brand-tertiary: #ab96ff;
-  --accent: #ffe365;
-  --color-border: rgba(28, 29, 32, 0.175);
-  --color-border-solid: #d2d2d2;
 
-  --display: clamp(2rem, 11vw, 14rem);
+  /* Inverted surface (dark card in light mode) */
+  --surface-invert: hsl(47, 12%, 10%);
+  --surface-invert-raised: hsl(47, 10%, 16%);
+  --on-invert-primary: hsl(47, 4%, 96%);
+  --on-invert-secondary: hsl(47, 4%, 72%);
+  --on-invert-muted: hsl(47, 6%, 50%);
+  --on-invert-border: rgba(255, 255, 255, 0.1);
+
+--display: clamp(2rem, 11vw, 4rem);
   --display-sm: clamp(3.5rem, 8vw, 6rem);
   --display-xs: clamp(3rem, 7vw, 5rem);
   /* Heading */
@@ -55,18 +63,22 @@
   --base: clamp(1rem, 0.7794rem + 0.9804vw, 1.25rem);
   --base-sm: clamp(0.85rem, 0.6625rem + 0.8333vw, 1.0625rem);
   --base-xs: clamp(0.750rem, 0.8607rem + -0.1383vw, 0.833rem);
+  
+  --leading-display:  1.2;     
+  --tracking-display: -0.04em;  /* was: 1 (invalid) */
 
-  /* Leading for heading */
-  --leading-display: 1;
-  --leading-heading: 1.065;
-  --leading-body: 1.66;
-  --leading-mono: 1.75;
-  --tracking-heading: -0.02em;
-  --tracking-body: 0.004em;
+  --leading-heading:  0.95;   
+  --tracking-heading: -0.03em;  /* ✓ keep, within article range */
 
-  --section-padding: clamp(5rem, 21vh, 12rem);
-  --container-padding: clamp(2.5rem, 8vw, 8rem);
-  --gap-padding: clamp(1.5rem, 4vw, 2.5rem);
+  --leading-body:     1.4;      /* ✓ within 1.2–1.5 */
+  --tracking-body:    -0.01em;  /* was: 0.02em (article says 0 or negative) */
+
+  --leading-mono:     1.75;     /* ✓ untouched */
+  
+
+  --section-padding: clamp(4rem, 8vw, 10rem);
+  --container-padding: clamp(1.25rem, 5vw, 6rem);
+  --gap-padding: clamp(1rem, 2.5vw, 2rem);
 
   --s100: clamp(0.5rem, 0.5rem + 0vi, 0.5rem);
   --s200: clamp(0.75rem, 0.7rem + 0.25vi, 0.875rem);
@@ -86,6 +98,7 @@
 
 .dark,
 [data-theme~='dark'] {
+
   --neutral-100: hsl(47, 12%, 8%);
   --neutral-200: hsl(47, 10%, 16%);
   --neutral-300: hsl(47, 8%, 40%);
@@ -100,26 +113,34 @@
   --brand-primary: #fff6d6;
   --brand-secondary: #348de0;
   --brand-tertiary: #ab96ff;
-  --accent: #ffe365;
 
-  --color-border: rgba(255, 255, 255, 0.2);
-  --color-border-solid: #545557;
+--surface-invert: hsl(47, 6%, 95%);
+--surface-invert-raised: hsl(47, 0%, 100%);
+--on-invert-primary: hsl(47, 12%, 10%);
+--on-invert-secondary: hsl(47, 8%, 35%);
+--on-invert-muted: hsl(47, 8%, 55%);
+--on-invert-border: rgba(0, 0, 0, 0.1);
 }
 
-/* ganti value */
 @media screen and (min-width: 768px) {
   :root {
-    --display: clamp(7.2rem, 10vw, 9rem);
-    --section-padding: 12vh;
-    --container-padding: 4vw;;
+    --display: clamp(4rem, 7.5vw, 7rem);
+    --h100: clamp(6rem, 8vw, 14rem);
+    --section-padding: clamp(6rem, 10vw, 12rem);
+    --container-padding: clamp(2.5rem, 5vw, 6rem);
   }
 }
 @media screen and (min-width: 1280px) {
   :root {
-    --display: clamp(13.6rem, 12vw, 14rem);
-    --section-padding: 12vh;
-    --container-padding: 6vw;
-
+    --display: clamp(7rem, 9.5vw, 10rem);
+    --h100: clamp(8rem, 10vw, 14rem);
+    --section-padding: clamp(8rem, 12vw, 14rem);
+    --container-padding: clamp(4rem, 6vw, 8rem);
+  }
+}
+@media screen and (min-width: 1440px) {
+  :root {
+    --display: clamp(9rem, 9vw, 11rem);
   }
 }
 

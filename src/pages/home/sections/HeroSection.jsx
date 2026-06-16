@@ -2,7 +2,7 @@ import { BaseSection, TextReveal } from '@/components';
 import { useState, useEffect } from 'react';
 import { RiArrowDownLongLine } from '@remixicon/react';
 
-const HomeHeroSection = () => {
+const HeroSection = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [prevIndex, setPrevIndex] = useState(-1);
 
@@ -16,7 +16,7 @@ const HomeHeroSection = () => {
     return () => clearInterval(interval);
   }, []);
 
-  const words = ['developer', 'creative'];
+  const words = ['Designer', 'Engineer'];
   const getWordClass = wordIndex => {
     const base = '[grid-area:1/1] flex items-center whitespace-nowrap';
 
@@ -27,12 +27,12 @@ const HomeHeroSection = () => {
   };
 
   return (
-    <BaseSection sectionClassName="section-padding-x" containerClassName="flex-col h-[75svh] md:h-[85svh] lg:h-[95svh] m-auto w-full max-w-[1920px]">
+    <BaseSection containerID="hero" sectionClassName="section-padding-x" containerClassName="flex-col h-[75svh] md:h-[85svh] lg:h-[95svh] m-auto w-full max-w-[1920px]">
       <div className="flex flex-col justify-between h-full w-full pt-[36px]">
         <div className="pt-[86px] lg:pt-[84px] text-h600 font-medium leading-[1.1] tracking-[-0.02em] text-foreground">
           <div className="flex gap-2">
             <TextReveal as="span" isHero startDelay={1.1}>
-              Junior
+              Creative
             </TextReveal>
             <span className="inline-grid overflow-hidden items-center">
               {words.map((word, i) => (
@@ -49,13 +49,23 @@ const HomeHeroSection = () => {
           </div>
         </div>
 
-        <div className="flex flex-col w-full justify-start gap-6 items-center">
+        <div className="flex flex-col justify-center gap-6 items-center">
           <div className="relative block">
             <TextReveal as="h1" className="font-serif text-display leading-[1.2] tracking-[-0.02em] w-full text-start whitespace-nowrap flex" isHero startDelay={0.75}>
               Awaluddin Togar
             </TextReveal>
           </div>
-          <div className="grid grid-cols-[6fr_2fr] md:grid md:grid-cols-[6fr_4fr] items-end w-full lg:flex lg:flex-row lg:justify-between">
+          <div className="flex items-center justify-center">
+            <div className="flex flex-col items-center justify-center">
+              <TextReveal as="span" startDelay={1.3} isHero>
+                <RiArrowDownLongLine size={18} />
+              </TextReveal>
+              <TextReveal as="span" startDelay={1.3} isHero>
+                <span>(Scroll)</span>
+              </TextReveal>
+            </div>
+          </div>
+          {/* <div className="grid grid-cols-[6fr_2fr] md:grid md:grid-cols-[6fr_4fr] items-end w-full lg:flex lg:flex-row lg:justify-between">
             <div className="flex items-end justify-start">
               <TextReveal as="span" className="text-h500 body-display" startDelay={1.3} isHero>
                 Design without code is a mood board. <span className="md:block">Code without design is a utility.</span> <span className="md:block">I do both.</span>
@@ -66,11 +76,11 @@ const HomeHeroSection = () => {
                 (Scroll)
               </TextReveal>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </BaseSection>
   );
 };
 
-export default HomeHeroSection;
+export default HeroSection;

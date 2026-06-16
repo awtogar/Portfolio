@@ -15,6 +15,7 @@ export { default as RouteChangeNotifier } from './ui/RouteChangeNotifier';
 // Interactive
 export { default as CreativeButton } from './ui/CreativeButton';
 export { default as HoverRotate } from './ui/HoverRotate';
+export { default as Dither } from './ui/DitherBackground';  
 
 // Text & Typography
 export { default as CircularText } from './ui/CircularText';
@@ -27,10 +28,10 @@ export { default as CardParallax } from './ui/CardParallax';
 export { default as ImageMaskSVG } from './ui/ImageMaskSVG';
 export { default as VideoLoader } from './ui/VideoLoader';
 export { default as AnimatedCard } from './ui/AnimatedCard';
+export { default as CardHoverEffect } from './ui/CardHoverEffect';
 
 // Animation & Transitions
 export { default as Curve } from './ui/Curve';
-export { default as Marquee, MarqueeItem, ScrollAwareArrow } from './ui/Marquee';
 export { default as Preloader } from './ui/Preloader';
 export { default as PageTransition } from './ui/PageTransition';
 export { default as TimelineSVGLine } from './ui/TimelineSVGLine';

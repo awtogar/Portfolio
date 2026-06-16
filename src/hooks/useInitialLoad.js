@@ -19,6 +19,11 @@ const useInitialLoad = (criticalPromises = []) => {
     document.body.style.cursor = 'wait';
     lenisRef.current?.stop();
 
+    // Force scroll to top immediately before the preloader sequence starts.
+    // This runs synchronously before any async asset loading, overriding
+    // whatever position the browser may have restored from session history.
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+
     return () => {
       document.body.style.overflow = '';
       document.body.style.cursor = '';

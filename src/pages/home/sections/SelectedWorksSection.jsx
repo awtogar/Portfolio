@@ -3,7 +3,7 @@ import { projects } from '@/data/projects';
 import { TransitionLink, CreativeButton, TextReveal, BaseSection } from '@/components';
 import AnimatedCard, { CardMeta } from '@/components/ui/AnimatedCard';
 
-const HomeSelectedWorksSection = () => {
+const SelectedWorksSection = () => {
   const selectedWorks = projects.filter(project => project.selected);
   const CURSOR_CONFIG = {
     content: 'view',
@@ -14,25 +14,23 @@ const HomeSelectedWorksSection = () => {
 
   return (
     <BaseSection containerID="selected-works" sectionClassName="section-padding-xy relative overflow-hidden">
-      <div className="flex flex-col gap-s200 mb-s200 lg:mb-s700">
+      <div className="flex flex-col mb-s200">
         <div className="flex items-center justify-between">
-          <TextReveal as="span" startDelay={0.25} className="text-h500 heading-display">
-            (selected)
+          <TextReveal preset="fadeUp" as="span" startDelay={0.25}>
+            <span className="font-mono text-base-sm tracking-[0.12em] uppercase text-primary-muted">(selected)</span>
           </TextReveal>
         </div>
-        <div className="flex items-end justify-between w-full">
-          <TextReveal as="h2" className="text-display heading-display font-bold">
+        <div className="flex items-end justify-between w-full md:mb-s200 lg:mb-s600">
+          <TextReveal as="h2" className="text-h100 heading-display font-bold">
             WORK
           </TextReveal>
           <div className="flex flex-col items-end gap-1 pb-1 lg:pb-2">
-            <TextReveal as="h2" className="text-display heading-display font-bold">
-              25
+            <TextReveal as="h2" className="text-h100 heading-display font-bold">
+              '25
             </TextReveal>
           </div>
         </div>
-        <div className="h-px w-full bg-primary/10" />
       </div>
-
       <ul className="flex flex-col lg:flex-row gap-2 lg:gap-4 w-full pb-s600 lg:pb-s800">
         {selectedWorks.map(work => (
           <AnimatedCard
@@ -68,4 +66,4 @@ const HomeSelectedWorksSection = () => {
   );
 };
 
-export default HomeSelectedWorksSection;
+export default SelectedWorksSection;

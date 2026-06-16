@@ -21,8 +21,11 @@ function CurtainLayer({ layer, phase, onComplete }) {
   return (
     <motion.div
       className={`absolute inset-0 will-change-transform ${layer.className}`}
-      style={{ zIndex: layer.zIndex, transform: 'translate3d(0,0,0)' }}
-      initial={{ y: isEnter ? Y.covered : Y.hidden }}
+      style={{ zIndex: layer.zIndex }}
+      // Always start from hidden — Motion animates from this on first mount.
+      // On phase changes within the same mount (exit → wait-for-ready → enter)
+      // Motion interpolates from wherever the element currently is, not initial.
+      initial={{ y: Y.hidden }}
       animate={{ y: getY(phase) }}
       transition={{
         ...(isEnter ? PAGE_TRANSITION.reveal : PAGE_TRANSITION.cover),
@@ -34,17 +37,14 @@ function CurtainLayer({ layer, phase, onComplete }) {
 }
 
 const titleVariants = {
-  hidden: {
-    y: Y.hidden,
-    opacity: 0,
-  },
+  hidden: { y: '40px', opacity: 0 },
   in: {
-    y: Y.covered,
+    y: '0px',
     opacity: 1,
     transition: PAGE_TRANSITION.titleIn,
   },
   out: {
-    y: Y.revealed,
+    y: '-32px',
     opacity: 0,
     transition: PAGE_TRANSITION.titleOut,
   },
@@ -52,36 +52,72 @@ const titleVariants = {
 
 export default function PageTransition() {
   const { phase, pageTitle, onExitComplete, onEnterComplete } = usePageFlow();
-  const doneRef = useRef({ phase: null, layers: new Set() });
+  const overlayRef = useRef(null);
 
+  // Attach scroll-lock listeners as non-passive so preventDefault works
   useEffect(() => {
-    doneRef.current = { phase, layers: new Set() };
+    if (phase === 'idle') return;
+    const el = overlayRef.current;
+    if (!el) return;
+
+    const prevent = e => e.preventDefault();
+    el.addEventListener('wheel', prevent, { passive: false });
+    el.addEventListener('touchmove', prevent, { passive: false });
+    return () => {
+      el.removeEventListener('wheel', prevent);
+      el.removeEventListener('touchmove', prevent);
+    };
   }, [phase]);
 
+  // Synchronous ref reset — avoids the useEffect lag that caused dropped completions.
+  const doneRef = useRef({ phase: null, layers: new Set() });
+  if (doneRef.current.phase !== phase) {
+    doneRef.current = { phase, layers: new Set() };
+  }
+
+  // Return null on idle so curtains don't animate back down after transition.
   if (phase === 'idle') return null;
 
   const handleLayerComplete = layerId => {
     if (doneRef.current.phase !== phase) return;
-
     doneRef.current.layers.add(layerId);
-
     if (doneRef.current.layers.size < CURTAIN_LAYERS.length) return;
-
     if (phase === 'exit') onExitComplete();
     if (phase === 'enter') onEnterComplete();
   };
 
-  const titleState = phase === 'enter' ? 'out' : phase === 'exit' || phase === 'wait-for-ready' ? 'in' : 'hidden';
+  const titleState =
+    phase === 'enter' ? 'out'
+    : phase === 'exit' || phase === 'wait-for-ready' ? 'in'
+    : 'hidden';
 
   return (
-    <div className="fixed inset-0 z-[10000] overflow-hidden touch-none" onWheel={e => e.preventDefault()} onTouchMove={e => e.preventDefault()} aria-hidden={phase === 'enter'}>
+    <div
+      ref={overlayRef}
+      className="fixed inset-0 z-[10000] overflow-hidden touch-none"
+      aria-hidden={phase === 'enter'}
+    >
       {CURTAIN_LAYERS.map(layer => (
-        <CurtainLayer key={layer.zIndex} layer={layer} phase={phase} onComplete={() => handleLayerComplete(layer.zIndex)} />
+        <CurtainLayer
+          key={layer.zIndex}
+          layer={layer}
+          phase={phase}
+          onComplete={() => handleLayerComplete(layer.zIndex)}
+        />
       ))}
 
-      <div className="absolute inset-0 z-20 flex items-center justify-center pointer-events-none">
-        <div className="overflow-hidden leading-none">
-          <motion.p className="textTransition" initial="hidden" animate={titleState} variants={titleVariants}>
+      {/* Title between the two curtain layers */}
+      <div
+        className="absolute inset-0 flex items-center justify-center pointer-events-none"
+        style={{ zIndex: 2 }}
+      >
+        <div className="overflow-hidden">
+          <motion.p
+            className="font-serif text-secondary text-h300 leading-none tracking-[-0.02em]"
+            initial="hidden"
+            animate={titleState}
+            variants={titleVariants}
+          >
             {pageTitle}
           </motion.p>
         </div>

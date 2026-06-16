@@ -13,7 +13,6 @@ const ProjectPage = lazy(() => import('@/pages/project/ProjectPage'));
 const ProjectDetailPage = lazy(() => import('@/pages/project/project-detail/ProjectDetailPage'));
 const ContactPage = lazy(() => import('@/pages/contact/ContactPage'));
 
-
 const AppContent = () => {
   useInitialLoad();
   const location = useLocation();
@@ -24,18 +23,16 @@ const AppContent = () => {
       <Preloader />
       <Header />
       <CustomCursor />
-      <main id="main" className="page-container bg-neutral-100">
-        <Suspense fallback={null}>
-          <RouteChangeNotifier />
-          <Routes location={location} key={location.pathname}>
-              <Route path={pages.home.href} element={<HomePage />} />
-              <Route path={pages.about.href} element={<AboutPage />} />
-              <Route path={pages.project.href} element={<ProjectPage />} />
-              <Route path="/projects/:slug" element={<ProjectDetailPage />} />
-            <Route path={pages.contact.href} element={<ContactPage />} />
-          </Routes>
-        </Suspense>
-      </main>
+      <Suspense fallback={null}>
+        <RouteChangeNotifier />
+        <Routes location={location} key={location.pathname}>
+          <Route path={pages.home.href} element={<HomePage />} />
+          <Route path={pages.about.href} element={<AboutPage />} />
+          <Route path={pages.project.href} element={<ProjectPage />} />
+          <Route path="/projects/:slug" element={<ProjectDetailPage />} />
+          <Route path={pages.contact.href} element={<ContactPage />} />
+        </Routes>
+      </Suspense>
       <Footer />
       <PageTransition />
     </>

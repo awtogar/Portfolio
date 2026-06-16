@@ -28,9 +28,13 @@
   --color-brand-secondary: var(--brand-secondary);
   --color-brand-tertiary: var(--brand-tertiary);
 
-  /* Accent */
-  --color-accent: var(--accent);
-  --color-accent-dark: var(--accent-dark);
+  --color-surface-invert: var(--surface-invert);
+  --color-surface-invert-raised: var(--surface-invert-raised);
+  --color-on-invert-primary: var(--on-invert-primary);
+  --color-on-invert-secondary: var(--on-invert-secondary);
+  --color-on-invert-muted: var(--on-invert-muted);
+  --color-on-invert-border: var(--on-invert-border);
+
 
   /* Typography */
   --text-display: var(--display);
@@ -49,14 +53,20 @@
   --text-base-xs: var(--base-xs);
 
   /* Leading */
+  --tracking-display: var(--tracking-display);
   --leading-display: var(--leading-display);
+
+  --tracking-heading: var(--tracking-heading);
   --leading-heading: var(--leading-heading);
+
+  --tracking-body: var(--tracking-body);
   --leading-body: var(--leading-body);
+  
   --leading-mono: var(--leading-mono);
 
+  
+  --leading-mono: var(--leading-mono);
   /* Tracking */
-  --tracking-heading: var(--tracking-heading);
-  --tracking-body: var(--tracking-body);
 
   /* Spacing layout */
   --spacing-section: var(--section-padding);
@@ -137,10 +147,10 @@ html {
   }
 
   :is(h1, h2, h3, h4, h5, h6) {
-    @apply font-serif;
+    @apply font-serif font-[600] uppercase tracking-heading leading-heading;
   }
   p {
-    @apply font-sans;
+    @apply font-sans font-[450] tracking-body leading-body;
   }
 
   a {
@@ -165,13 +175,13 @@ html {
   }
 
   ::selection {
-    background-color: var(--accent);
-    color: #fff;
+    background-color: var(--primary);
+    color: var(--secondary);
     text-shadow: none;
   }
   ::-moz-selection {
-    background-color: var(--accent);
-    color: #fff;
+    background-color: var(--primary);
+    color: var(--secondary);
     text-shadow: none;
   }
 }
@@ -202,8 +212,12 @@ html {
   from { transform: translateY(0); opacity: 1; }
   to { transform: translateY(100%); opacity: 0; }
 }
+@keyframes fadeUp {
+  to { opacity: 1; transform: translateY(0); }
+}
 
 @theme {
   --animate-slide-in-down: slideInDown 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
   --animate-slide-out-down: slideOutDown 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  --animate-fade-up: fadeUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }

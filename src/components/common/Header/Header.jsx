@@ -12,8 +12,8 @@ const SCROLL_DOWN_TRIGGER = 80;
 
 const pages = {
   home: { title: 'Home', href: '/' },
-  projects: { title: 'Projects', href: '/projects' },
   about: { title: 'About', href: '/about' },
+  projects: { title: 'Projects', href: '/projects' },
   contact: { title: 'Contact', href: '/contact' },
 };
 

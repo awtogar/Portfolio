@@ -1,6 +1,9 @@
-export { default as HomeHeroSection } from './HomeHeroSection';
-export { default as HomeIntroSection } from './HomeIntroSection';
-export { default as HomeStatementSection } from './HomeStatementSection';
-export { default as HomeSelectedWorksSection } from './HomeSelectedWorksSection';
-export { default as HomeWhatIdoSection } from './HomeWhatIdoSection';
-
+export { default as HeroSection } from './HeroSection';
+export { default as ShowreelSection } from './ShowreelSection';
+export { default as WhoamiSection } from './WhoamiSection';
+export { default as ServicesSection } from './ServicesSection';
+export { default as StatSection } from './StatSection';
+export { default as ProcessSection } from './ProcessSection';
+export { default as SelectedWorksSection } from './SelectedWorksSection';
+export { default as LetterScrollSection } from './LetterScrollSection';
+export { default as TestimonialSection } from './TestimonialSection';

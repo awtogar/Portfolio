@@ -1,21 +1,21 @@
 @layer utilities {
-  /* Section components  */
-
   .section-padding-hero {
     @apply px-4 pt-[12rem] pb-[4rem] md:pt-[8rem] md:pb-[2.5rem] md:px-8 lg:px-14;
   }
   .section-padding-x {
-    @apply px-2 md:px-6 lg:px-14;
+    @apply px-4 md:px-6 lg:px-8;
   }
   .section-padding-y {
-    @apply pt-[4rem] pb-[2rem];
+    @apply pt-section pb-[clamp(2rem,4vw,5rem)];
   }
 .section-padding-xy {
-  @apply px-2 pt-[4rem] pb-[2rem] md:px-8 lg:px-14;
+    @apply px-4 md:px-6 lg:px-8 py-section;
 }
   .section-padding-end {
-    @apply px-2 pt-s900 pb-4;
+    /* not defined currently */
+    @apply px-0;
   }
+  
   .textTransition {
     @apply text-h100! text-secondary text-center transition-transform uppercase will-change-transform;
   }
@@ -24,23 +24,13 @@
   }
 
 
-/*Letter spacing and line heigh for heading  */
-.heading-display{
-  @apply tracking-[-0.02em] leading-[0.92] font-serif;
-}
-/*Letter spacing and line heigh for body  */
-  .body-display{
-    @apply tracking-[-0.01em] leading-[1.4] font-sans;
+  .heading-display{
+    @apply tracking-heading leading-heading font-serif;
   }
-    .body-mono{
-      @apply tracking-[0.01em] leading-[1.75] font-mono;
-    }
-    /* TODO: APPly above formate for all sections  */
-
-
-  .cards-cols {
-    grid-template-columns: repeat(2, 50rem);
-    gap: 10rem;
-    justify-content: space-between;
+  .body-display{
+    @apply tracking-body leading-body font-sans font-[450];
+  }
+  .body-mono{
+    @apply  font-mono;
   }
 }
