@@ -1,5 +1,5 @@
 // Project assets — imported from per-project barrel files
-import { ovelo1, ovelo2, ovelo3, ovelo4, ovelo5, ovelo6, ovelo7, ovelo10, ovelo11, ovelo12, ovelo15, oveloReels } from '../assets/projects/ovelo';
+import { ovelo1, ovelo2, ovelo3, ovelo4, ovelo5, ovelo6, ovelo7, ovelo10, ovelo11, ovelo12, ovelo15, oveloReels } from '../assets/images/projects/ovelo';
 import {
   nostratic1,
   nostratic2,
@@ -12,9 +12,9 @@ import {
   nostratic9,
   nostratic10,
   nostraticReels,
-} from '../assets/projects/nostratic';
+} from '../assets/images/projects/nostratic';
 
-import { synora1, synora2, synora3, synora4, synora5, synora6 } from '../assets/projects/synora';
+import { synora1, synora2, synora3, synora4, synora5, synora6 } from '../assets/images/projects/synora';
 
 // Site assets — only for projects that don't have their own images yet
 import { site6, site7, site8, site9, site13, site4, site5 } from '../assets';

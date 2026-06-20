@@ -59,12 +59,13 @@ const ServicesSection = () => {
                   </ul>
                 </div>
                 <div className="lg:col-span-3">
-                  <CardParallax
+                  {/* <CardParallax
                     src={service.image}
                     alt={service.title}
                     scrollRange={['-2vh', '0vh']}
-                    containerClassName="h-[220px] sm:h-[400px] md:h-[450px] lg:h-auto lg:aspect-[4/3]"
-                  />
+                    containerClassName="h-[220px] h-[400px] md:h-[450px] lg:h-auto lg:aspect-[4/3]"
+                  /> */}
+                  <CardParallax as="video" src={service.video} containerClassName="h-[220px] h-[400px] md:h-[450px] lg:h-auto lg:aspect-[4/3]" />
                 </div>
               </li>
             ))}

@@ -16,21 +16,21 @@ const WhoamiSection = () => {
             </TextReveal>
           </div>
         </div>
-        <div className="flex flex-col-reverse gap-s400 md:grid md:grid-cols-6 mt-s500">
-          <div className="md:col-span-3 h-[70vw] md:h-[55vh]">
-            <CardParallax src={me01} alt="Awaluddin Togar" scrollRange={['-4%', '4%']} containerClassName="w-full h-full rounded-xl" />
+        <div className="flex flex-col gap-s400 md:grid md:grid-cols-6 mt-s500">
+          <div className="md:col-span-3 flex justify-center md:justify-start">
+            <CardParallax
+              src={me01}
+              alt="Awaluddin Togar"
+              scrollRange={['-4%', '4%']}
+              containerClassName="w-full aspect-[3/4] max-h-[60vh] md:w-auto md:h-[65vh] md:max-h-none md:aspect-[4/5] lg:h-[70vh] lg:aspect-[9/10] rounded-xl"
+            />
           </div>
           <div className="md:col-span-3">
             <div className="flex flex-col h-full justify-between">
               <div className="relative block">
-                <div className="flex flex-col">
-                  <TextReveal as="p" className="text-h500 heading-display font-[450]">
-                    <span>Graduated in 2025</span>
-                  </TextReveal>
-                  <TextReveal as="p" className="text-h500 font-[450] heading-display">
-                    <span>Working since 2022 through Freelancing with world wide clients - two internships at big company.</span>
-                  </TextReveal>
-                </div>
+                <TextReveal as="p" className="text-h500 tracking-heading leading-heading font-[450]">
+                  <span>I have been working with 2 years experiences through Freelancing since 2022 with worldwide clients since 2022 - 2024 after that taking two internships at big companies.</span>
+                </TextReveal>
               </div>
 
               <div className="relative block">
@@ -47,7 +47,7 @@ const WhoamiSection = () => {
                       data-cursor-fill="primary"
                       data-cursor-text-color="secondary"
                       data-cursor-size="large"
-                      data-cursor-content="arrow"
+                      data-cursor-content="See"
                       data-cursor-color="secondary"
                       className="hidden md:block bg-primary text-secondary p-2"
                     >

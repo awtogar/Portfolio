@@ -1,28 +1,12 @@
 'use client';
 import { useRef } from 'react';
-import { useLocation } from 'react-router-dom';
 import { motion, useScroll, useTransform } from 'motion/react';
 import { BaseSection } from '..';
-import { LetterScroll } from '@/components/ui/LetterScroll';
 import Dither from '@/components/ui/DitherBackground';
-import { HoverRotate } from '..';
 import { contact_info, socials } from '@/data/navigation';
-import { useScrollToSection } from '@/hooks';
-import { useCursorInteraction } from '@/cursor';
-
-const LinkHoverRotate = ({ cursorConfig = {}, children, ...props }) => {
-  const { targetRef } = useCursorInteraction(cursorConfig);
-  return (
-    <HoverRotate ref={targetRef} {...props}>
-      {children}
-    </HoverRotate>
-  );
-};
 
 export default function Footer() {
   const ditherRef = useRef(null);
-  const { pathname } = useLocation();
-  const scrollToSection = useScrollToSection();
   const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
 
   const { scrollYProgress } = useScroll({
@@ -32,13 +16,8 @@ export default function Footer() {
 
   const y = useTransform(scrollYProgress, [0, 1], ['-10%', '10%']);
 
-  const handleSectionClick = (e, id) => {
-    e.preventDefault();
-    scrollToSection(id);
-  };
-
   return (
-    <BaseSection as="footer" containerID="footer" sectionClassName="section-padding-x pt-section">
+    <BaseSection as="footer" containerID="footer" sectionClassName="pt-section">
       <div className="relative">
         {/* Content 2 — Dither parallax */}
         <section ref={ditherRef} className="sticky top-0 h-[50vh] md:h-screen overflow-hidden">

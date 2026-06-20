@@ -1,6 +1,6 @@
 import { useState, forwardRef } from 'react';
 import { motion } from "motion/react"
-import { usePageFlow } from '@/context';
+import { useNavigate } from 'react-router-dom';
 
 const MotionA = motion.create('a');
 const MotionButton = motion.create('button');
@@ -77,7 +77,7 @@ const CreativeButton = forwardRef(function CreativeButton({
   ...props
 }, ref) {
   const [isHovering, setIsHovering] = useState(false);
-  const { navigateTo } = usePageFlow();
+  const navigate = useNavigate();
 
   const variantStyles = variant ? BUTTON_VARIANTS[variant] : {};
 
@@ -102,7 +102,7 @@ const CreativeButton = forwardRef(function CreativeButton({
       onClick: (e) => {
         e.preventDefault();
         if (onClick) onClick(e);
-        navigateTo(to);
+        navigate(to);
       },
       ...props,
     };

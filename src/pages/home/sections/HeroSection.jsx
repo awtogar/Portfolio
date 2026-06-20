@@ -31,19 +31,19 @@ const HeroSection = () => {
       <div className="flex flex-col justify-between h-full w-full pt-[36px]">
         <div className="pt-[86px] lg:pt-[84px] text-h600 font-medium leading-[1.1] tracking-[-0.02em] text-foreground">
           <div className="flex gap-2">
-            <TextReveal as="span" isHero startDelay={1.1}>
+            <TextReveal as="span" startDelay={1.1} replayOnNavigate>
               Creative
             </TextReveal>
             <span className="inline-grid overflow-hidden items-center">
               {words.map((word, i) => (
-                <TextReveal key={word} className={getWordClass(i)} isHero startDelay={1.6}>
+                <TextReveal key={word} className={getWordClass(i)} startDelay={1.6} replayOnNavigate>
                   {word}
                 </TextReveal>
               ))}
             </span>
           </div>
           <div className="relative block">
-            <TextReveal as="span" className="m-0" startDelay={1.25} isHero>
+            <TextReveal as="span" className="m-0" startDelay={1.25} replayOnNavigate>
               based in Jakarta.
             </TextReveal>
           </div>
@@ -51,32 +51,20 @@ const HeroSection = () => {
 
         <div className="flex flex-col justify-center gap-6 items-center">
           <div className="relative block">
-            <TextReveal as="h1" className="font-serif text-display leading-[1.2] tracking-[-0.02em] w-full text-start whitespace-nowrap flex" isHero startDelay={0.75}>
+            <TextReveal replayOnNavigate as="h1" className="font-serif text-display leading-[1.2] tracking-[-0.05em] w-full text-start whitespace-nowrap flex" startDelay={0.75}>
               Awaluddin Togar
             </TextReveal>
           </div>
           <div className="flex items-center justify-center">
             <div className="flex flex-col items-center justify-center">
-              <TextReveal as="span" startDelay={1.3} isHero>
+              <TextReveal as="span" startDelay={1.3} replayOnNavigate>
                 <RiArrowDownLongLine size={18} />
               </TextReveal>
-              <TextReveal as="span" startDelay={1.3} isHero>
+              <TextReveal as="span" startDelay={1.3} replayOnNavigate>
                 <span>(Scroll)</span>
               </TextReveal>
             </div>
           </div>
-          {/* <div className="grid grid-cols-[6fr_2fr] md:grid md:grid-cols-[6fr_4fr] items-end w-full lg:flex lg:flex-row lg:justify-between">
-            <div className="flex items-end justify-start">
-              <TextReveal as="span" className="text-h500 body-display" startDelay={1.3} isHero>
-                Design without code is a mood board. <span className="md:block">Code without design is a utility.</span> <span className="md:block">I do both.</span>
-              </TextReveal>
-            </div>
-            <div className="flex items-end justify-end">
-              <TextReveal as="span" startDelay={1.3} isHero>
-                (Scroll)
-              </TextReveal>
-            </div>
-          </div> */}
         </div>
       </div>
     </BaseSection>

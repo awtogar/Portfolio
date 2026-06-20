@@ -1,13 +1,13 @@
-import { useState, useEffect, Component } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
 import { useLocation } from 'react-router-dom';
 import { RiSunLine, RiMoonLine } from '@remixicon/react';
-import { getMenuSlideVariants } from '@/data/anim/nav';
+import { menuSlideLeft } from '@/data/anim/nav';
 import { pages, socials } from '@/data/navigation';
 import { useLenis, usePageFlow } from '@/context';
 import { useTheme } from '../../hooks/useTheme';
 
-import { Curve, NavigationLink, HoverRotate } from '..';
+import { NavigationLink, HoverRotate } from '..';
 
 export default function SideBar({ closeMenu }) {
   const location = useLocation();
@@ -17,8 +17,8 @@ export default function SideBar({ closeMenu }) {
 
   const { toggleTheme, isDark } = useTheme();
   const { isTransitioning } = usePageFlow();
-  const menuVariants = getMenuSlideVariants(isTransitioning);
-  const overlayTransition = isTransitioning ? { duration: 0 } : { duration: 0.3 };
+  const menuVariants = menuSlideLeft;
+  const overlayTransition = { duration: 0.3 };
 
   useEffect(() => {
     const handleKeyDown = event => {
@@ -109,7 +109,6 @@ export default function SideBar({ closeMenu }) {
             </div>
           </div>
         </div>
-        <Curve instant={isTransitioning} />
       </motion.div>
     </div>
   );

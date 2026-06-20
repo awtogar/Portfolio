@@ -1,11 +1,11 @@
-import { placeholder } from '../assets';
+import { siteReels, siteReels2, siteReels3, site1, site2, placeholder } from '@/assets';
 
 export const services = [
   {
     id: 1,
     number: '01',
     title: 'Graphic',
-    image: placeholder,
+    video: siteReels,
     description: 'Building strong brand visuals through creative concepts and graphics.',
     features: [
       { number: '01', name: 'Product & Merchandise' },
@@ -19,7 +19,7 @@ export const services = [
     id: 2,
     number: '02',
     title: 'UI/UX',
-    image: placeholder,
+    video: siteReels3,
     description: 'Crafting intuitive user experiences and visually appealing interfaces.',
     features: [
       { number: '01', name: 'User Experience Research' },
@@ -33,7 +33,7 @@ export const services = [
     id: 3,
     number: '03',
     title: 'Development',
-    image: placeholder,
+    video: siteReels2,
     description: 'Creating responsive websites with seamless and brand-focused experiences.',
     features: [
       { number: '01', name: 'Responsive Web Development' },

@@ -1,6 +1,7 @@
 import React from 'react';
 import { projects } from '@/data/projects';
-import { TransitionLink, CreativeButton, TextReveal, BaseSection } from '@/components';
+import { Link } from 'react-router-dom';
+import { CreativeButton, TextReveal, BaseSection } from '@/components';
 import AnimatedCard, { CardMeta } from '@/components/ui/AnimatedCard';
 
 const SelectedWorksSection = () => {
@@ -16,8 +17,8 @@ const SelectedWorksSection = () => {
     <BaseSection containerID="selected-works" sectionClassName="section-padding-xy relative overflow-hidden">
       <div className="flex flex-col mb-s200">
         <div className="flex items-center justify-between">
-          <TextReveal preset="fadeUp" as="span" startDelay={0.25}>
-            <span className="font-mono text-base-sm tracking-[0.12em] uppercase text-primary-muted">(selected)</span>
+          <TextReveal as="span" startDelay={0.25}>
+            <span className="text-base-sm leading-heading tracking-body font-[450] uppercase text-primary-muted">selected</span>
           </TextReveal>
         </div>
         <div className="flex items-end justify-between w-full md:mb-s200 lg:mb-s600">
@@ -31,7 +32,7 @@ const SelectedWorksSection = () => {
           </div>
         </div>
       </div>
-      <ul className="flex flex-col lg:flex-row gap-2 lg:gap-4 w-full pb-s600 lg:pb-s800">
+      <ul className="flex flex-col lg:flex-row gap-2 lg:gap-4 w-full pb-s500 lg:pb-s600">
         {selectedWorks.map(work => (
           <AnimatedCard
             key={work.id}
@@ -41,7 +42,7 @@ const SelectedWorksSection = () => {
             alt={work.title}
             video={work.video}
             to={`/projects/${work.slug}`}
-            LinkComponent={TransitionLink}
+            LinkComponent={Link}
             cursor={CURSOR_CONFIG}
           >
             <CardMeta client={work.client} type={work.type} year={work.year} tags={work.tags} logo={work.logo} />

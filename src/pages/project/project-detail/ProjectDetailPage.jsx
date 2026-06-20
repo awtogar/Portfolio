@@ -1,7 +1,8 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import { projects } from '@/data/projects';
-import { TransitionLink, BaseSection } from '@/components';
+import { Link } from 'react-router-dom';
+import { BaseSection } from '@/components';
 import { RiArrowLeftLine } from '@remixicon/react';
 import { ProjectDetailHeroSection, ProjectDetailInfoSection, ProjectDetailGallerySection, ProjectDetailNextProjectSection } from './sections';
 
@@ -10,10 +11,10 @@ const NotFound = () => (
     <div className="flex flex-col items-center justify-center min-h-[60vh] gap-s500 text-center">
       <h1 className="text-h200 leading-heading tracking-heading">Project not found</h1>
       <p className="text-base text-primary/45">The project you're looking for doesn't exist.</p>
-      <TransitionLink to="/projects" className="flex items-center gap-s200 transition-opacity duration-300 hover:opacity-60 text-base-sm text-primary/50">
+      <Link to="/projects" className="flex items-center gap-s200 transition-opacity duration-300 hover:opacity-60 text-base-sm text-primary/50">
         <RiArrowLeftLine size={14} />
         Back to Projects
-      </TransitionLink>
+      </Link>
     </div>
   </BaseSection>
 );

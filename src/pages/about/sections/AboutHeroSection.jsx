@@ -25,12 +25,12 @@ const AboutHeroSection = () => {
           <div className="overflow-hidden w-full">
             <div className="flex flex-col lg:flex-row lg:justify-between items-center gap-2 lg:gap-0">
               <div className="relative block">
-                <TextReveal as="h1" isHero startDelay={0.55} className="font-serif text-display leading-[0.9] tracking-[-0.03em] text-primary whitespace-nowrap">
+                <TextReveal as="h1" replayOnLoad startDelay={0.55} className="font-serif text-display leading-[0.9] tracking-[-0.03em] text-primary whitespace-nowrap">
                   CREATIVE
                 </TextReveal>
               </div>
               <div className="relative block">
-                <TextReveal as="h1" isHero startDelay={0.55} className="font-serif text-display leading-[0.9] tracking-[-0.03em] text-primary whitespace-nowrap">
+                <TextReveal as="h1" replayOnLoad startDelay={0.55} className="font-serif text-display leading-[0.9] tracking-[-0.03em] text-primary whitespace-nowrap">
                   ENGINEER
                 </TextReveal>
               </div>

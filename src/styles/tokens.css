@@ -49,7 +49,7 @@
   --on-invert-muted: hsl(47, 6%, 50%);
   --on-invert-border: rgba(255, 255, 255, 0.1);
 
---display: clamp(2rem, 11vw, 4rem);
+--display: clamp(2rem, 10vw, 4rem);
   --display-sm: clamp(3.5rem, 8vw, 6rem);
   --display-xs: clamp(3rem, 7vw, 5rem);
   /* Heading */
@@ -64,16 +64,27 @@
   --base-sm: clamp(0.85rem, 0.6625rem + 0.8333vw, 1.0625rem);
   --base-xs: clamp(0.750rem, 0.8607rem + -0.1383vw, 0.833rem);
   
+  /* Rule of thumb
+
+  *Leading
+  Headings: 1.2–1.5,
+  Body: 1.2–1.5,
+  Monospace: 1.5–2.0
+
+  *Tracking
+  Headings: 0 to -0.04em,
+  Body: 0 to -0.02em,
+  */
   --leading-display:  1.2;     
-  --tracking-display: -0.04em;  /* was: 1 (invalid) */
+  --tracking-display: -0.05em;
 
-  --leading-heading:  0.95;   
-  --tracking-heading: -0.03em;  /* ✓ keep, within article range */
+  --leading-heading:  1.25;   
+  --tracking-heading: -0.03em;
 
-  --leading-body:     1.4;      /* ✓ within 1.2–1.5 */
-  --tracking-body:    -0.01em;  /* was: 0.02em (article says 0 or negative) */
+  --leading-body:     1.4;
+  --tracking-body:    -0.01em;
 
-  --leading-mono:     1.75;     /* ✓ untouched */
+  --leading-mono:     1.75;   
   
 
   --section-padding: clamp(4rem, 8vw, 10rem);

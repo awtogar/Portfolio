@@ -1,7 +1,7 @@
 import { useRef, useMemo } from 'react';
 import { useLetterScroll } from '@/hooks';
 
-export const LetterScroll = ({ lines, containerClassName = '', textColor = 'text-cyan-200', start = 'top 25%', end = 'bottom 120%', scrub = 2 }) => {
+export const LetterScroll = ({ lines, elementHeight = 'h-[300px] lg:h-[400px]', containerClassName = '', textColor = 'text-primary', start = 'top 25%', end = 'bottom 120%', scrub = 2 }) => {
   const containerRef = useRef(null);
   const parsedLines = useMemo(
     () =>
@@ -19,7 +19,7 @@ export const LetterScroll = ({ lines, containerClassName = '', textColor = 'text
 
   return (
     <div ref={containerRef} className={`relative w-full h-full ${textColor}`}>
-      <ul className="letter-scroll flex flex-col justify-center items-center h-[300px] lg:h-[500px]">
+      <ul className={`letter-scroll flex flex-col justify-center items-center ${elementHeight}`}>
         {/* <ul className="letter-scroll flex flex-col justify-center items-center h-[500px] lg:h-[800px] md:py-12"> */}
         {(() => {
           let globalWordIndex = 0;

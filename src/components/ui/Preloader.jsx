@@ -1,52 +1,29 @@
-import { useEffect } from 'react';
+import { useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { PreloaderSlideUp, preloaderCurvePath } from '@/data/anim/preloader';
+import gsap from 'gsap';
 import { usePageFlow } from '@/context';
-import { useDimensions } from '../../hooks/useDimensions';
 
-const SVG_HEIGHT_OFFSET = 300;
-
-const numberVariants = {
-  initial: { y: 0 },
+const PreloaderSlideUp = {
+  initial: { top: 0 },
   exit: {
-    y: '0%',
-    transition: { duration: 0.6, ease: [0.76, 0, 0.24, 1] },
+    top: '-100vh',
+    transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1], delay: 0.2 },
   },
 };
 
 const PreloaderContent = () => {
   const { initialProgress: progress } = usePageFlow();
-  const dimensions = useDimensions();
-  const showFallback = dimensions.width === 0;
-  const initialPath = showFallback
-    ? ''
-    : `M0 0 L${dimensions.width} 0 L${dimensions.width} ${dimensions.height} Q${dimensions.width / 2} ${dimensions.height + SVG_HEIGHT_OFFSET} 0 ${dimensions.height} L0 0`;
+  const numberRef = useRef(null);
 
-  const targetPath = showFallback
-    ? ''
-    : `M0 0 L${dimensions.width} 0 L${dimensions.width} ${dimensions.height} Q${dimensions.width / 2} ${dimensions.height} 0 ${dimensions.height} L0 0`;
-
-  const numberEl = (
-    <div className="overflow-hidden">
-      <motion.span variants={numberVariants} className="inline-block text-sm font-semibold tracking-tight text-secondary">
-        {progress}
-      </motion.span>
-    </div>
-  );
-
-  if (showFallback) {
-    return (
-      <motion.div
-        variants={PreloaderSlideUp}
-        initial="initial"
-        exit="exit"
-        className="fixed inset-0 z-9999 flex items-center justify-center bg-primary text-primary"
-        style={{ height: '100vh', width: '100vw', pointerEvents: 'none' }}
-      >
-        <div className="absolute z-10 text-center">{numberEl}</div>
-      </motion.div>
-    );
-  }
+  useEffect(() => {
+    if (progress === 100 && numberRef.current) {
+      gsap.to(numberRef.current, {
+        y: '-120%',
+        duration: 0.35,
+        ease: 'power4.in',
+      });
+    }
+  }, [progress]);
 
   return (
     <motion.div
@@ -57,18 +34,18 @@ const PreloaderContent = () => {
       style={{ height: '100vh', width: '100vw' }}
     >
       <motion.div initial={{ scale: 1 }} transition={{ duration: 0.4, ease: [0.76, 0, 0.24, 1] }} className="absolute z-10 text-center">
-        {numberEl}
+        <div className="overflow-hidden">
+          <span ref={numberRef} className="inline-block text-base font-semibold tracking-body leading-body text-secondary">
+            {progress}
+          </span>
+        </div>
       </motion.div>
-      <svg className="absolute top-0 left-0 w-full" height={dimensions.height + SVG_HEIGHT_OFFSET}>
-        <motion.path variants={preloaderCurvePath(initialPath, targetPath)} initial="initial" exit="exit" fill="currentColor" />
-      </svg>
     </motion.div>
   );
 };
 
 const Preloader = () => {
   const { isInitialLoading, setIsReady } = usePageFlow();
-
   return (
     <AnimatePresence
       mode="wait"

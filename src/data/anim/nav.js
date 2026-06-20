@@ -2,22 +2,12 @@ const INSTANT = { duration: 0 };
 
 export const menuSlideLeft = {
   initial: {
-    x: "calc(100% + 100px)",
+    x: 'calc(100% + 100px)',
     transition: { duration: 0.6, ease: [0.76, 0, 0.24, 1] },
   },
-  enter: { x: "0", transition: { duration: 0.9, ease: [0.76, 0, 0.24, 1] } },
-  exit: { x: "calc(100% + 100px)", transition: { duration: 0.9, ease: [0.76, 0, 0.24, 1] } }
+  enter: { x: '0', transition: { duration: 0.9, ease: [0.76, 0, 0.24, 1] } },
+  exit: { x: 'calc(100% + 100px)', transition: { duration: 0.9, ease: [0.76, 0, 0.24, 1] } },
 };
-
-/** Let the page curtain own the exit — no competing slide/morph */
-export function getMenuSlideVariants(isPageTransition) {
-  if (!isPageTransition) return menuSlideLeft;
-  return {
-    initial: menuSlideLeft.initial,
-    enter: menuSlideLeft.enter,
-    exit: { x: "0", transition: INSTANT },
-  };
-}
 
 export const navSlide = {
   initial: { x: 80, opacity: 0 },
@@ -27,8 +17,8 @@ export const navSlide = {
     transition: {
       duration: 0.8,
       ease: [0.76, 0, 0.24, 1],
-      delay: 0.05 * i
-    }
+      delay: 0.05 * i,
+    },
   }),
   exit: i => ({
     x: 80,
@@ -36,9 +26,9 @@ export const navSlide = {
     transition: {
       duration: 0.8,
       ease: [0.76, 0, 0.24, 1],
-      delay: 0.05 * (4 - i)
-    }
-  })
+      delay: 0.05 * (4 - i),
+    },
+  }),
 };
 
 export const navDotScalling = {

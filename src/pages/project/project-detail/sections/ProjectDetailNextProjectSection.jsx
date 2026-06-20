@@ -2,7 +2,8 @@ import { useRef } from 'react';
 import { useParams } from 'react-router-dom';
 import { motion, useScroll, useTransform } from 'motion/react';
 import { RiArrowRightUpLine } from '@remixicon/react';
-import { CreativeButton, TransitionLink } from '../../../../components';
+import { CreativeButton } from '../../../../components';
+import { Link } from 'react-router-dom';
 import BaseSection from '../../../../components/common/BaseSection';
 import { useCursorHoverContent } from '@/cursor';
 import { projects } from '@/data/projects';
@@ -45,9 +46,9 @@ const ProjectDetailNextProjectSection = () => {
           opacity: titleOpacity,
         }}
       >
-        <TransitionLink to={`/projects/${nextProject.slug}`} className="block">
+        <Link to={`/projects/${nextProject.slug}`} className="block">
           {nextProject.client}
-        </TransitionLink>
+        </Link>
       </motion.h2>
 
       <div className="flex items-end justify-between gap-8 flex-wrap pt-4 section-padding-x">
@@ -55,11 +56,11 @@ const ProjectDetailNextProjectSection = () => {
           <span className="text-xs lg:text-[clamp(14px,0.8vw,18px)] text-neutral-500 uppercase font-medium tracking-wider">{nextProject.type}</span>
           <p className="text-base lg:text-lg text-neutral-700 max-w-[40ch] font-medium leading-relaxed">{nextProject.description}</p>
         </div>
-        <TransitionLink to={`/projects/${nextProject.slug}`} className="block group">
+        <Link to={`/projects/${nextProject.slug}`} className="block group">
           <CreativeButton ref={nextBtnRef} variant="outline" size="sm" className="border-neutral-900! text-neutral-900! hover:bg-neutral-900! hover:text-white!">
             <RiArrowRightUpLine size={26} className="transition-colors duration-300" />
           </CreativeButton>
-        </TransitionLink>
+        </Link>
       </div>
     </div>
   );
