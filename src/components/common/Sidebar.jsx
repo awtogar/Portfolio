@@ -9,7 +9,7 @@ import { useTheme } from '../../hooks/useTheme';
 
 import { NavigationLink, HoverRotate } from '..';
 
-export default function SideBar({ closeMenu }) {
+export default function SideBar({ closeMenu , skipExitAnim}) {
   const location = useLocation();
   const pathname = location.pathname;
   const [selectedIndicator, setSelectedIndicator] = useState(pathname);
@@ -18,7 +18,7 @@ export default function SideBar({ closeMenu }) {
   const { toggleTheme, isDark } = useTheme();
   const { isTransitioning } = usePageFlow();
   const menuVariants = menuSlideLeft;
-  const overlayTransition = { duration: 0.3 };
+  const overlayTransition = { duration: skipExitAnim ? 0 : 0.3 };
 
   useEffect(() => {
     const handleKeyDown = event => {
@@ -49,7 +49,7 @@ export default function SideBar({ closeMenu }) {
         variants={menuVariants}
         initial="initial"
         animate="enter"
-        exit="exit"
+        exit={skipExitAnim ? { x: '100%', transition: { duration: 0 } } : 'exit'}
         className="h-dvh! bg-neutral-500 fixed right-0 top-0 text-secondary z-[9997] will-change-transform w-full md:w-[50vw] lg:w-[45vw]"
       >
         <div className="box-border !h-full pl-4 pr-6 pt-[8dvh] pb-[8dvh] flex flex-col justify-between">

@@ -87,7 +87,7 @@
   --leading-mono:     1.75;   
   
 
-  --section-padding: clamp(4rem, 8vw, 10rem);
+  --section-padding: clamp(4rem, 7vw, 6rem); 
   --container-padding: clamp(1.25rem, 5vw, 6rem);
   --gap-padding: clamp(1rem, 2.5vw, 2rem);
 

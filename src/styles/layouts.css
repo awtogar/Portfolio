@@ -6,10 +6,10 @@
     @apply px-4 md:px-6 lg:px-8;
   }
   .section-padding-y {
-    @apply pt-section pb-[clamp(2rem,4vw,5rem)];
+    @apply pt-section pb-[clamp(2.5rem,5vw,4rem)];
   }
 .section-padding-xy {
-    @apply px-4 md:px-6 lg:px-8 py-section;
+    @apply px-4 md:px-6 lg:px-8 pt-section pb-[clamp(2.5rem,5vw,4rem)];
 }
   .section-padding-end {
     /* not defined currently */

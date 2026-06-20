@@ -1,44 +1,28 @@
 export const PAGE_TRANSITION = {
-  cover: {
-    duration: 1.05,
-    ease: [0.22, 1, 0.36, 1],
-  },
-
-  reveal: {
-    duration: 1.1,
-    ease: [0.22, 1, 0.37, 0.65],
-  },
-
-  // titleIn fires after the dark curtain (bg-primary) finishes covering:
-  // coverDelay(0.24) + cover.duration(1.05) = 1.29s total cover time.
-  // We start the title slightly before the full cover completes — at ~0.9s —
-  // so it's already settled by the time the curtain is fully down.
-  titleIn: {
-    duration: 0.4,
-    ease: [0.22, 1, 0.36, 1],
-    delay: 0.9,
-  },
-
-  // titleOut fires at the start of the reveal phase, exits before bg-primary lifts.
-  titleOut: {
-    duration: 0.3,
-    ease: [0.4, 0, 0.2, 1],
-    delay: 0,
-  },
+  cover: { duration: 0.85, ease: [0.65, 0, 0.35, 1] },
+  reveal: { duration: 0.9, ease: [0.16, 1, 0.3, 1] },
 };
 
 export const CURTAIN_LAYERS = [
-  {
-    className: 'bg-secondary',
-    zIndex: 1,
-    coverDelay: 0,
-    revealDelay: 0,
-  },
-
-  {
-    className: 'bg-primary',
-    zIndex: 2,
-    coverDelay: 0.24,
-    revealDelay: 0.14,
-  },
+  { className: 'bg-neutral-100', zIndex: 1, coverDelay: 0, revealDelay: 0.25 },
+  { className: 'bg-neutral-200', zIndex: 2, coverDelay: 0.05, revealDelay: 0.2 },
+  { className: 'bg-neutral-300', zIndex: 3, coverDelay: 0.1, revealDelay: 0.15 },
+  { className: 'bg-neutral-400', zIndex: 4, coverDelay: 0.15, revealDelay: 0.1 },
+  { className: 'bg-neutral-500', zIndex: 5, coverDelay: 0.2, revealDelay: 0.05 },
+  { className: 'bg-primary', zIndex: 6, coverDelay: 0.25, revealDelay: 0 },
 ];
+
+const lastLayer = CURTAIN_LAYERS[CURTAIN_LAYERS.length - 1];
+
+export const TITLE_TRANSITION = {
+  in: {
+    duration: PAGE_TRANSITION.cover.duration,
+    ease: PAGE_TRANSITION.cover.ease,
+    delay: lastLayer.coverDelay, // exact same start point as primary curtain
+  },
+  out: {
+    duration: PAGE_TRANSITION.reveal.duration,
+    ease: PAGE_TRANSITION.reveal.ease,
+    delay: lastLayer.revealDelay, // exact same start point as primary curtain
+  },
+};

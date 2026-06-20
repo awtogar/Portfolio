@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState, useCallback } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { AnimatePresence, motion } from 'motion/react';
-import {  SideBar } from '../..';
+import { SideBar } from '../..';
 import { useLenis, usePageFlow } from '@/context';
 import { HamburgerButton, ThemeToggleButton, TransitionLink, TextReveal } from '@/components';
 import { RiArrowLeftLine } from '@remixicon/react';
@@ -163,7 +163,7 @@ const Header = () => {
           </div>
         </div>
       </motion.div>
-      <AnimatePresence mode="wait">{isActive && !isDesktop && <SideBar closeMenu={closeMenu} />}</AnimatePresence>
+      <AnimatePresence mode="wait">{isActive && !isDesktop && <SideBar closeMenu={closeMenu} skipExitAnim={isTransitioning} />}</AnimatePresence>
     </header>
   );
 };
