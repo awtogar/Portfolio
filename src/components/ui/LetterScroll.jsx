@@ -1,7 +1,14 @@
 import { useRef, useMemo } from 'react';
-import { useLetterScroll } from '@/hooks';
-
-export const LetterScroll = ({ lines, elementHeight = 'h-[300px] lg:h-[400px]', containerClassName = '', textColor = 'text-primary', start = 'top 25%', end = 'bottom 120%', scrub = 2 }) => {
+import { useLetterScroll } from '@/hooks/animations/scroll/useLetterScroll';
+export const LetterScroll = ({
+  lines,
+  elementHeight = 'h-[300px] lg:h-[400px]',
+  containerClassName = '',
+  textColor = 'text-primary',
+  start = 'top 25%',
+  end = 'bottom 120%',
+  scrub = 2,
+}) => {
   const containerRef = useRef(null);
   const parsedLines = useMemo(
     () =>
