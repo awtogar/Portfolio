@@ -1,7 +1,7 @@
 import React from 'react';
 import { projects } from '@/data/projects';
 import { Link } from 'react-router-dom';
-import { BaseSection, TextReveal } from '@/components';
+import { BaseSection, TextReveal, TransitionLink } from '@/components';
 import AnimatedCard, { CardMeta } from '@/components/ui/AnimatedCard';
 
 const CURSOR_CONFIG = {
@@ -56,7 +56,7 @@ const ProjectPage = () => {
                 thumbnail={project.thumbnail}
                 alt={project.client}
                 to={`/projects/${project.slug}`}
-                LinkComponent={Link}
+                LinkComponent={TransitionLink}
                 imageContainerClassName="aspect-4/3 md:aspect-video lg:aspect-square"
                 cursor={CURSOR_CONFIG}
               >

@@ -103,13 +103,13 @@ const Header = () => {
           {/* LEFT */}
           <div className="flex items-center">
             {isProjectDetail ? (
-              <div
+              <TransitionLink
                 data-cursor
                 data-cursor-magnetic
                 data-cursor-sticky
                 data-cursor-content="arrow"
                 data-cursor-size="large"
-                onClick={() => navigate('/projects')}
+                to="/projects"
                 className={`relative pl-2 flex items-center justify-center h-[60px] w-[60px] group cursor-pointer transition-all duration-300 ${isActive ? 'opacity-0 invisible lg:opacity-100 lg:visible' : 'opacity-100 visible'}`}
               >
                 <div className="relative flex items-center justify-center w-9 h-9 rounded-full border-2 border-neutral-100 dark:border-primary mix-blend-difference transition-all duration-300 ease-in-out group-hover:scale-110">
@@ -118,7 +118,7 @@ const Header = () => {
                     className="text-white mix-blend-difference transition-transform duration-300 ease-in-out group-hover:-translate-x-0.5 group-hover:rotate-[15deg]"
                   />
                 </div>
-              </div>
+              </TransitionLink>
             ) : (
               <div
                 className={`flex items-center font-bold font-secondary tracking-tighter justify-center md:text-2xl antialiased px-4 h-[60px] mix-blend-difference transition-all duration-300 ${isActive ? 'opacity-0 invisible lg:opacity-100 lg:visible' : 'opacity-100 visible'}`}

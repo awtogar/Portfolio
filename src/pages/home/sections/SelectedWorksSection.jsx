@@ -1,7 +1,7 @@
 import React from 'react';
 import { projects } from '@/data/projects';
 import { Link } from 'react-router-dom';
-import { CreativeButton, TextReveal, BaseSection } from '@/components';
+import { CreativeButton, TextReveal, BaseSection, TransitionLink } from '@/components';
 import AnimatedCard, { CardMeta } from '@/components/ui/AnimatedCard';
 
 const SelectedWorksSection = () => {
@@ -42,7 +42,7 @@ const SelectedWorksSection = () => {
             alt={work.title}
             video={work.video}
             to={`/projects/${work.slug}`}
-            LinkComponent={Link}
+            LinkComponent={TransitionLink}
             cursor={CURSOR_CONFIG}
           >
             <CardMeta client={work.client} type={work.type} year={work.year} tags={work.tags} logo={work.logo} />
