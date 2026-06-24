@@ -1,6 +1,5 @@
 import React from 'react';
 import { projects } from '@/data/projects';
-import { Link } from 'react-router-dom';
 import { CreativeButton, TextReveal, BaseSection, TransitionLink } from '@/components';
 import AnimatedCard, { CardMeta } from '@/components/ui/AnimatedCard';
 

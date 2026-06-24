@@ -59,7 +59,6 @@ export const CardHoverEffect = ({ items, className }) => {
       />
 
       {items.map(({ Logo, label, link, title }, idx) => {
-        //
         const isBig = idx < 3;
         const isMidRow = idx < 6;
 
