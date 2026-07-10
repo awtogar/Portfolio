@@ -18,8 +18,8 @@ export default function Footer() {
 
   return (
     <BaseSection as="footer" containerID="footer" sectionClassName="pt-section">
+      <div className="h-s700 md:h-[15vh] bg-secondary" />
       <div className="relative">
-        {/* Content 2 — Dither parallax */}
         <section ref={ditherRef} className="sticky top-0 h-[50vh] md:h-screen overflow-hidden">
           <motion.div style={{ y }} className="absolute inset-0 scale-110">
             <Dither

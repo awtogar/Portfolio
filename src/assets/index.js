@@ -31,15 +31,3 @@ export { default as site22 } from './site/22.png';
 export { default as siteReels } from './site/site-reels-1.mp4';
 export { default as siteReels2 } from './site/site-reels-2.mp4';
 export { default as siteReels3 } from './site/site-reels-3.mp4';
-
-// Logo SVGs
-export { default as reactLogo } from './images/react.svg';
-export { default as nextJsLogo } from './images/next-js.svg';
-export { default as javascriptLogo } from './images/javascript.svg';
-export { default as tailwindLogo } from './images/tailwind.svg';
-export { default as gsapLogo } from './images/gsap.svg';
-export { default as motionLogo } from './images/motion.svg';
-export { default as vercelLogo } from './images/vercel.svg';
-export { default as nodeJsLogo } from './images/node-js.svg';
-export { default as figmaLogo } from './images/figma.svg';
-export { default as photoshopLogo } from './images/photoshop.svg';

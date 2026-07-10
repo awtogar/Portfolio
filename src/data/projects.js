@@ -1,4 +1,3 @@
-// Project assets — imported from per-project barrel files
 import { ovelo1, ovelo2, ovelo3, ovelo4, ovelo5, ovelo6, ovelo7, ovelo10, ovelo11, ovelo12, ovelo15, oveloReels } from '../assets/images/projects/ovelo';
 import {
   nostratic1,
@@ -16,10 +15,14 @@ import {
 
 import { synora1, synora2, synora3, synora4, synora5, synora6 } from '../assets/images/projects/synora';
 
-// Site assets — only for projects that don't have their own images yet
-import { site6, site7, site8, site9, site13, site4, site5 } from '../assets';
+import nostratic from '@/assets/images/projects/nostratic.svg?react';
+import ovelo from '@/assets/images/projects/ovelo.svg?react';
+import lunavara from '@/assets/images/projects/lunavara.svg?react';
+import synora from '@/assets/images/projects/synora.svg?react';
+import investime from '@/assets/images/projects/investime.svg?react';
+import routines from '@/assets/images/projects/routines.svg?react';
 
-import { OveloLogo, NostraticLogo, LunvaraLogo, SynoraLogo, ColorrideLogo, Investime } from '@/components/Logos/ProjectLogos';
+import { site6, site7, site8, site9, site13, site4, site5 } from '../assets';
 
 export const projects = [
   {
@@ -28,7 +31,7 @@ export const projects = [
     client: 'ovelo',
     type: 'Branding',
     year: '2025',
-    logo: OveloLogo,
+    logo: ovelo,
     thumbnail: ovelo15,
     video: oveloReels,
     description: 'An eyewear and Optical Care branding. focused on modern aesthetics and strong visuals branding.',
@@ -43,7 +46,7 @@ export const projects = [
     client: 'Nostratic Studio',
     type: 'Websites',
     year: '2025',
-    logo: NostraticLogo,
+    logo: nostratic,
     thumbnail: nostratic1,
     video: nostraticReels,
     description: 'Branding and Web Development for a creative studio agency in Indonesia. that specializes in digital products.',
@@ -58,7 +61,7 @@ export const projects = [
     client: 'Lunavara',
     type: 'Websites',
     year: '2024',
-    logo: LunvaraLogo,
+    logo: lunavara,
     thumbnail: site7,
     video: null,
     description: 'Lunavara is a modern nursery and plant art. focused on aesthetic and minimalism audience',
@@ -73,7 +76,7 @@ export const projects = [
     client: 'Investime+',
     type: 'Applications',
     year: '2024',
-    logo: Investime,
+    logo: investime,
     thumbnail: site9,
     video: null,
     description: 'A Calculator Website based app that can help you to calculate your compound interest and also can help you to plan your investment in the future.',
@@ -88,7 +91,7 @@ export const projects = [
     client: 'Routines+',
     type: 'Applications',
     year: '2024',
-    logo: ColorrideLogo,
+    logo: routines,
     thumbnail: site4,
     video: null,
     description: 'Intuitive application for productivity that can help you to manage the routines and time management in a modern and simple way.',
@@ -103,7 +106,7 @@ export const projects = [
     client: 'Synora',
     type: 'Branding',
     year: '2023',
-    logo: SynoraLogo,
+    logo: synora,
     thumbnail: synora1,
     video: null,
     description: 'Comprehensive branding and visual identity project for Synora.',

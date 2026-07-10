@@ -17,6 +17,9 @@ export { default as HoverRotate } from './ui/HoverRotate';
 export { default as Dither } from './ui/DitherBackground';  
 
 // Text & Typography
+export { default as HeadLineLabel } from './ui/HeadLineLabel';
+
+
 export { default as TextReveal } from './ui/TextReveal';
 
 // Media & Cards

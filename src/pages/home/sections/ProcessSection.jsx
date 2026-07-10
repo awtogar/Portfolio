@@ -1,4 +1,4 @@
-import { BaseSection, TextReveal } from '@/components';
+import { BaseSection, HeadLineLabel, TextReveal } from '@/components';
 import { siteReels } from '@/assets';
 
 const steps = [
@@ -77,20 +77,7 @@ const StepItem = ({ step, isLast }) => {
 const ProcessSection = () => {
   return (
     <BaseSection containerID="process" containerClassName="m-auto w-full max-w-[1920px]">
-      <div className="flex flex-col mb-s200">
-        <TextReveal as="span">
-          <span className="text-base-sm leading-heading tracking-body font-[450] uppercase text-primary-muted">how i work?</span>
-        </TextReveal>
-        <div className="flex items-end justify-between w-full md:mb-s200 lg:mb-s600">
-          <TextReveal as="h2" className="text-h100 heading-display font-bold">
-            The
-          </TextReveal>
-          <TextReveal as="h2" className="text-h100 heading-display font-bold">
-            Process
-          </TextReveal>
-        </div>
-      </div>
-
+      <HeadLineLabel label="My Approach" headline="WORK FLOW" />
       <ul className="flex flex-col gap-s300">
         {steps.map((step, i) => (
           <StepItem key={step.number} step={step} isLast={i === steps.length - 1} />

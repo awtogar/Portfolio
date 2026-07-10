@@ -1,6 +1,6 @@
 import React from 'react';
 import { projects } from '@/data/projects';
-import { CreativeButton, TextReveal, BaseSection, TransitionLink } from '@/components';
+import { CreativeButton, TextReveal, BaseSection, TransitionLink, HeadLineLabel } from '@/components';
 import AnimatedCard, { CardMeta } from '@/components/ui/AnimatedCard';
 
 const SelectedWorksSection = () => {
@@ -14,23 +14,7 @@ const SelectedWorksSection = () => {
 
   return (
     <BaseSection containerID="selected-works" sectionClassName="section-padding-xy relative overflow-hidden">
-      <div className="flex flex-col mb-s200">
-        <div className="flex items-center justify-between">
-          <TextReveal as="span" startDelay={0.25}>
-            <span className="text-base-sm leading-heading tracking-body font-[450] uppercase text-primary-muted">selected</span>
-          </TextReveal>
-        </div>
-        <div className="flex items-end justify-between w-full md:mb-s200 lg:mb-s600">
-          <TextReveal as="h2" className="text-h100 heading-display font-bold">
-            WORK
-          </TextReveal>
-          <div className="flex flex-col items-end gap-1 pb-1 lg:pb-2">
-            <TextReveal as="h2" className="text-h100 heading-display font-bold">
-              '25
-            </TextReveal>
-          </div>
-        </div>
-      </div>
+      <HeadLineLabel label="selected" headline="WORK" headlineSuffix="'25" />
       <ul className="flex flex-col lg:flex-row gap-2 lg:gap-4 w-full pb-s500 lg:pb-s600">
         {selectedWorks.map(work => (
           <AnimatedCard

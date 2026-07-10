@@ -1,4 +1,4 @@
-import { BaseSection, CardParallax, CreativeButton, TextReveal } from '@/components';
+import { BaseSection, CardParallax, CreativeButton, TextReveal, HeadLineLabel } from '@/components';
 import { me01 } from '@/assets';
 import { RiArrowDownLine, RiArrowRightUpLine } from '@remixicon/react';
 
@@ -6,28 +6,7 @@ const WhoamiSection = () => {
   return (
     <BaseSection containerID="who-am-i">
       <div className="flex flex-col">
-        <div className="flex flex-col mb-s200">
-          <TextReveal as="span">
-            <span className="text-base-sm leading-heading tracking-body font-[450] uppercase text-primary-muted">Introduce</span>
-          </TextReveal>
-          <div className="flex items-end justify-between w-full md:mb-s200 lg:mb-s600">
-            <TextReveal as="h2" className="text-h100 heading-display font-bold">
-              WHO I AM
-            </TextReveal>
-            <TextReveal as="h2" className="text-h100 heading-display font-bold">
-              (?)
-            </TextReveal>
-          </div>
-        </div>
-        {/* <div className="flex justify-between md:grid md:grid-cols-12 md:items-end">
-          <TextReveal as="h2" className="text-h100 heading-display font-bold md:col-span-7">
-            WHO I AM
-          </TextReveal>
-          <TextReveal as="h2" className="text-h100 heading-display font-bold text-right md:col-span-5">
-            (?)
-          </TextReveal>
-        </div> */}
-
+        <HeadLineLabel label="SHORT of about" headline="introduction" />
         <div className="flex flex-col gap-4 md:grid md:grid-cols-12 md:gap-6 lg:gap-8 mt-s200">
           <div className="md:col-span-6 md:pr-12 flex justify-center md:justify-start">
             <CardParallax
@@ -41,7 +20,9 @@ const WhoamiSection = () => {
             <div className="flex flex-col h-full justify-between gap-s400">
               <div className="relative block">
                 <TextReveal as="p" className="text-h500 tracking-body leading-body font-[450]">
-                  <span>2 years experiences through Freelancing with worldwide clients since 2022 - 2024 before taking two internships at big companies.</span>
+                  <span>
+                    Awaluddin Togar — with 2 years experiences through Freelancing with worldwide clients since 2022 - 2024 before taking two internships at big companies.
+                  </span>
                 </TextReveal>
               </div>
 

@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
-import { BaseSection, TextReveal } from '@/components';
+import { BaseSection, TextReveal, HeadLineLabel } from '@/components';
 import { testimonials } from '@/data/testimonials';
 import { RiPlayFill, RiPauseFill } from '@remixicon/react';
 import gsap from 'gsap';
@@ -108,14 +108,7 @@ const TestimonialSection = () => {
 
   return (
     <BaseSection containerID="testimonials" containerClassName="m-auto w-full max-w-[1920px]">
-      <div className="w-full md:mb-s200 lg:mb-s600">
-        <div className="flex flex-col">
-          <span className="text-base-sm leading-heading tracking-body font-[450] uppercase text-primary-muted">Feedback</span>
-          <TextReveal as="h2" className="text-h100 heading-display font-bold">
-            What they say
-          </TextReveal>
-        </div>
-      </div>
+      <HeadLineLabel label="Not my words, but" headline="They say it" />
       <div className="bg-surface-invert-raised min-h-[450px] md:min-h-[420px]">
         <div ref={cardRef} className="relative min-h-[450px] md:min-h-[420px] bg-surface-invert overflow-hidden">
           <div className="relative flex flex-col justify-between p-s400 sm:p-s500 md:p-s600 lg:p-s700">
