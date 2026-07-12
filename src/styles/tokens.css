@@ -42,8 +42,8 @@
   --brand-tertiary: #ab96ff;
 
   /* Inverted surface (dark card in light mode) */
-  --surface-invert: hsl(47, 12%, 10%);
-  --surface-invert-raised: hsl(47, 10%, 16%);
+  --surface-invert: hsl(48, 10%, 10%);
+  --surface-invert-raised: hsl(48, 10%, 14%);
   --on-invert-primary: hsl(47, 4%, 96%);
   --on-invert-secondary: hsl(47, 4%, 72%);
   --on-invert-muted: hsl(47, 6%, 50%);
@@ -125,13 +125,13 @@
   --brand-secondary: #348de0;
   --brand-tertiary: #ab96ff;
 
---surface-invert: hsl(47, 6%, 95%);
---surface-invert-raised: hsl(47, 0%, 100%);
---on-invert-primary: hsl(47, 12%, 10%);
---on-invert-secondary: hsl(47, 8%, 35%);
---on-invert-muted: hsl(47, 8%, 55%);
---on-invert-border: rgba(0, 0, 0, 0.1);
-}
+  --surface-invert: hsl(48, 10%, 95%);
+  --surface-invert-raised: hsl(48, 10%, 91%);
+  --on-invert-primary: hsl(47, 12%, 10%);
+  --on-invert-secondary: hsl(47, 8%, 35%);
+  --on-invert-muted: hsl(47, 8%, 55%);
+  --on-invert-border: rgba(0, 0, 0, 0.1);
+  }
 
 @media screen and (min-width: 768px) {
   :root {

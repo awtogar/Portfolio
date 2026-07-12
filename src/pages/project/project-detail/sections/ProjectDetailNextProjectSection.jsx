@@ -1,11 +1,7 @@
-import { useRef } from 'react';
+import React from 'react';
 import { useParams } from 'react-router-dom';
-import { motion, useScroll, useTransform } from 'motion/react';
+import { TransitionLink } from '@/components';
 import { RiArrowRightUpLine } from '@remixicon/react';
-import { CreativeButton } from '../../../../components';
-import { Link } from 'react-router-dom';
-import BaseSection from '../../../../components/common/BaseSection';
-import { useCursorHoverContent } from '@/cursor';
 import { projects } from '@/data/projects';
 
 const ProjectDetailNextProjectSection = () => {
@@ -13,54 +9,27 @@ const ProjectDetailNextProjectSection = () => {
   const projectIndex = projects.findIndex(p => p.slug === slug);
   const nextProject = projectIndex !== -1 ? projects[(projectIndex + 1) % projects.length] : null;
 
-  const nextBtnRef = useCursorHoverContent('arrow');
-  const sectionRef = useRef(null);
-
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ['start end', 'end start'],
-  });
-
-  const titleX = useTransform(scrollYProgress, [0.1, 0.6], ['-6%', '0%']);
-  const titleOpacity = useTransform(scrollYProgress, [0.1, 0.4], [0, 1]);
-
   if (!nextProject) return null;
 
   return (
-    <div ref={sectionRef} className="flex flex-col gap-[clamp(64px,6vw,200px)] px-3 lg:px-4 pb-3 lg:pb-4 rounded-2xl lg:rounded-[20px]">
-      <div className="flex items-center gap-4">
-        <motion.div
-          initial={{ scaleX: 0 }}
-          whileInView={{ scaleX: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
-          className="h-[2px] w-[32px] bg-neutral-900 origin-left"
-        />
-        <span className="text-xs uppercase tracking-[0.2em] text-neutral-900/60 font-medium">Next Project</span>
-      </div>
-
-      <motion.h2
-        className="flex items-end justify-between gap-8 flex-wrap pt-4 section-padding-x"
-        style={{
-          x: titleX,
-          opacity: titleOpacity,
-        }}
-      >
-        <Link to={`/projects/${nextProject.slug}`} className="block">
-          {nextProject.client}
-        </Link>
-      </motion.h2>
-
-      <div className="flex items-end justify-between gap-8 flex-wrap pt-4 section-padding-x">
-        <div className="flex flex-col gap-2">
-          <span className="text-xs lg:text-[clamp(14px,0.8vw,18px)] text-neutral-500 uppercase font-medium tracking-wider">{nextProject.type}</span>
-          <p className="text-base lg:text-lg text-neutral-700 max-w-[40ch] font-medium leading-relaxed">{nextProject.description}</p>
+    <div className="border-t border-neutral-300 dark:border-neutral-700 pt-6 mt-2">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+        <div className="flex items-center gap-4">
+          <span className="text-xs uppercase tracking-widest text-neutral-500 dark:text-neutral-400 font-medium">Next</span>
+          <TransitionLink to={`/projects/${nextProject.slug}`} className="group inline-block">
+            <h3 className="text-xl md:text-2xl font-semibold text-neutral-900 dark:text-neutral-100 group-hover:text-neutral-500 dark:group-hover:text-neutral-400 transition-colors">
+              {nextProject.client}
+            </h3>
+          </TransitionLink>
         </div>
-        <Link to={`/projects/${nextProject.slug}`} className="block group">
-          <CreativeButton ref={nextBtnRef} variant="outline" size="sm" className="border-neutral-900! text-neutral-900! hover:bg-neutral-900! hover:text-white!">
-            <RiArrowRightUpLine size={26} className="transition-colors duration-300" />
-          </CreativeButton>
-        </Link>
+
+        <TransitionLink
+          to={`/projects/${nextProject.slug}`}
+          className="flex items-center gap-1 text-sm text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors"
+        >
+          View
+          <RiArrowRightUpLine size={16} />
+        </TransitionLink>
       </div>
     </div>
   );
