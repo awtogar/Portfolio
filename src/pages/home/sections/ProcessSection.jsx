@@ -32,12 +32,11 @@ const steps = [
   },
 ];
 
-const StepItem = ({ step, isLast }) => {
+const StepItem = ({ step }) => {
   return (
-    <li className={`group flex flex-col md:flex-row md:items-stretch gap-s500 ${!isLast ? 'border-b border-primary/10' : ''}`}>
-      {/* Left: step + text — grid 8col untuk alignment mobile & desktop */}
-      <div className="grid grid-cols-8 items-start gap-s100 pt-s200 md:flex-1 md:pt-s500">
-        <span className="col-span-2 u-text-mono text-base-sm text-primary-muted leading-none">Step • {step.number}</span>
+    <li className={`group flex flex-col md:grid md:grid-cols-12`}>
+      <div className="grid grid-cols-8 items-start gap-s100 pt-s200 md:pt-s500 md:col-span-7 md:pr-s200">
+        <span className="col-span-2 pt-2 text-base-sm text-primary-muted leading-none md:pt-s100">Step • {step.number}</span>
         <div className="col-span-6 flex flex-col gap-s200">
           <h3 className="text-h400 heading-display font-bold leading-tight">{step.title}</h3>
           <p className="text-base-sm text-primary-muted max-w-[40ch] leading-body">{step.description}</p>
@@ -53,7 +52,7 @@ const StepItem = ({ step, isLast }) => {
         target="_blank"
         rel="noopener noreferrer"
         aria-label={`See step ${step.number} in action`}
-        className="group/video block overflow-hidden pl-[25%] pb-s200 md:pl-0 md:pb-0 md:w-[50%] md:shrink-0"
+        className="group/video block overflow-hidden pl-[25%] pb-s200 md:pl-0 md:pb-0 md:col-span-5"
       >
         <div className="relative aspect-video md:aspect-6/3 md:h-full w-full overflow-hidden bg-primary/5">
           <video
@@ -76,11 +75,11 @@ const StepItem = ({ step, isLast }) => {
 
 const ProcessSection = () => {
   return (
-    <BaseSection containerID="process" containerClassName="m-auto w-full max-w-[1920px]">
+    <BaseSection containerClassName="m-auto w-full max-w-[1920px]">
       <HeadLineLabel label="My Approach" headline="WORK FLOW" />
       <ul className="flex flex-col gap-s300">
         {steps.map((step, i) => (
-          <StepItem key={step.number} step={step} isLast={i === steps.length - 1} />
+          <StepItem key={step.number} step={step} />
         ))}
       </ul>
     </BaseSection>

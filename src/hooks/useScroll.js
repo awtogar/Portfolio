@@ -1,7 +1,6 @@
-import { useEffect, useCallback } from 'react';
+import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useLenis } from '@/context';
-import { usePageFlow } from '@/context';
 
 export const resetScrollImmediate = lenis => {
   window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
@@ -11,11 +10,10 @@ export const resetScrollImmediate = lenis => {
 export const useScrollToTop = () => {
   const { pathname } = useLocation();
   const { lenis } = useLenis();
-  const { isTransitioning } = usePageFlow();
 
   useEffect(() => {
-
-    if (isTransitioning) return;
+    // Only reset scroll on project routes — home handles its own scroll
+    if (pathname === '/') return;
     resetScrollImmediate(lenis);
   }, [pathname, lenis]);
 };

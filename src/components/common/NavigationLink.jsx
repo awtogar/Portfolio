@@ -1,11 +1,25 @@
 import { useState } from 'react';
 import { motion } from 'motion/react';
 import { navSlide, navDotScalling } from '@/data/anim/nav';
-import TransitionLink from '../ui/TransitionLink';
+import { useLoading } from '@/context';
+import { useLenis } from '@/context';
 
 export default function NavigationLink({ data, isActive, setSelectedIndicator, closeMenu }) {
-  const { title, href, index } = data;
+  const { title, href, index, sectionId } = data;
   const [isHovering, setIsHovering] = useState(false);
+  const { navigateTo, scrollToSection } = useLoading();
+  const { lenis, startScroll } = useLenis();
+
+  const handleClick = e => {
+    e.preventDefault();
+    closeMenu();
+    if (sectionId) {
+      startScroll(); // unfreeze Lenis immediately — sidebar cleanup fires after exit anim
+      scrollToSection(sectionId, lenis);
+    } else {
+      navigateTo(href);
+    }
+  };
 
   return (
     <motion.div
@@ -19,11 +33,9 @@ export default function NavigationLink({ data, isActive, setSelectedIndicator, c
       animate="enter"
       exit="exit"
     >
-      {/* indicator dot with scaling */}
-      <motion.div variants={navDotScalling} animate={isActive ? 'open' : 'closed'} className="absolute -left-6 w-2 h-2 top-1/2 -translate-y-1/2 bg-secondary rounded-full" />
+      <motion.div variants={navDotScalling} animate={isActive ? 'open' : 'closed'} className="absolute -left-6 w-2 h-2 top-1/2 -translate-y-1/2 bg-brand-primary rounded-full" />
 
-      {/* link text with hover effect */}
-      <TransitionLink to={href} className="text-[3rem] uppercase">
+      <a href={sectionId ? `/#${sectionId}` : href} onClick={handleClick} className="text-[3rem] uppercase">
         <motion.div
           className="all-unset flex cursor-pointer relative antialiased translate-z-0 will-change-transform overflow-clip"
           initial={false}
@@ -42,7 +54,7 @@ export default function NavigationLink({ data, isActive, setSelectedIndicator, c
             {title}
           </motion.span>
         </motion.div>
-      </TransitionLink>
+      </a>
     </motion.div>
   );
 }

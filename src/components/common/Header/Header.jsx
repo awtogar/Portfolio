@@ -1,22 +1,14 @@
 import { useEffect, useRef, useState, useCallback } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
 import { AnimatePresence, motion } from 'motion/react';
 import { SideBar } from '../..';
-import { useLenis, usePageFlow } from '@/context';
+import { useLenis, useLoading } from '@/context';
 import { HamburgerButton, ThemeToggleButton, TransitionLink, TextReveal } from '@/components';
-import { RiArrowLeftLine } from '@remixicon/react';
 import { useDimensions, useTheme } from '@/hooks';
 import BrandLogo from '@/assets/site/gar.svg?react';
+import { pages } from '@/data/navigation';
 
 const SCROLL_UP_THRESHOLD = 120;
 const SCROLL_DOWN_TRIGGER = 80;
-
-const pages = {
-  home: { title: 'Home', href: '/' },
-  about: { title: 'About', href: '/about' },
-  projects: { title: 'Projects', href: '/projects' },
-  contact: { title: 'Contact', href: '/contact' },
-};
 
 const Header = () => {
   const [isActive, setIsActive] = useState(false);
@@ -27,7 +19,7 @@ const Header = () => {
 
   const { lenis } = useLenis();
   const { toggleTheme } = useTheme();
-  const { isTransitioning } = usePageFlow();
+  const { isTransitioning, navigateTo, scrollToSection } = useLoading();
   const { width } = useDimensions();
   const isDesktop = width >= 1024;
 
@@ -45,13 +37,11 @@ const Header = () => {
         scrollUpAccumRef.current = 0;
         setScrollDirection('up');
       } else if (diff > 0) {
-        // scrolling down
         scrollUpAccumRef.current = 0;
         if (scroll > SCROLL_DOWN_TRIGGER) {
           setScrollDirection('down');
         }
       } else if (diff < 0) {
-        // scrolling up
         scrollUpAccumRef.current += Math.abs(diff);
         if (scrollUpAccumRef.current >= SCROLL_UP_THRESHOLD) {
           setScrollDirection('up');
@@ -67,6 +57,20 @@ const Header = () => {
 
   const closeMenu = useCallback(() => setIsActive(false), []);
   const toggleMenu = useCallback(() => setIsActive(prev => !prev), []);
+
+  const handleNavClick = useCallback(
+    (e, page) => {
+      e.preventDefault();
+      if (page.sectionId) {
+        scrollToSection(page.sectionId, lenis);
+      } else {
+        navigateTo(page.href);
+      }
+    },
+    [lenis, navigateTo, scrollToSection]
+  );
+
+  const navPages = Object.values(pages).filter(p => p.href !== '/' || p.sectionId);
 
   return (
     <header>
@@ -105,17 +109,19 @@ const Header = () => {
             <div className="hidden lg:flex items-center">
               <nav className="flex items-center">
                 <ul className="flex items-center gap-4 uppercase pt-[0.6rem] text-white text-body-lg">
-                  {Object.values(pages)
-                    .filter(page => page.href !== '/')
-                    .map((page, index) => (
-                      <li key={page.href} data-cursor data-cursor-magnetic data-cursor-sticky data-cursor-size="small">
-                        <TransitionLink to={page.href} className="nav-link-hover relative inline-block cursor-pointer overflow-hidden">
-                          <TextReveal as="span" className="link-text-top relative inline-block" isHero replayOnNavigate startDelay={0.35 + index * 0.1}>
-                            {page.title}
-                          </TextReveal>
-                        </TransitionLink>
-                      </li>
-                    ))}
+                  {navPages.map((page, index) => (
+                    <li key={`${page.href}-${page.sectionId}`} data-cursor data-cursor-magnetic data-cursor-sticky data-cursor-size="small">
+                      <a
+                        href={page.sectionId ? `/#${page.sectionId}` : page.href}
+                        onClick={e => handleNavClick(e, page)}
+                        className="nav-link-hover relative inline-block cursor-pointer overflow-hidden"
+                      >
+                        <TextReveal as="span" className="link-text-top relative inline-block" isHero replayOnNavigate startDelay={0.35 + index * 0.1}>
+                          {page.title}
+                        </TextReveal>
+                      </a>
+                    </li>
+                  ))}
                 </ul>
               </nav>
               <ThemeToggleButton isActive={isActive} toggleTheme={toggleTheme} />

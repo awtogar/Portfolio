@@ -9,7 +9,6 @@ export { default as BaseSection } from './common/BaseSection';
 // Navigation
 export { default as NavigationLink } from './common/NavigationLink';
 export { default as TransitionLink } from './ui/TransitionLink';
-export { default as RouteChangeNotifier } from './ui/RouteChangeNotifier';
 
 // Interactive
 export { default as CreativeButton } from './ui/CreativeButton';

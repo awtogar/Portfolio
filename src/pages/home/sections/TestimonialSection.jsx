@@ -1,166 +1,85 @@
-import { useState, useEffect, useRef, useCallback } from 'react';
-import { AnimatePresence, motion } from 'motion/react';
-import { BaseSection, TextReveal, HeadLineLabel } from '@/components';
+'use client';
+import { useRef } from 'react';
+import { useScroll, useTransform, motion } from 'motion/react';
+import { BaseSection, HeadLineLabel } from '@/components';
 import { testimonials } from '@/data/testimonials';
-import { RiPlayFill, RiPauseFill } from '@remixicon/react';
-import gsap from 'gsap';
 
-// Custom polygon clip-path values
-const clipPathStart = 'polygon(100% 0, 0 0, 0 0, 100% 0)';
-const clipPathEnd = 'polygon(100% 0, 0 0, 0 100%, 100% 100%)';
+const TestimonialCard = ({ item, i, progress, range, targetScale }) => {
+  const scale = useTransform(progress, range, [1, targetScale]);
+  const opacity = useTransform(progress, range, [1, 0.4]);
 
-// duration for each testimonial card before to the next one
-const INTERVAL_MS = 5000;
+  return (
+    <div className="flex items-center justify-center px-6">
+      <motion.div style={{ top: `calc(-5vh + ${i * 25}px)`, scale }} className="relative flex flex-col w-full origin-top">
+        <div className="flex items-center gap-4 mb-8 md:mb-10">
+          <svg width="28" height="20" viewBox="0 0 28 20" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-primary/30 shrink-0">
+            <path
+              d="M8.4 0C3.976 0 0 3.6 0 9.2C0 14.4 3.4 19 8.2 20L9.6 17.2C6.6 16.2 4.6 13.6 4.6 10.6C4.6 10.2 4.6 9.8 4.8 9.4C5.4 9.8 6.2 10 7 10C9.4 10 11.2 8 11.2 5.6C11.2 3.2 9.2 0 8.4 0ZM22.6 0C18.176 0 14.2 3.6 14.2 9.2C14.2 14.4 17.6 19 22.4 20L23.8 17.2C20.8 16.2 18.8 13.6 18.8 10.6C18.8 10.2 18.8 9.8 19 9.4C19.6 9.8 20.4 10 21.2 10C23.6 10 25.4 8 25.4 5.6C25.4 3.2 23.4 0 22.6 0Z"
+              fill="currentColor"
+            />
+          </svg>
+          <span className="flex-1 h-px bg-primary/15" />
+          <span className="text-[13px] tabular-nums text-secondary shrink-0">{item.index}</span>
+        </div>
+        {/* author row — restructured with a vertical divider and right-aligned link */}
+        <div className="flex items-center mt-10 md:mt-14 pt-6 border-t border-primary/10">
+          <div className="flex items-center gap-3.5 min-w-0">
+            <div className="relative w-10 h-10 md:w-11 md:h-11 rounded-full overflow-hidden shrink-0 ring-1 ring-primary/10">
+              <img src={item.avatar} alt={item.author} className="w-full h-full object-cover grayscale" />
+            </div>
 
-const DashProgress = ({ active, paused }) => {
-  const barRef = useRef(null);
-  const rafRef = useRef(null);
-  const elapsedRef = useRef(0);
-  const lastTsRef = useRef(null);
-  const pausedRef = useRef(paused);
+            <span className="w-px h-8 bg-primary/10 shrink-0" />
 
-  useEffect(() => {
-    pausedRef.current = paused;
-    if (!paused) {
-      lastTsRef.current = null;
-    }
-  }, [paused]);
+            <div className="min-w-0">
+              <h3 className="text-[14px] md:text-[15px] font-[500] text-primary truncate">{item.author}</h3>
+              <p className="text-[12px] text-secondary mt-0.5 truncate">{item.role}</p>
+            </div>
+          </div>
 
-  useEffect(() => {
-    const bar = barRef.current;
-    if (!bar) return;
-
-    if (!active) {
-      cancelAnimationFrame(rafRef.current);
-      bar.style.width = '0%';
-      elapsedRef.current = 0;
-      lastTsRef.current = null;
-      return;
-    }
-
-    bar.style.width = '0%';
-    elapsedRef.current = 0;
-    lastTsRef.current = null;
-
-    const tick = ts => {
-      if (lastTsRef.current !== null && !pausedRef.current) {
-        elapsedRef.current += ts - lastTsRef.current;
-      }
-      lastTsRef.current = ts;
-
-      const pct = Math.min((elapsedRef.current / INTERVAL_MS) * 100, 100);
-      bar.style.width = `${pct}%`;
-
-      if (pct < 100) rafRef.current = requestAnimationFrame(tick);
-    };
-
-    rafRef.current = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(rafRef.current);
-  }, [active]);
-
-  return <span ref={barRef} className="absolute inset-y-0 left-0 bg-on-invert-primary rounded-full transition-none" style={{ width: '0%' }} />;
+          {item.url && (
+            <a
+              href={item.url}
+              target="_blank"
+              rel="noreferrer"
+              className="ml-auto inline-flex items-center gap-1.5 text-[12px] text-secondary hover:text-primary transition-colors shrink-0 group"
+            >
+              See more
+              <svg width="14" height="8" viewBox="0 0 22 12" fill="none" xmlns="http://www.w3.org/2000/svg" className="transition-transform group-hover:translate-x-0.5">
+                <path
+                  d="M21.5303 6.53033C21.8232 6.23744 21.8232 5.76256 21.5303 5.46967L16.7574 0.696699C16.4645 0.403806 15.9896 0.403806 15.6967 0.696699C15.4038 0.989592 15.4038 1.46447 15.6967 1.75736L19.9393 6L15.6967 10.2426C15.4038 10.5355 15.4038 11.0104 15.6967 11.3033C15.9896 11.5962 16.4645 11.5962 16.7574 11.3033L21.5303 6.53033ZM0 6.75L21 6.75V5.25L0 5.25L0 6.75Z"
+                  fill="currentColor"
+                />
+              </svg>
+            </a>
+          )}
+        </div>
+        {/* quote with drop-cap first letter instead of a floating giant quote mark */}
+        <blockquote className="font-serif text-[22px] md:text-[32px] leading-[1.4] tracking-[-0.01em] text-primary max-w-[62ch]">
+          <span className="float-left font-serif text-[52px] md:text-[72px] leading-[0.8] pr-2 pt-1 text-primary">{item.quote.charAt(0)}</span>
+          {item.quote.slice(1)}
+        </blockquote>
+      </motion.div>
+    </div>
+  );
 };
 
 const TestimonialSection = () => {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
-  const timerRef = useRef(null);
-  const cardRef = useRef(null);
+  const containerRef = useRef(null);
 
-  const advance = useCallback(() => {
-    setActiveIndex(i => (i + 1) % testimonials.length);
-  }, []);
-
-  useEffect(() => {
-    if (isPaused) {
-      clearInterval(timerRef.current);
-    } else {
-      timerRef.current = setInterval(advance, INTERVAL_MS);
-    }
-
-    if (cardRef.current) {
-      gsap.fromTo(
-        cardRef.current,
-        { clipPath: clipPathStart },
-        {
-          clipPath: clipPathEnd,
-          duration: 0.6,
-          // ease: 'cubic-bezier(0.76, 0, 0.24, 1)',
-        }
-      );
-    }
-
-    return () => clearInterval(timerRef.current);
-  }, [isPaused, advance, activeIndex]);
-
-  const goTo = useCallback(
-    i => {
-      setActiveIndex(i);
-      clearInterval(timerRef.current);
-      if (!isPaused) {
-        timerRef.current = setInterval(advance, INTERVAL_MS);
-      }
-    },
-    [isPaused, advance]
-  );
-
-  const item = testimonials[activeIndex];
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ['start start', 'end end'],
+  });
 
   return (
-    <BaseSection containerID="testimonials" containerClassName="m-auto w-full max-w-[1920px]">
+    <BaseSection sectionID="testimonials" containerClassName="m-auto w-full max-w-[1920px]">
       <HeadLineLabel label="Not my words, but" headline="They say it" />
-      <div className="bg-surface-invert-raised min-h-[450px] md:min-h-[420px]">
-        <div ref={cardRef} className="relative min-h-[450px] md:min-h-[420px] bg-surface-invert overflow-hidden">
-          <div className="relative flex flex-col justify-between p-s400 sm:p-s500 md:p-s600 lg:p-s700">
-            <AnimatePresence mode="wait">
-              <div key={activeIndex} className="flex flex-col justify-between h-full gap-s400 sm:gap-s500 md:gap-s600">
-                <div className="flex items-center gap-s200 sm:gap-s300">
-                  <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full overflow-hidden shrink-0 bg-on-invert-border">
-                    <img src={item.avatar} alt={item.author} className="w-full h-full object-cover grayscale" />
-                  </div>
-                  <div className="flex flex-col gap-1 sm:gap-[3px] min-w-0">
-                    <span className="font-sans text-base-xs sm:text-base-sm font-[500] text-on-invert-primary leading-none truncate">{item.author}</span>
-                    <span className="font-mono text-base-xs text-on-invert-muted leading-none truncate">{item.role}</span>
-                  </div>
-                </div>
-                <div className="flex-1 flex flex-col justify-center min-h-[200px] sm:min-h-[250px] md:min-h-[300px]">
-                  <blockquote className="font-serif text-h600 sm:text-h500 md:text-h400 lg:text-h200 leading-[1.2] tracking-[-0.025em] text-on-invert-primary max-w-[80ch]">
-                    "{item.quote}"
-                  </blockquote>
-                </div>
-              </div>
-            </AnimatePresence>
-            <div className="flex justify-between items-center gap-s300 mt-s400 sm:mt-s500 md:mt-s600 pt-s400 sm:pt-s500 border-t border-on-invert-border">
-              <div className="flex items-center gap-2 sm:gap-3 flex-1 min-w-0">
-                {testimonials.map((_, i) => (
-                  <button
-                    key={i}
-                    onClick={() => goTo(i)}
-                    aria-label={`goto testimonial ${i + 1}`}
-                    className="relative h-[2px] sm:h-[3px] rounded-full overflow-hidden cursor-pointer focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-on-invert-primary shrink-0"
-                    style={{
-                      width: i === activeIndex ? '40px' : '20px',
-                      minWidth: i === activeIndex ? '40px' : '20px',
-                      transition: 'width 0.35s cubic-bezier(0.22,1,0.36,1)',
-                      background: 'rgba(255,255,255,0.15)',
-                    }}
-                  >
-                    <DashProgress active={i === activeIndex} paused={isPaused} />
-                  </button>
-                ))}
-              </div>
-              <div className="relative block shrink-0">
-                <button
-                  onClick={() => setIsPaused(p => !p)}
-                  aria-label={isPaused ? 'play auto-advance' : 'pause auto-advance'}
-                  className="relative z-10 w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-surface-invert flex items-center justify-center text-on-invert-primary hover:bg-surface-invert-raised transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-on-invert-primary"
-                >
-                  {isPaused ? <RiPlayFill size={14} className="sm:w-4 sm:h-4" /> : <RiPauseFill size={14} className="sm:w-4 sm:h-4" />}
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
+
+      <div className="w-full" ref={containerRef}>
+        {testimonials.map((item, i) => {
+          const targetScale = 1 - (testimonials.length - i) * 0.05;
+          return <TestimonialCard key={i} i={i} item={item} progress={scrollYProgress} range={[i * (1 / testimonials.length), 1]} targetScale={targetScale} />;
+        })}
       </div>
     </BaseSection>
   );

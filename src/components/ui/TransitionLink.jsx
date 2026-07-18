@@ -1,8 +1,8 @@
 import { forwardRef } from 'react';
-import { usePageFlow } from '@/context';
+import { useLoading } from '@/context';
 
 const TransitionLink = forwardRef(({ to, children, onClick, className, ...props }, ref) => {
-  const { navigateTo } = usePageFlow();
+  const { navigateTo } = useLoading();
   const handleClick = e => {
     e.preventDefault();
     if (onClick) onClick(e);

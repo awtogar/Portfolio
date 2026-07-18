@@ -1,7 +1,7 @@
 import { useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import gsap from 'gsap';
-import { usePageFlow } from '@/context';
+import { useLoading } from '@/context';
 
 const PreloaderSlideUp = {
   initial: { top: 0 },
@@ -12,7 +12,7 @@ const PreloaderSlideUp = {
 };
 
 const PreloaderContent = () => {
-  const { initialProgress: progress } = usePageFlow();
+  const { initialProgress: progress } = useLoading();
   const numberRef = useRef(null);
 
   useEffect(() => {
@@ -45,7 +45,7 @@ const PreloaderContent = () => {
 };
 
 const Preloader = () => {
-  const { isInitialLoading, setIsReady } = usePageFlow();
+  const { isInitialLoading, setIsReady } = useLoading();
   return (
     <AnimatePresence
       mode="wait"

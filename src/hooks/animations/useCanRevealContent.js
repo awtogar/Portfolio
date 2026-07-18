@@ -1,6 +1,6 @@
-import { usePageFlow } from '@/context';
+import { useLoading } from '@/context';
 
 export const useCanRevealContent = () => {
-  const { canRevealContent } = usePageFlow();
+  const { canRevealContent } = useLoading();
   return canRevealContent;
 };

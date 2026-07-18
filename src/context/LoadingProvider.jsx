@@ -1,6 +1,5 @@
 import { createContext, useContext, useState, useCallback, useRef } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { pages } from '@/data/navigation';
 import { projects } from '@/data/projects';
 
 const LoadingContext = createContext(null);
@@ -11,16 +10,31 @@ export function useLoading() {
   return ctx;
 }
 
+const PROJECT_ROUTES = ['/projects'];
+
+function isProjectRoute(path) {
+  return path === '/projects' || path.startsWith('/projects/');
+}
+
+function getPageTitle(path) {
+  const normalized = path.endsWith('/') ? path.slice(0, -1) : path;
+  if (normalized === '/projects') return 'Projects';
+  if (normalized.startsWith('/projects/')) {
+    const slug = normalized.split('/')[2];
+    const project = projects.find(p => p.slug === slug);
+    return project ? project.client : 'Project';
+  }
+  return '';
+}
+
 export function LoadingProvider({ children }) {
   const navigate = useNavigate();
   const location = useLocation();
 
-  // preloader state
   const [isInitialLoading, setIsInitialLoading] = useState(true);
   const [isReady, setIsReady] = useState(false);
   const [initialProgress, setInitialProgress] = useState(0);
 
-  // transisi state
   const [phase, setPhase] = useState('idle');
   const [targetPath, setTargetPath] = useState(null);
   const [pageTitle, setPageTitle] = useState('');
@@ -28,29 +42,12 @@ export function LoadingProvider({ children }) {
 
   const isTransitioning = phase !== 'idle';
   const isLoading = isInitialLoading || isTransitioning;
-  // Reveal as soon as preloader is done and the new page is ready — not after the transition finishes.
   const canRevealContent = isReady && phase !== 'exit';
 
   const [revealEpoch, setRevealEpoch] = useState(0);
 
-  const getPageTitle = useCallback(path => {
-    const normalized = path.endsWith('/') ? path.slice(0, -1) : path;
-    const page = Object.values(pages).find(p => {
-      const pNorm = p.href.endsWith('/') ? p.href.slice(0, -1) : p.href;
-      return pNorm === normalized;
-    });
-    if (page) return page.title;
-
-    // Handle dynamic routes
-    if (normalized.startsWith('/projects/')) {
-      const slug = normalized.split('/')[2];
-      const project = projects.find(p => p.slug === slug);
-      if (project) return project.client;
-      return 'Project';
-    }
-    return '';
-  }, []);
-
+  // Navigate with curtain transition — only meaningful for project routes.
+  // For home or section scroll, call scrollToSection instead.
   const navigateTo = useCallback(
     path => {
       if (path === location.pathname) return;
@@ -60,7 +57,10 @@ export function LoadingProvider({ children }) {
         typeof window !== 'undefined' &&
         window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-      if (prefersReducedMotion) {
+      const leavingProjectRoute = isProjectRoute(location.pathname);
+      const enteringProjectRoute = isProjectRoute(path);
+
+      if (prefersReducedMotion || (!leavingProjectRoute && !enteringProjectRoute)) {
         navigate(path);
         return;
       }
@@ -70,7 +70,29 @@ export function LoadingProvider({ children }) {
       setPageTitle(getPageTitle(path));
       setPhase('exit');
     },
-    [location.pathname, getPageTitle, navigate]
+    [location.pathname, navigate]
+  );
+
+  // Scroll to a section by ID (with Lenis if available), or navigate to /#id if not on home.
+  const scrollToSection = useCallback(
+    (sectionId, lenisInstance) => {
+      const isHome = location.pathname === '/';
+      if (isHome) {
+        // Update URL bar without triggering React Router (avoids double-scroll from HashScrollHandler)
+        window.history.replaceState(null, '', `/#${sectionId}`);
+        if (lenisInstance) {
+          lenisInstance.scrollTo(`#${sectionId}`, { offset: -80, duration: 1.4, easing: t => 1 - Math.pow(1 - t, 4) });
+        } else {
+          const el = document.getElementById(sectionId);
+          if (el) el.scrollIntoView({ behavior: 'smooth' });
+        }
+      } else {
+        // Use navigateTo so the curtain transition fires when leaving a project route.
+        // HashScrollHandler in App.jsx will pick up the hash and scroll after arrival.
+        navigateTo(`/#${sectionId}`);
+      }
+    },
+    [location.pathname, navigateTo]
   );
 
   const onExitComplete = useCallback(() => {
@@ -111,6 +133,7 @@ export function LoadingProvider({ children }) {
         targetPath,
         pageTitle,
         navigateTo,
+        scrollToSection,
         onExitComplete,
         onEnterComplete,
         setPageReady,

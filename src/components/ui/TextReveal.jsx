@@ -2,7 +2,7 @@ import { useRef, useEffect } from 'react';
 import { gsap } from 'gsap';
 import { SplitText } from 'gsap/SplitText';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { usePageFlow } from '@/context';
+import { useLoading } from '@/context';
 
 gsap.registerPlugin(SplitText, ScrollTrigger);
 
@@ -19,7 +19,7 @@ const TextReveal = ({
   isHero = false,
   replayOnNavigate = false,
 }) => {
-  const { canRevealContent, revealEpoch } = usePageFlow();
+  const { canRevealContent, revealEpoch } = useLoading();
 
   const ref = useRef(null);
   const splitRef = useRef(null);

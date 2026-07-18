@@ -17,8 +17,8 @@ export default function Footer() {
   const y = useTransform(scrollYProgress, [0, 1], ['-10%', '10%']);
 
   return (
-    <BaseSection as="footer" containerID="footer" sectionClassName="pt-section">
-      <div className="h-s700 md:h-[15vh] bg-secondary" />
+    <BaseSection as="footer" sectionID="contact" sectionClassName="pt-section">
+      <div className="h-s700 md:h-[15vh] bg-neutral-100" />
       <div className="relative">
         <section ref={ditherRef} className="sticky top-0 h-[50vh] md:h-screen overflow-hidden">
           <motion.div style={{ y }} className="absolute inset-0 scale-110">

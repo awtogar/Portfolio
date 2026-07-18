@@ -3,22 +3,31 @@ export const pages = {
     title: 'Home',
     href: '/',
     label: 'Home',
+    sectionId: null,
   },
   about: {
     title: 'About',
-    href: '/about',
+    href: '/',
     label: 'About',
+    sectionId: 'about',
   },
-  project: {
-    title: 'Projects',
-    href: '/projects',
-    label: 'Projects',
-  
+  services: {
+    title: 'Services',
+    href: '/',
+    label: 'Services',
+    sectionId: 'services',
+  },
+  works: {
+    title: 'Works',
+    href: '/',
+    label: 'Works',
+    sectionId: 'works',
   },
   contact: {
     title: 'Contact',
-    href: '/contact',
-    label: 'contact',
+    href: '/',
+    label: 'Contact',
+    sectionId: 'contact',
   },
 };
 

@@ -4,7 +4,7 @@ import { RiArrowDownLine, RiArrowRightUpLine } from '@remixicon/react';
 
 const WhoamiSection = () => {
   return (
-    <BaseSection containerID="who-am-i">
+    <BaseSection sectionID="about">
       <div className="flex flex-col">
         <HeadLineLabel label="SHORT of about" headline="introduction" />
         <div className="flex flex-col gap-4 md:grid md:grid-cols-12 md:gap-6 lg:gap-8 mt-s200">
@@ -30,32 +30,42 @@ const WhoamiSection = () => {
                 <div className="md:hidden flex gap-3">
                   <CreativeButton
                     data-cursor
+                    variant="fill"
+                    size="sm"
                     data-cursor-content="view"
                     data-cursor-fill="primary"
                     data-cursor-text-color="secondary"
                     data-cursor-size="large"
                     className="flex-1 justify-center"
                   >
-                    <span className="text-h600 tracking-heading leading-heading font-[450]">Download CV</span>
+                    <span className="text-h500 tracking-heading leading-heading font-[450] whitespace-nowrap">Get in touch</span>
                   </CreativeButton>
+
                   <CreativeButton
                     data-cursor
+                    variant="outline"
+                    size="sm"
                     data-cursor-content="view"
                     data-cursor-fill="primary"
                     data-cursor-text-color="secondary"
                     data-cursor-size="large"
                     className="flex-1 justify-center"
                   >
-                    <span className="text-h600 tracking-heading leading-heading font-[450]">About me</span>
+                    <a href="https://example.com/to-download-cv" className="text-h500 tracking-heading leading-heading font-[450] whitespace-nowrap">
+                      Download CV
+                    </a>
                   </CreativeButton>
                 </div>
 
                 <div className="hidden md:flex justify-between items-center gap-4">
-                  <div className="flex items-center">
-                    <p className="text-h600 tracking-heading leading-heading font-[450]">About me</p>
-                    <RiArrowRightUpLine size={20} />
+                  <div className="flex items-center justify-baseline">
+                    <span className=" flex text-h600 tracking-heading leading-heading font-[450]">Get in touch</span>
+                    <CreativeButton variant="transparent">
+                      <RiArrowRightUpLine size={24} />
+                    </CreativeButton>
                   </div>
                   <CreativeButton
+                    href="https://example.com/to-download-cv"
                     data-cursor
                     data-cursor-magnetic
                     data-cursor-content="view"

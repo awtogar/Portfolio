@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import { useLenis, usePageFlow } from '@/context';
+import { useLenis, useLoading } from '@/context';
 
 const MAX_DURATION = 6000;
 const MIN_DURATION = 500;
@@ -9,7 +9,7 @@ const MIN_DURATION = 500;
  * Mount once in App (not per-page).
  */
 const useInitialLoad = (criticalPromises = []) => {
-  const { setIsInitialLoading, setInitialProgress } = usePageFlow();
+  const { setIsInitialLoading, setInitialProgress } = useLoading();
   const { lenis } = useLenis();
 
   const lenisRef = useRef(lenis);
@@ -87,6 +87,8 @@ const useInitialLoad = (criticalPromises = []) => {
           setIsInitialLoading(false);
           document.body.style.overflow = '';
           document.body.style.cursor = '';
+          window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+          lenisRef.current?.scrollTo(0, { immediate: true });
           lenisRef.current?.start();
         }
       }, 500);

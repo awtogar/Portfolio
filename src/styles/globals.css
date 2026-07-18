@@ -184,6 +184,15 @@ html {
     color: var(--secondary);
     text-shadow: none;
   }
+
+  .inverted ::selection {
+    background-color: var(--secondary);
+    color: var(--primary);
+  }
+  .inverted ::-moz-selection {
+    background-color: var(--secondary);
+    color: var(--primary);
+  }
 }
 
 @keyframes scroll-x {

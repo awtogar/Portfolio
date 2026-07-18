@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { motion } from 'motion/react';
-import { usePageFlow } from '@/context';
+import { useLoading } from '@/context';
 import { PAGE_TRANSITION, CURTAIN_LAYERS, TITLE_TRANSITION } from '@/data/anim/pageTransition';
 
 const Textitle = { hidden: '100%', covered: '0%', revealed: '-100%' };
@@ -36,7 +36,7 @@ const clipVariants = {
 };
 
 export default function PageTransition() {
-  const { phase, pageTitle, onExitComplete, onEnterComplete } = usePageFlow();
+  const { phase, pageTitle, onExitComplete, onEnterComplete } = useLoading();
   const overlayRef = useRef(null);
 
   useEffect(() => {

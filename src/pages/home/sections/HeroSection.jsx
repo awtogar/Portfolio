@@ -1,10 +1,26 @@
 import { BaseSection, TextReveal } from '@/components';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { RiArrowDownLongLine } from '@remixicon/react';
 
 const HeroSection = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [prevIndex, setPrevIndex] = useState(-1);
+  const heroRef = useRef(null);
+
+  useEffect(() => {
+    const el = heroRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          window.history.replaceState(null, '', '/');
+        }
+      },
+      { threshold: 0.2 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -27,7 +43,8 @@ const HeroSection = () => {
   };
 
   return (
-    <BaseSection containerID="hero" sectionClassName="section-padding-x" containerClassName="flex-col h-[75svh] md:h-[85svh] lg:h-[95svh] m-auto w-full max-w-[1920px]">
+    <BaseSection sectionClassName="section-padding-x" containerClassName="flex-col h-[75svh] md:h-[85svh] lg:h-[95svh] m-auto w-full max-w-[1920px]">
+      <div ref={heroRef} className="absolute top-0 left-0 w-full h-px pointer-events-none" aria-hidden />
       <div className="flex flex-col justify-between h-full w-full pt-[36px]">
         <div className="pt-[86px] lg:pt-[84px] text-h600 font-medium leading-[1.1] tracking-[-0.02em] text-foreground">
           <div className="flex gap-2">
