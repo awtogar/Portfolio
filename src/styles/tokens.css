@@ -1,35 +1,38 @@
 :root {
   /* font */
---sans: 'General Sans',
-  Inter,
-  'SF Pro Display',
-  -apple-system,
-  BlinkMacSystemFont,
-  'Segoe UI',
-  sans-serif;
+  --sans: 'General Sans',
+    Inter,
+    'SF Pro Display',
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    sans-serif;
 
---serif: 'Overused Grotesk',
-  Inter,
-  'SF Pro Display',
-  -apple-system,
-  BlinkMacSystemFont,
-  'Segoe UI',
-  sans-serif;
+  --serif: 'Overused Grotesk',
+    Inter,
+    'SF Pro Display',
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    sans-serif;
 
---mono: 'JetBrains Mono',
-  'Roboto Mono',
-  'SF Mono',
-  Menlo,
-  Monaco,
-  Consolas,
-  monospace;
+  --mono: 'JetBrains Mono',
+    'Roboto Mono',
+    'SF Mono',
+    Menlo,
+    Monaco,
+    Consolas,
+    monospace;
 
   /* colors */
-  --neutral-100: hsl(47, 0%, 98%);
-  --neutral-200: hsl(47, 4%, 90%);
-  --neutral-300: hsl(47, 6%, 70%);
-  --neutral-400: hsl(47, 8%, 45%);
-  --neutral-500: hsl(47, 12%, 20%);
+  --neutral-50: #fafafa;
+  --neutral-100: #f5f5f5;
+  --neutral-200: #e5e5e5;
+  --neutral-300: #d4d4d4;
+  --neutral-400: #a1a1a1;
+  --neutral-700: #404040;
+  --neutral-800: #262626;
+  --neutral-900: #171717;
 
   --primary: hsl(47, 12%, 10%);
   --primary-muted: hsl(47, 8%, 35%);
@@ -49,13 +52,13 @@
   --on-invert-muted: hsl(47, 6%, 50%);
   --on-invert-border: rgba(255, 255, 255, 0.1);
 
---display: clamp(2rem, 10vw, 4rem);
+  --display: clamp(2rem, 10vw, 4rem);
   --display-sm: clamp(3.5rem, 8vw, 6rem);
   --display-xs: clamp(3rem, 7vw, 5rem);
   /* Heading */
   --h100: clamp(3.0518rem, 2.3786rem + 2.9919vw, 3.8147rem);
   --h200: clamp(2.4414rem, 1.9029rem + 2.3935vw, 3.0518rem);
-  --h300:  clamp(1.9531rem, 1.5223rem + 1.9148vw, 2.4414rem);
+  --h300: clamp(1.9531rem, 1.5223rem + 1.9148vw, 2.4414rem);
   --h400: clamp(1.5625rem, 1.2178rem + 1.5319vw, 1.9531rem);
   --h500: clamp(1.25rem, 0.9743rem + 1.2255vw, 1.5625rem);
   --h600: clamp(1rem, 0.7794rem + 0.9804vw, 1.25rem);
@@ -63,7 +66,7 @@
   --base: clamp(1rem, 0.7794rem + 0.9804vw, 1.25rem);
   --base-sm: clamp(0.85rem, 0.6625rem + 0.8333vw, 1.0625rem);
   --base-xs: clamp(0.750rem, 0.8607rem + -0.1383vw, 0.833rem);
-  
+
   /* Rule of thumb
 
   *Leading
@@ -75,19 +78,19 @@
   Headings: 0 to -0.04em,
   Body: 0 to -0.02em,
   */
-  --leading-display:  1.2;     
+  --leading-display: 1.2;
   --tracking-display: -0.05em;
 
-  --leading-heading:  1.3;   
+  --leading-heading: 1.3;
   --tracking-heading: -0.03em;
 
-  --leading-body:     1.36;
-  --tracking-body:    -0.01em;
+  --leading-body: 1.36;
+  --tracking-body: -0.01em;
 
-  --leading-mono:     1.75;   
-  
+  --leading-mono: 1.75;
 
-  --section-padding: clamp(4rem, 7vw, 6rem); 
+
+  --section-padding: clamp(4rem, 7vw, 6rem);
   --container-padding: clamp(1.25rem, 5vw, 6rem);
   --gap-padding: clamp(1rem, 2.5vw, 2rem);
 
@@ -110,17 +113,20 @@
 .dark,
 [data-theme~='dark'] {
 
-  --neutral-100: hsl(47, 12%, 8%);
-  --neutral-200: hsl(47, 10%, 16%);
-  --neutral-300: hsl(47, 8%, 40%);
-  --neutral-400: hsl(47, 6%, 65%);
-  --neutral-500: hsl(47, 4%, 90%);
+  --neutral-50: #171717;
+  --neutral-100: #262626;
+  --neutral-200: #404040;
+  --neutral-300: #a1a1a1;
+  --neutral-400: #d4d4d4;
+  --neutral-700: #e5e5e5;
+  --neutral-800: #f5f5f5;
+  --neutral-900: #fafafa;
 
   --primary: hsl(47, 8%, 95%);
   --primary-muted: hsl(47, 6%, 70%);
   --secondary: hsl(47, 12%, 12%);
   --secondary-muted: hsl(47, 8%, 35%);
-  
+
   --brand-primary: #fff6d6;
   --brand-secondary: #348de0;
   --brand-tertiary: #ab96ff;
@@ -131,7 +137,7 @@
   --on-invert-secondary: hsl(47, 8%, 35%);
   --on-invert-muted: hsl(47, 8%, 55%);
   --on-invert-border: rgba(0, 0, 0, 0.1);
-  }
+}
 
 @media screen and (min-width: 768px) {
   :root {
@@ -141,6 +147,7 @@
     --container-padding: clamp(2.5rem, 5vw, 6rem);
   }
 }
+
 @media screen and (min-width: 1280px) {
   :root {
     --display: clamp(7rem, 9.5vw, 10rem);
@@ -149,10 +156,9 @@
     --container-padding: clamp(4rem, 6vw, 8rem);
   }
 }
+
 @media screen and (min-width: 1440px) {
   :root {
     --display: clamp(9rem, 9vw, 11rem);
   }
 }
-
-

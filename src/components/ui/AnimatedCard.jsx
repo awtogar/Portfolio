@@ -20,7 +20,6 @@ export const MarqueeTags = ({ tags = [], speed = 16 }) => {
 };
 
 export const CardMeta = ({ client, type, year, tags = [], logo: Logo }) => {
-  const isComponent = typeof Logo === 'function' || typeof Logo === 'object';
 
   return (
     <div className="flex flex-col gap-4 lg:gap-5">
@@ -28,12 +27,10 @@ export const CardMeta = ({ client, type, year, tags = [], logo: Logo }) => {
         <div className="flex items-center gap-2 lg:gap-3">
           <div className="w-6 h-6 md:w-10 md:h-10 px-1 py-1 md:px-2 flex items-center justify-center rounded-full bg-neutral-100 dark:bg-neutral-100 overflow-hidden text-primary dark:text-primary">
             {Logo ? (
-              isComponent ? (
-                <Logo className="w-full h-full" />
-              ) : (
-                <img src={Logo} alt={`${client} logo`} className="w-full h-full object-contain" />
-              )
+              <Logo className="w-full h-full fill-primary" />
             ) : (
+
+              // fallback kalo gak ada logo svg nya
               <span className="text-xs font-semibold">{client?.charAt(0) || 'P'}</span>
             )}
           </div>
@@ -92,7 +89,6 @@ const AnimatedCard = ({
                 clipPath: isHovered ? 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)' : 'polygon(30% 50%, 70% 50%, 70% 50%, 30% 50%)',
                 y: isHovered ? '-50%' : '-10%',
               }}
-              
               transition={{ duration: 0.7, ease: [0.87, 0, 0.13, 1] }}
               muted
               loop

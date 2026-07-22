@@ -70,7 +70,6 @@ const HashScrollHandler = () => {
 
 const AppContent = () => {
   useInitialLoad();
-  // useScrollToTop();
 
   return (
     <>

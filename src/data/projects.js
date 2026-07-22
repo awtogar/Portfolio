@@ -1,28 +1,16 @@
-import { ovelo1, ovelo2, ovelo3, ovelo4, ovelo5, ovelo6, ovelo7, ovelo10, ovelo11, ovelo12, ovelo15, oveloReels } from '../assets/images/projects/ovelo';
-import {
-  nostratic1,
-  nostratic2,
-  nostratic3,
-  nostratic4,
-  nostratic5,
-  nostratic6,
-  nostratic7,
-  nostratic8,
-  nostratic9,
-  nostratic10,
-  nostraticReels,
-} from '../assets/images/projects/nostratic';
+import nostraticLogo from '@/assets/images/projects/nostratic.svg?react';
+import oveloLogo from '@/assets/images/projects/ovelo.svg?react';
+import lunavaraLogo from '@/assets/images/projects/lunavara.svg?react';
+import synoraLogo from '@/assets/images/projects/synora.svg?react';
+import investimeLogo from '@/assets/images/projects/investime.svg?react';
+import routinesLogo from '@/assets/images/projects/routines.svg?react';
 
-import { synora1, synora2, synora3, synora4, synora5, synora6 } from '../assets/images/projects/synora';
+import { getProjectAssets, placeholder } from '@/assets';
 
-import nostratic from '@/assets/images/projects/nostratic.svg?react';
-import ovelo from '@/assets/images/projects/ovelo.svg?react';
-import lunavara from '@/assets/images/projects/lunavara.svg?react';
-import synora from '@/assets/images/projects/synora.svg?react';
-import investime from '@/assets/images/projects/investime.svg?react';
-import routines from '@/assets/images/projects/routines.svg?react';
-
-import { site6, site7, site8, site9, site13, site4, site5 } from '../assets';
+const oveloMedia = getProjectAssets('ovelo');
+const nostraticMedia = getProjectAssets('nostratic');
+const synoraMedia = getProjectAssets('synora');
+const lunavaraMedia = getProjectAssets('lunavara');
 
 export const projects = [
   {
@@ -31,14 +19,14 @@ export const projects = [
     client: 'ovelo',
     type: 'Branding',
     year: '2025',
-    logo: ovelo,
-    thumbnail: ovelo15,
-    video: oveloReels,
+    logo: oveloLogo,
+    thumbnail: oveloMedia.gallery[14] || oveloMedia.thumbnail,
+    video: oveloMedia.video,
     description: 'An eyewear and Optical Care branding. focused on modern aesthetics and strong visuals branding.',
     tags: ['Graphics', 'Branding'],
     date: { month: 'June', year: '2024' },
     selected: true,
-    gallery: [ovelo1, ovelo2, ovelo3, ovelo4, ovelo5, ovelo6, ovelo7],
+    gallery: oveloMedia.gallery,
   },
   {
     id: 2,
@@ -46,14 +34,14 @@ export const projects = [
     client: 'Nostratic Studio',
     type: 'Websites',
     year: '2025',
-    logo: nostratic,
-    thumbnail: nostratic1,
-    video: nostraticReels,
+    logo: nostraticLogo,
+    thumbnail: nostraticMedia.thumbnail,
+    video: nostraticMedia.video,
     description: 'Branding and Web Development for a creative studio agency in Indonesia. that specializes in digital products.',
     tags: ['UI/UX', 'Prototype', 'Figma'],
     date: { month: 'February', year: '2025' },
     selected: true,
-    gallery: [nostratic1, nostratic2, nostratic3, nostratic4, nostratic5, nostratic6, nostratic7, nostratic8, nostratic9, nostratic10],
+    gallery: nostraticMedia.gallery,
   },
   {
     id: 3,
@@ -61,14 +49,14 @@ export const projects = [
     client: 'Lunavara',
     type: 'Websites',
     year: '2024',
-    logo: lunavara,
-    thumbnail: site7,
-    video: null,
+    logo: lunavaraLogo,
+    thumbnail: lunavaraMedia.thumbnail || placeholder,
+    video: lunavaraMedia.video,
     description: 'Lunavara is a modern nursery and plant art. focused on aesthetic and minimalism audience',
     tags: ['Web Development', 'UI/UX'],
     date: { month: 'August', year: '2024' },
     selected: false,
-    gallery: [site6, site13],
+    gallery: lunavaraMedia.gallery,
   },
   {
     id: 4,
@@ -76,14 +64,14 @@ export const projects = [
     client: 'Investime+',
     type: 'Applications',
     year: '2024',
-    logo: investime,
-    thumbnail: site9,
+    logo: investimeLogo,
+    thumbnail: placeholder,
     video: null,
     description: 'A Calculator Website based app that can help you to calculate your compound interest and also can help you to plan your investment in the future.',
     tags: ['Web App', 'FinTech'],
     date: { month: 'May', year: '2024' },
     selected: false,
-    gallery: [site7, site8],
+    gallery: [],
   },
   {
     id: 5,
@@ -91,14 +79,14 @@ export const projects = [
     client: 'Routines+',
     type: 'Applications',
     year: '2024',
-    logo: routines,
-    thumbnail: site4,
+    logo: routinesLogo,
+    thumbnail: placeholder,
     video: null,
     description: 'Intuitive application for productivity that can help you to manage the routines and time management in a modern and simple way.',
     tags: ['Mobile App', 'Productivity'],
     date: { month: 'January', year: '2024' },
     selected: false,
-    gallery: [site6, site9],
+    gallery: [],
   },
   {
     id: 6,
@@ -106,13 +94,13 @@ export const projects = [
     client: 'Synora',
     type: 'Branding',
     year: '2023',
-    logo: synora,
-    thumbnail: synora1,
-    video: null,
+    logo: synoraLogo,
+    thumbnail: synoraMedia.thumbnail,
+    video: synoraMedia.video,
     description: 'Comprehensive branding and visual identity project for Synora.',
     tags: ['Branding', 'Design', 'Identity'],
     date: { month: 'November', year: '2023' },
     selected: false,
-    gallery: [synora1, synora2, synora3, synora4, synora5, synora6],
+    gallery: synoraMedia.gallery,
   },
 ];

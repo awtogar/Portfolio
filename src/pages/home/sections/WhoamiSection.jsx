@@ -13,7 +13,7 @@ const WhoamiSection = () => {
               src={me01}
               alt="Awaluddin Togar"
               scrollRange={['-4%', '4%']}
-              containerClassName="w-full aspect-[3/4] max-h-[60vh] md:w-full md:h-auto md:max-h-full md:aspect-[4/5] lg:h-[70vh] lg:aspect-[9/10] rounded-xl"
+              containerClassName=" w-full aspect-[3/4] max-h-[60vh] md:w-auto md:h-[65vh] md:max-h-[70vh] md:max-w-[85%] md:aspect-[3/4] lg:h-[70vh] lg:max-h-[75vh] lg:max-w-full lg:aspect-[9/10] rounded-xl"
             />
           </div>
           <div className="md:col-span-6">

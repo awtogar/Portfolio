@@ -52,7 +52,7 @@ const StepItem = ({ step }) => {
         target="_blank"
         rel="noopener noreferrer"
         aria-label={`See step ${step.number} in action`}
-        className="group/video block overflow-hidden pl-[25%] pb-s200 md:pl-0 md:pb-0 md:col-span-5"
+        className="group/video pt-4 md:pt-0 block overflow-hidden pl-[25%] pb-s200 md:pl-0 md:pb-0 md:col-span-5"
       >
         <div className="relative aspect-video md:aspect-6/3 md:h-full w-full overflow-hidden bg-primary/5">
           <video
