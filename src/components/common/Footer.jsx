@@ -1,7 +1,6 @@
 import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'motion/react';
 import { BaseSection } from '..';
-import Dither from '@/components/ui/DitherBackground';
 import { contact_info, socials } from '@/data/navigation';
 
 export default function Footer() {
@@ -33,12 +32,12 @@ export default function Footer() {
             AWTOGAR
           </motion.h2>
 
-          <a href="/work" className={`col-span-12 lg:col-span-8 h-[200px] lg:h-[350px] ${cardClass}`}>
-            Work
+          <a href="/project" className={`col-span-12 lg:col-span-8 h-[200px] lg:h-[350px] ${cardClass}`}>
+            Project
           </a>
 
-          <a href="/lab" className={`col-span-12 lg:col-span-4 h-[200px] lg:h-[350px] ${cardClass}`}>
-            Lab
+          <a href="/blog" className={`col-span-12 lg:col-span-4 h-[200px] lg:h-[350px] ${cardClass}`}>
+            Blog
           </a>
 
           <div className="col-span-12 lg:col-span-4 grid grid-cols-2 lg:grid-rows-2 gap-2 lg:gap-4">

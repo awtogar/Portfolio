@@ -13,7 +13,6 @@ export { default as TransitionLink } from './ui/TransitionLink';
 // Interactive
 export { default as CreativeButton } from './ui/CreativeButton';
 export { default as HoverRotate } from './ui/HoverRotate';
-export { default as Dither } from './ui/DitherBackground';  
 
 // Text & Typography
 export { default as HeadLineLabel } from './ui/HeadLineLabel';
