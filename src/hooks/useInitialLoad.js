@@ -4,10 +4,7 @@ import { useLenis, useLoading } from '@/context';
 const MAX_DURATION = 6000;
 const MIN_DURATION = 500;
 
-/**
- * Runs the first-visit asset preload sequence and drives PageFlow preloader state.
- * Mount once in App (not per-page).
- */
+
 const useInitialLoad = (criticalPromises = []) => {
   const { setIsInitialLoading, setInitialProgress } = useLoading();
   const { lenis } = useLenis();
@@ -18,10 +15,6 @@ const useInitialLoad = (criticalPromises = []) => {
     document.body.style.overflow = 'hidden';
     document.body.style.cursor = 'wait';
     lenisRef.current?.stop();
-
-    // Force scroll to top immediately before the preloader sequence starts.
-    // This runs synchronously before any async asset loading, overriding
-    // whatever position the browser may have restored from session history.
     window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
 
     return () => {

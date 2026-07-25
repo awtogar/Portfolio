@@ -2,11 +2,12 @@ import React from 'react';
 import { projects } from '@/data/projects';
 import { CreativeButton, TextReveal, BaseSection, TransitionLink, HeadLineLabel } from '@/components';
 import AnimatedCard, { CardMeta } from '@/components/ui/AnimatedCard';
-import { useLoading } from '@/context';
+
+import { RiArrowRightSLine } from '@remixicon/react';
 
 const SelectedWorksSection = () => {
   const selectedWorks = projects.filter(project => project.selected);
-  const { navigateTo } = useLoading();
+
   const CURSOR_CONFIG = {
     content: 'view',
     size: 'large',
@@ -35,19 +36,10 @@ const SelectedWorksSection = () => {
         ))}
       </ul>
 
-      <div className="flex items-center justify-center">
-        <CreativeButton
-          data-cursor
-          data-cursor-content="view"
-          data-cursor-fill="primary"
-          data-cursor-text-color="secondary"
-          data-cursor-size="large"
-          variant="transparent"
-          onClick={() => navigateTo('/projects')}
-        >
-          <span>See all projects</span>
-        </CreativeButton>
-      </div>
+      <TransitionLink to="/projects" className='flex items-center justify-center gap-1 group cursor-pointer'>
+        <span>See all</span>
+        <RiArrowRightSLine size={24} />
+      </TransitionLink>
     </BaseSection>
   );
 };

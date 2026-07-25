@@ -1,6 +1,6 @@
 // src/pages/sections/ProjectMediaGallery.jsx
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 
 /**
  * Renders project images in the alternating pattern:
