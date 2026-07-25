@@ -1,4 +1,3 @@
-'use client';
 import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'motion/react';
 import { BaseSection } from '..';
@@ -6,11 +5,13 @@ import Dither from '@/components/ui/DitherBackground';
 import { contact_info, socials } from '@/data/navigation';
 
 export default function Footer() {
-  const ditherRef = useRef(null);
-  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+  const cardClass =
+    "flex items-end p-4 lg:p-6 bg-neutral-300/50 backdrop-blur-sm rounded-lg lg:rounded-xl text-[clamp(16px,1.4vw,24px)] font-medium leading-tight cursor-pointer hover:backdrop-blur-md transition-all duration-500";
+
+  const footerRef = useRef(null);
 
   const { scrollYProgress } = useScroll({
-    target: ditherRef,
+    target: footerRef,
     offset: ['start end', 'end start'],
   });
 
@@ -20,22 +21,63 @@ export default function Footer() {
     <BaseSection as="footer" sectionID="contact" sectionClassName="pt-section">
       <div className="h-s700 md:h-[15vh] bg-neutral-100" />
       <div className="relative">
-        <section ref={ditherRef} className="sticky top-0 h-[50vh] md:h-screen overflow-hidden">
-          <motion.div style={{ y }} className="absolute inset-0 scale-110">
-            <Dither
-              waveColor={[0.5, 0.5, 0.5]}
-              disableAnimation={false}
-              enableMouseInteraction={!isMobile}
-              mouseRadius={0.3}
-              colorNum={isMobile ? 2 : 4}
-              waveAmplitude={0.3}
-              waveFrequency={3}
-              waveSpeed={0.05}
-            />
-          </motion.div>
+        {/* Section 1 — bento grid */}
+        <section
+          ref={footerRef}
+          className="bg-neutral-100 px-2 lg:px-4 pt-8 lg:pt-16 pb-8 lg:pb-4 grid grid-cols-12 gap-2 lg:gap-4 relative"
+        >
+          <motion.h2
+            style={{ y }}
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 font-bold text-[clamp(100px,14vw,250px)] tracking-tight"
+          >
+            AWTOGAR
+          </motion.h2>
+
+          <a href="/work" className={`col-span-12 lg:col-span-8 h-[200px] lg:h-[350px] ${cardClass}`}>
+            Work
+          </a>
+
+          <a href="/lab" className={`col-span-12 lg:col-span-4 h-[200px] lg:h-[350px] ${cardClass}`}>
+            Lab
+          </a>
+
+          <div className="col-span-12 lg:col-span-4 grid grid-cols-2 lg:grid-rows-2 gap-2 lg:gap-4">
+            <a
+              href={`mailto:${contact_info.email}`}
+              className={`lg:col-span-12 h-[120px] lg:h-full ${cardClass}`}
+            >
+              Contact
+            </a>
+            <a
+              href={socials.find(s => s.label === 'github')?.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`lg:col-span-12 h-[120px] lg:h-full ${cardClass}`}
+            >
+              Github
+            </a>
+          </div>
+
+          <a
+            href={socials.find(s => s.label === 'instagram')?.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`col-span-6 lg:col-span-4 h-[120px] lg:h-[350px] ${cardClass}`}
+          >
+            Instagram
+          </a>
+
+          <a
+            href={socials.find(s => s.label === 'linkedin')?.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`col-span-6 lg:col-span-4 h-[120px] lg:h-[350px] ${cardClass}`}
+          >
+            LinkedIn
+          </a>
         </section>
 
-        {/* Content 2 — Contact CTA */}
+        {/* Section 2 — Contact CTA */}
         <section className="sticky top-0 h-auto md:h-screen bg-primary text-secondary section-padding-x flex items-center">
           {/* Mobile */}
           <div className="flex flex-col md:hidden py-12 gap-12 w-full">
