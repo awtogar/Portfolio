@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import { cn } from '@/lib/utils';
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 import { BaseSection } from '@/components';
 import { LetterScroll } from '@/components/ui/LetterScroll';
 import ReactLogo from '@/assets/images/stack/react.svg?react';
@@ -12,7 +12,7 @@ import MotionLogo from '@/assets/images/stack/motion.svg?react';
 import VercelLogo from '@/assets/images/stack/vercel.svg?react';
 import NodeLogo from '@/assets/images/stack/node-js.svg?react';
 import FigmaLogo from '@/assets/images/stack/figma.svg?react';
-import PhotoshopLogo from '@/assets/images/stack/photoshop.svg?react';
+import SupabaseLogo from '@/assets/images/stack/supabase.svg?react';
 
 export const CardHoverEffect = ({ items, className }) => {
   const [hoveredIdx, setHoveredIdx] = useState(null);
@@ -108,10 +108,10 @@ const items = [
   { Logo: TailwindLogo, label: 'Visit Tailwind Website', link: 'https://tailwindcss.com/', title: 'Tailwind' },
   { Logo: GsapLogo, label: 'Visit GSAP Website', link: 'https://gsap.com/', title: 'GSAP' },
   { Logo: MotionLogo, label: 'Visit Motion Website', link: 'https://motion.dev/', title: 'Motion' },
-  { Logo: VercelLogo, label: 'Visit Vercel Website', link: 'https://vercel.com/', title: 'Vercel' },
+  { Logo: SupabaseLogo, label: 'Visit Supabase Website', link: 'https://supabase.com/', title: 'Supabase' },
   { Logo: NodeLogo, label: 'Visit Node Js Website', link: 'https://nodejs.org/', title: 'Node Js' },
+  { Logo: VercelLogo, label: 'Visit Vercel Website', link: 'https://vercel.com/', title: 'Vercel' },
   { Logo: FigmaLogo, label: 'Visit Figma Website', link: 'https://www.figma.com/', title: 'Figma' },
-  { Logo: PhotoshopLogo, label: 'Visit Adobe Website', link: 'https://www.adobe.com/', title: 'Photoshop' },
 ];
 
 const StatSection = () => (

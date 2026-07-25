@@ -12,7 +12,7 @@ const HeroSection = () => {
     if (!el) return;
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
+        if (entry.isIntersecting && window.location.pathname === '/') {
           window.history.replaceState(null, '', '/');
         }
       },

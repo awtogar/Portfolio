@@ -29,7 +29,7 @@ const ProjectDetailPage = () => {
         <div className="flex flex-col w-full gap-12 lg:gap-16 2xl:gap-[clamp(64px,5vw,150px)] px-4 lg:px-6 pt-5 lg:pt-8 pb-4 lg:pb-5 rounded-lg lg:rounded-xl bg-surface-invert-raised transition-colors duration-smooth">
           <ProjectDetailInfoSection project={project} />
           <ProjectMediaSection images={project.gallery} altPrefix={project.client || 'Project'} />
-          <ProjectDetailNextProjectSection project={project} />
+          {/* <ProjectDetailNextProjectSection project={project} /> */}
         </div>
       </div>
     </section>
