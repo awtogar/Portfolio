@@ -47,7 +47,7 @@ const HeroSection = () => {
       <div ref={heroRef} className="absolute top-0 left-0 w-full h-px pointer-events-none" aria-hidden />
       <div className="flex flex-col justify-between h-full w-full pt-[36px]">
         <div className="pt-[86px] lg:pt-[84px] text-h600 font-medium leading-[1.1] tracking-[-0.02em] text-foreground">
-          <div className="flex gap-2">
+          {/* <div className="flex gap-2">
             <TextReveal as="span" startDelay={1.1} replayOnNavigate>
               Creative
             </TextReveal>
@@ -58,12 +58,12 @@ const HeroSection = () => {
                 </TextReveal>
               ))}
             </span>
-          </div>
-          <div className="relative block">
+          </div> */}
+          {/* <div className="relative block">
             <TextReveal as="span" className="m-0" startDelay={1.25} replayOnNavigate>
               based in Jakarta.
             </TextReveal>
-          </div>
+          </div> */}
         </div>
 
         <div className="flex flex-col justify-center gap-6 items-center">

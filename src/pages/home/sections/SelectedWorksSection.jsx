@@ -36,7 +36,14 @@ const SelectedWorksSection = () => {
         ))}
       </ul>
 
-      <TransitionLink to="/projects" className='flex items-center justify-center gap-1 group cursor-pointer'>
+      <TransitionLink
+        data-cursor
+        data-cursor-content="view"
+        data-cursor-fill="primary"
+        data-cursor-text-color="secondary"
+        to="/projects"
+        className="flex items-center justify-center gap-1 group cursor-pointer"
+      >
         <span>See all</span>
         <RiArrowRightSLine size={24} />
       </TransitionLink>

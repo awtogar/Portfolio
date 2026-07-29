@@ -4,7 +4,7 @@ import { SideBar } from '../..';
 import { useLenis, useLoading } from '@/context';
 import { HamburgerButton, ThemeToggleButton, TransitionLink, TextReveal } from '@/components';
 import { useDimensions, useTheme } from '@/hooks';
-import BrandLogo from '@/assets/site/gar.svg?react';
+import BrandLogo from '@/assets/site/togar.svg?react';
 import { pages } from '@/data/navigation';
 
 const SCROLL_UP_THRESHOLD = 120;
