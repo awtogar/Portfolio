@@ -40,9 +40,9 @@
   --secondary: hsl(47, 0%, 98%);
   --secondary-muted: hsl(47, 4%, 75%);
 
-  --brand-primary: #8eadfb;
-  --brand-secondary: #fff6d6;
-  --brand-tertiary: #ab96ff;
+  --brand-primary: oklch(37.4% 0.01 67.558);
+  --brand-secondary: oklch(55.3% 0.013 58.071);
+  --brand-tertiary: oklch(70.9% 0.01 56.259);
 
   /* Inverted surface (dark card in light mode) */
   --surface-invert: hsl(48, 10%, 10%);
@@ -127,9 +127,9 @@
   --secondary: hsl(47, 12%, 12%);
   --secondary-muted: hsl(47, 8%, 35%);
 
-  --brand-primary: #fff6d6;
-  --brand-secondary: #348de0;
-  --brand-tertiary: #ab96ff;
+  --brand-primary: oklch(88% 0.011 106.6);
+  --brand-secondary: oklch(58% 0.031 107.3);
+  --brand-tertiary: oklch(39.4% 0.023 107.4);
 
   --surface-invert: hsl(48, 10%, 95%);
   --surface-invert-raised: hsl(48, 10%, 91%);
