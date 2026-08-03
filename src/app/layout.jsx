@@ -4,6 +4,9 @@ import '@/styles/globals.css';
 export const metadata = {
   title: 'Portfolio',
   description: 'Creative portfolio',
+  icons: {
+    icon: '/favicon.svg',
+  },
 };
 
 export default function RootLayout({ children }) {

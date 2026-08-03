@@ -24,6 +24,7 @@ export { default as PageTransition } from './ui/PageTransition';
 export { default as TimelineSVGLine } from './ui/TimelineSVGLine';
 export { LetterScroll } from './ui/LetterScroll';
 export { default as BrandLogo } from './ui/BrandLogo';
+export { default as DevBanner } from './ui/DevBanner';
 
 // Sections
 export * from './sections';
