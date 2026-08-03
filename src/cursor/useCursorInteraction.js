@@ -1,3 +1,5 @@
+'use client';
+
 import { useRef, useEffect } from 'react';
 import { useCursor } from './CursorProvider';
 import gsap from 'gsap';

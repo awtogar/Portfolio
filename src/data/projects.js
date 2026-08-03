@@ -1,16 +1,16 @@
-import nostraticLogo from '@/assets/images/projects/nostratic.svg?react';
-import oveloLogo from '@/assets/images/projects/ovelo.svg?react';
-import lunavaraLogo from '@/assets/images/projects/lunavara.svg?react';
-import synoraLogo from '@/assets/images/projects/synora.svg?react';
-import investimeLogo from '@/assets/images/projects/investime.svg?react';
-import routinesLogo from '@/assets/images/projects/routines.svg?react';
+import oveloLogo from '../../public/assets/images/projects/ovelo/cover.svg?react';
+import nostraticLogo from '../../public/assets/images/projects/nostratic/cover.svg?react';
+import synoraLogo from '../../public/assets/images/projects/synora/cover.svg?react';
+import lunavaraLogo from '../../public/assets/images/projects/lunavara/cover.svg?react';
+import investimeLogo from '../../public/assets/images/projects/investime/cover.svg?react';
+import routinesLogo from '../../public/assets/images/projects/routines/cover.svg?react';
 
-import { getProjectAssets, placeholder } from '@/assets';
+import { getProjectMedia, placeholder } from '@/lib/media';
 
-const oveloMedia = getProjectAssets('ovelo');
-const nostraticMedia = getProjectAssets('nostratic');
-const synoraMedia = getProjectAssets('synora');
-const lunavaraMedia = getProjectAssets('lunavara');
+const oveloMedia = getProjectMedia('ovelo');
+const nostraticMedia = getProjectMedia('nostratic');
+const synoraMedia = getProjectMedia('synora');
+const lunavaraMedia = getProjectMedia('lunavara');
 
 export const projects = [
   {
@@ -90,7 +90,7 @@ export const projects = [
   },
   {
     id: 6,
-    slug: 'Synora',
+    slug: 'synora',
     client: 'Synora',
     type: 'Branding',
     year: '2023',

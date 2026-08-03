@@ -1,6 +1,8 @@
+'use client';
+
 import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'motion/react';
-import { BaseSection } from '..';
+import BaseSection from './BaseSection';
 import { contact_info, socials } from '@/data/navigation';
 
 const cardClass =
@@ -13,7 +15,7 @@ function BentoSection() {
 
   return (
     <section ref={ref} className="bg-neutral-100 px-2 lg:px-4 pt-8 lg:pt-16 pb-8 lg:pb-4 grid grid-cols-12 gap-2 lg:gap-4 relative">
-      <motion.h2 style={{ y }} className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 font-bold text-[clamp(100px,14vw,250px)] tracking-tight">
+      <motion.h2 style={{ y }} className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 font-bold text-[clamp(72px,14vw,250px)] tracking-tight">
         AWTOGAR
       </motion.h2>
 

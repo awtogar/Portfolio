@@ -1,5 +1,7 @@
+'use client';
+
 import { createContext, useContext, useState, useCallback, useRef } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useRouter, usePathname } from 'next/navigation';
 import { projects } from '@/data/projects';
 
 const LoadingContext = createContext(null);
@@ -10,7 +12,7 @@ export function useLoading() {
   return ctx;
 }
 
-const PROJECT_ROUTES = ['/projects'];
+
 
 function isProjectRoute(path) {
   return path === '/projects' || path.startsWith('/projects/');
@@ -28,8 +30,8 @@ function getPageTitle(path) {
 }
 
 export function LoadingProvider({ children }) {
-  const navigate = useNavigate();
-  const location = useLocation();
+  const router = useRouter();
+  const pathname = usePathname();
 
   const [isInitialLoading, setIsInitialLoading] = useState(true);
   const [isReady, setIsReady] = useState(false);
@@ -50,18 +52,18 @@ export function LoadingProvider({ children }) {
   // For home or section scroll, call scrollToSection instead.
   const navigateTo = useCallback(
     path => {
-      if (path === location.pathname) return;
+      if (path === pathname) return;
       if (transitionRef.current) return;
 
       const prefersReducedMotion =
         typeof window !== 'undefined' &&
         window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-      const leavingProjectRoute = isProjectRoute(location.pathname);
+      const leavingProjectRoute = isProjectRoute(pathname);
       const enteringProjectRoute = isProjectRoute(path);
 
       if (prefersReducedMotion || (!leavingProjectRoute && !enteringProjectRoute)) {
-        navigate(path);
+        router.push(path);
         return;
       }
 
@@ -70,15 +72,15 @@ export function LoadingProvider({ children }) {
       setPageTitle(getPageTitle(path));
       setPhase('exit');
     },
-    [location.pathname, navigate]
+    [pathname, router]
   );
 
   // Scroll to a section by ID (with Lenis if available), or navigate to /#id if not on home.
   const scrollToSection = useCallback(
     (sectionId, lenisInstance) => {
-      const isHome = location.pathname === '/';
+      const isHome = pathname === '/';
       if (isHome) {
-        // Update URL bar without triggering React Router (avoids double-scroll from HashScrollHandler)
+        // Update URL bar without triggering Next.js router (avoids double-scroll from HashScrollHandler)
         window.history.replaceState(null, '', `/#${sectionId}`);
         if (lenisInstance) {
           lenisInstance.scrollTo(`#${sectionId}`, { offset: -80, duration: 1.4, easing: t => 1 - Math.pow(1 - t, 4) });
@@ -88,19 +90,19 @@ export function LoadingProvider({ children }) {
         }
       } else {
         // Use navigateTo so the curtain transition fires when leaving a project route.
-        // HashScrollHandler in App.jsx will pick up the hash and scroll after arrival.
+        // HashScrollHandler picks up the hash after arrival.
         navigateTo(`/#${sectionId}`);
       }
     },
-    [location.pathname, navigateTo]
+    [pathname, navigateTo]
   );
 
   const onExitComplete = useCallback(() => {
     if (targetPath) {
-      navigate(targetPath);
+      router.push(targetPath);
       setPhase('wait-for-ready');
     }
-  }, [targetPath, navigate]);
+  }, [targetPath, router]);
 
   const setPageReady = useCallback(() => {
     if (transitionRef.current) {

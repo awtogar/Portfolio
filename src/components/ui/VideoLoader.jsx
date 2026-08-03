@@ -1,10 +1,14 @@
+'use client';
+
 import { useRef, useEffect, useState } from 'react';
+import { getMediaUrl } from '@/assets';
 
 const VideoLoader = ({ src, className, observerOptions = {}, ...props }) => {
   const videoRef = useRef(null);
   const [activeSrc, setActiveSrc] = useState(null);
   const isVisibleRef = useRef(false);
   const { rootMargin = '200px', threshold = 0 } = observerOptions;
+  const resolvedSrc = getMediaUrl(src);
 
   useEffect(() => {
     const video = videoRef.current;
@@ -14,7 +18,7 @@ const VideoLoader = ({ src, className, observerOptions = {}, ...props }) => {
       ([entry]) => {
         if (entry.isIntersecting && !isVisibleRef.current) {
           isVisibleRef.current = true;
-          setActiveSrc(src);
+          setActiveSrc(resolvedSrc);
           observer.disconnect();
         }
       },
@@ -23,7 +27,7 @@ const VideoLoader = ({ src, className, observerOptions = {}, ...props }) => {
 
     observer.observe(video);
     return () => observer.disconnect();
-  }, [src, rootMargin, threshold]);
+  }, [resolvedSrc, rootMargin, threshold]);
 
   useEffect(() => {
     const video = videoRef.current;

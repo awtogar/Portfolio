@@ -1,5 +1,7 @@
+'use client';
+
 import { useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { usePathname } from 'next/navigation';
 import { useLenis } from '@/context';
 
 export const resetScrollImmediate = lenis => {
@@ -8,11 +10,10 @@ export const resetScrollImmediate = lenis => {
 };
 
 export const useScrollToTop = () => {
-  const { pathname } = useLocation();
+  const pathname = usePathname();
   const { lenis } = useLenis();
 
   useEffect(() => {
-    // Only reset scroll on project routes — home handles its own scroll
     if (pathname === '/') return;
     resetScrollImmediate(lenis);
   }, [pathname, lenis]);

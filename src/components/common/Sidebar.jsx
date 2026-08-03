@@ -1,17 +1,17 @@
+'use client';
+
 import { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
-import { useLocation } from 'react-router-dom';
+import { usePathname } from 'next/navigation';
 import { RiSunLine, RiMoonLine } from '@remixicon/react';
 import { menuSlideLeft } from '@/data/anim/nav';
 import { pages, socials } from '@/data/navigation';
 import { useLenis, useLoading } from '@/context';
-import { useTheme } from '../../hooks/useTheme';
-
-import { NavigationLink, HoverRotate } from '..';
+import { useTheme } from '@/hooks';
+import { NavigationLink, HoverRotate } from '@/components';
 
 export default function SideBar({ closeMenu, skipExitAnim }) {
-  const location = useLocation();
-  const pathname = location.pathname;
+  const pathname = usePathname();
   const [selectedIndicator, setSelectedIndicator] = useState(pathname);
   const { stopScroll, startScroll } = useLenis();
 

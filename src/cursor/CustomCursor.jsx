@@ -1,3 +1,5 @@
+'use client';
+
 import { useCallback, useMemo, useRef, useEffect } from 'react';
 import { motion, useMotionValue, useSpring, AnimatePresence } from 'motion/react';
 import { useCursor } from './CursorProvider';

@@ -1,3 +1,5 @@
+'use client';
+
 import { useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import gsap from 'gsap';

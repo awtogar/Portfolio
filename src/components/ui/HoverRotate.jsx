@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState, forwardRef } from 'react';
 import { motion } from 'motion/react';
 import TransitionLink from './TransitionLink';

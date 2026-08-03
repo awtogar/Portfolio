@@ -1,0 +1,12 @@
+export { default as HeroSection } from './HeroSection';
+export { default as ShowreelSection } from './ShowreelSection';
+export { default as WhoamiSection } from './WhoamiSection';
+export { default as ServicesSection } from './ServicesSection';
+export { default as ProcessSection } from './ProcessSection';
+export { default as SelectedWorksSection } from './SelectedWorksSection';
+export { default as StackSection } from './StackSection';
+export { default as TestimonialSection } from './TestimonialSection';
+export { default as ProjectDetailHeroSection } from './ProjectDetailHeroSection';
+export { default as ProjectDetailInfoSection } from './ProjectDetailInfoSection';
+export { default as ProjectMediaSection } from './ProjectMediaSection';
+export { default as ProjectDetailNextProjectSection } from './ProjectDetailNextProjectSection';

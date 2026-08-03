@@ -1,6 +1,8 @@
+'use client';
+
 import { useState, forwardRef } from 'react';
 import { motion } from "motion/react"
-import { useNavigate } from 'react-router-dom';
+import { useLoading } from '@/context';
 
 const MotionA = motion.create('a');
 const MotionButton = motion.create('button');
@@ -77,7 +79,7 @@ const CreativeButton = forwardRef(function CreativeButton({
   ...props
 }, ref) {
   const [isHovering, setIsHovering] = useState(false);
-  const navigate = useNavigate();
+  const { navigateTo } = useLoading();
 
   const variantStyles = variant ? BUTTON_VARIANTS[variant] : {};
 
@@ -102,7 +104,7 @@ const CreativeButton = forwardRef(function CreativeButton({
       onClick: (e) => {
         e.preventDefault();
         if (onClick) onClick(e);
-        navigate(to);
+        navigateTo(to);
       },
       ...props,
     };
