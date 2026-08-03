@@ -2,7 +2,7 @@ import ClientProviders from '@/components/common/ClientProviders';
 import '@/styles/globals.css';
 
 export const metadata = {
-  title: 'Portfolio',
+  title: 'Awaluddin Togar | Portfolio',
   description: 'Creative portfolio',
   icons: {
     icon: '/favicon.svg',

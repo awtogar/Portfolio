@@ -6,7 +6,7 @@ import SideBar from './Sidebar';
 import { useLenis, useLoading } from '@/context';
 import { HamburgerButton, ThemeToggleButton, TransitionLink, TextReveal } from '@/components';
 import { useDimensions, useTheme } from '@/hooks';
-import BrandLogo from '@/components/ui/BrandLogo';
+import Gar from '@/assets/site/logo.svg?react';
 import { pages } from '@/data/navigation';
 
 const SCROLL_UP_THRESHOLD = 120;
@@ -92,7 +92,7 @@ const Header = () => {
             >
               <TransitionLink to="/" className="relative cursor-pointer text-secondary dark:text-primary" aria-label="Home">
                 <TextReveal as="span" className="relative inline-block" isHero replayOnNavigate startDelay={0.15}>
-                  <BrandLogo className="w-auto md:h-4 lg:h-6 " />
+                  <Gar className="w-auto md:h-4 lg:h-6 " />
                 </TextReveal>
               </TransitionLink>
             </div>
