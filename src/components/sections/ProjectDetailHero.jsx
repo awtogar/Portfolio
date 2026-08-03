@@ -2,7 +2,7 @@
 
 import { motion } from 'motion/react';
 
-const ProjectDetailHeroSection = ({ project }) => {
+const ProjectDetailHero = ({ project }) => {
   return (
     <div className="overflow-hidden w-full">
       <motion.h1
@@ -17,4 +17,4 @@ const ProjectDetailHeroSection = ({ project }) => {
   );
 };
 
-export default ProjectDetailHeroSection;
+export default ProjectDetailHero;

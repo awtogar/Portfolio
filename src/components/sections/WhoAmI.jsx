@@ -2,7 +2,7 @@ import { BaseSection, CardParallax, CreativeButton, TextReveal, HeadLineLabel } 
 import { me01 } from '@/assets';
 import { RiArrowDownLine, RiArrowRightUpLine } from '@remixicon/react';
 
-const WhoamiSection = () => {
+const WhoAmI = () => {
   return (
     <BaseSection sectionID="about">
       <div className="flex flex-col">
@@ -88,4 +88,4 @@ const WhoamiSection = () => {
   );
 };
 
-export default WhoamiSection;
+export default WhoAmI;

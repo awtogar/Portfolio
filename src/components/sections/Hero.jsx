@@ -2,7 +2,7 @@ import { BaseSection, TextReveal } from '@/components';
 import { useState, useEffect, useRef } from 'react';
 import { RiArrowDownLongLine } from '@remixicon/react';
 
-const HeroSection = () => {
+const Hero = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [prevIndex, setPrevIndex] = useState(-1);
   const heroRef = useRef(null);
@@ -88,4 +88,4 @@ const HeroSection = () => {
   );
 };
 
-export default HeroSection;
+export default Hero;

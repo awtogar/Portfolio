@@ -2,14 +2,14 @@
 
 import { useInitialLoad } from '@/hooks';
 import {
-  HeroSection,
-  ShowreelSection,
-  WhoamiSection,
-  ServicesSection,
-  ProcessSection,
-  SelectedWorksSection,
-  StackSection,
-  TestimonialSection,
+  Hero,
+  Showreel,
+  WhoAmI,
+  Services,
+  Process,
+  SelectedWorks,
+  Stack,
+  Testimonial,
 } from '@/components/sections';
 
 export default function HomePage() {
@@ -17,14 +17,14 @@ export default function HomePage() {
 
   return (
     <>
-      <HeroSection />
-      <ShowreelSection />
-      <WhoamiSection />
-      <ServicesSection />
-      <ProcessSection />
-      <SelectedWorksSection />
-      <StackSection />
-      <TestimonialSection />
+      <Hero />
+      <Showreel />
+      <WhoAmI />
+      <Services />
+      <Process />
+      <SelectedWorks />
+      <Stack />
+      <Testimonial />
     </>
   );
 }

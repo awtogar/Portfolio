@@ -1,6 +1,6 @@
 'use client';
 
-// src/pages/sections/ProjectMediaGallery.jsx
+// src/components/sections/ProjectMedia.jsx
 import React from 'react';
 import { motion } from 'motion/react';
 
@@ -11,7 +11,7 @@ import { motion } from 'motion/react';
  * @param {string[]} props.images - array of image URLs
  * @param {string} [props.altPrefix] - prefix for alt text
  */
-const ProjectMediaGallery = ({ images, altPrefix = 'Project media' }) => {
+const ProjectMedia = ({ images, altPrefix = 'Project media' }) => {
   if (!images || images.length === 0) return null;
 
   // Group images into chunks of 4: [full, full, half, half]
@@ -74,4 +74,4 @@ const ProjectMediaGallery = ({ images, altPrefix = 'Project media' }) => {
   );
 };
 
-export default ProjectMediaGallery;
+export default ProjectMedia;

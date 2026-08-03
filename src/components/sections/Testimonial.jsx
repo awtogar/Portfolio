@@ -37,7 +37,7 @@ const MarqueeRow = ({ items, reverse = false, speed = 35 }) => {
   );
 };
 
-const TestimonialSection = () => {
+const Testimonial = () => {
   const row1 = testimonials;
   const row2 = [...testimonials].reverse();
 
@@ -53,4 +53,4 @@ const TestimonialSection = () => {
   );
 };
 
-export default TestimonialSection;
+export default Testimonial;

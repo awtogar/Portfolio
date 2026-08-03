@@ -114,7 +114,7 @@ const items = [
   { Logo: FigmaLogo, label: 'Visit Figma Website', link: 'https://www.figma.com/', title: 'Figma' },
 ];
 
-const StatSection = () => (
+const Stack = () => (
   <BaseSection containerID="tech-stack" sectionClassName="">
     <div className="flex flex-col md:gap-y-2 lg:gap-y-6">
       <div className="relative block">
@@ -127,4 +127,4 @@ const StatSection = () => (
   </BaseSection>
 );
 
-export default StatSection;
+export default Stack;

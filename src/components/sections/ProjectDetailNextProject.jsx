@@ -5,7 +5,7 @@ import { TransitionLink } from '@/components';
 import { RiArrowRightUpLine } from '@remixicon/react';
 import { projects } from '@/data/projects';
 
-const ProjectDetailNextProjectSection = ({ project }) => {
+const ProjectDetailNextProject = ({ project }) => {
   const projectIndex = projects.findIndex(p => p.slug === project?.slug);
   const nextProject = projectIndex !== -1 ? projects[(projectIndex + 1) % projects.length] : null;
 
@@ -35,4 +35,4 @@ const ProjectDetailNextProjectSection = ({ project }) => {
   );
 };
 
-export default ProjectDetailNextProjectSection;
+export default ProjectDetailNextProject;

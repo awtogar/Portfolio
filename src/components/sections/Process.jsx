@@ -73,7 +73,7 @@ const StepItem = ({ step }) => {
   );
 };
 
-const ProcessSection = () => {
+const Process = () => {
   return (
     <BaseSection containerClassName="m-auto w-full max-w-[1920px]">
       <HeadLineLabel label="My Approach" headline="WORK FLOW" />
@@ -86,4 +86,4 @@ const ProcessSection = () => {
   );
 };
 
-export default ProcessSection;
+export default Process;

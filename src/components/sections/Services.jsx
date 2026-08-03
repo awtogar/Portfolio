@@ -2,7 +2,7 @@ import React from 'react';
 import { services } from '@/data/content';
 import { BaseSection, CardParallax, TextReveal } from '@/components';
 
-const ServicesSection = () => {
+const Services = () => {
   return (
     <BaseSection sectionID="services">
       <div className="flex flex-col gap-16 lg:gap-28 inverted bg-surface-invert px-4 pt-16 lg:pt-24 pb-4 rounded-3xl lg:rounded-[20px]">
@@ -74,4 +74,4 @@ const ServicesSection = () => {
   );
 };
 
-export default ServicesSection;
+export default Services;

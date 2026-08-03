@@ -2,7 +2,7 @@ import React from 'react';
 import { siteReels3 } from '@/assets';
 import { CreativeButton, VideoLoader, BaseSection } from '@/components';
 
-const ShowreelSection = () => {
+const Showreel = () => {
   return (
     <BaseSection sectionClassName="section-padding-y" containerID="showreels" containerClassName="m-auto w-full">
       <div className="h-[468px] md:h-[640px] lg:h-[768px] overflow-hidden">
@@ -12,4 +12,4 @@ const ShowreelSection = () => {
   );
 };
 
-export default ShowreelSection;
+export default Showreel;

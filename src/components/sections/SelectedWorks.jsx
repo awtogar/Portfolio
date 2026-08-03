@@ -5,7 +5,7 @@ import AnimatedCard, { CardMeta } from '@/components/ui/AnimatedCard';
 
 import { RiArrowRightSLine } from '@remixicon/react';
 
-const SelectedWorksSection = () => {
+const SelectedWorks = () => {
   const selectedWorks = projects.filter(project => project.selected);
 
   const CURSOR_CONFIG = {
@@ -51,4 +51,4 @@ const SelectedWorksSection = () => {
   );
 };
 
-export default SelectedWorksSection;
+export default SelectedWorks;
