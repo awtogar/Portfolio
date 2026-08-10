@@ -2,70 +2,46 @@
 
 import BaseSection from './BaseSection';
 import Bento from '@/components/ui/Bento';
-import { contact_info, socials } from '@/data/navigation';
+import { useLenis, useLoading } from '@/context';
+import { pages, socials, contact_info } from '@/data/navigation';
+import { RiArrowUpSLine } from '@remixicon/react';
 
 function CTASection() {
+  const { lenis } = useLenis();
+  const { navigateTo, scrollToSection } = useLoading();
+
+  const handleNavClick = (e, page) => {
+    e.preventDefault();
+    if (page.sectionId) {
+      scrollToSection(page.sectionId, lenis);
+    } else if (page.href === '/') {
+      lenis?.scrollTo(0, { duration: 1.2 });
+    } else {
+      navigateTo(page.href);
+    }
+  };
+
   return (
-    <section className="sticky top-0 h-auto md:h-screen bg-neutral-100 text-primary section-padding-x flex items-center">
-      {/* Mobile */}
-      <div className="flex flex-col md:hidden py-12 gap-12 w-full">
-        <div>
-          <h2 className="text-[clamp(2.25rem,9vw,4rem)] leading-[1.05] font-medium">This is not finished.</h2>
-          <p className="mt-1 text-[clamp(2.25rem,9vw,4rem)] leading-[1.05] italic font-serif">What will we create next?</p>
-        </div>
-        <div className="space-y-10">
-          <div>
-            <p className="text-[10px] uppercase tracking-widest mb-2 opacity-60">Mail</p>
-            <a href={`mailto:${contact_info.email}`} className="inline-block text-[clamp(1.25rem,5.5vw,1.75rem)] leading-snug border-b border-secondary/60 pb-0.5 break-all">
-              {contact_info.email}
-            </a>
-          </div>
-          <div>
-            <p className="text-[10px] uppercase tracking-widest mb-2 opacity-60">Call</p>
-            <a href={`tel:${contact_info.phone}`} className="inline-block text-[clamp(1.25rem,5.5vw,1.75rem)] leading-snug border-b border-secondary/60 pb-0.5">
-              {contact_info.phone}
-            </a>
-          </div>
-          <div>
-            <p className="text-[10px] uppercase tracking-widest mb-2 opacity-60">Add</p>
-            <a
-              href={socials.find(s => s.label === 'linkedin')?.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block text-[clamp(1.25rem,5.5vw,1.75rem)] leading-snug border-b border-secondary/60 pb-0.5"
-            >
-              LinkedIn
-            </a>
-          </div>
+    <section className="bg-black text-white px-6 md:px-16 lg:px-20 pt-8 md:pt-14 pb-8 md:pb-14 font-sans border-t border-white/10">
+      <div className="flex items-center justify-center min-h-[40vh] md:min-h-[60vh] text-center">
+        <div className="flex flex-col">
+          <span className="text-3xl md:text-6xl lg:text-7xl font-medium leading-tight">Have an idea?</span>
+          <span className="text-3xl md:text-6xl lg:text-7xl font-medium leading-tight underline underline-offset-4 md:underline-offset-8 decoration-1">Tell us about it</span>
         </div>
       </div>
 
-      {/* Desktop */}
-      <div className="hidden md:flex w-full justify-between items-end gap-16 py-20">
-        <div className="max-w-[45vw]">
-          <h2 className="text-[clamp(2.5rem,4.5vw,5rem)] leading-[1.0] font-medium">This is not finished.</h2>
-          <p className="mt-1 text-[clamp(2.5rem,4.5vw,5rem)] leading-[1.0] italic font-serif">What will we create next?</p>
+      {/* Bottom footer bar */}
+      <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 md:gap-6 pt-4">
+        <div className="flex items-center gap-6 text-xs md:text-sm text-neutral-400 font-normal">
+          <span>
+            {contact_info.credits} {contact_info.copyright}
+          </span>
         </div>
-        <div className="shrink-0">
-          <div className="grid grid-cols-[56px_1fr] items-baseline gap-x-6 gap-y-6">
-            <span className="text-[10px] uppercase tracking-widest opacity-60 pt-1">Mail</span>
-            <a href={`mailto:${contact_info.email}`} className="text-[clamp(1.25rem,2vw,1.75rem)] border-b border-secondary/60 pb-0.5 w-fit">
-              {contact_info.email}
-            </a>
-            <span className="text-[10px] uppercase tracking-widest opacity-60 pt-1">Call</span>
-            <a href={`tel:${contact_info.phone}`} className="text-[clamp(1.25rem,2vw,1.75rem)] border-b border-secondary/60 pb-0.5 w-fit">
-              {contact_info.phone}
-            </a>
-            <span className="text-[10px] uppercase tracking-widest opacity-60 pt-1">Add</span>
-            <a
-              href={socials.find(s => s.label === 'linkedin')?.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-[clamp(1.25rem,2vw,1.75rem)] border-b border-secondary/60 pb-0.5 w-fit"
-            >
-              LinkedIn
-            </a>
-          </div>
+
+        <div className="flex items-center gap-3">
+          <button onClick={() => lenis?.scrollTo(0, { duration: 1.2 })} aria-label="Scroll to top">
+            <RiArrowUpSLine className="w-6 h-6 text-neutral-400 hover:text-white transition-colors" />
+          </button>
         </div>
       </div>
     </section>
