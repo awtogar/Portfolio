@@ -220,19 +220,17 @@
   @utility animate-marquee {
     animation: scroll-x var(--marquee-speed, 20s) linear infinite;
   }
- 
+
   @utility mask-fade-x {
-  mask-image: linear-gradient(
-    to right,
-    transparent,
-    rgba(0, 0, 0, 0.35) 6%,
-    black 18%,
-    black 82%,
-    rgba(0, 0, 0, 0.35) 94%,
-    transparent
-  );
-}
-  
+    mask-image: linear-gradient(to right,
+        transparent,
+        rgba(0, 0, 0, 0.35) 6%,
+        black 18%,
+        black 82%,
+        rgba(0, 0, 0, 0.35) 94%,
+        transparent);
+  }
+
 
   @keyframes slideInDown {
     from {
@@ -269,4 +267,12 @@
     --animate-slide-in-down: slideInDown 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
     --animate-slide-out-down: slideOutDown 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
     --animate-fade-up: fadeUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+
+  .not-found-page header {
+    display: none;
+  }
+
+  .not-found-page footer {
+    display: none;
   }

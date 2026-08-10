@@ -35,7 +35,7 @@ export const socials = [
   { title: 'Github', href: 'https://github.com/awtogar', icon: 'github', label: 'github' },
   { title: 'LinkedIn', href: 'https://www.linkedin.com/in/awaluddintogar', icon: 'linkedin', label: 'linkedin' },
   { title: 'Behance', href: 'https://www.behance.net/awaluddintogar', icon: 'behance', label: 'behance' },
-  { title: 'Instagram', href: 'https://www.instagram.com/awtogarr', icon: 'instagram', label: 'instagram' },
+  { title: 'Instagram', href: 'https://www.instagram.com/awtogarr_', icon: 'instagram', label: 'instagram' },
 ];
 
 export const contact_info = {

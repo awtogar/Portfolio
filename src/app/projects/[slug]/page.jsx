@@ -2,32 +2,18 @@
 
 import { use } from 'react';
 import { projects } from '@/data/projects';
-import { BaseSection, TransitionLink } from '@/components';
-import { RiArrowLeftLine } from '@remixicon/react';
+import NotFoundPage from '@/components/common/NotFoundPage';
 import {
   ProjectDetailHero,
   ProjectDetailInfo,
   ProjectMedia,
 } from '@/components/sections';
 
-const NotFound = () => (
-  <BaseSection sectionClassName="section-padding-xy">
-    <div className="flex flex-col items-center justify-center min-h-[60vh] gap-s500 text-center">
-      <h1 className="text-h200 leading-heading tracking-heading">Project not found</h1>
-      <p className="text-base text-primary/45">The project you're looking for doesn't exist.</p>
-      <TransitionLink to="/projects" className="flex items-center gap-s200 transition-opacity duration-300 hover:opacity-60 text-base-sm text-primary/50">
-        <RiArrowLeftLine size={14} />
-        Back to Projects
-      </TransitionLink>
-    </div>
-  </BaseSection>
-);
-
 export default function ProjectDetailPage({ params }) {
   const { slug } = use(params);
   const project = projects.find(p => p.slug === slug);
 
-  if (!project) return <NotFound />;
+  if (!project) return <NotFoundPage />;
 
   return (
     <section className="px-2 lg:px-12 pt-[200px] md:pt-[clamp(128px,12vw,500px)]">

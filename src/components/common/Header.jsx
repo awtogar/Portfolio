@@ -6,7 +6,7 @@ import SideBar from './Sidebar';
 import { useLenis, useLoading } from '@/context';
 import { HamburgerButton, ThemeToggleButton, TransitionLink, TextReveal } from '@/components';
 import { useDimensions, useTheme } from '@/hooks';
-import Gar from '@/assets/site/logo.svg?react';
+import Gar from '@/assets/site/brand.svg?react';
 import { pages } from '@/data/navigation';
 
 const SCROLL_UP_THRESHOLD = 120;
