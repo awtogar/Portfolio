@@ -1,8 +1,11 @@
 import { BaseSection, CardParallax, CreativeButton, TextReveal, HeadLineLabel } from '@/components';
 import { me01 } from '@/assets';
-import { RiArrowDownLine, RiArrowRightUpLine } from '@remixicon/react';
+import { useNavigation } from '@/hooks/useNavigation';
+
+const resumeLink = 'https://example.com/to-download-cv';
 
 const WhoAmI = () => {
+  const { handleNavClick } = useNavigation();
   return (
     <BaseSection sectionID="about">
       <div className="flex flex-col">
@@ -29,55 +32,89 @@ const WhoAmI = () => {
               <div className="relative block">
                 <div className="md:hidden flex gap-3">
                   <CreativeButton
+                    fillColor1="bg-surface-invert"
+                    fillColor2="bg-neutral-100"
+                    textcolor1="text-secondary"
+                    textcolor2="text-primary"
+                    outlineColor="outline-surface-invert"
+
                     data-cursor
-                    variant="fill"
-                    size="sm"
                     data-cursor-content="view"
                     data-cursor-fill="primary"
                     data-cursor-text-color="secondary"
                     data-cursor-size="large"
-                    className="flex-1 justify-center"
+                    className="flex-1 too good justify-center"
                   >
                     <span className="text-h500 tracking-heading leading-heading font-[450] whitespace-nowrap">Get in touch</span>
                   </CreativeButton>
 
                   <CreativeButton
+                    fillColor1="bg-neutral-100"
+                    fillColor2="bg-surface-invert"
+                    textcolor1="text-primary"
+                    textcolor2="text-secondary"
+                    outlineColor="outline-surface-invert"
+
                     data-cursor
-                    variant="outline"
-                    size="sm"
                     data-cursor-content="view"
                     data-cursor-fill="primary"
                     data-cursor-text-color="secondary"
                     data-cursor-size="large"
                     className="flex-1 justify-center"
                   >
-                    <a href="https://example.com/to-download-cv" className="text-h500 tracking-heading leading-heading font-[450] whitespace-nowrap">
+                    <a href={resumeLink} className="text-h500 tracking-heading leading-heading font-[450] whitespace-nowrap">
                       Download CV
                     </a>
                   </CreativeButton>
                 </div>
 
-                <div className="hidden md:flex justify-between items-center gap-4">
-                  <div className="flex items-center justify-baseline">
-                    <span className=" flex text-h600 tracking-heading leading-heading font-[450]">Get in touch</span>
-                    <CreativeButton variant="transparent">
-                      <RiArrowRightUpLine size={24} />
-                    </CreativeButton>
+                <div className="hidden md:flex justify-between">
+                  <div className="flex gap-4">
+                    <span>Let's</span>
+
+                    <a
+                      onClick={e => handleNavClick(e, { sectionId: 'contact' })}
+                      className="
+        relative
+        after:absolute
+        after:left-0
+        after:-bottom-0.5
+        after:h-[2px]
+        after:w-0
+        after:bg-primary
+        after:transition-[width]
+        after:duration-300
+        after:ease-out
+        hover:after:w-full
+      "
+                    >
+                      Connect
+                    </a>
                   </div>
-                  <CreativeButton
-                    href="https://example.com/to-download-cv"
-                    data-cursor
-                    data-cursor-magnetic
-                    data-cursor-content="view"
-                    data-cursor-fill="primary"
-                    data-cursor-text-color="secondary"
-                    variant=""
-                    width="64px"
-                    height="64px"
-                    className="bg-primary text-secondary rounded-full flex items-center justify-center"
-                  >
-                    <RiArrowDownLine className="w-12 h-12" />
-                  </CreativeButton>
+
+                  <span>or</span>
+
+                  <div className="flex gap-2">
+                    <span>My</span>
+
+                    <a
+                      className="
+        relative
+        after:absolute
+        after:left-0
+        after:-bottom-0.5
+        after:h-[2px]
+        after:w-0
+        after:bg-primary
+        after:transition-[width]
+        after:duration-300
+        after:ease-out
+        hover:after:w-full
+      "
+                    >
+                      resume
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
