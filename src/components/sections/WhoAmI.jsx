@@ -1,5 +1,5 @@
 import { BaseSection, CardParallax, CreativeButton, TextReveal, HeadLineLabel } from '@/components';
-import { me01 } from '@/assets';
+import { myPhoto } from '@/assets';
 import { useNavigation } from '@/hooks/useNavigation';
 
 const resumeLink = 'https://example.com/to-download-cv';
@@ -11,15 +11,15 @@ const WhoAmI = () => {
       <div className="flex flex-col">
         <HeadLineLabel label="SHORT of about" headline="introduction" />
         <div className="flex flex-col gap-4 md:grid md:grid-cols-12 md:gap-6 lg:gap-8 mt-s200">
-          <div className="md:col-span-6 md:pr-12 flex justify-center md:justify-start">
+          <div className="md:col-span-7 lg:col-span-6 flex justify-center md:justify-start">
             <CardParallax
-              src={me01}
+              src={myPhoto}
               alt="Awaluddin Togar"
               scrollRange={['-4%', '4%']}
-              containerClassName=" w-full aspect-[3/4] max-h-[60vh] md:w-auto md:h-[65vh] md:max-h-[70vh] md:max-w-[85%] md:aspect-[3/4] lg:h-[70vh] lg:max-h-[75vh] lg:max-w-full lg:aspect-[9/10] rounded-xl"
+              containerClassName=" w-full aspect-[3/4] max-h-[60vh] md:w-auto md:h-[65vh] md:max-h-[70vh] md:max-w-full md:aspect-[3/4] lg:h-[70vh] lg:max-h-[75vh] lg:max-w-full lg:aspect-[9/10] rounded-xl"
             />
           </div>
-          <div className="md:col-span-6">
+          <div className="md:col-span-5 lg:col-span-6">
             <div className="flex flex-col h-full justify-between gap-s400">
               <div className="relative block">
                 <TextReveal as="p" className="text-h500 tracking-body leading-body font-[450]">
@@ -75,18 +75,18 @@ const WhoAmI = () => {
                     <a
                       onClick={e => handleNavClick(e, { sectionId: 'contact' })}
                       className="
-        relative
-        after:absolute
-        after:left-0
-        after:-bottom-0.5
-        after:h-[2px]
-        after:w-0
-        after:bg-primary
-        after:transition-[width]
-        after:duration-300
-        after:ease-out
-        hover:after:w-full
-      "
+                      relative
+                      after:absolute
+                      after:left-0
+                      after:-bottom-0.5
+                      after:h-[2px]
+                      after:w-0
+                      after:bg-primary
+                      after:transition-[width]
+                      after:duration-300
+                      after:ease-out
+                      hover:after:w-full
+                    "
                     >
                       Connect
                     </a>
