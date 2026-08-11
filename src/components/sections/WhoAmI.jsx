@@ -96,21 +96,20 @@ const WhoAmI = () => {
 
                   <div className="flex gap-2">
                     <span>My</span>
-
                     <a
                       className="
-        relative
-        after:absolute
-        after:left-0
-        after:-bottom-0.5
-        after:h-[2px]
-        after:w-0
-        after:bg-primary
-        after:transition-[width]
-        after:duration-300
-        after:ease-out
-        hover:after:w-full
-      "
+                      relative
+                      after:absolute
+                      after:left-0
+                      after:-bottom-0.5
+                      after:h-[2px]
+                      after:w-0
+                      after:bg-primary
+                      after:transition-[width]
+                      after:duration-300
+                      after:ease-out
+                      hover:after:w-full
+                    "
                     >
                       resume
                     </a>

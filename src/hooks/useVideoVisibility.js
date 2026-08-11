@@ -16,7 +16,7 @@ export const useVideoVisibility = (options = {}) => {
       const playPromise = video.play();
       if (playPromise) {
         playPromise.catch(err => {
-          // Autoplay prevented or interrupted
+          console.error('Error attempting to play the video:', err);
         });
       }
     };

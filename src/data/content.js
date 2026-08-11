@@ -1,4 +1,4 @@
-import { siteReels, siteReels2, siteReels3, placeholder } from '@/assets';
+import { siteReels, siteReels2, siteReels3 } from '@/assets';
 
 export const services = [
   {
