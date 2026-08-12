@@ -7,28 +7,26 @@ const steps = [
     title: 'Discover',
     description: 'Start with the right questions. Goals, audience, constraints and understanding the problem before jumping to solutions.',
     video: siteReels,
-    link: '#',
   },
   {
     number: '02',
     title: 'Define',
     description: "Clarity before creativity. I translate what I've learned into a direction — structure, flow, and design intent that keeps decisions grounded.",
     video: siteReels,
-    link: '#',
+
   },
   {
     number: '03',
     title: 'Design',
     description: 'Visual decisions made with purpose. I move into high fidelity early because I think better when things look real.',
     video: siteReels,
-    link: '#',
+
   },
   {
     number: '04',
     title: 'Build',
     description: 'I write the code myself. Design and development in one person means fewer gaps, faster iteration, and output that matches the intent.',
     video: siteReels,
-    link: '#',
   },
 ];
 
@@ -47,10 +45,7 @@ const StepItem = ({ step }) => {
           mobile  → pl-[25%] biar mulai dari posisi col-3 (sejajar title)
           desktop → w-[50%] sibling kanan, h-full mengisi tinggi row */}
 
-      <a
-        href={step.link}
-        target="_blank"
-        rel="noopener noreferrer"
+      <span
         aria-label={`See step ${step.number} in action`}
         className="group/video pt-4 md:pt-0 block overflow-hidden pl-[25%] pb-s200 md:pl-0 md:pb-0 md:col-span-5"
       >
@@ -68,7 +63,7 @@ const StepItem = ({ step }) => {
             }}
           />
         </div>
-      </a>
+      </span>
     </li>
   );
 };

@@ -2,12 +2,8 @@
 
 import { use } from 'react';
 import { projects } from '@/data/projects';
-import NotFoundPage from '@/components/common/NotFoundPage';
-import {
-  ProjectDetailHero,
-  ProjectDetailInfo,
-  ProjectMedia,
-} from '@/components/sections';
+import NotFoundPage from '@/components/sections/404';
+import { ProjectDetailHero, ProjectDetailInfo, ProjectMedia } from '@/components/sections';
 
 export default function ProjectDetailPage({ params }) {
   const { slug } = use(params);
