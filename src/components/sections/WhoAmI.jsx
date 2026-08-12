@@ -9,7 +9,7 @@ const WhoAmI = () => {
   return (
     <BaseSection sectionID="about">
       <div className="flex flex-col">
-        <HeadLineLabel label="SHORT of about" headline="introduction" />
+        <HeadLineLabel label="introduce of" headline="About" headlineSuffix="me" />
         <div className="flex flex-col gap-4 md:grid md:grid-cols-12 md:gap-6 lg:gap-8 mt-s200">
           <div className="md:col-span-7 lg:col-span-6 flex justify-center md:justify-start">
             <CardParallax
@@ -21,12 +21,21 @@ const WhoAmI = () => {
           </div>
           <div className="md:col-span-5 lg:col-span-6">
             <div className="flex flex-col h-full justify-between gap-s400">
-              <div className="relative block">
-                <TextReveal as="p" className="text-h500 tracking-body leading-body font-[450]">
-                  <span>
-                    Awaluddin Togar — with 2 years experiences through Freelancing with worldwide clients since 2022 - 2024 before taking two internships at big companies.
-                  </span>
-                </TextReveal>
+              <div className="flex flex-col">
+                <div className="relative block">
+                  <TextReveal as="p" className="text-h500 tracking-body leading-body font-[450] text-justify">
+                    <span>
+                      Hey everyone — I’m Awaluddin Togar. I have 2 years of experience as a Graphic Designer, working with clients worldwide through freelancing at @Nostratic.archv from 2022 to 2024.
+                    </span>
+                  </TextReveal>
+                </div>
+                <div className="relative block">
+                  <TextReveal as="p" className="text-h500 tracking-body leading-body font-[450] text-justify">
+                    <span>
+                      I’m a fresh graduate from Universitas Nusa Mandiri with a 3.8 GPA, graduating in August 2025. I’ve also gained experience through internships at several established companies.
+                    </span>
+                  </TextReveal>
+                </div>
               </div>
 
               <div className="relative block">

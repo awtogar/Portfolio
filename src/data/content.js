@@ -1,4 +1,4 @@
-import { siteReels, siteReels2, siteReels3 } from '@/assets';
+import { siteReels, siteReels2 } from '@/assets';
 
 export const services = [
   {
@@ -19,7 +19,7 @@ export const services = [
     id: 2,
     number: '02',
     title: 'UI/UX',
-    video: siteReels3,
+    video: siteReels2,
     description: 'Crafting intuitive user experiences and visually appealing interfaces.',
     features: [
       { number: '01', name: 'User Experience Research' },

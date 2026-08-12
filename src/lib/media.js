@@ -31,7 +31,3 @@ export function getGalleryPaths(slug, count) {
   }
   return list;
 }
-
-export function getStackIconPath(name) {
-  return `/assets/images/stack/${name}.svg`;
-}
