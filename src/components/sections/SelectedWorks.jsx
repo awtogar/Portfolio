@@ -8,12 +8,6 @@ import { RiArrowRightSLine } from '@remixicon/react';
 const SelectedWorks = () => {
   const selectedWorks = projects.filter(project => project.selected);
 
-  const CURSOR_CONFIG = {
-    content: 'view',
-    size: 'large',
-    textColor: 'text-primary',
-    fill: 'secondary',
-  };
 
   return (
     <BaseSection sectionID="works" sectionClassName="section-padding-xy relative overflow-hidden">
@@ -29,7 +23,6 @@ const SelectedWorks = () => {
             video={work.video}
             to={`/projects/${work.slug}`}
             LinkComponent={TransitionLink}
-            cursor={CURSOR_CONFIG}
           >
             <CardMeta client={work.client} type={work.type} year={work.year} tags={work.tags} logo={work.logo} />
           </AnimatedCard>

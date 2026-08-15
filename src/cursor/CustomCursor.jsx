@@ -7,7 +7,7 @@ import { CURSOR_SIZES, CURSOR_FILLS, CURSOR_CONTENTS, CURSOR_TEXT_COLORS } from 
 
 const CustomCursor = () => {
   const { cursorState, hasMouse } = useCursor();
-  const { isActive, size, content, textColor, isSticky, stickyElement, fill, cursorSize: explicitSize } = cursorState;
+  const { isActive, size, content, textColor, isSticky, stickyElement, fill, cursorSize: explicitSize, idleFill } = cursorState;
 
   const cursorTrack = useRef(null);
   const isVisibleRef = useRef(true);
@@ -72,6 +72,8 @@ const CustomCursor = () => {
 
   const cursorTextColor = CURSOR_TEXT_COLORS[textColor] || textColor || CURSOR_TEXT_COLORS.primary;
   const cursorFill = fill && CURSOR_FILLS[fill] ? CURSOR_FILLS[fill] : fill || CURSOR_FILLS.primary;
+  const resolvedIdleFill = idleFill && CURSOR_FILLS[idleFill] ? CURSOR_FILLS[idleFill] : idleFill || CURSOR_FILLS.primary;
+  const activeFill = isActive ? cursorFill : resolvedIdleFill;
   const displayContent = CURSOR_CONTENTS[content] !== undefined ? CURSOR_CONTENTS[content] : content;
 
   if (!hasMouse) return null;
@@ -87,7 +89,7 @@ const CustomCursor = () => {
         width: cursorSize,
         height: cursorSize,
       }}
-      className={`hidden md:block fixed rounded-full pointer-events-none z-[49] ${cursorFill}`}
+      className={`hidden md:block fixed rounded-full pointer-events-none z-[49] ${activeFill}`}
     >
       <AnimatePresence>
         {isActive && content && (

@@ -20,10 +20,11 @@ export function CursorProvider({ children }) {
     variant: 'scale',
     text: null,
     isSticky: false,
-    textColor: null, // ← add
+    textColor: null,
     stickyElement: null,
     fill: null,
     cursorSize: null,
+    idleFill: null,
   });
 
   useEffect(() => {
@@ -39,7 +40,7 @@ export function CursorProvider({ children }) {
   }, []);
 
   const resetCursor = useCallback(() => {
-    setCursorState({
+    setCursorState(prev => ({
       isActive: false,
       variant: 'scale',
       text: null,
@@ -48,7 +49,8 @@ export function CursorProvider({ children }) {
       fill: null,
       cursorSize: null,
       textColor: null,
-    });
+      idleFill: prev.idleFill,
+    }));
   }, []);
 
   useEffect(() => {
@@ -56,7 +58,8 @@ export function CursorProvider({ children }) {
 
     let xTo,
       yTo,
-      currentTarget = null;
+      currentTarget = null,
+      currentIdleRegion = null;
 
     const getConfig = el => ({
       magnetic: el.dataset.cursorMagnetic !== undefined,
@@ -119,14 +122,34 @@ export function CursorProvider({ children }) {
       resetCursor();
     };
 
+    const handleIdleRegionEnter = e => {
+      const region = e.target.closest('[data-cursor-idle-fill]');
+      if (!region || region === currentIdleRegion) return;
+      currentIdleRegion = region;
+      setCursor({ idleFill: region.dataset.cursorIdleFill });
+    };
+
+    const handleIdleRegionLeave = e => {
+      const region = e.target.closest('[data-cursor-idle-fill]');
+      if (!region) return;
+      const related = e.relatedTarget;
+      if (related && region.contains(related)) return;
+      currentIdleRegion = null;
+      setCursor({ idleFill: null });
+    };
+
     document.addEventListener('mouseover', handleMouseEnter);
     document.addEventListener('mousemove', handleMouseMove);
     document.addEventListener('mouseout', handleMouseLeave);
+    document.addEventListener('mouseover', handleIdleRegionEnter);
+    document.addEventListener('mouseout', handleIdleRegionLeave);
 
     return () => {
       document.removeEventListener('mouseover', handleMouseEnter);
       document.removeEventListener('mousemove', handleMouseMove);
       document.removeEventListener('mouseout', handleMouseLeave);
+      document.removeEventListener('mouseover', handleIdleRegionEnter);
+      document.removeEventListener('mouseout', handleIdleRegionLeave);
     };
   }, [hasMouse, setCursor, resetCursor]);
 

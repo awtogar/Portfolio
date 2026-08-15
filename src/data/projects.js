@@ -15,9 +15,9 @@ const rawProjects = [
     type: 'Branding',
     year: '2025',
     logo: oveloLogo,
-    galleryCount: 23,
+    // galleryCount: 23,
     hasReel: true,
-    thumbnailIndex: 14,
+    thumbnailCover: 'ovelo/thumbnail.jpg',
     description: 'An eyewear and Optical Care branding. focused on modern aesthetics and strong visuals branding.',
     tags: ['Graphics', 'Branding'],
     date: { month: 'June', year: '2024' },
@@ -30,8 +30,9 @@ const rawProjects = [
     type: 'Websites',
     year: '2025',
     logo: nostraticLogo,
-    galleryCount: 10,
+    // galleryCount: 10,
     hasReel: true,
+    thumbnailCover: 'nostratic/thumbnail.jpg',
     description: 'Branding and Web Development for a creative studio agency in Indonesia. that specializes in digital products.',
     tags: ['UI/UX', 'Prototype', 'Figma'],
     date: { month: 'February', year: '2025' },
@@ -44,7 +45,7 @@ const rawProjects = [
     type: 'Websites',
     year: '2024',
     logo: lunavaraLogo,
-    galleryCount: 0,
+    // galleryCount: 0,
     hasReel: false,
     description: 'Lunavara is a modern nursery and plant art. focused on aesthetic and minimalism audience',
     tags: ['Web Development', 'UI/UX'],
@@ -58,8 +59,9 @@ const rawProjects = [
     type: 'Applications',
     year: '2024',
     logo: investimeLogo,
-    galleryCount: 0,
+    // galleryCount: 0,
     hasReel: false,
+    thumbnailCover: 'investime/thumbnail.jpg',
     description: 'A Calculator Website based app that can help you to calculate your compound interest and also can help you to plan your investment in the future.',
     tags: ['Web App', 'FinTech'],
     date: { month: 'May', year: '2024' },
@@ -72,7 +74,7 @@ const rawProjects = [
     type: 'Applications',
     year: '2024',
     logo: routinesLogo,
-    galleryCount: 0,
+    // galleryCount: 0,
     hasReel: false,
     description: 'Intuitive application for productivity that can help you to manage the routines and time management in a modern and simple way.',
     tags: ['Mobile App', 'Productivity'],
@@ -86,8 +88,9 @@ const rawProjects = [
     type: 'Branding',
     year: '2023',
     logo: synoraLogo,
-    galleryCount: 5,
+    // galleryCount: 5,
     hasReel: false,
+    thumbnailCover: 'synora/thumbnail.jpg',
     description: 'Comprehensive branding and visual identity project for Synora.',
     tags: ['Branding', 'Design', 'Identity'],
     date: { month: 'November', year: '2023' },
@@ -96,11 +99,11 @@ const rawProjects = [
 ];
 
 export const projects = rawProjects.map(p => {
-  const gallery = getGalleryPaths(p.slug, p.galleryCount);
+  const gallery = getGalleryPaths(p.slug);
   return {
     ...p,
     gallery,
     video: getReelPath(p.slug, p.hasReel),
-    thumbnail: (p.thumbnailIndex != null ? gallery[p.thumbnailIndex] : gallery[0]) || placeholder,
+    thumbnail: (p.thumbnailCover != null ? gallery[p.thumbnailCover] : gallery[0]) || placeholder,
   };
 });

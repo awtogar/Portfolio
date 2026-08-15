@@ -1,6 +1,5 @@
 import React, { useRef, useState } from 'react';
 import { motion, useScroll, useTransform } from 'motion/react';
-import { useCursorInteraction } from '@/cursor';
 
 export const MarqueeTags = ({ tags = [], speed = 16 }) => {
   const tagsIndex = tags.join(', ') + ', ';
@@ -55,13 +54,11 @@ const AnimatedCard = ({
   linkClassName,
   className,
   imageContainerClassName = 'h-[248px] md:h-[350px] lg:h-[clamp(500px,32vw,800px)]',
-  cursor = null,
   children,
   LinkComponent = 'a',
 }) => {
   const imageContainerRef = useRef(null);
   const [isHovered, setIsHovered] = useState(false);
-  const { targetRef } = useCursorInteraction(cursor ?? {});
 
   const { scrollYProgress } = useScroll({
     target: imageContainerRef,
@@ -71,7 +68,7 @@ const AnimatedCard = ({
   const parallaxY = useTransform(scrollYProgress, [0, 1], ['-10%', '10%']);
 
   return (
-    <Component ref={cursor ? targetRef : undefined} className={className}>
+    <Component className={className} data-cursor-idle-fill="secondary" data-cursor-fill="secondary" data-cursor data-cursor-content="view" data-cursor-text="primary" >
       <LinkComponent
         to={to}
         href={to}

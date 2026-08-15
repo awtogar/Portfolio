@@ -1,32 +1,32 @@
 import { BaseSection, HeadLineLabel, TextReveal } from '@/components';
-import { siteReels } from '@/assets';
+import { heroReels } from '@/assets';
 
 const steps = [
   {
     number: '01',
     title: 'Discover',
     description: 'Start with the right questions. Goals, audience, constraints and understanding the problem before jumping to solutions.',
-    video: siteReels,
+    video: heroReels,
   },
   {
     number: '02',
     title: 'Define',
     description: "Clarity before creativity. I translate what I've learned into a direction — structure, flow, and design intent that keeps decisions grounded.",
-    video: siteReels,
+    video: heroReels,
 
   },
   {
     number: '03',
     title: 'Design',
     description: 'Visual decisions made with purpose. I move into high fidelity early because I think better when things look real.',
-    video: siteReels,
+    video: heroReels,
 
   },
   {
     number: '04',
     title: 'Build',
     description: 'I write the code myself. Design and development in one person means fewer gaps, faster iteration, and output that matches the intent.',
-    video: siteReels,
+    video: heroReels,
   },
 ];
 

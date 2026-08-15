@@ -3,6 +3,7 @@
 import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'motion/react';
 import { contact_info, socials } from '@/data/navigation';
+import { TransitionLink } from '..';
 
 const cardClass =
   'flex items-end p-4 lg:p-6 bg-neutral-300/20 backdrop-blur-[0.5rem] rounded-lg lg:rounded-xl text-h500 font-medium leading-tight cursor-pointer hover:bg-neutral-300/35 hover:backdrop-blur-xs transition-all duration-500';
@@ -21,7 +22,7 @@ export default function Bento() {
         AWTOGAR
       </motion.h2>
 
-      <a
+      <TransitionLink
         data-cursor
         data-cursor-content="View"
         data-cursor-fill="primary"
@@ -30,7 +31,7 @@ export default function Bento() {
         className={`col-span-12 lg:col-span-8 h-[200px] lg:h-[350px] ${cardClass}`}
       >
         Project
-      </a>
+      </TransitionLink>
 
       <a
         data-cursor

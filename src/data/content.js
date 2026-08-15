@@ -1,11 +1,11 @@
-import { siteReels, siteReels2 } from '@/assets';
+import {  heroReels } from '@/assets';
 
 export const services = [
   {
     id: 1,
     number: '01',
     title: 'Graphic',
-    video: siteReels,
+    video: heroReels,
     description: 'Building strong brand visuals through creative concepts and graphics.',
     features: [
       { number: '01', name: 'Product & Merchandise' },
@@ -19,7 +19,7 @@ export const services = [
     id: 2,
     number: '02',
     title: 'UI/UX',
-    video: siteReels2,
+    video: heroReels,
     description: 'Crafting intuitive user experiences and visually appealing interfaces.',
     features: [
       { number: '01', name: 'User Experience Research' },
@@ -33,7 +33,7 @@ export const services = [
     id: 3,
     number: '03',
     title: 'Development',
-    video: siteReels2,
+    video: heroReels,
     description: 'Creating responsive websites with seamless and brand-focused experiences.',
     features: [
       { number: '01', name: 'Responsive Web Development' },

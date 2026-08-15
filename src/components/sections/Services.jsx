@@ -5,15 +5,22 @@ import { BaseSection, CardParallax, TextReveal } from '@/components';
 const Services = () => {
   return (
     <BaseSection sectionID="services">
-      <div className="flex flex-col gap-16 lg:gap-28 inverted bg-surface-invert px-4 pt-16 lg:pt-24 pb-4 rounded-3xl lg:rounded-[20px]">
-        <div className="flex flex-col md:grid md:grid-cols-12 md:gap-8 md:px-6">
-          <h2 className="text-h200 font-serif heading-display text-on-invert-secondary mb-2 md:mb-0 md:pt-1 md:col-span-5 lg:col-span-4">
-            <div className="relative block overflow-clip">
-              <TextReveal as="h2" className="relative block">
-                What I do?
-              </TextReveal>
-            </div>
-          </h2>
+      {/* when cursor hit this element. they color should be not the same as background */}
+      <div data-cursor-idle-fill="secondary" className="flex flex-col gap-16 lg:gap-28 inverted bg-surface-invert px-4 pt-16 lg:pt-24 pb-4 rounded-3xl lg:rounded-[20px]">
+        <div className="flex flex-col items-end md:grid md:grid-cols-12 md:gap-8 md:px-6">
+          <div className="flex flex-col  mb-2 md:mb-0 md:pt-1 md:col-span-5 lg:col-span-4">
+            <TextReveal as="p" className="text-h500 text-on-invert-secondary tracking-body leading-body font-[450] text-justify">
+              {'{so}'}
+            </TextReveal>
+            <h2 className="text-h200 font-serif heading-display text-on-invert-secondary">
+              <div className="relative block overflow-clip">
+                <TextReveal as="h2" className="relative block">
+                  What I do?
+                </TextReveal>
+              </div>
+            </h2>
+          </div>
+
           <TextReveal as="p" startDelay={0.15} className="text-h500 tracking-body leading-body font-[450] text-on-invert-secondary md:text-justify md:col-span-7 lg:col-span-7">
             Design and development - handled by one person. No handoff & no translation loss.
           </TextReveal>
@@ -70,7 +77,7 @@ const Services = () => {
           </ul>
         </div>
       </div>
-    </BaseSection>
+    </BaseSection >
   );
 };
 
