@@ -1,6 +1,5 @@
 'use client';
 
-import { useInitialLoad } from '@/hooks';
 import {
   Hero,
   Showreel,
@@ -13,8 +12,6 @@ import {
 } from '@/components/sections';
 
 export default function HomePage() {
-  useInitialLoad();
-
   return (
     <>
       <Hero />

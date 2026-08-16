@@ -4,6 +4,7 @@ import { useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import gsap from 'gsap';
 import { useLoading } from '@/context';
+import { useInitialLoad } from '@/hooks';
 
 const PreloaderSlideUp = {
   initial: { top: 0 },
@@ -47,6 +48,7 @@ const PreloaderContent = () => {
 };
 
 const Preloader = () => {
+  useInitialLoad();
   const { isInitialLoading, setIsReady } = useLoading();
   return (
     <AnimatePresence

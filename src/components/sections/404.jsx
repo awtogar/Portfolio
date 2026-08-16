@@ -2,13 +2,10 @@
 
 import { useEffect } from 'react';
 import { motion } from 'motion/react';
-import { useInitialLoad } from '@/hooks';
 import { useLoading } from '@/context';
 import { BaseSection, CreativeButton, TransitionLink } from '@/components';
 
 export default function NotFoundPage() {
-  useInitialLoad();
-
   const { phase, setPageReady } = useLoading();
 
   useEffect(() => {
