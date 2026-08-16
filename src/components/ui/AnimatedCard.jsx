@@ -28,7 +28,6 @@ export const CardMeta = ({ client, type, year, tags = [], logo: Logo }) => {
             {Logo ? (
               <Logo className="w-full h-full fill-primary" />
             ) : (
-
               // fallback kalo gak ada logo svg nya
               <span className="text-xs font-semibold">{client?.charAt(0) || 'P'}</span>
             )}
@@ -49,7 +48,7 @@ const AnimatedCard = ({
   as: Component = 'li',
   thumbnail,
   alt,
-  video = null,
+  reels = null,
   to,
   linkClassName,
   className,
@@ -78,9 +77,9 @@ const AnimatedCard = ({
       >
         <div ref={imageContainerRef} className={`relative rounded-lg lg:rounded-xl overflow-hidden w-full ${imageContainerClassName}`}>
           <div className="absolute inset-0 bg-[#171717]/30 backdrop-blur-md z-10 opacity-0 group-hover:opacity-50 transition-opacity duration-500 ease-in-out" />
-          {video && (
+          {reels && (
             <motion.video
-              src={video}
+              src={reels}
               className="absolute top-1/2 left-1/2 -translate-x-1/2 w-[clamp(260px,56%,600px)] h-auto lg:max-h-2/4 rounded-lg object-cover z-20"
               animate={{
                 clipPath: isHovered ? 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)' : 'polygon(30% 50%, 70% 50%, 70% 50%, 30% 50%)',

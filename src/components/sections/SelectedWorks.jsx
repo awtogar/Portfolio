@@ -20,7 +20,7 @@ const SelectedWorks = () => {
             className="w-full lg:w-1/2"
             thumbnail={work.thumbnail}
             alt={work.title}
-            video={work.video}
+            reels={work.reels}
             to={`/projects/${work.slug}`}
             LinkComponent={TransitionLink}
           >

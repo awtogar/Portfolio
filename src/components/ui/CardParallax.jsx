@@ -3,7 +3,6 @@
 import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'motion/react';
 import { useVideoVisibility } from '@/hooks';
-import { getMediaUrl } from '@/assets';
 
 const CardParallax = ({
   src,
@@ -17,8 +16,6 @@ const CardParallax = ({
   const containerRef = useRef(null);
   const { videoRef } = useVideoVisibility({ rootMargin: '100px', threshold: 0.1 });
 
-  const resolvedSrc = getMediaUrl(src);
-  const resolvedPoster = getMediaUrl(poster);
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -39,8 +36,8 @@ const CardParallax = ({
         {as === 'video' ? (
           <video
             ref={videoRef}
-            src={resolvedSrc}
-            poster={resolvedPoster || undefined}
+            src={src}
+            poster={poster || undefined}
             muted
             playsInline
             loop
@@ -49,7 +46,7 @@ const CardParallax = ({
           />
         ) : (
           <img
-            src={resolvedSrc}
+            src={src}
             alt={alt}
             loading="lazy"
             decoding="async"

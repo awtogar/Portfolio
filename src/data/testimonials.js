@@ -1,4 +1,4 @@
-import { placeholder } from '@/assets';
+const placeholder = '/assets/images/Placeholder.jpg';
 
 export const testimonials = [
   {

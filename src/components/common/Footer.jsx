@@ -20,21 +20,21 @@ function CTASection() {
           <span className="text-3xl md:text-6xl lg:text-7xl font-medium leading-tight underline underline-offset-4 md:underline-offset-8 decoration-1">Tell us about it</span>
         </div>
       </div>
-      <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 md:gap-6 pt-4">
+      <div className="flex flex-row items-start md:items-center justify-between gap-4 md:gap-6 pt-4">
         <div className="flex items-center gap-6 text-xs md:text-sm text-primary/50 font-normal">
           <span>
             {contact_info.credits} {contact_info.copyright}
           </span>
         </div>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-3 bg-red-500">
           <button
             data-cursor
             data-cursor-content="UP"
             data-cursor-fill="primary"
             data-cursor-text-color="secondary"
             data-cursor-size="small"
-            className="bg-neutral-200 w-12 h-12 rounded-full flex items-center justify-center"
+            className="bg-neutral-200 md:w-12 md:h-12 rounded-full flex items-center justify-center"
             data-cursor-magnetic
             data-cursor-sticky
             onClick={() => lenis?.scrollTo(0, { duration: 1.2 })}

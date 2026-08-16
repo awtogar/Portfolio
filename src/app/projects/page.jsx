@@ -5,12 +5,6 @@ import { projects } from '@/data/projects';
 import { BaseSection, TextReveal, TransitionLink } from '@/components';
 import AnimatedCard, { CardMeta } from '@/components/ui/AnimatedCard';
 
-const CURSOR_CONFIG = {
-  content: 'view',
-  size: 'large',
-  textColor: 'text-primary',
-  fill: 'secondary',
-};
 
 export default function ProjectsPage() {
   return (
@@ -52,13 +46,13 @@ export default function ProjectsPage() {
             <AnimatedCard
               key={project.id}
               as="li"
-              video={project.video}
+              // this reels are the video that showing over the card when hover
+              reels={project.reels}
               thumbnail={project.thumbnail}
               alt={project.client}
               to={`/projects/${project.slug}`}
               LinkComponent={TransitionLink}
               imageContainerClassName="aspect-4/3 md:aspect-video lg:aspect-square"
-              cursor={CURSOR_CONFIG}
             >
               <CardMeta client={project.client} type={project.type} year={project.year} tags={project.tags} logo={project.logo} />
             </AnimatedCard>

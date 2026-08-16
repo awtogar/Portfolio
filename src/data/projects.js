@@ -1,27 +1,57 @@
-import oveloLogo from '@/assets/images/projects/ovelo/cover.svg?react';
-import nostraticLogo from '@/assets/images/projects/nostratic/cover.svg?react';
-import synoraLogo from '@/assets/images/projects/synora/cover.svg?react';
-import lunavaraLogo from '@/assets/images/projects/lunavara/cover.svg?react';
-import investimeLogo from '@/assets/images/projects/investime/cover.svg?react';
-import routinesLogo from '@/assets/images/projects/routines/cover.svg?react';
+import oveloLogo from '@/assets/images/project/ovelo.svg';
+import nostraticLogo from '@/assets/images/project/nostratic.svg';
+import synoraLogo from '@/assets/images/project/synora.svg';
+import lunavaraLogo from '@/assets/images/project/lunavara.svg';
+import investimeLogo from '@/assets/images/project/investime.svg';
+import routinesLogo from '@/assets/images/project/routines.svg';
 
-import { getGalleryPaths, getReelPath, placeholder } from '@/lib/media';
+const logosBySlug = {
+  ovelo: oveloLogo,
+  nostratic: nostraticLogo,
+  synora: synoraLogo,
+  lunavara: lunavaraLogo,
+  investime: investimeLogo,
+  routines: routinesLogo,
+};
 
-const rawProjects = [
+export const projects = [
   {
     id: 1,
     slug: 'ovelo',
     client: 'ovelo',
     type: 'Branding',
     year: '2025',
-    logo: oveloLogo,
-    // galleryCount: 23,
-    hasReel: true,
-    thumbnailCover: 'ovelo/thumbnail.jpg',
     description: 'An eyewear and Optical Care branding. focused on modern aesthetics and strong visuals branding.',
     tags: ['Graphics', 'Branding'],
     date: { month: 'June', year: '2024' },
     selected: true,
+    thumbnail: '/assets/projects/ovelo/thumbnail.jpg',
+    reels: '/assets/projects/ovelo/reels.mp4',
+    assets: [
+      { type: 'image', src: '/assets/projects/ovelo/1.webp', alt: 'ovelo 1' },
+      { type: 'image', src: '/assets/projects/ovelo/2.webp', alt: 'ovelo 2' },
+      { type: 'image', src: '/assets/projects/ovelo/3.webp', alt: 'ovelo 3' },
+      { type: 'image', src: '/assets/projects/ovelo/4.webp', alt: 'ovelo 4' },
+      { type: 'image', src: '/assets/projects/ovelo/5.webp', alt: 'ovelo 5' },
+      { type: 'image', src: '/assets/projects/ovelo/6.webp', alt: 'ovelo 6' },
+      { type: 'image', src: '/assets/projects/ovelo/7.webp', alt: 'ovelo 7' },
+      { type: 'image', src: '/assets/projects/ovelo/8.webp', alt: 'ovelo 8' },
+      { type: 'image', src: '/assets/projects/ovelo/9.webp', alt: 'ovelo 9' },
+      { type: 'image', src: '/assets/projects/ovelo/10.webp', alt: 'ovelo 10' },
+      { type: 'image', src: '/assets/projects/ovelo/11.webp', alt: 'ovelo 11' },
+      { type: 'image', src: '/assets/projects/ovelo/12.webp', alt: 'ovelo 12' },
+      { type: 'image', src: '/assets/projects/ovelo/13.webp', alt: 'ovelo 13' },
+      { type: 'image', src: '/assets/projects/ovelo/14.webp', alt: 'ovelo 14' },
+      { type: 'image', src: '/assets/projects/ovelo/15.webp', alt: 'ovelo 15' },
+      { type: 'image', src: '/assets/projects/ovelo/16.webp', alt: 'ovelo 16' },
+      { type: 'image', src: '/assets/projects/ovelo/17.webp', alt: 'ovelo 17' },
+      { type: 'image', src: '/assets/projects/ovelo/18.webp', alt: 'ovelo 18' },
+      { type: 'image', src: '/assets/projects/ovelo/19.webp', alt: 'ovelo 19' },
+      { type: 'image', src: '/assets/projects/ovelo/20.webp', alt: 'ovelo 20' },
+      { type: 'image', src: '/assets/projects/ovelo/21.webp', alt: 'ovelo 21' },
+      { type: 'image', src: '/assets/projects/ovelo/22.webp', alt: 'ovelo 22' },
+      { type: 'image', src: '/assets/projects/ovelo/23.webp', alt: 'ovelo 23' },
+    ],
   },
   {
     id: 2,
@@ -29,14 +59,24 @@ const rawProjects = [
     client: 'Nostratic Studio',
     type: 'Websites',
     year: '2025',
-    logo: nostraticLogo,
-    // galleryCount: 10,
-    hasReel: true,
-    thumbnailCover: 'nostratic/thumbnail.jpg',
     description: 'Branding and Web Development for a creative studio agency in Indonesia. that specializes in digital products.',
     tags: ['UI/UX', 'Prototype', 'Figma'],
     date: { month: 'February', year: '2025' },
     selected: true,
+    thumbnail: '/assets/projects/nostratic/thumbnail.webp',
+    reels: '/assets/projects/nostratic/reels.mp4',
+    assets: [
+      { type: 'image', src: '/assets/projects/nostratic/1.webp', alt: 'Nostratic Studio 1' },
+      { type: 'image', src: '/assets/projects/nostratic/3.webp', alt: 'Nostratic Studio 2' },
+      { type: 'image', src: '/assets/projects/nostratic/3.webp', alt: 'Nostratic Studio 3' },
+      { type: 'image', src: '/assets/projects/nostratic/4.webp', alt: 'Nostratic Studio 4' },
+      { type: 'image', src: '/assets/projects/nostratic/5.webp', alt: 'Nostratic Studio 5' },
+      { type: 'image', src: '/assets/projects/nostratic/6.webp', alt: 'Nostratic Studio 6' },
+      { type: 'image', src: '/assets/projects/nostratic/7.webp', alt: 'Nostratic Studio 7' },
+      { type: 'image', src: '/assets/projects/nostratic/8.webp', alt: 'Nostratic Studio 8' },
+      { type: 'image', src: '/assets/projects/nostratic/9.webp', alt: 'Nostratic Studio 9' },
+      { type: 'image', src: '/assets/projects/nostratic/10.webp', alt: 'Nostratic Studio 10' },
+    ],
   },
   {
     id: 3,
@@ -44,13 +84,13 @@ const rawProjects = [
     client: 'Lunavara',
     type: 'Websites',
     year: '2024',
-    logo: lunavaraLogo,
-    // galleryCount: 0,
-    hasReel: false,
     description: 'Lunavara is a modern nursery and plant art. focused on aesthetic and minimalism audience',
     tags: ['Web Development', 'UI/UX'],
     date: { month: 'August', year: '2024' },
     selected: false,
+    thumbnail: null,
+    reels: null,
+    assets: [],
   },
   {
     id: 4,
@@ -58,14 +98,15 @@ const rawProjects = [
     client: 'Investime+',
     type: 'Applications',
     year: '2024',
-    logo: investimeLogo,
-    // galleryCount: 0,
-    hasReel: false,
-    thumbnailCover: 'investime/thumbnail.jpg',
     description: 'A Calculator Website based app that can help you to calculate your compound interest and also can help you to plan your investment in the future.',
     tags: ['Web App', 'FinTech'],
     date: { month: 'May', year: '2024' },
     selected: false,
+    thumbnail: '/assets/projects/investime/thumbnail.jpg',
+    reels: null,
+    assets: [
+      { type: 'image', src: '/assets/projects/investime/thumbnail.jpg', alt: 'Investime+' },
+    ],
   },
   {
     id: 5,
@@ -73,13 +114,13 @@ const rawProjects = [
     client: 'Routines+',
     type: 'Applications',
     year: '2024',
-    logo: routinesLogo,
-    // galleryCount: 0,
-    hasReel: false,
     description: 'Intuitive application for productivity that can help you to manage the routines and time management in a modern and simple way.',
     tags: ['Mobile App', 'Productivity'],
     date: { month: 'January', year: '2024' },
     selected: false,
+    thumbnail: null,
+    reels: null,
+    assets: [],
   },
   {
     id: 6,
@@ -87,23 +128,19 @@ const rawProjects = [
     client: 'Synora',
     type: 'Branding',
     year: '2023',
-    logo: synoraLogo,
-    // galleryCount: 5,
-    hasReel: false,
-    thumbnailCover: 'synora/thumbnail.jpg',
     description: 'Comprehensive branding and visual identity project for Synora.',
     tags: ['Branding', 'Design', 'Identity'],
     date: { month: 'November', year: '2023' },
     selected: false,
+    thumbnail: '/assets/projects/synora/thumbnail.jpg',
+    reels: null,
+    assets: [
+      { type: 'image', src: '/assets/projects/synora/1.webp', alt: 'Synora 1' },
+      { type: 'image', src: '/assets/projects/synora/2.webp', alt: 'Synora 2' },
+      { type: 'image', src: '/assets/projects/synora/3.webp', alt: 'Synora 3' },
+      { type: 'image', src: '/assets/projects/synora/4.webp', alt: 'Synora 4' },
+      { type: 'image', src: '/assets/projects/synora/5.webp', alt: 'Synora 5' },
+    ],
   },
-];
+].map(p => ({ ...p, logo: logosBySlug[p.slug] ?? null }));
 
-export const projects = rawProjects.map(p => {
-  const gallery = getGalleryPaths(p.slug);
-  return {
-    ...p,
-    gallery,
-    video: getReelPath(p.slug, p.hasReel),
-    thumbnail: (p.thumbnailCover != null ? gallery[p.thumbnailCover] : gallery[0]) || placeholder,
-  };
-});

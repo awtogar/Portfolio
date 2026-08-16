@@ -1,14 +1,3 @@
-import { getGalleryPaths, getReelPath, placeholder } from '@/lib/media';
-
-export { getGalleryPaths, getReelPath, placeholder };
-
-export const getMediaUrl = val => {
-  if (!val) return '';
-  if (typeof val === 'string') return val;
-  if (val.src) return val.src;
-  return String(val);
-};
-
 // Site media paths (served from public/)
 // Video for Services section
 export const graphicReels = '/assets/videos/graphic.mp4';
@@ -23,7 +12,3 @@ export const designReels = '/assets/videos/Design.mp4';
 export const buildReels = '/assets/videos/Build.mp4';
 export const myPhoto = '/assets/images/me.jpeg';
 
-
-
-// project format
-// 
