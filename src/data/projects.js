@@ -29,28 +29,6 @@ export const projects = [
     reels: '/assets/projects/ovelo/reels.mp4',
     assets: [
       { type: 'image', src: '/assets/projects/ovelo/1.webp', alt: 'ovelo 1' },
-      { type: 'image', src: '/assets/projects/ovelo/2.webp', alt: 'ovelo 2' },
-      { type: 'image', src: '/assets/projects/ovelo/3.webp', alt: 'ovelo 3' },
-      { type: 'image', src: '/assets/projects/ovelo/4.webp', alt: 'ovelo 4' },
-      { type: 'image', src: '/assets/projects/ovelo/5.webp', alt: 'ovelo 5' },
-      { type: 'image', src: '/assets/projects/ovelo/6.webp', alt: 'ovelo 6' },
-      { type: 'image', src: '/assets/projects/ovelo/7.webp', alt: 'ovelo 7' },
-      { type: 'image', src: '/assets/projects/ovelo/8.webp', alt: 'ovelo 8' },
-      { type: 'image', src: '/assets/projects/ovelo/9.webp', alt: 'ovelo 9' },
-      { type: 'image', src: '/assets/projects/ovelo/10.webp', alt: 'ovelo 10' },
-      { type: 'image', src: '/assets/projects/ovelo/11.webp', alt: 'ovelo 11' },
-      { type: 'image', src: '/assets/projects/ovelo/12.webp', alt: 'ovelo 12' },
-      { type: 'image', src: '/assets/projects/ovelo/13.webp', alt: 'ovelo 13' },
-      { type: 'image', src: '/assets/projects/ovelo/14.webp', alt: 'ovelo 14' },
-      { type: 'image', src: '/assets/projects/ovelo/15.webp', alt: 'ovelo 15' },
-      { type: 'image', src: '/assets/projects/ovelo/16.webp', alt: 'ovelo 16' },
-      { type: 'image', src: '/assets/projects/ovelo/17.webp', alt: 'ovelo 17' },
-      { type: 'image', src: '/assets/projects/ovelo/18.webp', alt: 'ovelo 18' },
-      { type: 'image', src: '/assets/projects/ovelo/19.webp', alt: 'ovelo 19' },
-      { type: 'image', src: '/assets/projects/ovelo/20.webp', alt: 'ovelo 20' },
-      { type: 'image', src: '/assets/projects/ovelo/21.webp', alt: 'ovelo 21' },
-      { type: 'image', src: '/assets/projects/ovelo/22.webp', alt: 'ovelo 22' },
-      { type: 'image', src: '/assets/projects/ovelo/23.webp', alt: 'ovelo 23' },
     ],
   },
   {
@@ -67,15 +45,10 @@ export const projects = [
     reels: '/assets/projects/nostratic/reels.mp4',
     assets: [
       { type: 'image', src: '/assets/projects/nostratic/1.webp', alt: 'Nostratic Studio 1' },
-      { type: 'image', src: '/assets/projects/nostratic/3.webp', alt: 'Nostratic Studio 2' },
+      { type: 'image', src: '/assets/projects/nostratic/5.webp', alt: 'Nostratic Studio 2' },
       { type: 'image', src: '/assets/projects/nostratic/3.webp', alt: 'Nostratic Studio 3' },
       { type: 'image', src: '/assets/projects/nostratic/4.webp', alt: 'Nostratic Studio 4' },
-      { type: 'image', src: '/assets/projects/nostratic/5.webp', alt: 'Nostratic Studio 5' },
-      { type: 'image', src: '/assets/projects/nostratic/6.webp', alt: 'Nostratic Studio 6' },
-      { type: 'image', src: '/assets/projects/nostratic/7.webp', alt: 'Nostratic Studio 7' },
-      { type: 'image', src: '/assets/projects/nostratic/8.webp', alt: 'Nostratic Studio 8' },
-      { type: 'image', src: '/assets/projects/nostratic/9.webp', alt: 'Nostratic Studio 9' },
-      { type: 'image', src: '/assets/projects/nostratic/10.webp', alt: 'Nostratic Studio 10' },
+      { type: 'video', src: '/assets/projects/nostratic/nostratic-video.mp4', alt: 'Nostratic Studio 5' },
     ],
   },
   {
@@ -104,9 +77,7 @@ export const projects = [
     selected: false,
     thumbnail: '/assets/projects/investime/thumbnail.jpg',
     reels: null,
-    assets: [
-      { type: 'image', src: '/assets/projects/investime/thumbnail.jpg', alt: 'Investime+' },
-    ],
+    assets: [{ type: 'image', src: '/assets/projects/investime/thumbnail.jpg', alt: 'Investime+' }],
   },
   {
     id: 5,
@@ -143,4 +114,3 @@ export const projects = [
     ],
   },
 ].map(p => ({ ...p, logo: logosBySlug[p.slug] ?? null }));
-

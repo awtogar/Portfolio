@@ -2,6 +2,24 @@
 
 import React from 'react';
 import { motion } from 'motion/react';
+import { useVideoVisibility } from '@/hooks/useVideoVisibility';
+
+const ProjectVideoItem = ({ src, poster, className }) => {
+  const { videoRef } = useVideoVisibility({ rootMargin: '100px', threshold: 0.2 });
+
+  return (
+    <video
+      ref={videoRef}
+      src={src}
+      poster={poster}
+      muted
+      loop
+      playsInline
+      preload="metadata"
+      className={className}
+    />
+  );
+};
 
 const ProjectMedia = ({ assets }) => {
   if (!assets || assets.length === 0) return null;
@@ -14,12 +32,11 @@ const ProjectMedia = ({ assets }) => {
   const renderAsset = (asset, index, className) => {
     if (asset.type === 'video') {
       return (
-        <video
+        <ProjectVideoItem
+          key={`video-${index}`}
           src={asset.src}
           poster={asset.poster}
           className={className}
-          controls
-          playsInline
         />
       );
     }

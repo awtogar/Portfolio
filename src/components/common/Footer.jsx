@@ -11,9 +11,7 @@ function CTASection() {
 
   return (
     // when cursor hit this base section they should fill with bg-surface
-    <BaseSection
-      className="bg-surface-invert inverted text-secondary px-6 md:px-16 lg:px-20 pt-8 md:pt-14 pb-8 md:pb-14 font-sans border-t border-white/10"
-    >
+    <BaseSection className="bg-surface-invert inverted text-secondary px-6 md:px-16 lg:px-20 pt-8 md:pt-14 pb-8 md:pb-14 font-sans border-t border-white/10">
       <div className="flex items-center justify-center min-h-[40vh] md:min-h-[60vh] text-center">
         <div className="flex flex-col">
           <span className="text-3xl md:text-6xl lg:text-7xl font-medium leading-tight">Have an idea?</span>
@@ -27,7 +25,7 @@ function CTASection() {
           </span>
         </div>
 
-        <div className="flex items-center gap-3 bg-red-500">
+        <div className="flex items-center gap-3">
           <button
             data-cursor
             data-cursor-content="UP"
