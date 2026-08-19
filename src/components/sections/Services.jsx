@@ -66,10 +66,7 @@ const Services = () => {
                   </ul>
                 </div>
                 <div className="w-full mt-4 lg:col-span-3 lg:mt-0">
-                  <CardParallax
-                    as="video"
-                    src={service.video}
-                    containerClassName="aspect-[4/3] h-[250px] sm:h-[300px] md:h-[360px] lg:h-[280px] xl:h-[320px]"
+                  <CardParallax as="video" src={service.video} containerClassName="aspect-[4/3] h-[250px] sm:h-[300px] md:h-[360px] lg:h-[280px] xl:h-[320px]"
                   />
                 </div>
               </li>
@@ -77,7 +74,7 @@ const Services = () => {
           </ul>
         </div>
       </div>
-    </BaseSection> >
+    </BaseSection>
   );
 };
 
