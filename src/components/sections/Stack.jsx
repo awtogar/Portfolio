@@ -43,10 +43,10 @@ export const CardHoverEffect = ({ items, className }) => {
       ref={gridRef}
       data-cursor
       data-cursor-fill="none"
-      className={cn('relative grid border-neutral-300 border-l border-t lg:border-none', 'grid-cols-2 md:grid-cols-12 lg:grid-cols-[repeat(21,minmax(0,1fr))]', className)}
+      className={cn('relative grid border-l border-t border-neutral-300 lg:border-none', 'grid-cols-2 md:grid-cols-12 lg:grid-cols-[repeat(21,minmax(0,1fr))]', className)}
     >
       <motion.span
-        className="hidden md:block absolute z-0 bg-primary"
+        className="hidden absolute z-0 bg-primary md:block"
         animate={{
           left: bgBounds.left,
           top: bgBounds.top,
@@ -70,13 +70,13 @@ export const CardHoverEffect = ({ items, className }) => {
             rel="noopener noreferrer"
             ref={el => (cardRefs.current[idx] = el)}
             className={cn(
-              'relative z-[1] flex flex-col items-center justify-center gap-2 p-4',
-              'border-r border-b lg:border-r-0 lg:not-first-of-type:border-l lg:last-of-type:border-l lg:nth-of-type-[4]:border-l-0 border-neutral-300',
+              'flex flex-col items-center justify-center relative z-[1] p-4 gap-2',
+              'border-r border-b border-neutral-300 lg:border-r-0 lg:not-first-of-type:border-l lg:last-of-type:border-l lg:nth-of-type-[4]:border-l-0',
               'cursor-pointer group',
               'col-span-1 h-[clamp(110px,30vw,160px)]',
               isMidRow ? 'md:col-span-4' : 'md:col-span-3',
               'md:h-[clamp(130px,18vw,200px)]',
-              isBig ? ' lg:border-b lg:col-span-7 lg:h-[clamp(220px,22vw,320px)]' : 'lg:col-span-3 lg:h-[clamp(100px,12vw,160px)]'
+              isBig ? 'lg:col-span-7 lg:h-[clamp(220px,22vw,320px)] lg:border-b' : 'lg:col-span-3 lg:h-[clamp(100px,12vw,160px)]'
             )}
             onMouseEnter={() => handleMouseEnter(idx)}
             onMouseLeave={handleMouseLeave}
@@ -90,8 +90,8 @@ export const CardHoverEffect = ({ items, className }) => {
               data-cursor-magnetic
               className={cn(
                 'relative z-10 transition-colors duration-300',
-                'h-10 w-auto max-w-16 fill-current text-primary dark:text-neutral-400 md:group-hover:text-secondary',
-                isBig ? 'lg:h-16 lg:max-w-28' : 'lg:h-10 lg:max-w-16'
+                'w-auto max-w-16 h-10 fill-current text-primary dark:text-neutral-400 md:group-hover:text-secondary',
+                isBig ? 'lg:max-w-28 lg:h-16' : 'lg:max-w-16 lg:h-10'
               )}
             />
           </motion.a>
@@ -117,10 +117,10 @@ const items = [
 const Stack = () => (
   <BaseSection containerID="tech-stack" sectionClassName="">
     <div className="flex flex-col md:gap-y-2 lg:gap-y-6">
-      <div className="relative block">
+      <div className="block relative">
         <LetterScroll elementHeight="h-[30dvh] md:h-[50dvh]" lines={['MODERN', 'TECH STACK']} textColor="text-primary" />
       </div>
-      <div className="relative blocks">
+      <div className="blocks relative">
         <CardHoverEffect items={items} />
       </div>
     </div>

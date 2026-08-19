@@ -43,10 +43,10 @@ const Hero = () => {
   };
 
   return (
-    <BaseSection sectionClassName="section-padding-x" containerClassName="flex-col h-[75svh] md:h-[85svh] lg:h-[95svh] m-auto w-full max-w-[1920px]">
+    <BaseSection sectionClassName="section-padding-x" containerClassName="flex-col w-full max-w-[1920px] h-[75svh] m-auto md:h-[85svh] lg:h-[95svh]">
       <div ref={heroRef} className="absolute top-0 left-0 w-full h-px pointer-events-none" aria-hidden />
-      <div className="flex flex-col justify-between h-full w-full pt-[36px]">
-        <div className="pt-[86px] lg:pt-[84px] text-h600 font-medium leading-[1.1] tracking-[-0.02em] text-foreground">
+      <div className="flex flex-col justify-between w-full h-full pt-[36px]">
+        <div className="pt-[86px] text-h600 font-medium leading-[1.1] tracking-[-0.02em] text-foreground lg:pt-[84px]">
           {/* <div className="flex gap-2">
             <TextReveal as="span" startDelay={1.1} replayOnNavigate>
               Creative
@@ -66,9 +66,9 @@ const Hero = () => {
           </div> */}
         </div>
 
-        <div className="flex flex-col justify-center gap-6 items-center">
-          <div className="relative block">
-            <TextReveal replayOnNavigate as="h1" className="font-serif text-display leading-[1.2] tracking-[-0.05em] w-full text-start whitespace-nowrap flex" startDelay={0.75}>
+        <div className="flex flex-col items-center justify-center gap-6">
+          <div className="block relative">
+            <TextReveal replayOnNavigate as="h1" className="flex w-full font-serif text-display text-start leading-[1.2] tracking-[-0.05em] whitespace-nowrap" startDelay={0.75}>
               Awaluddin Togar
             </TextReveal>
           </div>

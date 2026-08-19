@@ -10,27 +10,27 @@ const WhoAmI = () => {
     <BaseSection sectionID="about">
       <div className="flex flex-col">
         <HeadLineLabel label="introduce of" headline="About" headlineSuffix="me" />
-        <div className="flex flex-col gap-4 md:grid md:grid-cols-12 md:gap-6 lg:gap-8 mt-s200">
-          <div className="md:col-span-7 lg:col-span-6 flex justify-center md:justify-start">
+        <div className="flex flex-col gap-4 mt-s200 md:grid md:grid-cols-12 md:gap-6 lg:gap-8">
+          <div className="flex justify-center md:col-span-7 md:justify-start lg:col-span-6">
             <CardParallax
               src={myPhoto}
               alt="Awaluddin Togar"
               scrollRange={['-4%', '4%']}
-              containerClassName=" w-full aspect-[3/4] max-h-[60vh] md:w-auto md:h-[65vh] md:max-h-[70vh] md:max-w-full md:aspect-[3/4] lg:h-[70vh] lg:max-h-[75vh] lg:max-w-full lg:aspect-[9/10] rounded-xl"
+              containerClassName="w-full max-h-[60vh] aspect-[3/4] rounded-xl md:w-auto md:h-[65vh] md:max-w-full md:max-h-[70vh] md:aspect-[3/4] lg:h-[70vh] lg:max-w-full lg:max-h-[75vh] lg:aspect-[9/10]"
             />
           </div>
           <div className="md:col-span-5 lg:col-span-6">
-            <div className="flex flex-col h-full justify-between gap-s400">
+            <div className="flex flex-col justify-between h-full gap-s400">
               <div className="flex flex-col">
-                <div className="relative block">
-                  <TextReveal as="p" className="text-h500 tracking-body leading-body font-[450] text-justify">
+                <div className="block relative">
+                  <TextReveal as="p" className="text-h500 font-[450] leading-body tracking-body text-justify">
                     <span>
                       Hey everyone — I’m Awaluddin Togar. I have 2 years of experience as a Graphic Designer, working with clients worldwide through freelancing at @Nostratic.archv from 2022 to 2024.
                     </span>
                   </TextReveal>
                 </div>
-                <div className="relative block">
-                  <TextReveal as="p" className="text-h500 tracking-body leading-body font-[450] text-justify">
+                <div className="block relative">
+                  <TextReveal as="p" className="text-h500 font-[450] leading-body tracking-body text-justify">
                     <span>
                       I’m a fresh graduate from Universitas Nusa Mandiri with a 3.8 GPA, graduating in August 2025. I’ve also gained experience through internships at several established companies.
                     </span>
@@ -38,8 +38,8 @@ const WhoAmI = () => {
                 </div>
               </div>
 
-              <div className="relative block">
-                <div className="md:hidden flex gap-3">
+              <div className="block relative">
+                <div className="flex gap-3 md:hidden">
                   <CreativeButton
                     fillColor1="bg-surface-invert"
                     fillColor2="bg-neutral-100"
@@ -52,9 +52,9 @@ const WhoAmI = () => {
                     data-cursor-fill="primary"
                     data-cursor-text-color="secondary"
                     data-cursor-size="large"
-                    className="flex-1 too good justify-center"
+                    className="flex-1 justify-center too good"
                   >
-                    <span className="text-h500 tracking-heading leading-heading font-[450] whitespace-nowrap">Get in touch</span>
+                    <span className="text-h500 font-[450] leading-heading tracking-heading whitespace-nowrap">Get in touch</span>
                   </CreativeButton>
 
                   <CreativeButton
@@ -71,13 +71,13 @@ const WhoAmI = () => {
                     data-cursor-size="large"
                     className="flex-1 justify-center"
                   >
-                    <a href={resumeLink} className="text-h500 tracking-heading leading-heading font-[450] whitespace-nowrap">
+                    <a href={resumeLink} className="text-h500 font-[450] leading-heading tracking-heading whitespace-nowrap">
                       Download CV
                     </a>
                   </CreativeButton>
                 </div>
 
-                <div className="hidden md:flex justify-between">
+                <div className="hidden md:flex md:justify-between">
                   <div className="flex gap-4">
                     <span>Let's</span>
 

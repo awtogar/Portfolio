@@ -32,12 +32,12 @@ const steps = [
 
 const StepItem = ({ step }) => {
   return (
-    <li className={`group flex flex-col md:grid md:grid-cols-12`}>
-      <div className="grid grid-cols-8 items-start gap-s100 pt-s200 md:pt-s500 md:col-span-7 md:pr-s200">
-        <span className="col-span-2 pt-2 text-base-sm text-primary-muted leading-none md:pt-s100">Step • {step.number}</span>
-        <div className="col-span-6 flex flex-col gap-s200">
-          <h3 className="text-h400 heading-display font-bold leading-tight">{step.title}</h3>
-          <p className="text-base-sm text-primary-muted max-w-[40ch] leading-body">{step.description}</p>
+    <li className={`flex flex-col md:grid md:grid-cols-12 group`}>
+      <div className="grid grid-cols-8 items-start gap-s100 pt-s200 md:col-span-7 md:pt-s500 md:pr-s200">
+        <span className="col-span-2 pt-2 text-base-sm leading-none text-primary-muted md:pt-s100">Step • {step.number}</span>
+        <div className="flex flex-col col-span-6 gap-s200">
+          <h3 className="heading-display text-h400 font-bold leading-tight">{step.title}</h3>
+          <p className="max-w-[40ch] text-base-sm leading-body text-primary-muted">{step.description}</p>
         </div>
       </div>
 
@@ -47,9 +47,9 @@ const StepItem = ({ step }) => {
 
       <span
         aria-label={`See step ${step.number} in action`}
-        className="group/video pt-4 md:pt-0 block overflow-hidden pl-[25%] pb-s200 md:pl-0 md:pb-0 md:col-span-5"
+        className="block overflow-hidden pt-4 pb-s200 pl-[25%] md:col-span-5 md:pt-0 md:pb-0 md:pl-0 group/video"
       >
-        <div className="relative aspect-video md:aspect-6/3 md:h-full w-full overflow-hidden bg-primary/5">
+        <div className="overflow-hidden relative w-full aspect-video bg-primary/5 md:h-full md:aspect-6/3">
           <video
             src={step.video}
             loop
@@ -70,7 +70,7 @@ const StepItem = ({ step }) => {
 
 const Process = () => {
   return (
-    <BaseSection containerClassName="m-auto w-full max-w-[1920px]">
+    <BaseSection containerClassName="w-full max-w-[1920px] m-auto">
       <HeadLineLabel label="My Approach" headline="WORK FLOW" />
       <ul className="flex flex-col gap-s300">
         {steps.map((step, i) => (

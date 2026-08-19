@@ -65,7 +65,7 @@ const ProjectMedia = ({ assets }) => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: index * 0.05 }}
                 viewport={{ once: true }}
-                className="w-full h-[200px] lg:h-[clamp(600px,57vw,1200px)] rounded-lg lg:rounded-xl overflow-hidden relative"
+                className="overflow-hidden relative w-full h-[200px] rounded-lg lg:h-[clamp(600px,57vw,1200px)] lg:rounded-xl"
               >
                 {renderAsset(chunk[j], index, 'absolute inset-0 w-full h-full object-cover')}
               </motion.div>
@@ -86,7 +86,7 @@ const ProjectMedia = ({ assets }) => {
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.4, delay: actualIndex * 0.05 }}
                     viewport={{ once: true }}
-                    className="w-1/2 h-[160px] lg:h-[clamp(600px,40vw,1200px)] rounded-lg lg:rounded-xl overflow-hidden relative"
+                    className="overflow-hidden relative w-1/2 h-[160px] rounded-lg lg:h-[clamp(600px,40vw,1200px)] lg:rounded-xl"
                   >
                     {renderAsset(asset, actualIndex, 'absolute inset-0 w-full h-full object-cover')}
                   </motion.div>

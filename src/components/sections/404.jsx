@@ -20,11 +20,11 @@ export default function NotFoundPage() {
   return (
     <BaseSection
       sectionClassName="section-padding-x"
-      containerClassName="flex-col h-[85svh] lg:h-[95svh] m-auto w-full max-w-[1920px]"
+      containerClassName="flex-col w-full max-w-[1920px] h-[85svh] m-auto lg:h-[95svh]"
     >
-      <div className="flex flex-col items-center justify-center h-full w-full gap-s600">
+      <div className="flex flex-col items-center justify-center w-full h-full gap-s600">
         <motion.h1
-          className="font-serif text-display leading-[1.1] tracking-[-0.05em] uppercase text-center"
+          className="font-serif text-display text-center leading-[1.1] tracking-[-0.05em] uppercase"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
@@ -33,7 +33,7 @@ export default function NotFoundPage() {
         </motion.h1>
 
         <motion.p
-          className="text-base text-primary/40 max-w-xs text-center"
+          className="max-w-xs text-base text-center text-primary/40"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.5 }}
@@ -55,7 +55,7 @@ export default function NotFoundPage() {
               data-cursor-fill="primary"
               data-cursor-text-color="secondary"
               to="/"
-              className="flex items-center justify-center gap-1 group cursor-pointer"
+              className="flex items-center justify-center gap-1 cursor-pointer group"
             >
               <span>Go Home</span>
             </TransitionLink>

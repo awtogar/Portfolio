@@ -10,9 +10,9 @@ const SelectedWorks = () => {
 
 
   return (
-    <BaseSection sectionID="works" sectionClassName="section-padding-xy relative overflow-hidden">
+    <BaseSection sectionID="works" sectionClassName="overflow-hidden relative section-padding-xy">
       <HeadLineLabel label="selected" headline="WORK" headlineSuffix="'25" />
-      <ul className="flex flex-col lg:flex-row gap-2 lg:gap-4 w-full pb-s500 lg:pb-s600">
+      <ul className="flex flex-col w-full gap-2 pb-s500 lg:flex-row lg:gap-4 lg:pb-s600">
         {selectedWorks.map(work => (
           <AnimatedCard
             key={work.id}
@@ -35,7 +35,7 @@ const SelectedWorks = () => {
         data-cursor-fill="primary"
         data-cursor-text-color="secondary"
         to="/projects"
-        className="flex items-center justify-center gap-1 group cursor-pointer"
+        className="flex items-center justify-center gap-1 cursor-pointer group"
       >
         <span>See all</span>
         <RiArrowRightSLine size={24} />
