@@ -3,7 +3,7 @@
 import BaseSection from './BaseSection';
 import Bento from '@/components/ui/Bento';
 import { useLenis } from '@/context';
-import { contact_info } from '@/data/navigation';
+import { contact_info } from '@/data/data';
 import { RiArrowUpSLine } from '@remixicon/react';
 
 function CTASection() {

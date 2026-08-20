@@ -3,7 +3,7 @@
 import React from 'react';
 import { TransitionLink } from '@/components';
 import { RiArrowRightUpLine } from '@remixicon/react';
-import { projects } from '@/data/projects';
+import { projects } from '@/data/data';
 
 const ProjectDetailNextProject = ({ project }) => {
   const projectIndex = projects.findIndex(p => p.slug === project?.slug);

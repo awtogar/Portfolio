@@ -2,7 +2,7 @@
 
 import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'motion/react';
-import { contact_info, socials } from '@/data/navigation';
+import { contact_info, socials } from '@/data/data';
 import { TransitionLink } from '..';
 
 const cardClass =

@@ -5,7 +5,7 @@ import { motion } from 'motion/react';
 import { usePathname } from 'next/navigation';
 import { RiSunLine, RiMoonLine } from '@remixicon/react';
 import { menuSlideLeft } from '@/data/anim/nav';
-import { pages, socials } from '@/data/navigation';
+import { pages, socials } from '@/data/data';
 import { useLenis, useLoading } from '@/context';
 import { useTheme } from '@/hooks';
 import { NavigationLink, HoverRotate } from '@/components';

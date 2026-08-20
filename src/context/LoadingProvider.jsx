@@ -2,7 +2,7 @@
 
 import { createContext, useContext, useState, useCallback, useRef } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
-import { projects } from '@/data/projects';
+import { projects } from '@/data/data';
 
 const LoadingContext = createContext(null);
 

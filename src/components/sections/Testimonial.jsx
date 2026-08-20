@@ -1,5 +1,5 @@
 import { BaseSection, HeadLineLabel } from '@/components';
-import { testimonials } from '@/data/testimonials';
+import { testimonials } from '@/data/data';
 
 const renderFormattedText = text => {
   if (!text) return null;

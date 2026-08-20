@@ -1,5 +1,5 @@
 import React from 'react';
-import { services } from '@/data/content';
+import { services } from '@/data/data';
 import { BaseSection, CardParallax, TextReveal } from '@/components';
 
 const Services = () => {

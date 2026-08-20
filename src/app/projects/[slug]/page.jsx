@@ -1,7 +1,7 @@
 'use client';
 
 import { use } from 'react';
-import { projects } from '@/data/projects';
+import { projects } from '@/data/data';
 import NotFoundPage from '@/components/sections/404';
 import { ProjectDetailHero, ProjectDetailInfo, ProjectMedia } from '@/components/sections';
 

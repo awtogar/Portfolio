@@ -7,7 +7,7 @@ import { useLenis, useLoading } from '@/context';
 import { HamburgerButton, ThemeToggleButton, TransitionLink, TextReveal } from '@/components';
 import { useDimensions, useTheme } from '@/hooks';
 import Gar from '@/assets/images/brand.svg?react';
-import { pages } from '@/data/navigation';
+import { pages } from '@/data/data';
 
 const SCROLL_UP_THRESHOLD = 120;
 const SCROLL_DOWN_TRIGGER = 80;
