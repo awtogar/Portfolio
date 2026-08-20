@@ -138,10 +138,10 @@ export const projects = [
     reels: '/assets/projects/nostratic/reels.mp4',
     assets: [
       { type: 'image', src: '/assets/projects/nostratic/1.webp', alt: 'Nostratic Studio 1' },
-      { type: 'image', src: '/assets/projects/nostratic/5.webp', alt: 'Nostratic Studio 2' },
+      { type: 'image', src: '/assets/projects/nostratic/2.webp', alt: 'Nostratic Studio 2' },
       { type: 'image', src: '/assets/projects/nostratic/3.webp', alt: 'Nostratic Studio 3' },
       { type: 'image', src: '/assets/projects/nostratic/4.webp', alt: 'Nostratic Studio 4' },
-      { type: 'video', src: '/assets/projects/nostratic/nostratic-video.mp4', alt: 'Nostratic Studio 5' },
+      { type: 'video', src: '/assets/projects/nostratic/reels.mp4', alt: 'Nostratic Studio Video' },
     ],
   },
   {
@@ -179,7 +179,7 @@ export const projects = [
     type: 'Applications',
     year: '2024',
     description: 'Intuitive application for productivity that can help you to manage the routines and time management in a modern and simple way.',
-    tags: ['Mobile App', 'Productivity'],
+    tags: ['Mobile App', 'Productivity', 'Landing Page', 'SEO'],
     date: { month: 'January', year: '2024' },
     selected: false,
     thumbnail: null,
