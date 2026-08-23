@@ -10,5 +10,4 @@ export const discoverReels = '/assets/videos/Discover.mp4';
 export const defineReels = '/assets/videos/Define.mp4';
 export const designReels = '/assets/videos/Design.mp4';
 export const buildReels = '/assets/videos/Build.mp4';
-export const myPhoto = '/assets/images/me.jpeg';
-
+export const aboutImages = '/assets/images/me.jpeg';

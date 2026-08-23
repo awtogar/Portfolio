@@ -1,11 +1,27 @@
 import { BaseSection, CardParallax, CreativeButton, TextReveal, HeadLineLabel } from '@/components';
-import { myPhoto } from '@/assets';
+import { aboutImages } from '@/assets';
 import { useNavigation } from '@/hooks/useNavigation';
+import { useState } from 'react';
 
 const resumeLink = 'https://example.com/to-download-cv';
 
+const aboutItems = [
+  {
+    title: 'Experience',
+    content:
+      'Hey everyone — I’m Awaluddin Togar. I have 2 years of experience as a Graphic Designer, working with clients worldwide through freelancing at @Nostratic.archv from 2022 to 2024.',
+  },
+  {
+    title: 'Education',
+    content:
+      'I’m a fresh graduate from Universitas Nusa Mandiri with a 3.8 GPA, graduating in August 2025. I’ve also gained experience through internships at several established companies.',
+  },
+];
+
 const WhoAmI = () => {
   const { handleNavClick } = useNavigation();
+  const [openIndex, setOpenIndex] = useState(0);
+
   return (
     <BaseSection sectionID="about">
       <div className="flex flex-col">
@@ -13,29 +29,38 @@ const WhoAmI = () => {
         <div className="flex flex-col gap-4 mt-s200 md:grid md:grid-cols-12 md:gap-6 lg:gap-8">
           <div className="flex justify-center md:col-span-7 md:justify-start lg:col-span-6">
             <CardParallax
-              src={myPhoto}
+              src={aboutImages}
               alt="Awaluddin Togar"
               scrollRange={['-4%', '4%']}
               containerClassName="w-full max-h-[60vh] aspect-[3/4] rounded-xl md:w-auto md:h-[65vh] md:max-w-full md:max-h-[70vh] md:aspect-[3/4] lg:h-[70vh] lg:max-w-full lg:max-h-[75vh] lg:aspect-[9/10]"
             />
           </div>
-          <div className="md:col-span-5 lg:col-span-6">
+          <div className="md:col-span-5 lg:col-span-6 ">
             <div className="flex flex-col justify-between h-full gap-s400">
-              <div className="flex flex-col">
-                <div className="block relative">
-                  <TextReveal as="p" className="text-h500 font-[450] leading-body tracking-body text-justify">
-                    <span>
-                      Hey everyone — I’m Awaluddin Togar. I have 2 years of experience as a Graphic Designer, working with clients worldwide through freelancing at @Nostratic.archv from 2022 to 2024.
-                    </span>
-                  </TextReveal>
-                </div>
-                <div className="block relative">
-                  <TextReveal as="p" className="text-h500 font-[450] leading-body tracking-body text-justify">
-                    <span>
-                      I’m a fresh graduate from Universitas Nusa Mandiri with a 3.8 GPA, graduating in August 2025. I’ve also gained experience through internships at several established companies.
-                    </span>
-                  </TextReveal>
-                </div>
+              <div className="mt-4 md:mt-2 flex flex-1 flex-col justify-center">
+                {aboutItems.map((item, index) => {
+                  const isOpen = openIndex === index;
+                  return (
+                    <div key={item.title} className="border-b border-t border-primary/15">
+                      <button type="button" onClick={() => setOpenIndex(isOpen ? null : index)} className="w-full flex items-center justify-between gap-6 py-s200 text-left">
+                        <span className="flex items-center gap-4">
+                          <span className={`text-h500 font-[450] leading-heading tracking-heading ${isOpen ? 'text-primary/50' : ''}`}>{item.title}</span>
+                        </span>
+                        <span className={`text-xl leading-none transition-transform duration-300 ${isOpen ? 'rotate-45' : 'rotate-0'}`}>+</span>
+                      </button>
+
+                      <div className="grid transition-all duration-400 ease-out overflow-hidden" style={{ gridTemplateRows: isOpen ? '1fr' : '0fr' }}>
+                        <div className="overflow-hidden">
+                          <div className="block relative pb-s200">
+                            <TextReveal as="p" className={`text-base font-[450] text-neutral-400 leading-body tracking-body text-justify ${isOpen ? 'text-primary/80' : ''}`}>
+                              <span>{item.content}</span>
+                            </TextReveal>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
 
               <div className="block relative">
@@ -46,7 +71,6 @@ const WhoAmI = () => {
                     textcolor1="text-secondary"
                     textcolor2="text-primary"
                     outlineColor="outline-surface-invert"
-
                     data-cursor
                     data-cursor-content="view"
                     data-cursor-fill="primary"
@@ -63,7 +87,6 @@ const WhoAmI = () => {
                     textcolor1="text-primary"
                     textcolor2="text-secondary"
                     outlineColor="outline-surface-invert"
-
                     data-cursor
                     data-cursor-content="view"
                     data-cursor-fill="primary"
@@ -80,7 +103,6 @@ const WhoAmI = () => {
                 <div className="hidden md:flex md:justify-between">
                   <div className="flex gap-4">
                     <span>Let's</span>
-
                     <a
                       onClick={e => handleNavClick(e, { sectionId: 'contact' })}
                       className="

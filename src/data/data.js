@@ -5,6 +5,7 @@ import synoraLogo from '@/assets/images/project/synora.svg';
 import lunavaraLogo from '@/assets/images/project/lunavara.svg';
 import investimeLogo from '@/assets/images/project/investime.svg';
 import routinesLogo from '@/assets/images/project/routines.svg';
+import serojaLogo from '@/assets/images/project/seroja.svg';
 
 // Navigation & Contact Data
 export const pages = {
@@ -105,6 +106,7 @@ const logosBySlug = {
   lunavara: lunavaraLogo,
   investime: investimeLogo,
   routines: routinesLogo,
+  seroja: serojaLogo,
 };
 
 export const projects = [
@@ -118,10 +120,14 @@ export const projects = [
     tags: ['Graphics', 'Branding'],
     date: { month: 'June', year: '2024' },
     selected: true,
-    thumbnail: '/assets/projects/ovelo/thumbnail.jpg',
-    reels: '/assets/projects/ovelo/reels.mp4',
+    thumbnail: '/assets/projects/ovelo/thumbnail.webp',
+    reels: null,
     assets: [
-      { type: 'image', src: '/assets/projects/ovelo/1.webp', alt: 'ovelo 1' },
+      { type: 'image', src: '/assets/projects/ovelo/1.webp', alt: 'Ovelo 1' },
+      { type: 'image', src: '/assets/projects/ovelo/2.webp', alt: 'Ovelo 2' },
+      { type: 'image', src: '/assets/projects/ovelo/3.webp', alt: 'Ovelo 3' },
+      { type: 'image', src: '/assets/projects/ovelo/4.webp', alt: 'Ovelo 4' },
+      { type: 'image', src: '/assets/projects/ovelo/5.webp', alt: 'Ovelo 5' },
     ],
   },
   {
@@ -135,7 +141,7 @@ export const projects = [
     date: { month: 'February', year: '2025' },
     selected: true,
     thumbnail: '/assets/projects/nostratic/thumbnail.webp',
-    reels: '/assets/projects/nostratic/reels.mp4',
+    reels: null,
     assets: [
       { type: 'image', src: '/assets/projects/nostratic/1.webp', alt: 'Nostratic Studio 1' },
       { type: 'image', src: '/assets/projects/nostratic/2.webp', alt: 'Nostratic Studio 2' },
@@ -196,15 +202,50 @@ export const projects = [
     tags: ['Branding', 'Design', 'Identity'],
     date: { month: 'November', year: '2023' },
     selected: false,
-    thumbnail: '/assets/projects/synora/thumbnail.jpg',
-    reels: null,
+    thumbnail: '/assets/projects/synora/thumbnail.webp',
+    reels: '/assets/projects/synora/reels.mp4',
     assets: [
-      { type: 'image', src: '/assets/projects/synora/1.webp', alt: 'Synora 1' },
       { type: 'image', src: '/assets/projects/synora/2.webp', alt: 'Synora 2' },
       { type: 'image', src: '/assets/projects/synora/3.webp', alt: 'Synora 3' },
       { type: 'image', src: '/assets/projects/synora/4.webp', alt: 'Synora 4' },
+      { type: 'video', src: '/assets/projects/synora/5.mp4', alt: 'Synora 5 Video' },
       { type: 'image', src: '/assets/projects/synora/5.webp', alt: 'Synora 5' },
     ],
+  },
+  {
+    id: 7,
+    slug: 'seroja',
+    client: 'Seroja',
+    type: 'Branding',
+    year: '2024',
+    description: 'Branding and visual identity project for Seroja.',
+    tags: ['Branding', 'Visual Identity', 'Design'],
+    date: { month: 'October', year: '2024' },
+    selected: false,
+    thumbnail: '/assets/projects/seroja/1.webp',
+    reels: null,
+    assets: [
+      { type: 'image', src: '/assets/projects/seroja/1.webp', alt: 'Seroja 1' },
+      { type: 'image', src: '/assets/projects/seroja/2.webp', alt: 'Seroja 2' },
+      { type: 'image', src: '/assets/projects/seroja/3.webp', alt: 'Seroja 3' },
+      { type: 'image', src: '/assets/projects/seroja/4.webp', alt: 'Seroja 4' },
+      { type: 'image', src: '/assets/projects/seroja/5.webp', alt: 'Seroja 5' },
+      { type: 'image', src: '/assets/projects/seroja/6.webp', alt: 'Seroja 6' },
+    ],
+  },
+  {
+    id: 8,
+    slug: 'nyambi',
+    client: 'Nyambi',
+    type: 'Applications',
+    year: '2024',
+    description: 'Application and UI/UX design project for Nyambi.',
+    tags: ['UI/UX', 'Mobile App', 'Design'],
+    date: { month: 'September', year: '2024' },
+    selected: false,
+    thumbnail: null,
+    reels: '/assets/projects/nyambi/Splash screen.mp4',
+    assets: [{ type: 'video', src: '/assets/projects/nyambi/Splash screen.mp4', alt: 'Nyambi Splash Screen' }],
   },
 ].map(p => ({ ...p, logo: logosBySlug[p.slug] ?? null }));
 
