@@ -6,7 +6,5 @@ export { default as Process } from './Process';
 export { default as SelectedWorks } from './SelectedWorks';
 export { default as Stack } from './Stack';
 export { default as Testimonial } from './Testimonial';
-export { default as ProjectDetailHero } from './ProjectDetailHero';
-export { default as ProjectDetailInfo } from './ProjectDetailInfo';
-export { default as ProjectMedia } from './ProjectMedia';
-export { default as ProjectDetailNextProject } from './ProjectDetailNextProject';
+
+export * from './project-detail';

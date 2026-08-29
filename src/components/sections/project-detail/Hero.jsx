@@ -2,7 +2,7 @@
 
 import { motion } from 'motion/react';
 
-const ProjectDetailHero = ({ project }) => {
+const Hero = ({ project }) => {
   return (
     <div className="overflow-hidden w-full inverted">
       <motion.h1
@@ -17,4 +17,4 @@ const ProjectDetailHero = ({ project }) => {
   );
 };
 
-export default ProjectDetailHero;
+export default Hero;

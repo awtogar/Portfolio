@@ -1,3 +1,5 @@
+'use client';
+
 import { useRef, useMemo } from 'react';
 import { useLetterScroll } from '@/hooks/animations/scroll/useLetterScroll';
 export const LetterScroll = ({

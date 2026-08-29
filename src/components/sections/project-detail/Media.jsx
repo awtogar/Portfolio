@@ -7,21 +7,10 @@ import { useVideoVisibility } from '@/hooks/useVideoVisibility';
 const ProjectVideoItem = ({ src, poster, className }) => {
   const { videoRef } = useVideoVisibility({ rootMargin: '100px', threshold: 0.2 });
 
-  return (
-    <video
-      ref={videoRef}
-      src={src}
-      poster={poster}
-      muted
-      loop
-      playsInline
-      preload="metadata"
-      className={className}
-    />
-  );
+  return <video ref={videoRef} src={src} poster={poster} muted loop playsInline preload="metadata" className={className} />;
 };
 
-const ProjectMedia = ({ assets }) => {
+const Media = ({ assets }) => {
   if (!assets || assets.length === 0) return null;
 
   const chunks = [];
@@ -31,23 +20,9 @@ const ProjectMedia = ({ assets }) => {
 
   const renderAsset = (asset, index, className) => {
     if (asset.type === 'video') {
-      return (
-        <ProjectVideoItem
-          key={`video-${index}`}
-          src={asset.src}
-          poster={asset.poster}
-          className={className}
-        />
-      );
+      return <ProjectVideoItem key={`video-${index}`} src={asset.src} poster={asset.poster} className={className} />;
     }
-    return (
-      <img
-        src={asset.src}
-        alt={asset.alt}
-        className={className}
-        loading="lazy"
-      />
-    );
+    return <img src={asset.src} alt={asset.alt} className={className} loading="lazy" />;
   };
 
   return (
@@ -102,4 +77,4 @@ const ProjectMedia = ({ assets }) => {
   );
 };
 
-export default ProjectMedia;
+export default Media;
