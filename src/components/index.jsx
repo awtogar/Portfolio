@@ -1,4 +1,5 @@
 export { default as ClientProviders } from './common/ClientProviders';
+export { CustomCursor } from '../cursor';
 export { default as Header } from './common/Header';
 export { default as Footer } from './common/Footer';
 export { default as SideBar } from './common/Sidebar';
@@ -16,17 +17,9 @@ export { default as HeadLineLabel } from './ui/HeadLineLabel';
 export { default as TextReveal } from './ui/TextReveal';
 export { default as Card } from './ui/Card';
 export { default as CardParallax } from './ui/CardParallax';
-export { default as ImageMaskSVG } from './ui/ImageMaskSVG';
 export { default as VideoLoader } from './ui/VideoLoader';
 export { default as AnimatedCard } from './ui/AnimatedCard';
 export { default as Preloader } from './ui/Preloader';
 export { default as PageTransition } from './ui/PageTransition';
-export { default as TimelineSVGLine } from './ui/TimelineSVGLine';
 export { LetterScroll } from './ui/LetterScroll';
 export { default as DevBanner } from './ui/DevBanner';
-
-// Sections
-export * from './sections';
-
-// Cursor
-export { CustomCursor } from '../cursor';

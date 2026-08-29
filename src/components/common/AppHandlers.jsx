@@ -5,6 +5,7 @@ import { usePathname } from 'next/navigation';
 import { useLoading } from '@/context/LoadingProvider';
 import { useLenis } from '@/context/LenisContext';
 import { resetScrollImmediate } from '@/hooks/useScroll';
+import { useCursor } from '@/cursor/CursorProvider';
 
 // Signals to the loading system that the new page is ready to reveal
 // after a curtain transition
@@ -67,11 +68,23 @@ function HashScrollHandler() {
   return null;
 }
 
+function CursorResetHandler() {
+  const pathname = usePathname();
+  const { resetCursor } = useCursor();
+
+  useEffect(() => {
+    resetCursor();
+  }, [pathname, resetCursor]);
+
+  return null;
+}
+
 export default function AppHandlers() {
   return (
     <>
       <RouteReadyNotifier />
       <HashScrollHandler />
+      <CursorResetHandler />
     </>
   );
 }

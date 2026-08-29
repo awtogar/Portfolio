@@ -18,10 +18,7 @@ export default function NotFoundPage() {
   }, []);
 
   return (
-    <BaseSection
-      sectionClassName="section-padding-x"
-      containerClassName="flex-col w-full max-w-[1920px] h-[85svh] m-auto lg:h-[95svh]"
-    >
+    <BaseSection sectionClassName="section-padding-x" containerClassName="flex-col w-full max-w-[1920px] h-[85svh] m-auto lg:h-[95svh]">
       <div className="flex flex-col items-center justify-center w-full h-full gap-s600">
         <motion.h1
           className="font-serif text-display text-center leading-[1.1] tracking-[-0.05em] uppercase"
@@ -32,34 +29,26 @@ export default function NotFoundPage() {
           Page not found
         </motion.h1>
 
-        <motion.p
-          className="max-w-xs text-base text-center text-primary/40"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.5 }}
-        >
+        <motion.p className="max-w-xs text-base text-center text-primary/40" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6, delay: 0.5 }}>
           The page you're looking for doesn't exist or has been moved.
         </motion.p>
 
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.7 }}
-        >
-          <CreativeButton variant="fill" size="md" data-cursor data-cursor-magnetic data-cursor-size="small">
-
-
-            <TransitionLink
-              data-cursor
-              data-cursor-content="Home"
-              data-cursor-fill="primary"
-              data-cursor-text-color="secondary"
-              to="/"
-              className="flex items-center justify-center gap-1 cursor-pointer group"
-            >
+        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6, delay: 0.7 }}>
+          <CreativeButton
+            fillColor1="bg-surface-invert"
+            fillColor2="bg-neutral-100"
+            textcolor1="text-secondary"
+            textcolor2="text-primary"
+            outlineColor="outline-surface-invert"
+            data-cursor
+            data-cursor-content="view"
+            data-cursor-fill="primary"
+            data-cursor-text-color="secondary"
+            data-cursor-size="small"
+          >
+            <TransitionLink to="/" className="flex items-center justify-center gap-1 cursor-pointer group">
               <span>Go Home</span>
             </TransitionLink>
-
           </CreativeButton>
         </motion.div>
       </div>

@@ -33,16 +33,16 @@ export default function Bento() {
         Project
       </TransitionLink>
 
-      <a
+      <TransitionLink
         data-cursor
         data-cursor-content="View"
         data-cursor-fill="primary"
         data-cursor-text-color="secondary"
-        href="/blog"
+        href="/blogs"
         className={`col-span-12 lg:col-span-4 h-[200px] lg:h-[350px] ${cardClass}`}
       >
-        Blog
-      </a>
+        Blogs
+      </TransitionLink>
 
       <div className="col-span-12 lg:col-span-4 grid grid-cols-2 lg:grid-rows-2 gap-2 lg:gap-4">
         <a
