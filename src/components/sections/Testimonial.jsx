@@ -22,8 +22,9 @@ const TestimonialCard = ({ item, index }) => {
 
   return (
     <div
-      className={`break-inside-avoid p-6 mb-4 rounded-[20px] transition-all duration-300 ${isHighlighted ? 'bg-neutral-200 border border-neutral-50' : 'bg-neutral-100 border border-neutral-200/80 shadow-[0_2px_10px_rgba(0,0,0,0.03)]'
-        }`}
+      className={`break-inside-avoid p-6 mb-4 rounded-[20px] transition-all duration-300 ${
+        isHighlighted ? 'bg-neutral-200 border border-neutral-50' : 'bg-neutral-100 border border-neutral-200/80 shadow-[0_2px_10px_rgba(0,0,0,0.03)]'
+      }`}
     >
       <div className="flex items-center gap-3">
         <div className="overflow-hidden shrink-0 w-10 h-10 bg-neutral-200 rounded-full">
@@ -42,7 +43,7 @@ const TestimonialCard = ({ item, index }) => {
 
 const Testimonial = () => {
   return (
-    <BaseSection sectionID="testimonials" containerClassName="w-full max-w-[1400px] m-auto">
+    <BaseSection sectionID="testimonials">
       <HeadLineLabel label="Not my words, but" headline="They say it" />
 
       <div className="overflow-hidden relative max-h-[750px] mt-10 md:mt-14">
