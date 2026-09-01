@@ -12,10 +12,8 @@ export function useLoading() {
   return ctx;
 }
 
-
-
-function isProjectRoute(path) {
-  return path === '/projects' || path.startsWith('/projects/');
+function isTransitionRoute(path) {
+  return path === '/projects' || path.startsWith('/projects/') || path === '/blogs' || path.startsWith('/blogs/');
 }
 
 function getPageTitle(path) {
@@ -26,6 +24,7 @@ function getPageTitle(path) {
     const project = projects.find(p => p.slug === slug);
     return project ? project.client : 'Project';
   }
+  if (normalized === '/blogs' || normalized.startsWith('/blogs/')) return 'Blogs';
   return '';
 }
 
@@ -55,12 +54,10 @@ export function LoadingProvider({ children }) {
       if (path === pathname) return;
       if (transitionRef.current) return;
 
-      const prefersReducedMotion =
-        typeof window !== 'undefined' &&
-        window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const prefersReducedMotion = typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-      const leavingProjectRoute = isProjectRoute(pathname);
-      const enteringProjectRoute = isProjectRoute(path);
+      const leavingProjectRoute = isTransitionRoute(pathname);
+      const enteringProjectRoute = isTransitionRoute(path);
 
       if (prefersReducedMotion || (!leavingProjectRoute && !enteringProjectRoute)) {
         router.push(path);

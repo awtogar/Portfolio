@@ -27,7 +27,7 @@ export default function Bento() {
         data-cursor-content="View"
         data-cursor-fill="primary"
         data-cursor-text-color="secondary"
-        href="/projects"
+        to="/projects"
         className={`col-span-12 lg:col-span-8 h-[200px] lg:h-[350px] ${cardClass}`}
       >
         Project
@@ -38,7 +38,7 @@ export default function Bento() {
         data-cursor-content="View"
         data-cursor-fill="primary"
         data-cursor-text-color="secondary"
-        href="/blogs"
+        to="/blogs"
         className={`col-span-12 lg:col-span-4 h-[200px] lg:h-[350px] ${cardClass}`}
       >
         Blogs
