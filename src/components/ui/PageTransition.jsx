@@ -77,11 +77,13 @@ export default function PageTransition() {
         <CurtainLayer key={layer.zIndex} layer={layer} phase={phase} onComplete={() => handleLayerComplete(layer.zIndex)} />
       ))}
 
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none" style={{ zIndex: CURTAIN_LAYERS.length + 1 }}>
-        <motion.div className="overflow-hidden" initial="hidden" animate={titleState} variants={clipVariants}>
-          <p className="font-serif text-secondary text-h400 leading-none tracking-[-0.02em]">{pageTitle}</p>
-        </motion.div>
-      </div>
+      {pageTitle && (
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none" style={{ zIndex: CURTAIN_LAYERS.length + 1 }}>
+          <motion.div className="overflow-hidden" initial="hidden" animate={titleState} variants={clipVariants}>
+            <p className="font-serif text-secondary text-h400 leading-[-0.02em] tracking-[-0.02em]">{pageTitle}</p>
+          </motion.div>
+        </div>
+      )}
     </div>
   );
 }

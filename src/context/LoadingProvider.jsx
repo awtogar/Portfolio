@@ -12,20 +12,33 @@ export function useLoading() {
   return ctx;
 }
 
+const TRANSITION_ROUTES = [
+  {
+    match: (p) => p === '/projects' || p.startsWith('/projects/'),
+    getTitle: (p) => {
+      const slug = p.split('/')[2];
+      const project = projects.find(pr => pr.slug === slug);
+      return project ? project.client : 'Projects';
+    },
+  },
+  {
+    match: (p) => p === '/blogs' || p.startsWith('/blogs/'),
+    getTitle: (to, from) => {
+      if (from && from === '/blogs' && to.startsWith('/blogs/')) return '';
+      return 'Blogs';
+    },
+  },
+];
+
 function isTransitionRoute(path) {
-  return path === '/projects' || path.startsWith('/projects/') || path === '/blogs' || path.startsWith('/blogs/');
+  return TRANSITION_ROUTES.some(r => r.match(path));
 }
 
-function getPageTitle(path) {
-  const normalized = path.endsWith('/') ? path.slice(0, -1) : path;
-  if (normalized === '/projects') return 'Projects';
-  if (normalized.startsWith('/projects/')) {
-    const slug = normalized.split('/')[2];
-    const project = projects.find(p => p.slug === slug);
-    return project ? project.client : 'Project';
-  }
-  if (normalized === '/blogs' || normalized.startsWith('/blogs/')) return 'Blogs';
-  return '';
+function getPageTitle(to, from) {
+  const normalized = to.endsWith('/') ? to.slice(0, -1) : to;
+  const normalizedFrom = from ? (from.endsWith('/') ? from.slice(0, -1) : from) : null;
+  const route = TRANSITION_ROUTES.find(r => r.match(normalized));
+  return route ? route.getTitle(normalized, normalizedFrom) : '';
 }
 
 export function LoadingProvider({ children }) {
@@ -46,9 +59,6 @@ export function LoadingProvider({ children }) {
   const canRevealContent = isReady && phase !== 'exit';
 
   const [revealEpoch, setRevealEpoch] = useState(0);
-
-  // Navigate with curtain transition — only meaningful for project routes.
-  // For home or section scroll, call scrollToSection instead.
   const navigateTo = useCallback(
     path => {
       if (path === pathname) return;
@@ -66,7 +76,7 @@ export function LoadingProvider({ children }) {
 
       transitionRef.current = true;
       setTargetPath(path);
-      setPageTitle(getPageTitle(path));
+      setPageTitle(getPageTitle(path, pathname));
       setPhase('exit');
     },
     [pathname, router]
@@ -77,7 +87,6 @@ export function LoadingProvider({ children }) {
     (sectionId, lenisInstance) => {
       const isHome = pathname === '/';
       if (isHome) {
-        // Update URL bar without triggering Next.js router (avoids double-scroll from HashScrollHandler)
         window.history.replaceState(null, '', `/#${sectionId}`);
         if (lenisInstance) {
           lenisInstance.scrollTo(`#${sectionId}`, { offset: -80, duration: 1.4, easing: t => 1 - Math.pow(1 - t, 4) });
@@ -86,8 +95,6 @@ export function LoadingProvider({ children }) {
           if (el) el.scrollIntoView({ behavior: 'smooth' });
         }
       } else {
-        // Use navigateTo so the curtain transition fires when leaving a project route.
-        // HashScrollHandler picks up the hash after arrival.
         navigateTo(`/#${sectionId}`);
       }
     },

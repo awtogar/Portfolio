@@ -1,4 +1,4 @@
-import { BaseSection, CardParallax, CreativeButton, TextReveal, HeadLineLabel } from '@/components';
+import { BaseSection, CardParallax, CreativeButton, TextReveal, HeadLineLabel, HoverRotate } from '@/components';
 import { aboutImages } from '@/assets';
 import { useNavigation } from '@/hooks/useNavigation';
 import { useState } from 'react';
@@ -20,7 +20,7 @@ const aboutItems = [
 
 const WhoAmI = () => {
   const { handleNavClick } = useNavigation();
-  const [openIndex, setOpenIndex] = useState(0);
+  const [openIndex, setOpenIndex] = useState(null);
 
   return (
     <BaseSection sectionID="about">
@@ -41,8 +41,18 @@ const WhoAmI = () => {
                 {aboutItems.map((item, index) => {
                   const isOpen = openIndex === index;
                   return (
-                    <div key={item.title} className="border-b border-t border-primary/15">
-                      <button type="button" onClick={() => setOpenIndex(isOpen ? null : index)} className="w-full flex items-center justify-between gap-6 py-s200 text-left">
+                    <div key={item.title} className={`border-b border-primary/15 ${index === 0 ? 'border-t' : ''}`}>
+                      <button
+                        data-cursor
+                        data-cursor-content="Click"
+                        data-cursor-fill="primary"
+                        data-cursor-text-color="secondary"
+                        data-cursor-size="small"
+
+                        type="button"
+                        onClick={() => setOpenIndex(isOpen ? null : index)}
+                        className="w-full flex items-center justify-between gap-6 py-s200 text-left cursor-pointer"
+                      >
                         <span className="flex items-center gap-4">
                           <span className={`text-h500 font-[450] leading-heading tracking-heading ${isOpen ? 'text-primary/50' : ''}`}>{item.title}</span>
                         </span>
@@ -94,55 +104,43 @@ const WhoAmI = () => {
                     data-cursor-size="large"
                     className="flex-1 justify-center"
                   >
-                    <a href={resumeLink} className="text-h500 font-[450] leading-heading tracking-heading whitespace-nowrap">
+                    <a href={resumeLink} target="_blank" rel="noopener noreferrer" className="text-h500 font-[450] leading-heading tracking-heading whitespace-nowrap">
                       Download CV
                     </a>
                   </CreativeButton>
                 </div>
 
-                <div className="hidden md:flex md:justify-between">
-                  <div className="flex gap-4">
-                    <span>Let's</span>
+                {/* fixed hierarchy */}
+                <div className="hidden md:flex-col md:flex gap-5">
+                  <div className="flex flex-col gap-1">
+                    <span className="text-sm text-neutral-400 tracking-wide uppercase">Recruiting?</span>
                     <a
-                      onClick={e => handleNavClick(e, { sectionId: 'contact' })}
-                      className="
-                      relative
-                      after:absolute
-                      after:left-0
-                      after:-bottom-0.5
-                      after:h-[2px]
-                      after:w-0
-                      after:bg-primary
-                      after:transition-[width]
-                      after:duration-300
-                      after:ease-out
-                      hover:after:w-full
-                    "
+                      href={resumeLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      data-cursor
+                      data-cursor-content="View"
+                      data-cursor-fill="primary"
+                      data-cursor-text-color="secondary"
+                      className="text-base font-[450] leading-heading tracking-heading text-primary  transition-colors duration-300 underline underline-offset-4 decoration-primary/20 hover:decoration-primary/60"
                     >
-                      Connect
+                      Resume
                     </a>
                   </div>
 
-                  <span>or</span>
+                  <div className="w-px self-stretch bg-primary/15" />
 
-                  <div className="flex gap-2">
-                    <span>My</span>
+                  <div className="flex flex-col gap-1">
+                    <span className="text-sm text-neutral-400 tracking-wide uppercase">Say hello</span>
                     <a
-                      className="
-                      relative
-                      after:absolute
-                      after:left-0
-                      after:-bottom-0.5
-                      after:h-[2px]
-                      after:w-0
-                      after:bg-primary
-                      after:transition-[width]
-                      after:duration-300
-                      after:ease-out
-                      hover:after:w-full
-                    "
+                      data-cursor
+                      data-cursor-content="view"
+                      data-cursor-fill="primary"
+                      data-cursor-text-color="secondary"
+                      onClick={e => handleNavClick(e, { sectionId: 'contact' })}
+                      className="text-base font-[450] leading-heading tracking-heading text-primary transition-colors duration-300 underline underline-offset-4 decoration-primary/20 hover:decoration-primary/60 cursor-pointer"
                     >
-                      resume
+                      Connect
                     </a>
                   </div>
                 </div>
