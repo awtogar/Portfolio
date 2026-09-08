@@ -2,6 +2,7 @@ import React from 'react';
 import { projects } from '@/data/data';
 import { CreativeButton, TextReveal, BaseSection, TransitionLink, HeadLineLabel } from '@/components';
 import AnimatedCard, { CardMeta } from '@/components/ui/AnimatedCard';
+import { cursorPresets } from '@/cursor';
 
 import { RiArrowRightSLine } from '@remixicon/react';
 
@@ -29,10 +30,7 @@ const SelectedWorks = () => {
       </ul>
 
       <TransitionLink
-        data-cursor
-        data-cursor-content="view"
-        data-cursor-fill="primary"
-        data-cursor-text-color="secondary"
+        {...cursorPresets.view}
         to="/projects"
         className="flex items-center justify-center gap-1 cursor-pointer group"
       >

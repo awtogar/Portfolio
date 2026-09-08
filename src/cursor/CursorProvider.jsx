@@ -1,7 +1,9 @@
 'use client';
 
-import { createContext, useContext, useState, useCallback, useEffect } from 'react';
+import { createContext, useContext, useState, useCallback, useEffect, useRef } from 'react';
+import { useMotionValue } from 'motion/react';
 import gsap from 'gsap';
+import { CURSOR_SIZES } from './constants';
 
 const CursorContext = createContext(null);
 
@@ -26,6 +28,26 @@ export function CursorProvider({ children }) {
     cursorSize: null,
     idleFill: null,
   });
+
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+
+  const cursorInfoRef = useRef({
+    isActive: false,
+    isSticky: false,
+    stickyElement: null,
+    cursorSize: CURSOR_SIZES.small.idle,
+  });
+
+  useEffect(() => {
+    const sizes = CURSOR_SIZES[cursorState.size] || CURSOR_SIZES.small;
+    cursorInfoRef.current = {
+      isActive: cursorState.isActive,
+      isSticky: cursorState.isSticky,
+      stickyElement: cursorState.stickyElement,
+      cursorSize: cursorState.isActive ? (cursorState.cursorSize ?? sizes.hovered) : sizes.idle,
+    };
+  }, [cursorState]);
 
   useEffect(() => {
     const mediaQuery = window.matchMedia('(hover: hover) and (pointer: fine)');
@@ -56,10 +78,7 @@ export function CursorProvider({ children }) {
   useEffect(() => {
     if (!hasMouse) return;
 
-    let xTo,
-      yTo,
-      currentTarget = null,
-      currentIdleRegion = null;
+    let xTo, yTo, currentTarget = null, currentIdleRegion = null;
 
     const getConfig = el => ({
       magnetic: el.dataset.cursorMagnetic !== undefined,
@@ -72,8 +91,7 @@ export function CursorProvider({ children }) {
 
     const handleMouseEnter = e => {
       const el = e.target.closest('[data-cursor]');
-      if (!el) return;
-      if (currentTarget === el) return;
+      if (!el || currentTarget === el) return;
 
       const config = getConfig(el);
       currentTarget = el;
@@ -95,29 +113,38 @@ export function CursorProvider({ children }) {
     };
 
     const handleMouseMove = e => {
-      if (!currentTarget) return;
-      const config = getConfig(currentTarget);
-      if (!config.magnetic || !xTo || !yTo) return;
-
       const { clientX, clientY } = e;
-      const { height, width, left, top } = currentTarget.getBoundingClientRect();
-      const x = clientX - (left + width / 2);
-      const y = clientY - (top + height / 2);
-      xTo(x * 0.35);
-      yTo(y * 0.35);
+
+      // Magnetic
+      if (currentTarget && xTo && yTo) {
+        const config = getConfig(currentTarget);
+        if (config.magnetic) {
+          const { height, width, left, top } = currentTarget.getBoundingClientRect();
+          xTo((clientX - (left + width / 2)) * 0.35);
+          yTo((clientY - (top + height / 2)) * 0.35);
+        }
+      }
+
+      // Cursor dot position (centering offset + sticky snap)
+      const { isActive, isSticky, stickyElement, cursorSize } = cursorInfoRef.current;
+      if (isActive && isSticky && stickyElement) {
+        const { left, top, height, width } = stickyElement.getBoundingClientRect();
+        const cx = left + width / 2;
+        const cy = top + height / 2;
+        mouseX.set(cx - cursorSize / 2 + (clientX - cx) * 0.1);
+        mouseY.set(cy - cursorSize / 2 + (clientY - cy) * 0.1);
+      } else {
+        mouseX.set(clientX - cursorSize / 2);
+        mouseY.set(clientY - cursorSize / 2);
+      }
     };
 
     const handleMouseLeave = e => {
       const el = e.target.closest('[data-cursor]');
       if (!el) return;
+      if (e.relatedTarget && el.contains(e.relatedTarget)) return;
 
-      const relatedTarget = e.relatedTarget;
-      if (relatedTarget && el.contains(relatedTarget)) return;
-
-      if (xTo && yTo) {
-        xTo(0);
-        yTo(0);
-      }
+      if (xTo && yTo) { xTo(0); yTo(0); }
       xTo = yTo = currentTarget = null;
       resetCursor();
     };
@@ -132,8 +159,7 @@ export function CursorProvider({ children }) {
     const handleIdleRegionLeave = e => {
       const region = e.target.closest('[data-cursor-idle-fill]');
       if (!region) return;
-      const related = e.relatedTarget;
-      if (related && region.contains(related)) return;
+      if (e.relatedTarget && region.contains(e.relatedTarget)) return;
       currentIdleRegion = null;
       setCursor({ idleFill: null });
     };
@@ -151,7 +177,11 @@ export function CursorProvider({ children }) {
       document.removeEventListener('mouseover', handleIdleRegionEnter);
       document.removeEventListener('mouseout', handleIdleRegionLeave);
     };
-  }, [hasMouse, setCursor, resetCursor]);
+  }, [hasMouse, setCursor, resetCursor, mouseX, mouseY]);
 
-  return <CursorContext.Provider value={{ cursorState, setCursor, resetCursor, hasMouse }}>{children}</CursorContext.Provider>;
+  return (
+    <CursorContext.Provider value={{ cursorState, setCursor, resetCursor, hasMouse, mouseX, mouseY }}>
+      {children}
+    </CursorContext.Provider>
+  );
 }

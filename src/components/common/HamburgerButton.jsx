@@ -1,16 +1,14 @@
 'use client';
 
 import { TextReveal } from '@/components';
+import { cursorPresets } from '@/cursor';
 
 const HamburgerButton = ({ isActive, onToggle }) => {
   return (
     <div onClick={onToggle}>
-      <TextReveal as="div" isHero replayOnNavigate startDelay={0.35}>
+      <TextReveal as="div" mode="epoch" startDelay={0.35}>
         <div
-          data-cursor
-          data-cursor-magnetic
-          data-cursor-sticky
-          data-cursor-size="large"
+          {...cursorPresets.nav}
           className={`relative flex flex-col justify-center items-center h-[60px] w-[60px] gap-[0.3rem] md:gap-2 md:pointer-events-none cursor-pointer  ${isActive ? 'active' : ''}`}
         >
           <div

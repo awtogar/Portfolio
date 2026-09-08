@@ -68,16 +68,16 @@ const Hero = () => {
 
         <div className="flex flex-col items-center justify-center gap-6">
           <div className="block relative">
-            <TextReveal replayOnNavigate as="h1" className="flex w-full font-serif text-display text-start leading-[1.2] tracking-[-0.05em] whitespace-nowrap" startDelay={0.75}>
+            <TextReveal mode="epoch" as="h1" className="flex w-full font-serif text-display text-start leading-[1.2] tracking-[-0.05em] whitespace-nowrap" startDelay={0.75}>
               Awaluddin Togar
             </TextReveal>
           </div>
           <div className="flex items-center justify-center">
             <div className="flex flex-col items-center justify-center">
-              <TextReveal as="span" startDelay={1.3} replayOnNavigate>
+              <TextReveal as="span" startDelay={1.3} mode="epoch">
                 <RiArrowDownLongLine size={18} />
               </TextReveal>
-              <TextReveal as="span" startDelay={1.3} replayOnNavigate>
+              <TextReveal as="span" startDelay={1.3} mode="epoch">
                 <span>(Scroll)</span>
               </TextReveal>
             </div>

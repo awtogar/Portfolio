@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { getAllBlogs } from '@/lib/blogs';
 import { BaseSection, TextReveal, TransitionLink } from '@/components';
+import { cursorPresets } from '@/cursor';
 import { RiArrowRightLine } from '@remixicon/react';
 
 export const metadata = {
@@ -32,11 +33,7 @@ export default function BlogsPage() {
                   <TransitionLink
                     to={`/blogs/${blog.slug}`}
                     className="group flex items-baseline gap-s500 py-s200 hover:bg-primary/[0.03] transition-colors duration-150 -mx-2 px-2 rounded-sm"
-                    data-cursor
-                    data-cursor-content="read"
-                    data-cursor-fill="primary"
-                    data-cursor-text-color="secondary"
-                    data-cursor-size="large"
+                    {...cursorPresets.read}
                   >
                     <TextReveal
                       as="span"

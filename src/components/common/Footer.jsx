@@ -6,6 +6,7 @@ import Bento from '@/components/ui/Bento';
 import { useLenis } from '@/context';
 import { contact_info } from '@/data/data';
 import { RiArrowUpSLine } from '@remixicon/react';
+import { cursorPresets } from '@/cursor';
 
 function CTASection() {
   const { lenis } = useLenis();
@@ -18,11 +19,7 @@ function CTASection() {
           <span className="text-3xl md:text-6xl lg:text-7xl font-medium leading-tight ">Have an idea?</span>
 
           <HoverRotate
-            data-cursor
-            data-cursor-content="Email"
-            data-cursor-fill="primary"
-            data-cursor-text-color="secondary"
-            data-cursor-size="small"
+            {...cursorPresets.email}
             as="a"
             href={`mailto:${contact_info.email}`}
           >
@@ -39,14 +36,9 @@ function CTASection() {
 
         <div className="flex items-center gap-3">
           <button
-            data-cursor
-            data-cursor-content="UP"
-            data-cursor-fill="primary"
-            data-cursor-text-color="secondary"
-            data-cursor-size="small"
+            {...cursorPresets.up}
+            {...cursorPresets.nav}
             className="bg-neutral-200 md:w-12 md:h-12 rounded-full flex items-center justify-center"
-            data-cursor-magnetic
-            data-cursor-sticky
             onClick={() => lenis?.scrollTo(0, { duration: 1.2 })}
             aria-label="Scroll to top"
           >

@@ -2,6 +2,7 @@ import { BaseSection, CardParallax, CreativeButton, TextReveal, HeadLineLabel, H
 import { aboutImages } from '@/assets';
 import { useNavigation } from '@/hooks/useNavigation';
 import { useState } from 'react';
+import { cursorPresets } from '@/cursor';
 
 const resumeLink = 'https://example.com/to-download-cv';
 
@@ -43,11 +44,7 @@ const About = () => {
                   return (
                     <div key={item.title} className={`border-b border-primary/15 ${index === 0 ? 'border-t' : ''}`}>
                       <button
-                        data-cursor
-                        data-cursor-content="Click"
-                        data-cursor-fill="primary"
-                        data-cursor-text-color="secondary"
-                        data-cursor-size="small"
+                        {...cursorPresets.click}
 
                         type="button"
                         onClick={() => setOpenIndex(isOpen ? null : index)}
@@ -81,11 +78,7 @@ const About = () => {
                     textcolor1="text-secondary"
                     textcolor2="text-primary"
                     outlineColor="outline-surface-invert"
-                    data-cursor
-                    data-cursor-content="view"
-                    data-cursor-fill="primary"
-                    data-cursor-text-color="secondary"
-                    data-cursor-size="large"
+                    {...cursorPresets.view}
                     className="flex-1 justify-center too good"
                   >
                     <span className="text-h500 font-[450] leading-heading tracking-heading whitespace-nowrap">Get in touch</span>
@@ -97,11 +90,7 @@ const About = () => {
                     textcolor1="text-primary"
                     textcolor2="text-secondary"
                     outlineColor="outline-surface-invert"
-                    data-cursor
-                    data-cursor-content="view"
-                    data-cursor-fill="primary"
-                    data-cursor-text-color="secondary"
-                    data-cursor-size="large"
+                    {...cursorPresets.view}
                     className="flex-1 justify-center"
                   >
                     <a href={resumeLink} target="_blank" rel="noopener noreferrer" className="text-h500 font-[450] leading-heading tracking-heading whitespace-nowrap">
@@ -118,10 +107,7 @@ const About = () => {
                       href={resumeLink}
                       target="_blank"
                       rel="noopener noreferrer"
-                      data-cursor
-                      data-cursor-content="View"
-                      data-cursor-fill="primary"
-                      data-cursor-text-color="secondary"
+                      {...cursorPresets.view}
                       className="text-base font-[450] leading-heading tracking-heading text-primary  transition-colors duration-300 underline underline-offset-4 decoration-primary/20 hover:decoration-primary/60"
                     >
                       Resume
@@ -133,10 +119,7 @@ const About = () => {
                   <div className="flex flex-col gap-1">
                     <span className="text-sm text-neutral-400 tracking-wide uppercase">Say hello</span>
                     <a
-                      data-cursor
-                      data-cursor-content="view"
-                      data-cursor-fill="primary"
-                      data-cursor-text-color="secondary"
+                      {...cursorPresets.view}
                       onClick={e => handleNavClick(e, { sectionId: 'contact' })}
                       className="text-base font-[450] leading-heading tracking-heading text-primary transition-colors duration-300 underline underline-offset-4 decoration-primary/20 hover:decoration-primary/60 cursor-pointer"
                     >
