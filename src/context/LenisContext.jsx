@@ -13,15 +13,11 @@ export const useLenis = () => {
   return context;
 };
 
-
-
 export function LenisProvider({ children }) {
   const [lenis, setLenis] = useState(null);
 
   useEffect(() => {
     const lenisInstance = new Lenis({
-      smooth: true,
-      lerp: 1,
       duration: 2,
       wheelMultiplier: 1,
       touchMultiplier: 1,

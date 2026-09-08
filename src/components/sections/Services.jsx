@@ -32,11 +32,11 @@ const Services = () => {
                 key={i}
                 className="flex flex-col pt-8 lg:grid lg:grid-cols-12 lg:gap-8 last:pb-4 not-last:pb-10 lg:last:pb-10 md:not-last:border-b md:not-last:border-on-invert-border"
               >
-                <div className="flex items-center gap-2 mb-4 pb-2 md:mb-0 lg:contents">
+                <div className="flex items-center  mb-4 pb-2 md:mb-0 lg:contents">
                   <div className="text-start text-on-invert-muted lg:col-span-1">
                     <div className="block overflow-clip relative text-on-invert-secondary">
                       <TextReveal as="span" startDelay={0.1} className="block relative text-h400 font-serif font-[450] leading-heading tracking-body">
-                        ({String(service.number).padStart(2, '0')}){' '}
+                        ({String(service.number).padStart(2, '0')})
                       </TextReveal>
                     </div>
                   </div>

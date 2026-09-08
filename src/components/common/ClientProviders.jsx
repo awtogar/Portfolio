@@ -18,7 +18,7 @@ export default function ClientProviders({ children }) {
       <CursorProvider>
         <LoadingProvider>
           <Preloader />
-          <DevBanner />
+          {/* <DevBanner /> */}
           <Header />
           <CustomCursor />
           <AppHandlers />
