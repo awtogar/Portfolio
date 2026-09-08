@@ -18,14 +18,14 @@ const aboutItems = [
   },
 ];
 
-const WhoAmI = () => {
+const About = () => {
   const { handleNavClick } = useNavigation();
   const [openIndex, setOpenIndex] = useState(null);
 
   return (
     <BaseSection sectionID="about">
       <div className="flex flex-col">
-        <HeadLineLabel label="introduce of" headline="About" headlineSuffix="me" />
+        <HeadLineLabel label="(A BIT)" headline="ABOUT ME" />
         <div className="flex flex-col gap-4 mt-s200 md:grid md:grid-cols-12 md:gap-6 lg:gap-8">
           <div className="flex justify-center md:col-span-7 md:justify-start lg:col-span-6">
             <CardParallax
@@ -153,4 +153,4 @@ const WhoAmI = () => {
   );
 };
 
-export default WhoAmI;
+export default About;

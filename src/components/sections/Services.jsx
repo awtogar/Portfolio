@@ -10,12 +10,12 @@ const Services = () => {
         <div className="flex flex-col md:items-end md:grid md:grid-cols-12 md:gap-6 md:px-4">
           <div className="flex flex-col mb-2 md:col-span-5 md:mb-0 md:pt-1 lg:col-span-4 ">
             <TextReveal as="p" className="text-h500 font-[450] leading-body tracking-body text-justify text-on-invert-secondary">
-              {'{so}'}
+              {'(SERVICES)'}
             </TextReveal>
             <h2 className="heading-display text-h200 font-serif text-on-invert-secondary">
               <div className="block overflow-clip relative">
                 <TextReveal as="h2" className="relative block">
-                  What I do?
+                  WHAT I DO
                 </TextReveal>
               </div>
             </h2>

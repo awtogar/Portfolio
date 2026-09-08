@@ -5,27 +5,25 @@ const steps = [
   {
     number: '01',
     title: 'Discover',
-    description: 'Start with the right questions. Goals, audience, constraints and understanding the problem before jumping to solutions.',
+    description: 'Start with the right questions. Understand the goals, audience, and constraints before jumping into solutions.',
     video: heroReels,
   },
   {
     number: '02',
     title: 'Define',
-    description: "Clarity before creativity. I translate what I've learned into a direction — structure, flow, and design intent that keeps decisions grounded.",
+    description: "Clarity before creativity. I turn what I've learned into structure, direction, and clear design intent.",
     video: heroReels,
-
   },
   {
     number: '03',
     title: 'Design',
-    description: 'Visual decisions made with purpose. I move into high fidelity early because I think better when things look real.',
+    description: 'Visual decisions made with purpose. I move into high fidelity early — I think better when things feel real.',
     video: heroReels,
-
   },
   {
     number: '04',
     title: 'Build',
-    description: 'I write the code myself. Design and development in one person means fewer gaps, faster iteration, and output that matches the intent.',
+    description: 'I write the code myself, turning the design into a working experience while keeping the original intent intact.',
     video: heroReels,
   },
 ];
@@ -45,10 +43,7 @@ const StepItem = ({ step }) => {
           mobile  → pl-[25%] biar mulai dari posisi col-3 (sejajar title)
           desktop → w-[50%] sibling kanan, h-full mengisi tinggi row */}
 
-      <span
-        aria-label={`See step ${step.number} in action`}
-        className="block overflow-hidden pt-4 pb-s200 pl-[25%] md:col-span-5 md:pt-0 md:pb-0 md:pl-0 group/video"
-      >
+      <span aria-label={`See step ${step.number} in action`} className="block overflow-hidden pt-4 pb-s200 pl-[25%] md:col-span-5 md:pt-0 md:pb-0 md:pl-0 group/video">
         <div className="overflow-hidden relative w-full aspect-video bg-primary/5 md:h-full md:aspect-6/3">
           <video
             src={step.video}
@@ -71,7 +66,7 @@ const StepItem = ({ step }) => {
 const Process = () => {
   return (
     <BaseSection containerClassName="w-full max-w-[1920px] m-auto">
-      <HeadLineLabel label="My Approach" headline="WORK FLOW" />
+      <HeadLineLabel label="(PROCESS)" headline="HOW I WORK" />
       <ul className="flex flex-col gap-s300">
         {steps.map((step, i) => (
           <StepItem key={step.number} step={step} />

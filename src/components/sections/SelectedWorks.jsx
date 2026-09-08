@@ -8,10 +8,9 @@ import { RiArrowRightSLine } from '@remixicon/react';
 const SelectedWorks = () => {
   const selectedWorks = projects.filter(project => project.selected);
 
-
   return (
     <BaseSection sectionID="works" sectionClassName="overflow-hidden relative section-padding-xy">
-      <HeadLineLabel label="selected" headline="WORK" headlineSuffix="'25" />
+      <HeadLineLabel label="(SELECTED)" headline="WORK" headlineSuffix="'25" />
       <ul className="flex flex-col w-full gap-2 pb-s500 lg:flex-row lg:gap-4 lg:pb-s600">
         {selectedWorks.map(work => (
           <AnimatedCard
