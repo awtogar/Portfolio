@@ -8,7 +8,7 @@ import routinesLogo from '@/assets/images/project/routines.svg';
 import serojaLogo from '@/assets/images/project/seroja.svg';
 
 // Navigation & Contact Data
-export const pages = {
+export const sectionLink = {
   home: {
     title: 'Home',
     href: '/',

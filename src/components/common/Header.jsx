@@ -4,10 +4,10 @@ import { useEffect, useRef, useState, useCallback } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
 import SideBar from './Sidebar';
 import { useLenis, useLoading } from '@/context';
-import { HamburgerButton, ThemeToggleButton, TransitionLink, TextReveal } from '@/components';
+import { HamburgerButton, ThemeToggleButton, LogoLink, TextReveal } from '@/components';
+import { cursorPresets } from '@/cursor';
 import { useDimensions, useTheme } from '@/hooks';
-import Gar from '@/assets/images/brand.svg?react';
-import { pages } from '@/data/data';
+import { sectionLink } from '@/data/data';
 
 const SCROLL_UP_THRESHOLD = 120;
 const SCROLL_DOWN_TRIGGER = 80;
@@ -72,7 +72,7 @@ const Header = () => {
     [lenis, navigateTo, scrollToSection]
   );
 
-  const navPages = Object.values(pages).filter(p => p.href !== '/' || p.sectionId);
+  const navLink = Object.values(sectionLink).filter(p => p.href !== '/' || p.sectionId);
 
   return (
     <header>
@@ -85,40 +85,39 @@ const Header = () => {
         transition={{ duration: 0.3, ease: 'easeInOut' }}
       >
         <div className="mx-auto max-w-[1920px] flex justify-between items-center">
-          {/* LEFT */}
+          {/* logo */}
           <div className="flex items-center">
             <div
               className={`flex items-center font-bold tracking-tighter justify-center md:text-2xl antialiased px-4 h-[60px] mix-blend-difference transition-all duration-300 ${isActive ? 'opacity-0 invisible lg:opacity-100 lg:visible' : 'opacity-100 visible'}`}
             >
-              <TransitionLink to="/" className="relative cursor-pointer text-secondary dark:text-primary" aria-label="Home">
-                <TextReveal as="span" className="relative inline-block" isHero replayOnNavigate startDelay={0.15}>
-                  <Gar className="w-auto md:h-4 lg:h-6 " />
-                </TextReveal>
-              </TransitionLink>
+              <LogoLink startDelay={0.15} />
             </div>
           </div>
 
-          {/* RIGHT */}
+          {/* Navigation */}
           <div className="flex items-center gap-2">
-            {/* md only: theme toggle */}
+
+            {/* theme toggle, hidden by default but show only on md break points*/}
             <div className="hidden md:flex lg:hidden">
               <ThemeToggleButton isActive={isActive} toggleTheme={toggleTheme} />
             </div>
-            {/* mobile + md: hamburger */}
+            {/* Hamburger for navigation smaller breaks point to md, above are hidden */}
             <div className="lg:hidden">
               <HamburgerButton isActive={isActive} onToggle={toggleMenu} />
             </div>
+
+            {/* Navigation that available on lg breakpoints */}
             <div className="hidden lg:flex items-center">
               <nav className="flex items-center">
                 <ul className="flex items-center gap-4 uppercase pt-[0.6rem] text-white text-body-lg">
-                  {navPages.map((page, index) => (
-                    <li key={`${page.href}-${page.sectionId}`} data-cursor data-cursor-magnetic data-cursor-sticky data-cursor-size="small">
+                  {navLink.map((page, index) => (
+                    <li key={`${page.href}-${page.sectionId}`} {...cursorPresets.nav}>
                       <a
                         href={page.sectionId ? `/#${page.sectionId}` : page.href}
                         onClick={e => handleNavClick(e, page)}
                         className="nav-link-hover relative inline-block cursor-pointer overflow-hidden"
                       >
-                        <TextReveal as="span" className="link-text-top relative inline-block" isHero replayOnNavigate startDelay={0.35 + index * 0.1}>
+                        <TextReveal as="span" className="link-text-top relative inline-block" mode="epoch" startDelay={0.35 + index * 0.1}>
                           {page.title}
                         </TextReveal>
                       </a>

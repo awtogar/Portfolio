@@ -5,7 +5,7 @@ import { motion } from 'motion/react';
 import { usePathname } from 'next/navigation';
 import { RiSunLine, RiMoonLine } from '@remixicon/react';
 import { menuSlideLeft } from '@/data/anim/nav';
-import { pages, socials } from '@/data/data';
+import { sectionLink, socials } from '@/data/data';
 import { useLenis, useLoading } from '@/context';
 import { useTheme } from '@/hooks';
 import { NavigationLink, HoverRotate } from '@/components';
@@ -62,7 +62,7 @@ export default function SideBar({ closeMenu, skipExitAnim }) {
               <span>NAVIGATION</span>
             </div>
             <div className="flex flex-col space-y-2 h-full mb-s400 pt-s400 pl-s400">
-              {Object.values(pages).map((data, index) => (
+              {Object.values(sectionLink).map((data, index) => (
                 <NavigationLink
                   key={`${data.href}-${data.sectionId}`}
                   data={{ ...data, index }}

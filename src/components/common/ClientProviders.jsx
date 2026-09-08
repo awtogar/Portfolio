@@ -3,7 +3,7 @@
 import { useEffect } from 'react';
 import { LenisProvider, LoadingProvider } from '@/context';
 import { CursorProvider, CustomCursor } from '@/cursor';
-import { Header, Footer, Preloader, PageTransition, AppHandlers, DevBanner } from '@/components';
+import { HeaderSwitch, Footer, Preloader, PageTransition, AppHandlers, DevBanner } from '@/components';
 
 export default function ClientProviders({ children }) {
   useEffect(() => {
@@ -19,7 +19,7 @@ export default function ClientProviders({ children }) {
         <LoadingProvider>
           <Preloader />
           {/* <DevBanner /> */}
-          <Header />
+          <HeaderSwitch />
           <CustomCursor />
           <AppHandlers />
           <main className="page-container">

@@ -1,6 +1,9 @@
 export { default as ClientProviders } from './common/ClientProviders';
 export { CustomCursor } from '../cursor';
 export { default as Header } from './common/Header';
+export { default as LogoLink } from './common/LogoLink';
+export { default as PageHeader } from './common/PageHeader';
+export { default as HeaderSwitch } from './common/HeaderSwitch';
 export { default as Footer } from './common/Footer';
 export { default as SideBar } from './common/Sidebar';
 export { default as BaseSection } from './common/BaseSection';
