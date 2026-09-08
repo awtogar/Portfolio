@@ -1,12 +1,9 @@
 'use client';
 
 import { useRef, useEffect } from 'react';
-import { gsap } from 'gsap';
-import { SplitText } from 'gsap/SplitText';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { gsap, SplitText, ScrollTrigger } from '@/lib/gsap';
 import { useLoading } from '@/context';
 
-gsap.registerPlugin(SplitText, ScrollTrigger);
 
 const TextReveal = ({
   children,
@@ -18,8 +15,7 @@ const TextReveal = ({
   staggerDelay = 0.075,
   startDelay = 0,
   ready = true,
-  isHero = false,
-  replayOnNavigate = false,
+  mode = 'scroll',
 }) => {
   const { canRevealContent, revealEpoch } = useLoading();
 
@@ -50,7 +46,6 @@ const TextReveal = ({
   useEffect(() => {
     if (!ref.current) return;
 
-    // hide until onSplit fires
     gsap.set(ref.current, { visibility: 'hidden' });
 
     splitRef.current = SplitText.create(ref.current, {
@@ -75,17 +70,19 @@ const TextReveal = ({
     };
   }, []);
 
+  // 'once' — play when canRevealContent flips true, once only
   useEffect(() => {
-    if (!isHero || replayOnNavigate || !ready || !canRevealContent) return;
+    if (mode !== 'once' || !ready || !canRevealContent) return;
     if (splitRef.current) {
       playAnimation();
     } else {
       pendingPlayRef.current = true;
     }
-  }, [canRevealContent, isHero, ready, replayOnNavigate]);
+  }, [canRevealContent, mode, ready]);
 
+  // 'epoch' — reset + replay on every route navigation (revealEpoch bump)
   useEffect(() => {
-    if (!isHero || !replayOnNavigate || !ready || !canRevealContent) return;
+    if (mode !== 'epoch' || !ready || !canRevealContent) return;
 
     hasPlayedRef.current = false;
     if (splitRef.current?.lines) {
@@ -97,10 +94,11 @@ const TextReveal = ({
     } else {
       pendingPlayRef.current = true;
     }
-  }, [canRevealContent, isHero, ready, replayOnNavigate, revealEpoch]);
+  }, [canRevealContent, mode, ready, revealEpoch]);
 
+  // 'scroll' — ScrollTrigger, fires once on viewport entry
   useEffect(() => {
-    if (isHero || !ref.current || !canRevealContent || !ready) return;
+    if (mode !== 'scroll' || !ref.current || !canRevealContent || !ready) return;
 
     stRef.current = ScrollTrigger.create({
       trigger: ref.current,
@@ -116,7 +114,7 @@ const TextReveal = ({
     });
 
     return () => stRef.current?.kill();
-  }, [canRevealContent, ready, isHero, revealEpoch]);
+  }, [canRevealContent, ready, mode, revealEpoch]);
 
   const content = lines
     ? lines.map((line, i) => (

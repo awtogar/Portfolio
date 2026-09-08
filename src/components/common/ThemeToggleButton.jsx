@@ -2,8 +2,8 @@
 
 import { RiSunLine, RiMoonLine } from '@remixicon/react';
 import { motion } from 'motion/react';
-import { useCursorInteraction } from '@/hooks';
 import { TextReveal } from '@/components';
+import { cursorPresets } from '@/cursor';
 
 const ThemeToggleButton = ({ isActive, toggleTheme, ...props }) => {
   return (
@@ -30,11 +30,11 @@ const ThemeToggleButton = ({ isActive, toggleTheme, ...props }) => {
         aria-label="Toggle dark mode"
         type="button"
       >
-        <div className="relative flex h-6 w-6 items-center justify-center" data-cursor data-cursor-magnetic data-cursor-sticky data-cursor-size="large">
-          <TextReveal className="block dark:hidden" isHero replayOnNavigate startDelay={0.55}>
+        <div className="relative flex h-6 w-6 items-center justify-center" {...cursorPresets.nav}>
+          <TextReveal className="block dark:hidden" mode="epoch" startDelay={0.55}>
             <RiSunLine className="block dark:hidden transition-transform duration-300 ease-in-out group-hover:-rotate-90" size={24} />
           </TextReveal>
-          <TextReveal className="hidden dark:block" isHero replayOnNavigate startDelay={0.55}>
+          <TextReveal className="hidden dark:block" mode="epoch" startDelay={0.55}>
             <RiMoonLine className="transition-transform duration-300 ease-in-out group-hover:rotate-45" size={24} />
           </TextReveal>
         </div>

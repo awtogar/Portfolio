@@ -1,8 +1,9 @@
 'use client';
 
 import React, { useRef } from 'react';
-import { motion, useScroll, useTransform } from 'motion/react';
+import { motion } from 'motion/react';
 import { useVideoVisibility } from '@/hooks';
+import { useParallax } from '@/hooks/animations';
 
 const CardParallax = ({
   src,
@@ -17,12 +18,7 @@ const CardParallax = ({
   const { videoRef } = useVideoVisibility({ rootMargin: '100px', threshold: 0.1 });
 
 
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset,
-    layoutEffect: false,
-  });
-  const y = useTransform(scrollYProgress, [0, 1], scrollRange);
+  const y = useParallax(containerRef, { range: scrollRange, offset });
 
   return (
     <div

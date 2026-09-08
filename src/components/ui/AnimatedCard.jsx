@@ -1,7 +1,9 @@
 'use client';
 
 import React, { useRef, useState } from 'react';
-import { motion, useScroll, useTransform } from 'motion/react';
+import { motion } from 'motion/react';
+import { useParallax } from '@/hooks/animations';
+import { cursorPresets } from '@/cursor';
 
 export const MarqueeTags = ({ tags = [], speed = 16 }) => {
   const tagsIndex = tags.join(', ') + ', ';
@@ -61,15 +63,10 @@ const AnimatedCard = ({
   const imageContainerRef = useRef(null);
   const [isHovered, setIsHovered] = useState(false);
 
-  const { scrollYProgress } = useScroll({
-    target: imageContainerRef,
-    offset: ['start end', 'end start'],
-  });
-
-  const parallaxY = useTransform(scrollYProgress, [0, 1], ['-10%', '10%']);
+  const parallaxY = useParallax(imageContainerRef);
 
   return (
-    <Component className={className} data-cursor-idle-fill="secondary" data-cursor-fill="secondary" data-cursor data-cursor-content="view" data-cursor-text="primary" >
+    <Component className={className} {...cursorPresets.view} data-cursor-idle-fill="secondary">
       <LinkComponent
         to={to}
         href={to}
