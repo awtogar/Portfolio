@@ -21,13 +21,6 @@ const TRANSITION_ROUTES = [
       return project ? project.client : 'Projects';
     },
   },
-  {
-    match: (p) => p === '/blogs' || p.startsWith('/blogs/'),
-    getTitle: (to, from) => {
-      if (from && from === '/blogs' && to.startsWith('/blogs/')) return '';
-      return 'Blogs';
-    },
-  },
 ];
 
 function isTransitionRoute(path) {
