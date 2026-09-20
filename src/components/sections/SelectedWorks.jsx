@@ -24,7 +24,7 @@ const SelectedWorks = () => {
             to={`/projects/${work.slug}`}
             LinkComponent={TransitionLink}
           >
-            <CardMeta client={work.client} type={work.type} year={work.year} tags={work.tags} logo={work.logo} />
+            <CardMeta client={work.client} type={work.type} year={work.date?.year} tags={work.tags} logo={work.logo} />
           </AnimatedCard>
         ))}
       </ul>

@@ -11,7 +11,7 @@ const ProjectDetailInfo = ({ project }) => {
           <p className="text-xs font-medium tracking-wider uppercase text-neutral-400 lg:text-[clamp(14px,0.8vw,18px)]">Year</p>
         </div>
         <div className="overflow-hidden">
-          <p className="text-[clamp(48px,3.5vw,96px)] font-semibold leading-[0.8] tracking-tight text-neutral-200">{project.year}</p>
+          <p className="text-[clamp(48px,3.5vw,96px)] font-semibold leading-[0.8] tracking-tight text-neutral-200">{project.date?.year}</p>
         </div>
       </div>
 

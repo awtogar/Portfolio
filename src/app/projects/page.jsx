@@ -49,7 +49,7 @@ export default function ProjectsPage() {
               LinkComponent={TransitionLink}
               imageContainerClassName="aspect-4/3 md:aspect-video lg:aspect-square"
             >
-              <CardMeta client={project.client} type={project.type} year={project.year} tags={project.tags} logo={project.logo} />
+              <CardMeta client={project.client} type={project.type} year={project.date?.year} tags={project.tags} logo={project.logo} />
             </AnimatedCard>
           ))}
         </ul>
