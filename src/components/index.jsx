@@ -25,4 +25,5 @@ export { default as AnimatedCard } from './ui/AnimatedCard';
 export { default as Preloader } from './ui/Preloader';
 export { default as PageTransition } from './ui/PageTransition';
 export { LetterScroll } from './ui/LetterScroll';
+export { CountUp } from './ui/CountUp'
 export { default as DevBanner } from './ui/DevBanner';
