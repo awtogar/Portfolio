@@ -4,7 +4,7 @@ import { useNavigation } from '@/hooks/useNavigation';
 import { useState } from 'react';
 import { cursorPresets } from '@/cursor';
 
-const resumeLink = 'https://example.com/to-download-cv';
+const resumeLink = '/assets/RESUME-AWALUDDIN_TOGAR.pdf';
 
 const aboutItems = [
   {
@@ -98,8 +98,6 @@ const About = () => {
                     </a>
                   </CreativeButton>
                 </div>
-
-                {/* fixed hierarchy */}
                 <div className="hidden md:flex-col md:flex gap-5">
                   <div className="flex flex-col gap-1">
                     <span className="text-sm text-neutral-400 tracking-wide uppercase">Recruiting?</span>

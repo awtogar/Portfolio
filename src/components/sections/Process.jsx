@@ -1,30 +1,30 @@
 import { BaseSection, HeadLineLabel, TextReveal } from '@/components';
-import { heroReels } from '@/assets';
+import { discoverReels,defineReels, designReels, buildReels } from '@/assets';
 
 const steps = [
   {
     number: '01',
     title: 'Discover',
     description: 'Start with the right questions. Understand the goals, audience, and constraints before jumping into solutions.',
-    video: heroReels,
+    video: discoverReels,
   },
   {
     number: '02',
     title: 'Define',
     description: "Clarity before creativity. I turn what I've learned into structure, direction, and clear design intent.",
-    video: heroReels,
+    video: defineReels,
   },
   {
     number: '03',
     title: 'Design',
     description: 'Visual decisions made with purpose. I move into high fidelity early — I think better when things feel real.',
-    video: heroReels,
+    video: designReels,
   },
   {
     number: '04',
     title: 'Build',
     description: 'I write the code myself, turning the design into a working experience while keeping the original intent intact.',
-    video: heroReels,
+    video: buildReels,
   },
 ];
 
