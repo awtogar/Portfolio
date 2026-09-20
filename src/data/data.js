@@ -175,7 +175,7 @@ export const projects = [
     date: { month: 'May', year: '2024' },
     selected: false,
     thumbnail: '/assets/projects/investime/thumbnail.jpg',
-    reels: null,
+    reels: '/assets/projects/investime/reels.webm',
     assets: [{ type: 'image', src: '/assets/projects/investime/thumbnail.jpg', alt: 'Investime+' }],
   },
   {
