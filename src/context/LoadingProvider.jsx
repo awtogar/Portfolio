@@ -21,6 +21,10 @@ const TRANSITION_ROUTES = [
       return project ? project.client : 'Projects';
     },
   },
+  {
+    match: (p) => p === '/',
+    getTitle: () => 'Loading',
+  },
 ];
 
 function isTransitionRoute(path) {
