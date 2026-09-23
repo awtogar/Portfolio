@@ -10,12 +10,12 @@ const aboutItems = [
   {
     title: 'Experience',
     content:
-      'Hey everyone — I’m Awaluddin Togar. I have 2 years of experience as a Graphic Designer, working with clients worldwide through freelancing at @Nostratic.archv from 2022 to 2024.',
+      '2 years freelancing as a Graphic Designer for clients worldwide (@nostratic.archv), followed by two internships: Assets & Art Data Administrator at Kompas Gramedia/Bentara Budaya (MSIB Batch 7), and IT Operations & Digital Strategic at Bank Negara Indonesia (Kemnaker program).',
   },
   {
     title: 'Education',
     content:
-      'I’m a fresh graduate from Universitas Nusa Mandiri with a 3.8 GPA, graduating in August 2025. I’ve also gained experience through internships at several established companies.',
+      'Fresh graduate in Information Systems from Universitas Nusa Mandiri, graduating in August 2025 with a GPA of 3.88.',
   },
 ];
 
@@ -38,38 +38,71 @@ const About = () => {
           </div>
           <div className="md:col-span-5 lg:col-span-6 ">
             <div className="flex flex-col justify-between h-full gap-s400">
-              <div className="mt-4 md:mt-2 flex flex-1 flex-col justify-center">
-                {aboutItems.map((item, index) => {
-                  const isOpen = openIndex === index;
-                  return (
-                    <div key={item.title} className={`border-b border-primary/15 ${index === 0 ? 'border-t' : ''}`}>
-                      <button
-                        {...cursorPresets.click}
+              <div className="mt-4 md:mt-2 flex flex-1 flex-col">
+                <div className="mb-s200">
+                  <span className="inline-flex items-center gap-2 px-3 py-1.5 text-sm uppercase text-primary">
+                    <span className="relative flex w-2 h-2">
+                      <span className="absolute inset-0 rounded-full bg-current" />
+                      <span className="relative w-2 h-2 rounded-full bg-current" />
+                    </span>
+                    Open to work
+                  </span>
+                </div>
 
-                        type="button"
-                        onClick={() => setOpenIndex(isOpen ? null : index)}
-                        className="w-full flex items-center justify-between gap-6 py-s200 text-left cursor-pointer"
-                      >
-                        <span className="flex items-center gap-4">
-                          <span className={`text-h500 font-[450] leading-heading tracking-heading ${isOpen ? 'text-primary/50' : ''}`}>{item.title}</span>
-                        </span>
-                        <span className={`text-xl leading-none transition-transform duration-300 ${isOpen ? 'rotate-45' : 'rotate-0'}`}>+</span>
-                      </button>
+                <div className="flex flex-col md:flex-1 md:justify-center">
+                  {aboutItems.map((item, index) => {
+                    const isOpen = openIndex === index;
+                    const isDimmed = openIndex !== null && !isOpen;
+                    return (
+                      <div key={item.title} className={`border-b border-primary/15 ${index === 0 ? 'border-t' : ''}`}>
+                        <button
+                          {...cursorPresets.click}
+                          type="button"
+                          aria-expanded={isOpen}
+                          aria-controls={`about-panel-${index}`}
+                          onClick={() => setOpenIndex(isOpen ? null : index)}
+                          className="w-full grid grid-cols-[2.5rem_1fr_auto] items-center py-s200 text-left cursor-pointer group"
+                        >
+                          <span className="text-sm text-neutral-400 tabular-nums">
+                            {String(index + 1).padStart(2, '0')}
+                          </span>
+                          <span
+                            className={`text-h500 font-[450] leading-heading tracking-heading transition-colors duration-300 group-hover:text-primary ${isDimmed ? 'text-primary/40' : 'text-primary'
+                              }`}
+                          >
+                            {item.title}
+                          </span>
+                          <span className="relative w-3 h-3 shrink-0 text-primary" aria-hidden="true">
+                            <span className="absolute left-0 right-0 top-1/2 h-px -translate-y-1/2 bg-current" />
+                            <span
+                              className={`absolute top-0 bottom-0 left-1/2 w-px -translate-x-1/2 bg-current transition-transform duration-300 ${isOpen ? 'scale-y-0' : 'scale-y-100'
+                                }`}
+                            />
+                          </span>
+                        </button>
 
-                      <div className="grid transition-all duration-400 ease-out overflow-hidden" style={{ gridTemplateRows: isOpen ? '1fr' : '0fr' }}>
-                        <div className="overflow-hidden">
-                          <div className="block relative pb-s200">
-                            <TextReveal as="p" className={`text-base font-[450] text-neutral-400 leading-body tracking-body text-justify ${isOpen ? 'text-primary/80' : ''}`}>
-                              <span>{item.content}</span>
-                            </TextReveal>
+                        <div
+                          id={`about-panel-${index}`}
+                          aria-hidden={!isOpen}
+                          className="grid transition-all duration-400 ease-out overflow-hidden"
+                          style={{ gridTemplateRows: isOpen ? '1fr' : '0fr' }}
+                        >
+                          <div className="overflow-hidden">
+                            <div className="relative pl-10 pb-s200">
+                              <TextReveal
+                                as="p"
+                                className="text-base font-[450] leading-body tracking-body text-left text-primary/80 max-w-[52ch]"
+                              >
+                                <span>{item.content}</span>
+                              </TextReveal>
+                            </div>
                           </div>
                         </div>
                       </div>
-                    </div>
-                  );
-                })}
+                    );
+                  })}
+                </div>
               </div>
-
               <div className="block relative">
                 <div className="flex gap-3 md:hidden">
                   <CreativeButton
