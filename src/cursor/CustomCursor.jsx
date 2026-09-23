@@ -37,7 +37,7 @@ const CustomCursor = () => {
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0 }}
             transition={{ duration: 0.2, ease: 'easeOut' }}
-            className={`w-full h-full flex items-center justify-center font-secondary font-bold text-sm tracking-tight pointer-events-none ${cursorTextColor}`}
+            className={`w-full h-full flex items-center justify-center font-secondary font-bold text-base-sm tracking-tight pointer-events-none ${cursorTextColor}`}
           >
             {displayContent}
           </motion.div>

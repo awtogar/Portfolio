@@ -58,7 +58,7 @@ export default function SideBar({ closeMenu, skipExitAnim }) {
             }}
             className="flex flex-col gap-2 mt-s600 h-full"
           >
-            <div className="text-primary border-b border-secondary/35">
+            <div className="text-primary text-xs border-b border-secondary/35">
               <span>NAVIGATION</span>
             </div>
             <div className="flex flex-col space-y-2 h-full mb-s400 pt-s400 pl-s400">
@@ -76,7 +76,7 @@ export default function SideBar({ closeMenu, skipExitAnim }) {
           </div>
           <div className="flex justify-between">
             <div className="flex flex-col space-y-2 md:space-y-4 justify-start md:w-full items-start">
-              <span className="text-primary text-sm">Social</span>
+              <span className="text-primary text-xs">Social</span>
 
               <div className="flex flex-col md:flex-row md:gap-4 md:text-base-sm items-start w-full">
                 {socials.map(data => (
@@ -87,7 +87,7 @@ export default function SideBar({ closeMenu, skipExitAnim }) {
               </div>
             </div>
             <div className="flex md:hidden flex-col items-center space-y-2">
-              <span className="text-primary/55 text-sm">Theme</span>
+              <span className="text-primary/55 text-base-sm">Theme</span>
               <button
                 onClick={toggleTheme}
                 className="flex flex-col w-8 h-full bg-neutral-200/85 rounded-full p-[3px]"

@@ -40,7 +40,7 @@ const About = () => {
             <div className="flex flex-col justify-between h-full gap-s400">
               <div className="mt-4 md:mt-2 flex flex-1 flex-col">
                 <div className="mb-s200">
-                  <span className="inline-flex items-center gap-2 px-3 py-1.5 text-sm uppercase text-primary">
+                  <span className="inline-flex items-center gap-2 px-3 py-1.5 text-base-sm uppercase text-primary">
                     <span className="relative flex w-2 h-2">
                       <span className="absolute inset-0 rounded-full bg-current" />
                       <span className="relative w-2 h-2 rounded-full bg-current" />
@@ -63,7 +63,7 @@ const About = () => {
                           onClick={() => setOpenIndex(isOpen ? null : index)}
                           className="w-full grid grid-cols-[2.5rem_1fr_auto] items-center py-s200 text-left cursor-pointer group"
                         >
-                          <span className="text-sm text-neutral-400 tabular-nums">
+                          <span className="text-base-sm text-neutral-400 tabular-nums">
                             {String(index + 1).padStart(2, '0')}
                           </span>
                           <span
@@ -133,7 +133,7 @@ const About = () => {
                 </div>
                 <div className="hidden md:flex-col md:flex gap-5">
                   <div className="flex flex-col gap-1">
-                    <span className="text-sm text-neutral-400 tracking-wide uppercase">Recruiting?</span>
+                    <span className="text-base-sm text-neutral-400 tracking-wide uppercase">Recruiting?</span>
                     <a
                       href={resumeLink}
                       target="_blank"
@@ -148,7 +148,7 @@ const About = () => {
                   <div className="w-px self-stretch bg-primary/15" />
 
                   <div className="flex flex-col gap-1">
-                    <span className="text-sm text-neutral-400 tracking-wide uppercase">Say hello</span>
+                    <span className="text-base-sm text-neutral-400 tracking-wide uppercase">Say hello</span>
                     <a
                       {...cursorPresets.view}
                       onClick={e => handleNavClick(e, { sectionId: 'contact' })}

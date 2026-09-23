@@ -28,7 +28,7 @@ function CTASection() {
         </div>
       </div>
       <div className="flex flex-row items-start md:items-center justify-between gap-4 md:gap-6 pt-4">
-        <div className="flex items-center gap-6 text-xs md:text-sm text-primary/50 font-normal">
+        <div className="flex items-center gap-6 text-xs md:text-base-sm text-primary/50 font-normal">
           <span>
             {contact_info.credits} {contact_info.copyright}
           </span>
