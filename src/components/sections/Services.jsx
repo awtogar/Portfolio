@@ -3,6 +3,8 @@ import { services } from '@/data/data';
 import { BaseSection, CardParallax, TextReveal } from '@/components';
 
 const Services = () => {
+  const servicesCaption = 'I have multiple skillsets that can help bring an idea to life, from concept to code, and i’m open for freelance work or collaboration.'
+
   return (
     <BaseSection sectionID="services">
       {/* when cursor hit this element. they color should be not the same as background */}
@@ -21,9 +23,7 @@ const Services = () => {
             </h2>
           </div>
 
-          <TextReveal as="p" startDelay={0.15} className="text-h500 font-[450] leading-body tracking-body text-on-invert-secondary md:col-span-7 md:text-justify lg:col-span-8">
-            Design and development - handled by one person. No handoff & no translation loss.
-          </TextReveal>
+          <TextReveal as="p" startDelay={0.15} className="text-h500 font-[450] leading-body tracking-body text-on-invert-secondary md:col-span-7 md:text-justify lg:col-span-8">{servicesCaption}</TextReveal>
         </div>
         <div className="flex flex-col px-4 bg-surface-invert-raised rounded-xl lg:px-5 lg:rounded-2xl">
           <ul className="flex flex-col">
