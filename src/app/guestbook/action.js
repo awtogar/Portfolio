@@ -26,7 +26,7 @@ export async function submitEntry(formData) {
 
     const message = formData.get('message')?.toString().trim()
     if (!message) throw new Error('Message is empty')
-    if (message.length > 500) throw new Error('Message too long')
+    if (message.length > 250) throw new Error('Message was too long')
 
     const username =
         user.user_metadata?.user_name ||

@@ -13,6 +13,20 @@ export const cursorPresets = {
     'data-cursor-text-color': 'secondary',
     'data-cursor-size': 'large',
   },
+  signIn: {
+    'data-cursor': true,
+    'data-cursor-content': 'sign in',
+    'data-cursor-fill': 'primary',
+    'data-cursor-text-color': 'secondary',
+    'data-cursor-size': 'large',
+  },
+  submit: {
+    'data-cursor': true,
+    'data-cursor-content': 'submit',
+    'data-cursor-fill': 'primary',
+    'data-cursor-text-color': 'secondary',
+    'data-cursor-size': 'large',
+  },
   click: {
     'data-cursor': true,
     'data-cursor-content': 'Click',
