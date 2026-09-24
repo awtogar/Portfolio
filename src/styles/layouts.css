@@ -17,11 +17,6 @@
     padding-bottom: clamp(2.5rem, 5vw, 4rem);
   }
 
-  .section-padding-end {
-    /* not defined currently */
-    @apply px-0;
-  }
-
   .textTransition {
     @apply text-secondary text-center transition-transform uppercase will-change-transform;
     font-size: var(--text-h100) !important;
