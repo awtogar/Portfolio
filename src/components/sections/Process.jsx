@@ -1,5 +1,5 @@
 import { BaseSection, HeadLineLabel, TextReveal } from '@/components';
-import { discoverReels,defineReels, designReels, buildReels } from '@/assets';
+import { discoverReels, defineReels, designReels, buildReels } from '@/assets';
 
 const steps = [
   {
@@ -66,7 +66,7 @@ const StepItem = ({ step }) => {
 const Process = () => {
   return (
     <BaseSection containerClassName="w-full max-w-[1920px] m-auto">
-      <HeadLineLabel label="(PROCESS)" headline="HOW I WORK" />
+      <HeadLineLabel label="(PROCESS)" headline="STEPS" />
       <ul className="flex flex-col gap-s300">
         {steps.map((step, i) => (
           <StepItem key={step.number} step={step} />

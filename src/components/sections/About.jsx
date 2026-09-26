@@ -26,19 +26,19 @@ const About = () => {
   return (
     <BaseSection sectionID="about">
       <div className="flex flex-col">
-        <HeadLineLabel label="(A BIT)" headline="ABOUT ME" />
-        <div className="flex flex-col gap-4 mt-s200 md:grid md:grid-cols-12 md:gap-6 lg:gap-8">
+        <HeadLineLabel className='pb-4' label="(A LITTLE BIT)" headline="ABOUT ME" />
+        <div className="flex flex-col gap-4 md:grid-cols-12 md:grid md:gap-6 lg:gap-8">
           <div className="flex justify-center md:col-span-7 md:justify-start lg:col-span-6">
             <CardParallax
               src={aboutImages}
               alt="Awaluddin Togar"
               scrollRange={['-4%', '4%']}
-              containerClassName="w-full max-h-[60vh] aspect-[3/4] rounded-xl md:w-auto md:h-[65vh] md:max-w-full md:max-h-[70vh] md:aspect-[3/4] lg:h-[70vh] lg:max-w-full lg:max-h-[75vh] lg:aspect-[9/10]"
-            />
+              objectPosition="top"
+              containerClassName="w-full max-h-[60vh] aspect-[3/4] rounded-xl md:h-auto md:w-full md:max-w-[560px] md:aspect-[3/4] lg:max-w-[640px] lg:aspect-[4/5]" />
           </div>
           <div className="md:col-span-5 lg:col-span-6 ">
             <div className="flex flex-col justify-between h-full gap-s400">
-              <div className="mt-4 md:mt-2 flex flex-1 flex-col">
+              <div className="mt-4 md:mt-0 flex flex-1 flex-col">
                 <div className="mb-s200">
                   <span className="inline-flex items-center gap-2 px-3 py-1.5 text-base-sm uppercase text-primary">
                     <span className="relative flex w-2 h-2">
@@ -131,7 +131,7 @@ const About = () => {
                     </a>
                   </CreativeButton>
                 </div>
-                <div className="hidden md:flex-col md:flex gap-5">
+                <div className="hidden md:flex-col md:flex gap-3">
                   <div className="flex flex-col gap-1">
                     <span className="text-base-sm text-neutral-400 tracking-wide uppercase">Recruiting?</span>
                     <a

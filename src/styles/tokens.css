@@ -56,7 +56,7 @@
   --display-sm: clamp(3.5rem, 8vw, 6rem);
   --display-xs: clamp(3rem, 7vw, 5rem);
   /* Heading */
-  --h100: clamp(3.0518rem, 2.3786rem + 2.9919vw, 3.8147rem);
+  --h100: clamp(2.75rem, 2.15rem + 2.6vw, 3.4rem);
   --h200: clamp(2.4414rem, 1.9029rem + 2.3935vw, 3.0518rem);
   --h300: clamp(1.9531rem, 1.5223rem + 1.9148vw, 2.4414rem);
   --h400: clamp(1.5625rem, 1.2178rem + 1.5319vw, 1.9531rem);

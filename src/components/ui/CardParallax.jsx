@@ -13,6 +13,7 @@ const CardParallax = ({
   scrollRange = ['-10%', '10%'],
   offset = ['start end', 'end start'],
   containerClassName = '',
+  objectPosition = 'center',
 }) => {
   const containerRef = useRef(null);
   const { videoRef } = useVideoVisibility({ rootMargin: '100px', threshold: 0.1 });
@@ -39,6 +40,7 @@ const CardParallax = ({
             loop
             preload="metadata"
             className="w-full h-full object-cover"
+            style={{ objectPosition }}
           />
         ) : (
           <img
@@ -47,6 +49,7 @@ const CardParallax = ({
             loading="lazy"
             decoding="async"
             className="w-full h-full object-cover"
+            style={{ objectPosition }}
           />
         )}
       </motion.div>
