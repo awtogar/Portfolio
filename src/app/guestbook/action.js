@@ -37,7 +37,7 @@ export async function submitEntry(formData) {
 
     const { error } = await supabase.from('guestbook').insert({
         user_id: user.id,
-        username,
+        github_username: username,
         avatar_url: user.user_metadata?.avatar_url ?? null,
         message,
     })
@@ -60,6 +60,38 @@ export async function deleteEntry(id) {
         .eq('id', id)
 
     if (error) throw new Error(error.message)
+
+    revalidatePath('/guestbook')
+}
+
+export async function toggleLike(guestbookId) {
+    const supabase = await createClient()
+
+    const { data: { user } } = await supabase.auth.getUser()
+    if (!user) throw new Error('Not authenticated')
+    if (!guestbookId) throw new Error('Invalid ID')
+
+    const { data: existing, error: fetchError } = await supabase
+        .from('guestbook_likes')
+        .select('id')
+        .eq('guestbook_id', guestbookId)
+        .eq('user_id', user.id)
+        .maybeSingle()
+
+    if (fetchError) throw new Error(fetchError.message)
+
+    if (existing) {
+        const { error } = await supabase
+            .from('guestbook_likes')
+            .delete()
+            .eq('id', existing.id)
+        if (error) throw new Error(error.message)
+    } else {
+        const { error } = await supabase
+            .from('guestbook_likes')
+            .insert({ guestbook_id: guestbookId, user_id: user.id })
+        if (error) throw new Error(error.message)
+    }
 
     revalidatePath('/guestbook')
 }
