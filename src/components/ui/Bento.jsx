@@ -25,18 +25,18 @@ export default function Bento() {
 
       <TransitionLink
         {...cursorPresets.view}
-        to="/projects"
+        to="/guestbook"
         className={`col-span-12 lg:col-span-8 h-[200px] lg:h-[350px] ${cardClass}`}
       >
-        Project
+        Guestbook
       </TransitionLink>
 
       <TransitionLink
         {...cursorPresets.view}
-        to="/blogs"
+        to="/writing"
         className={`col-span-12 lg:col-span-4 h-[200px] lg:h-[350px] ${cardClass}`}
       >
-        Blogs
+        Writing
       </TransitionLink>
 
       <div className="col-span-12 lg:col-span-4 grid grid-cols-2 lg:grid-rows-2 gap-2 lg:gap-4">
