@@ -26,7 +26,7 @@ const About = () => {
   return (
     <BaseSection sectionID="about">
       <div className="flex flex-col">
-        <HeadLineLabel className='pb-4' label="(A LITTLE BIT)" headline="ABOUT ME" />
+        <HeadLineLabel headline1Classname='text-h200' headline2Classname='text-h200' className='pb-4' label="(A LITTLE BIT)" headline="ABOUT ME" />
         <div className="flex flex-col gap-4 md:grid-cols-12 md:grid md:gap-6 lg:gap-8">
           <div className="flex justify-center md:col-span-7 md:justify-start lg:col-span-6">
             <CardParallax
