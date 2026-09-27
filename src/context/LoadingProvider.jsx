@@ -14,15 +14,23 @@ export function useLoading() {
 
 const TRANSITION_ROUTES = [
   {
-    match: (p) => p === '/projects' || p.startsWith('/projects/'),
-    getTitle: (p) => {
+    // Projects route transition
+    match: p => p === '/projects' || p.startsWith('/projects/'),
+    getTitle: p => {
       const slug = p.split('/')[2];
       const project = projects.find(pr => pr.slug === slug);
       return project ? project.client : 'Projects';
     },
   },
+
   {
-    match: (p) => p === '/',
+    // Guestbook route transition
+    match: p => p === '/guestbook' || p.startsWith('/guestbook/'),
+    getTitle: () => 'Welcome',
+  },
+  {
+    // Home route back transition
+    match: p => p === '/',
     getTitle: () => 'Loading',
   },
 ];
