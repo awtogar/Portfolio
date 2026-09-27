@@ -13,6 +13,8 @@ const HeadLineLabel = ({
   // suffixDelay = 0.25,
   className = '',
   headlineLayout = 'flex items-end justify-between',
+  headline1Classname = 'text-h100',
+  headline2Classname = 'text-h100',
 }) => {
   return (
     <div className={`flex flex-col ${className}`}>
@@ -22,12 +24,12 @@ const HeadLineLabel = ({
         </TextReveal>
       </div>
       <div className={`${headlineLayout} w-full mb-s200`}>
-        <TextReveal as="h2" style={{ lineHeight: '0.86' }} className="text-h100 tracking-heading font-serif font-bold" startDelay={headlineDelay}>
+        <TextReveal as="h2" style={{ lineHeight: '0.86' }} className={`${headline1Classname} tracking-heading font-serif font-bold`} startDelay={headlineDelay}>
           {headline}
         </TextReveal>
         {headlineSuffix && (
           <div className="flex flex-col items-end gap-1 pb-1 lg:pb-2">
-            <TextReveal as="h2" style={{ lineHeight: '0.86' }} className="text-h100 tracking-heading font-serif font-bold" startDelay={suffixDelay}>
+            <TextReveal as="h2" style={{ lineHeight: '0.86' }} className={`${headline2Classname} tracking-heading font-serif font-bold`} startDelay={suffixDelay}>
               {headlineSuffix}
             </TextReveal>
           </div>
