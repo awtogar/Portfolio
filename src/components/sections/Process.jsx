@@ -1,5 +1,6 @@
 import { BaseSection, HeadLineLabel, TextReveal } from '@/components';
 import { discoverReels, defineReels, designReels, buildReels } from '@/assets';
+import { RiArrowRightBoxFill } from '@remixicon/react';
 
 const steps = [
   {
@@ -32,17 +33,14 @@ const StepItem = ({ step }) => {
   return (
     <li className={`flex flex-col md:grid md:grid-cols-12 group`}>
       <div className="grid grid-cols-8 items-start gap-s100 pt-s200 md:col-span-7 md:pt-s500 md:pr-s200">
-        <span className="col-span-2 pt-2 text-base-sm leading-none text-primary-muted md:pt-s100">Step • {step.number}</span>
+        <span className="col-span-2 inline-flex items-center gap-1 whitespace-nowrap pt-2 text-base-sm leading-none text-primary-muted md:pt-s100">
+          STEPS <RiArrowRightBoxFill size={18} className="-my-1 shrink-0" /> {step.number}
+        </span>
         <div className="flex flex-col col-span-6 gap-s200">
           <h3 className="heading-display text-h400 font-bold leading-tight">{step.title}</h3>
-          <p className="max-w-[40ch] text-base-sm leading-body text-primary-muted">{step.description}</p>
+          <p className="max-w-[40ch] text-base leading-body text-primary-muted">{step.description}</p>
         </div>
       </div>
-
-      {/* Video:
-          mobile  → pl-[25%] biar mulai dari posisi col-3 (sejajar title)
-          desktop → w-[50%] sibling kanan, h-full mengisi tinggi row */}
-
       <span aria-label={`See step ${step.number} in action`} className="block overflow-hidden pt-4 pb-s200 pl-[25%] md:col-span-5 md:pt-0 md:pb-0 md:pl-0 group/video">
         <div className="overflow-hidden relative w-full aspect-video bg-primary/5 md:h-full md:aspect-6/3">
           <video
@@ -66,7 +64,7 @@ const StepItem = ({ step }) => {
 const Process = () => {
   return (
     <BaseSection containerClassName="w-full max-w-[1920px] m-auto">
-      <HeadLineLabel label="(PROCESS)" headline="STEPS" />
+      <HeadLineLabel label="(STEP BY STEP)" headline="PROCESS" />
       <ul className="flex flex-col gap-s300">
         {steps.map((step, i) => (
           <StepItem key={step.number} step={step} />

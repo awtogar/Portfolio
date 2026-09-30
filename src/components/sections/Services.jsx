@@ -3,7 +3,8 @@ import { services } from '@/data/data';
 import { BaseSection, CardParallax, TextReveal } from '@/components';
 
 const Services = () => {
-  const servicesCaption = 'I have multiple skillsets that can help bring an idea to life, from concept to code, and i’m open for freelance work or collaboration.'
+  const servicesCaption =
+    'I have different skills that could help turn an idea into something real or just from small concept to turn it into  visual design and i’m open for freelance work or collaboration.';
 
   return (
     <BaseSection sectionID="services">
@@ -23,7 +24,9 @@ const Services = () => {
             </h2>
           </div>
 
-          <TextReveal as="p" startDelay={0.15} className="text-h500 font-[450] leading-body tracking-body text-on-invert-secondary md:col-span-7 md:text-justify lg:col-span-8">{servicesCaption}</TextReveal>
+          <TextReveal as="p" startDelay={0.15} className="text-h500 font-[450] leading-body tracking-body text-on-invert-secondary md:col-span-7 md:text-justify lg:col-span-8">
+            {servicesCaption}
+          </TextReveal>
         </div>
         <div className="flex flex-col px-4 bg-surface-invert-raised rounded-xl lg:px-5 lg:rounded-2xl">
           <ul className="flex flex-col">
@@ -32,7 +35,7 @@ const Services = () => {
                 key={i}
                 className="flex flex-col pt-8 lg:grid lg:grid-cols-12 lg:gap-8 last:pb-4 not-last:pb-10 lg:last:pb-10 md:not-last:border-b md:not-last:border-on-invert-border"
               >
-                <div className="flex items-center  mb-4 pb-2 md:mb-0 lg:contents">
+                <div className="flex items-center gap-2 mb-4 pb-2 md:mb-0 lg:contents">
                   <div className="text-start text-on-invert-muted lg:col-span-1">
                     <div className="block overflow-clip relative text-on-invert-secondary">
                       <TextReveal as="span" startDelay={0.1} className="block relative text-h400 font-serif font-[450] leading-heading tracking-body">
