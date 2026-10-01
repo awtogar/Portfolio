@@ -2,11 +2,11 @@
 
 import { usePathname } from 'next/navigation';
 import Header from './Header';
-import PageHeader from './PageHeader';
+import AlternativeHeader from './AlternativeHeader';
 
 const HeaderSwitch = () => {
   const pathname = usePathname();
-  return pathname === '/' ? <Header /> : <PageHeader />;
+  return pathname === '/' ? <Header /> : <AlternativeHeader />;
 };
 
 export default HeaderSwitch;

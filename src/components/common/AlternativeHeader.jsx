@@ -4,7 +4,7 @@ import { motion } from 'motion/react';
 import { LogoLink, ThemeToggleButton } from '@/components';
 import { useTheme } from '@/hooks';
 
-const PageHeader = () => {
+const AlternativeHeader = () => {
   const { toggleTheme } = useTheme();
 
   return (
@@ -26,4 +26,4 @@ const PageHeader = () => {
   );
 };
 
-export default PageHeader;
+export default AlternativeHeader;
