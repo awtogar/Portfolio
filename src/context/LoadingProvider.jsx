@@ -28,6 +28,11 @@ const TRANSITION_ROUTES = [
     match: p => p === '/guestbook' || p.startsWith('/guestbook/'),
     getTitle: () => 'Welcome',
   },
+    {
+    // Writing route transition
+    match: p => p === '/writing' || p.startsWith('/writing/'),
+    getTitle: () => 'Writing',
+  },
   {
     // Home route back transition
     match: p => p === '/',
