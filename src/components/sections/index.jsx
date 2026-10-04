@@ -5,6 +5,5 @@ export { default as Services } from './Services';
 export { default as Process } from './Process';
 export { default as SelectedWorks } from './SelectedWorks';
 export { default as Stack } from './Stack';
-export { default as Testimonial } from './Testimonial';
 
 export * from './project-detail';
