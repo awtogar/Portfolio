@@ -1,2 +1,2 @@
-export { LoadingProvider, useLoading } from './LoadingProvider';
+export { PreloaderProvider, usePreloader } from './PreloaderProvider';
 export { LenisProvider, useLenis } from './LenisContext';

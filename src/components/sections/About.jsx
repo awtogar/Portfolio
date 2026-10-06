@@ -1,6 +1,5 @@
 import { BaseSection, CardParallax, CreativeButton, TextReveal, HeadLineLabel, HoverRotate } from '@/components';
 import { aboutImages } from '@/assets';
-import { useNavigation } from '@/hooks/useNavigation';
 import { useState } from 'react';
 import { cursorPresets } from '@/cursor';
 
@@ -18,7 +17,6 @@ const aboutItems = [
 ];
 
 const About = () => {
-  const { handleNavClick } = useNavigation();
   const [openIndex, setOpenIndex] = useState(null);
 
   return (
@@ -143,7 +141,7 @@ const About = () => {
                     <span className="text-base-sm text-neutral-400 tracking-wide uppercase">Say hello</span>
                     <a
                       {...cursorPresets.view}
-                      onClick={e => handleNavClick(e, { sectionId: 'contact' })}
+                      href="#contact"
                       className="text-base font-[450] leading-heading tracking-heading text-primary transition-colors duration-300 underline underline-offset-4 decoration-primary/20 hover:decoration-primary/60 cursor-pointer"
                     >
                       Connect

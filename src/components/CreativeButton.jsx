@@ -2,7 +2,7 @@
 
 import { useState, forwardRef } from 'react';
 import { motion } from 'motion/react';
-import { useLoading } from '@/context';
+import { useRouter } from 'next/navigation';
 
 const MotionA = motion.create('a');
 const MotionButton = motion.create('button');
@@ -35,7 +35,7 @@ const CreativeButton = forwardRef(function CreativeButton(
   ref
 ) {
   const [isHovering, setIsHovering] = useState(false);
-  const { navigateTo } = useLoading();
+  const router = useRouter();
 
   const sizeClasses = SIZE_VARIANTS[size] || SIZE_VARIANTS.md;
 
@@ -58,7 +58,7 @@ const CreativeButton = forwardRef(function CreativeButton(
       onClick: e => {
         e.preventDefault();
         if (onClick) onClick(e);
-        navigateTo(to);
+        router.push(to);
       },
       ...props,
     };

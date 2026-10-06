@@ -5,7 +5,7 @@ import { Footer } from '@/components';
 
 export default function HomePage() {
   return (
-    <>
+    <main className='bg-neutral-100'>
       <Hero />
       <Showreel />
       <About />
@@ -14,6 +14,6 @@ export default function HomePage() {
       <SelectedWorks />
       <Stack />
       <Footer />
-    </>
+    </main>
   );
 }

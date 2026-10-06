@@ -1,9 +1,17 @@
-import React from 'react'
+import React from 'react';
+import { BaseSection } from '@/components';
 
-export default function page() {
+const Page = () => {
   return (
-    <div className='flex items-center justify-center h-screen'>
-      <h1>Writing</h1>
-    </div>
-  )
-}
+    <main>
+      <BaseSection>
+        <div className="relative h-screen flex justify-center items-center overflow-hidden p-[2.5rem] ">
+          <h1 className='uppercase text-[clamp[2rem, 15vw, 15rem]] font-500'>COMING SOON</h1>
+        </div>
+      </BaseSection>
+
+    </main>
+  );
+};
+
+export default Page;

@@ -2,22 +2,10 @@
 
 import { useRef, useEffect } from 'react';
 import { gsap, SplitText, ScrollTrigger } from '@/lib/gsap';
-import { useLoading } from '@/context';
+import { usePreloader } from '@/context';
 
-
-const TextReveal = ({
-  children,
-  lines,
-  lineClassName,
-  as: Component = 'div',
-  className = '',
-  style,
-  staggerDelay = 0.075,
-  startDelay = 0,
-  ready = true,
-  mode = 'scroll',
-}) => {
-  const { canRevealContent, revealEpoch } = useLoading();
+const TextReveal = ({ children, lines, lineClassName, as: Component = 'div', className = '', style, staggerDelay = 0.075, startDelay = 0, ready = true }) => {
+  const { isReady } = usePreloader();
 
   const ref = useRef(null);
   const splitRef = useRef(null);
@@ -70,35 +58,8 @@ const TextReveal = ({
     };
   }, []);
 
-  // 'once' — play when canRevealContent flips true, once only
   useEffect(() => {
-    if (mode !== 'once' || !ready || !canRevealContent) return;
-    if (splitRef.current) {
-      playAnimation();
-    } else {
-      pendingPlayRef.current = true;
-    }
-  }, [canRevealContent, mode, ready]);
-
-  // 'epoch' — reset + replay on every route navigation (revealEpoch bump)
-  useEffect(() => {
-    if (mode !== 'epoch' || !ready || !canRevealContent) return;
-
-    hasPlayedRef.current = false;
-    if (splitRef.current?.lines) {
-      gsap.set(splitRef.current.lines, { yPercent: 100 });
-    }
-
-    if (splitRef.current) {
-      playAnimation();
-    } else {
-      pendingPlayRef.current = true;
-    }
-  }, [canRevealContent, mode, ready, revealEpoch]);
-
-  // 'scroll' — ScrollTrigger, fires once on viewport entry
-  useEffect(() => {
-    if (mode !== 'scroll' || !ref.current || !canRevealContent || !ready) return;
+    if (!ref.current || !isReady || !ready) return;
 
     stRef.current = ScrollTrigger.create({
       trigger: ref.current,
@@ -114,7 +75,7 @@ const TextReveal = ({
     });
 
     return () => stRef.current?.kill();
-  }, [canRevealContent, ready, mode, revealEpoch]);
+  }, [isReady, ready]);
 
   const content = lines
     ? lines.map((line, i) => (

@@ -1,5 +1,7 @@
-import ClientProviders from '@/components/common/ClientProviders';
 import '@/styles/globals.css';
+import { LenisProvider, PreloaderProvider } from '@/context';
+import { CursorProvider, CustomCursor } from '@/cursor';
+
 
 export const metadata = {
   title: 'Awaluddin Togar | Portfolio',
@@ -12,8 +14,14 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body suppressHydrationWarning>
-        <ClientProviders>{children}</ClientProviders>
+      <body suppressHydrationWarning className="bg-black">
+        <LenisProvider>
+          <CursorProvider>
+            <PreloaderProvider root>
+              {children}
+            </PreloaderProvider>
+          </CursorProvider>
+        </LenisProvider>
       </body>
     </html>
   );

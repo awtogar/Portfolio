@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from 'react';
 import { cn } from '@/lib/utils';
 import { motion } from 'motion/react';
 import { BaseSection } from '@/components';
-import { LetterScroll } from '@/components/ui/LetterScroll';
+import { LetterScroll } from '@/components/LetterScroll';
 import ReactLogo from '@/assets/images/stack/react.svg?react';
 import NextLogo from '@/assets/images/stack/next-js.svg?react';
 import JsLogo from '@/assets/images/stack/javascript.svg?react';

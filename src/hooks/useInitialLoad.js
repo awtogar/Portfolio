@@ -1,14 +1,13 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
-import { useLenis, useLoading } from '@/context';
+import { useLenis, usePreloader } from '@/context';
 
 const MAX_DURATION = 6000;
 const MIN_DURATION = 500;
 
-
 const useInitialLoad = (criticalPromises = []) => {
-  const { setIsInitialLoading, setInitialProgress } = useLoading();
+  const { setIsLoading, setProgress } = usePreloader();
   const { lenis } = useLenis();
 
   const lenisRef = useRef(lenis);
@@ -17,7 +16,7 @@ const useInitialLoad = (criticalPromises = []) => {
     document.body.style.overflow = 'hidden';
     document.body.style.cursor = 'wait';
     lenisRef.current?.stop();
-    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+    // window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
 
     return () => {
       document.body.style.overflow = '';
@@ -48,7 +47,7 @@ const useInitialLoad = (criticalPromises = []) => {
         const next = start + diff * eased;
 
         currentProgress = next;
-        setInitialProgress(Math.floor(next));
+        setProgress(Math.floor(next));
 
         if (t < 1) {
           rafId = requestAnimationFrame(tick);
@@ -79,7 +78,7 @@ const useInitialLoad = (criticalPromises = []) => {
 
       setTimeout(() => {
         if (isMounted) {
-          setIsInitialLoading(false);
+          setIsLoading(false);
           document.body.style.overflow = '';
           document.body.style.cursor = '';
           window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
@@ -93,7 +92,7 @@ const useInitialLoad = (criticalPromises = []) => {
       isMounted = false;
       if (rafId) cancelAnimationFrame(rafId);
     };
-  }, [criticalKey, setIsInitialLoading, setInitialProgress]);
+  }, [criticalKey, setIsLoading, setProgress]);
 };
 
 export default useInitialLoad;

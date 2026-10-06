@@ -1,7 +1,8 @@
 import React from 'react';
 import { projects } from '@/data/data';
-import { CreativeButton, TextReveal, BaseSection, TransitionLink, HeadLineLabel } from '@/components';
-import AnimatedCard, { CardMeta } from '@/components/ui/AnimatedCard';
+import { TextReveal, BaseSection, HeadLineLabel } from '@/components';
+import AnimatedCard, { CardMeta } from '@/components/AnimatedCard';
+import Link from 'next/link';
 import { cursorPresets } from '@/cursor';
 
 import { RiArrowRightSLine } from '@remixicon/react';
@@ -22,21 +23,17 @@ const SelectedWorks = () => {
             alt={work.title}
             reels={work.reels}
             to={`/projects/${work.slug}`}
-            LinkComponent={TransitionLink}
+            LinkComponent={Link}
           >
             <CardMeta client={work.client} type={work.type} year={work.date?.year} tags={work.tags} logo={work.logo} />
           </AnimatedCard>
         ))}
       </ul>
 
-      <TransitionLink
-        {...cursorPresets.view}
-        to="/projects"
-        className="flex items-center justify-center gap-1 cursor-pointer group"
-      >
+      <Link {...cursorPresets.view} href="/projects" className="flex items-center justify-center gap-1 cursor-pointer group">
         <span>See all</span>
         <RiArrowRightSLine size={24} />
-      </TransitionLink>
+      </Link>
     </BaseSection>
   );
 };

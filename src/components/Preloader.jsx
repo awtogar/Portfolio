@@ -1,14 +1,12 @@
 'use client';
 import { motion, AnimatePresence } from 'motion/react';
-import { useLoading } from '@/context';
+import { usePreloader } from '@/context';
 import { useInitialLoad } from '@/hooks';
-import { CountUp } from '@/components'
-
-
+import { CountUp } from '@/components';
 
 const Preloader = () => {
   useInitialLoad();
-  const { isInitialLoading, setIsReady } = useLoading();
+  const { isLoading, setIsReady } = usePreloader();
   return (
     <AnimatePresence
       mode="wait"
@@ -16,7 +14,7 @@ const Preloader = () => {
         requestAnimationFrame(() => requestAnimationFrame(() => setIsReady(true)));
       }}
     >
-      {isInitialLoading && <CountUp key="preloader" />}
+      {isLoading && <CountUp key="preloader" />}
     </AnimatePresence>
   );
 };

@@ -3,7 +3,7 @@
 import { useRef, useEffect } from 'react';
 import { motion } from 'motion/react';
 import gsap from 'gsap';
-import { useLoading } from '@/context';
+import { usePreloader } from '@/context';
 
 const PreloaderSlideUp = {
   initial: { top: 0 },
@@ -14,7 +14,7 @@ const PreloaderSlideUp = {
 };
 
 export const CountUp = () => {
-  const { initialProgress: progress } = useLoading();
+  const { progress } = usePreloader();
   const numberRef = useRef(null);
 
   useEffect(() => {
