@@ -1,44 +1,34 @@
 'use client';
 
-import { useRef, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useIntersectionObserver } from '@/hooks';
 
 const VideoLoader = ({ src, className, observerOptions = {}, ...props }) => {
-  const videoRef = useRef(null);
   const [activeSrc, setActiveSrc] = useState(null);
-  const isVisibleRef = useRef(false);
   const { rootMargin = '200px', threshold = 0 } = observerOptions;
 
+  const { ref: videoRef, isIntersecting } = useIntersectionObserver({
+    rootMargin,
+    threshold,
+    freezeOnceVisible: false,
+  });
+
   useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting && !isVisibleRef.current) {
-          isVisibleRef.current = true;
-          setActiveSrc(src);
-          observer.disconnect();
-        }
-      },
-      { rootMargin, threshold }
-    );
-
-    observer.observe(video);
-    return () => observer.disconnect();
-  }, [src, rootMargin, threshold]);
+    if (isIntersecting && !activeSrc) {
+      setActiveSrc(src);
+    }
+  }, [isIntersecting, src, activeSrc]);
 
   useEffect(() => {
     const video = videoRef.current;
     if (!video || !activeSrc) return;
-    video.load();
-    const play = () => video.play().catch(() => {});
-    if (video.readyState >= 2) {
-      play();
+
+    if (isIntersecting) {
+      video.play().catch(() => {});
     } else {
-      video.addEventListener('canplay', play, { once: true });
-      return () => video.removeEventListener('canplay', play);
+      video.pause();
     }
-  }, [activeSrc]);
+  }, [isIntersecting, activeSrc]);
 
   return (
     <video ref={videoRef} muted playsInline loop preload="none" className={className} {...props}>

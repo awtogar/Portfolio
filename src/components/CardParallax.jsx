@@ -1,8 +1,8 @@
 'use client';
 
-import React, { useRef } from 'react';
+import React, { useRef, useEffect } from 'react';
 import { motion } from 'motion/react';
-import { useVideoVisibility } from '@/hooks';
+import { useIntersectionObserver } from '@/hooks';
 import { useParallax } from '@/hooks/animations';
 
 const CardParallax = ({
@@ -16,9 +16,18 @@ const CardParallax = ({
   objectPosition = 'center',
 }) => {
   const containerRef = useRef(null);
-  const { videoRef } = useVideoVisibility({ rootMargin: '100px', threshold: 0.1 });
+  const { ref: videoRef, isIntersecting } = useIntersectionObserver({ rootMargin: '100px', threshold: 0.1 });
 
+  useEffect(() => {
+    const video = videoRef.current;
+    if (as !== 'video' || !video) return;
 
+    if (isIntersecting) {
+      video.play().catch(() => {});
+    } else {
+      video.pause();
+    }
+  }, [isIntersecting, as]);
   const y = useParallax(containerRef, { range: scrollRange, offset });
 
   return (

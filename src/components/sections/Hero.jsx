@@ -1,24 +1,16 @@
 import { BaseSection, TextReveal } from '@/components';
-import { useEffect, useRef } from 'react';
+import { useEffect } from 'react';
 import { RiArrowDownLongLine } from '@remixicon/react';
+import { useIntersectionObserver } from '@/hooks';
 
 const Hero = () => {
-  const heroRef = useRef(null);
+  const { ref: heroRef, isIntersecting } = useIntersectionObserver({ threshold: 0.2 });
 
   useEffect(() => {
-    const el = heroRef.current;
-    if (!el) return;
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting && window.location.pathname === '/') {
-          window.history.replaceState(null, '', '/');
-        }
-      },
-      { threshold: 0.2 }
-    );
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
+    if (isIntersecting && window.location.pathname === '/') {
+      window.history.replaceState(null, '', '/');
+    }
+  }, [isIntersecting]);
 
 
   return (

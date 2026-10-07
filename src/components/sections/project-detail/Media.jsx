@@ -1,11 +1,22 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { motion } from 'motion/react';
-import { useVideoVisibility } from '@/hooks/useVideoVisibility';
+import { useIntersectionObserver } from '@/hooks';
 
 const ProjectVideoItem = ({ src, poster, className }) => {
-  const { videoRef } = useVideoVisibility({ rootMargin: '100px', threshold: 0.2 });
+  const { ref: videoRef, isIntersecting } = useIntersectionObserver({ rootMargin: '100px', threshold: 0.2 });
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    if (isIntersecting) {
+      video.play().catch(() => {});
+    } else {
+      video.pause();
+    }
+  }, [isIntersecting]);
 
   return <video ref={videoRef} src={src} poster={poster} muted loop playsInline preload="metadata" className={className} />;
 };
