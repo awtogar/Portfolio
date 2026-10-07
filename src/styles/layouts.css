@@ -17,17 +17,6 @@
     padding-bottom: clamp(2.5rem, 5vw, 4rem);
   }
 
-  .textTransition {
-    @apply text-secondary text-center transition-transform uppercase will-change-transform;
-    font-size: var(--text-h100) !important;
-  }
-
-  .textPreloader {
-    @apply text-secondary flex items-center uppercase;
-    font-size: var(--text-h400) !important;
-  }
-
-
   .heading-display {
     @apply tracking-heading leading-heading font-serif;
   }
