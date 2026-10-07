@@ -1,6 +1,6 @@
 'use client';
 import { unstable_ViewTransition as ViewTransition } from 'react';
-import { Header, CustomCursor, Preloader,Footer } from '@/components';
+import { Header, Navbar, CustomCursor, Preloader, Footer } from '@/components';
 
 export default function Template({ children }) {
   return (
@@ -8,7 +8,8 @@ export default function Template({ children }) {
       <Preloader />
       <CustomCursor />
       <Header />
-     {children}
+      <Navbar />
+      {children}
     </ViewTransition>
   );
 }
