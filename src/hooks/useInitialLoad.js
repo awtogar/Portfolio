@@ -1,22 +1,23 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
+import { animate } from 'motion/react';
 import { useLenis, usePreloader } from '@/context';
 
 const MAX_DURATION = 6000;
 const MIN_DURATION = 500;
 
 const useInitialLoad = (criticalPromises = []) => {
-  const { setIsLoading, setProgress } = usePreloader();
+  const { setIsLoading, progress } = usePreloader();
   const { lenis } = useLenis();
 
   const lenisRef = useRef(lenis);
   lenisRef.current = lenis;
+
   useEffect(() => {
     document.body.style.overflow = 'hidden';
     document.body.style.cursor = 'wait';
     lenisRef.current?.stop();
-    // window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
 
     return () => {
       document.body.style.overflow = '';
@@ -28,45 +29,16 @@ const useInitialLoad = (criticalPromises = []) => {
 
   useEffect(() => {
     let isMounted = true;
-    let currentProgress = 0;
-    let rafId = null;
-
-    const smoothTo = (target, duration = 400, easeFn = t => 1 - Math.pow(1 - t, 3)) => {
-      if (rafId) cancelAnimationFrame(rafId);
-
-      const start = currentProgress;
-      const diff = target - start;
-      const startTime = performance.now();
-
-      const tick = now => {
-        if (!isMounted) return;
-        const elapsed = now - startTime;
-        const t = Math.min(elapsed / duration, 1);
-
-        const eased = easeFn(t);
-        const next = start + diff * eased;
-
-        currentProgress = next;
-        setProgress(Math.floor(next));
-
-        if (t < 1) {
-          rafId = requestAnimationFrame(tick);
-        }
-      };
-
-      rafId = requestAnimationFrame(tick);
-    };
+    let controls = animate(progress, 99, { duration: MIN_DURATION / 1000, ease: 'linear' });
 
     const windowLoadPromise = new Promise(resolve => {
       if (document.readyState === 'complete') resolve();
-      else window.addEventListener('load', () => resolve(), { once: true });
+      else window.addEventListener('load', resolve, { once: true });
     });
 
-    const fontsPromise = document.fonts ? document.fonts.ready.then(() => undefined) : Promise.resolve();
+    const fontsPromise = document.fonts?.ready ?? Promise.resolve();
 
     const timeoutPromise = new Promise(resolve => setTimeout(resolve, MAX_DURATION));
-
-    smoothTo(99, MIN_DURATION, t => t);
 
     Promise.all([
       new Promise(resolve => setTimeout(resolve, MIN_DURATION)),
@@ -74,25 +46,24 @@ const useInitialLoad = (criticalPromises = []) => {
     ]).then(() => {
       if (!isMounted) return;
 
-      smoothTo(100, 300);
+      controls = animate(progress, 100, { duration: 0.3, ease: [0.33, 1, 0.68, 1] });
 
       setTimeout(() => {
-        if (isMounted) {
-          setIsLoading(false);
-          document.body.style.overflow = '';
-          document.body.style.cursor = '';
-          window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
-          lenisRef.current?.scrollTo(0, { immediate: true });
-          lenisRef.current?.start();
-        }
+        if (!isMounted) return;
+        setIsLoading(false);
+        document.body.style.overflow = '';
+        document.body.style.cursor = '';
+        window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+        lenisRef.current?.scrollTo(0, { immediate: true });
+        lenisRef.current?.start();
       }, 500);
     });
 
     return () => {
       isMounted = false;
-      if (rafId) cancelAnimationFrame(rafId);
+      controls.stop();
     };
-  }, [criticalKey, setIsLoading, setProgress]);
+  }, [criticalKey, progress, setIsLoading]);
 };
 
 export default useInitialLoad;

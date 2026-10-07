@@ -1,6 +1,7 @@
 'use client';
 
-import { createContext, useContext, useState } from 'react';
+import { createContext, useContext, useMemo, useState } from 'react';
+import { useMotionValue } from 'motion/react';
 
 const PreloaderContext = createContext(null);
 
@@ -13,7 +14,12 @@ export function usePreloader() {
 export function PreloaderProvider({ children }) {
   const [isLoading, setIsLoading] = useState(true);
   const [isReady, setIsReady] = useState(false);
-  const [progress, setProgress] = useState(0);
+  const progress = useMotionValue(0);
 
-  return <PreloaderContext.Provider value={{ isLoading, setIsLoading, isReady, setIsReady, progress, setProgress }}>{children}</PreloaderContext.Provider>;
+  const value = useMemo(
+    () => ({ isLoading, setIsLoading, isReady, setIsReady, progress }),
+    [isLoading, isReady, progress]
+  );
+
+  return <PreloaderContext.Provider value={value}>{children}</PreloaderContext.Provider>;
 }
