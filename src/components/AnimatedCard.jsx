@@ -28,7 +28,7 @@ export const CardMeta = ({ client, type, year, tags = [], logo: Logo }) => {
     <div className="flex flex-col gap-4 lg:gap-5">
       <div className="flex justify-between items-center w-full">
         <div className="flex items-center gap-2 lg:gap-3">
-          <div className="w-6 h-6 md:w-10 md:h-10 px-1 py-1 md:px-2 flex items-center justify-center rounded-full bg-neutral-100 dark:bg-neutral-100 overflow-hidden text-primary dark:text-primary">
+          <div className="w-6 h-6 md:w-10 md:h-10 px-1 py-1 md:px-2 flex items-center justify-center rounded-full bg-neutral-100 overflow-hidden text-primary">
             {Logo ? (
               <Logo className="w-full h-full fill-primary" />
             ) : (
@@ -36,11 +36,11 @@ export const CardMeta = ({ client, type, year, tags = [], logo: Logo }) => {
               <span className="text-xs font-semibold">{client?.charAt(0) || 'P'}</span>
             )}
           </div>
-          <p className="text-[clamp(12px,1.2vw,16px)] uppercase font-semibold text-neutral-100 dark:text-neutral-900 tracking-wide">{client}</p>
+          <p className="text-[clamp(12px,1.2vw,16px)] uppercase font-semibold text-neutral-100 tracking-wide">{client}</p>
         </div>
         <div className="flex gap-3 lg:gap-5">
-          <p className="text-[clamp(12px,1.2vw,16px)] uppercase font-semibold text-neutral-300 dark:text-neutral-600 tracking-wide">{type}</p>
-          <p className="text-[clamp(12px,1.2vw,16px)] uppercase font-semibold text-neutral-300 dark:text-neutral-600 tracking-wide">{year}</p>
+          <p className="text-[clamp(12px,1.2vw,16px)] uppercase font-semibold text-neutral-300 tracking-wide">{type}</p>
+          <p className="text-[clamp(12px,1.2vw,16px)] uppercase font-semibold text-neutral-300 tracking-wide">{year}</p>
         </div>
       </div>
       <MarqueeTags tags={tags} />

@@ -90,7 +90,7 @@ export const CardHoverEffect = ({ items, className }) => {
               data-cursor-magnetic
               className={cn(
                 'relative z-10 transition-colors duration-300',
-                'w-auto max-w-16 h-10 fill-current text-primary dark:text-neutral-400 md:group-hover:text-secondary',
+                'w-auto max-w-16 h-10 fill-current text-primary md:group-hover:text-secondary',
                 isBig ? 'lg:max-w-28 lg:h-16' : 'lg:max-w-16 lg:h-10'
               )}
             />
