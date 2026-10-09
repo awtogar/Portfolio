@@ -286,29 +286,26 @@ html {
   z-index: 100;
 }
 
-/* bentuk animasi buat transisi. see the docs at @keyframe.css*/
 @keyframes page-out {
   from {
-    transform: translateY(0vh) scale(1);
+    transform: translateY(0%) scale(1);
     opacity: 1;
-    transform-origin: top center;
   }
 
   to {
-    transform: translateY(-10vh) scale(1.1);
+    transform: translateY(-25%) scale(1.2);
     opacity: 0;
-    transform-origin: top center;
   }
 }
 
 @keyframes page-in {
   from {
-    transform: translateY(10vh);
-    clip-path: polygon(35vw 50vh, 65vw 50vh, 65vw 50vh, 35vw 50vh);
+    transform: translateY(40%);
+    clip-path: polygon(35% 50%, 65% 50%, 65% 50%, 35% 50%);
   }
 
   to {
-    transform: translateY(0vh);
+    transform: translateY(0%);
     clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
   }
 }

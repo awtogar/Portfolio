@@ -3,16 +3,16 @@ import { cn } from '@/lib/utils';
 import { motion } from 'motion/react';
 import { BaseSection } from '@/components';
 import { LetterScroll } from '@/components/LetterScroll';
-import ReactLogo from '@/assets/images/stack/react.svg?react';
-import NextLogo from '@/assets/images/stack/next-js.svg?react';
-import JsLogo from '@/assets/images/stack/javascript.svg?react';
-import TailwindLogo from '@/assets/images/stack/tailwind.svg?react';
-import GsapLogo from '@/assets/images/stack/gsap.svg?react';
-import MotionLogo from '@/assets/images/stack/motion.svg?react';
-import VercelLogo from '@/assets/images/stack/vercel.svg?react';
-import NodeLogo from '@/assets/images/stack/node-js.svg?react';
-import FigmaLogo from '@/assets/images/stack/figma.svg?react';
-import SupabaseLogo from '@/assets/images/stack/supabase.svg?react';
+import ReactLogo from '@/assets/images/stack/react.svg';
+import NextLogo from '@/assets/images/stack/next-js.svg';
+import JsLogo from '@/assets/images/stack/javascript.svg';
+import TailwindLogo from '@/assets/images/stack/tailwind.svg';
+import GsapLogo from '@/assets/images/stack/gsap.svg';
+import MotionLogo from '@/assets/images/stack/motion.svg';
+import VercelLogo from '@/assets/images/stack/vercel.svg';
+import NodeLogo from '@/assets/images/stack/node-js.svg';
+import FigmaLogo from '@/assets/images/stack/figma.svg';
+import SupabaseLogo from '@/assets/images/stack/supabase.svg';
 
 export const CardHoverEffect = ({ items, className }) => {
   const [hoveredIdx, setHoveredIdx] = useState(null);
