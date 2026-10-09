@@ -4,11 +4,15 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'motion/react';
-import { aboutImages } from '@/assets';
 import { cursorPresets } from '@/cursor';
 import { HoverRotate } from '@/components';
 
-const tags = ['tech savvy', 'graphic design', 'ui design'];
+import NavHomeRouteImages from '@/assets/images/Home.webp';
+import NavLabsRouteImages from '@/assets/images/Labs.webp';
+import NavProjectsRouteImages from '@/assets/images/Projects.webp';
+import NavWritingsRouteImages from '@/assets/images/Writings.webp';
+
+const tags = ['LEARN, IMPLEMENT, IMPROVE, REPEAT'];
 
 export const MarqueeTags = ({ tags = [], speed = 16 }) => {
   const tagsIndex = tags.join(', ') + ', ';
@@ -18,7 +22,7 @@ export const MarqueeTags = ({ tags = [], speed = 16 }) => {
       <div className="absolute right-0 h-full w-8 lg:w-10 bg-gradient-to-l from-surface-invert to-transparent pointer-events-none z-10" />
       <div className="flex whitespace-nowrap animate-marquee" style={{ '--marquee-speed': `${speed}s` }}>
         {[0, 1].map(copy => (
-          <span key={copy} className="text-[10px] md:text-xs tracking-widest text-neutral-300 uppercase shrink-0 pr-1.5">
+          <span key={copy} className="text-sm tracking-widest text-neutral-300 uppercase shrink-0 pr-1.5">
             {tagsIndex.repeat(5)}
           </span>
         ))}
@@ -28,9 +32,10 @@ export const MarqueeTags = ({ tags = [], speed = 16 }) => {
 };
 
 const links = [
-  { label: 'Labs', href: '/', thumb: aboutImages },
-  { label: 'Projects', href: '/projects', thumb: aboutImages },
-  { label: 'Writings', href: '/guestbook', thumb: aboutImages },
+  { label: 'Home', href: '/', thumb: NavHomeRouteImages },
+  { label: 'Labs', href: '/labs', thumb: NavLabsRouteImages },
+  { label: 'Projects', href: '/projects', thumb: NavProjectsRouteImages },
+  { label: 'Writings', href: '/guestbook', thumb: NavWritingsRouteImages },
 ];
 
 const ease = [0.32, 0.72, 0, 1];
@@ -39,9 +44,18 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(v => !v);
 
+  // garis  0% 100%, 100% 100%, 100% 100%, 0% 100%
+
   return (
-    <nav className="navbar fixed bottom-6 left-1/2 -translate-x-1/2 z-50 w-[calc(100%-2rem)] max-w-[420px]">
-      <div className="bg-[#131313] rounded-[24px] shadow-2xl border border-white/5 overflow-hidden">
+    <motion.nav
+      style={{ viewTransitionName: 'navbar' }}
+      initial={{ clipPath: 'polygon( 0% 100%, 100% 100%, 100% 100%, 0% 100%)' }}
+      animate={{ clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)' }}
+      exit={{ clipPath: 'polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)' }}
+      transition={{ duration: 1, ease: [0.76, 0, 0.24, 1], delay: 1 }} // Waits for the 1000ms ViewTransition to finish
+      className="navbar fixed bottom-6 left-1/2 -translate-x-1/2 z-[100] w-[calc(100%-2rem)] max-w-[420px]"
+    >
+      <div className="bg-[#131313] rounded-lg shadow-2xl border border-white/5 overflow-hidden">
         <AnimatePresence initial={false}>
           {isOpen && (
             <motion.div
@@ -55,10 +69,10 @@ const Navbar = () => {
                 {links.map((item, i) => (
                   <motion.li key={item.label} initial={{ y: 16, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 0.4, ease, delay: 0.05 * i }}>
                     <Link href={item.href} onClick={() => setIsOpen(false)} className="flex items-center gap-6 group">
-                      <div className="w-[60px] h-[60px] shrink-0 rounded-[14px] overflow-hidden bg-white">
+                      <div className="w-[60px] h-[60px] shrink-0 rounded-lg overflow-hidden bg-white">
                         <Image src={item.thumb} alt={item.label} width={60} height={60} className="w-full h-full object-cover" />
                       </div>
-                      <HoverRotate as="span" className="text-white text-base font-[500]">
+                      <HoverRotate as="span" className="text-white text-base-sm font-[500]">
                         {item.label}
                       </HoverRotate>
                     </Link>
@@ -72,11 +86,11 @@ const Navbar = () => {
 
         <div className="p-2 pr-6 flex items-center justify-between">
           <div className="flex items-center gap-4 overflow-hidden">
-            <div className="w-14 h-14 shrink-0 bg-black rounded-[16px] overflow-hidden flex items-center justify-center">
-              <Image src={aboutImages} alt="Avatar" width={54} height={54} className="w-full h-full object-cover" />
+            <div className="w-14 h-14 shrink-0 bg-black rounded-lg overflow-hidden flex items-center justify-center">
+              <Image src={NavHomeRouteImages} alt="Avatar" width={54} height={54} className="w-full h-full object-cover" />
             </div>
-            <div className="flex flex-col justify-center min-w-0 pr-4">
-              <h3 className="text-white text-[15px] font-bold uppercase leading-tight tracking-wide whitespace-nowrap">Awaluddin Togar</h3>
+            <div className="flex flex-col justify-center min-w-0">
+              <span className="text-secondary text-lg font-bold uppercase leading-tight tracking-wide whitespace-nowrap">Awaluddin Togar</span>
               <div className="text-[#888888] mt-1 w-full [mask-image:linear-gradient(to_right,white_60%,transparent_100%)]">
                 <MarqueeTags tags={tags} speed={32} />
               </div>
@@ -105,7 +119,7 @@ const Navbar = () => {
           </button>
         </div>
       </div>
-    </nav>
+    </motion.nav>
   );
 };
 
