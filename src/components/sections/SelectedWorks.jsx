@@ -30,9 +30,11 @@ const SelectedWorks = () => {
         ))}
       </ul>
 
-      <Link {...cursorPresets.view} href="/projects" className="flex items-center justify-center gap-1 cursor-pointer group">
-        <span>See all</span>
-        <RiArrowRightSLine size={24} />
+      <Link href="/projects" className="flex text-base items-center justify-center cursor-pointer group">
+        <div {...cursorPresets.view} className="gap-1 flex items-center">
+          <span>See all</span>
+          <RiArrowRightSLine size={24} />
+        </div>
       </Link>
     </BaseSection>
   );

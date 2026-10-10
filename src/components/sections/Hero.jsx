@@ -12,7 +12,6 @@ const Hero = () => {
     }
   }, [isIntersecting]);
 
-
   return (
     <BaseSection sectionClassName="section-padding-x py-4 " containerClassName="flex-col w-full max-w-[1920px] h-[85svh] m-auto">
       <div ref={heroRef} className="absolute top-0 left-0 w-full h-px pointer-events-none" aria-hidden />

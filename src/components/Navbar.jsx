@@ -68,11 +68,11 @@ const Navbar = () => {
               <ul className="flex flex-col gap-3 p-2">
                 {links.map((item, i) => (
                   <motion.li key={item.label} initial={{ y: 16, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 0.4, ease, delay: 0.05 * i }}>
-                    <Link href={item.href} onClick={() => setIsOpen(false)} className="flex items-center gap-6 group">
+                    <Link href={item.href} onClick={() => setIsOpen(false)} className="flex items-center gap-4 group">
                       <div className="w-[60px] h-[60px] shrink-0 rounded-lg overflow-hidden bg-white">
                         <Image src={item.thumb} alt={item.label} width={60} height={60} className="w-full h-full object-cover" />
                       </div>
-                      <HoverRotate as="span" className="text-white text-base-sm font-[500]">
+                      <HoverRotate as="span" className="text-white text-base font-[500]">
                         {item.label}
                       </HoverRotate>
                     </Link>
@@ -90,7 +90,7 @@ const Navbar = () => {
               <Image src={NavHomeRouteImages} alt="Avatar" width={54} height={54} className="w-full h-full object-cover" />
             </div>
             <div className="flex flex-col justify-center min-w-0">
-              <span className="text-secondary text-lg font-bold uppercase leading-tight tracking-wide whitespace-nowrap">Awaluddin Togar</span>
+              <span className="text-secondary text-base font-[500] uppercase leading-tight tracking-wide whitespace-nowrap">Awaluddin Togar</span>
               <div className="text-[#888888] mt-1 w-full [mask-image:linear-gradient(to_right,white_60%,transparent_100%)]">
                 <MarqueeTags tags={tags} speed={32} />
               </div>

@@ -1,11 +1,11 @@
 'use client';
 
 import { Hero, Showreel, About, Services, Process, SelectedWorks, Stack } from '@/components/sections';
-import { Footer } from '@/components';
+import { Footer, DevBanner } from '@/components';
 
 export default function HomePage() {
   return (
-    <main className='bg-neutral-100'>
+    <main className="bg-neutral-100">
       <Hero />
       <Showreel />
       <About />
