@@ -13,7 +13,7 @@ export const MarqueeTags = ({ tags = [], speed = 16 }) => {
       <div className="absolute right-0 h-full w-8 lg:w-10 bg-gradient-to-l from-surface-invert to-transparent pointer-events-none z-10" />
       <div className="flex whitespace-nowrap animate-marquee" style={{ '--marquee-speed': `${speed}s` }}>
         {[0, 1].map(copy => (
-          <span key={copy} className="text-[10px] md:text-xs tracking-widest text-neutral-300 uppercase shrink-0 pr-1.5">
+          <span key={copy} className="text-sm tracking-widest text-neutral-300 uppercase shrink-0 pr-1.5">
             {tagsIndex.repeat(5)}
           </span>
         ))}
@@ -23,7 +23,6 @@ export const MarqueeTags = ({ tags = [], speed = 16 }) => {
 };
 
 export const CardMeta = ({ client, type, year, tags = [], logo: Logo }) => {
-
   return (
     <div className="flex flex-col gap-4 lg:gap-5">
       <div className="flex justify-between items-center w-full">
@@ -33,7 +32,7 @@ export const CardMeta = ({ client, type, year, tags = [], logo: Logo }) => {
               <Logo className="w-full h-full fill-primary" />
             ) : (
               // fallback kalo gak ada logo svg nya
-              <span className="text-xs font-semibold">{client?.charAt(0) || 'P'}</span>
+              <span className="text-sm font-semibold">{client?.charAt(0) || 'P'}</span>
             )}
           </div>
           <p className="text-[clamp(12px,1.2vw,16px)] uppercase font-semibold text-neutral-100 tracking-wide">{client}</p>

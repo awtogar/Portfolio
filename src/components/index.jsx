@@ -2,7 +2,6 @@ export { CustomCursor } from '../cursor';
 export { default as Header } from './Header';
 export { default as Navbar } from './Navbar';
 export { default as BaseSection } from './BaseSection';
-export { default as ThemeToggleButton } from './ThemeToggleButton';
 
 // UI Components
 export { default as Footer } from './Footer';

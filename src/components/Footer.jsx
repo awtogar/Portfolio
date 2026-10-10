@@ -9,14 +9,14 @@ import { useParallax } from '@/hooks/animations';
 import Link from 'next/link';
 
 const cardClass =
-  'flex items-end p-4 lg:p-6 bg-neutral-300/20 backdrop-blur-[0.5rem] rounded-lg lg:rounded-xl text-h500 font-medium leading-tight cursor-pointer hover:bg-neutral-300/35 hover:backdrop-blur-xs transition-all duration-500';
+  'flex items-end p-4 lg:p-6 bg-neutral-300/20 backdrop-blur-[0.5rem] rounded-lg lg:rounded-xl text-base-sm font-medium leading-tight cursor-pointer hover:bg-neutral-300/35 hover:backdrop-blur-xs transition-all duration-500';
 
 export default function Bento() {
   const ref = useRef(null);
   const y = useParallax(ref);
 
   return (
-    <BaseSection as="footer" sectionID="contact" sectionClassName="pt-section">
+    <BaseSection as="footer" sectionID="contact">
       <section ref={ref} className="bg-neutral-100 px-2 lg:px-4 pt-8 lg:pt-16 pb-8 lg:pb-8 grid grid-cols-12 gap-2 lg:gap-4 relative">
         <motion.h2
           style={{ y, fontSize: 'clamp(40px, 16vw, 250px)' }}
@@ -68,7 +68,6 @@ export default function Bento() {
           LinkedIn
         </a>
       </section>
-    </BaseSection >
-
+    </BaseSection>
   );
 }

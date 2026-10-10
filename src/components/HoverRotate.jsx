@@ -30,7 +30,7 @@ const HoverRotate = forwardRef(({ children, className = '', href, to, onClick, t
       <span className="invisible m-0">{firstText}</span>
 
       <motion.span
-        className={`absolute inset-0 flex items-center justify-center m-0 z-20 will-change-transform ${textcolor1}`}
+        className={`absolute inset-0 flex items-center justify-center m-0 z-10 will-change-transform ${textcolor1}`}
         initial={false}
         transition={{ type: 'linear', duration: 0.3 }}
         animate={{ y: isHovering ? '-100%' : '0%' }}
@@ -39,7 +39,7 @@ const HoverRotate = forwardRef(({ children, className = '', href, to, onClick, t
       </motion.span>
 
       <motion.span
-        className={`absolute inset-0 flex items-center justify-center m-0 z-20 will-change-transform ${textcolor2}`}
+        className={`absolute inset-0 flex items-center justify-center m-0 z-10 will-change-transform ${textcolor2}`}
         initial={false}
         transition={{ type: 'linear', duration: 0.4 }}
         animate={{ y: isHovering ? '0%' : '100%' }}

@@ -10,21 +10,14 @@ const Services = () => {
     <BaseSection sectionID="services">
       {/* when cursor hit this element. they color should be not the same as background */}
       <div data-cursor-idle-fill="secondary" className="flex flex-col gap-16 px-4 pt-16 pb-4 bg-surface-invert rounded-3xl inverted lg:gap-28 lg:pt-24 lg:rounded-[20px]">
-        <div className="flex flex-col md:items-center md:grid md:grid-cols-12 md:gap-6 md:px-4">
+        <div className="flex flex-col md:gap-2 md:px-4">
           <div className="flex flex-col mb-2 md:col-span-5 md:mb-0 md:pt-1 lg:col-span-4 ">
-            <TextReveal as="p" className="text-h500 font-[450] leading-body tracking-body text-justify text-on-invert-secondary">
+            <TextReveal as="p" className="text-base font-[450] leading-body tracking-body text-justify text-on-invert-secondary">
               {'(SERVICES)'}
             </TextReveal>
-            <h2 className="heading-display text-h200 font-serif text-on-invert-secondary">
-              <div className="block overflow-clip relative">
-                <TextReveal as="h2" className="relative block">
-                  WHAT I DO
-                </TextReveal>
-              </div>
-            </h2>
           </div>
 
-          <TextReveal as="p" startDelay={0.15} className="text-h500 font-[450] leading-body tracking-body text-on-invert-secondary md:col-span-7 md:text-justify lg:col-span-8">
+          <TextReveal as="p" startDelay={0.15} className="text-base font-[450] leading-body tracking-body text-on-invert-secondary md:col-span-7 md:text-justify lg:col-span-8">
             {servicesCaption}
           </TextReveal>
         </div>
@@ -51,7 +44,7 @@ const Services = () => {
                     </div>
                   </div>
                 </div>
-                <div className="flex flex-col gap-4 body-display text-on-invert-muted md:mb-8 lg:col-span-5 lg:gap-6 lg:mb-0">
+                <div className="flex flex-col gap-4 body-display text-base text-on-invert-muted md:mb-8 lg:col-span-5 lg:gap-6 lg:mb-0">
                   <TextReveal as="p" startDelay={0.2}>
                     {service.description}
                   </TextReveal>
