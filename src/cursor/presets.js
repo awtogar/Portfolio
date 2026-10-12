@@ -1,10 +1,3 @@
-// Cursor preset objects — spread onto interactive elements instead of
-// repeating raw data-cursor-* attributes across every call site.
-//
-// Usage:
-//   <button {...cursorPresets.view}>
-//   <a {...cursorPresets.nav}>
-
 export const cursorPresets = {
   view: {
     'data-cursor': true,
