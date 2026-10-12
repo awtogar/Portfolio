@@ -11,6 +11,7 @@ import NavHomeRouteImages from '@/assets/images/Home.webp';
 import NavLabsRouteImages from '@/assets/images/Labs.webp';
 import NavProjectsRouteImages from '@/assets/images/Projects.webp';
 import NavWritingsRouteImages from '@/assets/images/Writings.webp';
+import { navReels } from '@/assets';
 
 const tags = ['LEARN, IMPLEMENT, IMPROVE, REPEAT'];
 
@@ -87,7 +88,7 @@ const Navbar = () => {
         <div className="p-2 pr-6 flex items-center justify-between">
           <div className="flex items-center gap-4 overflow-hidden">
             <div className="w-14 h-14 shrink-0 bg-black rounded-lg overflow-hidden flex items-center justify-center">
-              <Image src={NavHomeRouteImages} alt="Avatar" width={54} height={54} className="w-full h-full object-cover" />
+              <video src={navReels} width={54} height={54} autoPlay muted loop playsInline className="w-full h-full object-cover" />
             </div>
             <div className="flex flex-col justify-center min-w-0">
               <span className="text-secondary text-base font-[500] uppercase leading-tight tracking-wide truncate">Awaluddin Togar</span>
