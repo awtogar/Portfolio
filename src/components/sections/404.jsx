@@ -1,15 +1,26 @@
 'use client';
-import { useEffect } from 'react';
 import { motion } from 'motion/react';
 import { cursorPresets } from '@/cursor';
 import { BaseSection, CreativeButton } from '@/components';
 
 export default function NotFoundPage() {
   return (
-    <BaseSection sectionClassName="section-padding-x" containerClassName="flex-col h-[85svh] lg:h-[95svh]">
-      <div className="flex flex-col items-center justify-center w-full h-full gap-s400 lg:gap-s600">
+    <BaseSection
+      sectionClassName="section-padding-x bg-neutral-100"
+      containerClassName="flex flex-col items-center justify-center text-center h-screen py-12 md:py-20"
+    >
+      <div className="flex flex-col items-center max-w-[500px]">
+        <motion.h2
+          className="text-h500 text-primary font-[500] uppercase leading-[1.2] -tracking-[0.02em] mb-2 md:mb-3"
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
+        >
+          (404 Error)
+        </motion.h2>
+
         <motion.h1
-          className="font-serif text-h1 text-center leading-[1.1] tracking-[-0.05em] uppercase lg:text-display"
+          className="text-h400 md:text-h200 text-primary font-[500] uppercase leading-[1.1] tracking-tight"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
@@ -18,28 +29,30 @@ export default function NotFoundPage() {
         </motion.h1>
 
         <motion.p
-          className="max-w-[280px] text-sm text-center text-primary/40 lg:max-w-xs lg:text-base"
+          className="text-base text-primary-muted leading-body max-w-[40ch] mt-3 md:mt-4 mb-6 md:mb-8"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.5 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
         >
-          The page you're looking for doesn't exist or has been moved.
+          The page you're looking for doesn't exist, has been removed, or is temporarily unavailable.
         </motion.p>
 
-        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6, delay: 0.7 }}>
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.5 }}
+        >
           <CreativeButton
+            variant="primary"
             {...cursorPresets.view}
             to="/"
-            className="px-5 py-2.5 text-sm font-light bg-surface-invert outline outline-1 outline-surface-invert rounded-full lg:px-6 lg:py-3 lg:text-base"
-            fillColor1="bg-surface-invert"
-            fillColor2="bg-neutral-100"
-            textcolor1="text-secondary"
-            textcolor2="text-primary"
+            className="px-6 py-3 text-base-sm"
           >
-            Go Home
+            Back to Home
           </CreativeButton>
         </motion.div>
       </div>
     </BaseSection>
   );
 }
+
