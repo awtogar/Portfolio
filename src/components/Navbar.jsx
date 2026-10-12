@@ -35,7 +35,7 @@ const links = [
   { label: 'Home', href: '/', thumb: NavHomeRouteImages },
   { label: 'Labs', href: '/labs', thumb: NavLabsRouteImages },
   { label: 'Projects', href: '/projects', thumb: NavProjectsRouteImages },
-  { label: 'Writings', href: '/guestbook', thumb: NavWritingsRouteImages },
+  { label: 'Writings', href: '/writings', thumb: NavWritingsRouteImages },
 ];
 
 const ease = [0.32, 0.72, 0, 1];
@@ -52,7 +52,7 @@ const Navbar = () => {
       initial={{ clipPath: 'polygon( 0% 100%, 100% 100%, 100% 100%, 0% 100%)' }}
       animate={{ clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)' }}
       exit={{ clipPath: 'polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)' }}
-      transition={{ duration: 1, ease: [0.76, 0, 0.24, 1], delay: 1 }} // Waits for the 1000ms ViewTransition to finish
+      transition={{ duration: 1, ease: [0.76, 0, 0.24, 1], delay: 1 }}
       className="navbar fixed bottom-6 left-1/2 -translate-x-1/2 z-[100] w-[calc(100%-2rem)] max-w-[420px]"
     >
       <div className="bg-[#131313] rounded-lg shadow-2xl border border-white/5 overflow-hidden">
@@ -90,7 +90,7 @@ const Navbar = () => {
               <Image src={NavHomeRouteImages} alt="Avatar" width={54} height={54} className="w-full h-full object-cover" />
             </div>
             <div className="flex flex-col justify-center min-w-0">
-              <span className="text-secondary text-base font-[500] uppercase leading-tight tracking-wide whitespace-nowrap">Awaluddin Togar</span>
+              <span className="text-secondary text-base font-[500] uppercase leading-tight tracking-wide truncate">Awaluddin Togar</span>
               <div className="text-[#888888] mt-1 w-full [mask-image:linear-gradient(to_right,white_60%,transparent_100%)]">
                 <MarqueeTags tags={tags} speed={32} />
               </div>
