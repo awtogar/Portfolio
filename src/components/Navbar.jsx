@@ -45,7 +45,14 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(v => !v);
 
-  // garis  0% 100%, 100% 100%, 100% 100%, 0% 100%
+  const navRef = (node) => {
+    if (!node || !isOpen) return;
+    const close = (e) => {
+      if (!node.contains(e.target)) setIsOpen(false);
+    };
+    document.addEventListener('pointerdown', close);
+    return () => document.removeEventListener('pointerdown', close);
+  };
 
   return (
     <motion.nav
@@ -56,7 +63,7 @@ const Navbar = () => {
       transition={{ duration: 1, ease: [0.76, 0, 0.24, 1], delay: 1 }}
       className="navbar fixed bottom-6 left-1/2 -translate-x-1/2 z-[100] w-[calc(100%-2rem)] max-w-[420px]"
     >
-      <div className="bg-[#131313] rounded-lg shadow-2xl border border-white/5 overflow-hidden">
+      <div ref={navRef} className="bg-[#131313] rounded-lg shadow-2xl border border-white/5 overflow-hidden">
         <AnimatePresence initial={false}>
           {isOpen && (
             <motion.div
