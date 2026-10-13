@@ -44,9 +44,9 @@ const About = () => {
           {/* left column */}
           <div ref={containerRef} className="flex md:col-span-8 md:justify-start lg:col-span-8">
             <div className="flex-col flex md:mb-6">
-              <h2 className="text-h500 text-primary font-[500] uppercase leading-[1.2] -tracking-[0.02em]">Myself</h2>
+              <h2 className="text-h500 text-primary uppercase display-heading">Myself</h2>
               <div className="hidden md:block">
-                <span className="text-h200 text-primary max-w-[26ch] font-[500] leading-[1.1] tracking-tight text-justify block">{aboutDescription}</span>
+                <span className="text-h200 text-primary max-w-[26ch] display-bold tracking-tight text-justify block">{aboutDescription}</span>
               </div>
             </div>
           </div>
