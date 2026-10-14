@@ -19,8 +19,8 @@ export const MarqueeTags = ({ tags = [], speed = 2 }) => {
   const tagsIndex = tags.join('—') + '—';
   return (
     <div className="flex items-center h-4 md:h-4.5 overflow-hidden relative w-full">
-      <div className="absolute left-0 h-full w-8 lg:w-10 bg-gradient-to-r from-surface-invert to-transparent pointer-events-none z-10" />
-      <div className="absolute right-0 h-full w-8 lg:w-10 bg-gradient-to-l from-surface-invert to-transparent pointer-events-none z-10" />
+      <div className="absolute left-0 h-full w-8 lg:w-10 bg-gradient-to-r from-neutral-900 to-transparent pointer-events-none z-10" />
+      <div className="absolute right-0 h-full w-8 lg:w-10 bg-gradient-to-l from-neutral-900 to-transparent pointer-events-none z-10" />
       <div className="flex whitespace-nowrap animate-marquee" style={{ '--marquee-speed': `${speed}s` }}>
         {[0, 1].map(copy => (
           <span key={copy} className="text-sm tracking-widest italic text-[#D0CBC2] uppercase shrink-0 pr-1.5">

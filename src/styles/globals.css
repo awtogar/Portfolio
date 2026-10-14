@@ -43,13 +43,6 @@
   --color-brand-secondary: oklch(55.3% 0.013 58.071);
   --color-brand-tertiary: oklch(70.9% 0.01 56.259);
 
-  --color-surface-invert: hsl(48, 10%, 10%);
-  --color-surface-invert-raised: hsl(48, 10%, 14%);
-  --color-on-invert-primary: hsl(47, 4%, 96%);
-  --color-on-invert-secondary: hsl(47, 4%, 72%);
-  --color-on-invert-muted: hsl(47, 6%, 50%);
-  --color-on-invert-border: rgba(255, 255, 255, 0.1);
-
   --text-display: clamp(3.3368rem, 10vw, 7rem);
   --text-h100: clamp(3.0518rem, 2.8338rem + 1.0899vw, 3.8147rem);
   --text-h200: clamp(2.4414rem, 2.267rem + 0.8719vw, 3.0518rem);

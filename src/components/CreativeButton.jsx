@@ -9,25 +9,22 @@ const MotionButton = motion.create('button');
 
 const VARIANTS = {
   primary: {
-    bg: 'bg-surface-invert',
+    bg: 'bg-neutral-900',
     hoverBg: 'bg-neutral-100',
     text: 'text-secondary',
     hoverText: 'text-primary',
-    outline: 'outline outline-1 outline-surface-invert',
+    outline: 'outline outline-1 outline-neutral-900',
   },
   secondary: {
     bg: 'bg-neutral-100',
-    hoverBg: 'bg-surface-invert',
+    hoverBg: 'bg-neutral-900',
     text: 'text-primary',
     hoverText: 'text-secondary',
-    outline: 'outline outline-1 outline-surface-invert',
+    outline: 'outline outline-1 outline-neutral-900',
   },
 };
 
-const CreativeButton = forwardRef(function CreativeButton(
-  { children, className = '', variant = 'primary', href, to, onClick, width, height, ...props },
-  ref
-) {
+const CreativeButton = forwardRef(function CreativeButton({ children, className = '', variant = 'primary', href, to, onClick, width, height, ...props }, ref) {
   const router = useRouter();
   const theme = VARIANTS[variant] || VARIANTS.primary;
 

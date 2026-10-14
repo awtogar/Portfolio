@@ -7,7 +7,7 @@ const Services = () => {
 
   return (
     <BaseSection sectionID="services">
-      <div data-cursor-idle-fill="secondary" className="flex flex-col gap-16 px-4 pt-16 pb-4 bg-surface-invert rounded-3xl inverted lg:gap-28 lg:pt-24 lg:rounded-[20px]">
+      <div data-cursor-idle-fill="secondary" className="flex flex-col gap-16 px-4 pt-16 pb-4 bg-neutral-900 rounded-3xl lg:gap-28 lg:pt-24 lg:rounded-[20px]">
         <div className="flex flex-col md:gap-2 md:px-4">
           <div className="flex flex-col mb-2 md:col-span-5 md:mb-0 md:pt-1 lg:col-span-4 ">
             <TextReveal as="p" className="text-base body-heading text-justify text-[#A39A90]">
@@ -18,12 +18,12 @@ const Services = () => {
             {sectionCaption}
           </TextReveal>
         </div>
-        <div className="flex flex-col px-4 bg-surface-invert-raised rounded-xl lg:px-5 lg:rounded-2xl">
+        <div className="flex flex-col px-4 bg-neutral-900 rounded-xl lg:px-5 lg:rounded-2xl">
           <ul className="flex flex-col">
             {services.map((service, i) => (
               <li
                 key={i}
-                className="flex flex-col pt-8 lg:grid lg:grid-cols-12 lg:gap-8 last:pb-4 not-last:pb-10 lg:last:pb-10 md:not-last:border-b md:not-last:border-on-invert-border"
+                className="flex flex-col pt-8 lg:grid lg:grid-cols-12 lg:gap-8 last:pb-4 not-last:pb-10 lg:last:pb-10 md:not-last:border-b md:not-last:border-neutral-900"
               >
                 <div className="text-[#F4F1EB] flex items-center gap-2 mb-2 md:pb-2 md:mb-0 lg:contents">
                   <div className="text-start lg:col-span-1">
@@ -42,7 +42,7 @@ const Services = () => {
                   </div>
                 </div>
                 <div className="flex flex-col gap-4 display-bold text-base md:mb-8 lg:col-span-5 lg:gap-6 lg:mb-0">
-                  <TextReveal as="p" className='text-[#D0CBC2]' startDelay={0.2}>
+                  <TextReveal as="p" className="text-[#D0CBC2]" startDelay={0.2}>
                     {service.description}
                   </TextReveal>
                   <ul className="flex flex-col gap-1.5 mt-2 text-base text-[#A39A90]">

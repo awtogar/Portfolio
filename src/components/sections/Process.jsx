@@ -37,7 +37,7 @@ const StepItem = ({ step }) => {
           STEPS <RiArrowRightBoxFill size={18} className="-my-1 shrink-0" /> {step.number}
         </span>
         <div className="flex flex-col col-span-6 gap-s200">
-          <h3 className="heading-display text-h400 font-bold leading-tight">{step.title}</h3>
+          <h3 className=" text-h400 font-bold leading-tight">{step.title}</h3>
           <p className="max-w-[40ch] text-base leading-body text-primary-muted">{step.description}</p>
         </div>
       </div>
