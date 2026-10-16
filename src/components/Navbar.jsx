@@ -61,9 +61,9 @@ const Navbar = () => {
       animate={{ clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)' }}
       exit={{ clipPath: 'polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)' }}
       transition={{ duration: 1, ease: [0.76, 0, 0.24, 1], delay: 1 }}
-      className="navbar fixed bottom-6 left-1/2 -translate-x-1/2 z-[100] w-[calc(100%-2rem)] max-w-[420px]"
+      className="navbar fixed bottom-5 lg:bottom-6 left-1/2 -translate-x-1/2 z-[100] w-[calc(100%-2.5rem)] max-w-[433px] lg:max-w-[620px]"
     >
-      <div ref={navRef} className="bg-[#131313] rounded-lg shadow-2xl border border-white/5 overflow-hidden">
+      <div ref={navRef} className="bg-[#131313] rounded-[20px] shadow-2xl border border-white/5 overflow-hidden">
         <AnimatePresence initial={false}>
           {isOpen && (
             <motion.div
@@ -92,9 +92,9 @@ const Navbar = () => {
           )}
         </AnimatePresence>
 
-        <div className="p-2 pr-6 flex items-center justify-between">
-          <div className="flex items-center gap-4 overflow-hidden">
-            <div className="w-14 h-14 shrink-0 bg-black rounded-lg overflow-hidden flex items-center justify-center">
+        <div className="p-2.5 pr-4 flex items-center justify-between">
+          <div className="flex items-center gap-5 overflow-hidden">
+            <div className="w-[60px] h-[60px] lg:w-[70px] lg:h-[70px] shrink-0 bg-black rounded-[10px] overflow-hidden flex items-center justify-center">
               <video src={navReels} width={54} height={54} autoPlay muted loop playsInline className="w-full h-full object-cover" />
             </div>
             <div className="flex flex-col justify-center min-w-0">

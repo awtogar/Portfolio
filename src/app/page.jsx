@@ -1,7 +1,7 @@
 'use client';
 
 import { Hero, Showreel, About, Services, Process, SelectedWorks, Stack } from '@/components/sections';
-import { Footer, DevBanner } from '@/components';
+import { Footer } from '@/components';
 
 export default function HomePage() {
   return (
@@ -10,7 +10,7 @@ export default function HomePage() {
       <Showreel />
       <About />
       <Services />
-      <Process />
+      {/* <Process /> */}
       <SelectedWorks />
       <Stack />
       <Footer />

@@ -1,6 +1,6 @@
 'use client';
 import { unstable_ViewTransition as ViewTransition } from 'react';
-import { Navbar, CustomCursor, Preloader, Footer } from '@/components';
+import { Navbar, CustomCursor, Preloader, Header } from '@/components';
 
 // TODO: child route transition (/projects/[slug], /labs/[slug], /writing/[slug])
 
@@ -13,7 +13,6 @@ import { Navbar, CustomCursor, Preloader, Footer } from '@/components';
 //   exit={isParentRoute ? 'page-exit' : 'detail-exit'}
 //   default="none">
 
-
 // Needs: key={pathname}, CSS .detail-enter/.detail-exit,
 // Preloader flag (module-level) so it doesn't replay on remount.
 
@@ -22,6 +21,7 @@ export default function Template({ children }) {
     <ViewTransition enter="page-enter" exit="page-exit" default="none">
       <Preloader />
       <CustomCursor />
+      <Header />
       <Navbar />
       {children}
     </ViewTransition>

@@ -126,11 +126,11 @@ html {
   }
 
   :is(h1, h2, h3, h4, h5, h6) {
-    @apply font-serif font-[600] uppercase;
+    @apply font-[700] leading-[1.5] -tracking-[0.02em];
   }
 
   p {
-    @apply font-sans font-[450] tracking-body leading-body;
+    @apply font-[500] leading-[1.2];
   }
 
   a {

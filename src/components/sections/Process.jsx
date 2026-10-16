@@ -1,4 +1,4 @@
-import { BaseSection, HeadLineLabel, TextReveal } from '@/components';
+import { BaseSection, TextReveal } from '@/components';
 import { discoverReels, defineReels, designReels, buildReels } from '@/assets';
 import { RiArrowRightBoxFill } from '@remixicon/react';
 
@@ -64,7 +64,18 @@ const StepItem = ({ step }) => {
 const Process = () => {
   return (
     <BaseSection containerClassName="w-full max-w-[1920px] m-auto">
-      <HeadLineLabel label="(STEP BY STEP)" headline="PROCESS" />
+      <div className="flex flex-col">
+        <div className="flex items-center justify-between">
+          <TextReveal as="span">
+            <span className="text-base leading-heading tracking-body font-[450] uppercase text-primary-muted">(STEP BY STEP)</span>
+          </TextReveal>
+        </div>
+        <div className="flex items-end justify-between w-full mb-s200">
+          <TextReveal as="h2" style={{ lineHeight: '0.86' }} className="text-h100 tracking-heading font-serif font-bold">
+            PROCESS
+          </TextReveal>
+        </div>
+      </div>
       <ul className="flex flex-col gap-s300">
         {steps.map((step, i) => (
           <StepItem key={step.number} step={step} />

@@ -1,6 +1,6 @@
 import React from 'react';
 import { projects } from '@/data/data';
-import { TextReveal, BaseSection, HeadLineLabel } from '@/components';
+import { TextReveal, BaseSection } from '@/components';
 import AnimatedCard, { CardMeta } from '@/components/AnimatedCard';
 import Link from 'next/link';
 import { cursorPresets } from '@/cursor';
@@ -12,7 +12,23 @@ const SelectedWorks = () => {
 
   return (
     <BaseSection sectionID="works" sectionClassName="overflow-hidden relative section-padding-xy">
-      <HeadLineLabel label="(SELECTED)" headline="WORK" headlineSuffix="'25" />
+      <div className="flex flex-col">
+        <div className="flex items-center justify-between">
+          <TextReveal as="span">
+            <span className="text-base leading-heading tracking-body font-[450] uppercase text-primary-muted">(SELECTED)</span>
+          </TextReveal>
+        </div>
+        <div className="flex items-end justify-between w-full mb-s200">
+          <TextReveal as="h2" style={{ lineHeight: '0.86' }} className="text-h100 tracking-heading font-serif font-bold">
+            WORK
+          </TextReveal>
+          <div className="flex flex-col items-end gap-1 pb-1 lg:pb-2">
+            <TextReveal as="h2" style={{ lineHeight: '0.86' }} className="text-h100 tracking-heading font-serif font-bold">
+              '25
+            </TextReveal>
+          </div>
+        </div>
+      </div>
       <ul className="flex flex-col w-full gap-2 pb-s500 lg:flex-row lg:gap-4 lg:pb-s600">
         {selectedWorks.map(work => (
           <AnimatedCard

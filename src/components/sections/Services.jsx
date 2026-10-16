@@ -18,7 +18,7 @@ const Services = () => {
             {sectionCaption}
           </TextReveal>
         </div>
-        <div className="flex flex-col px-4 bg-neutral-900 rounded-xl lg:px-5 lg:rounded-2xl">
+        <div className="flex flex-col px-4 bg-neutral-800 rounded-xl lg:px-5 lg:rounded-2xl">
           <ul className="flex flex-col">
             {services.map((service, i) => (
               <li

@@ -69,8 +69,7 @@ export default async function GuestBook() {
   }
 
   return (
-    <main className='bg-neutral-100'>
-
+    <main className="bg-neutral-100">
       <BaseSection sectionID="guestbook" sectionClassName="">
         <div className="flex flex-col">
           <div className="relative section-padding-hero">
@@ -81,11 +80,11 @@ export default async function GuestBook() {
                   <div className="flex flex-col">
                     <div className="flex flex-col">
                       <TextReveal as="span" startDelay="0.5">
-                        <span className="text-base tracking-body font-[450] uppercase text-primary-muted mb-2 md:mb-3 block">(Guestbook)</span>
+                        <span className="text-base-sm tracking-body font-[450] uppercase text-primary-muted mb-2 md:mb-3 block">(Guestbook)</span>
                       </TextReveal>
                       <h1 className="font-serif text-h100 uppercase">Messages</h1>
                     </div>
-                    <p className="max-w-[95%] text-sm md:text-base leading-relaxed opacity-60 mt-4 md:mt-6">
+                    <p className="max-w-[65ch] text-base-sm leading-normal tracking-normal opacity-60 mt-4 md:mt-6">
                       Feel free to share your thoughts, suggestions, questions, or anything else!
                     </p>
                   </div>

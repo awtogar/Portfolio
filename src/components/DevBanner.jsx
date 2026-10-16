@@ -1,14 +1,40 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import gsap from 'gsap';
+import { RiCloseLine } from '@remixicon/react';
 
 export default function DevBanner() {
+  const [visible, setVisible] = useState(true);
+  const rootRef = useRef(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.from(rootRef.current, { height: 0, minHeight: 0, duration: 1, delay: 0.4, ease: 'expo.out' });
+    }, rootRef);
+
+    return () => ctx.revert();
+  }, []);
+
+  const dismiss = () =>
+    gsap.to(rootRef.current, {
+      height: 0,
+      minHeight: 0,
+      duration: 0.8,
+      ease: 'expo.inOut',
+      onComplete: () => setVisible(false),
+    });
+
+  if (!visible) return null;
+
   return (
-    <div className="fixed top-1/2 -translate-y-1/2 right-0 z-[990] flex flex-col items-center gap-2 py-4 px-4 bg-primary text-secondary font-sans select-none cursor-pointer transition-opacity">
-      <div className="text-base-sm md:text-xs tracking-widest font-medium uppercase opacity-90 [writing-mode:vertical-lr] rotate-180 whitespace-nowrap leading-none">
-        Under development
+    <div ref={rootRef} style={{ viewTransitionName: 'devbanner' }} className="flex px-6 overflow-hidden gap-2 items-center w-full bg-brand-primary text-neutral-50 h-[3svh] min-h-8">
+      <div className="w-full">
+        <p className="flex-1 text-base-sm uppercase display-bold px-s200">Open to work</p>
       </div>
-      <div className="text-base md:text-xl font-bold tracking-tight [writing-mode:vertical-lr] rotate-180 leading-none">G.</div>
+      <button type="button" onClick={dismiss} aria-label="Dismiss banner" className="px-s200 h-full cursor-pointer group shrink-0 bg-brand-primary">
+        <RiCloseLine size={18} className="transition-transform duration-300 group-hover:rotate-90" />
+      </button>
     </div>
   );
 }
