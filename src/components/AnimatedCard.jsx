@@ -3,6 +3,7 @@
 import React, { useRef, useState } from 'react';
 import { motion } from 'motion/react';
 import { useParallax } from '@/hooks/animations';
+import { useCursorTarget } from '@/cursor';
 
 export const MarqueeTags = ({ tags = [], speed = 16 }) => {
   const tagsIndex = tags.join(', ') + ', ';
@@ -62,10 +63,12 @@ const AnimatedCard = ({
   const [isHovered, setIsHovered] = useState(false);
 
   const parallaxY = useParallax(imageContainerRef);
+  const cursorTarget = useCursorTarget({ label: 'View' });
 
   return (
     <Component className={className}>
       <LinkComponent
+        {...cursorTarget}
         to={to}
         href={to}
         className={`flex flex-col gap-4 lg:gap-5 px-3 lg:px-4 pt-3 lg:pt-4 pb-5 lg:pb-6 rounded-xl lg:rounded-2xl bg-neutral-900 cursor-pointer group relative ${linkClassName}`}

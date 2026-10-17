@@ -17,6 +17,11 @@ export function CursorProvider({ children }) {
   const [isSupported, setIsSupported] = useState(false);
   const [activeSubscription, setActiveSubscription] = useState(null);
 
+  const activateSubscription = subscription => setActiveSubscription(subscription);
+  const deactivateSubscription = subscriptionId => {
+    setActiveSubscription(current => (current?.id === subscriptionId ? null : current));
+  };
+
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
 
@@ -52,7 +57,8 @@ export function CursorProvider({ children }) {
         smoothX,
         smoothY,
         activeSubscription,
-        setActiveSubscription,
+        activateSubscription,
+        deactivateSubscription,
       }}
     >
       {children}
