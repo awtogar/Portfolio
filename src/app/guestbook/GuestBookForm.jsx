@@ -2,7 +2,6 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { submitEntry, deleteEntry, toggleLike } from './action';
-import { cursorPresets } from '@/cursor';
 import { RiCloseLine, RiHeartLine, RiHeartFill } from '@remixicon/react';
 
 const MAX = 250;
@@ -85,7 +84,7 @@ export default function GuestBookForm({ user, entries, currentUserId }) {
         <button
           type="submit"
           disabled={pending || !value.trim()}
-          {...cursorPresets.click}
+
           className="cursor-pointer w-10 h-10 rounded-full bg-primary text-secondary flex items-center justify-center transition-opacity duration-300 disabled:opacity-20 disabled:pointer-events-none hover:opacity-80 focus-visible:outline-2 focus-visible:outline-offset-4"
           aria-label={pending ? 'Posting…' : 'Post note'}
         >

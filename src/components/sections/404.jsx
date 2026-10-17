@@ -1,6 +1,5 @@
 'use client';
 import { motion } from 'motion/react';
-import { cursorPresets } from '@/cursor';
 import { BaseSection, CreativeButton } from '@/components';
 
 export default function NotFoundPage() {
@@ -44,7 +43,7 @@ export default function NotFoundPage() {
         >
           <CreativeButton
             variant="primary"
-            {...cursorPresets.view}
+
             to="/"
             className="px-6 py-3 text-base-sm"
           >

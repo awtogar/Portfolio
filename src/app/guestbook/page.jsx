@@ -2,7 +2,6 @@ import { signInWithGithub } from './action';
 import { BaseSection, TextReveal, Footer } from '@/components';
 import { createClient } from '@/lib/supabase/server';
 import GuestBookForm, { GuestBookEntries } from './GuestBookForm';
-import { cursorPresets } from '@/cursor';
 import { RiGithubFill } from '@remixicon/react';
 
 export const metadata = {
@@ -98,7 +97,7 @@ export default async function GuestBook() {
                     <form action={signInWithGithub}>
                       <button
                         type="submit"
-                        {...cursorPresets.signIn}
+
                         className="group flex w-full cursor-pointer items-center justify-center gap-4 rounded-2xl bg-current/[0.04] px-6 py-8 md:py-10 text-center transition-colors duration-300 hover:bg-current/[0.07] focus-visible:outline-2 focus-visible:outline-offset-4"
                       >
                         <RiGithubFill className="h-6 w-6 text-current transition-colors duration-300 group-hover:text-fg" />

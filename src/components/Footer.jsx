@@ -4,7 +4,6 @@ import { useRef } from 'react';
 import { motion } from 'motion/react';
 import { contact_info, socials } from '@/data/data';
 import { BaseSection } from '.';
-import { cursorPresets } from '@/cursor';
 import { useParallax } from '@/hooks/animations';
 import Link from 'next/link';
 
@@ -25,20 +24,20 @@ export default function Bento() {
           AWTOGAR
         </motion.h2>
 
-        <Link {...cursorPresets.view} href="/guestbook" className={`col-span-12 lg:col-span-8 h-[200px] lg:h-[350px] ${cardClass}`}>
+        <Link href="/guestbook" className={`col-span-12 lg:col-span-8 h-[200px] lg:h-[350px] ${cardClass}`}>
           Guestbook
         </Link>
 
-        <Link {...cursorPresets.view} href="/writing" className={`col-span-12 lg:col-span-4 h-[200px] lg:h-[350px] ${cardClass}`}>
+        <Link href="/writing" className={`col-span-12 lg:col-span-4 h-[200px] lg:h-[350px] ${cardClass}`}>
           Writing
         </Link>
 
         <div className="col-span-12 lg:col-span-4 grid grid-cols-2 lg:grid-rows-2 gap-2 lg:gap-4">
-          <a {...cursorPresets.view} href={`mailto:${contact_info.email}`} className={`lg:col-span-12 h-[120px] lg:h-full ${cardClass}`}>
+          <a href={`mailto:${contact_info.email}`} className={`lg:col-span-12 h-[120px] lg:h-full ${cardClass}`}>
             Contact
           </a>
           <a
-            {...cursorPresets.view}
+
             href={socials.find(s => s.label === 'github')?.href}
             target="_blank"
             rel="noopener noreferrer"
@@ -49,7 +48,7 @@ export default function Bento() {
         </div>
 
         <a
-          {...cursorPresets.view}
+
           href={socials.find(s => s.label === 'instagram')?.href}
           target="_blank"
           rel="noopener noreferrer"
@@ -59,7 +58,7 @@ export default function Bento() {
         </a>
 
         <a
-          {...cursorPresets.view}
+
           href={socials.find(s => s.label === 'linkedin')?.href}
           target="_blank"
           rel="noopener noreferrer"

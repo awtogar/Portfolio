@@ -1,6 +1,6 @@
 'use client';
 import { unstable_ViewTransition as ViewTransition } from 'react';
-import { Navbar, CustomCursor, Preloader, Header } from '@/components';
+import { Navbar, Preloader, Header } from '@/components';
 
 // TODO: child route transition (/projects/[slug], /labs/[slug], /writing/[slug])
 
@@ -20,7 +20,6 @@ export default function Template({ children }) {
   return (
     <ViewTransition enter="page-enter" exit="page-exit" default="none">
       <Preloader />
-      <CustomCursor />
       <Header />
       <Navbar />
       {children}

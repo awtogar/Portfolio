@@ -1,7 +1,6 @@
 @import 'tailwindcss';
 @import './fonts.css';
 @import './layouts.css';
-@plugin "@tailwindcss/typography";
 
 :root {
   --section-padding: clamp(4rem, 7vw, 6rem);
@@ -49,7 +48,7 @@
   --color-brand-secondary: oklch(55.3% 0.013 58.071);
   --color-brand-tertiary: oklch(70.9% 0.01 56.259);
 
-  --text-display: clamp(3.3368rem, 10vw, 7rem);
+  --text-display: clamp(3.3368rem, 10vw, 8rem);
   --text-h100: clamp(3.0518rem, 2.8338rem + 1.0899vw, 3.8147rem);
   --text-h200: clamp(2.4414rem, 2.267rem + 0.8719vw, 3.0518rem);
   --text-h300: clamp(1.9531rem, 1.8136rem + 0.6975vw, 2.4414rem);

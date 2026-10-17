@@ -1,6 +1,5 @@
 import '@/styles/globals.css';
 import { LenisProvider, PreloaderProvider } from '@/context';
-import { CursorProvider, CustomCursor } from '@/cursor';
 
 export const metadata = {
   title: 'Awaluddin Togar | Portfolio',
@@ -15,9 +14,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className="bg-black">
         <LenisProvider>
-          <CursorProvider>
-            <PreloaderProvider root>{children}</PreloaderProvider>
-          </CursorProvider>
+          <PreloaderProvider root>{children}</PreloaderProvider>
         </LenisProvider>
       </body>
     </html>

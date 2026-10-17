@@ -4,7 +4,6 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'motion/react';
-import { cursorPresets } from '@/cursor';
 import { HoverRotate } from '@/components';
 
 import NavHomeRouteImages from '@/assets/images/Home.webp';
@@ -106,7 +105,7 @@ const Navbar = () => {
           </div>
 
           <button
-            {...cursorPresets.view}
+
             onClick={toggle}
             aria-label={isOpen ? 'Close menu' : 'Open menu'}
             aria-expanded={isOpen}

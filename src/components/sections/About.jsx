@@ -1,7 +1,6 @@
 import { BaseSection, CardParallax, CreativeButton, TextReveal, HoverRotate } from '@/components';
 import { aboutImages } from '@/assets';
 import { useState, useRef, useEffect } from 'react';
-import { cursorPresets } from '@/cursor';
 import { gsap, SplitText } from '@/lib/gsap';
 
 const resumeLink = '/assets/RESUME-AWALUDDIN_TOGAR.pdf';

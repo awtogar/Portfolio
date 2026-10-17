@@ -19,6 +19,10 @@ create table public.guestbook_likes (
   unique (guestbook_id, user_id)
 );
 
+-- Support newest-first comment lists and like-count queries.
+create index guestbook_created_at_idx on public.guestbook (created_at desc);
+create index guestbook_likes_guestbook_id_idx on public.guestbook_likes (guestbook_id);
+
 -- Enable RLS
 alter table public.guestbook enable row level security;
 alter table public.guestbook_likes enable row level security;

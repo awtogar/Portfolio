@@ -3,7 +3,6 @@ import { projects } from '@/data/data';
 import { TextReveal, BaseSection } from '@/components';
 import AnimatedCard, { CardMeta } from '@/components/AnimatedCard';
 import Link from 'next/link';
-import { cursorPresets } from '@/cursor';
 
 import { RiArrowRightSLine } from '@remixicon/react';
 
@@ -49,7 +48,7 @@ const SelectedWorks = () => {
       </ul>
 
       <Link href="/projects" className="flex text-base items-center justify-center cursor-pointer group">
-        <div {...cursorPresets.view} className="gap-1 flex items-center">
+        <div className="gap-1 flex items-center">
           <span>See all</span>
           <RiArrowRightSLine size={24} />
         </div>

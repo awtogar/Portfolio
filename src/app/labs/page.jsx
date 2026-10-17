@@ -2,7 +2,6 @@
 
 import React from 'react';
 import { motion } from 'motion/react';
-import { cursorPresets } from '@/cursor';
 import { BaseSection, CreativeButton } from '@/components';
 
 export default function LabsPage() {
@@ -38,7 +37,7 @@ export default function LabsPage() {
           </motion.p>
 
           <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.5 }}>
-            <CreativeButton variant="primary" {...cursorPresets.view} to="/projects" className="px-6 py-3 text-base-sm">
+            <CreativeButton variant="primary" to="/projects" className="px-6 py-3 text-base-sm">
               Explore Projects
             </CreativeButton>
           </motion.div>

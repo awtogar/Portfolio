@@ -41,8 +41,8 @@ export const CardHoverEffect = ({ items, className }) => {
   return (
     <div
       ref={gridRef}
-      data-cursor
-      data-cursor-fill="none"
+
+
       className={cn('relative grid border-l border-t border-neutral-300 lg:border-none', 'grid-cols-2 md:grid-cols-12 lg:grid-cols-[repeat(21,minmax(0,1fr))]', className)}
     >
       <motion.span
@@ -84,10 +84,10 @@ export const CardHoverEffect = ({ items, className }) => {
           >
             <Logo
               title={title}
-              data-cursor
-              data-cursor-fill="none"
-              data-cursor-sticky
-              data-cursor-magnetic
+
+
+
+
               className={cn(
                 'relative z-10 transition-colors duration-300',
                 'w-auto max-w-16 h-10 fill-current text-fg md:group-hover:text-secondary',

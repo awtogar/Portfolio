@@ -7,7 +7,7 @@ const Services = () => {
 
   return (
     <BaseSection sectionID="services">
-      <div data-cursor-idle-fill="secondary" className="flex flex-col gap-16 px-4 pt-16 pb-4 bg-neutral-900 rounded-3xl lg:gap-28 lg:pt-24 lg:rounded-[20px]">
+      <div className="flex flex-col gap-16 px-4 pt-16 pb-4 bg-neutral-900 rounded-3xl lg:gap-28 lg:pt-24 lg:rounded-[20px]">
         <div className="flex flex-col md:gap-2 md:px-4">
           <div className="flex flex-col mb-2 md:col-span-5 md:mb-0 md:pt-1 lg:col-span-4 ">
             <TextReveal as="p" className="text-base body-heading text-justify text-[#A39A90]">

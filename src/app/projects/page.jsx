@@ -2,7 +2,8 @@
 
 import React from 'react';
 import { projects } from '@/data/data';
-import { BaseSection, TextReveal } from '@/components';
+import { BaseSection, Footer, TextReveal } from '@/components';
+
 import AnimatedCard, { CardMeta } from '@/components/AnimatedCard';
 import Link from 'next/link';
 
@@ -50,7 +51,7 @@ export default function ProjectsPage() {
           </ul>
         </div>
       </BaseSection>
+      <Footer />
     </main>
-
   );
 }
