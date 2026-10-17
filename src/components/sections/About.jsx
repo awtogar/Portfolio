@@ -7,10 +7,10 @@ import { gsap, SplitText } from '@/lib/gsap';
 const resumeLink = '/assets/RESUME-AWALUDDIN_TOGAR.pdf';
 
 const aboutDescription =
-  'Interested in Engineering and Creative Stuff. I enjoy to learning something new by doing and looking at problems from different angles to figuring out how it works and understanding the best practices.';
+  'A Passionate creative engineer. Interesting in exploring technology and learning new things in the fields such as Web Development, UI/UX design and emerging tech with strong problem solving skills to create solutions that fit the needs, effective and enjoyable';
 
 // Indeks kata yang tersembunyi pada state awal (partial)
-const PARTIAL_HIDDEN_WORDS = [1, 4, 7, 10, 12, 15, 18, 21, 23, 26, 29, 31];
+const PARTIAL_HIDDEN_WORDS = [1, 7, 10, 12, 16, 22, 25, 26, 29, 31, 33, 35, 37];
 
 const AboutText = ({ textRef, className }) => (
   <span className={`relative block ${className}`}>
@@ -46,18 +46,17 @@ const About = () => {
       // Timeline scrolltrigger: tinggal memunculkan kata-kata yang hilang secara random/stagger
       gsap.to(hiddenWords, {
         opacity: 1,
-        duration: 0.1,
-        ease: 'expo',
+        duration: 0.25,
+        ease: 'none',
         stagger: {
-          each: 0.02,
+          each: 0.15,
           from: 'random',
         },
         scrollTrigger: {
           trigger: element,
-          start: 'top 80%',
-          end: 'top 35%',
-          scrub: true,
-          // markers: true,
+          start: 'top 85%',
+          end: 'top 10%',
+          scrub: 1,
           invalidateOnRefresh: true,
         },
       });
