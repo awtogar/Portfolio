@@ -13,31 +13,27 @@ export const sectionLink = {
     title: 'Home',
     href: '/',
     label: 'Home',
-    sectionId: null,
   },
   about: {
     title: 'About',
     href: '/',
     label: 'About',
-    sectionId: 'about',
   },
   services: {
     title: 'Services',
     href: '/',
     label: 'Services',
-    sectionId: 'services',
   },
   works: {
     title: 'Works',
     href: '/',
     label: 'Works',
-    sectionId: 'works',
   },
   contact: {
     title: 'Contact',
     href: '/',
     label: 'Contact',
-    sectionId: 'contact',
+    
   },
 };
 
@@ -49,7 +45,7 @@ export const socials = [
 ];
 
 export const contact_info = {
-  email: 'info@awtogar.com',
+  email: 'awaluddintogar@gmail.com',
   phone: '+62 8139 9090 251',
   credits: `© ${new Date().getFullYear()} Awtogar.`,
   copyright: `All rights reserved.`,

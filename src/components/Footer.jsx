@@ -16,8 +16,8 @@ export default function Bento() {
   const y = useParallax(ref);
 
   return (
-    <BaseSection as="footer" sectionID="contact">
-      <section ref={ref} className="bg-neutral-100 px-2 lg:px-4 pt-8 lg:pt-16 pb-8 lg:pb-8 grid grid-cols-12 gap-2 lg:gap-4 relative">
+    <BaseSection as="footer" sectionID="contact" sectionClassName="section-padding-y">
+      <section ref={ref} className="bg-neutral-100 px-4 md:px-6 lg:px-8 pt-8 lg:pt-16 pb-8 lg:pb-8 grid grid-cols-12 gap-2 lg:gap-4 relative">
         <motion.h2
           style={{ y, fontSize: 'clamp(40px, 16vw, 250px)' }}
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 font-bold tracking-tight whitespace-nowrap leading-none pointer-events-none"
