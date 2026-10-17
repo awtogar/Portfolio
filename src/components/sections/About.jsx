@@ -57,7 +57,7 @@ const About = () => {
           start: 'top 80%',
           end: 'top 35%',
           scrub: true,
-          markers: true,
+          // markers: true,
           invalidateOnRefresh: true,
         },
       });
