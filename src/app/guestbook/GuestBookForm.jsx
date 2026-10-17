@@ -33,7 +33,11 @@ export default function GuestBookForm({ user, entries, currentUserId }) {
     setError(null);
 
     try {
-      await submitEntry(new FormData(formRef.current));
+      const result = await submitEntry(null, new FormData(formRef.current));
+      if (result?.error) {
+        setError(result.error);
+        return;
+      }
       setValue('');
     } catch {
       setError('Your note didnt post. Check your connection and try again.');
@@ -45,9 +49,10 @@ export default function GuestBookForm({ user, entries, currentUserId }) {
   async function handleDelete(id) {
     setDeletingId(id);
     try {
-      await deleteEntry(id);
+      const result = await deleteEntry(id);
+      if (result?.error) setError(result.error);
     } catch {
-      setError('That note couldnt be deleted.Try again.');
+      setError('That note could not be deleted. Try again.');
     } finally {
       setDeletingId(null);
     }
@@ -119,7 +124,11 @@ export function GuestBookEntries({ entries, currentUserId }) {
       [id]: { count: prev.liked ? prev.count - 1 : prev.count + 1, liked: !prev.liked },
     }));
     try {
-      await toggleLike(id);
+      const result = await toggleLike(id);
+      if (result?.error) {
+        setLikes(l => ({ ...l, [id]: prev }));
+        setError(result.error);
+      }
     } catch {
       setLikes(l => ({ ...l, [id]: prev }));
       setError('Could not update like.');
@@ -131,9 +140,10 @@ export function GuestBookEntries({ entries, currentUserId }) {
   async function handleDelete(id) {
     setDeletingId(id);
     try {
-      await deleteEntry(id);
+      const result = await deleteEntry(id);
+      if (result?.error) setError(result.error);
     } catch {
-      setError('That note couldnt be deleted. Try again.');
+      setError('That note could not be deleted. Try again.');
     } finally {
       setDeletingId(null);
     }
