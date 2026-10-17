@@ -90,7 +90,7 @@ export const CardHoverEffect = ({ items, className }) => {
               data-cursor-magnetic
               className={cn(
                 'relative z-10 transition-colors duration-300',
-                'w-auto max-w-16 h-10 fill-current text-primary md:group-hover:text-secondary',
+                'w-auto max-w-16 h-10 fill-current text-fg md:group-hover:text-secondary',
                 isBig ? 'lg:max-w-28 lg:h-16' : 'lg:max-w-16 lg:h-10'
               )}
             />
@@ -118,7 +118,7 @@ const Stack = () => (
   <BaseSection containerID="tech-stack" sectionClassName="">
     <div className="flex flex-col md:gap-y-2 lg:gap-y-6">
       <div className="block relative">
-        <LetterScroll elementHeight="h-[30dvh] md:h-[50dvh]" lines={['MODERN', 'TECH STACK']} textColor="text-primary" />
+        <LetterScroll elementHeight="h-[30dvh] md:h-[50dvh]" lines={['MODERN', 'TECH STACK']} textColor="text-fg" />
       </div>
       <div className="blocks relative">
         <CardHoverEffect items={items} />

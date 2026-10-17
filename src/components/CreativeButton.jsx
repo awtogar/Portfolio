@@ -10,15 +10,15 @@ const MotionButton = motion.create('button');
 const VARIANTS = {
   primary: {
     bg: 'bg-neutral-900',
-    hoverBg: 'bg-neutral-100',
+    hoverBg: 'bg-neutral-50',
     text: 'text-secondary',
-    hoverText: 'text-primary',
+    hoverText: 'text-fg',
     outline: 'outline outline-1 outline-neutral-900',
   },
   secondary: {
-    bg: 'bg-neutral-100',
+    bg: 'bg-neutral-50',
     hoverBg: 'bg-neutral-900',
-    text: 'text-primary',
+    text: 'text-fg',
     hoverText: 'text-secondary',
     outline: 'outline outline-1 outline-neutral-900',
   },

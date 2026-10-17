@@ -16,12 +16,12 @@ export const CURSOR_FILLS = {
 
 export const CURSOR_CONTENTS = {
   arrow: <RiArrowRightUpLine className="w-5 h-5 md:w-6 md:h-6" />,
-  text: <span className="text-primary tracking-widest uppercase">children</span>,
+  text: <span className="text-fg tracking-widest uppercase">children</span>,
   check: <RiCheckLine className="w-5 h-5 md:w-6 md:h-6" />,
 };
 
 export const CURSOR_TEXT_COLORS = {
-  primary: 'text-primary',
+  primary: 'text-fg',
   secondary: 'text-secondary',
   brandPrimary: 'text-brand-primary',
   brandSecondary: 'text-brand-secondary',

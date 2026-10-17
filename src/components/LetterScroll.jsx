@@ -6,7 +6,7 @@ export const LetterScroll = ({
   lines,
   elementHeight = 'h-[300px] lg:h-[400px]',
   containerClassName = '',
-  textColor = 'text-primary',
+  textColor = 'text-fg',
   start = 'top 25%',
   end = 'bottom 120%',
   scrub = 2,

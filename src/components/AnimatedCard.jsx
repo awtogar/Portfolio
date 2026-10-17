@@ -27,7 +27,7 @@ export const CardMeta = ({ client, type, year, tags = [], logo: Logo }) => {
     <div className="flex flex-col gap-4 lg:gap-5">
       <div className="flex justify-between items-center w-full">
         <div className="flex items-center gap-2 lg:gap-3">
-          <div className="w-6 h-6 md:w-10 md:h-10 px-1 py-1 md:px-2 flex items-center justify-center rounded-full bg-neutral-100 overflow-hidden text-primary">
+          <div className="w-6 h-6 md:w-10 md:h-10 px-1 py-1 md:px-2 flex items-center justify-center rounded-full bg-neutral-100 overflow-hidden text-fg">
             {Logo ? (
               <Logo className="w-full h-full fill-primary" />
             ) : (

@@ -73,12 +73,12 @@ const Navbar = () => {
               transition={{ duration: 0.45, ease }}
               className="overflow-hidden"
             >
-              <ul className="flex flex-col gap-3 p-2">
+              <ul className="flex flex-col gap-3 p-2.5">
                 {links.map((item, i) => (
                   <motion.li key={item.label} initial={{ y: 16, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 0.4, ease, delay: 0.05 * i }}>
                     <Link href={item.href} onClick={() => setIsOpen(false)} className="flex items-center gap-4 group">
-                      <div className="w-[60px] h-[60px] shrink-0 rounded-lg overflow-hidden bg-white">
-                        <Image src={item.thumb} alt={item.label} width={60} height={60} className="w-full h-full object-cover" />
+                      <div className="w-[60px] h-[60px] lg:w-[70px] lg:h-[70px] shrink-0 rounded-[10px] overflow-hidden bg-white">
+                        <Image src={item.thumb} alt={item.label} width={70} height={70} className="w-full h-full object-cover" />
                       </div>
                       <HoverRotate as="span" className="text-white text-base font-[500]">
                         {item.label}

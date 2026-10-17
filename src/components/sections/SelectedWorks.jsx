@@ -15,15 +15,17 @@ const SelectedWorks = () => {
       <div className="flex flex-col">
         <div className="flex items-center justify-between">
           <TextReveal as="span">
-            <span className="text-base leading-heading tracking-body font-[450] uppercase text-primary-muted">(SELECTED)</span>
+            <span className="text-base display-bold uppercase text-fg">(SELECTED)</span>
           </TextReveal>
         </div>
-        <div className="flex items-end justify-between w-full mb-s200">
-          <TextReveal as="h2" style={{ lineHeight: '0.86' }} className="text-h100 tracking-heading font-serif font-bold">
-            WORK
-          </TextReveal>
-          <div className="flex flex-col items-end gap-1 pb-1 lg:pb-2">
-            <TextReveal as="h2" style={{ lineHeight: '0.86' }} className="text-h100 tracking-heading font-serif font-bold">
+        <div className="flex items-end justify-between w-full md:grid md:grid-cols-12 md:gap-4 lg:gap-6">
+          <div className="md:col-span-6 lg:col-span-6 items-start justify-start">
+            <TextReveal as="h2" style={{ lineHeight: '1.6', fontWeight: '600', letterSpacing: '-2%' }} className="text-display display-heading">
+              WORK
+            </TextReveal>
+          </div>
+          <div className="md:col-span-6 lg:col-span-6 flex items-end justify-end">
+            <TextReveal as="h2" style={{ lineHeight: '1.6', fontWeight: '600', letterSpacing: '-2%' }} className="text-display display-heading">
               '25
             </TextReveal>
           </div>

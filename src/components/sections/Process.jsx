@@ -33,12 +33,12 @@ const StepItem = ({ step }) => {
   return (
     <li className={`flex flex-col md:grid md:grid-cols-12 group`}>
       <div className="grid grid-cols-8 items-start gap-s100 pt-s200 md:col-span-7 md:pt-s500 md:pr-s200">
-        <span className="col-span-2 inline-flex items-center gap-1 whitespace-nowrap pt-2 text-base-sm leading-none text-primary-muted md:pt-s100">
+        <span className="col-span-2 inline-flex items-center gap-1 whitespace-nowrap pt-2 text-base-sm leading-none text-fg/80 md:pt-s100">
           STEPS <RiArrowRightBoxFill size={18} className="-my-1 shrink-0" /> {step.number}
         </span>
         <div className="flex flex-col col-span-6 gap-s200">
           <h3 className=" text-h400 font-bold leading-tight">{step.title}</h3>
-          <p className="max-w-[40ch] text-base leading-body text-primary-muted">{step.description}</p>
+          <p className="max-w-[40ch] text-base leading-body text-fg/80">{step.description}</p>
         </div>
       </div>
       <span aria-label={`See step ${step.number} in action`} className="block overflow-hidden pt-4 pb-s200 pl-[25%] md:col-span-5 md:pt-0 md:pb-0 md:pl-0 group/video">
@@ -67,7 +67,7 @@ const Process = () => {
       <div className="flex flex-col">
         <div className="flex items-center justify-between">
           <TextReveal as="span">
-            <span className="text-base leading-heading tracking-body font-[450] uppercase text-primary-muted">(STEP BY STEP)</span>
+            <span className="text-base leading-heading tracking-body font-[450] uppercase text-fg/80">(STEP BY STEP)</span>
           </TextReveal>
         </div>
         <div className="flex items-end justify-between w-full mb-s200">

@@ -61,7 +61,7 @@ export default function GuestBookForm({ user, entries, currentUserId }) {
           <Avatar src={avatar} name={name} size="w-6 h-6" />
           <span className="opacity-50">Posting as @{name}</span>
         </div>
-        <span className="text-xs tabular-nums opacity-30">
+        <span className="text-sm tabular-nums opacity-30">
           {value.length} / {MAX}
         </span>
       </div>
@@ -73,7 +73,7 @@ export default function GuestBookForm({ user, entries, currentUserId }) {
         placeholder="Your thoughts..."
         rows={2}
         required
-        className="block w-full resize-none bg-transparent border-0 py-2 font-serif text-xl md:text-2xl leading-[1.4] tracking-[-0.01em] placeholder:text-current/25 focus:outline-none [field-sizing:content] min-h-[3.5rem]"
+        className="block w-full resize-none bg-transparent border-0 py-2 font-serif text-xl md:text-2xl leading-[1.5] tracking-[0em] placeholder:text-current/25 focus:outline-none [field-sizing:content] min-h-[3.5rem]"
       />
 
       <div className="flex items-center justify-end">
@@ -159,7 +159,7 @@ export function GuestBookEntries({ entries, currentUserId }) {
             <div className="flex items-center justify-between gap-4 text-sm">
               <div className="flex flex-col items-baseline">
                 <span className="font-medium">@{entry.github_username}</span>
-                <time className="text-base-xs opacity-40">{formatDate(entry.created_at)}</time>
+                <time className="text-base-sm opacity-40">{formatDate(entry.created_at)}</time>
               </div>
 
               <div className="flex items-center gap-1">
@@ -182,7 +182,7 @@ export function GuestBookEntries({ entries, currentUserId }) {
                   aria-label={likes[entry.id]?.liked ? 'Unlike this comment' : 'Like this comment'}
                 >
                   {likes[entry.id]?.liked ? <RiHeartFill className="w-4 h-4" /> : <RiHeartLine className="w-4 h-4" />}
-                  {likes[entry.id]?.count > 0 && <span className="text-xs tabular-nums">{likes[entry.id].count}</span>}
+                  {likes[entry.id]?.count > 0 && <span className="text-base-sm tabular-nums">{likes[entry.id].count}</span>}
                 </button>
               </div>
             </div>

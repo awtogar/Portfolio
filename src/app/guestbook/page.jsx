@@ -80,7 +80,7 @@ export default async function GuestBook() {
                   <div className="flex flex-col">
                     <div className="flex flex-col">
                       <TextReveal as="span" startDelay="0.5">
-                        <span className="text-base-sm tracking-body font-[450] uppercase text-primary-muted mb-2 md:mb-3 block">(Guestbook)</span>
+                        <span className="text-base-sm tracking-body font-[450] uppercase text-fg mb-2 md:mb-3 block">(Guestbook)</span>
                       </TextReveal>
                       <h1 className="font-serif text-h100 uppercase">Messages</h1>
                     </div>
@@ -101,7 +101,7 @@ export default async function GuestBook() {
                         {...cursorPresets.signIn}
                         className="group flex w-full cursor-pointer items-center justify-center gap-4 rounded-2xl bg-current/[0.04] px-6 py-8 md:py-10 text-center transition-colors duration-300 hover:bg-current/[0.07] focus-visible:outline-2 focus-visible:outline-offset-4"
                       >
-                        <RiGithubFill className="h-6 w-6 text-current transition-colors duration-300 group-hover:text-primary" />
+                        <RiGithubFill className="h-6 w-6 text-current transition-colors duration-300 group-hover:text-fg" />
                         <span className="font-serif text-base md:text-lg tracking-[-0.01em]">Sign in to leave a note</span>
                       </button>
                     </form>
