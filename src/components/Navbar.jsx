@@ -10,6 +10,7 @@ import NavHomeRouteImages from '@/assets/images/Home.webp';
 import NavLabsRouteImages from '@/assets/images/Labs.webp';
 import NavProjectsRouteImages from '@/assets/images/Projects.webp';
 import NavWritingsRouteImages from '@/assets/images/Writings.webp';
+import { useCursorTarget } from '@/cursor';
 import { navReels } from '@/assets';
 
 const tags = ['MADE NOT BORN', 'MADE NOT BORN'];
@@ -43,6 +44,8 @@ const ease = [0.32, 0.72, 0, 1];
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(v => !v);
+  const cursorLabelTarget = useCursorTarget({ label: null });
+  const cursorButtonTarget = useCursorTarget({ label: null });
 
   const navRef = node => {
     if (!node || !isOpen) return;
@@ -79,7 +82,8 @@ const Navbar = () => {
                       <div className="w-[60px] h-[60px] lg:w-[70px] lg:h-[70px] shrink-0 rounded-[10px] overflow-hidden bg-white">
                         <Image src={item.thumb} alt={item.label} width={70} height={70} className="w-full h-full object-cover" />
                       </div>
-                      <HoverRotate as="span" className="text-white text-base font-[500]">
+
+                      <HoverRotate {...cursorLabelTarget} as="span" className="text-bg text-base font-[500]">
                         {item.label}
                       </HoverRotate>
                     </Link>
@@ -105,7 +109,7 @@ const Navbar = () => {
           </div>
 
           <button
-
+            {...cursorButtonTarget}
             onClick={toggle}
             aria-label={isOpen ? 'Close menu' : 'Open menu'}
             aria-expanded={isOpen}
