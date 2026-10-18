@@ -76,7 +76,7 @@ const AnimatedCard = ({
         onMouseLeave={() => setIsHovered(false)}
       >
         <div ref={imageContainerRef} className={`relative rounded-lg lg:rounded-xl overflow-hidden w-full ${imageContainerClassName}`}>
-          <div className="absolute inset-0 bg-[#171717]/30 backdrop-blur-md z-10 opacity-0 group-hover:opacity-50 transition-opacity duration-500 ease-in-out" />
+          <div className="absolute inset-0 bg-neutral-900/30 backdrop-blur-md z-10 opacity-0 group-hover:opacity-50 transition-opacity duration-500 ease-in-out" />
           {reels && (
             <motion.video
               src={reels}

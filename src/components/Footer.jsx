@@ -6,6 +6,7 @@ import { contact_info, socials } from '@/data/data';
 import { BaseSection } from '.';
 import { useParallax } from '@/hooks/animations';
 import Link from 'next/link';
+import { useCursorTarget } from '@/cursor';
 
 const cardClass =
   'flex items-end p-4 lg:p-6 bg-neutral-300/20 backdrop-blur-[0.5rem] rounded-lg lg:rounded-xl text-base-sm font-medium leading-tight cursor-pointer hover:bg-neutral-300/35 hover:backdrop-blur-xs transition-all duration-500';
@@ -13,6 +14,7 @@ const cardClass =
 export default function Bento() {
   const ref = useRef(null);
   const y = useParallax(ref);
+  const cursorTarget = useCursorTarget({ label: 'View' });
 
   return (
     <BaseSection as="footer" sectionID="contact" sectionClassName="section-padding-y">
@@ -24,20 +26,20 @@ export default function Bento() {
           AWTOGAR
         </motion.h2>
 
-        <Link href="/guestbook" className={`col-span-12 lg:col-span-8 h-[200px] lg:h-[350px] ${cardClass}`}>
+        <Link {...cursorTarget} href="/guestbook" className={`col-span-12 lg:col-span-8 h-[200px] lg:h-[350px] ${cardClass}`}>
           Guestbook
         </Link>
 
-        <Link href="/writing" className={`col-span-12 lg:col-span-4 h-[200px] lg:h-[350px] ${cardClass}`}>
+        <Link {...cursorTarget} href="/writing" className={`col-span-12 lg:col-span-4 h-[200px] lg:h-[350px] ${cardClass}`}>
           Writing
         </Link>
 
-        <div className="col-span-12 lg:col-span-4 grid grid-cols-2 lg:grid-rows-2 gap-2 lg:gap-4">
+        <div {...cursorTarget} className="col-span-12 lg:col-span-4 grid grid-cols-2 lg:grid-rows-2 gap-2 lg:gap-4">
           <a href={`mailto:${contact_info.email}`} className={`lg:col-span-12 h-[120px] lg:h-full ${cardClass}`}>
             Contact
           </a>
           <a
-
+            {...cursorTarget}
             href={socials.find(s => s.label === 'github')?.href}
             target="_blank"
             rel="noopener noreferrer"
@@ -48,7 +50,7 @@ export default function Bento() {
         </div>
 
         <a
-
+          {...cursorTarget}
           href={socials.find(s => s.label === 'instagram')?.href}
           target="_blank"
           rel="noopener noreferrer"
@@ -58,7 +60,7 @@ export default function Bento() {
         </a>
 
         <a
-
+          {...cursorTarget}
           href={socials.find(s => s.label === 'linkedin')?.href}
           target="_blank"
           rel="noopener noreferrer"
