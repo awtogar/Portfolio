@@ -9,6 +9,16 @@ const nextConfig = {
   reactStrictMode: true,
   outputFileTracingRoot: __dirname,
   webpack(config) {
+    // Next's default asset rule can match SVG files before SVGR gets a chance
+    // to transform them. Exclude SVGs from that rule first.
+    const assetRule = config.module.rules.find((rule) =>
+      rule.test?.test?.('.svg')
+    );
+
+    if (assetRule) {
+      assetRule.exclude = /\.svg$/i;
+    }
+
     config.module.rules.push({
       test: /\.svg$/i,
       issuer: /\.[jt]sx?$/,

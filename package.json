@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "next dev -p 3001 --turbopack",
-    "build": "next build",
+    "build": "next build --turbopack",
     "start": "next start",
     "lint": "next lint",
     "clean": "rm -rf node_modules .next package-lock.json && npm cache clean --force"
