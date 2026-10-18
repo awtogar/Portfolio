@@ -9,7 +9,7 @@ import Link from 'next/link';
 import { useCursorTarget } from '@/cursor';
 
 const cardClass =
-  'flex items-end p-4 lg:p-6 bg-neutral-300/20 backdrop-blur-[0.5rem] rounded-lg lg:rounded-xl text-base-sm font-medium leading-tight cursor-pointer hover:bg-neutral-300/35 hover:backdrop-blur-xs transition-all duration-500';
+  'flex items-start justify-start p-4 lg:p-6 bg-neutral-300/20 backdrop-blur-[0.5rem] rounded-lg lg:rounded-xl text-base-sm font-medium leading-tight cursor-pointer hover:bg-neutral-300/35 hover:backdrop-blur-xs transition-all duration-500';
 
 export default function Bento() {
   const ref = useRef(null);
@@ -17,7 +17,7 @@ export default function Bento() {
   const cursorTarget = useCursorTarget({ label: 'View' });
 
   return (
-    <BaseSection as="footer" sectionID="contact" sectionClassName="section-padding-y">
+    <BaseSection as="footer" sectionID="contact" sectionClassName="pt-section">
       <section ref={ref} className="bg-neutral-100 px-4 md:px-6 lg:px-8 pt-8 lg:pt-16 pb-8 lg:pb-8 grid grid-cols-12 gap-2 lg:gap-4 relative">
         <motion.h2
           style={{ y, fontSize: 'clamp(40px, 16vw, 250px)' }}
