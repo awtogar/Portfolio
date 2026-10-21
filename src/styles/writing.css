@@ -1,0 +1,122 @@
+/* Rolling Text */
+.writing-roll {
+  @apply relative block overflow-hidden;
+}
+
+.writing-roll__track {
+  @apply relative block transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)];
+}
+
+.writing-roll__track > span:nth-child(1) {
+  @apply block;
+}
+
+.writing-roll__track > span:nth-child(2) {
+  @apply absolute top-full left-0 block;
+}
+
+.writing-list-link:hover .writing-roll__track {
+  transform: translateY(-100%);
+}
+
+/* MDX Styling */
+.mdx-h1,
+.mdx-h2,
+.mdx-h3,
+.mdx-h4 {
+  @apply font-semibold uppercase;
+}
+
+.mdx-h1,
+.mdx-h2 {
+  @apply mt-20 mb-6 text-h400;
+}
+
+.mdx-h3 {
+  @apply mt-12 mb-4 text-h500;
+}
+
+.mdx-h4 {
+  @apply mt-8 mb-3 text-base font-semibold;
+}
+
+.mdx-p {
+  @apply my-6 text-base leading-[1.7] text-fg/80;
+}
+
+.mdx-a {
+  @apply text-fg underline underline-offset-4 transition-opacity hover:opacity-80;
+}
+
+.mdx-ul,
+.mdx-ol {
+  @apply my-6 pl-6 text-fg/80;
+}
+
+.mdx-ul {
+  @apply list-disc;
+}
+
+.mdx-ol {
+  @apply list-decimal;
+}
+
+.mdx-li {
+  @apply my-2 leading-[1.7];
+}
+
+.mdx-blockquote {
+  @apply my-10 border-l-2 border-brand-primary pl-6 italic text-fg/70;
+}
+
+.mdx-hr {
+  @apply my-16 border-fg/10;
+}
+
+.mdx-code {
+  @apply rounded bg-fg/10 px-1 py-0.5 text-[0.9em] text-fg;
+}
+
+.mdx-pre {
+  @apply my-10 overflow-x-auto border border-fg/10 p-5 text-sm leading-[1.7];
+}
+
+.mdx-pre .mdx-code {
+  @apply rounded-none bg-transparent p-0 text-inherit;
+}
+
+.mdx-img {
+  @apply my-12 block h-auto w-full rounded-none;
+}
+
+.mdx-video {
+  @apply my-12 block h-auto w-full;
+}
+
+.mdx-table-wrap {
+  @apply my-10 overflow-x-auto;
+}
+
+.mdx-table {
+  @apply w-full border-collapse text-left text-sm;
+}
+
+.mdx-th {
+  @apply border-b border-fg/20 py-3 pr-4 font-semibold uppercase;
+}
+
+.mdx-td {
+  @apply border-b border-fg/10 py-3 pr-4 text-fg/80;
+}
+
+.mdx [data-rehype-pretty-code-figure] {
+  @apply m-0;
+}
+
+.mdx [data-rehype-pretty-code-figure] span {
+  color: var(--shiki-light);
+}
+
+.dark .mdx [data-rehype-pretty-code-figure] span {
+  color: var(--shiki-dark);
+}

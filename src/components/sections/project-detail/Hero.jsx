@@ -4,7 +4,7 @@ import { motion } from 'motion/react';
 
 const Hero = ({ project }) => {
   return (
-    <div className="overflow-hidden w-full inverted">
+    <div className="overflow-hidden w-full">
       <motion.h1
         initial={{ y: '100%' }}
         animate={{ y: 0 }}

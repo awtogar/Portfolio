@@ -114,7 +114,7 @@ export const projects = [
     description: 'An eyewear and Optical Care branding. focused on modern aesthetics and strong visuals branding.',
     tags: ['Graphics', 'Branding'],
     date: { month: 'June', year: '2024' },
-    url: 'www.ovelo.awtogar.com',
+    url: 'www.oveloprototype.awtogar.com',
     selected: true,
     thumbnail: '/assets/projects/ovelo/thumbnail.webp',
     reels: null,

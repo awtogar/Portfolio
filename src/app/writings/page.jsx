@@ -1,47 +1,67 @@
-'use client';
+import Image from 'next/image';
+import Link from 'next/link';
+import { BaseSection } from '@/components';
+import WritingsInteractive from '@/components/sections/writings-detail/WritingsInteractive';
+import { getAllWritings } from '@/lib/writings';
 
-import React from 'react';
-import { motion } from 'motion/react';
-import { BaseSection, CreativeButton } from '@/components';
+export const metadata = {
+  title: 'Writings | Awaluddin Togar',
+  description: 'Notes, reflections, and breakdowns on design and development.',
+};
+
+function MdxLink({ href = '', children, ...props }) {
+  const isExternal = /^(https?:)?\/\//.test(href);
+
+  if (isExternal) {
+    return (
+      <a href={href} target="_blank" rel="noopener noreferrer" {...props}>
+        {children}
+      </a>
+    );
+  }
+
+  return (
+    <Link href={href} {...props}>
+      {children}
+    </Link>
+  );
+}
+
+export const mdxComponents = {
+  h1: props => <h1 className="mdx-h1" {...props} />,
+  h2: props => <h2 className="mdx-h2" {...props} />,
+  h3: props => <h3 className="mdx-h3" {...props} />,
+  h4: props => <h4 className="mdx-h4" {...props} />,
+  p: props => <p className="mdx-p" {...props} />,
+  a: props => <MdxLink className="mdx-a" {...props} />,
+  code: props => <code className="mdx-code" {...props} />,
+  pre: props => <pre className="mdx-pre" {...props} />,
+  blockquote: props => <blockquote className="mdx-blockquote" {...props} />,
+  ul: props => <ul className="mdx-ul" {...props} />,
+  ol: props => <ol className="mdx-ol" {...props} />,
+  li: props => <li className="mdx-li" {...props} />,
+  hr: props => <hr className="mdx-hr" {...props} />,
+  table: props => (
+    <div className="mdx-table-wrap">
+      <table className="mdx-table" {...props} />
+    </div>
+  ),
+  th: props => <th className="mdx-th" {...props} />,
+  td: props => <td className="mdx-td" {...props} />,
+  img: ({ src = '', alt = '' }) => <Image className="mdx-img" src={src} alt={alt} width={1200} height={675} sizes="(min-width: 768px) 720px, 100vw" />,
+  video: props => <video className="mdx-video" {...props} />,
+};
 
 export default function WritingsPage() {
+  const writings = getAllWritings();
+
   return (
     <main>
-      <BaseSection sectionClassName="section-padding-x" containerClassName="flex flex-col items-center justify-center text-center h-screen py-12 md:py-20">
-        <div className="flex flex-col items-center max-w-[520px]">
-          <motion.h2
-            className="text-h500 text-fg font-[500] uppercase leading-[1.2] -tracking-[0.02em] mb-2 md:mb-3"
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
-          >
-            (In Progress)
-          </motion.h2>
-
-          <motion.h1
-            className="text-h400 md:text-h200 text-fg font-[600] uppercase leading-[1.1]"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
-          >
-            Thoughts & Perspectives
-          </motion.h1>
-
-          <motion.p
-            className="text-base text-fg font-[450] leading-body max-w-[42ch] mt-3 md:mt-4 mb-6 md:mb-8"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-          >
-            Reflections, notes, and breakdowns covering whatever comes to mind. Writing pieces are currently in progress.
-          </motion.p>
-
-          <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.5 }}>
-            <CreativeButton variant="primary" to="/projects" className="px-6 py-3 text-base-sm">
-              Explore Projects
-            </CreativeButton>
-          </motion.div>
-        </div>
+      <BaseSection
+        sectionClassName="section-padding-x py-[clamp(8rem,14vw,14rem)]"
+        containerClassName="grid grid-cols-1 gap-16 lg:grid-cols-[minmax(260px,0.8fr)_minmax(0,2fr)] lg:gap-12"
+      >
+        <WritingsInteractive writings={writings} />
       </BaseSection>
     </main>
   );
