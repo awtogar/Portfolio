@@ -1,6 +1,7 @@
 @import 'tailwindcss';
 @import './fonts.css';
 @import './layouts.css';
+@import './writing.css';
 
 :root {
   --section-padding: clamp(4rem, 7vw, 6rem);
@@ -23,7 +24,6 @@
   --font-serif: 'Overused Grotesk', Inter, 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --font-mono: 'JetBrains Mono', 'Roboto Mono', 'SF Mono', Menlo, Monaco, Consolas, monospace;
 
-  /* background colors */
   --color-neutral-50: #f7f7f8;
   --color-neutral-100: #ecedef;
   --color-neutral-200: #d6d9dc;
@@ -35,14 +35,11 @@
   --color-neutral-800: #2f3337;
   --color-neutral-900: #171a1c;
 
-  /* font colors */
   --color-fg: #171a1c;
   --color-bg: #ffffff;
 
-  --color-primary: hsl(47, 12%, 10%);
-  --color-primary-muted: hsl(47, 8%, 35%);
-  --color-secondary: hsl(47, 0%, 98%);
-  --color-secondary-muted: hsl(47, 4%, 75%);
+  --color-primary: #5dc4ff;
+  --color-secondary: #ffad9b;
 
   --color-brand-primary: oklch(37.4% 0.01 67.558);
   --color-brand-secondary: oklch(55.3% 0.013 58.071);
@@ -146,6 +143,7 @@ html {
   canvas,
   img,
   video {
+    user-select: none;
     max-width: 100%;
     height: auto;
     box-sizing: border-box;
@@ -161,24 +159,12 @@ html {
 
   ::selection {
     background-color: var(--color-primary);
-    color: var(--color-secondary);
     text-shadow: none;
   }
 
   ::-moz-selection {
     background-color: var(--color-primary);
-    color: var(--color-secondary);
     text-shadow: none;
-  }
-
-  .inverted ::selection {
-    background-color: var(--color-secondary);
-    color: var(--color-primary);
-  }
-
-  .inverted ::-moz-selection {
-    background-color: var(--color-secondary);
-    color: var(--color-primary);
   }
 }
 
@@ -193,17 +179,10 @@ html {
   }
 }
 
-@utility animate-scroll-x {
-  animation: scroll-x 20s linear infinite;
-}
-
-@utility animate-marquee {
+@utility move-text {
   animation: scroll-x var(--marquee-speed, 20s) linear infinite;
 }
 
-@utility mask-fade-x {
-  mask-image: linear-gradient(to right, transparent, rgba(0, 0, 0, 0.35) 6%, black 18%, black 82%, rgba(0, 0, 0, 0.35) 94%, transparent);
-}
 
 ::view-transition-old(.page-exit) {
   animation: 1000ms cubic-bezier(0.75, 0, 0.1, 1) both page-out;

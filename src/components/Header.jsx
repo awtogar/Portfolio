@@ -4,8 +4,7 @@ import { CreativeButton } from '@/components';
 
 const Header = () => {
   return (
-    <header className="fixed top-0 left-0 w-full z-50 mix-blend-difference text-neutral-50">
-      {/* dont modify this code below unless text color purpose */}
+    <header className="fixed top-0 left-0 w-full z-50 mix-blend-difference text-neutral-50 select-none">
       <div className="px-gap py-gap flex items-center justify-between w-full lg:grid lg:grid-cols-12 lg:gap-8">
         <div className="overflow-hidden flex flex-col lg:col-span-3 gap-1">
           <span className="block overflow-hidden  text-base display-bold">Based in</span>

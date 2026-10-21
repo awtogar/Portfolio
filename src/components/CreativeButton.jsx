@@ -11,7 +11,7 @@ const VARIANTS = {
   primary: {
     bg: 'bg-neutral-900',
     hoverBg: 'bg-neutral-50',
-    text: 'text-secondary',
+    text: 'text-bg',
     hoverText: 'text-fg',
     outline: 'outline outline-1 outline-neutral-900',
   },
@@ -19,7 +19,7 @@ const VARIANTS = {
     bg: 'bg-neutral-50',
     hoverBg: 'bg-neutral-900',
     text: 'text-fg',
-    hoverText: 'text-secondary',
+    hoverText: 'text-bg',
     outline: 'outline outline-1 outline-neutral-900',
   },
 };

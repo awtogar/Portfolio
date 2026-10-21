@@ -85,7 +85,7 @@ export default function GuestBookForm({ user, entries, currentUserId }) {
           type="submit"
           disabled={pending || !value.trim()}
 
-          className="cursor-pointer w-10 h-10 rounded-full bg-primary text-secondary flex items-center justify-center transition-opacity duration-300 disabled:opacity-20 disabled:pointer-events-none hover:opacity-80 focus-visible:outline-2 focus-visible:outline-offset-4"
+          className="cursor-pointer w-10 h-10 rounded-full bg-neutral-900 text-neutral-50 flex items-center justify-center transition-opacity duration-300 disabled:opacity-20 disabled:pointer-events-none hover:opacity-80 focus-visible:outline-2 focus-visible:outline-offset-4"
           aria-label={pending ? 'Posting…' : 'Post note'}
         >
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">

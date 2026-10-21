@@ -63,7 +63,7 @@ const Navbar = () => {
       animate={{ clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)' }}
       exit={{ clipPath: 'polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)' }}
       transition={{ duration: 1, ease: [0.76, 0, 0.24, 1], delay: 1 }}
-      className="navbar fixed bottom-5 lg:bottom-6 left-1/2 -translate-x-1/2 z-[100] w-[calc(100%-2.5rem)] max-w-[433px] lg:max-w-[620px]"
+      className="navbar fixed bottom-5 lg:bottom-6 left-1/2 -translate-x-1/2 z-[100] w-[calc(100%-2.5rem)] max-w-[433px] lg:max-w-[620px] select-none"
     >
       <div ref={navRef} className="bg-[#131313] rounded-[20px] shadow-2xl border border-white/5 overflow-hidden">
         <AnimatePresence initial={false}>
@@ -101,8 +101,8 @@ const Navbar = () => {
               <video src={navReels} width={54} height={54} autoPlay muted loop playsInline className="w-full h-full object-cover" />
             </div>
             <div className="flex flex-col justify-center min-w-0">
-              <span className="text-secondary text-base font-[500] uppercase leading-tight tracking-wide truncate">Awaluddin Togar</span>
-              <div className="text-[#888888] mt-1 w-full [mask-image:linear-gradient(to_right,white_60%,transparent_100%)]">
+              <span className="text-bg text-base font-[500] uppercase leading-tight tracking-wide truncate">Awaluddin Togar</span>
+              <div className="text-neutral-500 mt-1 w-full [mask-image:linear-gradient(to_right,white_60%,transparent_100%)]">
                 <MarqueeTags tags={tags} speed={32} />
               </div>
             </div>

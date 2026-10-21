@@ -42,11 +42,10 @@ export const CardHoverEffect = ({ items, className }) => {
     <div
       ref={gridRef}
 
-
       className={cn('relative grid border-l border-t border-neutral-300 lg:border-none', 'grid-cols-2 md:grid-cols-12 lg:grid-cols-[repeat(21,minmax(0,1fr))]', className)}
     >
       <motion.span
-        className="hidden absolute z-0 bg-primary md:block"
+        className="hidden absolute z-0 bg-neutral-900 md:block"
         animate={{
           left: bgBounds.left,
           top: bgBounds.top,
@@ -85,12 +84,9 @@ export const CardHoverEffect = ({ items, className }) => {
             <Logo
               title={title}
 
-
-
-
               className={cn(
                 'relative z-10 transition-colors duration-300',
-                'w-auto max-w-16 h-10 fill-current text-fg md:group-hover:text-secondary',
+                'w-auto max-w-16 h-10 fill-current text-fg md:group-hover:text-bg',
                 isBig ? 'lg:max-w-28 lg:h-16' : 'lg:max-w-16 lg:h-10'
               )}
             />

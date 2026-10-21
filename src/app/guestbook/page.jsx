@@ -71,9 +71,9 @@ export default async function GuestBook() {
     <main className="bg-neutral-100">
       <BaseSection sectionID="guestbook" sectionClassName="">
         <div className="flex flex-col">
-          <div className="relative section-padding-hero">
+          <div className="relative px-4 md:px-6 lg:px-8 pt-[6rem] pb-[4rem] md:pt-[8rem] md:pb-[2.5rem]">
             <div className="md:grid md:grid-cols-[3fr_2fr] md:items-start md:gap-[2rem]">
-              <div className="pb-4 md:sticky md:pr-6 md:top-[8rem]">
+              <div className="pb-4 md:sticky top-12">
                 <div className="flex flex-col gap-8 md:gap-10">
                   {/* header */}
                   <div className="flex flex-col">
@@ -122,10 +122,9 @@ export default async function GuestBook() {
               </div>
             </div>
           </div>
-
-          <Footer />
         </div>
       </BaseSection>
+      <Footer />
     </main>
   );
 }

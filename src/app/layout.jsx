@@ -5,8 +5,14 @@ import { CursorProvider, CursorFollower, CursorHover } from '@/cursor';
 export const metadata = {
   title: 'Awaluddin Togar | Portfolio',
   description: 'Creative portfolio',
+  manifest: '/manifest.json',
   icons: {
-    icon: '/favicon.svg',
+    icon: [
+      { url: '/favicon.ico' },
+      { url: '/icon0.svg', type: 'image/svg+xml' },
+      { url: '/icon1.png', type: 'image/png', sizes: '32x32' },
+    ],
+    apple: '/apple-icon.png',
   },
 };
 

@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="1000" height="1000"><metadata><rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/"><rdf:Description><dc:creator>RealFaviconGenerator</dc:creator><dc:source>https://realfavicongenerator.net</dc:source></rdf:Description></rdf:RDF></metadata><style>
+    #light-icon {
+      display: inline;
+    }
+    #dark-icon {
+      display: none;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      #light-icon {
+        display: none;
+      }
+      #dark-icon {
+        display: inline;
+      }
+    }
+  </style><g id="light-icon"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="1000" height="1000"><g clip-path="url(#SvgjsClipPath1181)"><rect width="1000" height="1000" fill="#ffffff"></rect><g transform="matrix(1,0,0,1,50,50)"><svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" viewBox="0 0 900 900" width="900" height="900"><g id="Layer_1-2"><path d="M732.15,449.21c.02-16.94-1.5-33.46-4.4-49.58h-274.5c-54.79,0-99.16,44.38-99.16,99.16h272.08c-61.34,202.54-354.79,162.02-358.85-49.52.72-186.76,249.59-252.24,341.99-89.87h108.21c-85.89-252.78-443.52-255.54-533.32-4.15-53.41,141.46,28.34,312.51,171.93,359.84,179.39,66.38,378.84-74.5,376.08-265.88h-.06Z"></path></g></svg></g></g><defs><clipPath id="SvgjsClipPath1181"><rect width="1000" height="1000" x="0" y="0" rx="400" ry="400"></rect></clipPath></defs></svg></g><g id="dark-icon"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="1000" height="1000"><g clip-path="url(#SvgjsClipPath1182)"><rect width="1000" height="1000" fill="#ffffff"></rect><g transform="matrix(1,0,0,1,50,50)"><svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" viewBox="0 0 900 900" width="900" height="900"><g id="Layer_1-2"><path d="M732.15,449.21c.02-16.94-1.5-33.46-4.4-49.58h-274.5c-54.79,0-99.16,44.38-99.16,99.16h272.08c-61.34,202.54-354.79,162.02-358.85-49.52.72-186.76,249.59-252.24,341.99-89.87h108.21c-85.89-252.78-443.52-255.54-533.32-4.15-53.41,141.46,28.34,312.51,171.93,359.84,179.39,66.38,378.84-74.5,376.08-265.88h-.06Z"></path></g></svg></g></g><defs><clipPath id="SvgjsClipPath1182"><rect width="1000" height="1000" x="0" y="0" rx="400" ry="400"></rect></clipPath></defs></svg></g></svg>

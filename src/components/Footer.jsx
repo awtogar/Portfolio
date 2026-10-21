@@ -9,7 +9,7 @@ import Link from 'next/link';
 import { useCursorTarget } from '@/cursor';
 
 const cardClass =
-  'flex items-start justify-start p-4 lg:p-6 bg-neutral-300/20 backdrop-blur-[0.5rem] rounded-lg lg:rounded-xl text-base-sm font-medium leading-tight cursor-pointer hover:bg-neutral-300/35 hover:backdrop-blur-xs transition-all duration-500';
+  'flex items-start justify-start p-4 lg:p-6 bg-neutral-300/20 backdrop-blur-[0.5rem] rounded-lg lg:rounded-xl text-base-sm font-medium leading-tight cursor-pointer transition-all duration-500';
 
 export default function Bento() {
   const ref = useRef(null);
@@ -30,8 +30,8 @@ export default function Bento() {
           Guestbook
         </Link>
 
-        <Link {...cursorTarget} href="/writing" className={`col-span-12 lg:col-span-4 h-[200px] lg:h-[350px] ${cardClass}`}>
-          Writing
+        <Link {...cursorTarget} href="/writings" className={`col-span-12 lg:col-span-4 h-[200px] lg:h-[350px] ${cardClass}`}>
+          Writings
         </Link>
 
         <div {...cursorTarget} className="col-span-12 lg:col-span-4 grid grid-cols-2 lg:grid-rows-2 gap-2 lg:gap-4">

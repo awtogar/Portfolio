@@ -40,7 +40,7 @@ export const CountUp = () => {
   return (
     <motion.div
       exit={{ y: '-100%', transition: { duration: 1, ease: [0.76, 0, 0.24, 1], delay: 0.2 } }}
-      className="fixed inset-0 z-[9999] flex items-end justify-start bg-primary p-8 text-secondary"
+      className="fixed inset-0 z-[9999] flex items-end justify-start bg-neutral-900 p-8 text-bg"
     >
       <span className="flex text-[15vw] font-medium leading-none tracking-tighter tabular-nums">
         {PLACES.map((place, index) => (
