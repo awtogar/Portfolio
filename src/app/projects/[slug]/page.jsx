@@ -1,13 +1,13 @@
-'use client';
+"use client";
 
-import { use } from 'react';
-import { projects } from '@/data/data';
-import NotFoundPage from '@/components/sections/404';
-import { Hero, Info, Media } from '@/components/sections/project-detail';
+import { use } from "react";
+import { projects } from "@/data/data";
+import NotFoundPage from "@/components/sections/404";
+import { Hero, Info, Media } from "@/components/sections/project-detail";
 
 export default function ProjectsPages({ params }) {
   const { slug } = use(params);
-  const project = projects.find(p => p.slug === slug);
+  const project = projects.find((p) => p.slug === slug);
 
   if (!project) return <NotFoundPage />;
 

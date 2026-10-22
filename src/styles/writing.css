@@ -1,24 +1,3 @@
-/* Rolling Text */
-.writing-roll {
-  @apply relative block overflow-hidden;
-}
-
-.writing-roll__track {
-  @apply relative block transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)];
-}
-
-.writing-roll__track > span:nth-child(1) {
-  @apply block;
-}
-
-.writing-roll__track > span:nth-child(2) {
-  @apply absolute top-full left-0 block;
-}
-
-.writing-list-link:hover .writing-roll__track {
-  transform: translateY(-100%);
-}
-
 /* MDX Styling */
 .mdx-h1,
 .mdx-h2,
@@ -109,14 +88,6 @@
   @apply border-b border-fg/10 py-3 pr-4 text-fg/80;
 }
 
-.mdx [data-rehype-pretty-code-figure] {
-  @apply m-0;
-}
-
-.mdx [data-rehype-pretty-code-figure] span {
-  color: var(--shiki-light);
-}
-
-.dark .mdx [data-rehype-pretty-code-figure] span {
-  color: var(--shiki-dark);
+.mdx > :first-child {
+  @apply mt-4;
 }

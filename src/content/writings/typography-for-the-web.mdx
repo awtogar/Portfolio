@@ -1,0 +1,160 @@
+---
+title: "Typography for the Web"
+description: "Fundamental typography principles for building clean, readable, and professional websites: font families, font settings, contrast, and alignment."
+date: "2026-10-23"
+tags:
+  - Guides
+  - Design
+thumbnail: "/assets/writings/typography-for-the-web/thumbnail.jpg"
+published: true
+---
+
+## Introduction
+
+Typography does more than display words. It sets the mood of a website, and it shapes the first impression before anyone reads a single sentence.
+
+The same content can feel elegant, playful, technical, or cheap depending on the type choices around it. This article covers the fundamentals I rely on when designing a site: the three font families, the four basic font settings, two kinds of contrast, and text alignment.
+
+## Font families
+
+Almost every typeface falls into one of three families. Knowing what each one communicates makes the choice much easier.
+
+1. **Serif**: Letters with small feet or tails at the ends of strokes. Serifs bring sophistication, elegance, and a traditional, editorial feel, like a newspaper. On creative and award-winning sites they are often used for headings, where they add a refined look.
+2. **Sans-serif**: Literally "without serifs". This is the most common choice for websites because it is clean, readable, and minimal.
+3. **Mono**: Every character takes up the same horizontal space. You see it in code editors and technical products, where the even spacing is part of the identity.
+
+Pick the family that matches the story of the project. A boutique studio and a developer tool should not look the same.
+
+## Font settings
+
+Changing font settings is the easiest thing to learn in typography, and it often makes the biggest difference. Start with these four.
+
+### Font weight
+
+Weight is how thick or heavy a font looks. It is one of the simplest ways to create hierarchy and contrast. When choosing a typeface, prefer one with a wide range of weights so you have flexibility while designing.
+
+### Font size
+
+Sizes should come from a type scale rather than from guesswork. A scale gives every size a clear relationship to the others, which keeps the design consistent. A tool like typescale.com is a good place to explore different scales.
+
+### Line height
+
+Line height, also called leading, is the vertical distance between lines of text.
+
+- Body text: around 120% to 150% for comfortable reading.
+- Headings and titles: tighter, around 85% to 100%, so they do not look spread out.
+
+### Letter spacing
+
+Letter spacing, also called tracking, makes a design feel more polished when tuned well.
+
+- Body text: about -1% or 0%.
+- Headings: about -3% to -5%.
+
+These numbers depend on the typeface, so treat them as a starting point and adjust by eye.
+
+```css
+.heading {
+  font-weight: 600;
+  font-size: var(--h400);
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+}
+
+.body {
+  font-weight: 400;
+  font-size: var(--base);
+  line-height: 1.5;
+  letter-spacing: 0;
+}
+```
+
+### Putting it together
+
+Take a block of text with a heading and a description where everything looks the same. Apply the settings in this order:
+
+1. Weight: make the heading bolder than the description.
+2. Size: make the heading much larger, so the order of reading is obvious.
+3. Line height: tighten the heading and open up the description.
+4. Letter spacing: tighten the heading slightly.
+
+None of these changes is dramatic on its own. Together they turn a flat block of text into something clear and readable.
+
+## Contrast
+
+There are two kinds of contrast to think about.
+
+### Color contrast
+
+Text must be readable against its background. Fix it by changing the text color, the background color, or both. A light gray on white may look elegant in a mockup, but it strains the eyes in real use.
+
+Do not rely on your eye alone. Test it:
+
+- In Figma, use a contrast checker plugin such as A11y.
+- In code, use the browser dev tools, which show the contrast ratio when you inspect a color.
+
+For normal body text, aim for at least a 4.5:1 ratio.
+
+### Form contrast
+
+Form contrast is the difference in size between pieces of text. Large headings attract attention first, and smaller text supports them.
+
+- Use roughly three to five font sizes for the whole project. More than that makes the design feel scattered.
+- Make the steps between sizes noticeable. Small differences look like mistakes, while clear differences create a hierarchy.
+
+When the size gap is distinct, readers know where to look first, what to read next, and which information matters most.
+
+## Alignment
+
+Alignment guides attention and affects how easy text is to read.
+
+### Left alignment
+
+This is what you will use most of the time. Every line starts at the same position, so the eye never has to search for the beginning of the next line. It is the safest choice for anything longer than a sentence.
+
+### Center alignment
+
+Center alignment makes a layout feel balanced, but it is easy to overuse. When a long paragraph is centered, each line starts in a different place, and readability drops quickly.
+
+My rule of thumb:
+
+- Headings: keep them to two or three lines with very few words.
+- Body text: a few more words are fine, but stay within about three lines.
+
+### Right alignment
+
+Use it rarely. It hurts readability for larger amounts of text. It works for a very short line or a big heading where the position is part of the design.
+
+## Finding fonts
+
+Good fonts are easier to find than most people expect.
+
+**Free:**
+
+- Fontshare
+- Google Fonts
+- Uncut.wtf
+
+**Premium:**
+
+- Type foundries such as Pangram Pangram
+
+Design communities and social feeds are also good for discovering new typefaces, because designers often share small foundries that never appear in the big directories.
+
+## Practice
+
+Reading about typography will not make it stick. Deliberate practice will.
+
+- Redesign a block of text using the four font settings, and compare the before and after.
+- Collect inspiration from award sites and from posters on Pinterest.
+- Study how established products set their type. Reference libraries of real app screens, such as Mobbin, are useful when you want tried-and-tested typography rather than experimental work.
+- Build a small page, then check the contrast and the number of font sizes you used.
+
+A quick self-check before you ship:
+
+1. Can I see the reading order without reading the words?
+2. Does every text color pass a contrast check?
+3. Am I using three to five font sizes, not ten?
+4. Are long paragraphs left-aligned?
+
+If the answer to all four is yes, the typography is already ahead of most websites.
