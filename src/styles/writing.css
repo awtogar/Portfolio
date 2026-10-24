@@ -1,35 +1,93 @@
 /* MDX Styling */
+/* Heading */
 .mdx-h1,
 .mdx-h2,
 .mdx-h3,
-.mdx-h4 {
-  @apply font-semibold text-balance;
+.mdx-h4,
+.mdx-h5,
+.mdx-h6 {
+  @apply text-balance leading-[1.2] -tracking-[0.02em] text-fg;
 }
 
 .mdx-h1,
-.mdx-h2 {
-  @apply mt-20 mb-6 text-h400 leading-[0.95] tracking-tight;
+.mdx-h2,
+.mdx-h3 {
+  @apply font-[600];
 }
 
+.mdx-h4,
+.mdx-h5,
+.mdx-h6 {
+  @apply font-[500];
+}
+
+.mdx-h1 {
+  @apply text-h200;
+}
+.mdx-h2 {
+  @apply text-h300;
+}
 .mdx-h3 {
-  @apply mt-12 mb-4 text-h500 leading-none tracking-tight;
+  @apply text-h400;
 }
 
 .mdx-h4 {
-  @apply mt-8 mb-3 text-base leading-snug tracking-wide;
+  @apply text-h500;
+}
+.mdx-h5 {
+  @apply text-base;
+}
+.mdx-h6 {
+  @apply text-base-sm;
+}
+
+/* Paragraph */
+.mdx-p,
+.mdx-span,
+.mdx-a {
+  @apply font-[450] leading-[1.5] tracking-[0.02em] text-fg;
+}
+.mdx-a {
+  @apply underline underline-offset-4 italic;
+}
+
+/* spacing */
+/* Spacing / hierarchy y-axis */
+.mdx-h1 {
+  @apply mt-14 lg:mt-20;
+}
+.mdx-h2 {
+  @apply mt-12 lg:mt-16;
+}
+.mdx-h3 {
+  @apply mt-10 lg:mt-12;
+}
+.mdx-h4 {
+  @apply mt-8 lg:mt-10;
+}
+.mdx-h5,
+.mdx-h6 {
+  @apply mt-6 lg:mt-8;
 }
 
 .mdx-p {
-  @apply my-6 text-left text-base leading-[1.5] text-pretty text-fg/80;
+  @apply mt-5;
 }
 
-.mdx-a {
-  @apply text-fg underline underline-offset-4 transition-opacity hover:opacity-80;
+:is(.mdx-h1, .mdx-h2, .mdx-h3, .mdx-h4, .mdx-h5, .mdx-h6)
+  + :is(.mdx-h1, .mdx-h2, .mdx-h3, .mdx-h4, .mdx-h5, .mdx-h6) {
+  @apply mt-4 lg:mt-5;
 }
 
+:is(.mdx-h1, .mdx-h2, .mdx-h3, .mdx-h4, .mdx-h5, .mdx-h6)
+  + :is(.mdx-p, .mdx-ul, .mdx-ol) {
+  @apply mt-3 lg:mt-4;
+}
+
+/* Spacing / hierarchy x-axis */
 .mdx-ul,
 .mdx-ol {
-  @apply my-6 pl-6 text-left text-fg/80;
+  @apply mt-5 pl-6 text-left text-fg lg:pl-8;
 }
 
 .mdx-ul {
@@ -41,53 +99,38 @@
 }
 
 .mdx-li {
-  @apply my-2 leading-[1.5];
+  @apply pl-1 font-[450] leading-[1.5] tracking-[0.02em] text-fg marker:text-fg/50 lg:pl-2;
 }
 
-.mdx-blockquote {
-  @apply my-10 border-l-2 border-brand-primary pl-6 text-lg leading-[1.5] italic text-fg/70;
+.mdx-li + .mdx-li {
+  @apply mt-2;
 }
 
-.mdx-hr {
-  @apply my-16 border-fg/10;
+.mdx-li > .mdx-p {
+  @apply mt-2;
 }
 
-.mdx-code {
-  @apply rounded bg-fg/10 px-1 py-0.5 font-mono text-[0.875em] text-fg;
+.mdx-li > .mdx-p:first-child {
+  @apply mt-0;
 }
 
-.mdx-pre {
-  @apply my-10 overflow-x-auto border border-fg/10 p-5 font-mono text-sm leading-[1.6];
+.mdx-li > .mdx-ul,
+.mdx-li > .mdx-ol {
+  @apply mt-2 pl-5 lg:pl-6;
 }
 
-.mdx-pre .mdx-code {
-  @apply rounded-none bg-transparent p-0 text-inherit;
+.mdx-ol .mdx-ol {
+  list-style-type: lower-alpha;
 }
 
-.mdx-img {
-  @apply my-12 block h-auto w-full rounded-none;
+.mdx-ol .mdx-ol .mdx-ol {
+  list-style-type: lower-roman;
 }
 
-.mdx-video {
-  @apply my-12 block h-auto w-full;
+.mdx-ul .mdx-ul {
+  list-style-type: circle;
 }
 
-.mdx-table-wrap {
-  @apply my-10 overflow-x-auto;
-}
-
-.mdx-table {
-  @apply w-full border-collapse text-left text-sm;
-}
-
-.mdx-th {
-  @apply border-b border-fg/20 py-3 pr-4 text-xs font-semibold tracking-wider;
-}
-
-.mdx-td {
-  @apply border-b border-fg/10 py-3 pr-4 text-fg/80;
-}
-
-.mdx > :first-child {
-  @apply mt-4;
+.mdx-ul .mdx-ul .mdx-ul {
+  list-style-type: square;
 }

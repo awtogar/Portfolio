@@ -174,7 +174,7 @@ html {
   }
 }
 
-/* for writing components */
+/* for writing list item components */
 .writing-roll {
   @apply relative block overflow-hidden;
 }
@@ -193,6 +193,18 @@ html {
 
 .outter-container:hover .writing-roll__track {
   transform: translateY(-100%);
+}
+
+.writing-roll:hover {
+  @apply bg-neutral-900 text-bg;
+}
+
+.writing-roll:hover .writing-list-link > span:first-child {
+  @apply text-bg/60;
+}
+
+.writing-roll:hover .writing-list-link > span:nth-child(2) {
+  @apply text-bg;
 }
 
 /* for animated cards components */
