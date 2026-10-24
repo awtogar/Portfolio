@@ -1,11 +1,10 @@
-import { notFound } from 'next/navigation';
-import { BaseSection } from '@/components';
-import WritingDetailLayout from '@/components/WritingDetailLayout';
-import { WritingArticle } from '@/components/sections/writings-detail';
-import { getAllWritings, getWritingBySlug } from '@/lib/writings';
+import { notFound } from "next/navigation";
+import { BaseSection } from "@/components";
+import { Article, DetailLayout } from "@/components/sections/writings";
+import { getAllWritings, getWritingBySlug } from "@/lib/writings";
 
 export function generateStaticParams() {
-  return getAllWritings().map(writing => ({ slug: writing.slug }));
+  return getAllWritings().map((writing) => ({ slug: writing.slug }));
 }
 
 export async function generateMetadata({ params }) {
@@ -33,10 +32,10 @@ export default async function WritingPage({ params }) {
 
   return (
     <main>
-      <BaseSection sectionClassName="section-padding-x py-[clamp(8rem,14vw,14rem)]">
-        <WritingDetailLayout
+      <BaseSection sectionClassName="section-padding-x pt-[clamp(8rem,14vw,14rem)]">
+        <DetailLayout
           writing={writing}
-          article={<WritingArticle writing={writing} />}
+          article={<Article writing={writing} />}
         />
       </BaseSection>
     </main>

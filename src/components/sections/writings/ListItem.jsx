@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 
-export default function WritingListItem({
+export default function ListItem({
   writing,
   onMouseEnter,
   onMouseLeave,
@@ -15,21 +15,33 @@ export default function WritingListItem({
   const row = (hidden) => (
     <Link
       href={`/writings/${writing.slug}`}
-      className="writing-list-link group/item items-center grid grid-cols-1 gap-2 px-4 py-5 md:grid-cols-[9rem_1fr] md:gap-6 md:py-6 transition-colors duration-200"
+      className="writing-list-link grid grid-cols-1 items-center gap-2 px-4 py-5 md:grid-cols-[9rem_1fr] md:gap-6 md:py-6"
       aria-hidden={hidden || undefined}
       tabIndex={hidden ? -1 : undefined}
     >
-      <span className="text-base-sm text-fg/60 transition-colors duration-200 group-hover/item:text-white/60">
+      <span
+        className={`text-base-sm ${
+          hidden
+            ? "text-bg/60"
+            : "text-fg/60 transition-colors duration-200 group-hover/row:text-bg/60"
+        }`}
+      >
         {formattedDate}
       </span>
-      <span className="text-h500 uppercase leading-[1.1] md:text-h400 text-fg transition-colors duration-200 group-hover/item:text-white">
+      <span
+        className={`text-h500 uppercase leading-[1.1] md:text-h400 ${
+          hidden
+            ? "text-bg"
+            : "text-fg transition-colors duration-200 group-hover/row:text-bg"
+        }`}
+      >
         {writing.title}
       </span>
     </Link>
   );
 
   return (
-    <div className="border-b border-black/25 bg-transparent text-fg transition-colors duration-700 ease-out hover:bg-neutral-900 hover:text-bg hover:duration-200">
+    <article className="group/row border-b border-neutral-900/25 bg-transparent text-fg transition-colors duration-700 ease-out hover:bg-neutral-900 hover:text-bg hover:duration-200">
       <div
         className="outter-container writing-roll"
         onMouseEnter={onMouseEnter}
@@ -42,6 +54,6 @@ export default function WritingListItem({
           </span>
         </span>
       </div>
-    </div>
+    </article>
   );
 }

@@ -1,53 +1,78 @@
 "use client";
 
-import Image from "next/image";
 import { useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
-import WritingListItem from "./WritingListItem";
+import ListItem from "./ListItem";
 
-export default function WritingLayout({ writings }) {
+export default function ListLayout({ writings }) {
   const [activeWriting, setActiveWriting] = useState(null);
+  const [previousWriting, setPreviousWriting] = useState(null);
+
   const activeWritingIndex = activeWriting
     ? writings.findIndex((writing) => writing.slug === activeWriting.slug)
     : -1;
+
   const activeWritingNumber =
     activeWritingIndex >= 0
       ? String(activeWritingIndex + 1).padStart(2, "0")
       : null;
 
+  const handleWritingEnter = (writing) => {
+    if (activeWriting?.slug === writing.slug) return;
+
+    if (activeWriting?.thumbnail) {
+      setPreviousWriting(activeWriting);
+    }
+
+    setActiveWriting(writing);
+  };
+
   return (
-    <>
-      <div className="lg:sticky lg:top-28 lg:self-start">
-        <h1 className="flex items-start gap-2 text-display font-[500] leading-[1.1]">
-          Blog <sup className="mt-4 text-h500">({writings.length})</sup>
+    <div className="grid grid-cols-1 gap-16 lg:grid-cols-[minmax(260px,0.8fr)_minmax(0,2fr)] lg:gap-12">
+      <div className="lg:sticky lg:top-[clamp(8rem,14vw,14rem)] lg:self-start">
+        <h1 className="flex items-start gap-2 text-h100 font-[500] leading-[1.1]">
+          Writings <sup className="mt-4 text-h500">({writings.length})</sup>
         </h1>
 
-        <div className="mt-16 max-w-[36ch]">
+        <div className="mt-6 lg:mt-8 max-w-[36ch]">
           <p className="text-base-sm uppercase text-fg/60">About</p>
-          <p className="mt-4 text-base leading-body text-fg/80">
+          <p className="mt-2 text-base leading-body text-fg/80">
             Here&apos;s where I share my thoughts, insights, and growth. New
             blog article monthly, released towards the end of every month.
           </p>
         </div>
-
-        <div className="relative mt-12 hidden aspect-square w-full max-w-[280px] items-center justify-center overflow-hidden bg-neutral-900 lg:flex">
+        {/* container */}
+        <div className="relative mt-12 hidden aspect-square w-full max-w-[280px] lg:block">
           <AnimatePresence>
             {activeWriting?.thumbnail && (
               <motion.div
-                key={activeWriting.slug}
-                className="absolute inset-0 origin-center"
+                key="thumbnail"
+                className="absolute inset-0 origin-center overflow-hidden bg-neutral-900"
                 initial={{ opacity: 0, scale: 0.01 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.01 }}
-                transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                transition={{ duration: 0.5, ease: [0.64, 0, 0.78, 0] }}
               >
-                <Image
-                  src={activeWriting.thumbnail}
-                  alt={activeWriting.title}
-                  fill
-                  sizes="280px"
-                  className="object-cover"
-                />
+                <div className="relative h-full w-full overflow-hidden">
+                  {previousWriting?.thumbnail && (
+                    <img
+                      src={previousWriting.thumbnail}
+                      alt={previousWriting.title}
+                      className="absolute inset-0 h-full w-full object-cover"
+                    />
+                  )}
+                  {activeWriting?.thumbnail && (
+                    <motion.img
+                      key={activeWriting.slug}
+                      src={activeWriting.thumbnail}
+                      alt={activeWriting.title}
+                      className="absolute inset-0 z-10 h-full w-full object-cover"
+                      initial={{ scale: 0.5 }}
+                      animate={{ scale: 1 }}
+                      transition={{ duration: 0.5, ease: [0.64, 0, 0.78, 0] }}
+                    />
+                  )}
+                </div>
 
                 <motion.div
                   className="pointer-events-none absolute inset-0 z-10 flex flex-col justify-between p-6 text-[3rem] font-medium leading-none text-bg"
@@ -57,7 +82,7 @@ export default function WritingLayout({ writings }) {
                   transition={{
                     duration: 0.35,
                     delay: 0.15,
-                    ease: [0.16, 1, 0.3, 1],
+                    ease: [0.64, 0, 0.78, 0],
                   }}
                 >
                   <span>Nº</span>
@@ -69,7 +94,7 @@ export default function WritingLayout({ writings }) {
         </div>
       </div>
 
-      <section className="lg:mt-section">
+      <div className="lg:mt-section pb-[clamp(6rem,10vw,10rem)]">
         <div className="grid grid-cols-1 border-b border-fg/20 pb-3 text-base-sm uppercase text-fg/60 md:grid-cols-[9rem_1fr] md:gap-6">
           <span>Date</span>
           <span>Name</span>
@@ -79,9 +104,9 @@ export default function WritingLayout({ writings }) {
           <ul>
             {writings.map((writing) => (
               <li key={writing.slug} className="list-none">
-                <WritingListItem
+                <ListItem
                   writing={writing}
-                  onMouseEnter={() => setActiveWriting(writing)}
+                  onMouseEnter={() => handleWritingEnter(writing)}
                   onMouseLeave={() => setActiveWriting(null)}
                 />
               </li>
@@ -92,7 +117,7 @@ export default function WritingLayout({ writings }) {
             No writings published yet.
           </p>
         )}
-      </section>
-    </>
+      </div>
+    </div>
   );
 }

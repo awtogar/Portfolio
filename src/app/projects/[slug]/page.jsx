@@ -3,7 +3,7 @@
 import { use } from "react";
 import { projects } from "@/data/data";
 import NotFoundPage from "@/components/sections/404";
-import { Hero, Info, Media } from "@/components/sections/project-detail";
+import { Hero, Info, Media } from "@/components/sections/project";
 
 export default function ProjectsPages({ params }) {
   const { slug } = use(params);
