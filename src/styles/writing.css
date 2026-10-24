@@ -12,7 +12,7 @@
 .mdx-h1,
 .mdx-h2,
 .mdx-h3 {
-  @apply font-[600];
+  @apply font-[500];
 }
 
 .mdx-h4,
@@ -54,40 +54,44 @@
 /* spacing */
 /* Spacing / hierarchy y-axis */
 .mdx-h1 {
-  @apply mt-14 lg:mt-20;
+  @apply mt-10 lg:mt-14;
 }
 .mdx-h2 {
-  @apply mt-12 lg:mt-16;
-}
-.mdx-h3 {
   @apply mt-10 lg:mt-12;
 }
-.mdx-h4 {
+.mdx-h3 {
   @apply mt-8 lg:mt-10;
+}
+.mdx-h4 {
+  @apply mt-6 lg:mt-8;
 }
 .mdx-h5,
 .mdx-h6 {
-  @apply mt-6 lg:mt-8;
+  @apply mt-5 lg:mt-6;
 }
 
 .mdx-p {
-  @apply mt-5;
-}
-
-:is(.mdx-h1, .mdx-h2, .mdx-h3, .mdx-h4, .mdx-h5, .mdx-h6)
-  + :is(.mdx-h1, .mdx-h2, .mdx-h3, .mdx-h4, .mdx-h5, .mdx-h6) {
   @apply mt-4 lg:mt-5;
 }
 
 :is(.mdx-h1, .mdx-h2, .mdx-h3, .mdx-h4, .mdx-h5, .mdx-h6)
+  + :is(.mdx-h1, .mdx-h2, .mdx-h3, .mdx-h4, .mdx-h5, .mdx-h6) {
+  @apply mt-3 lg:mt-4;
+}
+
+:is(.mdx-h1, .mdx-h2, .mdx-h3, .mdx-h4, .mdx-h5, .mdx-h6)
   + :is(.mdx-p, .mdx-ul, .mdx-ol) {
+  @apply mt-2 lg:mt-3;
+}
+
+.mdx-p + .mdx-p {
   @apply mt-3 lg:mt-4;
 }
 
 /* Spacing / hierarchy x-axis */
 .mdx-ul,
 .mdx-ol {
-  @apply mt-5 pl-6 text-left text-fg lg:pl-8;
+  @apply mt-4 pl-6 text-left text-fg lg:mt-5 lg:pl-8;
 }
 
 .mdx-ul {

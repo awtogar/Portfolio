@@ -22,29 +22,27 @@ export default function DetailLayout({ writing, article }) {
     const mm = gsap.matchMedia();
 
     mm.add("(min-width: 60rem)", () => {
-      gsap.set(showTitleRef.current, { y: -20 });
-
-      gsap.to(containerRef.current, {
-        y: 120,
-        scrollTrigger: {
-          trigger: hiddenTitleRef.current,
-          // start: "top 30%",
-          // markers: true,
-          toggleActions: "play none none reverse",
-        },
-      });
-
       gsap.to(hiddenTitleRef.current, {
-        y: 80,
+        y: 60,
         scale: 0.7,
         opacity: 0,
-        ease: "none",
+        ease: "power3.out",
         scrollTrigger: {
           trigger: containerRef.current,
           start: 0,
           end: "top top+=32",
           scrub: true,
-          // markers: true,
+          markers: true,
+        },
+      });
+
+      gsap.to(containerRef.current, {
+        y: -60,
+        scrollTrigger: {
+          trigger: hiddenTitleRef.current,
+          // start: "top 30%",
+          markers: true,
+          toggleActions: "play none none reverse",
         },
       });
 
@@ -68,20 +66,22 @@ export default function DetailLayout({ writing, article }) {
   }, []);
 
   return (
-    <div className="flex flex-col lg:gap-8 lg:mt-12 pb-[clamp(8rem,14vw,14rem)]">
-      <div className="w-full ">
+    <div className="flex flex-col lg:gap-8 lg:mt-12">
+      {/* container 1 */}
+      <div
+        ref={containerRef}
+        className=" w-full justify-start flex sticky top-0"
+      >
         <h1 ref={hiddenTitleRef} className="display-heading text-h100">
           {writing.title}
         </h1>
       </div>
-      <div
-        ref={containerRef}
-        className="flex flex-col gap-12 lg:gap-section lg:grid lg:grid-cols-12 lg:mt-12"
-      >
-        <aside className="flex flex-col gap-4 lg:sticky lg:top-gap lg:col-span-4 lg:self-start">
+      {/* container 2 */}
+      <div className="flex flex-col gap-12 lg:gap-section lg:grid lg:grid-cols-12">
+        <aside className="flex flex-col gap-4 lg:sticky lg:top-[clamp(8rem,14vw,14rem)] lg:col-span-4 lg:self-start lg:gap-0">
           <h1
             ref={showTitleRef}
-            className="hidden h-[0rem] overflow-hidden text-h200 opacity-0 lg:block"
+            className="hidden h-[0rem] overflow-hidden text-h200 display-heading opacity-0 lg:block"
             aria-hidden="true"
           >
             {writing.title}
@@ -95,27 +95,27 @@ export default function DetailLayout({ writing, article }) {
               {writing.description}
             </p>
           </div>
-          <dl className="mt-2 text-base-sm uppercase lg:mt-10">
-            <div className="flex items-baseline justify-between border-b border-dotted border-fg/25 py-2 lg:grid lg:grid-cols-2 lg:py-3">
+          <dl className="mt-2 text-base-sm uppercase lg:mt-6">
+            <div className="flex items-baseline justify-between border-b border-dotted border-fg/25 py-2">
               <dt>Publish date:</dt>
               <dd className="text-right normal-case lg:text-left">
                 {formatDate(writing.date)}
               </dd>
             </div>
-            <div className="flex items-baseline justify-between border-b border-dotted border-fg/25 py-2 lg:grid lg:grid-cols-2 lg:py-3">
+            <div className="flex items-baseline justify-between border-b border-dotted border-fg/25 py-2">
               <dt>Authors:</dt>
               <dd className="text-right normal-case lg:text-left">
                 {writing.authors}
               </dd>
             </div>
-            <div className="flex items-baseline justify-between border-b border-dotted border-fg/25 py-2 lg:grid lg:grid-cols-2 lg:py-3">
+            <div className="flex items-baseline justify-between border-b border-dotted border-fg/25 py-2">
               <dt>Reading time:</dt>
               <dd className="text-right normal-case lg:text-left">
                 {writing.readTime}
               </dd>
             </div>
             {writing.tags?.length > 0 && (
-              <div className="flex items-start justify-between gap-4 border-b border-dotted border-fg/25 py-4 lg:grid lg:grid-cols-2 lg:py-3">
+              <div className="flex items-start justify-between gap-4 border-b border-dotted border-fg/25 py-2">
                 <dt className="py-1 lg:py-0">Categories:</dt>
                 <dd className="flex flex-wrap justify-end gap-2 normal-case lg:justify-start">
                   {writing.tags.map((tag) => (
@@ -131,9 +131,7 @@ export default function DetailLayout({ writing, article }) {
             )}
           </dl>
         </aside>
-
-        {/* todo end */}
-        <article className="lg:col-span-8">
+        <article className="lg:col-span-8 pb-[clamp(14rem,14vw,14rem)]">
           <p className="border-b border-fg/20 pb-3 text-base-sm uppercase text-fg/60 lg:pb-3">
             Article
           </p>

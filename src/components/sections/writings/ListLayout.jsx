@@ -28,8 +28,8 @@ export default function ListLayout({ writings }) {
   };
 
   return (
-    <div className="grid grid-cols-1 gap-16 lg:grid-cols-[minmax(260px,0.8fr)_minmax(0,2fr)] lg:gap-12">
-      <div className="lg:sticky lg:top-[clamp(8rem,14vw,14rem)] lg:self-start">
+    <div className="grid grid-cols-1 gap-16 lg:grid-cols-12 lg:gap-12">
+      <div className="lg:sticky lg:col-span-4 lg:top-[clamp(8rem,14vw,14rem)] lg:self-start">
         <h1 className="flex items-start gap-2 text-h100 font-[500] leading-[1.1]">
           Writings <sup className="mt-4 text-h500">({writings.length})</sup>
         </h1>
@@ -94,7 +94,7 @@ export default function ListLayout({ writings }) {
         </div>
       </div>
 
-      <div className="lg:mt-section pb-[clamp(6rem,10vw,10rem)]">
+      <div className="lg:mt-section lg:col-span-8 pb-[clamp(6rem,10vw,10rem)]">
         <div className="grid grid-cols-1 border-b border-fg/20 pb-3 text-base-sm uppercase text-fg/60 md:grid-cols-[9rem_1fr] md:gap-6">
           <span>Date</span>
           <span>Name</span>
