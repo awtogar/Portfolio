@@ -7,7 +7,7 @@
     "dev": "next dev -p 3001 --turbopack",
     "build": "next build --turbopack",
     "start": "next start",
-    "lint": "next lint",
+    "lint": "eslint .",
     "clean": "rm -rf node_modules .next package-lock.json && npm cache clean --force"
   },
   "dependencies": {
@@ -15,7 +15,6 @@
     "@supabase/ssr": "0.12.7",
     "@supabase/supabase-js": "2.117.1",
     "@tailwindcss/postcss": "^4.0.0",
-    "@tailwindcss/typography": "0.5.20",
     "@vercel/speed-insights": "^1.2.0",
     "clsx": "2.1.1",
     "gray-matter": "4.0.3",
@@ -30,13 +29,17 @@
     "tailwindcss": "^4.1.7"
   },
   "devDependencies": {
-    "@eslint/js": "^9.25.0",
+    "@eslint/js": "10.0.1",
     "@svgr/webpack": "8.1.0",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
-    "eslint": "^9.25.0",
+    "eslint": "10.13.0",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-prettier": "^5.5.3",
-    "globals": "^16.0.0"
+    "globals": "^16.0.0",
+    "prettier": "3.9.10"
+  },
+  "overrides": {
+    "postcss": "^8.5.0"
   }
 }
