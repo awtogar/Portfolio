@@ -1,41 +1,54 @@
-'use client';
+"use client";
 
-import { forwardRef } from 'react';
-import { motion } from 'motion/react';
-import { useRouter } from 'next/navigation';
+import { forwardRef } from "react";
+import { motion } from "motion/react";
+import { useRouter } from "next/navigation";
 
-const MotionA = motion.create('a');
-const MotionButton = motion.create('button');
+const MotionA = motion.create("a");
+const MotionButton = motion.create("button");
 
 const VARIANTS = {
   primary: {
-    bg: 'bg-neutral-900',
-    hoverBg: 'bg-neutral-50',
-    text: 'text-bg',
-    hoverText: 'text-fg',
-    outline: 'outline outline-1 outline-neutral-900',
+    bg: "bg-neutral-900",
+    hoverBg: "bg-neutral-50",
+    text: "text-bg",
+    hoverText: "text-fg",
+    outline: "outline outline-1 outline-neutral-900",
   },
   secondary: {
-    bg: 'bg-neutral-50',
-    hoverBg: 'bg-neutral-900',
-    text: 'text-fg',
-    hoverText: 'text-bg',
-    outline: 'outline outline-1 outline-neutral-900',
+    bg: "bg-neutral-50",
+    hoverBg: "bg-neutral-900",
+    text: "text-fg",
+    hoverText: "text-bg",
+    outline: "outline outline-1 outline-neutral-900",
   },
 };
 
-const CreativeButton = forwardRef(function CreativeButton({ children, className = '', variant = 'primary', href, to, onClick, width, height, ...props }, ref) {
+const CreativeButton = forwardRef(function CreativeButton(
+  {
+    children,
+    className = "",
+    variant = "primary",
+    href,
+    to,
+    onClick,
+    width,
+    height,
+    ...props
+  },
+  ref
+) {
   const router = useRouter();
   const theme = VARIANTS[variant] || VARIANTS.primary;
 
   let Component;
-  let componentProps = {};
+  let componentProps;
 
   if (to) {
     Component = MotionA;
     componentProps = {
       href: to,
-      onClick: e => {
+      onClick: (e) => {
         e.preventDefault();
         if (onClick) onClick(e);
         router.push(to);
@@ -54,7 +67,9 @@ const CreativeButton = forwardRef(function CreativeButton({ children, className 
   if (width) customSizeStyle.width = width;
   if (height) customSizeStyle.height = height;
 
-  const defaultPadding = className.match(/\bp[xy]?-|\bp-/) ? '' : 'px-4 py-2 text-base-sm';
+  const defaultPadding = className.match(/\bp[xy]?-|\bp-/)
+    ? ""
+    : "px-4 py-2 text-base-sm";
 
   return (
     <Component

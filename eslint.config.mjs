@@ -15,6 +15,7 @@ export default [
     },
     rules: {
       "no-unused-vars": ["warn", { varsIgnorePattern: "^(motion|[A-Z_])" }],
+      "no-useless-assignment": "warn",
     },
   },
   prettier,
