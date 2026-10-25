@@ -17,16 +17,14 @@
     padding-bottom: clamp(2.5rem, 5vw, 4rem);
   }
 
-
-  
   /* for heading font height, weight and tracking */
   .display-heading {
-    @apply font-[500] leading-[1.5] -tracking-[0.02em];
+    @apply font-[500] leading-[1.5] -tracking-[0.02em] font-serif;
   }
 
   /* for body font height, weight and tracking bold*/
   .display-bold {
-    @apply font-[500] leading-[1.2];
+    @apply font-[500] leading-[1.2] font-sans;
   }
 
   .body-mono {

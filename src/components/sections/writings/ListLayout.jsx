@@ -3,10 +3,12 @@
 import { useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import ListItem from "./ListItem";
+import { useCursorTarget } from "@/cursor";
 
 export default function ListLayout({ writings }) {
   const [activeWriting, setActiveWriting] = useState(null);
   const [previousWriting, setPreviousWriting] = useState(null);
+  const cursorTarget = useCursorTarget();
 
   const activeWritingIndex = activeWriting
     ? writings.findIndex((writing) => writing.slug === activeWriting.slug)
@@ -35,7 +37,7 @@ export default function ListLayout({ writings }) {
         </h1>
 
         <div className="mt-6 lg:mt-8 max-w-[36ch]">
-          <p className="text-base-sm uppercase text-fg/60">About</p>
+          <p className="border-b border-fg/20 pb-3 text-base-sm uppercase text-fg/60">About</p>
           <p className="mt-2 text-base leading-body text-fg/80">
             Here&apos;s where I share my thoughts, insights, and growth. New
             blog article monthly, released towards the end of every month.
@@ -103,7 +105,7 @@ export default function ListLayout({ writings }) {
         {writings.length > 0 ? (
           <ul>
             {writings.map((writing) => (
-              <li key={writing.slug} className="list-none">
+              <li {...cursorTarget} key={writing.slug} className="list-none">
                 <ListItem
                   writing={writing}
                   onMouseEnter={() => handleWritingEnter(writing)}
