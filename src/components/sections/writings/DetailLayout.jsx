@@ -1,5 +1,3 @@
-// new implementation
-
 "use client";
 
 import { useEffect, useRef } from "react";
@@ -26,28 +24,30 @@ export default function DetailLayout({ writing, article }) {
     mm.add("(min-width: 1024px)", () => {
       gsap.set(showTitleRef.current, { y: 24 });
 
-      const showTween = gsap.to(showTitleRef.current, {
+      gsap.to(showTitleRef.current, {
         height: "auto",
         marginBottom: "1em",
         y: 0,
         opacity: 1,
         duration: 0.6,
         ease: "power3.out",
-        paused: true,
+        scrollTrigger: {
+          trigger: hiddenTitleRef.current,
+          start: "bottom top",
+          toggleActions: "play none none reverse",
+        },
       });
 
       gsap.to(hiddenTitleRef.current, {
-        y: -160,
+        y: -100,
         scale: 0.7,
         opacity: 0,
         ease: "power3.out",
         scrollTrigger: {
-          trigger: showTitleRef.current,
-          start: 0,
-          end: "top top+=32",
+          trigger: containerRef.current,
+          start: "top top",
+          end: "bottom top",
           scrub: true,
-          onLeave: () => showTween.play(),
-          onEnterBack: () => showTween.reverse(),
         },
       });
     });
@@ -72,13 +72,10 @@ export default function DetailLayout({ writing, article }) {
         >
           <h1
             ref={showTitleRef}
-            // mobile b
             className="block lg:h-[0rem] overflow-hidden text-h400 font-[500] leading-[1.1] lg:opacity-0 "
           >
             {writing.title}
           </h1>
-
-          {/* about */}
           <div className="mt-6 lg:max-w-[36ch] lg:mt-8">
             <p className="border-b border-fg/20 pb-3 text-base-sm uppercase text-fg/60">
               About
