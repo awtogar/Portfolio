@@ -70,7 +70,7 @@ export default function DetailLayout({ writing, article }) {
       {/* container 1 */}
       <div
         ref={containerRef}
-        className=" w-full justify-start flex sticky top-0"
+        className=" w-full lg:justify-start lg:flex lg:sticky lg:top-0"
       >
         <h1 ref={hiddenTitleRef} className="display-heading text-h100">
           {writing.title}
