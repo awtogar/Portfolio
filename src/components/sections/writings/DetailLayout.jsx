@@ -57,10 +57,7 @@ export default function DetailLayout({ writing, article }) {
 
   return (
     <div className="">
-      <div
-        className="hidden lg:block top-0 lg:w-full py-4 bg-red-400"
-        aria-hidden="true"
-      >
+      <div className="hidden lg:block top-0 lg:w-full py-4" aria-hidden="true">
         <h1
           ref={hiddenTitleRef}
           className="display-heading text-display text-start"
