@@ -1,6 +1,6 @@
-'use client';
-import { unstable_ViewTransition as ViewTransition } from 'react';
-import { Navbar, Preloader, Header } from '@/components';
+"use client";
+import { unstable_ViewTransition as ViewTransition } from "react";
+import { Navbar, Preloader, Header } from "@/components";
 
 // TODO: child route transition (/projects/[slug], /labs/[slug], /writing/[slug])
 
@@ -21,7 +21,7 @@ export default function Template({ children }) {
     <ViewTransition enter="page-enter" exit="page-exit" default="none">
       <Preloader />
       <Header />
-      <Navbar />
+      {/* <Navbar /> */}
       {children}
     </ViewTransition>
   );
