@@ -222,39 +222,46 @@ html {
   animation: scroll-x var(--marquee-speed, 20s) linear infinite;
 }
 
-::view-transition-old(.page-exit) {
-  animation: 1000ms cubic-bezier(0.75, 0, 0.1, 1) both page-out;
-}
-
-::view-transition-new(.page-enter) {
-  animation: 1000ms cubic-bezier(0.75, 0, 0.1, 1) both page-in;
-}
-
-::view-transition-group(navbar) {
+::view-transition-group(header) {
   animation: none;
   z-index: 100;
+}
+
+::view-transition-old(.page-route-exit),
+::view-transition-new(.page-route-enter),
+::view-transition-old(.page-dynamic-exit),
+::view-transition-new(.page-dynamic-enter) {
+  mix-blend-mode: normal;
+}
+
+::view-transition-old(.page-route-exit),
+::view-transition-old(.page-dynamic-exit) {
+  z-index: 1;
+  animation: 1000ms cubic-bezier(0.76, 0, 0.24, 1) both page-out;
+}
+
+::view-transition-new(.page-route-enter),
+::view-transition-new(.page-dynamic-enter) {
+  z-index: 2;
+  animation: 1000ms cubic-bezier(0.76, 0, 0.24, 1) both page-in;
 }
 
 @keyframes page-out {
   from {
     transform: translateY(0%) scale(1);
-    opacity: 1;
+    filter: brightness(1);
   }
-
   to {
-    transform: translateY(-25%) scale(1.2);
-    opacity: 0;
+    transform: translateY(-10%) scale(0.9);
+    filter: brightness(0.5);
   }
 }
 
 @keyframes page-in {
   from {
-    transform: translateY(40%);
-    clip-path: polygon(35% 50%, 65% 50%, 65% 50%, 35% 50%);
+    transform: translateY(100%);
   }
-
   to {
     transform: translateY(0%);
-    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
   }
 }
