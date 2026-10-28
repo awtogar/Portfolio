@@ -6,15 +6,12 @@
 .mdx-h4,
 .mdx-h5,
 .mdx-h6 {
-  @apply text-balance leading-[1.2] -tracking-[0.02em] text-fg;
+  @apply text-balance leading-heading tracking-heading text-fg;
 }
 
 .mdx-h1,
 .mdx-h2,
-.mdx-h3 {
-  @apply font-[500];
-}
-
+.mdx-h3,
 .mdx-h4,
 .mdx-h5,
 .mdx-h6 {
@@ -22,7 +19,7 @@
 }
 
 .mdx-h1 {
-  @apply text-h200;
+  @apply text-2xl;
 }
 .mdx-h2 {
   @apply text-h300;
@@ -82,6 +79,11 @@
 :is(.mdx-h1, .mdx-h2, .mdx-h3, .mdx-h4, .mdx-h5, .mdx-h6)
   + :is(.mdx-p, .mdx-ul, .mdx-ol) {
   @apply mt-2 lg:mt-3;
+}
+
+/* First heading spacing */
+.mdx > :first-child:is(.mdx-h1, .mdx-h2, .mdx-h3, .mdx-h4, .mdx-h5, .mdx-h6) {
+  @apply mt-2 lg:mt-0;
 }
 
 .mdx-p + .mdx-p {

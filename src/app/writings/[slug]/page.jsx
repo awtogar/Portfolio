@@ -32,7 +32,7 @@ export default async function WritingPage({ params }) {
 
   return (
     <main>
-      <BaseSection sectionClassName="section-padding-x pt-[clamp(8rem,14vw,14rem)]">
+      <BaseSection sectionClassName="px-0 lg:px-8 pt-[clamp(8rem,14vw,14rem)]">
         <DetailLayout
           writing={writing}
           article={<Article writing={writing} />}
