@@ -4,7 +4,6 @@ export { default as BaseSection } from './BaseSection';
 // UI Components
 export { default as Footer } from './Footer';
 export { default as CreativeButton } from './CreativeButton';
-export { default as HoverRotate } from './HoverRotate';
 export { default as TextReveal } from './TextReveal';
 export { default as Card } from './Card';
 export { default as CardParallax } from './CardParallax';

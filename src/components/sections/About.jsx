@@ -1,12 +1,12 @@
-import { BaseSection, CardParallax, CreativeButton, TextReveal, HoverRotate } from '@/components';
-import { aboutImages } from '@/assets';
-import { useState, useRef, useEffect } from 'react';
-import { gsap, SplitText } from '@/lib/gsap';
+import { BaseSection, CardParallax } from "@/components";
+import { aboutImages } from "@/assets";
+import { useState, useRef, useEffect } from "react";
+import { gsap, SplitText } from "@/lib/gsap";
 
-const resumeLink = '/assets/RESUME-AWALUDDIN_TOGAR.pdf';
+const resumeLink = "/assets/RESUME-AWALUDDIN_TOGAR.pdf";
 
 const aboutDescription =
-  'A Passionate creative engineer. Interesting in exploring technology and learning new things in the fields such as Web Development, UI/UX design and emerging tech with strong problem solving skills to create solutions that fit the needs, effective and enjoyable';
+  "A Passionate creative engineer. Interesting in exploring technology and learning new things in the fields such as Web Development, UI/UX design and emerging tech with strong problem solving skills to create solutions that fit the needs, effective and enjoyable";
 
 // Indeks kata yang tersembunyi pada state awal (partial)
 const PARTIAL_HIDDEN_WORDS = [1, 7, 10, 12, 16, 22, 25, 26, 29, 31, 33, 35, 37];
@@ -30,14 +30,16 @@ const About = () => {
     const mm = gsap.matchMedia();
     const splitInstances = [];
 
-    const createTextTransition = element => {
+    const createTextTransition = (element) => {
       if (!element) return;
 
-      const split = new SplitText(element, { type: 'words' });
+      const split = new SplitText(element, { type: "words" });
       splitInstances.push(split);
 
       // Ambil kata-kata yang tadinya disembunyikan (hidden words)
-      const hiddenWords = split.words.filter((_, index) => PARTIAL_HIDDEN_WORDS.includes(index));
+      const hiddenWords = split.words.filter((_, index) =>
+        PARTIAL_HIDDEN_WORDS.includes(index)
+      );
 
       // State awal: sembunyikan hanya kata-kata yang hilang
       gsap.set(hiddenWords, { opacity: 0 });
@@ -46,15 +48,15 @@ const About = () => {
       gsap.to(hiddenWords, {
         opacity: 1,
         duration: 0.25,
-        ease: 'none',
+        ease: "none",
         stagger: {
           each: 0.15,
-          from: 'random',
+          from: "random",
         },
         scrollTrigger: {
           trigger: element,
-          start: 'top 85%',
-          end: 'top 10%',
+          start: "top 85%",
+          end: "top 10%",
           scrub: 1,
           invalidateOnRefresh: true,
         },
@@ -64,15 +66,16 @@ const About = () => {
     createTextTransition(desktopTextRef.current);
     createTextTransition(mobileTextRef.current);
 
-    mm.add('(min-width: 768px)', () => {
-      const distance = () => containerRef.current.offsetHeight - imageRef.current.offsetHeight;
+    mm.add("(min-width: 768px)", () => {
+      const distance = () =>
+        containerRef.current.offsetHeight - imageRef.current.offsetHeight;
 
       gsap.to(imageRef.current, {
         y: distance,
-        ease: 'none',
+        ease: "none",
         scrollTrigger: {
           trigger: containerRef.current,
-          start: 'top 70%',
+          start: "top 70%",
           end: () => `+=${distance()}`,
           scrub: 1,
           invalidateOnRefresh: true,
@@ -82,7 +85,7 @@ const About = () => {
 
     return () => {
       mm.revert();
-      splitInstances.forEach(split => split.revert());
+      splitInstances.forEach((split) => split.revert());
     };
   }, []);
 
@@ -91,14 +94,22 @@ const About = () => {
       <div className="flex flex-col gap-6">
         <div className="flex flex-col gap-4 md:grid-cols-12 md:grid md:gap-6 lg:gap-8">
           {/* left column */}
-          <div ref={containerRef} className="flex md:col-span-8 md:justify-start lg:col-span-8">
+          <div
+            ref={containerRef}
+            className="flex md:col-span-8 md:justify-start lg:col-span-8"
+          >
             <div className="flex-col flex md:mb-6">
-              <h2 className="text-h500 text-fg uppercase display-heading">Myself</h2>
+              <h2 className="text-h500 text-fg uppercase display-heading">
+                Myself
+              </h2>
 
               {/* render text content on md screen instead */}
               <div className="hidden md:block">
                 {/* textRef */}
-                <AboutText textRef={desktopTextRef} className="text-h200 text-fg max-w-[26ch] display-bold tracking-tight text-justify" />
+                <AboutText
+                  textRef={desktopTextRef}
+                  className="text-h200 text-fg max-w-[26ch] display-bold tracking-tight text-justify"
+                />
               </div>
             </div>
           </div>
@@ -107,12 +118,21 @@ const About = () => {
             <div className="flex flex-col">
               {/* slide to bottom of left column high aniamtion. trggered by scrol to  */}
               <div ref={imageRef} className="block mb-6 md:mb-0">
-                <CardParallax src={aboutImages} alt="Awaluddin Togar" scrollRange={['-10%', '10%']} objectPosition="top" containerClassName="w-full aspect-video rounded-xl" />
+                <CardParallax
+                  src={aboutImages}
+                  alt="Awaluddin Togar"
+                  scrollRange={["-10%", "10%"]}
+                  objectPosition="top"
+                  containerClassName="w-full aspect-video rounded-xl"
+                />
               </div>
               {/* render text content on mobile screen */}
               {/* textRef */}
               <div className="md:hidden block mt-2">
-                <AboutText textRef={mobileTextRef} className="text-h400 text-fg font-[500] leading-[1.2] -tracking-[0.02em]" />
+                <AboutText
+                  textRef={mobileTextRef}
+                  className="text-h400 text-fg font-[500] leading-[1.2] -tracking-[0.02em]"
+                />
               </div>
             </div>
           </div>
