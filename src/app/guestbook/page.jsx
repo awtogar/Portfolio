@@ -113,7 +113,7 @@ export default async function GuestBook() {
               </p>
             </div>
             {/* container */}
-            <div className="relative mt-12 hidden w-full lg:block">
+            <div className="relative mt-12 w-full block">
               <GuestBookForm user={user} signInWithGithub={signInWithGithub} />
             </div>
           </div>
