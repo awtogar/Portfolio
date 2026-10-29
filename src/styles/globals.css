@@ -247,7 +247,7 @@ html {
     filter: brightness(1);
   }
   to {
-    transform: translateY(-10%) scale(0.9);
+    transform: translateY(-5%) scale(0.95);
     filter: brightness(0.5);
   }
 }

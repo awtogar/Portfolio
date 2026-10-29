@@ -93,78 +93,43 @@ export default async function GuestBook() {
 
   return (
     <PageLayout>
-      <BaseSection sectionID="guestbook" sectionClassName="">
-        <div className="flex flex-col">
-          <div className="relative px-4 md:px-6 lg:px-8 pt-[6rem] pb-[4rem] md:pt-[8rem] md:pb-[2.5rem]">
-            <div className="md:grid md:grid-cols-[3fr_2fr] md:items-start md:gap-[2rem]">
-              <div className="pb-4 md:sticky top-12">
-                <div className="flex flex-col gap-8 md:gap-10">
-                  {/* header */}
-                  <div className="flex flex-col">
-                    <div className="flex flex-col">
-                      <TextReveal as="span" startDelay="0.5">
-                        <span className="text-base-sm tracking-body font-[450] uppercase text-fg mb-2 md:mb-3 block">
-                          (Guestbook)
-                        </span>
-                      </TextReveal>
-                      <h1 className="font-serif text-h100 uppercase">
-                        Messages
-                      </h1>
-                    </div>
-                    <p className="max-w-[65ch] text-base-sm leading-normal tracking-normal opacity-60 mt-4 md:mt-6">
-                      Feel free to share your thoughts, suggestions, questions,
-                      or anything else!
-                    </p>
-                  </div>
-
-                  {/* entries & form */}
-                  {user ? (
-                    // authenticated user fields form
-                    <GuestBookForm user={user} />
-                  ) : (
-                    // unauthenticated user to sign with github
-                    <form action={signInWithGithub}>
-                      <button
-                        type="submit"
-
-                        className="group flex w-full cursor-pointer items-center justify-center gap-4 rounded-2xl bg-current/[0.04] px-6 py-8 md:py-10 text-center transition-colors duration-300 hover:bg-current/[0.07] focus-visible:outline-2 focus-visible:outline-offset-4"
-                      >
-                        <RiGithubFill className="h-6 w-6 text-current transition-colors duration-300 group-hover:text-fg" />
-                        <span className="font-serif text-base md:text-lg tracking-[-0.01em]">
-                          Sign in to leave a note
-                        </span>
-                      </button>
-                    </form>
-                  )}
-                </div>
-              </div>
-
-              {/* Right column — comments */}
-              <div className="flex flex-col gap-2 md:gap-4 md:pt-4">
-                <div className="flex justify-between items-center mb-2 md:mb-4">
-                  <span className="text-h600 text-[450] uppercase">
-                    What people left
-                  </span>
-                  <div className="block">
-                    <span className="text-base tabular-nums opacity-40">
-                      {count} {count === 1 ? "note" : "notes"}
-                    </span>
-                  </div>
-                </div>
-                {user ? (
-                  <GuestBookEntries
-                    entries={entriesWithLikes}
-                    currentUserId={user.id}
-                  />
-                ) : (
-                  <GuestEntries entries={entries} />
-                )}
-              </div>
+      <section className="section-padding-x pt-[clamp(8rem,14vw,14rem)]">
+        <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-12">
+          {/* left column */}
+          <div className="lg:sticky lg:col-span-5 lg:top-[clamp(8rem,14vw,14rem)] lg:self-start">
+            <div className="">
+              <span>Guest</span>
+              <h1 className="flex items-start gap-2 text-h100 font-[500] leading-[1.1]">
+                Messages <sup className="mt-4 text-h500">({count})</sup>
+              </h1>
+            </div>
+            <div className="mt-6 lg:mt-8">
+              <p className="border-b border-current/10 pb-3 text-base-sm uppercase opacity-60">
+                About
+              </p>
+              <p className="mt-2 text-base leading-body opacity-80">
+                Feel free to share your thoughts, suggestions, questions, or
+                anything else!
+              </p>
+            </div>
+            {/* container */}
+            <div className="relative mt-12 hidden w-full lg:block">
+              <GuestBookForm user={user} signInWithGithub={signInWithGithub} />
             </div>
           </div>
+          {/* right column */}
+          <div className="lg:col-span-6 lg:col-start-8 lg:pb-8">
+            {user ? (
+              <GuestBookEntries
+                entries={entriesWithLikes}
+                currentUserId={user.id}
+              />
+            ) : (
+              <GuestEntries entries={entries} />
+            )}
+          </div>
         </div>
-      </BaseSection>
-      <Footer />
+      </section>
     </PageLayout>
   );
 }
