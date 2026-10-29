@@ -14,7 +14,6 @@ export default function Template({ children }) {
       exit={isParentRoute ? "page-route-exit" : "page-dynamic-exit"}
       default="none"
     >
-      <Preloader />
       {children}
     </ViewTransition>
   );

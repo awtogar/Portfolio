@@ -16,7 +16,7 @@ export function Header() {
   const cursorHomeTarget = useCursorTarget({ label: null });
 
   return (
-    <header className="absolute top-0 left-0 w-full z-50 mix-blend-difference text-bg select-none">
+    <header className="fixed top-0 left-0 w-full z-50 mix-blend-difference text-bg select-none">
       <div className="px-gap py-gap flex items-center justify-between w-full">
         <div className="overflow-hidden flex items-center lg:gap-12">
           <Link {...cursorHomeTarget} href="/">
