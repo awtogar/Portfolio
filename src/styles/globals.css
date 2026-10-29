@@ -222,11 +222,6 @@ html {
   animation: scroll-x var(--marquee-speed, 20s) linear infinite;
 }
 
-::view-transition-group(header) {
-  animation: none;
-  z-index: 100;
-}
-
 ::view-transition-old(.page-route-exit),
 ::view-transition-new(.page-route-enter),
 ::view-transition-old(.page-dynamic-exit),
