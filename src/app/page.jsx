@@ -1,11 +1,20 @@
-'use client';
+"use client";
 
-import { Hero, Showreel, About, Services, Process, SelectedWorks, Stack } from '@/components/sections';
-import { Footer } from '@/components';
+import {
+  Hero,
+  Showreel,
+  About,
+  Services,
+  Process,
+  SelectedWorks,
+  Stack,
+} from "@/components/sections";
+import PageLayout from "@/components/PageLayout";
+import Footer from "@/components/Footer";
 
 export default function HomePage() {
   return (
-    <main className="bg-neutral-100">
+    <PageLayout>
       <Hero />
       <Showreel />
       <About />
@@ -14,6 +23,6 @@ export default function HomePage() {
       <SelectedWorks />
       <Stack />
       <Footer />
-    </main>
+    </PageLayout>
   );
 }

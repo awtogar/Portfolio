@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import { BaseSection } from "@/components";
 import { Article, DetailLayout } from "@/components/sections/writings";
 import { getAllWritings, getWritingBySlug } from "@/lib/writings";
+import PageLayout from "@/components/PageLayout";
 
 export function generateStaticParams() {
   return getAllWritings().map((writing) => ({ slug: writing.slug }));
@@ -31,13 +32,13 @@ export default async function WritingPage({ params }) {
   if (!writing) notFound();
 
   return (
-    <main>
+    <PageLayout>
       <BaseSection sectionClassName="px-0 lg:px-8 pt-[clamp(8rem,14vw,14rem)]">
         <DetailLayout
           writing={writing}
           article={<Article writing={writing} />}
         />
       </BaseSection>
-    </main>
+    </PageLayout>
   );
 }

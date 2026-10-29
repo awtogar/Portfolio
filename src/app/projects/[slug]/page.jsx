@@ -4,7 +4,7 @@ import { use } from "react";
 import { projects } from "@/data/data";
 import NotFoundPage from "@/components/sections/404";
 import { Hero, Info, Media } from "@/components/sections/project";
-
+import PageLayout from "@/components/PageLayout";
 export default function ProjectsPages({ params }) {
   const { slug } = use(params);
   const project = projects.find((p) => p.slug === slug);
@@ -12,7 +12,7 @@ export default function ProjectsPages({ params }) {
   if (!project) return <NotFoundPage />;
 
   return (
-    <main>
+    <PageLayout>
       <section className="px-2 lg:px-4 pt-[200px] md:pt-[clamp(128px,12vw,500px)]">
         <div className="flex flex-col items-center gap-[clamp(64px,6vw,200px)] px-3 lg:px-6 pt-[clamp(64px,10vw,128px)] pb-3 lg:pb-8 rounded-2xl lg:rounded-[20px] bg-neutral-900 transition-colors duration-smooth">
           <Hero project={project} />
@@ -22,6 +22,6 @@ export default function ProjectsPages({ params }) {
           </div>
         </div>
       </section>
-    </main>
+    </PageLayout>
   );
 }

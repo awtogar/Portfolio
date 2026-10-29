@@ -1,6 +1,7 @@
 import { BaseSection } from "@/components";
 import { ListLayout } from "@/components/sections/writings";
 import { getAllWritings } from "@/lib/writings";
+import PageLayout from "@/components/PageLayout";
 
 export const metadata = {
   title: "Writings | Awaluddin Togar",
@@ -11,10 +12,10 @@ export default function WritingsPage() {
   const writings = getAllWritings();
 
   return (
-    <main>
+    <PageLayout>
       <section className="section-padding-x pt-[clamp(8rem,14vw,14rem)]">
         <ListLayout writings={writings} />
       </section>
-    </main>
+    </PageLayout>
   );
 }

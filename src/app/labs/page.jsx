@@ -1,13 +1,17 @@
-'use client';
+"use client";
 
-import React from 'react';
-import { motion } from 'motion/react';
-import { BaseSection, CreativeButton } from '@/components';
+import React from "react";
+import { motion } from "motion/react";
+import { BaseSection, CreativeButton } from "@/components";
+import PageLayout from "@/components/PageLayout";
 
 export default function LabsPage() {
   return (
-    <main>
-      <BaseSection sectionClassName="section-padding-x" containerClassName="flex flex-col items-center justify-center text-center h-screen py-12 md:py-20">
+    <PageLayout>
+      <BaseSection
+        sectionClassName="section-padding-x"
+        containerClassName="flex flex-col items-center justify-center text-center h-screen py-12 md:py-20"
+      >
         <div className="flex flex-col items-center max-w-[520px]">
           <motion.h2
             className="text-h500 text-fg font-[500] uppercase leading-[1.2] -tracking-[0.02em] mb-2 md:mb-3"
@@ -33,16 +37,25 @@ export default function LabsPage() {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.4 }}
           >
-            A dedicated playground where I experiment with creative code, animations, and interactive ideas. Prototypes coming soon.
+            A dedicated playground where I experiment with creative code,
+            animations, and interactive ideas. Prototypes coming soon.
           </motion.p>
 
-          <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.5 }}>
-            <CreativeButton variant="primary" to="/projects" className="px-6 py-3 text-base-sm">
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.5 }}
+          >
+            <CreativeButton
+              variant="primary"
+              to="/projects"
+              className="px-6 py-3 text-base-sm"
+            >
               Explore Projects
             </CreativeButton>
           </motion.div>
         </div>
       </BaseSection>
-    </main>
+    </PageLayout>
   );
 }
