@@ -33,7 +33,7 @@ const About = () => {
     const createTextTransition = (element) => {
       if (!element) return;
 
-      const split = new SplitText(element, { type: "words" });
+      const split = new SplitText(element, { type: "words", aria: false });
       splitInstances.push(split);
 
       // Ambil kata-kata yang tadinya disembunyikan (hidden words)
@@ -121,7 +121,6 @@ const About = () => {
                 <CardParallax
                   src={aboutImages}
                   alt="Awaluddin Togar Profile"
-                  aria-label="Awaluddin Togar Profile"
                   scrollRange={["-10%", "10%"]}
                   objectPosition="top"
                   containerClassName="w-full aspect-video rounded-xl"

@@ -1,10 +1,20 @@
-'use client';
+"use client";
 
-import { useRef, useEffect } from 'react';
-import { gsap, SplitText, ScrollTrigger } from '@/lib/gsap';
-import { usePreloader } from '@/context';
+import { useRef, useEffect } from "react";
+import { gsap, SplitText, ScrollTrigger } from "@/lib/gsap";
+import { usePreloader } from "@/context";
 
-const TextReveal = ({ children, lines, lineClassName, as: Component = 'div', className = '', style, staggerDelay = 0.075, startDelay = 0, ready = true }) => {
+const TextReveal = ({
+  children,
+  lines,
+  lineClassName,
+  as: Component = "div",
+  className = "",
+  style,
+  staggerDelay = 0.075,
+  startDelay = 0,
+  ready = true,
+}) => {
   const { isReady } = usePreloader();
 
   const ref = useRef(null);
@@ -24,7 +34,7 @@ const TextReveal = ({ children, lines, lineClassName, as: Component = 'div', cla
       {
         yPercent: 0,
         duration: 1,
-        ease: 'power3.out',
+        ease: "power3.out",
         stagger: staggerDelay,
         delay: startDelay,
       }
@@ -34,16 +44,16 @@ const TextReveal = ({ children, lines, lineClassName, as: Component = 'div', cla
   useEffect(() => {
     if (!ref.current) return;
 
-    gsap.set(ref.current, { visibility: 'hidden' });
+    gsap.set(ref.current, { visibility: "hidden" });
 
     splitRef.current = SplitText.create(ref.current, {
-      type: 'lines',
-      mask: 'lines',
+      type: "lines",
+      mask: "lines",
       autoSplit: true,
-      ariaLabel: false,
-      onSplit: self => {
+      aria: false,
+      onSplit: (self) => {
         gsap.set(self.lines, { yPercent: 100 });
-        gsap.set(ref.current, { visibility: 'visible' });
+        gsap.set(ref.current, { visibility: "visible" });
 
         if (pendingPlayRef.current) {
           playAnimation();
@@ -64,7 +74,7 @@ const TextReveal = ({ children, lines, lineClassName, as: Component = 'div', cla
 
     stRef.current = ScrollTrigger.create({
       trigger: ref.current,
-      start: 'top 85%',
+      start: "top 85%",
       once: true,
       onEnter: () => {
         if (splitRef.current) {
@@ -80,7 +90,7 @@ const TextReveal = ({ children, lines, lineClassName, as: Component = 'div', cla
 
   const content = lines
     ? lines.map((line, i) => (
-        <span key={i} style={{ display: 'block' }} className={lineClassName}>
+        <span key={i} style={{ display: "block" }} className={lineClassName}>
           {line}
         </span>
       ))
