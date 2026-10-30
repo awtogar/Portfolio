@@ -136,11 +136,11 @@ export default function DetailLayout({ writing, article }) {
           </dl>
         </aside>
         {/* article */}
-        <article className="p-4 mt-4 lg:col-span-7 lg:mt-8 lg:px-0 pb-[clamp(14rem,14vw,14rem)]">
+        <article className="p-4 mt-4 lg:col-span-7 lg:mt-8 lg:px-0">
           <p className="border-b border-fg/20 pb-3 text-base-sm uppercase text-fg/60">
             Article
           </p>
-          <div className="mt-2">{article}</div>
+          <div className="mt-2 mb-4">{article}</div>
         </article>
       </div>
     </div>
