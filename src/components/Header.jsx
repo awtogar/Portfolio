@@ -22,7 +22,6 @@ export function Header() {
           <Link {...cursorHomeTarget} href="/">
             <PersonalLogo
               title="Personal Logo"
-              aria-label="Personal Logo"
               className="w-auto h-8 lg:h-10 fill-current"
             />
           </Link>

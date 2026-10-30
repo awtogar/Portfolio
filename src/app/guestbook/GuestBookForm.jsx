@@ -24,7 +24,7 @@ function Avatar({ src, name, size, className = "" }) {
     return (
       <img
         src={src}
-        alt={name}
+        alt={name ? `${name}'s avatar` : 'User avatar'}
         className={`${size} rounded-full object-cover ${className}`}
       />
     );

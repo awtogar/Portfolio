@@ -33,7 +33,7 @@ const Media = ({ assets }) => {
     if (asset.type === 'video') {
       return <ProjectVideoItem key={`video-${index}`} src={asset.src} poster={asset.poster} className={className} />;
     }
-    return <img src={asset.src} alt={asset.alt} className={className} loading="lazy" />;
+    return <img src={asset.src} alt={asset.alt || ''} className={className} loading="lazy" />;
   };
 
   return (

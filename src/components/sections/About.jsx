@@ -120,7 +120,8 @@ const About = () => {
               <div ref={imageRef} className="block mb-6 md:mb-0">
                 <CardParallax
                   src={aboutImages}
-                  alt="Awaluddin Togar"
+                  alt="Awaluddin Togar Profile"
+                  aria-label="Awaluddin Togar Profile"
                   scrollRange={["-10%", "10%"]}
                   objectPosition="top"
                   containerClassName="w-full aspect-video rounded-xl"

@@ -1,26 +1,29 @@
-'use client';
+"use client";
 
-import React, { useRef, useEffect } from 'react';
-import { motion } from 'motion/react';
-import { useIntersectionObserver } from '@/hooks';
-import { useParallax } from '@/hooks/animations';
+import React, { useRef, useEffect } from "react";
+import { motion } from "motion/react";
+import { useIntersectionObserver } from "@/hooks";
+import { useParallax } from "@/hooks/animations";
 
 const CardParallax = ({
   src,
-  alt = 'Media',
-  as = 'img',
+  alt = "Media",
+  as = "img",
   poster,
-  scrollRange = ['-10%', '10%'],
-  offset = ['start end', 'end start'],
-  containerClassName = '',
-  objectPosition = 'center',
+  scrollRange = ["-10%", "10%"],
+  offset = ["start end", "end start"],
+  containerClassName = "",
+  objectPosition = "center",
 }) => {
   const containerRef = useRef(null);
-  const { ref: videoRef, isIntersecting } = useIntersectionObserver({ rootMargin: '100px', threshold: 0.1 });
+  const { ref: videoRef, isIntersecting } = useIntersectionObserver({
+    rootMargin: "100px",
+    threshold: 0.1,
+  });
 
   useEffect(() => {
     const video = videoRef.current;
-    if (as !== 'video' || !video) return;
+    if (as !== "video" || !video) return;
 
     if (isIntersecting) {
       video.play().catch(() => {});
@@ -39,10 +42,11 @@ const CardParallax = ({
         className="absolute inset-0 w-full h-[120%] -top-[10%]"
         style={{ y }}
       >
-        {as === 'video' ? (
+        {as === "video" ? (
           <video
             ref={videoRef}
             src={src}
+            alt={alt}
             poster={poster || undefined}
             muted
             playsInline

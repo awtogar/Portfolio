@@ -35,7 +35,7 @@ function GuestEntries({ entries }) {
           {entry.avatar_url ? (
             <img
               src={entry.avatar_url}
-              alt={entry.github_username}
+              alt={`${entry.github_username}'s avatar`}
               className="w-10 h-10 rounded-full object-cover"
             />
           ) : (

@@ -40,6 +40,7 @@ const TextReveal = ({ children, lines, lineClassName, as: Component = 'div', cla
       type: 'lines',
       mask: 'lines',
       autoSplit: true,
+      ariaLabel: false,
       onSplit: self => {
         gsap.set(self.lines, { yPercent: 100 });
         gsap.set(ref.current, { visibility: 'visible' });

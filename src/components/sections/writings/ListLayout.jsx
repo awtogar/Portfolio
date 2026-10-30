@@ -59,7 +59,7 @@ export default function ListLayout({ writings }) {
                   {previousWriting?.thumbnail && (
                     <img
                       src={previousWriting.thumbnail}
-                      alt={previousWriting.title}
+                      alt=""
                       className="absolute inset-0 h-full w-full object-cover"
                     />
                   )}
@@ -67,7 +67,7 @@ export default function ListLayout({ writings }) {
                     <motion.img
                       key={activeWriting.slug}
                       src={activeWriting.thumbnail}
-                      alt={activeWriting.title}
+                      alt={activeWriting.title || 'Writing thumbnail'}
                       className="absolute inset-0 z-10 h-full w-full object-cover"
                       initial={{ scale: 0.5 }}
                       animate={{ scale: 1 }}

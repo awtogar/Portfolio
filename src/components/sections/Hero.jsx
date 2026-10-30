@@ -22,7 +22,7 @@ const Hero = () => {
       <div
         ref={heroRef}
         className="absolute top-0 left-0 w-full h-px pointer-events-none"
-        aria-hidden
+        aria-hidden="true"
       />
       <div className="flex flex-col justify-end w-full h-full">
         <div className="flex flex-col items-center justify-center gap-2 lg:gap-4">

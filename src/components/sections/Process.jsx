@@ -41,7 +41,7 @@ const StepItem = ({ step }) => {
           <p className="max-w-[40ch] text-base leading-body text-fg/80">{step.description}</p>
         </div>
       </div>
-      <span aria-label={`See step ${step.number} in action`} className="block overflow-hidden pt-4 pb-s200 pl-[25%] md:col-span-5 md:pt-0 md:pb-0 md:pl-0 group/video">
+      <span className="block overflow-hidden pt-4 pb-s200 pl-[25%] md:col-span-5 md:pt-0 md:pb-0 md:pl-0 group/video">
         <div className="overflow-hidden relative w-full aspect-video bg-primary/5 md:h-full md:aspect-6/3">
           <video
             src={step.video}

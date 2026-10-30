@@ -64,7 +64,7 @@ export const CardMeta = ({ client, type, year, tags = [], logo: Logo }) => {
 const AnimatedCard = ({
   as: Component = "li",
   thumbnail,
-  alt,
+  alt = "",
   reels = null,
   to,
   linkClassName,
@@ -97,6 +97,7 @@ const AnimatedCard = ({
           {reels && (
             <motion.video
               src={reels}
+              alt={alt}
               className="absolute top-1/2 left-1/2 -translate-x-1/2 w-[clamp(260px,56%,600px)] h-auto lg:max-h-2/4 rounded-lg object-cover z-20"
               animate={{
                 clipPath: isHovered

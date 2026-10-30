@@ -40,6 +40,6 @@ export const mdxComponents = {
   ),
   th: props => <th className="mdx-th" {...props} />,
   td: props => <td className="mdx-td" {...props} />,
-  img: ({ src = '', alt = '' }) => <Image className="mdx-img" src={src} alt={alt} width={1200} height={675} sizes="(min-width: 768px) 720px, 100vw" />,
+  img: ({ src = '', alt = 'Article image' }) => <Image className="mdx-img" src={src} alt={alt} width={1200} height={675} sizes="(min-width: 768px) 720px, 100vw" />,
   video: props => <video className="mdx-video" {...props} />,
 };
