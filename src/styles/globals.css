@@ -207,21 +207,6 @@ html {
   @apply text-bg;
 }
 
-/* for animated cards components */
-@keyframes scroll-x {
-  0% {
-    transform: translateX(0);
-  }
-
-  100% {
-    transform: translateX(-50%);
-  }
-}
-
-@utility move-text {
-  animation: scroll-x var(--marquee-speed, 20s) linear infinite;
-}
-
 ::view-transition-old(.page-route-exit),
 ::view-transition-new(.page-route-enter),
 ::view-transition-old(.page-dynamic-exit),

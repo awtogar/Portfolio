@@ -36,12 +36,12 @@ const Hero = () => {
             </TextReveal>
           </div>
           <div className="flex items-center justify-center pb-4 lg:pb-6">
-            <div className="flex flex-col items-center justify-center">
+            <div className="flex flex-col items-center justify-center gap-3">
               <TextReveal as="span" startDelay={1.3}>
                 <RiArrowDownLongLine size={18} />
               </TextReveal>
               <TextReveal as="span" startDelay={1.3}>
-                <span>(Scroll)</span>
+                <span className="text-base display-bold">Scroll</span>
               </TextReveal>
             </div>
           </div>

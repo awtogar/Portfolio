@@ -15,27 +15,28 @@ export default function ProjectsPage() {
         <div className="flex flex-col gap-s700 lg:gap-s900 px-4 lg:px-8">
           <div className="flex flex-col">
             <div className="flex items-center justify-between">
-              <TextReveal as="span" className="text-base">
-                (recent)
+              <TextReveal as="span">
+                <span className="text-base leading-[1.2] font-[500] uppercase">
+                  (Recent)
+                </span>
               </TextReveal>
             </div>
             <div className="flex items-end justify-between w-full flex-wrap">
               <TextReveal
-                className="text-display leading-[0.85] uppercase"
+                className="text-display leading-[1.2] font-[600] uppercase"
                 as="span"
               >
                 Project
               </TextReveal>
               <div className="flex flex-col items-end gap-1 pb-1 lg:pb-2">
                 <TextReveal
-                  className="text-display leading-[0.85] uppercase"
+                  className="text-display leading-[1.2] font-[600] uppercase"
                   as="span"
                 >
                   25
                 </TextReveal>
               </div>
             </div>
-            <div className="h-px w-full bg-primary/10" />
           </div>
         </div>
 
