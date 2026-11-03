@@ -31,3 +31,17 @@
     @apply font-mono;
   }
 }
+
+@keyframes move-x {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-15%);
+  }
+}
+
+@utility move-text {
+  animation: move-x var(--marquee-speed, 20s) linear infinite;
+}

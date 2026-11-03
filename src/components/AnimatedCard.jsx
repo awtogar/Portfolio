@@ -11,7 +11,10 @@ export const MarqueeTags = ({ tags = [], speed = 16 }) => {
     <div className="flex items-center h-4 md:h-4.5 overflow-hidden relative w-full">
       <div className="absolute left-0 h-full w-8 lg:w-10 bg-gradient-to-r from-neutral-900 to-transparent pointer-events-none z-10" />
       <div className="absolute right-0 h-full w-8 lg:w-10 bg-gradient-to-l from-neutral-900 to-transparent pointer-events-none z-10" />
-      <div className="flex whitespace-nowrap move-text" style={{ speed }}>
+      <div
+        className="flex whitespace-nowrap move-text"
+        style={{ "--marquee-speed": `${speed}s` }}
+      >
         {[0, 1].map((copy) => (
           <span
             key={copy}
