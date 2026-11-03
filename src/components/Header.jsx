@@ -1,15 +1,8 @@
 "use client";
-import React, { useEffect, useRef } from "react";
 import Link from "next/link";
+import { navlink } from "@/data/data";
 import PersonalLogo from "@/assets/images/logo.svg";
 import { useCursorTarget } from "@/cursor";
-
-const links = [
-  { label: "Home", href: "/" },
-  { label: "Labs", href: "/labs" },
-  { label: "Projects", href: "/projects" },
-  { label: "Writings", href: "/writings" },
-];
 
 export function Header() {
   const cursorLabelTarget = useCursorTarget({ label: null });
@@ -22,7 +15,7 @@ export function Header() {
           <Link {...cursorHomeTarget} href="/">
             <PersonalLogo
               title="Personal Logo"
-              className="w-auto h-8 lg:h-10 fill-current"
+              className="w-auto h-8 lg:h-10 text-bg fill-current"
             />
           </Link>
           <div className="hidden lg:hidden lg:flex-col lg:gap-1">
@@ -46,10 +39,10 @@ export function Header() {
 
         {/* navbar */}
         <nav className="flex flex-col gap-2 items-end md:flex-row md:items-center md:gap-8">
-          {links.map((item, i) => (
+          {navlink.map((item) => (
             <Link
               {...cursorLabelTarget}
-              key={i}
+              key={item.href}
               href={item.href}
               className="block text-bg text-base overflow-hidden display-bold"
             >
@@ -61,7 +54,5 @@ export function Header() {
     </header>
   );
 }
-
-Header.displayName = "Header";
 
 export default Header;

@@ -1,4 +1,4 @@
-import { heroReels } from "@/assets";
+import { heroReels, graphicReels, uiuxReels, developmentReels } from "@/assets";
 import oveloLogo from "@/assets/images/project/ovelo.svg";
 import nostraticLogo from "@/assets/images/project/nostratic.svg";
 import synoraLogo from "@/assets/images/project/synora.svg";
@@ -8,28 +8,28 @@ import routinesLogo from "@/assets/images/project/routines.svg";
 import serojaLogo from "@/assets/images/project/seroja.svg";
 
 // Navigation & Contact Data
-export const navlink = {
-  home: {
+export const navlink = [
+  {
     title: "Home",
     href: "/",
-    label: "Home Page",
+    label: "Home",
   },
-  about: {
+  {
     title: "Labs",
     href: "/labs",
-    label: "Labs Page",
+    label: "Labs",
   },
-  services: {
+  {
     title: "Projects",
     href: "/projects",
-    label: "Projects Page",
+    label: "Projects",
   },
-  works: {
+  {
     title: "Writings",
     href: "/writings",
-    label: "Writings Page",
+    label: "Writings",
   },
-};
+];
 
 export const socials = [
   {
@@ -71,7 +71,7 @@ export const services = [
     id: 1,
     number: "01",
     title: "Graphic",
-    video: heroReels,
+    video: graphicReels,
     description:
       "Building strong brand visuals through creative concepts and graphics.",
     features: [
@@ -85,7 +85,7 @@ export const services = [
     id: 2,
     number: "02",
     title: "UI/UX",
-    video: heroReels,
+    video: uiuxReels,
     description:
       "Crafting intuitive user experiences and visually appealing interfaces.",
     features: [
@@ -99,7 +99,7 @@ export const services = [
     id: 3,
     number: "03",
     title: "Development",
-    video: heroReels,
+    video: developmentReels,
     description:
       "Creating responsive websites with seamless and brand-focused experiences.",
     features: [
