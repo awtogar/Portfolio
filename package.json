@@ -8,7 +8,7 @@
     "build": "next build --turbopack",
     "start": "next start",
     "lint": "eslint .",
-    "clean": "rm -rf node_modules .next package-lock.json && npm cache clean --force"
+    "clean": "rm -rf node_modules .next  && npm cache clean"
   },
   "dependencies": {
     "@remixicon/react": "^4.6.0",

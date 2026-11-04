@@ -1,6 +1,5 @@
 "use client";
 import { unstable_ViewTransition as ViewTransition } from "react";
-import { Preloader } from "@/components";
 import { usePathname } from "next/navigation";
 
 export default function Template({ children }) {

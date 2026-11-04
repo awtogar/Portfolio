@@ -1,0 +1,247 @@
+@import "tailwindcss";
+@import "../styles/fonts.css";
+@import "../styles/layouts.css";
+@import "../styles/writing.css";
+
+:root {
+  --section-padding: clamp(4rem, 7vw, 6rem);
+  --container-padding: clamp(1.25rem, 5vw, 6rem);
+  --gap-padding: clamp(1rem, 2.5vw, 2rem);
+
+  --s100: clamp(0.5rem, 0.5rem + 0vi, 0.5rem);
+  --s200: clamp(0.75rem, 0.7rem + 0.25vi, 0.875rem);
+  --s300: clamp(1rem, 0.95rem + 0.35vi, 1.125rem);
+  --s400: clamp(1.25rem, 1.2rem + 0.4vi, 1.5rem);
+  --s500: clamp(1.75rem, 1.6rem + 0.55vi, 2.25rem);
+  --s600: clamp(2.25rem, 2rem + 0.8vi, 3rem);
+  --s700: clamp(3rem, 2.75rem + 1vi, 4rem);
+  --s800: clamp(4rem, 3.5rem + 1.5vi, 6rem);
+  --s900: clamp(5rem, 4.5rem + 2vi, 10rem);
+}
+
+@theme {
+  --font-sans:
+    "General Sans", Inter, "SF Pro Display", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+  --font-serif:
+    "Overused Grotesk", Inter, "SF Pro Display", -apple-system,
+    BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-mono:
+    "JetBrains Mono", "Roboto Mono", "SF Mono", Menlo, Monaco, Consolas,
+    monospace;
+
+  --color-neutral-50: #f7f7f8;
+  --color-neutral-100: #ecedef;
+  --color-neutral-200: #d6d9dc;
+  --color-neutral-300: #babfc4;
+  --color-neutral-400: #9ca3ab;
+  --color-neutral-500: #7e8791;
+  --color-neutral-600: #636b74;
+  --color-neutral-700: #494f55;
+  --color-neutral-800: #2f3337;
+  --color-neutral-900: #171a1c;
+
+  --color-fg: #171a1c;
+  --color-bg: #ffffff;
+
+  --color-primary: #5dc4ff;
+  --color-secondary: #ffad9b;
+
+  --color-brand-primary: oklch(37.4% 0.01 67.558);
+  --color-brand-secondary: oklch(55.3% 0.013 58.071);
+  --color-brand-tertiary: oklch(70.9% 0.01 56.259);
+
+  --text-display: clamp(3.3368rem, 10vw, 8rem);
+  --text-h100: clamp(3.0518rem, 2.8338rem + 1.0899vw, 3.8147rem);
+  --text-h200: clamp(2.4414rem, 2.267rem + 0.8719vw, 3.0518rem);
+  --text-h300: clamp(1.9531rem, 1.8136rem + 0.6975vw, 2.4414rem);
+  --text-h400: clamp(1.5625rem, 1.4509rem + 0.558vw, 1.9531rem);
+  --text-h500: clamp(1.25rem, 1.1607rem + 0.4464vw, 1.5625rem);
+  --text-h600: clamp(1rem, 0.9286rem + 0.3571vw, 1.25rem);
+  --text-base: clamp(1rem, 0.9286rem + 0.3571vw, 1.25rem);
+  --text-base-sm: clamp(0.8rem, 0.7429rem + 0.2857vw, 1rem);
+
+  --leading-display: 1.2;
+  --tracking-display: -0.05em;
+
+  --leading-heading: 1.3;
+  --tracking-heading: -0.03em;
+
+  --leading-body: 1.5;
+  --tracking-body: 0em;
+
+  --leading-mono: 1.75;
+
+  --spacing-section: var(--section-padding);
+  --spacing-container: var(--container-padding);
+  --spacing-gap: var(--gap-padding);
+  --spacing-s100: var(--s100);
+  --spacing-s200: var(--s200);
+  --spacing-s300: var(--s300);
+  --spacing-s400: var(--s400);
+  --spacing-s500: var(--s500);
+  --spacing-s600: var(--s600);
+  --spacing-s700: var(--s700);
+  --spacing-s800: var(--s800);
+  --spacing-s900: var(--s900);
+}
+
+/* HTML baseline */
+html {
+  position: relative;
+  scrollbar-gutter: stable;
+  -webkit-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+/* For Firefox */
+.element {
+  scrollbar-width: none;
+}
+
+/* For Chrome, Safari, and Opera */
+.-webkit-scrollbar {
+  display: none;
+}
+
+/* For Internet Explorer and Edge */
+.element {
+  -ms-overflow-style: none;
+}
+
+/* Base layer */
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    background-color: var(--color-neutral-950);
+  }
+
+  main {
+    background-color: var(--color-neutral-100);
+  }
+
+  :is(h1, h2, h3, h4, h5, h6) {
+    @apply font-[600] leading-[1.5] -tracking-[0.02em];
+  }
+
+  span,
+  p {
+    @apply font-[500] leading-[1.2];
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  canvas,
+  img,
+  video {
+    user-select: none;
+    max-width: 100%;
+    height: auto;
+    box-sizing: border-box;
+    vertical-align: middle;
+  }
+
+  svg {
+    max-width: none;
+    height: auto;
+    box-sizing: border-box;
+    vertical-align: middle;
+  }
+
+  ::selection {
+    background-color: var(--color-primary);
+    text-shadow: none;
+  }
+
+  ::-moz-selection {
+    background-color: var(--color-primary);
+    text-shadow: none;
+  }
+}
+
+/* for writing list item components */
+.writing-roll {
+  @apply relative block overflow-hidden;
+}
+
+.writing-roll__track {
+  @apply relative block transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)];
+}
+
+.writing-roll__track > span:nth-child(1) {
+  @apply block;
+}
+
+.writing-roll__track > span:nth-child(2) {
+  @apply absolute top-full left-0 block;
+}
+
+.outter-container:hover .writing-roll__track {
+  transform: translateY(-100%);
+}
+
+.writing-roll:hover {
+  @apply bg-neutral-900 text-bg;
+}
+
+.writing-roll:hover .writing-list-link > span:first-child {
+  @apply text-bg/60;
+}
+
+.writing-roll:hover .writing-list-link > span:nth-child(2) {
+  @apply text-bg;
+}
+
+::view-transition-old(.page-route-exit),
+::view-transition-new(.page-route-enter),
+::view-transition-old(.page-dynamic-exit),
+::view-transition-new(.page-dynamic-enter) {
+  mix-blend-mode: normal;
+}
+
+::view-transition-old(.page-route-exit),
+::view-transition-old(.page-dynamic-exit) {
+  z-index: 1;
+  animation: 1000ms cubic-bezier(0.76, 0, 0.24, 1) both page-out;
+}
+
+::view-transition-new(.page-route-enter),
+::view-transition-new(.page-dynamic-enter) {
+  z-index: 2;
+  animation: 1000ms cubic-bezier(0.76, 0, 0.24, 1) both page-in;
+}
+
+@keyframes page-out {
+  from {
+    transform: translateY(0%) scale(1);
+    filter: brightness(1);
+  }
+  to {
+    transform: translateY(-5%) scale(0.95);
+    filter: brightness(0.5);
+  }
+}
+
+@keyframes page-in {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0%);
+  }
+}

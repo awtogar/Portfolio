@@ -1,4 +1,4 @@
-import "@/styles/globals.css";
+import "@/app/globals.css";
 import { LenisProvider, PreloaderProvider } from "@/context";
 import { CursorProvider, CursorFollower, CursorHover } from "@/cursor";
 import { Preloader } from "@/components";
