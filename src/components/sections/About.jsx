@@ -2,22 +2,34 @@ import { BaseSection, CardParallax } from "@/components";
 import { aboutImages } from "@/assets";
 import { useState, useRef, useEffect } from "react";
 import { gsap, SplitText } from "@/lib/gsap";
+import { useCursorTarget } from "@/cursor";
 
 const resumeLink = "/assets/RESUME-AWALUDDIN_TOGAR.pdf";
 
 const aboutDescription =
-  "A Passionate creative engineer. Interesting in exploring technology and learning new things in the fields such as Web Development, UI/UX design and emerging tech with strong problem solving skills to create solutions that fit the needs, effective and enjoyable";
+  "A passionate design engineer that interested in exploring technology and learning new things fields like Web Development, Creative Design and Following Trends with strong problem solving skills to create solutions that fit the needs with effective and enjoyable result.";
 
 // Indeks kata yang tersembunyi pada state awal (partial)
 const PARTIAL_HIDDEN_WORDS = [1, 7, 10, 12, 16, 22, 25, 26, 29, 31, 33, 35, 37];
 
-const AboutText = ({ textRef, className }) => (
-  <span className={`relative block ${className}`}>
-    <span ref={textRef} className="block">
-      {aboutDescription}
-    </span>
-  </span>
-);
+const AboutText = ({ textRef, className }) => {
+  const cursorResumeTarget = useCursorTarget({ label: null });
+
+  return (
+    <div className={`relative block ${className}`}>
+      <span ref={textRef} className="block">
+        {aboutDescription}
+        <a
+          {...cursorResumeTarget}
+          href={resumeLink}
+          className="ml-0 lg:ml-4 inline-block align-middle text-base text-neutral-500 font-[500] leading-[1.2] -tracking-[0.02em] border-b border-neutral-500 hover:border-fg hover:text-fg transition-colors duration-300"
+        >
+          Resume
+        </a>
+      </span>
+    </div>
+  );
+};
 
 const About = () => {
   const [openIndex, setOpenIndex] = useState(null);
@@ -96,7 +108,7 @@ const About = () => {
           {/* left column */}
           <div
             ref={containerRef}
-            className="flex md:col-span-8 md:justify-start lg:col-span-8"
+            className="flex md:col-span-7 md:justify-start lg:col-span-7"
           >
             <div className="flex-col flex md:mb-6">
               <h2 className="text-h500 text-fg uppercase display-heading">
@@ -114,7 +126,7 @@ const About = () => {
             </div>
           </div>
           {/* right column */}
-          <div className="md:col-span-4 lg:col-span-4 md:h-full">
+          <div className="md:col-span-4 lg:col-span-5 md:h-full">
             <div className="flex flex-col">
               {/* slide to bottom of left column high aniamtion. trggered by scrol to  */}
               <div ref={imageRef} className="block mb-6 md:mb-0">
