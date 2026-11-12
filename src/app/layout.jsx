@@ -2,6 +2,7 @@ import "@/app/globals.css";
 import { LenisProvider, PreloaderProvider } from "@/context";
 import { CursorProvider, CursorFollower, CursorHover } from "@/cursor";
 import { Preloader } from "@/components";
+import { Analytics } from "@vercel/analytics/next";
 
 export const metadata = {
   title: "Awaluddin Togar | Portfolio",
@@ -31,6 +32,7 @@ export default function RootLayout({ children }) {
             </PreloaderProvider>
           </CursorProvider>
         </LenisProvider>
+        <Analytics />
       </body>
     </html>
   );
