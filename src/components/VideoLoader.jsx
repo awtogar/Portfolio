@@ -1,11 +1,11 @@
-'use client';
+"use client";
 
-import { useEffect, useState } from 'react';
-import { useIntersectionObserver } from '@/hooks';
+import { useEffect, useState } from "react";
+import { useIntersectionObserver } from "@/hooks";
 
 const VideoLoader = ({ src, className, observerOptions = {}, ...props }) => {
   const [activeSrc, setActiveSrc] = useState(null);
-  const { rootMargin = '200px', threshold = 0 } = observerOptions;
+  const { rootMargin = "200px", threshold = 0 } = observerOptions;
 
   const { ref: videoRef, isIntersecting } = useIntersectionObserver({
     rootMargin,
@@ -24,14 +24,23 @@ const VideoLoader = ({ src, className, observerOptions = {}, ...props }) => {
     if (!video || !activeSrc) return;
 
     if (isIntersecting) {
+      if (!activeSrc) setActiveSrc(src);
       video.play().catch(() => {});
     } else {
       video.pause();
     }
-  }, [isIntersecting, activeSrc]);
+  }, [isIntersecting, activeSrc, src]);
 
   return (
-    <video ref={videoRef} muted playsInline loop preload="none" className={className} {...props}>
+    <video
+      ref={videoRef}
+      muted
+      playsInline
+      loop
+      preload="none"
+      className={className}
+      {...props}
+    >
       {activeSrc && <source src={activeSrc} type="video/mp4" />}
     </video>
   );

@@ -1,30 +1,34 @@
-import { BaseSection, TextReveal } from '@/components';
-import { discoverReels, defineReels, designReels, buildReels } from '@/assets';
-import { RiArrowRightBoxFill } from '@remixicon/react';
+import { BaseSection, TextReveal } from "@/components";
+import { discoverReels, defineReels, designReels, buildReels } from "@/assets";
+import { RiArrowRightBoxFill } from "@remixicon/react";
 
 const steps = [
   {
-    number: '01',
-    title: 'Discover',
-    description: 'Start with the right questions. Understand the goals, audience, and constraints before jumping into solutions.',
+    number: "01",
+    title: "Discover",
+    description:
+      "Start with the right questions. Understand the goals, audience, and constraints before jumping into solutions.",
     video: discoverReels,
   },
   {
-    number: '02',
-    title: 'Define',
-    description: "Clarity before creativity. I turn what I've learned into structure, direction, and clear design intent.",
+    number: "02",
+    title: "Define",
+    description:
+      "Clarity before creativity. I turn what I've learned into structure, direction, and clear design intent.",
     video: defineReels,
   },
   {
-    number: '03',
-    title: 'Design',
-    description: 'Visual decisions made with purpose. I move into high fidelity early — I think better when things feel real.',
+    number: "03",
+    title: "Design",
+    description:
+      "Visual decisions made with purpose. I move into high fidelity early — I think better when things feel real.",
     video: designReels,
   },
   {
-    number: '04',
-    title: 'Build',
-    description: 'I write the code myself, turning the design into a working experience while keeping the original intent intact.',
+    number: "04",
+    title: "Build",
+    description:
+      "I write the code myself, turning the design into a working experience while keeping the original intent intact.",
     video: buildReels,
   },
 ];
@@ -34,23 +38,27 @@ const StepItem = ({ step }) => {
     <li className={`flex flex-col md:grid md:grid-cols-12 group`}>
       <div className="grid grid-cols-8 items-start gap-s100 pt-s200 md:col-span-7 md:pt-s500 md:pr-s200">
         <span className="col-span-2 inline-flex items-center gap-1 whitespace-nowrap pt-2 text-base-sm leading-none text-fg/80 md:pt-s100">
-          STEPS <RiArrowRightBoxFill size={18} className="-my-1 shrink-0" /> {step.number}
+          STEPS <RiArrowRightBoxFill size={18} className="-my-1 shrink-0" />{" "}
+          {step.number}
         </span>
         <div className="flex flex-col col-span-6 gap-s200">
           <h3 className=" text-h400 font-bold leading-tight">{step.title}</h3>
-          <p className="max-w-[40ch] text-base leading-body text-fg/80">{step.description}</p>
+          <p className="max-w-[40ch] text-base leading-body text-fg/80">
+            {step.description}
+          </p>
         </div>
       </div>
       <span className="block overflow-hidden pt-4 pb-s200 pl-[25%] md:col-span-5 md:pt-0 md:pb-0 md:pl-0 group/video">
         <div className="overflow-hidden relative w-full aspect-video bg-primary/5 md:h-full md:aspect-6/3">
           <video
             src={step.video}
+            preload="none"
             loop
             muted
             playsInline
             className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 ease-out group-hover/video:scale-[1.03]"
-            onMouseEnter={e => e.currentTarget.play()}
-            onMouseLeave={e => {
+            onMouseEnter={(e) => e.currentTarget.play()}
+            onMouseLeave={(e) => {
               e.currentTarget.pause();
               e.currentTarget.currentTime = 0;
             }}
@@ -67,11 +75,17 @@ const Process = () => {
       <div className="flex flex-col">
         <div className="flex items-center justify-between">
           <TextReveal as="span">
-            <span className="text-base leading-heading tracking-body font-[450] uppercase text-fg/80">(STEP BY STEP)</span>
+            <span className="text-base leading-heading tracking-body font-[450] uppercase text-fg/80">
+              (STEP BY STEP)
+            </span>
           </TextReveal>
         </div>
         <div className="flex items-end justify-between w-full mb-s200">
-          <TextReveal as="h2" style={{ lineHeight: '0.86' }} className="text-h100 tracking-heading font-serif font-bold">
+          <TextReveal
+            as="h2"
+            style={{ lineHeight: "0.86" }}
+            className="text-h100 tracking-heading font-serif font-bold"
+          >
             PROCESS
           </TextReveal>
         </div>

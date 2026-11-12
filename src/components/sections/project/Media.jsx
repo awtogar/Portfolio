@@ -1,24 +1,17 @@
-'use client';
+"use client";
 
-import React, { useEffect } from 'react';
-import { motion } from 'motion/react';
-import { useIntersectionObserver } from '@/hooks';
+import React from "react";
+import { motion } from "motion/react";
+import { VideoLoader } from "@/components";
 
 const ProjectVideoItem = ({ src, poster, className }) => {
-  const { ref: videoRef, isIntersecting } = useIntersectionObserver({ rootMargin: '100px', threshold: 0.2 });
-
-  useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
-
-    if (isIntersecting) {
-      video.play().catch(() => {});
-    } else {
-      video.pause();
-    }
-  }, [isIntersecting]);
-
-  return <video ref={videoRef} src={src} poster={poster} muted loop playsInline preload="metadata" className={className} />;
+  return (
+    <VideoLoader
+      src={src}
+      poster={poster}
+      className={className}
+    />
+  );
 };
 
 const Media = ({ assets }) => {
@@ -30,10 +23,24 @@ const Media = ({ assets }) => {
   }
 
   const renderAsset = (asset, index, className) => {
-    if (asset.type === 'video') {
-      return <ProjectVideoItem key={`video-${index}`} src={asset.src} poster={asset.poster} className={className} />;
+    if (asset.type === "video") {
+      return (
+        <ProjectVideoItem
+          key={`video-${index}`}
+          src={asset.src}
+          poster={asset.poster}
+          className={className}
+        />
+      );
     }
-    return <img src={asset.src} alt={asset.alt || ''} className={className} loading="lazy" />;
+    return (
+      <img
+        src={asset.src}
+        alt={asset.alt || ""}
+        className={className}
+        loading="lazy"
+      />
+    );
   };
 
   return (
@@ -53,7 +60,11 @@ const Media = ({ assets }) => {
                 viewport={{ once: true }}
                 className="overflow-hidden relative w-full h-[200px] rounded-lg lg:h-[clamp(600px,57vw,1200px)] lg:rounded-xl"
               >
-                {renderAsset(chunk[j], index, 'absolute inset-0 w-full h-full object-cover')}
+                {renderAsset(
+                  chunk[j],
+                  index,
+                  "absolute inset-0 w-full h-full object-cover"
+                )}
               </motion.div>
             );
           }
@@ -62,7 +73,10 @@ const Media = ({ assets }) => {
         const halfItems = chunk.slice(2, 4);
         if (halfItems.length > 0) {
           elements.push(
-            <div key={`half-pair-${chunkIndex}`} className="flex gap-4 lg:gap-5">
+            <div
+              key={`half-pair-${chunkIndex}`}
+              className="flex gap-4 lg:gap-5"
+            >
               {halfItems.map((asset, idx) => {
                 const actualIndex = chunkIndex * 4 + 2 + idx;
                 return (
@@ -74,7 +88,11 @@ const Media = ({ assets }) => {
                     viewport={{ once: true }}
                     className="overflow-hidden relative w-1/2 h-[160px] rounded-lg lg:h-[clamp(600px,40vw,1200px)] lg:rounded-xl"
                   >
-                    {renderAsset(asset, actualIndex, 'absolute inset-0 w-full h-full object-cover')}
+                    {renderAsset(
+                      asset,
+                      actualIndex,
+                      "absolute inset-0 w-full h-full object-cover"
+                    )}
                   </motion.div>
                 );
               })}

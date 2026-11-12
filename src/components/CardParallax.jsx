@@ -47,11 +47,11 @@ const CardParallax = ({
             ref={videoRef}
             src={src}
             alt={alt}
-            poster={poster || undefined}
+            poster={poster}
             muted
             playsInline
             loop
-            preload="metadata"
+            preload="none"
             className="w-full h-full object-cover"
             style={{ objectPosition }}
           />
