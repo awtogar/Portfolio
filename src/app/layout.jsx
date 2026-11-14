@@ -7,15 +7,7 @@ import { Analytics } from "@vercel/analytics/next";
 export const metadata = {
   title: "Awaluddin Togar | Portfolio",
   description: "Creative portfolio",
-  manifest: "/manifest.json",
-  icons: {
-    icon: [
-      { url: "/favicon.ico" },
-      { url: "/icon0.svg", type: "image/svg+xml" },
-      { url: "/icon1.png", type: "image/png", sizes: "32x32" },
-    ],
-    apple: "/apple-icon.png",
-  },
+  manifest: "/manifest.webmanifest",
 };
 
 export default function RootLayout({ children }) {
