@@ -13,9 +13,9 @@ export default function WritingsPage() {
 
   return (
     <PageLayout>
-      <section className="section-padding-x pt-[clamp(8rem,14vw,14rem)]">
+      <BaseSection sectionClassName="section-padding-x pt-[clamp(8rem,14vw,14rem)]">
         <ListLayout writings={writings} />
-      </section>
+      </BaseSection>
     </PageLayout>
   );
 }

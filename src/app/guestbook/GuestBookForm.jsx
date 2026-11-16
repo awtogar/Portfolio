@@ -24,14 +24,14 @@ function Avatar({ src, name, size, className = "" }) {
     return (
       <img
         src={src}
-        alt={name ? `${name}'s avatar` : 'User avatar'}
+        alt={name ? `${name}'s avatar` : "Guest avatar"}
         className={`${size} rounded-full object-cover ${className}`}
       />
     );
   }
   return (
     <span
-      className={`${size} rounded-full bg-current/10 flex items-center justify-center text-[11px] font-medium ${className}`}
+      className={`${size} rounded-full bg-neutral-400/50 flex items-center justify-center text-sm display-bold ${className}`}
     >
       {name?.[0]?.toUpperCase() ?? "?"}
     </span>
@@ -84,16 +84,16 @@ export default function GuestBookForm({
     <form
       ref={formRef}
       onSubmit={handleSubmit}
-      className="rounded-2xl bg-current/[0.04] p-5 md:p-6 flex flex-col gap-4"
+      className="rounded-2xl bg-neutral-100 p-5 md:p-6 flex flex-col gap-4"
     >
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-3 text-sm">
           <Avatar src={avatar} name={name} size="w-6 h-6" />
-          <span className="opacity-50">
-            {user ? `Posting as @${name}` : "Sign in to post"}
+          <span className="text-neutral-500 display-bold">
+            {user ? `@${name}` : "Guest"}
           </span>
         </div>
-        <span className="text-sm tabular-nums opacity-30">
+        <span className="text-sm tabular-nums text-neutral-500 display-bold">
           {value.length} / {MAX}
         </span>
       </div>
@@ -101,11 +101,12 @@ export default function GuestBookForm({
       <textarea
         name="message"
         value={value}
+        spellCheck={false}
         onChange={(e) => setValue(e.target.value.slice(0, MAX))}
-        placeholder="Your thoughts..."
+        placeholder="Write your thoughts..."
         rows={4}
         required
-        className="block w-full resize-none bg-transparent border-0 py-2 font-serif text-xl md:text-2xl leading-[1.5] tracking-[0em] placeholder:text-current/25 focus:outline-none [field-sizing:content] min-h-[8rem]"
+        className="block w-full resize-none border-0 py-2 font-serif text-base md:text-2xl leading-body tracking-body placeholder:text-current/25 focus:outline-none [field-sizing:content] min-h-[calc(4*1.5rem)]"
       />
 
       <div className="flex items-center justify-end">
@@ -114,7 +115,7 @@ export default function GuestBookForm({
             type="submit"
             {...cursorSubmitFormTarget}
             disabled={pending || !value.trim()}
-            className="cursor-pointer w-10 h-10 rounded-full bg-neutral-900 text-neutral-50 flex items-center justify-center transition-opacity duration-300 disabled:opacity-20 disabled:pointer-events-none hover:opacity-80 focus-visible:outline-2 focus-visible:outline-offset-4"
+            className="cursor-pointer w-10 h-10 rounded-full bg-neutral-900 text-bg flex items-center justify-center transition-opacity duration-300 disabled:opacity-20 disabled:pointer-events-none hover:opacity-80 focus-visible:outline-2 focus-visible:outline-offset-4"
             aria-label={pending ? "Posting…" : "Post note"}
           >
             <svg
@@ -212,7 +213,9 @@ export function GuestBookEntries({ entries, currentUserId }) {
   if (!entries || entries.length === 0) {
     return (
       <p className="py-16 font-serif text-2xl opacity-40">
-        No notes yet. Write the first one.
+        {currentUserId
+          ? "No notes yet. Write the first one."
+          : "No notes yet. Sign in and be the first one to leave a note!"}
       </p>
     );
   }
@@ -245,7 +248,7 @@ export function GuestBookEntries({ entries, currentUserId }) {
               </div>
 
               <div className="flex items-center gap-1">
-                {currentUserId === entry.user_id && (
+                {currentUserId && currentUserId === entry.user_id && (
                   <button
                     onClick={() => handleDelete(entry.id)}
                     disabled={deletingId === entry.id}
@@ -255,31 +258,42 @@ export function GuestBookEntries({ entries, currentUserId }) {
                     <RiCloseLine className="w-4 h-4" />
                   </button>
                 )}
-                <button
-                  onClick={() => handleLike(entry.id)}
-                  disabled={likingId === entry.id}
-                  className={`cursor-pointer p-1 flex items-center gap-1 opacity-75 md:opacity-0 md:group-hover:opacity-75 focus-visible:opacity-75 transition-opacity disabled:opacity-40 ${
-                    likes[entry.id]?.liked
-                      ? "text-red-500"
-                      : "text-current/50 hover:text-red-500"
-                  }`}
-                  aria-label={
-                    likes[entry.id]?.liked
-                      ? "Unlike this comment"
-                      : "Like this comment"
-                  }
-                >
-                  {likes[entry.id]?.liked ? (
-                    <RiHeartFill className="w-4 h-4" />
-                  ) : (
-                    <RiHeartLine className="w-4 h-4" />
-                  )}
-                  {likes[entry.id]?.count > 0 && (
-                    <span className="text-base-sm tabular-nums">
-                      {likes[entry.id].count}
+                {currentUserId ? (
+                  <button
+                    onClick={() => handleLike(entry.id)}
+                    disabled={likingId === entry.id}
+                    className={`cursor-pointer p-1 flex items-center gap-1 opacity-75 md:opacity-0 md:group-hover:opacity-75 focus-visible:opacity-75 transition-opacity disabled:opacity-40 ${
+                      likes[entry.id]?.liked
+                        ? "text-red-500"
+                        : "text-current/50 hover:text-red-500"
+                    }`}
+                    aria-label={
+                      likes[entry.id]?.liked
+                        ? "Unlike this comment"
+                        : "Like this comment"
+                    }
+                  >
+                    {likes[entry.id]?.liked ? (
+                      <RiHeartFill className="w-4 h-4" />
+                    ) : (
+                      <RiHeartLine className="w-4 h-4" />
+                    )}
+                    {likes[entry.id]?.count > 0 && (
+                      <span className="text-base-sm tabular-nums">
+                        {likes[entry.id].count}
+                      </span>
+                    )}
+                  </button>
+                ) : (
+                  likes[entry.id]?.count > 0 && (
+                    <span className="flex items-center gap-1 p-1 text-current/50">
+                      <RiHeartFill className="w-4 h-4" />
+                      <span className="text-base-sm tabular-nums">
+                        {likes[entry.id].count}
+                      </span>
                     </span>
-                  )}
-                </button>
+                  )
+                )}
               </div>
             </div>
 

@@ -5,7 +5,7 @@ import gsap from "gsap";
 import PageLayout from "@/components/PageLayout";
 
 const images = Array.from(
-  { length: 13 },
+  { length: 6 },
   (_, i) => `/assets/images/labs/${i + 1}.webp`
 );
 const config = {
