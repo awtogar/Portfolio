@@ -1,12 +1,14 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
-import { submitEntry, deleteEntry, toggleLike } from "./action";
+import { useRef, useState, useTransition } from "react";
+import { deleteEntry, signIn, submitEntry, toggleLike } from "./action";
 import {
+  RiArrowRightUpLine,
   RiCloseLine,
+  RiGithubFill,
+  RiGoogleFill,
   RiHeartLine,
   RiHeartFill,
-  RiGithubFill,
 } from "@remixicon/react";
 import { useCursorTarget } from "@/cursor";
 
@@ -14,8 +16,8 @@ const MAX = 250;
 
 const formatDate = (value) =>
   new Date(value).toLocaleDateString("en-GB", {
-    day: "numeric",
     month: "short",
+    day: "numeric",
     year: "numeric",
   });
 
@@ -31,37 +33,46 @@ function Avatar({ src, name, size, className = "" }) {
   }
   return (
     <span
-      className={`${size} rounded-full bg-neutral-400/50 flex items-center justify-center text-sm display-bold ${className}`}
+      className={`${size} rounded-full bg-neutral-400/50 flex items-center justify-center text-sm font-bold ${className}`}
     >
       {name?.[0]?.toUpperCase() ?? "?"}
     </span>
   );
 }
 
-export default function GuestBookForm({
-  user,
-  signInWithGithub,
-  entries,
-  currentUserId,
-}) {
+function getIdentity(user) {
+  const meta = user?.user_metadata ?? {};
+  return {
+    name:
+      meta.full_name ||
+      meta.name ||
+      meta.user_name ||
+      meta.preferred_username ||
+      "Guest",
+    avatar: meta.avatar_url || meta.picture || null,
+    provider: user?.app_metadata?.provider ?? null,
+  };
+}
+
+export default function GuestBookForm({ user }) {
   const [value, setValue] = useState("");
   const [pending, setPending] = useState(false);
   const [error, setError] = useState(null);
-  const [deletingId, setDeletingId] = useState(null);
+  const [isSigningIn, startSignInTransition] = useTransition();
   const formRef = useRef(null);
   const cursorSubmitFormTarget = useCursorTarget({ label: "Submit" });
-  const cursorGithubButtonTarget = useCursorTarget({ label: null });
 
-  const name =
-    user?.user_metadata?.user_name ||
-    user?.user_metadata?.preferred_username ||
-    "you";
-  const avatar = user?.user_metadata?.avatar_url;
+  const identity = getIdentity(user);
+
+  function handleSignIn(provider) {
+    startSignInTransition(async () => {
+      await signIn(provider, "/guestbook");
+    });
+  }
 
   async function handleSubmit(e) {
     e.preventDefault();
-    if (!user) return; // Should not happen if button is disabled, but good practice
-    if (!value.trim() || pending) return;
+    if (!user || !value.trim() || pending) return;
     setPending(true);
     setError(null);
 
@@ -73,14 +84,13 @@ export default function GuestBookForm({
       }
       setValue("");
     } catch {
-      setError("Your note didnt post. Check your connection and try again.");
+      setError("Failed to post. Check your connection.");
     } finally {
       setPending(false);
     }
   }
 
   return (
-    // comment input form
     <form
       ref={formRef}
       onSubmit={handleSubmit}
@@ -88,12 +98,12 @@ export default function GuestBookForm({
     >
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-3 text-sm">
-          <Avatar src={avatar} name={name} size="w-6 h-6" />
-          <span className="text-neutral-500 display-bold">
-            {user ? `@${name}` : "Guest"}
+          <Avatar src={identity.avatar} name={identity.name} size="w-6 h-6" />
+          <span className="text-neutral-500 font-medium">
+            {user ? identity.name : "Guest"}
           </span>
         </div>
-        <span className="text-sm tabular-nums text-neutral-500 display-bold">
+        <span className="text-sm tabular-nums text-neutral-500 font-medium">
           {value.length} / {MAX}
         </span>
       </div>
@@ -101,62 +111,59 @@ export default function GuestBookForm({
       <textarea
         name="message"
         value={value}
+        disabled={!user}
         spellCheck={false}
         onChange={(e) => setValue(e.target.value.slice(0, MAX))}
-        placeholder="Write your thoughts..."
+        placeholder={
+          user ? "Write your thoughts..." : "Sign in to leave a note"
+        }
         rows={4}
         required
-        className="block w-full resize-none border-0 py-2 font-serif text-base md:text-2xl leading-body tracking-body placeholder:text-current/25 focus:outline-none [field-sizing:content] min-h-[calc(4*1.5rem)]"
+        className="block w-full resize-none border-0 py-2 font-serif text-base md:text-2xl leading-body tracking-body placeholder:text-current/25 focus:outline-none [field-sizing:content] min-h-[calc(4*1.5rem)] disabled:opacity-30"
       />
 
-      <div className="flex items-center justify-end">
+      <div className="flex items-center justify-end gap-3">
         {user ? (
           <button
             type="submit"
             {...cursorSubmitFormTarget}
             disabled={pending || !value.trim()}
-            className="cursor-pointer w-10 h-10 rounded-full bg-neutral-900 text-bg flex items-center justify-center transition-opacity duration-300 disabled:opacity-20 disabled:pointer-events-none hover:opacity-80 focus-visible:outline-2 focus-visible:outline-offset-4"
-            aria-label={pending ? "Posting…" : "Post note"}
+            className="cursor-pointer inline-flex items-center gap-2 rounded-full bg-neutral-900 px-5 py-2.5 text-sm font-medium text-bg transition-all duration-300 hover:bg-neutral-700 disabled:pointer-events-none disabled:opacity-20 focus-visible:outline-2 focus-visible:outline-offset-4"
           >
-            <svg
-              width="18"
-              height="18"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <path d="M5 12h14" />
-              <path d="m12 5 7 7-7 7" />
-            </svg>
+            <span>{pending ? "Sending..." : "Submit"}</span>
+            <RiArrowRightUpLine size={15} />
           </button>
         ) : (
-          <button
-            type="button"
-            {...cursorGithubButtonTarget}
-            onClick={signInWithGithub}
-            className="cursor-pointer flex items-center gap-2 rounded-full bg-neutral-900 text-neutral-50 px-4 py-2 text-sm transition-opacity duration-300 hover:opacity-80 focus-visible:outline-2 focus-visible:outline-offset-4"
-          >
-            <RiGithubFill className="h-4 w-4" />
-            <span>Login</span>
-          </button>
+          <div className="flex items-center gap-2">
+            <button
+              type="button"
+              disabled={isSigningIn}
+              onClick={() => handleSignIn("github")}
+              className="cursor-pointer flex items-center gap-2 rounded-full bg-neutral-900 text-neutral-50 px-4 py-2 text-sm transition-opacity duration-300 hover:opacity-80 disabled:opacity-40"
+            >
+              <RiGithubFill className="h-4 w-4" />
+              <span>GitHub</span>
+            </button>
+            <button
+              type="button"
+              disabled={isSigningIn}
+              onClick={() => handleSignIn("google")}
+              className="cursor-pointer flex items-center gap-2 rounded-full border border-current/15 px-4 py-2 text-sm transition-opacity duration-300 hover:opacity-70 disabled:opacity-40"
+            >
+              <RiGoogleFill className="h-4 w-4" />
+              <span>Google</span>
+            </button>
+          </div>
         )}
       </div>
 
-      {error && (
-        <p role="alert" className="text-sm text-red-500">
-          {error}
-        </p>
-      )}
+      {error && <p className="text-sm text-neutral-900">{error}</p>}
     </form>
   );
 }
 
 export function GuestBookEntries({ entries, currentUserId }) {
   const [deletingId, setDeletingId] = useState(null);
-  const [error, setError] = useState(null);
   const [likingId, setLikingId] = useState(null);
   const [likes, setLikes] = useState(() =>
     Object.fromEntries(
@@ -164,16 +171,8 @@ export function GuestBookEntries({ entries, currentUserId }) {
     )
   );
 
-  useEffect(() => {
-    setLikes(
-      Object.fromEntries(
-        entries.map((e) => [e.id, { count: e.likeCount, liked: e.isLiked }])
-      )
-    );
-  }, [entries]);
-
   async function handleLike(id) {
-    if (likingId === id) return;
+    if (likingId === id || !currentUserId) return;
     setLikingId(id);
     const prev = likes[id];
     setLikes((l) => ({
@@ -184,14 +183,9 @@ export function GuestBookEntries({ entries, currentUserId }) {
       },
     }));
     try {
-      const result = await toggleLike(id);
-      if (result?.error) {
-        setLikes((l) => ({ ...l, [id]: prev }));
-        setError(result.error);
-      }
+      await toggleLike(id);
     } catch {
       setLikes((l) => ({ ...l, [id]: prev }));
-      setError("Could not update like.");
     } finally {
       setLikingId(null);
     }
@@ -200,109 +194,97 @@ export function GuestBookEntries({ entries, currentUserId }) {
   async function handleDelete(id) {
     setDeletingId(id);
     try {
-      const result = await deleteEntry(id);
-      if (result?.error) setError(result.error);
-    } catch {
-      setError("That note could not be deleted. Try again.");
+      await deleteEntry(id);
     } finally {
       setDeletingId(null);
     }
   }
 
-  //   handle the case when there are no entries comments or notes yet
-  if (!entries || entries.length === 0) {
+  if (!entries?.length) {
     return (
       <p className="py-16 font-serif text-2xl opacity-40">
-        {currentUserId
-          ? "No notes yet. Write the first one."
-          : "No notes yet. Sign in and be the first one to leave a note!"}
+        No notes yet. Be the first one to leave a note!
       </p>
     );
   }
 
   return (
     <div className="flex flex-col">
-      {error && (
-        <p role="alert" className="text-sm text-red-500 py-2">
-          {error}
-        </p>
-      )}
-      {entries.map((entry) => (
-        // comment list item each user
-        <article
-          key={entry.id}
-          className="group grid grid-cols-[2.5rem_1fr] gap-x-4 border-b border-fg/10 pt-2 pb-4 md:pt-4 md:pb-6"
-        >
-          <Avatar
-            src={entry.avatar_url}
-            name={entry.github_username}
-            size="w-8 h-8"
-          />
-          <div className="flex flex-col gap-2 md:gap-2 min-w-0">
-            <div className="flex items-center justify-between gap-4 text-sm">
-              <div className="flex flex-col items-baseline">
-                <span className="font-medium">@{entry.github_username}</span>
-                <time className="text-base-sm opacity-40">
-                  {formatDate(entry.created_at)}
-                </time>
-              </div>
+      {entries.map((entry) => {
+        const like = likes[entry.id];
+        return (
+          <article
+            key={entry.id}
+            className="group grid grid-cols-[2.5rem_1fr] gap-x-4 border-b border-fg/10 pt-2 pb-4 md:pt-4 md:pb-6"
+          >
+            <Avatar
+              src={entry.avatar_url}
+              name={entry.display_name}
+              size="w-8 h-8"
+            />
+            <div className="flex flex-col gap-2 min-w-0">
+              <div className="flex items-start md:items-center justify-between gap-12">
+                <div className="flex flex-col items-baseline leading-body tracking-body">
+                  <span className="min-w-0 font-[450] leading-[1.5]">
+                    @{entry.display_name}
+                  </span>
+                  <time className="shrink-0 text-xs opacity-40 lowercase">
+                    {formatDate(entry.created_at)}
+                  </time>
+                </div>
 
-              <div className="flex items-center gap-1">
-                {currentUserId && currentUserId === entry.user_id && (
-                  <button
-                    onClick={() => handleDelete(entry.id)}
-                    disabled={deletingId === entry.id}
-                    className="cursor-pointer p-1 rounded-full text-current/50 hover:text-red-500 disabled:opacity-40 opacity-100 md:opacity-0 md:group-hover:opacity-100 focus-visible:opacity-100 transition-opacity"
-                    aria-label="Delete note"
-                  >
-                    <RiCloseLine className="w-4 h-4" />
-                  </button>
-                )}
-                {currentUserId ? (
-                  <button
-                    onClick={() => handleLike(entry.id)}
-                    disabled={likingId === entry.id}
-                    className={`cursor-pointer p-1 flex items-center gap-1 opacity-75 md:opacity-0 md:group-hover:opacity-75 focus-visible:opacity-75 transition-opacity disabled:opacity-40 ${
-                      likes[entry.id]?.liked
-                        ? "text-red-500"
-                        : "text-current/50 hover:text-red-500"
-                    }`}
-                    aria-label={
-                      likes[entry.id]?.liked
-                        ? "Unlike this comment"
-                        : "Like this comment"
-                    }
-                  >
-                    {likes[entry.id]?.liked ? (
-                      <RiHeartFill className="w-4 h-4" />
-                    ) : (
-                      <RiHeartLine className="w-4 h-4" />
-                    )}
-                    {likes[entry.id]?.count > 0 && (
-                      <span className="text-base-sm tabular-nums">
-                        {likes[entry.id].count}
+                <div className="flex shrink-0 items-center gap-x-1">
+                  {currentUserId ? (
+                    <button
+                      onClick={() => handleLike(entry.id)}
+                      disabled={likingId === entry.id}
+                      className={`flex items-center gap-x-1 transition-opacity opacity-100 lg:opacity-0 lg:group-hover:opacity-100 focus-visible:opacity-100 ${
+                        like?.liked
+                          ? "text-neutral-900"
+                          : "text-current/50 hover:text-neutral-900"
+                      }`}
+                      aria-label={like?.liked ? "Unlike" : "Like"}
+                    >
+                      {like?.count > 0 && (
+                        <span className="text-xs leading-none tabular-nums">
+                          {like.count}
+                        </span>
+                      )}
+                      {like?.liked ? (
+                        <RiHeartFill className="w-4 h-4" />
+                      ) : (
+                        <RiHeartLine className="w-4 h-4" />
+                      )}
+                    </button>
+                  ) : (
+                    like?.count > 0 && (
+                      <span className="p-1 flex items-center gap-1 text-current/30">
+                        <RiHeartLine className="w-4 h-4" />
+                        <span className="text-base-sm tabular-nums">
+                          {like.count}
+                        </span>
                       </span>
-                    )}
-                  </button>
-                ) : (
-                  likes[entry.id]?.count > 0 && (
-                    <span className="flex items-center gap-1 p-1 text-current/50">
-                      <RiHeartFill className="w-4 h-4" />
-                      <span className="text-base-sm tabular-nums">
-                        {likes[entry.id].count}
-                      </span>
-                    </span>
-                  )
-                )}
+                    )
+                  )}
+                  {currentUserId === entry.user_id && (
+                    <button
+                      onClick={() => handleDelete(entry.id)}
+                      disabled={deletingId === entry.id}
+                      aria-label="Delete"
+                      className="cursor-pointer flex items-center justify-center p-1 text-current/50 hover:text-current disabled:opacity-40"
+                    >
+                      <RiCloseLine className="w-4 h-4" />
+                    </button>
+                  )}
+                </div>
               </div>
+              <p className="font-serif text-base leading-body tracking-body">
+                {entry.message}
+              </p>
             </div>
-
-            <p className="font-serif text-base leading-body tracking-body">
-              {entry.message}
-            </p>
-          </div>
-        </article>
-      ))}
+          </article>
+        );
+      })}
     </div>
   );
 }

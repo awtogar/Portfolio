@@ -1,4 +1,3 @@
-import { signInWithGithub } from "./action";
 import { createClient } from "@/lib/supabase/server";
 import GuestBookForm, { GuestBookEntries } from "./GuestBookForm";
 import PageLayout from "@/components/PageLayout";
@@ -9,39 +8,28 @@ export const metadata = {
   description: "Leave a note so we know you were here.",
 };
 
-export default async function GuestBook() {
+export default async function GuestBook({ searchParams }) {
+  const { error } = await searchParams;
   const supabase = await createClient();
 
   const {
     data: { user },
   } = await supabase.auth.getUser();
   const { data: entries } = await supabase
-    .from("guestbook")
+    .from("guestbook_entries")
     .select("*")
     .order("created_at", { ascending: false });
 
   const count = entries?.length ?? 0;
-
-  const { data: likes } = await supabase
-    .from("guestbook_likes")
-    .select("guestbook_id, user_id");
-
-  const likeCounts = {};
-  const likedByUser = new Set();
-  likes?.forEach((l) => {
-    likeCounts[l.guestbook_id] = (likeCounts[l.guestbook_id] || 0) + 1;
-    if (user && l.user_id === user.id) likedByUser.add(l.guestbook_id);
-  });
-
-  const entriesWithLikes = entries?.map((e) => ({
-    ...e,
-    likeCount: likeCounts[e.id] || 0,
-    isLiked: likedByUser.has(e.id),
+  const entriesWithLikes = entries?.map((entry) => ({
+    ...entry,
+    likeCount: entry.like_count ?? 0,
+    isLiked: entry.liked_by_me ?? false,
   }));
 
   return (
     <PageLayout>
-      <BaseSection sectionClassName="relative z-10 w-full pt-[clamp(8rem,14vw,14rem)] ">
+      <BaseSection sectionClassName="relative z-10 w-full section-padding-x pt-[clamp(8rem,14vw,14rem)]">
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-12">
           {/* left column */}
           <div className="lg:sticky lg:col-span-5 lg:top-[clamp(8rem,14vw,14rem)] lg:self-start">
@@ -60,9 +48,17 @@ export default async function GuestBook() {
                 anything else!
               </p>
             </div>
+            {error === "auth" && (
+              <p
+                role="alert"
+                className="mt-4 rounded-xl border border-red-500/30 px-4 py-3 text-sm text-red-500"
+              >
+                Sign in didn&apos;t complete. Please try again.
+              </p>
+            )}
             {/* container */}
             <div className="relative mt-12 w-full block">
-              <GuestBookForm user={user} signInWithGithub={signInWithGithub} />
+              <GuestBookForm user={user} />
             </div>
           </div>
           {/* right column */}
