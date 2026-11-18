@@ -9,7 +9,7 @@ import Link from "next/link";
 import { useCursorTarget } from "@/cursor";
 
 const cardClass =
-  "flex items-start justify-start p-4 lg:p-6 bg-neutral-300/20 backdrop-blur-[0.5rem] rounded-lg lg:rounded-xl text-base-sm font-medium leading-tight cursor-pointer transition-all duration-500";
+  "flex items-start justify-start p-4 lg:p-6 bg-neutral-200/40 backdrop-blur-[0.64rem] rounded-lg lg:rounded-xl text-base-sm font-medium leading-tight cursor-pointer transition-all duration-500";
 
 export default function Bento() {
   const ref = useRef(null);
@@ -20,7 +20,7 @@ export default function Bento() {
     <BaseSection as="footer" sectionID="contact" sectionClassName="pt-section">
       <section
         ref={ref}
-        className="bg-neutral-50 px-4 py-section grid grid-cols-12 gap-2 lg:gap-4 relative"
+        className="bg-neutral-50 px-4 md:px-6 lg:px-8 pt-8 lg:pt-16 pb-8 lg:pb-8 grid grid-cols-12 gap-2 lg:gap-4 relative"
       >
         <motion.h2
           style={{ y, fontSize: "clamp(40px, 16vw, 250px)" }}

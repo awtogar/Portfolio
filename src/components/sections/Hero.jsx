@@ -16,7 +16,7 @@ const Hero = () => {
 
   return (
     <BaseSection
-      sectionClassName="section-padding-x py-4"
+      sectionClassName="section-padding-x py-container"
       containerClassName="flex-col w-full max-w-[1920px] h-[85svh] m-auto"
     >
       <div

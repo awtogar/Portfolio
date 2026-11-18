@@ -172,7 +172,7 @@ const items = [
 ];
 
 const Stack = () => (
-  <BaseSection containerID="tech-stack" sectionClassName="py-section">
+  <BaseSection containerID="tech-stack" sectionClassName="">
     <div className="flex flex-col md:gap-y-2 lg:gap-y-6">
       <div className="block relative">
         <LetterScroll
