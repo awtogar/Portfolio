@@ -3,7 +3,6 @@ import Link from "next/link";
 import { navlink } from "@/data/data";
 import PersonalLogo from "@/assets/images/logo.svg";
 import { useCursorTarget } from "@/cursor";
-import { BaseSection } from "@/components";
 
 export function Header() {
   const cursorLabelTarget = useCursorTarget({ label: null });
@@ -41,7 +40,7 @@ export function Header() {
           </div>
 
           {/* navbar */}
-          <nav className="flex flex-col gap-2 items-end md:flex-row md:items-center md:gap-8">
+          <nav className="flex flex-col items-end md:flex-row md:items-center md:gap-8">
             {navlink.map((item) => (
               <Link
                 {...cursorLabelTarget}
