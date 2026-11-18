@@ -9,11 +9,11 @@ import serojaLogo from "@/assets/images/project/seroja.svg";
 
 // Navigation & Contact Data
 export const navlink = [
-  {
-    title: "Home",
-    href: "/",
-    label: "Home",
-  },
+  // {
+  //   title: "Home",
+  //   href: "/",
+  //   label: "Home",
+  // },
   {
     title: "Labs",
     href: "/labs",
@@ -28,6 +28,11 @@ export const navlink = [
     title: "Writings",
     href: "/writings",
     label: "Writings",
+  },
+  {
+    title: "Guestbook",
+    href: "/guestbook",
+    label: "Guestbook",
   },
 ];
 
